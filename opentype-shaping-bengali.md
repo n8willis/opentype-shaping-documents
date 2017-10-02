@@ -27,7 +27,7 @@ Processing a run of `<bng2>` text involves six top-level stages:
 3. Applying the basic substitution features from GSUB
 4. Final reordering
 5. Applying all remaining substitution features from GSUB
-6. Applying positioning features from GPOS
+6. Applying all remaining positioning features from GPOS
 
 
 As with other Indic scripts, the initial reordering stage and the
@@ -198,7 +198,7 @@ WIth these steps completed, the cluster can be sorted into the final sort order.
 
 ### (3) Applying the basic substitution features from GSUB ###
 
-The basic-substitution phase applies mandatory substitution features using the rules in the font's
+The basic-substitution stage applies mandatory substitution features using the rules in the font's
 GSUB table. In preparation for this stage, glyph sequences should be tagged for possible application
 of GSUB features.
 
@@ -232,9 +232,9 @@ The `half` feature replaces "_consonant_,Halant" sequences before the base conso
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu variants" are formed by glyphs followed by the below-base form of "Ra", so this feature must be applied after the `blwf` feature.
+The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu variants" are formed by glyphs followed by "Raphala" (the below-base form of "Ra"), so this feature must be applied after the `blwf` feature.
 
-The `cjct` feature replaces sequences of consonants with conjunct ligatures. The font's GSUB rules may be written so that the `cjct` substitutions apply to half-form consonants, therefore this feature must be applied after the `half` feature.
+The `cjct` feature replaces sequences of adjacent consonants with conjunct ligatures. The font's GSUB rules might be implemented so that `cjct` substitutions apply to half-form consonants; therefore, this feature must be applied after the `half` feature.
 
 
 ### (4) Final reordering ###
@@ -245,16 +245,39 @@ The final reordering stage repositions marks, dependent-vowel (matra) signs, and
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
+IN this stage, the remaining substitution features from the GSUB table are applied. The order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
+
 	init
 	pres
 	abvs
 	blws
 	psts
 	haln
-	dist
-	abvm
-	blwm
 
-### (6) Applying positioning features from GPOS ###
+The `init` feature replaces word-initial glyphs with special presentation forms.
 
-In this stage, mark positioning, kerning, and other GPOS features are applied.
+The `pres` feature replaces pre-base-consonant glyphs with special presentations forms. This can include consonant conjuncts, half-form consonants, and stylistic variants of left-side dependent vowels (matras).
+
+The `abvs` feature replaces above-base-consonant glyphs with special presentation forms. This usually includes contextual variants of above-base marks or contextualy appropriate mark-and-base ligatures. 
+
+The `blws` feature replaces below-base-consonant glyphs with special presentation forms. This usually includes replacing consonants that are followed by below-base-consonant forms like "Raphala" and "Baphalan" with contextual ligatures. 
+
+The `psts` feature replaces post-base-consonant glyphs with special presenataion forms. This usually includes replacing right-side dependent vowels (matras) with stylistic variants or replacing post-base-consonant/matra pairs with contextual ligatures.
+
+The `haln` feature replaces word-final "_consonant_,Halant" pairs with special presentation forms. This can include stylistic variants of the consonant where placing the "Halant" mark on its own is typographically problematic.
+
+
+
+### (6) Applying remaining positioning features from GPOS ###
+
+In this stage, mark positioning, kerning, and other GPOS features are applied. As with the preceding stage, the order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
+
+        dist
+        abvm
+        blwm
+
+The `dist` feature adjusts the horizontal positioning of glyphs. Unlike `kern`, adjustments made with `dist` do not require the application or user to enable the _kerning_ feature, if that feature is optional.
+
+The `abvm` feature positions above-base marks.
+
+The `blwm` feature positions below-base marks.
