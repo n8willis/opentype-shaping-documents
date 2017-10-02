@@ -226,7 +226,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the "Reph" glyph.
 
 The `pref` feature replaces pre-base-consonant glyphs with any special forms.
 
-The `blwf` feature replaces below-base-consonant glyphs with any special forms.
+The `blwf` feature replaces below-base-consonant glyphs with any special forms. Bengali includes two below-base consonant forms. "Ra,Halant" in a non-cluster-initial position takes on the "Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
 
 The `half` feature replaces "_consonant_,Halant" sequences before the base consonant with "half forms" of the consonant glyphs.
 
@@ -256,3 +256,5 @@ The final reordering stage repositions marks, dependent-vowel (matra) signs, and
 	blwm
 
 ### (6) Applying positioning features from GPOS ###
+
+In this stage, mark positioning, kerning, and other GPOS features are applied.
