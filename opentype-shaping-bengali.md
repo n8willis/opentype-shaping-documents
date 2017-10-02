@@ -154,8 +154,8 @@ The algorithm for determining the base consonant is
 
 - If the syllable starts with "Ra,Halant" and the cluster contains more than one consonant, exclude the starting "Ra" from the list of consonants to be considered.
 - Starting from the end of the syllable, move backwards until a consonant is found.
-  -- If the consonant has a below-base or post-base form or is a pre-base reordering "Ra", move to the previous consonant. If neither condition is true, stop.
-  -- If the consonant is the first consonant, stop.
+    * If the consonant has a below-base or post-base form or is a pre-base reordering "Ra", move to the previous consonant. If neither condition is true, stop.
+    * If the consonant is the first consonant, stop.
 
 The consonant stopped at will be the base consonant.
 
