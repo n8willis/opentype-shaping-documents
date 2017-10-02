@@ -65,8 +65,10 @@ that MAY be followed by a "tail" of modifier signs.
 > (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara" (`U+09FC`). In addition, Sanskrit text written in Bengali may include
 > additional signs from Vedic Extensions block.
 
-Each syllable contains exactly one vowel. Valid syllables may begin with either a consonant or an independent
-vowel. The consonant (if any exists) that carries the vowel is the "base" consonant of the syllable. Zero or more additional consonants may be present in the syllable; in a valid syllable these other consonants will be followed by the "Halant" mark, which indicates that they carry no vowel.
+Each syllable contains exactly one vowel. The consonant (if any exists) that carries the vowel is the "base" consonant of the syllable. 
+
+Valid syllables may begin with either a consonant or an independent
+vowel.  Zero or more additional consonants may be present in the syllable; in a valid syllable these other consonants will be followed by the "Halant" mark, which indicates that they carry no vowel.
 
 > Note: The consonant "Ra" receives special treatment; in many
 > circumstances it is replaced with a combining mark-like form. A "Ra,Halant" sequence at the beginning of a cluster is
@@ -81,6 +83,8 @@ vowel. The consonant (if any exists) that carries the vowel is the "base" conson
 >
 
 In addition, stand-alone clusters may occur, such as when an isolated codepoint is shown in example text, sequences of numerals, and so on.
+
+Clusters should be identified by examining the run and matching glyphs, based on their categorization, using regular expressions.
 
 
 	C	consonant
@@ -169,8 +173,11 @@ The algorithm for determining the base consonant is
 The consonant stopped at will be the base consonant.
 
 2. Second, any two-part dependent vowels (matras) must be decomposed into their
-canonical left-side and right-side components. Bengali has two
-two-part dependent vowels. "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
+left-side and right-side components. Bengali has two
+two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
+
+> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
+> "AU" (`U+09CC`) decomposes to `U+09C7`,`U+09D7`"
 
 3. Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
@@ -245,7 +252,7 @@ The final reordering stage repositions marks, dependent-vowel (matra) signs, and
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
-IN this stage, the remaining substitution features from the GSUB table are applied. The order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
+In this stage, the remaining substitution features from the GSUB table are applied. The order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
 
 	init
 	pres
