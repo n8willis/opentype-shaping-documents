@@ -9,7 +9,7 @@ clusters of consonants are often represented as conjuncts.
 
 The Bengali script is used to write multiple languages, most commonly
 Bengali, Assamese, and Manipuri. In addition, Sanskrit may be written
-in Bengali, so Bengali script runs may include signs from the Vedic
+in Bengali, so Bengali script runs may include glyphs from the Vedic
 Extension block on Unicode. 
 
 There are two extant Bengali script tags, `<beng>` and `<bng2>`. The older
@@ -61,21 +61,23 @@ consonant, not counting any special final-consonant forms.
 A syllable cluster in Bengali consists of a valid orthographic cluster
 that MAY be followed by a "tail" of modifier signs.
 
-Valid syllables may begin with either a consonant or an independent
-vowel. 
+> Note: The Bengali Unicode block enumerates five modifier signs, "Candrabinu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga"
+> (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara" (`U+09FC`). In addition, Sanskrit text written in Bengali may include
+> additional signs from Vedic Extensions block.
+
+Each syllable contains exactly one vowel. Valid syllables may begin with either a consonant or an independent
+vowel. The consonant (if any exists) that carries the vowel is the "base" consonant of the syllable. Zero or more additional consonants may be present in the syllable; in a valid syllable these other consonants will be followed by the "Halant" mark, which indicates that they carry no vowel.
 
 > Note: The consonant "Ra" receives special treatment; in many
-> circumstances it is replaced with a combining mark-like form called "Reph" that must be
+> circumstances it is replaced with a combining mark-like form. A "Ra,Halant" sequence at the beginning of a cluster is
+> replaced with an above-base mark called "Reph" (unless the "Ra" is the only consonant in the cluster). "Ra,Halant" sequences that occur elsewhere in the cluster may take on the
+> below-base form "Raphala." "Reph" and "Raphala" sequences must be
 > reordered after the syllable-identification stage is complete.
-
-Valid syllables in Bengali must end with either a dependent vowel or a
-consonant that is NOT followed by a halant (thus, a consonant that retains the
-inherent vowel, 'a').
 
 In addition, stand-alone clusters can occur at the start of words.
 
 Non-syllable clusters include independent codepoints, isolated
-symbols, numeral sequences, and _____.
+symbols, numeral sequences, and so on.
 
 
 	C	consonant
@@ -90,13 +92,13 @@ symbols, numeral sequences, and _____.
 	A	anudatta (U+0952)
 	NBSP	NO-BREAK SPACE
 
-Consonant syllable:
+A consonant syllable will match the expression:
 {C+[N]+<H+[<ZWNJ|ZWJ>]|<ZWNJ|ZWJ>+H>} + C+[N]+[A] + [< H+[<ZWNJ|ZWJ>] | {M}+[N]+[H]>]+[SM]+[(VD)]
 
-Vowel-based syllable:
+A vowel-based syllable will match the expression:
 [Ra+H]+V+[N]+[<[<ZWJ|ZWNJ>]+H+C|ZWJ+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 
-Stand-alone cluster (at the start of the word only):
+A stand-alone cluster (at the start of the word only) will match the expression:
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 
 After the clusters have been identified, each of the subsequent 
@@ -108,9 +110,9 @@ The initial reordering stage is used to relocate glyphs from the
 phonetic order in which they occur in a run of text into the
 orthographic order in which they are presented visually.
 
-> Note: Primarily, this means moving dependent-vowel glyphs, "Ra" glyphs, and
-> other consonants that take special treatment, such as a "Ta" or "Ya"
-> located at the end of the syllable.
+> Note: Primarily, this means moving dependent-vowel (matra) glyphs, "Ra,Halant" glyph sequences, and
+> other consonants that take special treatment in some circumstances. "Ba", "Ta", and "Ya"
+> occasionally take on special forms, depending on their position in the syllable.
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the content of the font.
@@ -125,44 +127,44 @@ The final sort order of the ordering categories should be:
 
 
 	POS_RA_TO_BECOME_REPH
-	POS_PRE_M
-	POS_PRE_C
+	POS_PREBASE_MATRA
+	POS_PREBASE_CONSONANT
 
-	POS_BASE_C
+	POS_BASE_CONSONANT
 	POS_AFTER_MAIN
 
-	POS_ABOVE_C
+	POS_ABOVEBASE_CONSONANT
 
 	POS_BEFORE_SUB
-	POS_BELOW_C
+	POS_BELOWBASE_CONSONANT
 	POS_AFTER_SUB
 
 	POS_BEFORE_POST
-	POS_POST_C
+	POS_POSTBASE_CONSONANT
 	POS_AFTER_POST
 
-	POS_FINAL_C
+	POS_FINAL_CONSONANT
 	POS_SMVD
 
 
 1. The first step is to determine the base consonant of the cluster
-and tag it as `POS_BASE_C`.
+and tag it as `POS_BASE_CONSONANT`.
 
-2. Second, any two-part dependent vowels must be decomposed into their
+2. Second, any two-part dependent vowels (matras) must be decomposed into their
 canonical left-side and right-side components. Bengali has two
-two-part dependent vowels. "O" (`U+09BC`) and "AU" (`U+09CC`).
+two-part dependent vowels. "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
 
-3. Third, all left-side dependent-vowel signs, including those that
+3. Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
-cluster, with `POS_PRE_M`.
+cluster, with `POS_PREBASE_MATRA`.
 
 4. Fourth, any subsequences of marks must be reordered so that they appear in canonical
 order. Nuktas must be placed before all other marks. 
 
 5. Fifth, consonants that will take on pre-base forms must be tagged
-with `POS_PRE_C`.
+with `POS_PREBASE_CONSONANT`.
 
-6. Sixth, initial "Ra"s that will become rephs must be tagged with
+6. Sixth, initial "Ra,Halant" sequences that will become rephs must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
 > `<bng2>` text contains two Unicode codepoints for "Ra." `U+09B0` and `U+09F0`.
@@ -171,58 +173,58 @@ with `POS_PRE_C`.
 > Assamese-language text.
 
 7. Seventh, any final consonants must be tagged with
-`POS_POST_C`. Bengali includes two such final consonants, "Khanda Ta"
+`POS_POSTBASE_CONSONANT`. Bengali includes two such final consonants, "Khanda Ta"
 (`U+09CE`), and the sequence "Halant,Ya" (`U+09CD`,`U+09AF`), which usually
 triggers the "Yaphala" presentation form. 
 
 8. Eighth, all miscellaneous marks must be attached to the
 preceding character, so that they move together during the sorting step.
 
-9. Post-base glyphs should be merged.
+9. Ninth, all post-base glyphs should be merged into a single substring that will sort as a single unit.
 
-set up masks (an array of which features apply to each position??? -
-   at least REPH, HALF, BLWF, PSTF, and PREF. Plus CFAR for Khmer.)
- << Does below-base form tagging happen here?
-  Halant,Ra -> Raphala
-  Halant,Ba -> Baphala >>
-<<Seems to be that everything is tagged with the masks for BLWF ABVF
-PSTF>>
-<< NO! Stuff gets marked early on! in update_consonant_position !!!!
-Keep looking!!! >>
+10. In preparation for the next stage, glyph sequences should be tagged for possible application of GSUB features.
 + find Halant,Ra sequence and tag it for PREF reordering^^
 
 
- apply ZWJ/ZWNJ effects
+### (3) Applying the basic substitution features from GSUB ###
 
-initial reordering::
-Treat the various syllable types differently: non-indic clusters (do
-nothing), symbol clusters (also do nothing), standalone clusters
-(which seem to be limited to dotted-circle settings and, perhaps,
-other non-regular-text settings), broken clusters (who knows),
-consonant clusters (the normal case, described below), and vowel
-clusters (i.e., clusters with an initial vowel. HB treats these
-initial vowels the same way it does consonants, though, so there's no
-special case).
-
-
-### (3) Applying the basic substitution features from GPOS ###
+The basic-substitution phase applies mandatory substitution features using the rules in the fon'ts GSUB table. The order in which these substitutions must be performed is fixed:
 
 	nukt
 	akhn
 	rphf
-	rkrf
+	<!-- rkrf -->
 	pref
 	blwf
-	abvf
+	<!-- abvf -->
 	half
 	pstf
 	vatu
 	cjct
 	cfar
 
+The `nukt` feature replaces "_consonant_,Nukta" sequences with a precomposed nukta-variant of the consonant glyph.
+
+The `akhn` feature replaces two specific sequences with required ligatures. 
+"Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. "Ja,Halant,Nya" is substituted with the "JaNya" ligature.
+
+The `rphf` feature replaces initial "Ra,Halant" sequences with the "Reph" glyph.
+
+The `pref` feature replaces pre-base-consonant glyphs with any special forms.
+
+The `blwf` feature replaces below-base-consonant glyphs with any special forms.
+
+The `half` feature replaces "_consonant_,Halant" sequences before the base consonant with "half forms" of the consonant glyphs.
+
+The `pstf` feature replaces post-base-consonant glyphs with any special forms.
+
+The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu variants" are formed by glyphs followed by the below-base form of "Ra", so this feature must be applied after the `blwf` feature.
+
+The `cjct` feature replaces sequences of consonants with conjunct ligatures. The font's GSUB rules may be written so that the `cjct` substitutions apply to half-form consonants, therefore this feature must be applied after the `half` feature.
+
 ### (4) Final reordering ###
 
-### (5) Applying all remaining substitution features from GPOS ###
+### (5) Applying all remaining substitution features from GSUB ###
 
 	init
 	pres
@@ -234,4 +236,4 @@ special case).
 	abvm
 	blwm
 
-### (6) Applying positioning features from GSUB ###
+### (6) Applying positioning features from GPOS ###
