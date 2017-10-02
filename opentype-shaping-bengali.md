@@ -73,11 +73,14 @@ vowel. The consonant (if any exists) that carries the vowel is the "base" conson
 > replaced with an above-base mark called "Reph" (unless the "Ra" is the only consonant in the cluster). "Ra,Halant" sequences that occur elsewhere in the cluster may take on the
 > below-base form "Raphala." "Reph" and "Raphala" sequences must be
 > reordered after the syllable-identification stage is complete.
+>
+> `<bng2>` text contains two Unicode codepoints for "Ra." `U+09B0` and `U+09F0`.
+>
+> `U+09B0` is used in Bengali-language, Manipuri-language, and Sanskrit text. `U+09F0` is used in
+> Assamese-language text.
+>
 
-In addition, stand-alone clusters can occur at the start of words.
-
-Non-syllable clusters include independent codepoints, isolated
-symbols, numeral sequences, and so on.
+In addition, stand-alone clusters may occur, such as when an isolated codepoint is shown in example text, sequences of numerals, and so on.
 
 
 	C	consonant
@@ -93,13 +96,19 @@ symbols, numeral sequences, and so on.
 	NBSP	NO-BREAK SPACE
 
 A consonant syllable will match the expression:
+```
 {C+[N]+<H+[<ZWNJ|ZWJ>]|<ZWNJ|ZWJ>+H>} + C+[N]+[A] + [< H+[<ZWNJ|ZWJ>] | {M}+[N]+[H]>]+[SM]+[(VD)]
+```
 
 A vowel-based syllable will match the expression:
+```
 [Ra+H]+V+[N]+[<[<ZWJ|ZWNJ>]+H+C|ZWJ+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
+```
 
 A stand-alone cluster (at the start of the word only) will match the expression:
+```
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
+```
 
 After the clusters have been identified, each of the subsequent 
 shaping stages occurs on a per-cluster basis.
@@ -167,8 +176,7 @@ two-part dependent vowels. "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canoni
 resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
 cluster, with `POS_PREBASE_MATRA`.
 
-4. Fourth, any subsequences of marks must be reordered so that they appear in canonical
-order. Nuktas must be placed before all other marks. 
+4. Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s, syllable modifiers, and Vedic signs) must be reordered so that they appear in canonical order. "Nukta"s must be placed before all other marks. 
 
 5. Fifth, consonants that will take on pre-base forms must be tagged
 with `POS_PREBASE_CONSONANT`.
@@ -176,36 +184,33 @@ with `POS_PREBASE_CONSONANT`.
 6. Sixth, initial "Ra,Halant" sequences that will become rephs must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> `<bng2>` text contains two Unicode codepoints for "Ra." `U+09B0` and `U+09F0`.
->
-> `U+09B0` is used in Bengali-language, Manipuri-language, and Sanskrit text. `U+09F0` is used in
-> Assamese-language text.
-
-7. Seventh, any final consonants must be tagged with
-`POS_POSTBASE_CONSONANT`. Bengali includes two such final consonants, "Khanda Ta"
-(`U+09CE`), and the sequence "Halant,Ya" (`U+09CD`,`U+09AF`), which usually
-triggers the "Yaphala" presentation form. 
+7. Seventh, any consonants that occur after a dependent vowel (matra) sign must be tagged with
+`POS_POSTBASE_CONSONANT`. Such consonants will usually be followed by a "Halant" glyph, with the 
+exception of special final-consonants. Bengali includes two such final consonants, "Khanda Ta"
+(`U+09CE`), and the sequence "Halant,Ya" (`U+09CD`,`U+09AF`), which triggers the "Yaphala" form. 
 
 8. Eighth, all miscellaneous marks must be attached to the
 preceding character, so that they move together during the sorting step.
 
 9. Ninth, all post-base glyphs should be merged into a single substring that will sort as a single unit.
 
-10. In preparation for the next stage, glyph sequences should be tagged for possible application of GSUB features.
-+ find Halant,Ra sequence and tag it for PREF reordering^^
-
+WIth these steps completed, the cluster can be sorted into the final sort order.
 
 ### (3) Applying the basic substitution features from GSUB ###
 
-The basic-substitution phase applies mandatory substitution features using the rules in the fon'ts GSUB table. The order in which these substitutions must be performed is fixed:
+The basic-substitution phase applies mandatory substitution features using the rules in the font's
+GSUB table. In preparation for this stage, glyph sequences should be tagged for possible application
+of GSUB features.
+
+The order in which these substitutions must be performed is fixed:
 
 	nukt
 	akhn
 	rphf
-	<!-- rkrf -->
+<!-- rkrf -->
 	pref
 	blwf
-	<!-- abvf -->
+<!-- abvf -->
 	half
 	pstf
 	vatu
@@ -231,9 +236,12 @@ The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu
 
 The `cjct` feature replaces sequences of consonants with conjunct ligatures. The font's GSUB rules may be written so that the `cjct` substitutions apply to half-form consonants, therefore this feature must be applied after the `half` feature.
 
+
 ### (4) Final reordering ###
 
 The final reordering stage repositions marks, dependent-vowel (matra) signs, and "Reph" glyphs to the appropriate location with respect to the base consonant. Because multiple subsitutions may have occured during the application of the basic-shaping features in the preceding stage, these repositioning moves could not be performed during the initial-reordering stage.
+
+
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
