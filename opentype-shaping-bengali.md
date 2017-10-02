@@ -177,7 +177,8 @@ left-side and right-side components. Bengali has two
 two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
 
 > "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
-> "AU" (`U+09CC`) decomposes to `U+09C7`,`U+09D7`"
+>
+> "AU" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
 
 3. Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
