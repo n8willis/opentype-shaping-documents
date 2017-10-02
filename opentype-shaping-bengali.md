@@ -24,10 +24,10 @@ Processing a run of `<bng2>` text involves six top-level stages:
 
 1. Identifying syllables and other clusters
 2. Initial reordering
-3. Applying the basic substitution features from GPOS
+3. Applying the basic substitution features from GSUB
 4. Final reordering
-5. Applying all remaining substitution features from GPOS
-6. Applying positioning features from GSUB
+5. Applying all remaining substitution features from GSUB
+6. Applying positioning features from GPOS
 
 
 As with other Indic scripts, the initial reordering stage and the
