@@ -150,6 +150,15 @@ The final sort order of the ordering categories should be:
 1. The first step is to determine the base consonant of the cluster
 and tag it as `POS_BASE_CONSONANT`.
 
+The algorithm for determining the base consonant is
+
+- If the syllable starts with "Ra,Halant" and the cluster contains more than one consonant, exclude the starting "Ra" from the list of consonants to be considered.
+- Starting from the end of the syllable, move backwards until a consonant is found.
+- If the consonant has a below-base or post-base form or is a pre-base reordering "Ra", move to the previous consonant. If neither condition is true, stop.
+- If the consonant is the first consonant, stop.
+
+The consonant stopped at will be the base consonant.
+
 2. Second, any two-part dependent vowels (matras) must be decomposed into their
 canonical left-side and right-side components. Bengali has two
 two-part dependent vowels. "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
@@ -223,6 +232,8 @@ The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu
 The `cjct` feature replaces sequences of consonants with conjunct ligatures. The font's GSUB rules may be written so that the `cjct` substitutions apply to half-form consonants, therefore this feature must be applied after the `half` feature.
 
 ### (4) Final reordering ###
+
+The final reordering stage repositions marks, dependent-vowel (matra) signs, and "Reph" glyphs to the appropriate location with respect to the base consonant. Because multiple subsitutions may have occured during the application of the basic-shaping features in the preceding stage, these repositioning moves could not be performed during the initial-reordering stage.
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
