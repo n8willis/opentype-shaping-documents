@@ -10,7 +10,7 @@ clusters of consonants are often represented as conjuncts.
 The Bengali script is used to write multiple languages, most commonly
 Bengali, Assamese, and Manipuri. In addition, Sanskrit may be written
 in Bengali, so Bengali script runs may include glyphs from the Vedic
-Extension block on Unicode. 
+Extension block of Unicode. 
 
 There are two extant Bengali script tags, `<beng>` and `<bng2>`. The older
 script tag, `<beng>`, was deprecated in 2008.  Therefore, new fonts
@@ -47,9 +47,9 @@ consonant, not counting any special final-consonant forms.
 
 2. `REPH_POS_AFTER_SUB` = Reph is positioned after subjoined (i.e.,
    below-base) consonant forms.
-3. `REPH_MODE_IMPLICIT` = Reph is formed by an initial Ra,Halant sequence.
-4. `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied to
-   pre-base and post-base consonants.
+3. `REPH_MODE_IMPLICIT` = Reph is formed by an initial "Ra,Halant" sequence.
+4. `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
+   pre-base consonants and to post-base consonants.
 5. `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
    positioned after post-base consonant forms.
 6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUB` = Below-base matras are
@@ -113,6 +113,11 @@ A stand-alone cluster (at the start of the word only) will match the expression:
 ```
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
+
+A cluster that does not match any of these expressions should be
+regarded as broken. The shaping engine may make a best-effort attempt
+to shape the broken cluster, but making guarantees about the correctness or
+appearance of the final result is out of scope for this document.
 
 After the clusters have been identified, each of the subsequent 
 shaping stages occurs on a per-cluster basis.
@@ -278,7 +283,7 @@ The `haln` feature replaces word-final "_consonant_,Halant" pairs with special p
 
 ### (6) Applying remaining positioning features from GPOS ###
 
-In this stage, mark positioning, kerning, and other GPOS features are applied. As with the preceding stage, the order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
+In this stage, mark positioning, kerning, and other GPOS features are applied. As with the preceding stage, the order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GPOS table in the font.
 
         dist
         abvm
