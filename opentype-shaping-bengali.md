@@ -30,143 +30,143 @@ categories.
 
 Bengali glyphs should be categorized as in the following table:
 
-| Codepoint | Category | Positioning subcategory |
-|:----------|:---------|:------------|
-|`U+0980`   | _null_ | _null_ |
-|`U+0981`   | BINDU | TOP_POSITION |
-|`U+0982`   | BINDU | RIGHT_POSITION |
-|`U+0983`   | VISARGA | RIGHT_POSITION     | 
-|`U+0984`   | _null_ | _null_ |
-|`U+0985`   | VOWEL_INDEPENDENT | _null_ |
-|`U+0986`   | VOWEL_INDEPENDENT | _null_ |
-|`U+0987`   | VOWEL_INDEPENDENT | _null_ |
-|`U+0988`   | VOWEL_INDEPENDENT | _null_ |
-|`U+0989`   | VOWEL_INDEPENDENT | _null_ |
-|`U+098A`   | VOWEL_INDEPENDENT | _null_ |
-|`U+098B`   | VOWEL_INDEPENDENT | _null_ |
-|`U+098C`   | VOWEL_INDEPENDENT | _null_     | 
-|`U+098D`   | _null_ | _null_     | 
-|`U+098E`   | _null_ | _null_ |
-|`U+098F`   | VOWEL_INDEPENDENT | _null_ |
-| | |
-|`U+0990`   | VOWEL_INDEPENDENT | _null_     | 
-|`U+0991`   | _null_ | _null_     | 
-|`U+0992`   | _null_ | _null_ |
-|`U+0993`   | VOWEL_INDEPENDENT | _null_ |
-|`U+0994`   | VOWEL_INDEPENDENT | _null_     | 
-|`U+0995`   | CONSONANT | _null_   | 
-|`U+0996`    | CONSONANT | _null_     | 
-|`U+0997`    | CONSONANT | _null_ |
-|`U+0998`    | CONSONANT | _null_     | 
-|`U+0999`    | CONSONANT | _null_     | 
-|`U+099A`    | CONSONANT | _null_     | 
-|`U+099B`    | CONSONANT | _null_     | 
-|`U+099C`    | CONSONANT | _null_     | 
-|`U+099D`    | CONSONANT | _null_     | 
-|`U+099E`    | CONSONANT | _null_     | 
-|`U+099F`    | CONSONANT | _null_ |
-| | |
-|`U+09A0`    | CONSONANT | _null_     | 
-|`U+09A1`    | CONSONANT | _null_     | 
-|`U+09A2`    | CONSONANT | _null_     | 
-|`U+09A3`    | CONSONANT | _null_     | 
-|`U+09A4`    | CONSONANT | _null_     | 
-|`U+09A5`    | CONSONANT | _null_     | 
-|`U+09A6`    | CONSONANT | _null_     | 
-|`U+09A7`    | CONSONANT | _null_ |
-|`U+09A8`    | CONSONANT | _null_     | 
-|`U+09A9`    | _null_ | _null_     | 
-|`U+09AA `   | CONSONANT | _null_     | 
-|`U+09AB`    | CONSONANT | _null_     | 
-|`U+09AC`    | CONSONANT | _null_     | 
-|`U+09AD`    | CONSONANT | _null_     | 
-|`U+09AE`    | CONSONANT | _null_     | 
-|`U+09AF`    | CONSONANT | _null_ |
-| | |
-|`U+09B0`    | CONSONANT | _null_     | 
-|`U+09B1`    | _null_ | _null_     | 
-|`U+09B2`    | CONSONANT | _null_     | 
-|`U+09B3`    | _null_ | _null_     | 
-|`U+09B4`    | _null_ | _null_     | 
-|`U+09B5`    | _null_ | _null_     | 
-|`U+09B6`    | CONSONANT | _null_     | 
-|`U+09B7`    | CONSONANT | _null_ |
-|`U+09B8`    | CONSONANT | _null_     | 
-|`U+09B9`    | CONSONANT | _null_     | 
-|`U+09BA`    | _null_ | _null_     | 
-|`U+09BB`    | _null_ | _null_     | 
-|`U+09BC`    | NUKTA | BOTTOM_POSITION     | 
-|`U+09BD`    | AVAGRAHA | _null_     | 
-|`U+09BE`    | VOWEL_DEPENDENT | RIGHT_POSITION     | 
-|`U+09BF`    | VOWEL_DEPENDENT | LEFT_POSITION |
-| | |
-|`U+09C0`    | VOWEL_DEPENDENT | RIGHT_POSITION     | 
-|`U+09C1`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09C2`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09C3`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09C4`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09C5`    | _null_ | _null_     | 
-|`U+09C6`    | _null_ | _null_     | 
-|`U+09C7`    | VOWEL_DEPENDENT | LEFT_POSITION |
-|`U+09C8`    | VOWEL_DEPENDENT | LEFT_POSITION     | 
-|`U+09C9`    | _null_ | _null_     | 
-|`U+09CA`    | _null_ | _null_ |
-|`U+09CB`    | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION |
-|`U+09CC`    | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION     | 
-|`U+09CD`    | VIRAMA | BOTTOM_POSITION |
-|`U+09CE`    | CONSONANT_DEAD | _null_     | 
-|`U+09CF`    | _null_ | _null_ |
-| | |
-|`U+09D0`    | _null_ | _null_     | 
-|`U+09D1`    | _null_ | _null_     | 
-|`U+09D2`    | _null_ | _null_     | 
-|`U+09D3`    | _null_ | _null_     | 
-|`U+09D4`    | _null_ | _null_     | 
-|`U+09D5`    | _null_ | _null_     | 
-|`U+09D6`    | _null_ | _null_     | 
-|`U+09D7`    | VOWEL_DEPENDENT | RIGHT_POSITION |
-|`U+09D8`    | _null_ | _null_     | 
-|`U+09D9`    | _null_ | _null_     | 
-|`U+09DA`    | _null_ | _null_     | 
-|`U+09DB`    | _null_ | _null_     | 
-|`U+09DC`    | CONSONANT | _null_     | 
-|`U+09DD`    | CONSONANT | _null_     | 
-|`U+09DE`    | _null_ | _null_     | 
-|`U+09DF`    | CONSONANT | _null_ |
-| | |
-|`U+09E0`    | VOWEL_INDEPENDENT | _null_ |
-|`U+09E1`    | VOWEL_INDEPENDENT | _null_     | 
-|`U+09E2`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09E3`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09E4`    | _null_ | _null_     | 
-|`U+09E5`    | _null_ | _null_     |
-|`U+09E6`    | NUMBER | _null_ |
-|`U+09E7`    | NUMBER | _null_ |
-|`U+09E8`    | NUMBER | _null_ |
-|`U+09E9`    | NUMBER | _null_ |
-|`U+09EA`    | NUMBER | _null_ |
-|`U+09EB`    | NUMBER | _null_ |
-|`U+09EC`    | NUMBER | _null_ |
-|`U+09ED`    | NUMBER | _null_ |
-|`U+09EE`    | NUMBER | _null_ |
-|`U+09EF`    | NUMBER | _null_ |
-| | |
-|`U+09F0`    | CONSONANT | _null_     | 
-|`U+09F1`    | CONSONANT | _null_     | 
-|`U+09F2`    | _null_ | _null_     | 
-|`U+09F3`    | _null_ | _null_     | 
-|`U+09F4`    | _null_ | _null_     | 
-|`U+09F5`    | _null_ | _null_     | 
-|`U+09F6`    | _null_ | _null_     | 
-|`U+09F7`    | _null_ | _null_     |
-|`U+09F8`    | _null_ | _null_     | 
-|`U+09F9`    | _null_ | _null_     | 
-|`U+09FA`    | _null_ | _null_     | 
-|`U+09FB`    | _null_ | _null_     | 
-|`U+09FC`    | _null_ | _null_     | 
-|`U+09FD`    | _null_ | _null_     | 
-|`U+09FE`    | _null_ | _null_     | 
-|`U+09FF`    | _null_ | _null_     |
+| Codepoint | Unicode class | Shaping category | Positioning subcategory |
+|:----------|:--------------|:-----------------|:------------------------|
+|`U+0980`   | Letter | _null_ | _null_ |
+|`U+0981`   | Mark | BINDU | TOP_POSITION |
+|`U+0982`   | Mark | BINDU | RIGHT_POSITION |
+|`U+0983`   | Mark | VISARGA | RIGHT_POSITION     | 
+|`U+0984`   | _null_ | _null_ | _null_ |
+|`U+0985`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+0986`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+0987`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+0988`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+0989`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+098A`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+098B`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+098C`   | Letter | VOWEL_INDEPENDENT | _null_     | 
+|`U+098D`   | _null_ | _null_ | _null_     | 
+|`U+098E`   | _null_ | _null_ | _null_ |
+|`U+098F`   | Letter | VOWEL_INDEPENDENT | _null_ |
+| | | |
+|`U+0990`   | Letter | VOWEL_INDEPENDENT | _null_     | 
+|`U+0991`   | _null_ | _null_ | _null_     | 
+|`U+0992`   | _null_ | _null_ | _null_ |
+|`U+0993`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+0994`   | Letter | VOWEL_INDEPENDENT | _null_     | 
+|`U+0995`   | Letter | CONSONANT | _null_   | 
+|`U+0996`   | Letter | CONSONANT | _null_     | 
+|`U+0997`   | Letter | CONSONANT | _null_ |
+|`U+0998`   | Letter | CONSONANT | _null_     | 
+|`U+0999`   | Letter | CONSONANT | _null_     | 
+|`U+099A`   | Letter | CONSONANT | _null_     | 
+|`U+099B`   | Letter | CONSONANT | _null_     | 
+|`U+099C`   | Letter | CONSONANT | _null_     | 
+|`U+099D`   | Letter | CONSONANT | _null_     | 
+|`U+099E`   | Letter | CONSONANT | _null_     | 
+|`U+099F`   | Letter | CONSONANT | _null_ |
+| | | |
+|`U+09A0`   | Letter | CONSONANT | _null_     | 
+|`U+09A1`   | Letter | CONSONANT | _null_     | 
+|`U+09A2`   | Letter | CONSONANT | _null_     | 
+|`U+09A3`   | Letter | CONSONANT | _null_     | 
+|`U+09A4`   | Letter | CONSONANT | _null_     | 
+|`U+09A5`   | Letter | CONSONANT | _null_     | 
+|`U+09A6`   | Letter | CONSONANT | _null_     | 
+|`U+09A7`   | Letter | CONSONANT | _null_ |
+|`U+09A8`   | Letter | CONSONANT | _null_     | 
+|`U+09A9`   | _null_ | _null_ | _null_     | 
+|`U+09AA`   | Letter | CONSONANT | _null_     | 
+|`U+09AB`   | Letter | CONSONANT | _null_     | 
+|`U+09AC`   | Letter | CONSONANT | _null_     | 
+|`U+09AD`   | Letter | CONSONANT | _null_     | 
+|`U+09AE`   | Letter | CONSONANT | _null_     | 
+|`U+09AF`   | Letter | CONSONANT | _null_ |
+| | | |
+|`U+09B0`   | Letter | CONSONANT | _null_     | 
+|`U+09B1`   | _null_ | _null_ | _null_     | 
+|`U+09B2`   | Letter | CONSONANT | _null_     | 
+|`U+09B3`   | _null_ | _null_ | _null_     | 
+|`U+09B4`   | _null_ | _null_ | _null_     | 
+|`U+09B5`   | _null_ | _null_ | _null_     | 
+|`U+09B6`   | Letter | CONSONANT | _null_     | 
+|`U+09B7`   | Letter | CONSONANT | _null_ |
+|`U+09B8`   | Letter | CONSONANT | _null_     | 
+|`U+09B9`   | Letter | CONSONANT | _null_     | 
+|`U+09BA`   | _null_ | _null_ | _null_     | 
+|`U+09BB`   | _null_ | _null_ | _null_     | 
+|`U+09BC`   | Mark | NUKTA | BOTTOM_POSITION     | 
+|`U+09BD`   | Letter | AVAGRAHA | _null_     | 
+|`U+09BE`   | Mark | VOWEL_DEPENDENT | RIGHT_POSITION     | 
+|`U+09BF`   | Mark | VOWEL_DEPENDENT | LEFT_POSITION |
+| | | |
+|`U+09C0`   | Mark | VOWEL_DEPENDENT | RIGHT_POSITION     | 
+|`U+09C1`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C2`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C3`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C4`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C5`   | _null_ | _null_ | _null_     | 
+|`U+09C6`   | _null_ | _null_ | _null_     | 
+|`U+09C7`   | Mark | VOWEL_DEPENDENT | LEFT_POSITION |
+|`U+09C8`   | Mark | VOWEL_DEPENDENT | LEFT_POSITION     | 
+|`U+09C9`   | _null_ | _null_ | _null_     | 
+|`U+09CA`   | _null_ | _null_ | _null_ |
+|`U+09CB`   | Mark | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION |
+|`U+09CC`   | Mark | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION     | 
+|`U+09CD`   | _null_ | VIRAMA | BOTTOM_POSITION |
+|`U+09CE`   | Letter | CONSONANT_DEAD | _null_     | 
+|`U+09CF`   | _null_ | _null_ | _null_ |
+| | | |
+|`U+09D0`   | _null_ | _null_ | _null_     | 
+|`U+09D1`   | _null_ | _null_ | _null_     | 
+|`U+09D2`   | _null_ | _null_ | _null_     | 
+|`U+09D3`   | _null_ | _null_ | _null_     | 
+|`U+09D4`   | _null_ | _null_ | _null_     | 
+|`U+09D5`   | _null_ | _null_ | _null_     | 
+|`U+09D6`   | _null_ | _null_ | _null_     | 
+|`U+09D7`   | Mark | VOWEL_DEPENDENT | RIGHT_POSITION |
+|`U+09D8`   | _null_ | _null_ | _null_     | 
+|`U+09D9`   | _null_ | _null_ | _null_     | 
+|`U+09DA`   | _null_ | _null_ | _null_     | 
+|`U+09DB`   | _null_ | _null_ | _null_     | 
+|`U+09DC`   | Letter | CONSONANT | _null_     | 
+|`U+09DD`   | Letter | CONSONANT | _null_     | 
+|`U+09DE`   | _null_ | _null_ | _null_     | 
+|`U+09DF`   | Letter | CONSONANT | _null_ |
+| | | |
+|`U+09E0`   | Letter | VOWEL_INDEPENDENT | _null_ |
+|`U+09E1`   | Letter | VOWEL_INDEPENDENT | _null_     | 
+|`U+09E2`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09E3`   | Mark | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09E4`   | _null_ | _null_ | _null_     | 
+|`U+09E5`   | _null_ | _null_ | _null_     |
+|`U+09E6`   | Number | NUMBER | _null_ |
+|`U+09E7`   | Number | NUMBER | _null_ |
+|`U+09E8`   | Number | NUMBER | _null_ |
+|`U+09E9`   | Number | NUMBER | _null_ |
+|`U+09EA`   | Number | NUMBER | _null_ |
+|`U+09EB`   | Number | NUMBER | _null_ |
+|`U+09EC`   | Number | NUMBER | _null_ |
+|`U+09ED`   | Number | NUMBER | _null_ |
+|`U+09EE`   | Number | NUMBER | _null_ |
+|`U+09EF`   | Number | NUMBER | _null_ |
+| | | |
+|`U+09F0`   | Letter | CONSONANT | _null_     | 
+|`U+09F1`   | Letter | CONSONANT | _null_     | 
+|`U+09F2`   | Symbol | _null_ | _null_     | 
+|`U+09F3`   | Symbol | _null_ | _null_     | 
+|`U+09F4`   | Number | _null_ | _null_     | 
+|`U+09F5`   | Number | _null_ | _null_     | 
+|`U+09F6`   | Number | _null_ | _null_     | 
+|`U+09F7`   | Number | _null_ | _null_     |
+|`U+09F8`   | Number | _null_ | _null_     | 
+|`U+09F9`   | Number | _null_ | _null_     | 
+|`U+09FA`   | Symbol | _null_ | _null_     | 
+|`U+09FB`   | Symbol | _null_ | _null_     | 
+|`U+09FC`   | Letter | _null_ | _null_     | 
+|`U+09FD`   | Punctuation | _null_ | _null_     | 
+|`U+09FE`   | _null_ | _null_ | _null_     | 
+|`U+09FF`   | _null_ | _null_ | _null_     |
  
 <!--- 
   /* Vedic Extensions */
