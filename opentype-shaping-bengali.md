@@ -41,143 +41,143 @@ The _Mark-placement subcategory_ column indicates mark-placement
 positioning. Assigned codepoints marked with a
 _null_ in this column evoke no special mark-placement behavior.
 
-| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph |
-|:----------|:--------------|:------------------|:---------------------------|:------|
-|`U+0980`   | Letter        | _null_            | _null_                     | &#x0980; |
-|`U+0981`   | Mark [n]      | BINDU             | TOP_POSITION               | &#x0981; |
-|`U+0982`   | Mark [sc]     | BINDU             | RIGHT_POSITION             | &#x0982; |
-|`U+0983`   | Mark [sc]     | VISARGA           | RIGHT_POSITION             | &#x0983; |
-|`U+0984`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+0985`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0985; |
-|`U+0986`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0986; |
-|`U+0987`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0987; |
-|`U+0988`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0988; |
-|`U+0989`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0989; |
-|`U+098A`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098A; |
-|`U+098B`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098B; |
-|`U+098C`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098C; |
-|`U+098D`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+098E`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+098F`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098F; |
+| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                |
+|:----------|:--------------|:------------------|:---------------------------|:---------------------|
+|`U+0980`   | Letter        | _null_            | _null_                     | &#x0980; Anji                |
+|`U+0981`   | Mark [n]      | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
+|`U+0982`   | Mark [sc]     | BINDU             | RIGHT_POSITION             | &#x0982; Anusvara            |
+|`U+0983`   | Mark [sc]     | VISARGA           | RIGHT_POSITION             | &#x0983; Visarga             |
+|`U+0984`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+0985`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0985; A                   |
+|`U+0986`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0986; Aa                  |
+|`U+0987`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0987; I                   |
+|`U+0988`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0988; Ii                  |
+|`U+0989`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0989; U                   |
+|`U+098A`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098A; Uu                  |
+|`U+098B`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098B; Vocalic R           |
+|`U+098C`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098C; Vocalic L           |
+|`U+098D`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+098E`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+098F`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098F; E                   |
 | | | | |																	   
-|`U+0990`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0990; |
-|`U+0991`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+0992`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+0993`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0993; |
-|`U+0994`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0994; |
-|`U+0995`   | Letter        | CONSONANT         | _null_                     | &#x0995; |
-|`U+0996`   | Letter        | CONSONANT         | _null_                     | &#x0996; |
-|`U+0997`   | Letter        | CONSONANT         | _null_                     | &#x0997; |
-|`U+0998`   | Letter        | CONSONANT         | _null_                     | &#x0998; |
-|`U+0999`   | Letter        | CONSONANT         | _null_                     | &#x0999; |
-|`U+099A`   | Letter        | CONSONANT         | _null_                     | &#x099A; |
-|`U+099B`   | Letter        | CONSONANT         | _null_                     | &#x099B; |
-|`U+099C`   | Letter        | CONSONANT         | _null_                     | &#x099C; |
-|`U+099D`   | Letter        | CONSONANT         | _null_                     | &#x099D; |
-|`U+099E`   | Letter        | CONSONANT         | _null_                     | &#x099E; |
-|`U+099F`   | Letter        | CONSONANT         | _null_                     | &#x099F; |
+|`U+0990`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0990; Ai                  |
+|`U+0991`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+0992`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+0993`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0993; O                   |
+|`U+0994`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0994; Au                  |
+|`U+0995`   | Letter        | CONSONANT         | _null_                     | &#x0995; Ka                  |
+|`U+0996`   | Letter        | CONSONANT         | _null_                     | &#x0996; Kha                 |
+|`U+0997`   | Letter        | CONSONANT         | _null_                     | &#x0997; Ga                  |
+|`U+0998`   | Letter        | CONSONANT         | _null_                     | &#x0998; Gha                 |
+|`U+0999`   | Letter        | CONSONANT         | _null_                     | &#x0999; Nga                 |
+|`U+099A`   | Letter        | CONSONANT         | _null_                     | &#x099A; Ca                  |
+|`U+099B`   | Letter        | CONSONANT         | _null_                     | &#x099B; Cha                 |
+|`U+099C`   | Letter        | CONSONANT         | _null_                     | &#x099C; Ja                  |
+|`U+099D`   | Letter        | CONSONANT         | _null_                     | &#x099D; Jha                 |
+|`U+099E`   | Letter        | CONSONANT         | _null_                     | &#x099E; Nya                 |
+|`U+099F`   | Letter        | CONSONANT         | _null_                     | &#x099F; Tta                 |
 | | | | |																	   
-|`U+09A0`   | Letter        | CONSONANT         | _null_                     | &#x09A0; |
-|`U+09A1`   | Letter        | CONSONANT         | _null_                     | &#x09A1; |
-|`U+09A2`   | Letter        | CONSONANT         | _null_                     | &#x09A2; |
-|`U+09A3`   | Letter        | CONSONANT         | _null_                     | &#x09A3; |
-|`U+09A4`   | Letter        | CONSONANT         | _null_                     | &#x09A4; |
-|`U+09A5`   | Letter        | CONSONANT         | _null_                     | &#x09A5; |
-|`U+09A6`   | Letter        | CONSONANT         | _null_                     | &#x09A6; |
-|`U+09A7`   | Letter        | CONSONANT         | _null_                     | &#x09A7; |
-|`U+09A8`   | Letter        | CONSONANT         | _null_                     | &#x09A8; | 
-|`U+09A9`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09AA`   | Letter        | CONSONANT         | _null_                     | &#x09AA; |
-|`U+09AB`   | Letter        | CONSONANT         | _null_                     | &#x09AB; |
-|`U+09AC`   | Letter        | CONSONANT         | _null_                     | &#x09AC; |
-|`U+09AD`   | Letter        | CONSONANT         | _null_                     | &#x09AD; |
-|`U+09AE`   | Letter        | CONSONANT         | _null_                     | &#x09AE; |
-|`U+09AF`   | Letter        | CONSONANT         | _null_                     | &#x09AF; |
+|`U+09A0`   | Letter        | CONSONANT         | _null_                     | &#x09A0; Ttha                |
+|`U+09A1`   | Letter        | CONSONANT         | _null_                     | &#x09A1; Dda                 |
+|`U+09A2`   | Letter        | CONSONANT         | _null_                     | &#x09A2; Ddha                |
+|`U+09A3`   | Letter        | CONSONANT         | _null_                     | &#x09A3; Nna                 |
+|`U+09A4`   | Letter        | CONSONANT         | _null_                     | &#x09A4; Ta                  |
+|`U+09A5`   | Letter        | CONSONANT         | _null_                     | &#x09A5; Tha                 |
+|`U+09A6`   | Letter        | CONSONANT         | _null_                     | &#x09A6; Da                  |
+|`U+09A7`   | Letter        | CONSONANT         | _null_                     | &#x09A7; Dha                 |
+|`U+09A8`   | Letter        | CONSONANT         | _null_                     | &#x09A8; Na                  |
+|`U+09A9`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09AA`   | Letter        | CONSONANT         | _null_                     | &#x09AA; Pa                  |
+|`U+09AB`   | Letter        | CONSONANT         | _null_                     | &#x09AB; Pha                 |
+|`U+09AC`   | Letter        | CONSONANT         | _null_                     | &#x09AC; Ba                  |
+|`U+09AD`   | Letter        | CONSONANT         | _null_                     | &#x09AD; Bha                 |
+|`U+09AE`   | Letter        | CONSONANT         | _null_                     | &#x09AE; Ma                  |
+|`U+09AF`   | Letter        | CONSONANT         | _null_                     | &#x09AF; Ya                  |
 | | | | |																	    
-|`U+09B0`   | Letter        | CONSONANT         | _null_                     | &#x09B0; |
-|`U+09B1`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09B2`   | Letter        | CONSONANT         | _null_                     | &#x09B2; |
-|`U+09B3`   | _unassigned_  | _null_            | _null_                     |          | 
-|`U+09B4`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09B5`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09B6`   | Letter        | CONSONANT         | _null_                     | &#x09B6; |
-|`U+09B7`   | Letter        | CONSONANT         | _null_                     | &#x09B7; |
-|`U+09B8`   | Letter        | CONSONANT         | _null_                     | &#x09B8; |
-|`U+09B9`   | Letter        | CONSONANT         | _null_                     | &#x09B9; |
-|`U+09BA`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09BB`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09BC`   | Mark [n]      | NUKTA             | BOTTOM_POSITION            | &#x09BC; |
-|`U+09BD`   | Letter        | AVAGRAHA          | _null_                     | &#x09BD; |
-|`U+09BE`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09BE; |
-|`U+09BF`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09BF; |
+|`U+09B0`   | Letter        | CONSONANT         | _null_                     | &#x09B0; Ra                  |
+|`U+09B1`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B2`   | Letter        | CONSONANT         | _null_                     | &#x09B2; La                  |
+|`U+09B3`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B4`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B6`   | Letter        | CONSONANT         | _null_                     | &#x09B6; Sha                 |
+|`U+09B7`   | Letter        | CONSONANT         | _null_                     | &#x09B7; Ssa                 |
+|`U+09B8`   | Letter        | CONSONANT         | _null_                     | &#x09B8; Sa                  |
+|`U+09B9`   | Letter        | CONSONANT         | _null_                     | &#x09B9; Ha                  |
+|`U+09BA`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09BB`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09BC`   | Mark [n]      | NUKTA             | BOTTOM_POSITION            | &#x09BC; Nukta               |
+|`U+09BD`   | Letter        | AVAGRAHA          | _null_                     | &#x09BD; Avagraha            |
+|`U+09BE`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09BE; Sign Aa             |
+|`U+09BF`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09BF; Sign I              |
 | | | | |																	   
-|`U+09C0`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09C0; |
-|`U+09C1`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C1; |
-|`U+09C2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C2; |
-|`U+09C3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C3; |
-|`U+09C4`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C4; |
-|`U+09C5`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09C6`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09C7`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C7; |
-|`U+09C8`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C8; | 
-|`U+09C9`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09CA`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09CB`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CB; |
-|`U+09CC`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CC; |
-|`U+09CD`   | Mark [n]      | VIRAMA            | BOTTOM_POSITION            | &#x09CD; |
-|`U+09CE`   | Letter        | CONSONANT_DEAD    | _null_                     | &#x09CE; |
-|`U+09CF`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09C0`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09C0; Sign Ii             |
+|`U+09C1`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C1; Sign U              |
+|`U+09C2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C2; Sign Uu             |
+|`U+09C3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C3; Sign Vocalic R      |
+|`U+09C4`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C4; Sign Vocalic Rr     |
+|`U+09C5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09C6`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09C7`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C7; Sign E              |
+|`U+09C8`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C8; Sign Ai             |
+|`U+09C9`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09CA`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09CB`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CB; Sign O              |
+|`U+09CC`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CC; Sign Au             |
+|`U+09CD`   | Mark [n]      | VIRAMA            | BOTTOM_POSITION            | &#x09CD; Virama              |
+|`U+09CE`   | Letter        | CONSONANT_DEAD    | _null_                     | &#x09CE; Khanda Ta           |
+|`U+09CF`   | _unassigned_  | _null_            | _null_                     |                              |
 | | | | |																	   
-|`U+09D0`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D1`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D2`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D3`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D4`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D5`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D6`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D7`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09D7; |
-|`U+09D8`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09D9`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09DA`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09DB`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09DC`   | Letter        | CONSONANT         | _null_                     | &#x09DC; |
-|`U+09DD`   | Letter        | CONSONANT         | _null_                     | &#x09DD; |
-|`U+09DE`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09DF`   | Letter        | CONSONANT         | _null_                     | &#x09DF; |
+|`U+09D0`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D1`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D2`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D3`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D4`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D6`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D7`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09D7; Au Length Mark      |
+|`U+09D8`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D9`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09DA`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09DB`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09DC`   | Letter        | CONSONANT         | _null_                     | &#x09DC; Rra                 |
+|`U+09DD`   | Letter        | CONSONANT         | _null_                     | &#x09DD; Rha                 |
+|`U+09DE`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09DF`   | Letter        | CONSONANT         | _null_                     | &#x09DF; Yya                 |
 | | | | |																	   
-|`U+09E0`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E0; |
-|`U+09E1`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E1; |
-|`U+09E2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E2; |
-|`U+09E3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E3; |
-|`U+09E4`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09E5`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09E6`   | Number        | NUMBER            | _null_                     | &#x09E6; |
-|`U+09E7`   | Number        | NUMBER            | _null_                     | &#x09E7; |
-|`U+09E8`   | Number        | NUMBER            | _null_                     | &#x09E8; |
-|`U+09E9`   | Number        | NUMBER            | _null_                     | &#x09E9; |
-|`U+09EA`   | Number        | NUMBER            | _null_                     | &#x09EA; |
-|`U+09EB`   | Number        | NUMBER            | _null_                     | &#x09EB; |
-|`U+09EC`   | Number        | NUMBER            | _null_                     | &#x09EC; |
-|`U+09ED`   | Number        | NUMBER            | _null_                     | &#x09ED; |
-|`U+09EE`   | Number        | NUMBER            | _null_                     | &#x09EE; |
-|`U+09EF`   | Number        | NUMBER            | _null_                     | &#x09EF; |
+|`U+09E0`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E0; Vocalic Rr          |
+|`U+09E1`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E1; Vocalic Ll          |
+|`U+09E2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E2; Sign Vocalic L      |
+|`U+09E3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E3; Sign Vocalic Ll     |
+|`U+09E4`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09E5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09E6`   | Number        | NUMBER            | _null_                     | &#x09E6; Digit Zero          |
+|`U+09E7`   | Number        | NUMBER            | _null_                     | &#x09E7; Digit One           |
+|`U+09E8`   | Number        | NUMBER            | _null_                     | &#x09E8; Digit Two           |
+|`U+09E9`   | Number        | NUMBER            | _null_                     | &#x09E9; Digit Three         |
+|`U+09EA`   | Number        | NUMBER            | _null_                     | &#x09EA; Digit Four          |
+|`U+09EB`   | Number        | NUMBER            | _null_                     | &#x09EB; Digit Five          |
+|`U+09EC`   | Number        | NUMBER            | _null_                     | &#x09EC; Digit Six           |
+|`U+09ED`   | Number        | NUMBER            | _null_                     | &#x09ED; Digit Seven         |
+|`U+09EE`   | Number        | NUMBER            | _null_                     | &#x09EE; Digit Eight         |
+|`U+09EF`   | Number        | NUMBER            | _null_                     | &#x09EF; Digit Nine          |
 | | | | |
-|`U+09F0`   | Letter        | CONSONANT         | _null_                     | &#x09F0; |
-|`U+09F1`   | Letter        | CONSONANT         | _null_                     | &#x09F1; |
-|`U+09F2`   | Symbol        | _null_            | _null_                     | &#x09F2; |
-|`U+09F3`   | Symbol        | _null_            | _null_                     | &#x09F3; |
-|`U+09F4`   | Number        | _null_            | _null_                     | &#x09F4; |
-|`U+09F5`   | Number        | _null_            | _null_                     | &#x09F5; |
-|`U+09F6`   | Number        | _null_            | _null_                     | &#x09F6; |
-|`U+09F7`   | Number        | _null_            | _null_                     | &#x09F7; |
-|`U+09F8`   | Number        | _null_            | _null_                     | &#x09F8; |
-|`U+09F9`   | Number        | _null_            | _null_                     | &#x09F9; |
-|`U+09FA`   | Symbol        | _null_            | _null_                     | &#x09FA; |
-|`U+09FB`   | Symbol        | _null_            | _null_                     | &#x09FB; |
-|`U+09FC`   | Letter        | _null_            | _null_                     | &#x09FC; |
-|`U+09FD`   | Punctuation   | _null_            | _null_                     | &#x09FD; |
-|`U+09FE`   | _unassigned_  | _null_            | _null_                     |          |
-|`U+09FF`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09F0`   | Letter        | CONSONANT         | _null_                     | &#x09F0; Assamese Ra         |
+|`U+09F1`   | Letter        | CONSONANT         | _null_                     | &#x09F1; Assamese Wa         |
+|`U+09F2`   | Symbol        | _null_            | _null_                     | &#x09F2; Rupee Mark          |
+|`U+09F3`   | Symbol        | _null_            | _null_                     | &#x09F3; Rupee Sign          |
+|`U+09F4`   | Number        | _null_            | _null_                     | &#x09F4; Numerator One       |
+|`U+09F5`   | Number        | _null_            | _null_                     | &#x09F5; Numerator Two       |
+|`U+09F6`   | Number        | _null_            | _null_                     | &#x09F6; Numerator Three     |
+|`U+09F7`   | Number        | _null_            | _null_                     | &#x09F7; Numerator Four      |
+|`U+09F8`   | Number        | _null_            | _null_                     | &#x09F8; Numerator One Less  |
+|`U+09F9`   | Number        | _null_            | _null_                     | &#x09F9; Denominator Sixteen |
+|`U+09FA`   | Symbol        | _null_            | _null_                     | &#x09FA; Isshar              |
+|`U+09FB`   | Symbol        | _null_            | _null_                     | &#x09FB; Ganda Mark          |
+|`U+09FC`   | Letter        | _null_            | _null_                     | &#x09FC; Vedic Anusvara      |
+|`U+09FD`   | Punctuation   | _null_            | _null_                     | &#x09FD; Abbreviation Sign   |
+|`U+09FE`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09FF`   | _unassigned_  | _null_            | _null_                     |                              |
  
 <!--- 
   /* Vedic Extensions */
