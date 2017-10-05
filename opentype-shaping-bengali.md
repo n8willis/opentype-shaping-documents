@@ -24,11 +24,20 @@ Shaping Bengali text depends on the shaping engine correctly
 classifying each glyph in the run. As with most other scripts, the
 classifications must distinguish between consonants, vowels
 (independent and dependent), numerals, punctuation, and diacritic
-marks. Text in the Bengali script must additionally classify certain
-glyphs that receive distinct treatment within the preceding
-categories.
+marks. 
 
-Bengali glyphs should be categorized as in the following table:
+For most glyphs, the classifications assigned by Unicode are correct,
+but are not sufficient to capture the expected shaping
+behavior. Therefore, Bengali glyphs must additionally be classified by
+how they are treated when shaping a run of text. 
+
+Bengali glyphs should be classified as in the following
+table. Codepoints in the Bengali block with no assigned meaning are
+marked as _unassigned_ in the _Unicode class_ column. Assigned codepoints
+marked with a _null_ in the _Shaping category_ column evoke no special
+behavior from the shaping engine. Assigned codepoints marked with a
+_null_ in the _Positioning subcategory_ column evoke no special
+mark-positioning behavior.
 
 | Codepoint | Unicode class | Shaping category | Positioning subcategory |
 |:----------|:--------------|:-----------------|:------------------------|
@@ -36,7 +45,7 @@ Bengali glyphs should be categorized as in the following table:
 |`U+0981`   | Mark [n] | BINDU | TOP_POSITION |
 |`U+0982`   | Mark [sc] | BINDU | RIGHT_POSITION |
 |`U+0983`   | Mark [sc] | VISARGA | RIGHT_POSITION     | 
-|`U+0984`   | _null_ | _null_ | _null_ |
+|`U+0984`   | _unassigned_ | _null_ | _null_ |
 |`U+0985`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+0986`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+0987`   | Letter | VOWEL_INDEPENDENT | _null_ |
@@ -45,13 +54,13 @@ Bengali glyphs should be categorized as in the following table:
 |`U+098A`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+098B`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+098C`   | Letter | VOWEL_INDEPENDENT | _null_     | 
-|`U+098D`   | _null_ | _null_ | _null_     | 
-|`U+098E`   | _null_ | _null_ | _null_ |
+|`U+098D`   | _unassigned_ | _null_ | _null_     | 
+|`U+098E`   | _unassigned_ | _null_ | _null_ |
 |`U+098F`   | Letter | VOWEL_INDEPENDENT | _null_ |
 | | | |
 |`U+0990`   | Letter | VOWEL_INDEPENDENT | _null_     | 
-|`U+0991`   | _null_ | _null_ | _null_     | 
-|`U+0992`   | _null_ | _null_ | _null_ |
+|`U+0991`   | _unassigned_ | _null_ | _null_     | 
+|`U+0992`   | _unassigned_ | _null_ | _null_ |
 |`U+0993`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+0994`   | Letter | VOWEL_INDEPENDENT | _null_     | 
 |`U+0995`   | Letter | CONSONANT | _null_   | 
@@ -75,7 +84,7 @@ Bengali glyphs should be categorized as in the following table:
 |`U+09A6`   | Letter | CONSONANT | _null_     | 
 |`U+09A7`   | Letter | CONSONANT | _null_ |
 |`U+09A8`   | Letter | CONSONANT | _null_     | 
-|`U+09A9`   | _null_ | _null_ | _null_     | 
+|`U+09A9`   | _unassigned_ | _null_ | _null_     | 
 |`U+09AA`   | Letter | CONSONANT | _null_     | 
 |`U+09AB`   | Letter | CONSONANT | _null_     | 
 |`U+09AC`   | Letter | CONSONANT | _null_     | 
@@ -84,17 +93,17 @@ Bengali glyphs should be categorized as in the following table:
 |`U+09AF`   | Letter | CONSONANT | _null_ |
 | | | |
 |`U+09B0`   | Letter | CONSONANT | _null_     | 
-|`U+09B1`   | _null_ | _null_ | _null_     | 
+|`U+09B1`   | _unassigned_ | _null_ | _null_     | 
 |`U+09B2`   | Letter | CONSONANT | _null_     | 
-|`U+09B3`   | _null_ | _null_ | _null_     | 
-|`U+09B4`   | _null_ | _null_ | _null_     | 
-|`U+09B5`   | _null_ | _null_ | _null_     | 
+|`U+09B3`   | _unassigned_ | _null_ | _null_     | 
+|`U+09B4`   | _unassigned_ | _null_ | _null_     | 
+|`U+09B5`   | _unassigned_ | _null_ | _null_     | 
 |`U+09B6`   | Letter | CONSONANT | _null_     | 
 |`U+09B7`   | Letter | CONSONANT | _null_ |
 |`U+09B8`   | Letter | CONSONANT | _null_     | 
 |`U+09B9`   | Letter | CONSONANT | _null_     | 
-|`U+09BA`   | _null_ | _null_ | _null_     | 
-|`U+09BB`   | _null_ | _null_ | _null_     | 
+|`U+09BA`   | _unassigned_ | _null_ | _null_     | 
+|`U+09BB`   | _unassigned_ | _null_ | _null_     | 
 |`U+09BC`   | Mark [n] | NUKTA | BOTTOM_POSITION     | 
 |`U+09BD`   | Letter | AVAGRAHA | _null_     | 
 |`U+09BE`   | Mark [sc] | VOWEL_DEPENDENT | RIGHT_POSITION     | 
@@ -105,41 +114,41 @@ Bengali glyphs should be categorized as in the following table:
 |`U+09C2`   | Mark [n] | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
 |`U+09C3`   | Mark [n] | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
 |`U+09C4`   | Mark [n] | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09C5`   | _null_ | _null_ | _null_     | 
-|`U+09C6`   | _null_ | _null_ | _null_     | 
+|`U+09C5`   | _unassigned_ | _null_ | _null_     | 
+|`U+09C6`   | _unassigned_ | _null_ | _null_     | 
 |`U+09C7`   | Mark [sc] | VOWEL_DEPENDENT | LEFT_POSITION |
 |`U+09C8`   | Mark [sc] | VOWEL_DEPENDENT | LEFT_POSITION     | 
-|`U+09C9`   | _null_ | _null_ | _null_     | 
-|`U+09CA`   | _null_ | _null_ | _null_ |
+|`U+09C9`   | _unassigned_ | _null_ | _null_     | 
+|`U+09CA`   | _unassigned_ | _null_ | _null_ |
 |`U+09CB`   | Mark [sc] | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION |
 |`U+09CC`   | Mark [sc] | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION     | 
 |`U+09CD`   | Mark [n] | VIRAMA | BOTTOM_POSITION |
 |`U+09CE`   | Letter | CONSONANT_DEAD | _null_     | 
-|`U+09CF`   | _null_ | _null_ | _null_ |
+|`U+09CF`   | _unassigned_ | _null_ | _null_ |
 | | | |
-|`U+09D0`   | _null_ | _null_ | _null_     | 
-|`U+09D1`   | _null_ | _null_ | _null_     | 
-|`U+09D2`   | _null_ | _null_ | _null_     | 
-|`U+09D3`   | _null_ | _null_ | _null_     | 
-|`U+09D4`   | _null_ | _null_ | _null_     | 
-|`U+09D5`   | _null_ | _null_ | _null_     | 
-|`U+09D6`   | _null_ | _null_ | _null_     | 
+|`U+09D0`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D1`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D2`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D3`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D4`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D5`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D6`   | _unassigned_ | _null_ | _null_     | 
 |`U+09D7`   | Mark [sc] | VOWEL_DEPENDENT | RIGHT_POSITION |
-|`U+09D8`   | _null_ | _null_ | _null_     | 
-|`U+09D9`   | _null_ | _null_ | _null_     | 
-|`U+09DA`   | _null_ | _null_ | _null_     | 
-|`U+09DB`   | _null_ | _null_ | _null_     | 
+|`U+09D8`   | _unassigned_ | _null_ | _null_     | 
+|`U+09D9`   | _unassigned_ | _null_ | _null_     | 
+|`U+09DA`   | _unassigned_ | _null_ | _null_     | 
+|`U+09DB`   | _unassigned_ | _null_ | _null_     | 
 |`U+09DC`   | Letter | CONSONANT | _null_     | 
 |`U+09DD`   | Letter | CONSONANT | _null_     | 
-|`U+09DE`   | _null_ | _null_ | _null_     | 
+|`U+09DE`   | _unassigned_ | _null_ | _null_     | 
 |`U+09DF`   | Letter | CONSONANT | _null_ |
 | | | |
 |`U+09E0`   | Letter | VOWEL_INDEPENDENT | _null_ |
 |`U+09E1`   | Letter | VOWEL_INDEPENDENT | _null_     | 
 |`U+09E2`   | Mark [n] | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
 |`U+09E3`   | Mark [n] | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
-|`U+09E4`   | _null_ | _null_ | _null_     | 
-|`U+09E5`   | _null_ | _null_ | _null_     |
+|`U+09E4`   | _unassigned_ | _null_ | _null_     | 
+|`U+09E5`   | _unassigned_ | _null_ | _null_     |
 |`U+09E6`   | Number | NUMBER | _null_ |
 |`U+09E7`   | Number | NUMBER | _null_ |
 |`U+09E8`   | Number | NUMBER | _null_ |
@@ -165,8 +174,8 @@ Bengali glyphs should be categorized as in the following table:
 |`U+09FB`   | Symbol | _null_ | _null_     | 
 |`U+09FC`   | Letter | _null_ | _null_     | 
 |`U+09FD`   | Punctuation | _null_ | _null_     | 
-|`U+09FE`   | _null_ | _null_ | _null_     | 
-|`U+09FF`   | _null_ | _null_ | _null_     |
+|`U+09FE`   | _unassigned_ | _null_ | _null_     | 
+|`U+09FF`   | _unassigned_ | _null_ | _null_     |
  
 <!--- 
   /* Vedic Extensions */
