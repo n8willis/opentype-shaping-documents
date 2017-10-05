@@ -18,6 +18,193 @@ should be engineered to work with the `<bng2>` shaping model. However,
 if a font is encountered that supports only `<beng>`, the shaping engine
 should deal with it gracefully.
 
+## Glyph classification ##
+
+Shaping Bengali text depends on the shaping engine correctly
+classifying each glyph in the run. As with most other scripts, the
+classifications must distinguish between consonants, vowels
+(independent and dependent), numerals, punctuation, and diacritic
+marks. Text in the Bengali script must additionally classify certain
+glyphs that receive distinct treatment within the preceding
+categories.
+
+Bengali glyphs should be categorized as in the following table:
+
+| Codepoint | Category | Positioning subcategory |
+|:----------|:---------|:------------|
+|`U+0980`   | _null_ | _null_ |
+|`U+0981`   | BINDU | TOP_POSITION |
+|`U+0982`   | BINDU | RIGHT_POSITION |
+|`U+0983`   | VISARGA | RIGHT_POSITION     | 
+|`U+0984`   | _null_ | _null_ |
+|`U+0985`   | VOWEL_INDEPENDENT | _null_ |
+|`U+0986`   | VOWEL_INDEPENDENT | _null_ |
+|`U+0987`   | VOWEL_INDEPENDENT | _null_ |
+|`U+0988`   | VOWEL_INDEPENDENT | _null_ |
+|`U+0989`   | VOWEL_INDEPENDENT | _null_ |
+|`U+098A`   | VOWEL_INDEPENDENT | _null_ |
+|`U+098B`   | VOWEL_INDEPENDENT | _null_ |
+|`U+098C`   | VOWEL_INDEPENDENT | _null_     | 
+|`U+098D`   | _null_ | _null_     | 
+|`U+098E`   | _null_ | _null_ |
+|`U+098F`   | VOWEL_INDEPENDENT | _null_ |
+| | |
+|`U+0990`   | VOWEL_INDEPENDENT | _null_     | 
+|`U+0991`   | _null_ | _null_     | 
+|`U+0992`   | _null_ | _null_ |
+|`U+0993`   | VOWEL_INDEPENDENT | _null_ |
+|`U+0994`   | VOWEL_INDEPENDENT | _null_     | 
+|`U+0995`   | CONSONANT | _null_   | 
+|`U+0996`    | CONSONANT | _null_     | 
+|`U+0997`    | CONSONANT | _null_ |
+|`U+0998`    | CONSONANT | _null_     | 
+|`U+0999`    | CONSONANT | _null_     | 
+|`U+099A`    | CONSONANT | _null_     | 
+|`U+099B`    | CONSONANT | _null_     | 
+|`U+099C`    | CONSONANT | _null_     | 
+|`U+099D`    | CONSONANT | _null_     | 
+|`U+099E`    | CONSONANT | _null_     | 
+|`U+099F`    | CONSONANT | _null_ |
+| | |
+|`U+09A0`    | CONSONANT | _null_     | 
+|`U+09A1`    | CONSONANT | _null_     | 
+|`U+09A2`    | CONSONANT | _null_     | 
+|`U+09A3`    | CONSONANT | _null_     | 
+|`U+09A4`    | CONSONANT | _null_     | 
+|`U+09A5`    | CONSONANT | _null_     | 
+|`U+09A6`    | CONSONANT | _null_     | 
+|`U+09A7`    | CONSONANT | _null_ |
+|`U+09A8`    | CONSONANT | _null_     | 
+|`U+09A9`    | _null_ | _null_     | 
+|`U+09AA `   | CONSONANT | _null_     | 
+|`U+09AB`    | CONSONANT | _null_     | 
+|`U+09AC`    | CONSONANT | _null_     | 
+|`U+09AD`    | CONSONANT | _null_     | 
+|`U+09AE`    | CONSONANT | _null_     | 
+|`U+09AF`    | CONSONANT | _null_ |
+| | |
+|`U+09B0`    | CONSONANT | _null_     | 
+|`U+09B1`    | _null_ | _null_     | 
+|`U+09B2`    | CONSONANT | _null_     | 
+|`U+09B3`    | _null_ | _null_     | 
+|`U+09B4`    | _null_ | _null_     | 
+|`U+09B5`    | _null_ | _null_     | 
+|`U+09B6`    | CONSONANT | _null_     | 
+|`U+09B7`    | CONSONANT | _null_ |
+|`U+09B8`    | CONSONANT | _null_     | 
+|`U+09B9`    | CONSONANT | _null_     | 
+|`U+09BA`    | _null_ | _null_     | 
+|`U+09BB`    | _null_ | _null_     | 
+|`U+09BC`    | NUKTA | BOTTOM_POSITION     | 
+|`U+09BD`    | AVAGRAHA | _null_     | 
+|`U+09BE`    | VOWEL_DEPENDENT | RIGHT_POSITION     | 
+|`U+09BF`    | VOWEL_DEPENDENT | LEFT_POSITION |
+| | |
+|`U+09C0`    | VOWEL_DEPENDENT | RIGHT_POSITION     | 
+|`U+09C1`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C2`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C3`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C4`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09C5`    | _null_ | _null_     | 
+|`U+09C6`    | _null_ | _null_     | 
+|`U+09C7`    | VOWEL_DEPENDENT | LEFT_POSITION |
+|`U+09C8`    | VOWEL_DEPENDENT | LEFT_POSITION     | 
+|`U+09C9`    | _null_ | _null_     | 
+|`U+09CA`    | _null_ | _null_ |
+|`U+09CB`    | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION |
+|`U+09CC`    | VOWEL_DEPENDENT | LEFT_AND_RIGHT_POSITION     | 
+|`U+09CD`    | VIRAMA | BOTTOM_POSITION |
+|`U+09CE`    | CONSONANT_DEAD | _null_     | 
+|`U+09CF`    | _null_ | _null_ |
+| | |
+|`U+09D0`    | _null_ | _null_     | 
+|`U+09D1`    | _null_ | _null_     | 
+|`U+09D2`    | _null_ | _null_     | 
+|`U+09D3`    | _null_ | _null_     | 
+|`U+09D4`    | _null_ | _null_     | 
+|`U+09D5`    | _null_ | _null_     | 
+|`U+09D6`    | _null_ | _null_     | 
+|`U+09D7`    | VOWEL_DEPENDENT | RIGHT_POSITION |
+|`U+09D8`    | _null_ | _null_     | 
+|`U+09D9`    | _null_ | _null_     | 
+|`U+09DA`    | _null_ | _null_     | 
+|`U+09DB`    | _null_ | _null_     | 
+|`U+09DC`    | CONSONANT | _null_     | 
+|`U+09DD`    | CONSONANT | _null_     | 
+|`U+09DE`    | _null_ | _null_     | 
+|`U+09DF`    | CONSONANT | _null_ |
+| | |
+|`U+09E0`    | VOWEL_INDEPENDENT | _null_ |
+|`U+09E1`    | VOWEL_INDEPENDENT | _null_     | 
+|`U+09E2`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09E3`    | VOWEL_DEPENDENT | BOTTOM_POSITION     | 
+|`U+09E4`    | _null_ | _null_     | 
+|`U+09E5`    | _null_ | _null_     |
+|`U+09E6`    | NUMBER | _null_ |
+|`U+09E7`    | NUMBER | _null_ |
+|`U+09E8`    | NUMBER | _null_ |
+|`U+09E9`    | NUMBER | _null_ |
+|`U+09EA`    | NUMBER | _null_ |
+|`U+09EB`    | NUMBER | _null_ |
+|`U+09EC`    | NUMBER | _null_ |
+|`U+09ED`    | NUMBER | _null_ |
+|`U+09EE`    | NUMBER | _null_ |
+|`U+09EF`    | NUMBER | _null_ |
+| | |
+|`U+09F0`    | CONSONANT | _null_     | 
+|`U+09F1`    | CONSONANT | _null_     | 
+|`U+09F2`    | _null_ | _null_     | 
+|`U+09F3`    | _null_ | _null_     | 
+|`U+09F4`    | _null_ | _null_     | 
+|`U+09F5`    | _null_ | _null_     | 
+|`U+09F6`    | _null_ | _null_     | 
+|`U+09F7`    | _null_ | _null_     |
+|`U+09F8`    | _null_ | _null_     | 
+|`U+09F9`    | _null_ | _null_     | 
+|`U+09FA`    | _null_ | _null_     | 
+|`U+09FB`    | _null_ | _null_     | 
+|`U+09FC`    | _null_ | _null_     | 
+|`U+09FD`    | _null_ | _null_     | 
+|`U+09FE`    | _null_ | _null_     | 
+|`U+09FF`    | _null_ | _null_     |
+ 
+<!--- 
+  /* Vedic Extensions */
+
+  /* 1CD0 */ _(Ca,T), _(Ca,T), _(Ca,T),  _(x,x), _(Ca,O), _(Ca,B), _(Ca,B), _(Ca,B),
+  /* 1CD8 */ _(Ca,B), _(Ca,B), _(Ca,T), _(Ca,T), _(Ca,B), _(Ca,B), _(Ca,B), _(Ca,B),
+  /* 1CE0 */ _(Ca,T), _(Ca,R),  _(x,O),  _(x,O),  _(x,O),  _(x,O),  _(x,O),  _(x,O),
+  /* 1CE8 */  _(x,O),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,B),  _(x,x),  _(x,x),
+  /* 1CF0 */  _(x,x),  _(x,x), _(Vs,x), _(Vs,x), _(Ca,T),  _(x,x),  _(x,x),  _(x,x),
+  /* 1CF8 */ _(Ca,x), _(Ca,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),
+
+
+1cf5 and 1cf6 get reclassified as CONSONANT
+
+1ce2 and 1ce8 get treated like tone marks, but SHOULD be allowed only after Visarga.
+
+1ced gets treated like tone mark, but SHOULD be allowed only after U+1CE9..U+1CF1
+
+1ce9 1cec 1cee 1cf1 all take marks in standalone clusters, similar to Avagraha.
+
+U+2010 and U+2011 get treated like placeholders.
+
+U+25CC is the dotted circle.
+
+  /* General Punctuation */
+
+  /* 2008 */  _(x,x),  _(x,x),  _(x,x),  _(x,x),_(ZWNJ,x),_(ZWJ,x),  _(x,x),  _(x,x),
+  /* 2010 */ _(CP,x), _(CP,x), _(CP,x), _(CP,x), _(CP,x),  _(x,x),  _(x,x),  _(x,x),
+
+#define indic_offset_0x2070u 1672
+
+
+  /* Superscripts and Subscripts */
+
+  /* 2070 */  _(x,x),  _(x,x),  _(x,x),  _(x,x), _(SM,x),  _(x,x),  _(x,x),  _(x,x),
+  /* 2078 */  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),
+  /* 2080 */  _(x,x),  _(x,x), _(SM,x), _(SM,x), _(SM,x),  _(x,x),  _(x,x),  _(x,x),
+--->
 ## The `<bng2>` shaping model ##
 
 Processing a run of `<bng2>` text involves six top-level stages:
@@ -36,18 +223,19 @@ script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
 stage five, however, do not have a mandatory order.
 
-> Note: Bengali differs from Devanagari in that sequences of pre-base consonants
+<!-- > Note: Bengali differs from Devanagari in that sequences of pre-base consonants
 > are generally combined into conjuncts and only less frequently
-> rendered in half-forms.
+> rendered in half-forms. -->
 
+With regard to the common variations seen among Indic scripts, 
 Bengali's specific shaping characteristics include:
 
 1. `BASE_POS_LAST` = The base consonant of a syllable is the last
 consonant, not counting any special final-consonant forms.
 
-2. `REPH_POS_AFTER_SUB` = Reph is positioned after subjoined (i.e.,
+2. `REPH_POS_AFTER_SUB` = "Reph" is positioned after subjoined (i.e.,
    below-base) consonant forms.
-3. `REPH_MODE_IMPLICIT` = Reph is formed by an initial "Ra,Halant" sequence.
+3. `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
 4. `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
    pre-base consonants and to post-base consonants.
 5. `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
@@ -55,6 +243,9 @@ consonant, not counting any special final-consonant forms.
 6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUB` = Below-base matras are
    positioned after subjoined (i.e., below-base) consonant forms.
 
+These characteristics determine how the shaping engine must reorder
+certain glyphs, how base consonants are determined, and how "Reph"
+should be encoded within a run of text.
 
 ### (1) Identifying syllables and other clusters ###
 
@@ -71,8 +262,15 @@ Valid syllables may begin with either a consonant or an independent
 vowel.  Zero or more additional consonants may be present in the syllable; in a valid syllable these other consonants will be followed by the "Halant" mark, which indicates that they carry no vowel.
 
 > Note: The consonant "Ra" receives special treatment; in many
-> circumstances it is replaced with a combining mark-like form. A "Ra,Halant" sequence at the beginning of a cluster is
-> replaced with an above-base mark called "Reph" (unless the "Ra" is the only consonant in the cluster). "Ra,Halant" sequences that occur elsewhere in the cluster may take on the
+> circumstances it is replaced with a combining mark-like form. 
+> A "Ra,Halant" sequence at the beginning of a cluster is
+> replaced with an above-base mark called "Reph" (unless the "Ra"
+> is the only consonant in the cluster). 
+>
+> This requirement is synonymous with the `REPH_MODE_IMPLICIT`
+> characteristic mentioned earlier.
+>
+> "Ra,Halant" sequences that occur elsewhere in the cluster may take on the
 > below-base form "Raphala." "Reph" and "Raphala" sequences must be
 > reordered after the syllable-identification stage is complete.
 >
@@ -125,15 +323,17 @@ shaping stages occurs on a per-cluster basis.
 ### (2) Initial reordering ###
 
 The initial reordering stage is used to relocate glyphs from the
-phonetic order in which they occur in a run of text into the
+phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
-> Note: Primarily, this means moving dependent-vowel (matra) glyphs, "Ra,Halant" glyph sequences, and
-> other consonants that take special treatment in some circumstances. "Ba", "Ta", and "Ya"
-> occasionally take on special forms, depending on their position in the syllable.
+> Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
+> "Ra,Halant" glyph sequences, and other consonants that take special
+> treatment in some circumstances. "Ba", "Ta", and "Ya" occasionally
+> take on special forms, depending on their position in the syllable.
 >
 > These reordering moves are mandatory. The final-reordering stage
-> may make additional moves, depending on the content of the font.
+> may make additional moves, depending on the text and on the features
+> implemented in the active font.
 
 The cluster should be processed by tagging each glyph with its
 intended position based on its ordering category. After all glyphs
@@ -207,7 +407,7 @@ preceding character, so that they move together during the sorting step.
 
 9. Ninth, all post-base glyphs should be merged into a single substring that will sort as a single unit.
 
-WIth these steps completed, the cluster can be sorted into the final sort order.
+With these steps completed, the cluster can be sorted into the final sort order.
 
 ### (3) Applying the basic substitution features from GSUB ###
 
@@ -233,26 +433,42 @@ The order in which these substitutions must be performed is fixed:
 The `nukt` feature replaces "_consonant_,Nukta" sequences with a precomposed nukta-variant of the consonant glyph.
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
-"Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. "Ja,Halant,Nya" is substituted with the "JaNya" ligature.
+"Ka,Halant,Ssa" is substituted with the "KaSsa"
+ligature. "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the "Reph" glyph.
 
 The `pref` feature replaces pre-base-consonant glyphs with any special forms.
 
-The `blwf` feature replaces below-base-consonant glyphs with any special forms. Bengali includes two below-base consonant forms. "Ra,Halant" in a non-cluster-initial position takes on the "Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
+The `blwf` feature replaces below-base-consonant glyphs with any
+special forms. Bengali includes two below-base consonant
+forms. "Ra,Halant" in a non-cluster-initial position takes on the
+"Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
 
-The `half` feature replaces "_consonant_,Halant" sequences before the base consonant with "half forms" of the consonant glyphs.
+The `half` feature replaces "_consonant_,Halant" sequences before the
+base consonant with "half forms" of the consonant glyphs.
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-The `vatu` feature replaces certain sequences with "Vattu variant" forms. "Vattu variants" are formed by glyphs followed by "Raphala" (the below-base form of "Ra"), so this feature must be applied after the `blwf` feature.
+The `vatu` feature replaces certain sequences with "Vattu variant"
+forms. "Vattu variants" are formed by glyphs followed by "Raphala"
+(the below-base form of "Ra"), so this feature must be applied after
+the `blwf` feature.
 
-The `cjct` feature replaces sequences of adjacent consonants with conjunct ligatures. The font's GSUB rules might be implemented so that `cjct` substitutions apply to half-form consonants; therefore, this feature must be applied after the `half` feature.
+The `cjct` feature replaces sequences of adjacent consonants with
+conjunct ligatures. The font's GSUB rules might be implemented so that
+`cjct` substitutions apply to half-form consonants; therefore, this
+feature must be applied after the `half` feature.
 
 
 ### (4) Final reordering ###
 
-The final reordering stage repositions marks, dependent-vowel (matra) signs, and "Reph" glyphs to the appropriate location with respect to the base consonant. Because multiple subsitutions may have occured during the application of the basic-shaping features in the preceding stage, these repositioning moves could not be performed during the initial-reordering stage.
+The final reordering stage repositions marks, dependent-vowel (matra)
+signs, and "Reph" glyphs to the appropriate location with respect to
+the base consonant. Because multiple subsitutions may have occured
+during the application of the basic-shaping features in the preceding
+stage, these repositioning moves could not be performed during the
+initial-reordering stage. 
 
 
 
@@ -283,7 +499,10 @@ The `haln` feature replaces word-final "_consonant_,Halant" pairs with special p
 
 ### (6) Applying remaining positioning features from GPOS ###
 
-In this stage, mark positioning, kerning, and other GPOS features are applied. As with the preceding stage, the order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GPOS table in the font.
+In this stage, mark positioning, kerning, and other GPOS features are
+applied. As with the preceding stage, the order in which these
+features are applied is not canonical; they should be applied in the
+order in which they appear in the GPOS table in the font.
 
         dist
         abvm
