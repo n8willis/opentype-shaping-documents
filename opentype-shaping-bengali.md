@@ -47,7 +47,7 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+0981`   | Mark [n]      | BINDU             | TOP_POSITION               | &#x0981; |
 |`U+0982`   | Mark [sc]     | BINDU             | RIGHT_POSITION             | &#x0982; |
 |`U+0983`   | Mark [sc]     | VISARGA           | RIGHT_POSITION             | &#x0983; |
-|`U+0984`   | _unassigned_  | _null_            | _null_                     | &#x0984; |
+|`U+0984`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+0985`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0985; |
 |`U+0986`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0986; |
 |`U+0987`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0987; |
@@ -56,13 +56,13 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+098A`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098A; |
 |`U+098B`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098B; |
 |`U+098C`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098C; |
-|`U+098D`   | _unassigned_  | _null_            | _null_                     | &#x098D; |
-|`U+098E`   | _unassigned_  | _null_            | _null_                     | &#x098E; |
+|`U+098D`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+098E`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+098F`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098F; |
 | | | | |																	   
 |`U+0990`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0990; |
-|`U+0991`   | _unassigned_  | _null_            | _null_                     | &#x0991; |
-|`U+0992`   | _unassigned_  | _null_            | _null_                     | &#x0992; |
+|`U+0991`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+0992`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+0993`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0993; |
 |`U+0994`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0994; |
 |`U+0995`   | Letter        | CONSONANT         | _null_                     | &#x0995; |
@@ -86,7 +86,7 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09A6`   | Letter        | CONSONANT         | _null_                     | &#x09A6; |
 |`U+09A7`   | Letter        | CONSONANT         | _null_                     | &#x09A7; |
 |`U+09A8`   | Letter        | CONSONANT         | _null_                     | &#x09A8; | 
-|`U+09A9`   | _unassigned_  | _null_            | _null_                     | &#x09A9; |
+|`U+09A9`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09AA`   | Letter        | CONSONANT         | _null_                     | &#x09AA; |
 |`U+09AB`   | Letter        | CONSONANT         | _null_                     | &#x09AB; |
 |`U+09AC`   | Letter        | CONSONANT         | _null_                     | &#x09AC; |
@@ -95,17 +95,17 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09AF`   | Letter        | CONSONANT         | _null_                     | &#x09AF; |
 | | | | |																	    
 |`U+09B0`   | Letter        | CONSONANT         | _null_                     | &#x09B0; |
-|`U+09B1`   | _unassigned_  | _null_            | _null_                     | &#x09B1; |
+|`U+09B1`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09B2`   | Letter        | CONSONANT         | _null_                     | &#x09B2; |
-|`U+09B3`   | _unassigned_  | _null_            | _null_                     | &#x09B3; | 
-|`U+09B4`   | _unassigned_  | _null_            | _null_                     | &#x09B4; |
-|`U+09B5`   | _unassigned_  | _null_            | _null_                     | &#x09B5; |
+|`U+09B3`   | _unassigned_  | _null_            | _null_                     |          | 
+|`U+09B4`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09B5`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09B6`   | Letter        | CONSONANT         | _null_                     | &#x09B6; |
 |`U+09B7`   | Letter        | CONSONANT         | _null_                     | &#x09B7; |
 |`U+09B8`   | Letter        | CONSONANT         | _null_                     | &#x09B8; |
 |`U+09B9`   | Letter        | CONSONANT         | _null_                     | &#x09B9; |
-|`U+09BA`   | _unassigned_  | _null_            | _null_                     | &#x09BA; |
-|`U+09BB`   | _unassigned_  | _null_            | _null_                     | &#x09BB; |
+|`U+09BA`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09BB`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09BC`   | Mark [n]      | NUKTA             | BOTTOM_POSITION            | &#x09BC; |
 |`U+09BD`   | Letter        | AVAGRAHA          | _null_                     | &#x09BD; |
 |`U+09BE`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09BE; |
@@ -116,41 +116,41 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09C2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C2; |
 |`U+09C3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C3; |
 |`U+09C4`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C4; |
-|`U+09C5`   | _unassigned_  | _null_            | _null_                     | &#x09C5; |
-|`U+09C6`   | _unassigned_  | _null_            | _null_                     | &#x09C6; |
+|`U+09C5`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09C6`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09C7`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C7; |
 |`U+09C8`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C8; | 
-|`U+09C9`   | _unassigned_  | _null_            | _null_                     | &#x09C9; |
-|`U+09CA`   | _unassigned_  | _null_            | _null_                     | &#x09CA; |
+|`U+09C9`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09CA`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09CB`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CB; |
 |`U+09CC`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CC; |
 |`U+09CD`   | Mark [n]      | VIRAMA            | BOTTOM_POSITION            | &#x09CD; |
 |`U+09CE`   | Letter        | CONSONANT_DEAD    | _null_                     | &#x09CE; |
-|`U+09CF`   | _unassigned_  | _null_            | _null_                     | &#x09CF; |
+|`U+09CF`   | _unassigned_  | _null_            | _null_                     |          |
 | | | | |																	   
-|`U+09D0`   | _unassigned_  | _null_            | _null_                     | &#x09D0; |
-|`U+09D1`   | _unassigned_  | _null_            | _null_                     | &#x09D1; |
-|`U+09D2`   | _unassigned_  | _null_            | _null_                     | &#x09D2; |
-|`U+09D3`   | _unassigned_  | _null_            | _null_                     | &#x09D3; |
-|`U+09D4`   | _unassigned_  | _null_            | _null_                     | &#x09D4; |
-|`U+09D5`   | _unassigned_  | _null_            | _null_                     | &#x09D5; |
-|`U+09D6`   | _unassigned_  | _null_            | _null_                     | &#x09D6; |
+|`U+09D0`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D1`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D2`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D3`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D4`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D5`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D6`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09D7`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09D7; |
-|`U+09D8`   | _unassigned_  | _null_            | _null_                     | &#x09D8; |
-|`U+09D9`   | _unassigned_  | _null_            | _null_                     | &#x09D9; |
-|`U+09DA`   | _unassigned_  | _null_            | _null_                     | &#x09DA; |
-|`U+09DB`   | _unassigned_  | _null_            | _null_                     | &#x09DB; |
+|`U+09D8`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09D9`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09DA`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09DB`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09DC`   | Letter        | CONSONANT         | _null_                     | &#x09DC; |
 |`U+09DD`   | Letter        | CONSONANT         | _null_                     | &#x09DD; |
-|`U+09DE`   | _unassigned_  | _null_            | _null_                     | &#x09DE; |
+|`U+09DE`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09DF`   | Letter        | CONSONANT         | _null_                     | &#x09DF; |
 | | | | |																	   
 |`U+09E0`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E0; |
 |`U+09E1`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E1; |
 |`U+09E2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E2; |
 |`U+09E3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E3; |
-|`U+09E4`   | _unassigned_  | _null_            | _null_                     | &#x09E4; |
-|`U+09E5`   | _unassigned_  | _null_            | _null_                     | &#x09E5; |
+|`U+09E4`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09E5`   | _unassigned_  | _null_            | _null_                     |          |
 |`U+09E6`   | Number        | NUMBER            | _null_                     | &#x09E6; |
 |`U+09E7`   | Number        | NUMBER            | _null_                     | &#x09E7; |
 |`U+09E8`   | Number        | NUMBER            | _null_                     | &#x09E8; |
@@ -176,8 +176,8 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09FB`   | Symbol        | _null_            | _null_                     | &#x09FB; |
 |`U+09FC`   | Letter        | _null_            | _null_                     | &#x09FC; |
 |`U+09FD`   | Punctuation   | _null_            | _null_                     | &#x09FD; |
-|`U+09FE`   | _unassigned_  | _null_            | _null_                     | &#x09FE; |
-|`U+09FF`   | _unassigned_  | _null_            | _null_                     | &#x09FF; |
+|`U+09FE`   | _unassigned_  | _null_            | _null_                     |          |
+|`U+09FF`   | _unassigned_  | _null_            | _null_                     |          |
  
 <!--- 
   /* Vedic Extensions */
