@@ -223,28 +223,28 @@ classified as follows:
 | | | | |																		
 |`U+1CE0`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CE0; Tone Rigvedic Kashmiri Independent Svarita |
 |`U+1CE1`   | Mark [Mc]     | CANTILLATION      | RIGHT_POSITION             | &#x1CE1; Tone Atharavedic Independent Svarita |
-|`U+1CE2`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE2; Sign Visarga Svarita |
+|`U+1CE2`   | Mark [Mn]     | AVAGRAHA          | OVERSTRUCK                 | &#x1CE2; Sign Visarga Svarita |
 |`U+1CE3`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE3; Sign Visarga Udatta |
 |`U+1CE4`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE4; Sign Reversed Visarga Udatta |
 |`U+1CE5`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE5; Sign Visarga Anudatta |
 |`U+1CE6`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE6; Sign Reversed Visarga Anudatta |
 |`U+1CE7`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE7; Sign Visarga Udatta With Tail |
-|`U+1CE8`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE8; Sign Visarga Anudatta With Tail |
-|`U+1CE9`   | Letter        | _null_            | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
+|`U+1CE8`   | Mark [Mn]     | AVAGRAHA          | OVERSTRUCK                 | &#x1CE8; Sign Visarga Anudatta With Tail |
+|`U+1CE9`   | Letter        | AVAGRAHA          | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
 |`U+1CEA`   | Letter        | _null_            | _null_                     | &#x1CEA; Sign Anusvara Bahirgomukha |
 |`U+1CEB`   | Letter        | _null_            | _null_                     | &#x1CEB; Sign Anusvara Vamagomukha |
-|`U+1CEC`   | Letter        | _null_            | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
-|`U+1CED`   | Mark [Mn]     | _null_            | BOTTOM_POSITION            | &#x1CED; Sign Tiryak         |
-|`U+1CEE`   | Letter        | _null_            | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
+|`U+1CEC`   | Letter        | AVAGRAHA          | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
+|`U+1CED`   | Mark [Mn]     | AVAGRAHA          | BOTTOM_POSITION            | &#x1CED; Sign Tiryak         |
+|`U+1CEE`   | Letter        | AVAGRAHA          | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
 |`U+1CEF`   | Letter        | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter        | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter        | _null_            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
-|`U+1CF2`   | Mark [Mc]     | VISARGA            | _null_                     | &#x1CF2; Sign Ardhavisarga   |
-|`U+1CF3`   | Mark [Mc]     | VISARGA            | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
+|`U+1CF1`   | Letter        | AVAGRAHA          | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
+|`U+1CF2`   | Mark [Mc]     | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Mark [Mc]     | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
-|`U+1CF5`   | Letter        | _null_            | _null_                     | &#x1CF5; Sign Jihvamuliya    |
-|`U+1CF6`   | Letter        | _null_            | _null_                     | &#x1CF6; Sign Upadhmaniya    |
+|`U+1CF5`   | Letter        | CONSONANT         | _null_                     | &#x1CF5; Sign Jihvamuliya    |
+|`U+1CF6`   | Letter        | CONSONANT         | _null_                     | &#x1CF6; Sign Upadhmaniya    |
 |`U+1CF7`   | Mark [Mc]     | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]     | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]     | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
@@ -256,7 +256,7 @@ classified as follows:
 |`U+1CFF`   | _unassigned_  |                   |                            |                              |
 
 
-<!-- and 1cf6 get reclassified as CONSONANT
+<!-- 1cf5 and 1cf6 get reclassified as CONSONANT
 
 1ce2 and 1ce8 get treated like tone marks, but SHOULD be allowed only after Visarga.
 
