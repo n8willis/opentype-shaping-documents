@@ -3,15 +3,15 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-    - [General information](#general-information)
-    - [Glyph classification](#glyph-classification)
-    - [The `<bng2>` shaping model](#the-bng2-shaping-model)
-        - [(1) Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
-        - [(2) Initial reordering](#2-initial-reordering)
-        - [(3) Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-        - [(4) Final reordering](#4-final-reordering)
-        - [(5) Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
-        - [(6) Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+  - [General information](#general-information)
+  - [Glyph classification](#glyph-classification)
+  - [The `<bng2>` shaping model](#the-bng2-shaping-model)
+      - [(1) Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
+      - [(2) Initial reordering](#2-initial-reordering)
+      - [(3) Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
+      - [(4) Final reordering](#4-final-reordering)
+      - [(5) Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
+      - [(6) Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
 
 <!-- markdown-toc end -->
 
