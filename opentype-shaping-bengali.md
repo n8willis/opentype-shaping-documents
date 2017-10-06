@@ -1,5 +1,21 @@
 # Bengali shaping in OpenType #
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+    - [General information](#general-information)
+    - [Glyph classification](#glyph-classification)
+    - [The `<bng2>` shaping model](#the-bng2-shaping-model)
+        - [(1) Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
+        - [(2) Initial reordering](#2-initial-reordering)
+        - [(3) Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
+        - [(4) Final reordering](#4-final-reordering)
+        - [(5) Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
+        - [(6) Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+
+<!-- markdown-toc end -->
+
+
 ## General information ##
 
 The Bengali or Bangla script belongs to the Indic family, and follows
@@ -39,15 +55,17 @@ behavior from the shaping engine.
 
 The _Mark-placement subcategory_ column indicates mark-placement
 positioning. Assigned codepoints marked with a
-_null_ in this column evoke no special mark-placement behavior.
+_null_ in this column evoke no special mark-placement behavior. Marks
+tagged with [Mn] in the _Unicode class_ column are classified as
+non-spacing; marks tagged with [Mc] are classified as spacing-combining.
 
-| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                |
-|:----------|:--------------|:------------------|:---------------------------|:---------------------|
+| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                        |
+|:----------|:--------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0980`   | Letter        | _null_            | _null_                     | &#x0980; Anji                |
-|`U+0981`   | Mark [n]      | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
-|`U+0982`   | Mark [sc]     | BINDU             | RIGHT_POSITION             | &#x0982; Anusvara            |
-|`U+0983`   | Mark [sc]     | VISARGA           | RIGHT_POSITION             | &#x0983; Visarga             |
-|`U+0984`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+0981`   | Mark [Mn]     | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
+|`U+0982`   | Mark [Mc]     | BINDU             | RIGHT_POSITION             | &#x0982; Anusvara            |
+|`U+0983`   | Mark [Mc]     | VISARGA           | RIGHT_POSITION             | &#x0983; Visarga             |
+|`U+0984`   | _unassigned_  |                   |                            |                              |
 |`U+0985`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0985; A                   |
 |`U+0986`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0986; Aa                  |
 |`U+0987`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0987; I                   |
@@ -56,13 +74,13 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+098A`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098A; Uu                  |
 |`U+098B`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098B; Vocalic R           |
 |`U+098C`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098C; Vocalic L           |
-|`U+098D`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+098E`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+098D`   | _unassigned_  |                   |                            |                              |
+|`U+098E`   | _unassigned_  |                   |                            |                              |
 |`U+098F`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x098F; E                   |
 | | | | |																	   
 |`U+0990`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0990; Ai                  |
-|`U+0991`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+0992`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+0991`   | _unassigned_  |                   |                            |                              |
+|`U+0992`   | _unassigned_  |                   |                            |                              |
 |`U+0993`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0993; O                   |
 |`U+0994`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x0994; Au                  |
 |`U+0995`   | Letter        | CONSONANT         | _null_                     | &#x0995; Ka                  |
@@ -86,7 +104,7 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09A6`   | Letter        | CONSONANT         | _null_                     | &#x09A6; Da                  |
 |`U+09A7`   | Letter        | CONSONANT         | _null_                     | &#x09A7; Dha                 |
 |`U+09A8`   | Letter        | CONSONANT         | _null_                     | &#x09A8; Na                  |
-|`U+09A9`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09A9`   | _unassigned_  |                   |                            |                              |
 |`U+09AA`   | Letter        | CONSONANT         | _null_                     | &#x09AA; Pa                  |
 |`U+09AB`   | Letter        | CONSONANT         | _null_                     | &#x09AB; Pha                 |
 |`U+09AC`   | Letter        | CONSONANT         | _null_                     | &#x09AC; Ba                  |
@@ -95,62 +113,62 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09AF`   | Letter        | CONSONANT         | _null_                     | &#x09AF; Ya                  |
 | | | | |																	    
 |`U+09B0`   | Letter        | CONSONANT         | _null_                     | &#x09B0; Ra                  |
-|`U+09B1`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B1`   | _unassigned_  |                   |                            |                              |
 |`U+09B2`   | Letter        | CONSONANT         | _null_                     | &#x09B2; La                  |
-|`U+09B3`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09B4`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09B5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09B3`   | _unassigned_  |                   |                            |                              |
+|`U+09B4`   | _unassigned_  |                   |                            |                              |
+|`U+09B5`   | _unassigned_  |                   |                            |                              |
 |`U+09B6`   | Letter        | CONSONANT         | _null_                     | &#x09B6; Sha                 |
 |`U+09B7`   | Letter        | CONSONANT         | _null_                     | &#x09B7; Ssa                 |
 |`U+09B8`   | Letter        | CONSONANT         | _null_                     | &#x09B8; Sa                  |
 |`U+09B9`   | Letter        | CONSONANT         | _null_                     | &#x09B9; Ha                  |
-|`U+09BA`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09BB`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09BC`   | Mark [n]      | NUKTA             | BOTTOM_POSITION            | &#x09BC; Nukta               |
+|`U+09BA`   | _unassigned_  |                   |                            |                              |
+|`U+09BB`   | _unassigned_  |                   |                            |                              |
+|`U+09BC`   | Mark [Mn]     | NUKTA             | BOTTOM_POSITION            | &#x09BC; Nukta               |
 |`U+09BD`   | Letter        | AVAGRAHA          | _null_                     | &#x09BD; Avagraha            |
-|`U+09BE`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09BE; Sign Aa             |
-|`U+09BF`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09BF; Sign I              |
+|`U+09BE`   | Mark [Mc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09BE; Sign Aa             |
+|`U+09BF`   | Mark [Mc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09BF; Sign I              |
 | | | | |																	   
-|`U+09C0`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09C0; Sign Ii             |
-|`U+09C1`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C1; Sign U              |
-|`U+09C2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C2; Sign Uu             |
-|`U+09C3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C3; Sign Vocalic R      |
-|`U+09C4`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C4; Sign Vocalic Rr     |
-|`U+09C5`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09C6`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09C7`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C7; Sign E              |
-|`U+09C8`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C8; Sign Ai             |
-|`U+09C9`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09CA`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09CB`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CB; Sign O              |
-|`U+09CC`   | Mark [sc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CC; Sign Au             |
-|`U+09CD`   | Mark [n]      | VIRAMA            | BOTTOM_POSITION            | &#x09CD; Virama              |
+|`U+09C0`   | Mark [Mc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09C0; Sign Ii             |
+|`U+09C1`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C1; Sign U              |
+|`U+09C2`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C2; Sign Uu             |
+|`U+09C3`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C3; Sign Vocalic R      |
+|`U+09C4`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09C4; Sign Vocalic Rr     |
+|`U+09C5`   | _unassigned_  |                   |                            |                              |
+|`U+09C6`   | _unassigned_  |                   |                            |                              |
+|`U+09C7`   | Mark [Mc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C7; Sign E              |
+|`U+09C8`   | Mark [Mc]     | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x09C8; Sign Ai             |
+|`U+09C9`   | _unassigned_  |                   |                            |                              |
+|`U+09CA`   | _unassigned_  |                   |                            |                              |
+|`U+09CB`   | Mark [Mc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CB; Sign O              |
+|`U+09CC`   | Mark [Mc]     | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x09CC; Sign Au             |
+|`U+09CD`   | Mark [Mn]     | VIRAMA            | BOTTOM_POSITION            | &#x09CD; Virama              |
 |`U+09CE`   | Letter        | CONSONANT_DEAD    | _null_                     | &#x09CE; Khanda Ta           |
-|`U+09CF`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09CF`   | _unassigned_  |                   |                            |                              |
 | | | | |																	   
-|`U+09D0`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D1`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D2`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D3`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D4`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D5`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D6`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D7`   | Mark [sc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09D7; Au Length Mark      |
-|`U+09D8`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09D9`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09DA`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09DB`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09D0`   | _unassigned_  |                   |                            |                              |
+|`U+09D1`   | _unassigned_  |                   |                            |                              |
+|`U+09D2`   | _unassigned_  |                   |                            |                              |
+|`U+09D3`   | _unassigned_  |                   |                            |                              |
+|`U+09D4`   | _unassigned_  |                   |                            |                              |
+|`U+09D5`   | _unassigned_  |                   |                            |                              |
+|`U+09D6`   | _unassigned_  |                   |                            |                              |
+|`U+09D7`   | Mark [Mc]     | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x09D7; Au Length Mark      |
+|`U+09D8`   | _unassigned_  |                   |                            |                              |
+|`U+09D9`   | _unassigned_  |                   |                            |                              |
+|`U+09DA`   | _unassigned_  |                   |                            |                              |
+|`U+09DB`   | _unassigned_  |                   |                            |                              |
 |`U+09DC`   | Letter        | CONSONANT         | _null_                     | &#x09DC; Rra                 |
 |`U+09DD`   | Letter        | CONSONANT         | _null_                     | &#x09DD; Rha                 |
-|`U+09DE`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09DE`   | _unassigned_  |                   |                            |                              |
 |`U+09DF`   | Letter        | CONSONANT         | _null_                     | &#x09DF; Yya                 |
 | | | | |																	   
 |`U+09E0`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E0; Vocalic Rr          |
 |`U+09E1`   | Letter        | VOWEL_INDEPENDENT | _null_                     | &#x09E1; Vocalic Ll          |
-|`U+09E2`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E2; Sign Vocalic L      |
-|`U+09E3`   | Mark [n]      | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E3; Sign Vocalic Ll     |
-|`U+09E4`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09E5`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09E2`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E2; Sign Vocalic L      |
+|`U+09E3`   | Mark [Mn]     | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x09E3; Sign Vocalic Ll     |
+|`U+09E4`   | _unassigned_  |                   |                            |                              |
+|`U+09E5`   | _unassigned_  |                   |                            |                              |
 |`U+09E6`   | Number        | NUMBER            | _null_                     | &#x09E6; Digit Zero          |
 |`U+09E7`   | Number        | NUMBER            | _null_                     | &#x09E7; Digit One           |
 |`U+09E8`   | Number        | NUMBER            | _null_                     | &#x09E8; Digit Two           |
@@ -176,21 +194,69 @@ _null_ in this column evoke no special mark-placement behavior.
 |`U+09FB`   | Symbol        | _null_            | _null_                     | &#x09FB; Ganda Mark          |
 |`U+09FC`   | Letter        | _null_            | _null_                     | &#x09FC; Vedic Anusvara      |
 |`U+09FD`   | Punctuation   | _null_            | _null_                     | &#x09FD; Abbreviation Sign   |
-|`U+09FE`   | _unassigned_  | _null_            | _null_                     |                              |
-|`U+09FF`   | _unassigned_  | _null_            | _null_                     |                              |
+|`U+09FE`   | _unassigned_  |                   |                            |                              |
+|`U+09FF`   | _unassigned_  |                   |                            |                              |
  
-<!--- 
-  /* Vedic Extensions */
 
-  /* 1CD0 */ _(Ca,T), _(Ca,T), _(Ca,T),  _(x,x), _(Ca,O), _(Ca,B), _(Ca,B), _(Ca,B),
-  /* 1CD8 */ _(Ca,B), _(Ca,B), _(Ca,T), _(Ca,T), _(Ca,B), _(Ca,B), _(Ca,B), _(Ca,B),
-  /* 1CE0 */ _(Ca,T), _(Ca,R),  _(x,O),  _(x,O),  _(x,O),  _(x,O),  _(x,O),  _(x,O),
-  /* 1CE8 */  _(x,O),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,B),  _(x,x),  _(x,x),
-  /* 1CF0 */  _(x,x),  _(x,x), _(Vs,x), _(Vs,x), _(Ca,T),  _(x,x),  _(x,x),  _(x,x),
-  /* 1CF8 */ _(Ca,x), _(Ca,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),
+Sanskrit runs written in the Bengali script may also include
+characters from the Vedic Extensions block. These characters should be
+classified as follows:
+
+| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                        |
+|:----------|:--------------|:------------------|:---------------------------|:-----------------------------|
+|`U+1CD0`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CD0; Tone Karshana       |
+|`U+1CD1`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CD1; Tone Shara          |
+|`U+1CD2`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CD2; Tone Prenkha        |
+|`U+1CD3`   | Punctuation   | _null_            | _null_                     | &#x1CD3; Sign Nihshvasa      |
+|`U+1CD4`   | Mark [Mn]     | CANTILLATION      | OVERSTRUCK                 | &#x1CD4; Tone Midline Svarita |
+|`U+1CD5`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CD5; Tone Aggravated Independent Svarita |
+|`U+1CD6`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CD6; Tone Independent Svarita |
+|`U+1CD7`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CD7; Tone Kathaka Independent Svarita |
+|`U+1CD8`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CD8; Tone Candra Below   |
+|`U+1CD9`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CD9; Tone Kathaka Independent Svarita Schroeder |
+|`U+1CDA`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CDA; Tone Double Svarita |
+|`U+1CDB`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CDB; Tone Triple Svarita |
+|`U+1CDC`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CDC; Tone Kathaka Anudatta |
+|`U+1CDD`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CDD; Tone Dot Below      |
+|`U+1CDE`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CDE; Tone Two Dots Below |
+|`U+1CDF`   | Mark [Mn]     | CANTILLATION      | BOTTOM_POSITION            | &#x1CDF; Tone Three Dots Below |
+| | | | |																		
+|`U+1CE0`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CE0; Tone Rigvedic Kashmiri Independent Svarita |
+|`U+1CE1`   | Mark [Mc]     | CANTILLATION      | RIGHT_POSITION             | &#x1CE1; Tone Atharavedic Independent Svarita |
+|`U+1CE2`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE2; Sign Visarga Svarita |
+|`U+1CE3`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE3; Sign Visarga Udatta |
+|`U+1CE4`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE4; Sign Reversed Visarga Udatta |
+|`U+1CE5`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE5; Sign Visarga Anudatta |
+|`U+1CE6`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE6; Sign Reversed Visarga Anudatta |
+|`U+1CE7`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE7; Sign Visarga Udatta With Tail |
+|`U+1CE8`   | Mark [Mn]     | _null_            | OVERSTRUCK                 | &#x1CE8; Sign Visarga Anudatta With Tail |
+|`U+1CE9`   | Letter        | _null_            | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
+|`U+1CEA`   | Letter        | _null_            | _null_                     | &#x1CEA; Sign Anusvara Bahirgomukha |
+|`U+1CEB`   | Letter        | _null_            | _null_                     | &#x1CEB; Sign Anusvara Vamagomukha |
+|`U+1CEC`   | Letter        | _null_            | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
+|`U+1CED`   | Mark [Mn]     | _null_            | BOTTOM_POSITION            | &#x1CED; Sign Tiryak         |
+|`U+1CEE`   | Letter        | _null_            | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
+|`U+1CEF`   | Letter        | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
+| | | | |																		
+|`U+1CF0`   | Letter        | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
+|`U+1CF1`   | Letter        | _null_            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
+|`U+1CF2`   | Mark [Mc]     | VISARGA            | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Mark [Mc]     | VISARGA            | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
+|`U+1CF4`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
+|`U+1CF5`   | Letter        | _null_            | _null_                     | &#x1CF5; Sign Jihvamuliya    |
+|`U+1CF6`   | Letter        | _null_            | _null_                     | &#x1CF6; Sign Upadhmaniya    |
+|`U+1CF7`   | Mark [Mc]     | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
+|`U+1CF8`   | Mark [Mn]     | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
+|`U+1CF9`   | Mark [Mn]     | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
+|`U+1CFA`   | _unassigned_  |                   |                            |                              |
+|`U+1CFB`   | _unassigned_  |                   |                            |                              |
+|`U+1CFC`   | _unassigned_  |                   |                            |                              |
+|`U+1CFD`   | _unassigned_  |                   |                            |                              |
+|`U+1CFE`   | _unassigned_  |                   |                            |                              |
+|`U+1CFF`   | _unassigned_  |                   |                            |                              |
 
 
-1cf5 and 1cf6 get reclassified as CONSONANT
+<!-- and 1cf6 get reclassified as CONSONANT
 
 1ce2 and 1ce8 get treated like tone marks, but SHOULD be allowed only after Visarga.
 
@@ -200,8 +266,8 @@ _null_ in this column evoke no special mark-placement behavior.
 
 U+2010 and U+2011 get treated like placeholders.
 
-U+25CC is the dotted circle.
-
+U+25CC is the dotted circle. --->
+<!---
   /* General Punctuation */
 
   /* 2008 */  _(x,x),  _(x,x),  _(x,x),  _(x,x),_(ZWNJ,x),_(ZWJ,x),  _(x,x),  _(x,x),
