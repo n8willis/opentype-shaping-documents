@@ -5,6 +5,7 @@
 
   - [General information](#general-information)
   - [Glyph classification](#glyph-classification)
+  - [Terminology](#terminology)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
       - [(1) Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
       - [(2) Initial reordering](#2-initial-reordering)
@@ -49,9 +50,17 @@ how they are treated when shaping a run of text.
 
 Bengali glyphs should be classified as in the following
 table. Codepoints in the Bengali block with no assigned meaning are
-marked as _unassigned_ in the _Unicode class_ column. Assigned codepoints
-marked with a _null_ in the _Shaping category_ column evoke no special
-behavior from the shaping engine. 
+marked as _unassigned_ in the _Unicode class_ column. 
+
+Assigned codepoints marked with a _null_ in the _Shaping category_
+column evoke no special behavior from the shaping engine. Note that
+this does include some valid codepoints in the Bengali block, such as
+currency marks and other symbols. 
+
+Numbers generally evoke no special behavior from the shaping engine,
+but there are still OpenType feature tags that may affect how the
+respective glyphs are drawn, such as `tnum`, which specifies the usage
+of tabular widths.
 
 The _Mark-placement subcategory_ column indicates mark-placement
 positioning. Assigned codepoints marked with a
@@ -282,6 +291,33 @@ U+25CC is the dotted circle. --->
   /* 2078 */  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),
   /* 2080 */  _(x,x),  _(x,x), _(SM,x), _(SM,x), _(SM,x),  _(x,x),  _(x,x),  _(x,x),
 --->
+
+## Terminology ##
+
+OpenType shaping uses a standard set of terms for Indic scripts.  The
+terms used in any particular language may vary, causing potential
+confusion.
+
+**Matra** is the standard term for a dependent vowel sign. In the Bengali
+language, dependent-vowel signs <!--- that are positioned below the base
+consonant --> may also be referred to as _kar_ forms — e.g., "i-kar" or
+"u-kar".
+
+The term "matra" is also used to refer to the headline above most
+Bengali letters. To avoid ambiguity, the term **headline** is
+used in most Unicode and OpenType shaping documents.
+
+**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
+sign. In the Bengali language, this sign is known as the _hasanta_.
+
+**Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
+indicating that the preceding vowel shold be nasalized. In the Bengali
+language, this mark is known as _candrabindu_.
+
+Where possible, using the standard terminology is preferred, as the
+use of a language-specific term necessitates choosing one language
+over all of the others that share a common script.
+
 ## The `<bng2>` shaping model ##
 
 Processing a run of `<bng2>` text involves six top-level stages:
@@ -312,11 +348,15 @@ consonant, not counting any special final-consonant forms.
 
 2. `REPH_POS_AFTER_SUB` = "Reph" is positioned after subjoined (i.e.,
    below-base) consonant forms.
+
 3. `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
+
 4. `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
    pre-base consonants and to post-base consonants.
+
 5. `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
    positioned after post-base consonant forms.
+
 6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUB` = Below-base matras are
    positioned after subjoined (i.e., below-base) consonant forms.
 
@@ -329,14 +369,20 @@ should be encoded within a run of text.
 A syllable cluster in Bengali consists of a valid orthographic cluster
 that MAY be followed by a "tail" of modifier signs.
 
-> Note: The Bengali Unicode block enumerates five modifier signs, "Candrabinu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga"
-> (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara" (`U+09FC`). In addition, Sanskrit text written in Bengali may include
-> additional signs from Vedic Extensions block.
+> Note: The Bengali Unicode block enumerates five modifier signs,
+> "Candrabinu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
+> (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara"
+> (`U+09FC`). In addition, Sanskrit text written in Bengali may
+> include additional signs from Vedic Extensions block.
 
-Each syllable contains exactly one vowel. The consonant (if any exists) that carries the vowel is the "base" consonant of the syllable. 
+Each syllable contains exactly one vowel. The consonant (if any
+exists) that carries the vowel is the "base" consonant of the
+syllable.
 
 Valid syllables may begin with either a consonant or an independent
-vowel.  Zero or more additional consonants may be present in the syllable; in a valid syllable these other consonants will be followed by the "Halant" mark, which indicates that they carry no vowel.
+vowel.  Zero or more additional consonants may be present in the
+syllable; in a valid syllable these other consonants will be followed
+by the "Halant" mark, which indicates that they carry no vowel. 
 
 > Note: The consonant "Ra" receives special treatment; in many
 > circumstances it is replaced with a combining mark-like form. 
@@ -357,9 +403,11 @@ vowel.  Zero or more additional consonants may be present in the syllable; in a 
 > Assamese-language text.
 >
 
-In addition, stand-alone clusters may occur, such as when an isolated codepoint is shown in example text, sequences of numerals, and so on.
+In addition, stand-alone clusters may occur, such as when an isolated
+codepoint is shown in example text.
 
-Clusters should be identified by examining the run and matching glyphs, based on their categorization, using regular expressions.
+Clusters should be identified by examining the run and matching
+glyphs, based on their categorization, using regular expressions. 
 
 
 	C	consonant
@@ -384,7 +432,7 @@ A vowel-based syllable will match the expression:
 [Ra+H]+V+[N]+[<[<ZWJ|ZWNJ>]+H+C|ZWJ+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
 
-A stand-alone cluster (at the start of the word only) will match the expression:
+A stand-alone cluster (which can only occur at the start of a word) will match the expression:
 ```
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
