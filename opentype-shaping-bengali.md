@@ -538,15 +538,16 @@ and tag it as `POS_BASE_CONSONANT`.
 
 The algorithm for determining the base consonant is
 
-- If the syllable starts with "Ra,Halant" and the cluster contains
-  more than one consonant, exclude the starting "Ra" from the list of
-  consonants to be considered. 
-- Starting from the end of the syllable, move backwards until a consonant is found.
-    * If the consonant has a below-base or post-base form or is a
-      pre-base reordering "Ra", move to the previous consonant. If
-      neither condition is true, stop. 
-    * If the consonant is the first consonant, stop.
-- The consonant stopped at will be the base consonant.
+  - If the syllable starts with "Ra,Halant" and the cluster contains
+    more than one consonant, exclude the starting "Ra" from the list of
+    consonants to be considered. 
+  - Starting from the end of the syllable, move backwards until a consonant is found.
+      * If the consonant has a below-base or post-base form or is a
+        pre-base reordering "Ra", move to the previous consonant. If
+        neither condition is true, stop. 
+      * If the consonant is the first consonant, stop.
+  - The consonant stopped at will be the base consonant.
+
 
 2. Second, any two-part dependent vowels (matras) must be decomposed
 into their left-side and right-side components. Bengali has two
@@ -589,7 +590,7 @@ consonants, "Khanda Ta" (`U+09CE`), and the sequences "Halant,Ya"
 (`U+09CD`,`U+09AF`) and "Halant,Yya" (`U+09CD`,`U+09DF`), which both
 trigger the "Yaphala" form. 
 
-8. Eighth, all  marks must be tagged with the same positioning tag as the
+8. Eighth, all marks must be tagged with the same positioning tag as the
 preceding non-mark character, so that they move together during the sorting
 step.
 
@@ -640,11 +641,17 @@ The `nukt` feature replaces "_consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
-"Ka,Halant,Ssa" is substituted with the "KaSsa"
-ligature. "Ja,Halant,Nya" is substituted with the "JaNya"
-ligature. These sequences can occur anywhere in a cluster.
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the "Reph" glyph.
+  - "Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. 
+  - "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
+  
+These sequences can occur anywhere in a cluster.
+
+The `rphf` feature replaces initial "Ra,Halant" sequences with the
+"Reph" glyph.
+
+An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
+the `rphf` substitution.
 
 The `pref` feature replaces pre-base-consonant glyphs with any special forms.
 
@@ -653,23 +660,28 @@ special forms. Bengali includes two below-base consonant
 forms. "Ra,Halant" in a non-cluster-initial position takes on the
 "Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
 
-Because Bengali carries the `BLWF_MODE_PRE_AND_POST` shaping
+Because Bengali incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
-may potentially match a `blwf` substitution, therefore both cases must
-be tagged for comparison. This is not necessarily the case in other
+may potentially match a `blwf` substitution; therefore, both cases must
+be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 The `half` feature replaces "_consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs. 
+base consonant with "half forms" of the consonant glyphs. There are
+three exceptions to the default behavior, for which the shaping engine
+must test:
 
-Pre-base consonants other than initial "Ra,Halant" sequences (which
-should have been tagged for the `rphf` feature earlier) must be tagged
-for comparison with `half` substitutions. 
+  - Pre-base "_consonant_,Halant" sequences other than initial "Ra,Halant" sequences (which
+    should have been tagged for the `rphf` feature earlier) must be tagged
+    for potential `half` substitutions. 
 
-A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must match
-the `half` substitution test, even though the presence of the
-zero-width joiner suppresses the `cjct` feature in a later step.
+  - A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must be
+    tagged for potential `half` substitutions, even though the presence of the
+    zero-width joiner suppresses the `cjct` feature in a later step.
+
+  - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
+    tagged for potential `half` substitutions.
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
@@ -698,9 +710,46 @@ signs, and "Reph" glyphs to the appropriate location with respect to
 the base consonant. Because multiple subsitutions may have occured
 during the application of the basic-shaping features in the preceding
 stage, these repositioning moves could not be performed during the
-initial-reordering stage. 
+initial reordering stage. 
 
+Like the initial reordering stage, the steps involved in this stage
+occur on a per-cluster basis.
 
+<!--- Check that classifications have not been mangled. If the -->
+<!--character is a Halant AND a ligature was formed AND a multiple 
+substitution was performed, restore the classification to VIRAMA
+because it was almost certainly lost in the preceding GSUB stage.
+--->
+
+1. The final reordering stage, like the initial reordering stage,
+   begins with determining the base consonant of each cluster,
+   following the same algorithm.
+   
+2. Pre-base dependent vowels (matras) that were reordered during the
+   initial reodering stage must be moved to their final position. This
+   position is defined as:
+   
+   - after the last standalone "Halant" glyph that comes after the initial <!--- -->
+   <!--current??? ---> matra position and is before the main consonant.
+   - If a zero-width joiner or zero-width non-joiner follows this last
+     standalone "Halant", the final matra position is moved to after
+     the joiner or non-joiner.
+
+3. Reph must be moved from the start of the cluster to its final
+   position. Because Bengali incorporates the
+   `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
+   position is after any subjoined (below-base consonant) forms.
+   
+4. Any pre-base reordering consonants must be moved to immediately
+   before the base consonant.
+   <!--- DOUBLE CHECK THIS!!! Line 1605 --->
+   
+5. Any left-side dependent vowels (matras) that are at the start of a
+   word must be tagged for potential substitution by the `init`
+   feature of GSUB.
+   
+6. Clusters must be merged (?) if compatibility with Microsoft
+   Uniscribe is required.
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
