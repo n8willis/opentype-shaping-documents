@@ -100,7 +100,7 @@ non-spacing; marks tagged with [Mc] are categorized as
 spacing-combining.
 
 Some codepoints in the following table use a _Shaping class_ that
-differs from the codepoint's Uniode _General Category_. The _Shaping
+differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
@@ -302,7 +302,7 @@ classified as follows:
 
 Other characters that may be encountered when shaping runs of Bengali text
 include the dotted-circle placeholder (`U+25CC`), the zero-width joiner
-(`U+200D`) and zero-width non-joiner (`U+200C`), the no-break
+(`U+200D`) and zero-width non-joiner (`U+200C`), and the no-break
 space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
@@ -314,7 +314,7 @@ situation gracefully.
 The zero-width joiner is primarily used to prevent the formation of a conjunct
 from a "_consonant_,Halant,_consonant_" sequence. The sequence
 "_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
-conjunct between the two ligatures. 
+conjunct between the two consonants. 
 
 Note, however, that the "_consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
