@@ -1,11 +1,14 @@
 # Bengali shaping in OpenType #
 
+This document details the shaping procedure needed to display text
+runs in the Bengali script.
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
   - [General information](#general-information)
-  - [Glyph classification](#glyph-classification)
   - [Terminology](#terminology)
+  - [Glyph classification](#glyph-classification)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
       - [(1) Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
       - [(2) Initial reordering](#2-initial-reordering)
@@ -35,40 +38,73 @@ should be engineered to work with the `<bng2>` shaping model. However,
 if a font is encountered that supports only `<beng>`, the shaping engine
 should deal with it gracefully.
 
+## Terminology ##
+
+OpenType shaping uses a standard set of terms for Indic scripts.  The
+terms used colloquially in any particular language may vary, however,
+potentially causing confusion.
+
+**Matra** is the standard term for a dependent vowel sign. In the Bengali
+language, dependent-vowel signs <!--- that are positioned below the base
+consonant --> may also be referred to as _kar_ forms — e.g., "i-kar" or
+"u-kar".
+
+The term "matra" is also used to refer to the headline above most
+Bengali letters. To avoid ambiguity, the term **headline** is
+used in most Unicode and OpenType shaping documents.
+
+**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
+sign. In the Bengali language, this sign is known as the _hasanta_.
+
+**Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
+indicating that the preceding vowel shold be nasalized. In the Bengali
+language, this mark is known as _candrabindu_.
+
+Where possible, using the standard terminology is preferred, as the
+use of a language-specific term necessitates choosing one language
+over all of the others that share a common script.
+
 ## Glyph classification ##
 
 Shaping Bengali text depends on the shaping engine correctly
 classifying each glyph in the run. As with most other scripts, the
 classifications must distinguish between consonants, vowels
-(independent and dependent), numerals, punctuation, and diacritic
-marks. 
+(independent and dependent), numerals, punctuation, and various types
+of diacritical mark. 
 
-For most glyphs, the classifications assigned by Unicode are correct,
-but are not sufficient to capture the expected shaping
-behavior. Therefore, Bengali glyphs must additionally be classified by
-how they are treated when shaping a run of text. 
+For most codepoints, the `General Category` property defined in the Unicode
+standard is correct, but it is not sufficient to capture the
+expected shaping behavior (such as glyph reordering). Therefore,
+Bengali glyphs must additionally be classified by how they are treated
+when shaping a run of text.
 
 Bengali glyphs should be classified as in the following
 table. Codepoints in the Bengali block with no assigned meaning are
-marked as _unassigned_ in the _Unicode class_ column. 
+marked as _unassigned_ in the _Unicode category_ column. 
 
-Assigned codepoints marked with a _null_ in the _Shaping category_
+Assigned codepoints marked with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
 this does include some valid codepoints in the Bengali block, such as
 currency marks and other symbols. 
 
 Numbers generally evoke no special behavior from the shaping engine,
-but there are still OpenType feature tags that may affect how the
+but there are OpenType feature tags that might affect how the
 respective glyphs are drawn, such as `tnum`, which specifies the usage
 of tabular widths.
 
-The _Mark-placement subcategory_ column indicates mark-placement
+The _Mark-placement subclass_ column indicates mark-placement
 positioning. Assigned codepoints marked with a
 _null_ in this column evoke no special mark-placement behavior. Marks
-tagged with [Mn] in the _Unicode class_ column are classified as
-non-spacing; marks tagged with [Mc] are classified as spacing-combining.
+tagged with [Mn] in the _Unicode category_ column are categorized as
+non-spacing; marks tagged with [Mc] are categorized as
+spacing-combining.
 
-| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                        |
+Some codepoints in the following table use a _Shaping class_ that
+differs from the codepoint's Uniode _General Category_. The _Shaping
+class_ takes precedence during OpenType shaping, as it captures more
+specific, script-aware behavior.
+
+| Codepoint | Unicode category | Shaping class  | Mark-placement subclass    | Glyph                        |
 |:----------|:--------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0980`   | Letter        | _null_            | _null_                     | &#x0980; Anji                |
 |`U+0981`   | Mark [Mn]     | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
@@ -197,7 +233,7 @@ non-spacing; marks tagged with [Mc] are classified as spacing-combining.
 |`U+09F5`   | Number        | _null_            | _null_                     | &#x09F5; Numerator Two       |
 |`U+09F6`   | Number        | _null_            | _null_                     | &#x09F6; Numerator Three     |
 |`U+09F7`   | Number        | _null_            | _null_                     | &#x09F7; Numerator Four      |
-|`U+09F8`   | Number        | _null_            | _null_                     | &#x09F8; Numerator One Less  |
+|`U+09F8`   | Number        | _null_            | _null_                     | &#x09F8; Numerator One Less Than Denominator |
 |`U+09F9`   | Number        | _null_            | _null_                     | &#x09F9; Denominator Sixteen |
 |`U+09FA`   | Symbol        | _null_            | _null_                     | &#x09FA; Isshar              |
 |`U+09FB`   | Symbol        | _null_            | _null_                     | &#x09FB; Ganda Mark          |
@@ -211,7 +247,7 @@ Sanskrit runs written in the Bengali script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows:
 
-| Codepoint | Unicode class | Shaping category  | Mark-placement subcategory | Glyph                        |
+| Codepoint | Unicode category | Shaping class  | Mark-placement subclass    | Glyph                        |
 |:----------|:--------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1CD0`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CD0; Tone Karshana       |
 |`U+1CD1`   | Mark [Mn]     | CANTILLATION      | TOP_POSITION               | &#x1CD1; Tone Shara          |
@@ -291,32 +327,6 @@ U+25CC is the dotted circle. --->
   /* 2078 */  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),  _(x,x),
   /* 2080 */  _(x,x),  _(x,x), _(SM,x), _(SM,x), _(SM,x),  _(x,x),  _(x,x),  _(x,x),
 --->
-
-## Terminology ##
-
-OpenType shaping uses a standard set of terms for Indic scripts.  The
-terms used in any particular language may vary, causing potential
-confusion.
-
-**Matra** is the standard term for a dependent vowel sign. In the Bengali
-language, dependent-vowel signs <!--- that are positioned below the base
-consonant --> may also be referred to as _kar_ forms — e.g., "i-kar" or
-"u-kar".
-
-The term "matra" is also used to refer to the headline above most
-Bengali letters. To avoid ambiguity, the term **headline** is
-used in most Unicode and OpenType shaping documents.
-
-**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
-sign. In the Bengali language, this sign is known as the _hasanta_.
-
-**Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
-indicating that the preceding vowel shold be nasalized. In the Bengali
-language, this mark is known as _candrabindu_.
-
-Where possible, using the standard terminology is preferred, as the
-use of a language-specific term necessitates choosing one language
-over all of the others that share a common script.
 
 ## The `<bng2>` shaping model ##
 
@@ -499,8 +509,7 @@ The algorithm for determining the base consonant is
 - Starting from the end of the syllable, move backwards until a consonant is found.
     * If the consonant has a below-base or post-base form or is a pre-base reordering "Ra", move to the previous consonant. If neither condition is true, stop.
     * If the consonant is the first consonant, stop.
-
-The consonant stopped at will be the base consonant.
+- The consonant stopped at will be the base consonant.
 
 2. Second, any two-part dependent vowels (matras) must be decomposed into their
 left-side and right-side components. Bengali has two
@@ -510,19 +519,31 @@ two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canoni
 >
 > "AU" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
 
+Because this decomposition is a character-level operation, the shaping
+engine may choose to perform it earlier, such as during an initial
+normalization step. However, all such decompositions must be completed
+before the shaping engine reach stage three, below.
+
 3. Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
 cluster, with `POS_PREBASE_MATRA`.
 
-4. Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s, syllable modifiers, and Vedic signs) must be reordered so that they appear in canonical order. "Nukta"s must be placed before all other marks. 
+4. Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
+syllable modifiers, and Vedic signs) must be reordered so that they
+appear in canonical order. For `<bng2>` text, this ordering means that any
+"Nukta"s must be placed before all other marks. No other marks in the
+subsequence should be reordered.
 
-5. Fifth, consonants that will take on pre-base forms must be tagged
+5. Fifth, consonants that occur before the base consonant must be tagged
 with `POS_PREBASE_CONSONANT`.
 
 6. Sixth, initial "Ra,Halant" sequences that will become rephs must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-7. Seventh, any consonants that occur after a dependent vowel (matra) sign must be tagged with
+> Note: an initial "Ra,Halant" sequence will always become a reph
+> unless the "Ra" is the only consonant in the cluster.
+
+7. Seventh, any non-base consonants that occur after a dependent vowel (matra) sign must be tagged with
 `POS_POSTBASE_CONSONANT`. Such consonants will usually be followed by a "Halant" glyph, with the 
 exception of special final-consonants. Bengali includes two such final consonants, "Khanda Ta"
 (`U+09CE`), and the sequence "Halant,Ya" (`U+09CD`,`U+09AF`), which triggers the "Yaphala" form. 
@@ -559,7 +580,8 @@ The `nukt` feature replaces "_consonant_,Nukta" sequences with a precomposed nuk
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 "Ka,Halant,Ssa" is substituted with the "KaSsa"
-ligature. "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
+ligature. "Ja,Halant,Nya" is substituted with the "JaNya"
+ligature. These sequences can occur anywhere in a cluster.
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the "Reph" glyph.
 
@@ -576,7 +598,7 @@ base consonant with "half forms" of the consonant glyphs.
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. "Vattu variants" are formed by glyphs followed by "Raphala"
+forms. "Vattu variants" are formed from glyphs followed by "Raphala"
 (the below-base form of "Ra"), so this feature must be applied after
 the `blwf` feature.
 
@@ -599,7 +621,10 @@ initial-reordering stage.
 
 ### (5) Applying all remaining substitution features from GSUB ###
 
-In this stage, the remaining substitution features from the GSUB table are applied. The order in which these features are applied is not canonical; they should be applied in the order in which they appear in the GSUB table in the font.
+In this stage, the remaining substitution features from the GSUB table
+are applied. The order in which these features are applied is not
+canonical; they should be applied in the order in which they appear in
+the GSUB table in the font. 
 
 	init
 	pres
@@ -610,15 +635,29 @@ In this stage, the remaining substitution features from the GSUB table are appli
 
 The `init` feature replaces word-initial glyphs with special presentation forms.
 
-The `pres` feature replaces pre-base-consonant glyphs with special presentations forms. This can include consonant conjuncts, half-form consonants, and stylistic variants of left-side dependent vowels (matras).
+The `pres` feature replaces pre-base-consonant glyphs with special
+presentations forms. This can include consonant conjuncts, half-form
+consonants, and stylistic variants of left-side dependent vowels
+(matras). 
 
-The `abvs` feature replaces above-base-consonant glyphs with special presentation forms. This usually includes contextual variants of above-base marks or contextualy appropriate mark-and-base ligatures. 
+The `abvs` feature replaces above-base-consonant glyphs with special
+presentation forms. This usually includes contextual variants of
+above-base marks or contextualy appropriate mark-and-base ligatures.
 
-The `blws` feature replaces below-base-consonant glyphs with special presentation forms. This usually includes replacing consonants that are followed by below-base-consonant forms like "Raphala" and "Baphalan" with contextual ligatures. 
+The `blws` feature replaces below-base-consonant glyphs with special
+presentation forms. This usually includes replacing consonants that
+are followed by below-base-consonant forms like "Raphala" and
+"Baphalan" with contextual ligatures.  
 
-The `psts` feature replaces post-base-consonant glyphs with special presenataion forms. This usually includes replacing right-side dependent vowels (matras) with stylistic variants or replacing post-base-consonant/matra pairs with contextual ligatures.
+The `psts` feature replaces post-base-consonant glyphs with special
+presenataion forms. This usually includes replacing right-side
+dependent vowels (matras) with stylistic variants or replacing
+post-base-consonant/matra pairs with contextual ligatures. 
 
-The `haln` feature replaces word-final "_consonant_,Halant" pairs with special presentation forms. This can include stylistic variants of the consonant where placing the "Halant" mark on its own is typographically problematic.
+The `haln` feature replaces word-final "_consonant_,Halant" pairs with
+special presentation forms. This can include stylistic variants of the
+consonant where placing the "Halant" mark on its own is
+typographically problematic. 
 
 
 
@@ -633,7 +672,10 @@ order in which they appear in the GPOS table in the font.
         abvm
         blwm
 
-The `dist` feature adjusts the horizontal positioning of glyphs. Unlike `kern`, adjustments made with `dist` do not require the application or user to enable the _kerning_ feature, if that feature is optional.
+The `dist` feature adjusts the horizontal positioning of
+glyphs. Unlike `kern`, adjustments made with `dist` do not require the
+application or user to enable the _kerning_ feature, if that feature
+is optional. 
 
 The `abvm` feature positions above-base marks.
 
