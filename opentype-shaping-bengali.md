@@ -300,6 +300,39 @@ classified as follows:
 |`U+1CFE`   | _unassigned_  |                   |                            |                              |
 |`U+1CFF`   | _unassigned_  |                   |                            |                              |
 
+Other characters that may be encountered when shaping runs of Bengali text
+include the dotted-circle placeholder (`U+25CC`), the zero-width joiner
+(`U+200D`) and zero-width non-joiner (`U+200C`), the no-break
+space (`U+00A0`).
+
+The dotted-circle placeholder is frequently used when displaying a
+dependent vowel (matra) or a combining mark in isolation. Real-world
+text runs may also use other characters, such as the hyphen, in a
+similar placeholder fashion; shaping engines should cope with this
+situation gracefully.
+
+The zero-width joiner is primarily used to prevent the formation of a conjunct
+from a "_consonant_,Halant,_consonant_" sequence. The sequence
+"_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
+conjunct between the two ligatures. 
+
+Note, however, that the "_consonant_,Halant" subsequence in the above
+example may still trigger a half-forms feature. To prevent the
+application of the half-forms feature in addition to preventing the
+conjunct, the zero-width non-joiner must be used instead. The sequence
+"_consonant_,Halant,ZWNJ,_consonant_" should produce the first
+consonant in its standard form, followed by an explicit "Halant".
+
+A secondary usage of the zero-width joiner is to prevent the formation of
+reph. An initial "Ra,Halant,ZWJ" sequence should not produce a reph,
+where an initial "Ra,Halant" sequence without the zero-width joiner
+otherwise would.
+
+In addition to general punctuation, runs of Bengali text often use the
+danda (`U+0964`) and double danda (`U+0965`) punctuation marks from the Devanagari
+block.
+
+
 
 <!-- 1cf5 and 1cf6 get reclassified as CONSONANT
 
@@ -356,7 +389,7 @@ Bengali's specific shaping characteristics include:
 1. `BASE_POS_LAST` = The base consonant of a syllable is the last
 consonant, not counting any special final-consonant forms.
 
-2. `REPH_POS_AFTER_SUB` = "Reph" is positioned after subjoined (i.e.,
+2. `REPH_POS_AFTER_SUBJOINED` = "Reph" is positioned after subjoined (i.e.,
    below-base) consonant forms.
 
 3. `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
@@ -365,10 +398,10 @@ consonant, not counting any special final-consonant forms.
    pre-base consonants and to post-base consonants.
 
 5. `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
-   positioned after post-base consonant forms.
+   ordered after any post-base consonant forms.
 
-6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUB` = Below-base matras are
-   positioned after subjoined (i.e., below-base) consonant forms.
+6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
+   ordered after any subjoined (i.e., below-base) consonant forms.
 
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
@@ -488,9 +521,9 @@ The final sort order of the ordering categories should be:
 
 	POS_ABOVEBASE_CONSONANT
 
-	POS_BEFORE_SUB
+	POS_BEFORE_SUBJOINED
 	POS_BELOWBASE_CONSONANT
-	POS_AFTER_SUB
+	POS_AFTER_SUBJOINED
 
 	POS_BEFORE_POST
 	POS_POSTBASE_CONSONANT
@@ -505,15 +538,20 @@ and tag it as `POS_BASE_CONSONANT`.
 
 The algorithm for determining the base consonant is
 
-- If the syllable starts with "Ra,Halant" and the cluster contains more than one consonant, exclude the starting "Ra" from the list of consonants to be considered.
+- If the syllable starts with "Ra,Halant" and the cluster contains
+  more than one consonant, exclude the starting "Ra" from the list of
+  consonants to be considered. 
 - Starting from the end of the syllable, move backwards until a consonant is found.
-    * If the consonant has a below-base or post-base form or is a pre-base reordering "Ra", move to the previous consonant. If neither condition is true, stop.
+    * If the consonant has a below-base or post-base form or is a
+      pre-base reordering "Ra", move to the previous consonant. If
+      neither condition is true, stop. 
     * If the consonant is the first consonant, stop.
 - The consonant stopped at will be the base consonant.
 
-2. Second, any two-part dependent vowels (matras) must be decomposed into their
-left-side and right-side components. Bengali has two
-two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canonical decomposition, so this step is unambiguous.
+2. Second, any two-part dependent vowels (matras) must be decomposed
+into their left-side and right-side components. Bengali has two
+two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each
+has a canonical decomposition, so this step is unambiguous. 
 
 > "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
 >
@@ -521,11 +559,11 @@ two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each has a canoni
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
-normalization step. However, all such decompositions must be completed
-before the shaping engine reach stage three, below.
+Unicode-normalization step. However, all such decompositions must be
+completed before the shaping engine reach stage three, below.
 
 3. Third, all left-side dependent-vowel (matra) signs, including those that
-resulted from the preceding decomposition step, must be tagged to be  moved to the beginning of the
+resulted from the preceding decomposition step, must be tagged to be moved to the beginning of the
 cluster, with `POS_PREBASE_MATRA`.
 
 4. Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
@@ -543,22 +581,44 @@ with `POS_PREBASE_CONSONANT`.
 > Note: an initial "Ra,Halant" sequence will always become a reph
 > unless the "Ra" is the only consonant in the cluster.
 
-7. Seventh, any non-base consonants that occur after a dependent vowel (matra) sign must be tagged with
-`POS_POSTBASE_CONSONANT`. Such consonants will usually be followed by a "Halant" glyph, with the 
-exception of special final-consonants. Bengali includes two such final consonants, "Khanda Ta"
-(`U+09CE`), and the sequence "Halant,Ya" (`U+09CD`,`U+09AF`), which triggers the "Yaphala" form. 
+7. Seventh, any non-base consonants that occur after a dependent vowel
+(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
+consonants will usually be followed by a "Halant" glyph, with the
+exception of special final-consonants. Bengali includes two such final
+consonants, "Khanda Ta" (`U+09CE`), and the sequences "Halant,Ya"
+(`U+09CD`,`U+09AF`) and "Halant,Yya" (`U+09CD`,`U+09DF`), which both
+trigger the "Yaphala" form. 
 
-8. Eighth, all miscellaneous marks must be attached to the
-preceding character, so that they move together during the sorting step.
+8. Eighth, all  marks must be tagged with the same positioning tag as the
+preceding non-mark character, so that they move together during the sorting
+step.
 
-9. Ninth, all post-base glyphs should be merged into a single substring that will sort as a single unit.
+<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
+<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
+
+<!--- HarfBuzz also tags everything between a post-base consonant or -->
+<!--matra and another post-base consonant as belonging to the latter -->
+<!--post-base consonant. --->
+
+
+<!--- 9. Ninth, all post-base glyphs should be merged into a single
+   substring that will sort as a single unit. --->
+   
+<!--- Unsure. This occurs after the stable sort. What happens is that -->
+<!--HB looks at every glyph between the base consonant and the end, -->
+<!--looking for a 'max' value, then merges everything between the base -->
+<!--and the max. --->
+
+<!--- Merging all post-base stuff into one unit is old-spec -->
+<!--behavior. --->
 
 With these steps completed, the cluster can be sorted into the final sort order.
 
 ### (3) Applying the basic substitution features from GSUB ###
 
-The basic-substitution stage applies mandatory substitution features using the rules in the font's
-GSUB table. In preparation for this stage, glyph sequences should be tagged for possible application
+The basic-substitution stage applies mandatory substitution features
+using the rules in the font's GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application 
 of GSUB features.
 
 The order in which these substitutions must be performed is fixed:
@@ -576,7 +636,8 @@ The order in which these substitutions must be performed is fixed:
 	cjct
 	cfar
 
-The `nukt` feature replaces "_consonant_,Nukta" sequences with a precomposed nukta-variant of the consonant glyph.
+The `nukt` feature replaces "_consonant_,Nukta" sequences with a
+precomposed nukta-variant of the consonant glyph. 
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 "Ka,Halant,Ssa" is substituted with the "KaSsa"
@@ -592,18 +653,40 @@ special forms. Bengali includes two below-base consonant
 forms. "Ra,Halant" in a non-cluster-initial position takes on the
 "Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
 
+Because Bengali carries the `BLWF_MODE_PRE_AND_POST` shaping
+characteristic, any pre-base consonants and any post-base consonants
+may potentially match a `blwf` substitution, therefore both cases must
+be tagged for comparison. This is not necessarily the case in other
+Indic scripts that use a different `BLWF_MODE_` shaping
+characteristic. 
+
 The `half` feature replaces "_consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs.
+base consonant with "half forms" of the consonant glyphs. 
+
+Pre-base consonants other than initial "Ra,Halant" sequences (which
+should have been tagged for the `rphf` feature earlier) must be tagged
+for comparison with `half` substitutions. 
+
+A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must match
+the `half` substitution test, even though the presence of the
+zero-width joiner suppresses the `cjct` feature in a later step.
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. "Vattu variants" are formed from glyphs followed by "Raphala"
+forms. 
+
+"Vattu variants" are formed from glyphs followed by "Raphala"
 (the below-base form of "Ra"), so this feature must be applied after
 the `blwf` feature.
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. The font's GSUB rules might be implemented so that
+conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
+
+A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
+"_consonant_,Halant,ZWNJ,_consonant_" must not form a conjunct.
+
+The font's GSUB rules might be implemented so that
 `cjct` substitutions apply to half-form consonants; therefore, this
 feature must be applied after the `half` feature.
 
