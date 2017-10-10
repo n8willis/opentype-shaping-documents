@@ -407,22 +407,22 @@ stage five, however, do not have a mandatory order.
 With regard to the common variations seen among Indic scripts, 
 Bengali's specific shaping characteristics include:
 
-1. `BASE_POS_LAST` = The base consonant of a syllable is the last
-consonant, not counting any special final-consonant forms.
+  - `BASE_POS_LAST` = The base consonant of a syllable is the last
+     consonant, not counting any special final-consonant forms.
 
-2. `REPH_POS_AFTER_SUBJOINED` = "Reph" is positioned after subjoined (i.e.,
-   below-base) consonant forms.
+  - `REPH_POS_AFTER_SUBJOINED` = "Reph" is positioned after subjoined (i.e.,
+     below-base) consonant forms.
 
-3. `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
+  - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
 
-4. `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
-   pre-base consonants and to post-base consonants.
+  - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
+     pre-base consonants and to post-base consonants.
 
-5. `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
-   ordered after any post-base consonant forms.
+  - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
+     ordered after any post-base consonant forms.
 
-6. `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
-   ordered after any subjoined (i.e., below-base) consonant forms.
+  - `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
+     ordered after any subjoined (i.e., below-base) consonant forms.
 
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
