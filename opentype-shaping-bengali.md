@@ -711,6 +711,8 @@ the `rphf` substitution.
 
 #### 3.5 pref ####
 
+> This feature is not used in Bengali.
+
 <!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
 <!--any special forms. --->
 
