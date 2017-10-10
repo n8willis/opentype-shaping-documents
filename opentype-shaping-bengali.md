@@ -667,20 +667,21 @@ using the rules in the font's GSUB table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
 of GSUB features.
 
-The order in which these substitutions must be performed is fixed:
+The order in which these substitutions must be performed is fixed for
+all Indic scripts:
 
 	nukt
 	akhn
 	rphf 
-<!--- rkrf not used in Bengali ---> 
-	<!--- pref not used in Bengali --->
+	rkrf (not used in Bengali)
+	pref (not used in Bengali)
 	blwf 
-<!--- abvf not used in Bengali--->
+	abvf (not used in Bengali)
 	half
 	pstf
 	vatu
 	cjct
-<!--- cfar not used in Bengali--->
+	cfar (not used in Bengali)
 
 #### 3.1: nukt ####
 
@@ -704,10 +705,16 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
 the `rphf` substitution.
 
-<!--- 3.4: The `pref` feature replaces pre-base-consonant glyphs with -->
+#### 3.4: rkrf ####
+
+> This feature is not used in Bengali.
+
+#### 3.5 pref ####
+
+<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
 <!--any special forms. --->
 
-#### 3.4: blwf ####
+#### 3.6: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
@@ -721,7 +728,11 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
-#### 3.5: half ####
+#### 3.7: abvf ####
+
+> This feature is not used in Bengali.
+
+#### 3.8: half ####
 
 The `half` feature replaces "_consonant_,Halant" sequences before the
 base consonant with "half forms" of the consonant glyphs. There are
@@ -739,11 +750,11 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
-#### 3.6: pstf ####
+#### 3.9: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-#### 3.7: vatu ####
+#### 3.10: vatu ####
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
@@ -752,7 +763,7 @@ forms.
 (the below-base form of "Ra"), so this feature must be applied after
 the `blwf` feature.
 
-#### 3.8: cjct ####
+#### 3.11: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
 conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
@@ -763,6 +774,10 @@ A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+#### 3.12: cfar ####
+
+> This feature is not used in Bengali.
 
 
 ### 4: Final reordering ###
