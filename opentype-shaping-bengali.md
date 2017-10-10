@@ -559,7 +559,9 @@ The final sort order of the ordering categories should be:
 	POS_SMVD
 
 
-2.1: The first step is to determine the base consonant of the cluster
+#### 2.1: Base consonant ####
+
+The first step is to determine the base consonant of the cluster
 and tag it as `POS_BASE_CONSONANT`.
 
 The algorithm for determining the base consonant is
@@ -575,7 +577,9 @@ The algorithm for determining the base consonant is
   - The consonant stopped at will be the base consonant.
 
 
-2.2: Second, any two-part dependent vowels (matras) must be decomposed
+#### 2.2: Matra decomposition ####
+
+Second, any two-part dependent vowels (matras) must be decomposed
 into their left-side and right-side components. Bengali has two
 two-part dependent vowels, "O" (`U+09BC`) and "AU" (`U+09CC`). Each
 has a canonical decomposition, so this step is unambiguous. 
@@ -589,26 +593,36 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization step. However, all such decompositions must be
 completed before the shaping engine reach stage three, below.
 
-2.3: Third, all left-side dependent-vowel (matra) signs, including those that
+#### 2.3: Left matras ####
+
+Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be moved to the beginning of the
 cluster, with `POS_PREBASE_MATRA`.
 
-2.4: Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
+#### 2.4: Adjacent marks ####
+
+Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
 syllable modifiers, and Vedic signs) must be reordered so that they
 appear in canonical order. For `<bng2>` text, this ordering means that any
 "Nukta"s must be placed before all other marks. No other marks in the
 subsequence should be reordered.
 
-2.5: Fifth, consonants that occur before the base consonant must be tagged
+#### 2.5: Pre-base consonants ####
+
+Fifth, consonants that occur before the base consonant must be tagged
 with `POS_PREBASE_CONSONANT`.
 
-2.6: Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
+#### 2.6: Reph ####
+
+Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
 > Note: an initial "Ra,Halant" sequence will always become a "Reph"
 > unless the "Ra" is the only consonant in the cluster.
 
-2.7: Seventh, any non-base consonants that occur after a dependent vowel
+#### 2.7: Post-base consonants ####
+
+Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
 consonants will usually be followed by a "Halant" glyph, with the
 exception of two special-case consonants. 
@@ -619,7 +633,9 @@ exception of two special-case consonants.
   (`U+09CD`,`U+09DF`) both trigger the "Yaphala" form. "Yaphala"
   acts as a modifier to the pronunciation of the preceding vowel.
 
-2.8: Eighth, all marks must be tagged with the same positioning tag as the
+#### 2.8: Mark tagging ####
+
+Eighth, all marks must be tagged with the same positioning tag as the
 closest preceding non-mark character, so that they move together during the sorting
 step.
 
