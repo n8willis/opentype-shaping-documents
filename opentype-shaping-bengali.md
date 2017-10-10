@@ -932,3 +932,4 @@ Similarly, in `<beng>` text, a pre-base half-form or
 consonant-conjunct substitution was triggered by
 "Halant,_consonant_,_consonant_". In `<bng2>` text, the sequence must
 be "_consonant_,Halant,_consonant_".
+
