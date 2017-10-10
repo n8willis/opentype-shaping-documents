@@ -10,7 +10,7 @@ runs in the Bengali script.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
-      - [1: Identifying syllables and other clusters](#1-identifying-syllables-and-other-clusters)
+      - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
       - [4: Final reordering](#4-final-reordering)
@@ -26,7 +26,7 @@ runs in the Bengali script.
 The Bengali or Bangla script belongs to the Indic family, and follows
 the same general patterns as the other Indic scripts. More
 specifically, it belongs to the North Indic subgroup, in which
-clusters of consonants are often represented as conjuncts.
+sequences of adjacent consonants are often represented as conjuncts.
 
 The Bengali script is used to write multiple languages, most commonly
 Bengali, Assamese, and Manipuri. In addition, Sanskrit may be written
@@ -386,7 +386,7 @@ U+25CC is the dotted circle. --->
 
 Processing a run of `<bng2>` text involves six top-level stages:
 
-1. Identifying syllables and other clusters
+1. Identifying syllables and other sequences
 2. Initial reordering
 3. Applying the basic substitution features from GSUB
 4. Final reordering
@@ -428,9 +428,9 @@ These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
 should be encoded within a run of text.
 
-### 1: Identifying syllables and other clusters ###
+### 1: Identifying syllables and other sequences ###
 
-A syllable cluster in Bengali consists of a valid orthographic cluster
+A syllable in Bengali consists of a valid orthographic sequence
 that MAY be followed by a "tail" of modifier signs.
 
 > Note: The Bengali Unicode block enumerates five modifier signs,
@@ -450,15 +450,15 @@ by the "Halant" mark, which indicates that they carry no vowel.
 
 > Note: The consonant "Ra" receives special treatment; in many
 > circumstances it is replaced with a combining mark-like form. 
-> A "Ra,Halant" sequence at the beginning of a cluster is
+> A "Ra,Halant" sequence at the beginning of a syllable is
 > replaced with an above-base mark called "Reph" (unless the "Ra"
-> is the only consonant in the cluster). 
+> is the only consonant in the syllable). 
 >
 > This requirement is synonymous with the `REPH_MODE_IMPLICIT`
 > characteristic mentioned earlier.
 >
-> "Ra,Halant" sequences that occur elsewhere in the cluster may take on the
-> below-base form "Raphala." "Reph" and "Raphala" sequences must be
+> "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
+> below-base form "Raphala." "Reph" and "Raphala" syllables must be
 > reordered after the syllable-identification stage is complete.
 >
 > `<bng2>` text contains two Unicode codepoints for "Ra." `U+09B0` and `U+09F0`.
@@ -467,14 +467,14 @@ by the "Halant" mark, which indicates that they carry no vowel.
 > Assamese-language text.
 >
 
-In addition, stand-alone clusters may occur, such as when an isolated
+In addition, stand-alone sequences may occur, such as when an isolated
 codepoint is shown in example text.
 
-Clusters should be identified by examining the run and matching
+Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
 
 The following general-purpose Indic-shaping regular expressions can be
-used to match Bengali clusters.
+used to match Bengali syllables.
 
 > Note: Bengali does not include the Anudatta (`U+0952`). It is
 > included in the following expressions in order to correctly match other Indic scripts.
@@ -501,18 +501,18 @@ A vowel-based syllable will match the expression:
 [Ra+H]+V+[N]+[<[<ZWJ|ZWNJ>]+H+C|ZWJ+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
 
-A stand-alone cluster (which can only occur at the start of a word) will match the expression:
+A stand-alone sequence (which can only occur at the start of a word) will match the expression:
 ```
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
 
-A cluster that does not match any of these expressions should be
+A sequence that does not match any of these expressions should be
 regarded as broken. The shaping engine may make a best-effort attempt
-to shape the broken cluster, but making guarantees about the correctness or
+to shape the broken sequence, but making guarantees about the correctness or
 appearance of the final result is out of scope for this document.
 
-After the clusters have been identified, each of the subsequent 
-shaping stages occurs on a per-cluster basis.
+After the syllables have been identified, each of the subsequent 
+shaping stages occurs on a per-syllable basis.
 
 ### 2: Initial reordering ###
 
@@ -529,9 +529,9 @@ orthographic order in which they are presented visually.
 > may make additional moves, depending on the text and on the features
 > implemented in the active font.
 
-The cluster should be processed by tagging each glyph with its
+The syllable should be processed by tagging each glyph with its
 intended position based on its ordering category. After all glyphs
-have been tagged, the entire cluster should be sorted in stable order,
+have been tagged, the entire syllable should be sorted in stable order,
 so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
@@ -561,12 +561,12 @@ The final sort order of the ordering categories should be:
 
 #### 2.1: Base consonant ####
 
-The first step is to determine the base consonant of the cluster
+The first step is to determine the base consonant of the syllable
 and tag it as `POS_BASE_CONSONANT`.
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the cluster contains
+  - If the syllable starts with "Ra,Halant" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
@@ -597,7 +597,7 @@ completed before the shaping engine reach stage three, below.
 
 Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be moved to the beginning of the
-cluster, with `POS_PREBASE_MATRA`.
+syllable, with `POS_PREBASE_MATRA`.
 
 #### 2.4: Adjacent marks ####
 
@@ -618,7 +618,7 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 `POS_RA_TO_BECOME_REPH`.
 
 > Note: an initial "Ra,Halant" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the cluster.
+> unless the "Ra" is the only consonant in the syllable.
 
 #### 2.7: Post-base consonants ####
 
@@ -658,7 +658,7 @@ step.
 <!--- Merging all post-base stuff into one unit is old-spec -->
 <!--behavior. --->
 
-With these steps completed, the cluster can be sorted into the final sort order.
+With these steps completed, the syllable can be sorted into the final sort order.
 
 ### 3: Applying the basic substitution features from GSUB ###
 
@@ -695,7 +695,7 @@ The `akhn` feature replaces two specific sequences with required ligatures.
   - "Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. 
   - "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
   
-These sequences can occur anywhere in a cluster.
+These sequences can occur anywhere in a syllable.
 
 #### 3.3: rphf ####
 
@@ -720,7 +720,7 @@ the `rphf` substitution.
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
-forms. "Ra,Halant" in a non-cluster-initial position takes on the
+forms. "Ra,Halant" in a non-syllable-initial position takes on the
 "Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
 
 Because Bengali incorporates the `BLWF_MODE_PRE_AND_POST` shaping
@@ -792,7 +792,7 @@ stage, these repositioning moves could not be performed during the
 initial reordering stage. 
 
 Like the initial reordering stage, the steps involved in this stage
-occur on a per-cluster basis.
+occur on a per-syllable basis.
 
 <!--- Check that classifications have not been mangled. If the -->
 <!--character is a Halant AND a ligature was formed AND a multiple 
@@ -803,7 +803,7 @@ because it was almost certainly lost in the preceding GSUB stage.
 #### 4.1: Base consonant ####
 
 The final reordering stage, like the initial reordering stage,
-   begins with determining the base consonant of each cluster,
+   begins with determining the base consonant of each syllable,
    following the same algorithm.
    
 #### 4.2: Pre-base matras ####
@@ -820,11 +820,11 @@ Pre-base dependent vowels (matras) that were reordered during the
 
 #### 4.3: Reph ####
 
-"Reph" must be moved from the start of the cluster to its final
+"Reph" must be moved from the start of the syllable to its final
    position. Because Bengali incorporates the
    `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
    position is immediately after any subjoined (below-base consonant)
-   forms. <!---Step 4, line 1507 --->
+   forms. <!--- Step 4, line 1507 --->
    
 #### 4.4: Pre-base consonants ####
 
@@ -927,7 +927,7 @@ text, as described above in this document, the correct sequence is
 "_consonant_,Halant".
 
 Consequently, in `<beng>` text, a "Reph" substitution was triggered by a
-cluster-initial "Halant,Ra" sequence. In `<bng2>` text, the sequence
+syllable-initial "Halant,Ra" sequence. In `<bng2>` text, the sequence
 must be "Ra,Halant". 
 
 Similarly, in `<beng>` text, a pre-base half-form or
