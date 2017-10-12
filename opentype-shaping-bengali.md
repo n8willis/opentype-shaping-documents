@@ -410,7 +410,7 @@ Bengali's specific shaping characteristics include:
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_AFTER_SUBJOINED` = "Reph" is positioned after subjoined (i.e.,
+  - `REPH_POS_AFTER_SUBJOINED` = "Reph" is ordered after all subjoined (i.e.,
      below-base) consonant forms.
 
   - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
@@ -419,10 +419,10 @@ Bengali's specific shaping characteristics include:
      pre-base consonants and to post-base consonants.
 
   - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
-     ordered after any post-base consonant forms.
+     ordered after all post-base consonant forms.
 
   - `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
-     ordered after any subjoined (i.e., below-base) consonant forms.
+     ordered after all subjoined (i.e., below-base) consonant forms.
 
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
@@ -596,8 +596,8 @@ completed before the shaping engine reach stage three, below.
 #### 2.3: Left matras ####
 
 Third, all left-side dependent-vowel (matra) signs, including those that
-resulted from the preceding decomposition step, must be tagged to be moved to the beginning of the
-syllable, with `POS_PREBASE_MATRA`.
+resulted from the preceding decomposition step, must be tagged to be
+moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
 #### 2.4: Adjacent marks ####
 
@@ -627,17 +627,21 @@ Seventh, any non-base consonants that occur after a dependent vowel
 consonants will usually be followed by a "Halant" glyph, with the
 exception of two special-case consonants. 
 
-  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta", meaning that it
-  carries no inherent vowel, therefore no "Halant" follows it. 
+  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
+    meaning that it carries no inherent vowel, therefore no "Halant"
+    follows it.
   - The sequences "Halant,Ya" (`U+09CD`,`U+09AF`) and "Halant,Yya"
-  (`U+09CD`,`U+09DF`) both trigger the "Yaphala" form. "Yaphala"
-  acts as a modifier to the pronunciation of the preceding vowel.
+    (`U+09CD`,`U+09DF`) both trigger the "Yaphala" form. "Yaphala"
+    behaves like a modifier to the pronunciation of the preceding
+    vowel, despite the fact that it is formed from a
+    consonant. Because the "Halant" precedes the consonant when
+    forming the "Yaphala", no "Halant" follows it.
 
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
-closest preceding non-mark character, so that they move together during the sorting
-step.
+closest preceding non-mark character, so that they move together
+during the sorting step.
 
 <!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
 <!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
@@ -802,46 +806,63 @@ because it was almost certainly lost in the preceding GSUB stage.
 
 #### 4.1: Base consonant ####
 
-The final reordering stage, like the initial reordering stage,
-   begins with determining the base consonant of each syllable,
-   following the same algorithm.
+The final reordering stage, like the initial reordering stage, begins
+with determining the base consonant of each syllable, following the
+same algorithm. 
    
 #### 4.2: Pre-base matras ####
 
 Pre-base dependent vowels (matras) that were reordered during the
-   initial reordering stage must be moved to their final position. This
-   position is defined as:
+initial reordering stage must be moved to their final position. This
+position is defined as:
    
-   - after the last standalone "Halant" glyph that comes after the initial <!--- -->
-   <!--current??? ---> matra position and is before the main consonant.
+   - after the last standalone "Halant" glyph that comes after the 
+     matra's starting position and also comes before the main consonant.
    - If a zero-width joiner or a zero-width non-joiner follows this last
      standalone "Halant", the final matra position is moved to after
      the joiner or non-joiner.
 
+This means that the matra will move to the right of all explicit-"consonant,Halant" subsequences,
+but will stop to the left of the base consonant, all conjuncts or
+ligatures that contains the base consonant, and all half forms.
+
 #### 4.3: Reph ####
 
-"Reph" must be moved from the start of the syllable to its final
-   position. Because Bengali incorporates the
-   `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
-   position is immediately after any subjoined (below-base consonant)
-   forms. <!--- Step 4, line 1507 --->
-   
+"Reph" must be moved from the beginning of the syllable to its final
+position. Because Bengali incorporates the
+`REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
+position is immediately after the base consonant and any subjoined
+(below-base consonant) forms. 
+
+If the syllable does not have a base consonant (such as a syllable
+based on an independent vowel), then the final "Reph" position is
+immediately before the first character tagged with the
+`POS_BEFORE_POST` position or any later position in the sort order.
+
+If there are no characters tagged with `POS_BEFORE_POST` or later
+positions, then "Reph" is positioned at the end of the syllable.
+
+Finally, if the final position of "Reph" occurs after a "_matra_,Halant"
+subsequence, then "Reph" must be repositioned to the left of "Halant",
+to allow for potential matching with `abvs` or `psts` substitutions
+from GSUB.
+
 #### 4.4: Pre-base consonants ####
 
 Any pre-base reordering consonants must be moved to immediately
-   before the base consonant.
+before the base consonant.
    <!--- DOUBLE CHECK THIS!!! Line 1605 --->
    
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
-   word must be tagged for potential substitution by the `init`
-   feature of GSUB.
+word must be tagged for potential substitution by the `init`
+feature of GSUB.
    
 #### 4.6: Cluster merging ####
 
 Clusters must be merged (?) if compatibility with Microsoft
-   Uniscribe is required.
+Uniscribe is required.
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
