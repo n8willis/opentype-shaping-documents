@@ -9,6 +9,9 @@ runs in the Bengali script.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
+      - [Bengali character table](#bengali-character-table)
+      - [Vedic Extensions character table](#vedic-extensions-character-table)
+      - [Miscellaneous character table](#miscellaneous-character-table)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
@@ -17,6 +20,9 @@ runs in the Bengali script.
       - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
       - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
   - [The `<beng>` shaping model](#the-beng-shaping-model)
+      - [Distinctions from `<bng2>`](#distinctions-from-bng2)
+      - [Advice for handling fonts with `<beng>` features only](#advice-for-handling-fonts-with-beng-features-only)
+      - [Advice for handling text runs composed in `<beng>` format](#advice-for-handling-text-runs-composed-in-beng-format)
 
 <!-- markdown-toc end -->
 
@@ -55,11 +61,13 @@ Bengali letters. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
-sign. In the Bengali language, this sign is known as the _hasanta_.
+sign. Unicode documents use the term "virama" most frequently, while
+OpenType documents use the term "halant" most frequently. In the Bengali
+language, this sign is known as the _hasanta_.
 
 **Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
 indicating that the preceding vowel should be nasalized. In the Bengali
-language, this mark is known as _candrabindu_.
+language, this mark is known as the _candrabindu_.
 
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
@@ -74,10 +82,13 @@ classifications must distinguish between consonants, vowels
 of diacritical mark. 
 
 For most codepoints, the `General Category` property defined in the Unicode
-standard is correct, but it is not sufficient to capture the
+standard is correct, but it is not sufficient to fully capture the
 expected shaping behavior (such as glyph reordering). Therefore,
 Bengali glyphs must additionally be classified by how they are treated
 when shaping a run of text.
+
+
+### Bengali character table ###
 
 Bengali glyphs should be classified as in the following
 table. Codepoints in the Bengali block with no assigned meaning are
@@ -104,6 +115,7 @@ Some codepoints in the following table use a _Shaping class_ that
 differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
+
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -244,6 +256,8 @@ specific, script-aware behavior.
 |`U+09FF`   | _unassigned_     |                   |                            |                              |
  
 
+### Vedic Extenstions character table ###
+
 Sanskrit runs written in the Bengali script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows:
@@ -301,14 +315,18 @@ classified as follows:
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
 
-Other characters that may be encountered when shaping runs of Bengali text
-include the dotted-circle placeholder (`U+25CC`), the zero-width joiner
-(`U+200D`) and zero-width non-joiner (`U+200C`), and the no-break
-space (`U+00A0`).
+
+
+### Miscellaneous character table ###
+
+Other important characters that may be encountered when shaping runs
+of Bengali text include the dotted-circle placeholder (`U+25CC`), the
+zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
+the no-break space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
 dependent vowel (matra) or a combining mark in isolation. Real-world
-text runs may also use other characters, such as hyphens or dashes,
+text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
@@ -972,3 +990,16 @@ consonant-conjunct substitution was triggered by
 "Halant,_consonant_,_consonant_". In `<bng2>` text, the sequence must
 be "_consonant_,Halant,_consonant_".
 
+### Advice for handling fonts with `<beng>` features only ###
+
+Shaping engines may choose to match "Halant,_consonant_" sequences in
+order to apply GSUB substitutions when it is known that the font in
+use supports only the `<beng>` shaping model.
+
+### Advice for handling text runs composed in `<beng>` format ###
+
+Shaping engines may choose to match "Halant,_consonant_" sequences for
+GSUB substitutions or to reorder them to "_consonant_,Halant" when
+processing text runs that are tagged with the `<beng>` script tag and
+it is known that the font in use supports only the `<bng2>` shaping
+model.
