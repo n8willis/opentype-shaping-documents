@@ -699,15 +699,19 @@ The `akhn` feature replaces two specific sequences with required ligatures.
   - "Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. 
   - "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
   
-These sequences can occur anywhere in a syllable.
+These sequences can occur anywhere in a syllable. The "KaSsa" and
+"JaNya" characters have linguistic status equivalent to base
+consonants in some languages, and fonts may have `cjct` substitution
+rules designed to match them in subsequences. Therefore, this
+feature must be applied before all other many-to-one substitutions.
 
 #### 3.3: rphf ####
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
 "Reph" glyph.
 
-An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
-the `rphf` substitution.
+  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
+    the `rphf` substitution.
 
 #### 3.4: rkrf ####
 
@@ -724,8 +728,11 @@ the `rphf` substitution.
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
-forms. "Ra,Halant" in a non-syllable-initial position takes on the
-"Raphala" form; "Ba,Halant" takes on the "Baphala" form. 
+forms:
+
+  - "Ra,Halant" in a non-syllable-initial position takes on the
+    "Raphala" form.
+  - "Ba,Halant" takes on the "Baphala" form. 
 
 Because Bengali incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -766,7 +773,7 @@ The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
 
 "Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"), so this feature must be applied after
+(the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
 #### 3.11: cjct ####
@@ -832,15 +839,15 @@ ligatures that contains the base consonant, and all half forms.
 position. Because Bengali incorporates the
 `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
 position is immediately after the base consonant and any subjoined
-(below-base consonant) forms. 
+(below-base consonant or below-base dependent vowel) forms. 
 
-If the syllable does not have a base consonant (such as a syllable
-based on an independent vowel), then the final "Reph" position is
-immediately before the first character tagged with the
-`POS_BEFORE_POST` position or any later position in the sort order.
+  - If the syllable does not have a base consonant (such as a syllable
+    based on an independent vowel), then the final "Reph" position is
+    immediately before the first character tagged with the
+   `POS_BEFORE_POST` position or any later position in the sort order.
 
-If there are no characters tagged with `POS_BEFORE_POST` or later
-positions, then "Reph" is positioned at the end of the syllable.
+    -- If there are no characters tagged with `POS_BEFORE_POST` or later
+       positions, then "Reph" is positioned at the end of the syllable.
 
 Finally, if the final position of "Reph" occurs after a "_matra_,Halant"
 subsequence, then "Reph" must be repositioned to the left of "Halant",
@@ -859,10 +866,12 @@ Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init`
 feature of GSUB.
    
-#### 4.6: Cluster merging ####
+<!--- #### 4.6: Cluster merging ####
 
 Clusters must be merged (?) if compatibility with Microsoft
 Uniscribe is required.
+
+--->
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
@@ -880,7 +889,7 @@ the GSUB table in the font.
 
 The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
-headline stub from the left side of the glyph.
+headline instroke from the left side of the glyph.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
@@ -921,12 +930,17 @@ order in which they appear in the GPOS table in the font.
 
 The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
-application or user to enable the _kerning_ feature, if that feature
-is optional. 
+application or the user to enable any software _kerning_ features, if
+such features are optional. 
 
-The `abvm` feature positions above-base marks.
+The `abvm` feature positions above-base marks for attachment to base
+characters. In Bengali, this includes "Reph" in addition to the
+diacritical marks and Vedic signs. 
 
-The `blwm` feature positions below-base marks.
+The `blwm` feature positions below-base marks for attachment to base
+characters. In Bengali, this includes below-base dependent vowels
+(matras) as well as the below-base consonant forms "Raphala" and
+"Baphala".
 
 
 ## The `<beng>` shaping model ##
@@ -936,7 +950,9 @@ shaping engines may still encounter fonts that were built to work with
 `<beng>` and some users may still have documents that were written to
 take advantage of `<beng>` shaping.
 
-The most noticeable distinction between the shaping models is that the
+### Distinctions from `<bng2>` ###
+
+The most significant distinction between the shaping models is that the
 sequence of "Halant" and consonant glyphs required to suppress the
 inherent vowel (and, for the shaping engine's purposes, to trigger shaping
 features) was swapped when migrating from `<beng>` to
