@@ -449,7 +449,7 @@ should be encoded within a run of text.
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in Bengali consists of a valid orthographic sequence
-that MAY be followed by a "tail" of modifier signs.
+that may be followed by a "tail" of modifier signs.
 
 > Note: The Bengali Unicode block enumerates five modifier signs,
 > "Candrabindu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
@@ -457,36 +457,42 @@ that MAY be followed by a "tail" of modifier signs.
 > (`U+09FC`). In addition, Sanskrit text written in Bengali may
 > include additional signs from Vedic Extensions block.
 
-Each syllable contains exactly one vowel. The consonant (if any
-exists) that carries the vowel is the "base" consonant of the
-syllable.
-
 Valid syllables may begin with either a consonant or an independent
-vowel.  Zero or more additional consonants may be present in the
-syllable; in a valid syllable these other consonants will be followed
-by the "Halant" mark, which indicates that they carry no vowel. 
+vowel.
 
-> Note: The consonant "Ra" receives special treatment; in many
-> circumstances it is replaced with a combining mark-like form. 
-> A "Ra,Halant" sequence at the beginning of a syllable is
-> replaced with an above-base mark called "Reph" (unless the "Ra"
-> is the only consonant in the syllable). 
+Each syllable contains exactly one vowel. A consonant that is not
+accompanied by a dependent vowel (matra) sign carries the script's
+inherent vowel. The inherent vowel is suppressed when the consonant is
+accompanied by the "Halant" mark. 
+
+The consonant (if any exists) that carries the vowel is the "base"
+consonant of the syllable. Zero or more additional consonants may be
+present in the syllable; in a valid syllable these other consonants
+will be followed by the "Halant" mark, which indicates that they carry
+no vowel.
+
+As with other Indic scripts, the consonant "Ra" receives special
+treatment; in many circumstances it is replaced with a combining
+mark-like form. A "Ra,Halant" sequence at the beginning of a syllable
+is replaced with an above-base mark called "Reph" (unless the "Ra"
+is the only consonant in the syllable). 
+
+This requirement is synonymous with the `REPH_MODE_IMPLICIT`
+characteristic mentioned earlier.
+
+"Ra,Halant" sequences that occur elsewhere in the syllable may take on the
+below-base form "Raphala." "Reph" and "Raphala" syllables must be
+reordered after the syllable-identification stage is complete.
+
+> Note: `<bng2>` text contains two Unicode codepoints for "Ra."
+> `U+09B0` and `U+09F0`. 
 >
-> This requirement is synonymous with the `REPH_MODE_IMPLICIT`
-> characteristic mentioned earlier.
->
-> "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
-> below-base form "Raphala." "Reph" and "Raphala" syllables must be
-> reordered after the syllable-identification stage is complete.
->
-> `<bng2>` text contains two Unicode codepoints for "Ra." `U+09B0` and `U+09F0`.
->
-> `U+09B0` is used in Bengali-language, Manipuri-language, and Sanskrit text. `U+09F0` is used in
-> Assamese-language text.
+> `U+09B0` is used in Bengali-language, Manipuri-language, and
+> Sanskrit text. `U+09F0` is used in Assamese-language text.
 >
 
-In addition, stand-alone sequences may occur, such as when an isolated
-codepoint is shown in example text.
+In addition to valid syllables, stand-alone sequences may occur, such
+as when an isolated codepoint is shown in example text.
 
 Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
@@ -576,6 +582,9 @@ The final sort order of the ordering categories should be:
 	POS_FINAL_CONSONANT
 	POS_SMVD
 
+The above sort order is the same for all Indic scripts and,
+consequently, includes some ordering categories not utilized in
+Bengali.
 
 #### 2.1: Base consonant ####
 
