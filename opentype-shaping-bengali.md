@@ -608,8 +608,8 @@ has a canonical decomposition, so this step is unambiguous.
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
-Unicode-normalization step. However, all such decompositions must be
-completed before the shaping engine reach stage three, below.
+Unicode-normalization stage. However, all such decompositions must be
+completed before the shaping engine begins step three, below.
 
 #### 2.3: Left matras ####
 
@@ -648,12 +648,12 @@ exception of two special-case consonants.
   - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
     meaning that it carries no inherent vowel, therefore no "Halant"
     follows it.
-  - The sequences "Halant,Ya" (`U+09CD`,`U+09AF`) and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both trigger the "Yaphala" form. "Yaphala"
-    behaves like a modifier to the pronunciation of the preceding
-    vowel, despite the fact that it is formed from a
-    consonant. Because the "Halant" precedes the consonant when
-    forming the "Yaphala", no "Halant" follows it.
+  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`) <!--- and "Halant,Yya"
+    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... ---> triggers
+    the "Yaphala" form. "Yaphala" behaves like a modifier to the
+    pronunciation of the preceding vowel, despite the fact that it is
+    formed from a consonant. Because the "Halant" precedes the
+    consonant when forming the "Yaphala", no "Halant" follows it.
 
 #### 2.8: Mark tagging ####
 
@@ -692,6 +692,7 @@ of GSUB features.
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
 
+	locl
 	nukt
 	akhn
 	rphf 
@@ -705,12 +706,24 @@ all Indic scripts:
 	cjct
 	cfar (not used in Bengali)
 
-#### 3.1: nukt ####
+#### 3.1 locl ####
+
+The `locl` feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.
+
+> Note: Strictly speaking, the use of localized-form substitutions is
+> not part of the shaping process, but of the localization process,
+> and could take place at an earlier point while handling the text
+> run. However, shaping engines are expected to complete the
+> application of the `locl` feature before applying the subsequent
+> GSUB substitutions in the following steps.
+
+#### 3.2: nukt ####
 
 The `nukt` feature replaces "_consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
-#### 3.2: akhn ####
+#### 3.3: akhn ####
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 
@@ -718,12 +731,12 @@ The `akhn` feature replaces two specific sequences with required ligatures.
   - "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
   
 These sequences can occur anywhere in a syllable. The "KaSsa" and
-"JaNya" characters have linguistic status equivalent to base
+"JaNya" characters have orthographic status equivalent to full
 consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-#### 3.3: rphf ####
+#### 3.4: rphf ####
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
 "Reph" glyph.
@@ -731,18 +744,18 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 
-#### 3.4: rkrf ####
+#### 3.5: rkrf ####
 
 > This feature is not used in Bengali.
 
-#### 3.5 pref ####
+#### 3.6 pref ####
 
 > This feature is not used in Bengali.
 
 <!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
 <!--any special forms. --->
 
-#### 3.6: blwf ####
+#### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
@@ -759,11 +772,11 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
-#### 3.7: abvf ####
+#### 3.8: abvf ####
 
 > This feature is not used in Bengali.
 
-#### 3.8: half ####
+#### 3.9: half ####
 
 The `half` feature replaces "_consonant_,Halant" sequences before the
 base consonant with "half forms" of the consonant glyphs. There are
@@ -781,11 +794,11 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
-#### 3.9: pstf ####
+#### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-#### 3.10: vatu ####
+#### 3.11: vatu ####
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
@@ -794,7 +807,7 @@ forms.
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
-#### 3.11: cjct ####
+#### 3.12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
 conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
@@ -806,7 +819,7 @@ The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
-#### 3.12: cfar ####
+#### 3.13: cfar ####
 
 > This feature is not used in Bengali.
 
@@ -833,7 +846,7 @@ because it was almost certainly lost in the preceding GSUB stage.
 
 The final reordering stage, like the initial reordering stage, begins
 with determining the base consonant of each syllable, following the
-same algorithm. 
+same algorithm used in stage 2, step 1.
    
 #### 4.2: Pre-base matras ####
 
@@ -847,9 +860,10 @@ position is defined as:
      standalone "Halant", the final matra position is moved to after
      the joiner or non-joiner.
 
-This means that the matra will move to the right of all explicit-"consonant,Halant" subsequences,
-but will stop to the left of the base consonant, all conjuncts or
-ligatures that contains the base consonant, and all half forms.
+This means that the matra will move to the right of all explicit
+"consonant,Halant" subsequences, but will stop to the left of the base
+consonant, all conjuncts or ligatures that contains the base
+consonant, and all half forms. 
 
 #### 4.3: Reph ####
 
@@ -872,13 +886,17 @@ subsequence, then "Reph" must be repositioned to the left of "Halant",
 to allow for potential matching with `abvs` or `psts` substitutions
 from GSUB.
 
-#### 4.4: Pre-base consonants ####
+<!--- #### 4.4: Pre-base consonants ####
 
 Any pre-base reordering consonants must be moved to immediately
 before the base consonant.
-   <!--- DOUBLE CHECK THIS!!! Line 1605 --->
-   
-#### 4.5: Initial matras ####
+  
+  *** Bengali does not use pre-base reordering consonants *** 
+  *** This feature is exhibited by Javanese and Balinese. Possibly 
+  *** by Devanagari as well....
+--->
+
+#### 4.4: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init`
@@ -933,7 +951,10 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
 
-
+> Note: The `calt` feature, which allows for generalized application
+> of contextual alternate substitutions, is usually applied at this
+> point. However, `calt` is not mandatory for correct Bengali shaping
+> and may be disabled in the application by user preference.
 
 ### 6: Applying remaining positioning features from GPOS ###
 
@@ -945,6 +966,10 @@ order in which they appear in the GPOS table in the font.
         dist
         abvm
         blwm
+
+> Note: The `kern` feature is usually applied at this stage, if it is
+> present in the font. However, `kern` (like `calt`, above) is not
+> mandatory for shaping Bengali text and may be disabled by user preference.
 
 The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
