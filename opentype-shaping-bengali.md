@@ -738,6 +738,9 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+
+![Nukta composition](/images/bengali/nukta-composition.png)
+
 #### 3.3: akhn ####
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
@@ -751,6 +754,10 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+![KaSaa ligation](/images/bengali/kassa-ligation.png)
+
+![JaNya ligation](/images/bengali/janya-ligation.png)
+
 #### 3.4: rphf ####
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
@@ -758,6 +765,9 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
+	
+
+![Reph composition](/images/bengali/reph-composition.png)
 
 #### 3.5: rkrf ####
 
@@ -787,6 +797,11 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
+
+![Raphala composition](/images/bengali/raphala-composition.png)
+
+![Baphala composition](/images/bengali/baphala-composition.png)
+
 #### 3.8: abvf ####
 
 > This feature is not used in Bengali.
@@ -809,9 +824,15 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
+
+![Half-form formation](/images/bengali/half-formation.png)
+
 #### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
+
+
+![Yaphala composition](/images/bengali/yaphala-composition.png)
 
 #### 3.11: vatu ####
 
@@ -821,6 +842,9 @@ forms.
 "Vattu variants" are formed from glyphs followed by "Raphala"
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
+
+
+![Vattu variant ligation](/images/bengali/vattu-ligation.png)
 
 #### 3.12: cjct ####
 
@@ -833,6 +857,9 @@ A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+
+![Conjunct ligation](/images/bengali/pata-conjunct.png)
 
 #### 3.13: cfar ####
 
