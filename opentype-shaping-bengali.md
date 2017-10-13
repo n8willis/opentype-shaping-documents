@@ -624,6 +624,8 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
+![Two-part matra decomposition](/images/bengali/split-matra-decomposition.png)
+
 #### 2.3: Left matras ####
 
 Third, all left-side dependent-vowel (matra) signs, including those that
