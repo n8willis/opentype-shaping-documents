@@ -532,8 +532,9 @@ A stand-alone sequence (which can only occur at the start of a word) will match 
 
 A sequence that does not match any of these expressions should be
 regarded as broken. The shaping engine may make a best-effort attempt
-to shape the broken sequence, but making guarantees about the correctness or
-appearance of the final result is out of scope for this document.
+to shape the broken sequence, but making guarantees about the
+correctness or appearance of the final result is out of scope for this
+document.
 
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
@@ -602,6 +603,9 @@ The algorithm for determining the base consonant is
         neither condition is true, stop. 
       * If the consonant is the first consonant, stop.
   - The consonant stopped at will be the base consonant.
+
+> Note: The algorithm is designed to work for all Indic
+> scripts. However, Bengali does not utilize pre-base reordering "Ra".
 
 
 #### 2.2: Matra decomposition ####

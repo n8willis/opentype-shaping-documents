@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="371"
-     inkscape:cy="640"
+     inkscape:cx="331"
+     inkscape:cy="400"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -54,6 +54,26 @@
        orientation="1,0"
        id="guide3719"
        inkscape:locked="false" />
+    <sodipodi:guide
+       position="70.908332,250.56042"
+       orientation="0,1"
+       id="guide147"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="89.693748,264.05417"
+       orientation="0,1"
+       id="guide157"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="26.193748,115.8875"
+       orientation="0,1"
+       id="guide191"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="14.816666,94.456253"
+       orientation="0,1"
+       id="guide211"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -63,7 +83,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -113,5 +133,187 @@
          x="26.193748"
          y="157.03542"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px"> ড ট য় য হ ব্ শঁ  কৌ কূ পি সী মু চৃ ং</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="26.193748"
+       y="46.439579"
+       id="text151"><tspan
+         sodipodi:role="line"
+         id="tspan149"
+         x="26.193748"
+         y="46.439579"
+         style="stroke-width:0.26458332px">র‌s‍s​s s</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="81.227051"
+       y="46.439579"
+       id="text155"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan153"
+         x="81.227051"
+         y="46.439579"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">র ্ → র্◌</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="82.549973"
+       y="32.945831"
+       id="text161"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan159"
+         x="82.549973"
+         y="32.945831"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ৌ → ে ৗ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="32.543751"
+       y="32.945831"
+       id="text165"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan163"
+         x="32.543751"
+         y="32.945831"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">্ য → ◌্য  </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="148.69583"
+       y="71.574989"
+       id="text169"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan167"
+         x="148.69583"
+         y="71.574989"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10.58333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">ড ় → ড়</tspan></text>
+    <g
+       id="g181">
+      <text
+         id="text177"
+         y="32.945831"
+         x="147.37291"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="stroke-width:0.26458332px"
+           y="42.309601"
+           x="147.37291"
+           id="tspan175"
+           sodipodi:role="line" /></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="142.34583"
+       y="32.945831"
+       id="text185"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan183"
+         x="142.34583"
+         y="32.945831"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10.58333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">◌্ র → ◌্র </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="142.34583"
+       y="46.439579"
+       id="text189"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan187"
+         x="142.34583"
+         y="46.439579"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10.58333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">◌্ ব → ◌্ব</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="26.193748"
+       y="181.1125"
+       id="text195"><tspan
+         sodipodi:role="line"
+         id="tspan193"
+         x="26.193748"
+         y="181.1125"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্ ষ → ক্ষ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="85.724998"
+       y="181.1125"
+       id="text199"><tspan
+         sodipodi:role="line"
+         id="tspan197"
+         x="85.724998"
+         y="181.1125"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10.58333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">জ ্ ঞ → জ্ঞ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="150.01875"
+       y="181.1125"
+       id="text203"><tspan
+         sodipodi:role="line"
+         id="tspan201"
+         x="150.01875"
+         y="181.1125"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্ <tspan
+   style="-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.29166667px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
+   id="tspan205">ZWJ</tspan> → ক্‍</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="26.193748"
+       y="202.54373"
+       id="text215"><tspan
+         sodipodi:role="line"
+         id="tspan213"
+         x="26.193748"
+         y="202.54373"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্র → ক্র</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="81.491669"
+       y="202.54373"
+       id="text219"><tspan
+         sodipodi:role="line"
+         id="tspan217"
+         x="81.491669"
+         y="202.54373"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">প ত ◌ → প্ত◌</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="141.81667"
+       y="202.54373"
+       id="text223"><tspan
+         sodipodi:role="line"
+         id="tspan221"
+         x="141.81667"
+         y="202.54373"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক্ষ ্ ণ → ক্ষ্ণ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="26.193748"
+       y="223.71042"
+       id="text227"><tspan
+         sodipodi:role="line"
+         id="tspan225"
+         x="26.193748"
+         y="223.71042"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ণ ্ ট ্ র → ণ্ট ্র → ণ্ট্র</tspan></text>
   </g>
 </svg>
