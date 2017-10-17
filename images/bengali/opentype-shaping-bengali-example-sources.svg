@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="331"
-     inkscape:cy="400"
+     inkscape:zoom="2"
+     inkscape:cx="650.43113"
+     inkscape:cy="210.50252"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -73,6 +73,16 @@
        position="14.816666,94.456253"
        orientation="0,1"
        id="guide211"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="148.96041,73.025002"
+       orientation="0,1"
+       id="guide229"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="34.660416,48.683335"
+       orientation="0,1"
+       id="guide235"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -241,7 +251,9 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="26.193748"
        y="181.1125"
-       id="text195"><tspan
+       id="text195"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan193"
          x="26.193748"
@@ -252,7 +264,9 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="85.724998"
        y="181.1125"
-       id="text199"><tspan
+       id="text199"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan197"
          x="85.724998"
@@ -263,20 +277,25 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="150.01875"
        y="181.1125"
-       id="text203"><tspan
+       id="text203"
+       inkscape:export-filename="/home/nate/half-formation.png"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan201"
          x="150.01875"
          y="181.1125"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্ <tspan
-   style="-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:5.29166667px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal"
-   id="tspan205">ZWJ</tspan> → ক্‍</tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.29166651px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="tspan205">ZWJ</tspan> ক্‍ক্‌→ ক্‍</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="26.193748"
        y="202.54373"
-       id="text215"><tspan
+       id="text215"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan213"
          x="26.193748"
@@ -287,7 +306,10 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="81.491669"
        y="202.54373"
-       id="text219"><tspan
+       id="text219"
+       inkscape:export-filename="/home/nate/pata-conjunct.png"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan217"
          x="81.491669"
@@ -298,7 +320,10 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="141.81667"
        y="202.54373"
-       id="text223"><tspan
+       id="text223"
+       inkscape:export-filename="/home/nate/kassa-conjunction.png"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan221"
          x="141.81667"
@@ -309,11 +334,88 @@
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="26.193748"
        y="223.71042"
-       id="text227"><tspan
+       id="text227"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
          sodipodi:role="line"
          id="tspan225"
          x="26.193748"
          y="223.71042"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ণ ্ ট ্ র → ণ্ট ্র → ণ্ট্র</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:125%;font-family:sans-serif;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.07000434px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       x="126.20625"
+       y="223.97499"
+       id="text233"><tspan
+         sodipodi:role="line"
+         id="tspan231"
+         x="126.20625"
+         y="223.97499"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.00008869px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000000;letter-spacing:0px;word-spacing:0px;text-transform:none;writing-mode:lr-tb;direction:ltr;text-orientation:mixed;dominant-baseline:auto;baseline-shift:baseline;text-anchor:start;white-space:normal;shape-padding:0;vector-effect:none;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.07000434px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1">ঠ় ্ → ঠ়্</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="26.193748"
+       y="248.31665"
+       id="text239"><tspan
+         sodipodi:role="line"
+         id="tspan237"
+         x="26.193748"
+         y="248.31665"
+         style="stroke-width:0.26458332px;-inkscape-font-specification:'Noto Serif Bengali, Normal';font-family:'Noto Serif Bengali';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10.58333333px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal">দ্ঢ্ব◌</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="95.25"
+       y="248.31665"
+       id="text152"><tspan
+         sodipodi:role="line"
+         id="tspan150"
+         x="95.25"
+         y="248.31665"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্ ZWJ → </tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="157.42708"
+       y="248.31665"
+       id="text156"><tspan
+         sodipodi:role="line"
+         id="tspan154"
+         x="157.42708"
+         y="248.31665"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ক ্       →  ক্‍</tspan></text>
+    <g
+       id="g3841">
+      <path
+         sodipodi:nodetypes="ccccc"
+         d="m 69.999344,256.1508 h -0.63562 v -15.875 h 0.63562 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path162"
+         inkscape:connector-curvature="0" />
+      <path
+         d="m 71.882949,241.58838 -0.444417,0.44441 -1.756998,-1.75699 -1.756999,1.75699 -0.444417,-0.45475 1.756998,-1.757 -1.756998,-1.74666 0.444417,-0.44442 1.756999,1.757 1.756998,-1.76733 0.444417,0.45475 -1.756998,1.757 z"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path164"
+         inkscape:connector-curvature="0" />
+    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path162-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 176.33615,251.54489 h -0.63562 v -13.3493 h 0.63562 z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path162-2-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 148.95976,263.86739 h -0.63562 v -13.3493 h 0.63562 z"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path164-3-5"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 150.84337,251.83067 -0.44442,0.44441 -1.757,-1.75699 -1.757,1.75699 -0.44441,-0.45475 1.757,-1.757 -1.757,-1.74666 0.44441,-0.44442 1.757,1.757 1.757,-1.76733 0.44442,0.45475 -1.757,1.757 z" />
   </g>
 </svg>

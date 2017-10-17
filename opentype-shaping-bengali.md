@@ -663,13 +663,15 @@ exception of two special-case consonants.
   - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
     meaning that it carries no inherent vowel, therefore no "Halant"
     follows it.
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`) <!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... ---> triggers
+  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
     the "Yaphala" form. "Yaphala" behaves like a modifier to the
     pronunciation of the preceding vowel, despite the fact that it is
     formed from a consonant. Because the "Halant" precedes the
     consonant when forming the "Yaphala", no "Halant" follows it.
 
+<!--- and "Halant,Yya"
+    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
+	
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
