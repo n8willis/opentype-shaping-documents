@@ -92,9 +92,9 @@ when shaping a run of text.
 
 Bengali glyphs should be classified as in the following
 table. Codepoints in the Bengali block with no assigned meaning are
-marked as _unassigned_ in the _Unicode category_ column. 
+designated as _unassigned_ in the _Unicode category_ column. 
 
-Assigned codepoints marked with a _null_ in the _Shaping class_
+Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
 this does include some valid codepoints in the Bengali block, such as
 currency marks and other symbols. 
@@ -105,11 +105,11 @@ currency marks and other symbols.
 > which specifies the usage of tabular-width numerals.
 
 The _Mark-placement subclass_ column indicates mark-placement
-positioning. Assigned codepoints marked with a
-_null_ in this column evoke no special mark-placement behavior. Marks
-tagged with [Mn] in the _Unicode category_ column are categorized as
-non-spacing; marks tagged with [Mc] are categorized as
-spacing-combining.
+positioning for codepoints in the _Mark_ category. Assigned, non-mark
+codepoints have a_null_ in this column and evoke no special
+mark-placement behavior. Marks tagged with [Mn] in the _Unicode
+category_ column are categorized as non-spacing; marks tagged with
+[Mc] are categorized as spacing-combining.
 
 Some codepoints in the following table use a _Shaping class_ that
 differs from the codepoint's Unicode _General Category_. The _Shaping
@@ -256,7 +256,7 @@ specific, script-aware behavior.
 |`U+09FF`   | _unassigned_     |                   |                            |                              |
  
 
-### Vedic Extenstions character table ###
+### Vedic Extensions character table ###
 
 Sanskrit runs written in the Bengali script may also include
 characters from the Vedic Extensions block. These characters should be
@@ -416,7 +416,7 @@ Processing a run of `<bng2>` text involves six top-level stages:
 
 
 As with other Indic scripts, the initial reordering stage and the
-final reordering stage each involve invoking a set of several
+final reordering stage each involve applying a set of several
 script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
 stage five, however, do not have a mandatory order.
@@ -452,8 +452,7 @@ should be encoded within a run of text.
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in Bengali consists of a valid orthographic sequence
-that may be followed by a "tail" of modifier signs. Each syllable
-contains exactly one vowel sound.
+that may be followed by a "tail" of modifier signs. 
 
 > Note: The Bengali Unicode block enumerates five modifier signs,
 > "Candrabindu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
@@ -461,8 +460,8 @@ contains exactly one vowel sound.
 > (`U+09FC`). In addition, Sanskrit text written in Bengali may
 > include additional signs from Vedic Extensions block.
 
-Valid syllables may begin with either an independent vowel or with a
-consonant. 
+Each syllable contains exactly one vowel sound. Valid syllables may
+begin with either an independent vowel or with a consonant. 
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
@@ -474,8 +473,11 @@ syllable's only vowel sound and there is no base consonant.
 > by a dependent vowel (matra) sign following the consonant.
 
 Generally speaking, the base consonant is the final consonant of the
-syllable and its vowel sound designates the end of the syllable. Valid
-consonant-based syllables may include one or more additional 
+syllable and its vowel sound designates the end of the syllable. This
+rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
+earlier. 
+
+Valid consonant-based syllables may include one or more additional 
 consonants that precede the base consonant. Each of these
 other, pre-base consonants will be followed by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
@@ -494,7 +496,7 @@ mark-like form. A "Ra,Halant" sequence at the beginning of a syllable
 is replaced with an above-base mark called "Reph" (unless the "Ra"
 is the only consonant in the syllable). 
 
-This requirement is synonymous with the `REPH_MODE_IMPLICIT`
+This rule is synonymous with the `REPH_MODE_IMPLICIT`
 characteristic mentioned earlier.
 
 "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
@@ -516,7 +518,9 @@ Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
 
 The following general-purpose Indic-shaping regular expressions can be
-used to match Bengali syllables.
+used to match Bengali syllables. The regular expressions utilize the
+shaping classifications from the tables above.
+
 
 > Note: Bengali does not include the Anudatta (`U+0952`). It is
 > included in the following expressions in order to correctly match other Indic scripts.
@@ -670,9 +674,11 @@ moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
 Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
 syllable modifiers, and Vedic signs) must be reordered so that they
-appear in canonical order. For `<bng2>` text, this ordering means that any
-"Nukta"s must be placed before all other marks. No other marks in the
-subsequence should be reordered.
+appear in canonical order. 
+
+For `<bng2>` text, the canonical ordering means that any "Nukta"s must
+be placed before all other marks. No other marks in the subsequence
+should be reordered.
 
 #### 2.5: Pre-base consonants ####
 
@@ -925,6 +931,14 @@ because it was almost certainly lost in the preceding GSUB stage.
 The final reordering stage, like the initial reordering stage, begins
 with determining the base consonant of each syllable, following the
 same algorithm used in stage 2, step 1.
+
+The codepoint of the underlying base consonant will not change between
+the search performed in stage 2, step 1, and the search repeated
+here. However, the application of GSUB shaping features in stage 3
+means that several ligation and many-to-one substitutions may have
+taken place. The final glyph produced by that process may, therefore,
+be a conjunct or ligature form — in most cases, such a glyph will not
+have an assigned Unicode codepoint. 
    
 #### 4.2: Pre-base matras ####
 
