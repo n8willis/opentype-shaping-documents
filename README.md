@@ -1,6 +1,6 @@
 # OpenType shaping documents #
 
-> ## &nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
+> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
 >
 > This repository is an active WORK IN PROGRESS.
 >

@@ -1,7 +1,7 @@
 # Vedic Extensions in OpenType #
 
-This document details the shaping procedure needed to display
-characters from the Unicode Vedic Extensions block, which can occur
+This document outlines the shaping information needed to display
+characters from the Unicode Vedic Extensions block, which may be used
 within text runs in many Indic scripts.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->

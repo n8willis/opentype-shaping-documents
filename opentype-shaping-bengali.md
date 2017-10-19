@@ -260,7 +260,10 @@ specific, script-aware behavior.
 
 Sanskrit runs written in the Bengali script may also include
 characters from the Vedic Extensions block. These characters should be
-classified as follows:
+classified as follows.
+
+> Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
+> document for additional infomation.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -449,7 +452,8 @@ should be encoded within a run of text.
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in Bengali consists of a valid orthographic sequence
-that may be followed by a "tail" of modifier signs.
+that may be followed by a "tail" of modifier signs. Each syllable
+contains exactly one vowel sound.
 
 > Note: The Bengali Unicode block enumerates five modifier signs,
 > "Candrabindu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
@@ -457,22 +461,35 @@ that may be followed by a "tail" of modifier signs.
 > (`U+09FC`). In addition, Sanskrit text written in Bengali may
 > include additional signs from Vedic Extensions block.
 
-Valid syllables may begin with either a consonant or an independent
-vowel.
+Valid syllables may begin with either an independent vowel or with a
+consonant. 
 
-Each syllable contains exactly one vowel. A consonant that is not
-accompanied by a dependent vowel (matra) sign carries the script's
-inherent vowel. The inherent vowel is suppressed when the consonant is
-accompanied by the "Halant" mark. 
+If the syllable begins with a consonant, then the consonant that
+provides the vowel sound is referred to as the "base" consonant. If
+the syllable begins with an independent vowel, that vowel is the
+syllable's only vowel sound and there is no base consonant. 
 
-The consonant (if any exists) that carries the vowel is the "base"
-consonant of the syllable. Zero or more additional consonants may be
-present in the syllable; in a valid syllable these other consonants
-will be followed by the "Halant" mark, which indicates that they carry
-no vowel.
+> Note: A consonant that is not accompanied by a dependent vowel (matra) sign
+> carries the script's inherent vowel sound. This vowel sound is changed
+> by a dependent vowel (matra) sign following the consonant.
+
+Generally speaking, the base consonant is the final consonant of the
+syllable and its vowel sound designates the end of the syllable. Valid
+consonant-based syllables may include one or more additional 
+consonants that precede the base consonant. Each of these
+other, pre-base consonants will be followed by the "Halant" mark, which
+indicates that they carry no vowel. They affect pronunciation by
+combining with the base consonant (e.g., "_str_", "_pl_") but they
+do not add a vowel sound.
+
+Bengali also includes two special consonants that can occur after the
+base consonant. These post-base consonants will also be separated from
+the base consonant by a "Halant" mark; the algorithm for correctly
+identifying the base consonant includes a test to recognize these sequences
+and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced with a combining
+treatment; in many circumstances it is replaced by a combining
 mark-like form. A "Ra,Halant" sequence at the beginning of a syllable
 is replaced with an above-base mark called "Reph" (unless the "Ra"
 is the only consonant in the syllable). 
@@ -490,6 +507,7 @@ reordered after the syllable-identification stage is complete.
 > `U+09B0` is used in Bengali-language, Manipuri-language, and
 > Sanskrit text. `U+09F0` is used in Assamese-language text.
 >
+
 
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
@@ -515,7 +533,7 @@ used to match Bengali syllables.
 	A	  Anudatta
 	NBSP	  No-break space
 
-A consonant syllable will match the expression:
+A consonant-based syllable will match the expression:
 ```
 {C+[N]+<H+[<ZWNJ|ZWJ>]|<ZWNJ|ZWJ>+H>} + C+[N]+[A] + [< H+[<ZWNJ|ZWJ>] | {M}+[N]+[H]>]+[SM]+[(VD)]
 ```
@@ -589,8 +607,17 @@ Bengali.
 
 #### 2.1: Base consonant ####
 
-The first step is to determine the base consonant of the syllable
-and tag it as `POS_BASE_CONSONANT`.
+The first step is to determine the base consonant of the syllable, if
+there is one, and tag it as `POS_BASE_CONSONANT`.
+
+The base consonant is defined as the consonant in a consonant-based
+syllable that carries the syllable's vowel sound. That vowel sound
+will either be provided by the script's inherent vowel (in which case
+it is not written with a separate character) or the sound will be designated
+by the addition of a dependent-vowel (matra) sign.
+
+Vowel-based syllables, standalone-sequences, and broken text runs will
+not have base consonants.
 
 The algorithm for determining the base consonant is
 
@@ -603,6 +630,13 @@ The algorithm for determining the base consonant is
         neither condition is true, stop. 
       * If the consonant is the first consonant, stop.
   - The consonant stopped at will be the base consonant.
+
+Shaping engines may choose any method to identify consonants that have
+below-base or post-base forms while executing the above algorithm. For
+example, one implementation may choose to maintain a static table of
+below-base and post-base consonants to compare again the text
+run. Another implementation might examine the active font to see if it
+includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
 > scripts. However, Bengali does not utilize pre-base reordering "Ra".
