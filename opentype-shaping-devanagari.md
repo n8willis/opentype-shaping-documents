@@ -39,7 +39,7 @@ in Devanagari, so Devanagari script runs may include glyphs from the Vedic
 Extension block of Unicode. 
 
 There are two extant Devanagari script tags defined in OpenType, `<deva>`
-xand `<dev2>`. The older script tag, `<deva>`, was deprecated in 2005.
+and `<dev2>`. The older script tag, `<deva>`, was deprecated in 2005.
 Therefore, new fonts should be engineered to work with the `<dev2>`
 shaping model. However, if a font is encountered that supports only
 `<deva>`, the shaping engine should deal with it gracefully.
@@ -297,7 +297,7 @@ characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
 > Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
-> document for additional infomation.
+> document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -511,7 +511,7 @@ as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Devanagari script, may
 > not adhere to the syllable-formation rules described above. In
-> particular, it is not uncommon to encounter foregin loanwords that
+> particular, it is not uncommon to encounter foreign loanwords that
 > contain a word-final suffix of consonants.
 >
 > Nevertheless, such word-final suffixes will be correctly matched by

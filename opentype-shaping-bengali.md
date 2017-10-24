@@ -261,7 +261,7 @@ characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
 > Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
-> document for additional infomation.
+> document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -522,7 +522,7 @@ as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Bengali script, may
 > not adhere to the syllable-formation rules described above. In
-> particular, it is not uncommon to encounter foregin loanwords that
+> particular, it is not uncommon to encounter foreign loanwords that
 > contain a word-final suffix of consonants.
 >
 > Nevertheless, such word-final suffixes will be correctly matched by
