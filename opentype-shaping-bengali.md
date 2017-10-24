@@ -3,7 +3,7 @@
 This document details the shaping procedure needed to display text
 runs in the Bengali script.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
 **Table of Contents**
 
   - [General information](#general-information)
@@ -24,8 +24,6 @@ runs in the Bengali script.
       - [Advice for handling fonts with `<beng>` features only](#advice-for-handling-fonts-with-beng-features-only)
       - [Advice for handling text runs composed in `<beng>` format](#advice-for-handling-text-runs-composed-in-beng-format)
 
-<!-- markdown-toc end -->
-
 
 ## General information ##
 
@@ -40,7 +38,7 @@ in Bengali, so Bengali script runs may include glyphs from the Vedic
 Extension block of Unicode. 
 
 There are two extant Bengali script tags defined in OpenType, `<beng>`
-and `<bng2>`. The older script tag, `<beng>`, was deprecated in 2008.
+and `<bng2>`. The older script tag, `<beng>`, was deprecated in 2005.
 Therefore, new fonts should be engineered to work with the `<bng2>`
 shaping model. However, if a font is encountered that supports only
 `<beng>`, the shaping engine should deal with it gracefully.
@@ -439,6 +437,10 @@ Bengali's specific shaping characteristics include:
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
 
+  - `MATRA_POS_TOP` = _null_  = Unlike most other Indic scripts, Bengali
+     does not use any above-base matras. Therefore, this shaping
+     characteristic does not apply.
+
   - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
      ordered after all post-base consonant forms.
 
@@ -448,6 +450,9 @@ Bengali's specific shaping characteristics include:
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
 should be encoded within a run of text.
+
+> Note: Unlike most other Indic scripts, Bengali does not use
+> above-base matras. Therefore 
 
 ### 1: Identifying syllables and other sequences ###
 
@@ -461,12 +466,13 @@ that may be followed by a "tail" of modifier signs.
 > include additional signs from Vedic Extensions block.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
-begin with either an independent vowel or with a consonant. 
+begin with either consonant or an independent vowel. 
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
 the syllable begins with an independent vowel, that vowel is the
-syllable's only vowel sound and there is no base consonant. 
+syllable's only vowel sound and, by definition, there is no "base"
+consonant. 
 
 > Note: A consonant that is not accompanied by a dependent vowel (matra) sign
 > carries the script's inherent vowel sound. This vowel sound is changed
@@ -513,6 +519,18 @@ reordered after the syllable-identification stage is complete.
 
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
+
+> Note: Foreign loanwords, when written in the Bengali script, may
+> not adhere to the syllable-formation rules described above. In
+> particular, it is not uncommon to encounter foregin loanwords that
+> contain a word-final suffix of consonants.
+>
+> Nevertheless, such word-final suffixes will be correctly matched by
+> the regular expressions listed below. These words are pronounced
+> different, which raises issues for potential readers, but the
+> character sequences do not affect the shaping process.
+
+
 
 Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
