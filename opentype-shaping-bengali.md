@@ -85,6 +85,42 @@ expected shaping behavior (such as glyph reordering). Therefore,
 Bengali glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
+The shaping classes listed in the tables that follow are defined so
+that they capture the positioning rules used by Indic scripts. 
+
+Several of the diacritic and syllable-modifying marks behave according
+to their own rules and, thus, have a special class. These include
+`BINDU`, `VISARGA`, `AVAGRAHA`, `NUKTA`, and `VIRAMA`. Some
+less-common marks behave according to rules that are similar to these
+common marks, and are therefore classified with the corresponding
+common mark. The Vedic Extensions also include a `CANTILLATION`
+class for tone marks.
+
+Letters generally fall into the classes `CONSONANT`,
+`VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
+shaping engine parse and identify key positions in a syllable. There are
+occasional special categories in use, such as `CONSONANT_DEAD`, which
+is used for the Bengali "Khanda Ta".
+
+Other characters, such as symbols and miscellaneous letters (for
+example, letter-like symbols that only occur as standalone entities
+and do not occur within syllables), need no special attention from the
+shaping engine, so they are not assigned a shaping class.
+
+Marks and dependent vowels are further labelled with a mark-placement
+subclass, which indicates where the glyph will be placed with respect
+to the base character to which it is attached. The actual position of
+the glyphs is determined by the lookups found in the font's GPOS
+table, however, the shaping rules for Indic scripts require that the
+shaping engine be able to identify marks by their general
+position. 
+
+For example, left-side dependent vowels (matras), classified
+with `LEFT_POSITION`, must frequently be reordered, with the final
+position determined by whether or not other letters in the syllable
+have formed ligatures or combined into conjunct forms. Therefore, the
+`LEFT_POSITION` subclass of the character must be tracked throughout
+the shaping process.
 
 ### Bengali character table ###
 
@@ -452,7 +488,7 @@ certain glyphs, how base consonants are determined, and how "Reph"
 should be encoded within a run of text.
 
 > Note: Unlike most other Indic scripts, Bengali does not use
-> above-base matras. Therefore 
+> above-base matras. Therefore `MATRA_POS_TOP` can be set to _null_.
 
 ### 1: Identifying syllables and other sequences ###
 
@@ -623,9 +659,34 @@ The final sort order of the ordering categories should be:
 	POS_FINAL_CONSONANT
 	POS_SMVD
 
-The above sort order is the same for all Indic scripts and,
-consequently, includes some ordering categories not utilized in
-Bengali.
+
+This sort order enumerates all of the possible final positions to
+which a codepoint might be reordered, across all of the Indic
+scripts. It includes some ordering categories not utilized in
+Bengali. 
+
+The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
+vowels (matras) and consonants positioned before the base
+consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
+consonant (`POS_BASE_CONSONANT`), above-base consonants
+(`POS_ABOVEBASE_CONSONANT`), below-base consonants
+(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
+(`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
+and syllable-modifying or Vedic signs (`POS_SMVD`).
+
+In addition, several secondary positions are defined to handle various
+reordering rules that deal with relative, rather than absolute,
+positioning. `POS_AFTER_MAIN` means that a character must be
+positioned immedately after the base consonant. `POS_BEFORE_SUBJOINED`
+and `POS_AFTER_SUBJOINED` mean that a character must be positioned
+before or after any below-base consonants, respectively. Similarly,
+`POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
+positioned before or after any post-base consonants, respectively. 
+
+For shaping-engine implementers, the names used for the ordering
+categories matter only in that they are unabiguous. 
+
+For a definition of the "base" consonant, refer to step 2.1, which follows.
 
 #### 2.1: Base consonant ####
 
