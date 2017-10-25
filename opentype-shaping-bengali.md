@@ -9,6 +9,7 @@ runs in the Bengali script.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
+      - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Bengali character table](#bengali-character-table)
       - [Vedic Extensions character table](#vedic-extensions-character-table)
       - [Miscellaneous character table](#miscellaneous-character-table)
@@ -85,6 +86,8 @@ expected shaping behavior (such as glyph reordering). Therefore,
 Bengali glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
+### Shaping classes and subclasses ###
+
 The shaping classes listed in the tables that follow are defined so
 that they capture the positioning rules used by Indic scripts. 
 
@@ -98,14 +101,27 @@ class for tone marks.
 
 Letters generally fall into the classes `CONSONANT`,
 `VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
-shaping engine parse and identify key positions in a syllable. There are
-occasional special categories in use, such as `CONSONANT_DEAD`, which
-is used for the Bengali "Khanda Ta".
+shaping engine parse and identify key positions in a syllable. For
+example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
+shaping engine must be able to distinguish between dependent vowels
+and diacritical marks (which are categorized as `Mark [Mn]`).
+
+There are occasional special classes in use, such as
+`CONSONANT_DEAD`, which is used for the Bengali "Khanda Ta". In this
+case, the class indicates that "Khanda Ta" should match simple
+tests for consonants, but that, unlike standard consonants, it carries
+no inherent vowel. 
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
 and do not occur within syllables), need no special attention from the
 shaping engine, so they are not assigned a shaping class.
+
+Numbers are classified as `NUMBER`, even though they evoke no special
+behavior from the Indic shaping rules, because there are OpenType features that
+might affect how the respective glyphs are drawn, such as `tnum`,
+which specifies the usage of tabular-width numerals, and `sups`, which
+replaces the default glyphs with superscript variants.
 
 Marks and dependent vowels are further labelled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
@@ -132,11 +148,6 @@ Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
 this does include some valid codepoints in the Bengali block, such as
 currency marks and other symbols. 
-
-> Symbols, punctuation, and numbers generally evoke no special behavior
-> from the shaping engine, but there are OpenType features that
-> might affect how the respective glyphs are drawn, such as `tnum`,
-> which specifies the usage of tabular-width numerals.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -455,10 +466,6 @@ script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
 stage five, however, do not have a mandatory order.
 
-<!-- > Note: Bengali differs from Devanagari in that sequences of pre-base consonants
-> are generally combined into conjuncts and only less frequently
-> rendered in half-forms. -->
-
 Indic scripts follow many of the same shaping patterns, but they
 differ in a few critical characteristics that the shaping engine must
 track. These include:
@@ -554,17 +561,19 @@ identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced by a combining
-mark-like form. A "Ra,Halant" sequence at the beginning of a syllable
-is replaced with an above-base mark called "Reph" (unless the "Ra"
-is the only consonant in the syllable). 
+treatment; in many circumstances it is replaced by one of two combining
+mark-like forms. 
 
-This rule is synonymous with the `REPH_MODE_IMPLICIT`
-characteristic mentioned earlier.
+  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
+    with an above-base mark called "Reph" (unless the "Ra" is the only
+    consonant in the syllable). This rule is synonymous with the
+    `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-"Ra,Halant" sequences that occur elsewhere in the syllable may take on the
-below-base form "Raphala." "Reph" and "Raphala" syllables must be
-reordered after the syllable-identification stage is complete.
+  - "Ra,Halant" sequences that occur elsewhere in the syllable may
+    take on the below-base form "Raphala." 
+  
+"Reph" and "Raphala" syllables must be reordered after the
+syllable-identification stage is complete. 
 
 > Note: `<bng2>` text contains two Unicode codepoints for "Ra."
 > `U+09B0` and `U+09F0`. 
@@ -887,11 +896,11 @@ precomposed nukta-variant of the consonant glyph.
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 
-  - "Ka,Halant,Ssa" is substituted with the "KaSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JaNya" ligature. 
+  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
+  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
   
-These sequences can occur anywhere in a syllable. The "KaSsa" and
-"JaNya" characters have orthographic status equivalent to full
+These sequences can occur anywhere in a syllable. The "KSsa" and
+"JNya" characters have orthographic status equivalent to full
 consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.

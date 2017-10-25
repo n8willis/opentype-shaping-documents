@@ -9,6 +9,7 @@ runs in the Devanagari script.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
+      - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Devanagari character table](#devanagari-character-table)
       - [Devanagari Extended character table](#devanagari-extended-character-table)
       - [Vedic Extensions character table](#vedic-extensions-character-table)
@@ -81,22 +82,63 @@ expected shaping behavior (such as glyph reordering). Therefore,
 Devanagari glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
+### Shaping classes and subclasses ###
+
+The shaping classes listed in the tables that follow are defined so
+that they capture the positioning rules used by Indic scripts. 
+
+Several of the diacritic and syllable-modifying marks behave according
+to their own rules and, thus, have a special class. These include
+`BINDU`, `VISARGA`, `AVAGRAHA`, `NUKTA`, and `VIRAMA`. Some
+less-common marks behave according to rules that are similar to these
+common marks, and are therefore classified with the corresponding
+common mark. The Vedic Extensions also include a `CANTILLATION`
+class for tone marks.
+
+Letters generally fall into the classes `CONSONANT`,
+`VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
+shaping engine parse and identify key positions in a syllable. For
+example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
+shaping engine must be able to distinguish between dependent vowels
+and diacritical marks (which are categorized as `Mark [Mn]`).
+
+Other characters, such as symbols and miscellaneous letters (for
+example, letter-like symbols that only occur as standalone entities
+and do not occur within syllables), need no special attention from the
+shaping engine, so they are not assigned a shaping class.
+
+Numbers are classified as `NUMBER`, even though they evoke no special
+behavior from the Indic shaping rules, because there are OpenType features that
+might affect how the respective glyphs are drawn, such as `tnum`,
+which specifies the usage of tabular-width numerals, and `sups`, which
+replaces the default glyphs with superscript variants.
+
+Marks and dependent vowels are further labelled with a mark-placement
+subclass, which indicates where the glyph will be placed with respect
+to the base character to which it is attached. The actual position of
+the glyphs is determined by the lookups found in the font's GPOS
+table, however, the shaping rules for Indic scripts require that the
+shaping engine be able to identify marks by their general
+position. 
+
+For example, left-side dependent vowels (matras), classified
+with `LEFT_POSITION`, must frequently be reordered, with the final
+position determined by whether or not other letters in the syllable
+have formed ligatures or combined into conjunct forms. Therefore, the
+`LEFT_POSITION` subclass of the character must be tracked throughout
+the shaping process.
+
 ### Devanagari character table ###
 
 Devanagari glyphs should be classified as in the following
 table. Codepoints in the Devanagari and Devanagari Extended blocks
 with no assigned meaning are designated as _unassigned_ in the
-_Unicode category_ column.  
+_Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
 this does include some valid codepoints in the Devanagari blocks, such as
 currency marks and other symbols. 
-
-> Symbols, punctuation, and numbers generally evoke no special behavior
-> from the shaping engine, but there are OpenType features that
-> might affect how the respective glyphs are drawn, such as `tnum`,
-> which specifies the usage of tabular-width numerals.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -426,8 +468,29 @@ script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
 stage five, however, do not have a mandatory order.
 
-With regard to the common variations seen among Indic scripts, 
-Devanagari's specific shaping characteristics include:
+Indic scripts follow many of the same shaping patterns, but they
+differ in a few critical characteristics that the shaping engine must
+track. These include:
+
+  - The position of the base consonant in a syllable.
+  
+  - The final position of "Reph".
+  
+  - Whether "Reph" must be requested explicitly or if it is formed by
+    a specific, implicit sequence.
+	
+  - Whether the below-base forms feature is applied only to consonants
+    before the base consonant, only to consonants after the base
+    consonant, or to both.
+	
+  - The ordering positions for dependent vowels
+    (matras). Specifically, right-side, above-base, and below-base
+    matras follow different rules in different scripts. 
+	All Indic scripts position left-side matras in the same
+    manner, in the ordering position `POS_PREBASE_MATRA`. 
+
+With regard to these common variations, Devanagari's specific shaping
+characteristics include: 
 
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
@@ -458,7 +521,6 @@ A syllable in Devanagari consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
 > Note: The Devanagari Unicode block enumerates nine modifier signs,
-
 > "Inverted Candrabindu" (`U+0900`), "Candrabindu" (`U+0901`),
 > "Anusvara" (`U+0902`), "Visarga" (`U+0903`), "Avagraha" (`U+093D`),
 > "Udatta" (`U+0951`), "Anudatta" (`U+0952`), "Grave Accent"
@@ -492,18 +554,20 @@ combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced by a combining
-mark-like form. A "Ra,Halant" sequence at the beginning of a syllable
-is replaced with an above-base mark called "Reph" (unless the "Ra"
-is the only consonant in the syllable). 
+treatment; in many circumstances it is replaced by one of two combining
+mark-like forms. 
 
-This rule is synonymous with the `REPH_MODE_IMPLICIT`
-characteristic mentioned earlier.
+  - A "Ra,Halant" sequence at the beginning of a syllable
+    is replaced with an above-base mark called "Reph" (unless the "Ra"
+    is the only consonant in the syllable). 
+    This rule is synonymous with the `REPH_MODE_IMPLICIT`
+    characteristic mentioned earlier.
 
-"Ra,Halant" sequences that occur elsewhere in the syllable may take on the
-below-base form "Rakaar." "Reph" and "Rakaar" syllables must be
-reordered after the syllable-identification stage is complete.
-
+  - "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
+    below-base form "Rakaar." 
+	
+"Reph" and "Rakaar" syllables must be reordered after the
+syllable-identification stage is complete. 
 
 
 In addition to valid syllables, stand-alone sequences may occur, such
@@ -609,9 +673,34 @@ The final sort order of the ordering categories should be:
 	POS_FINAL_CONSONANT
 	POS_SMVD
 
-The above sort order is the same for all Indic scripts and,
-consequently, includes some ordering categories not utilized in
-Devanagari.
+
+This sort order enumerates all of the possible final positions to
+which a codepoint might be reordered, across all of the Indic
+scripts. It includes some ordering categories not utilized in
+Devanagari. 
+
+The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
+vowels (matras) and consonants positioned before the base
+consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
+consonant (`POS_BASE_CONSONANT`), above-base consonants
+(`POS_ABOVEBASE_CONSONANT`), below-base consonants
+(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
+(`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
+and syllable-modifying or Vedic signs (`POS_SMVD`).
+
+In addition, several secondary positions are defined to handle various
+reordering rules that deal with relative, rather than absolute,
+positioning. `POS_AFTER_MAIN` means that a character must be
+positioned immedately after the base consonant. `POS_BEFORE_SUBJOINED`
+and `POS_AFTER_SUBJOINED` mean that a character must be positioned
+before or after any below-base consonants, respectively. Similarly,
+`POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
+positioned before or after any post-base consonants, respectively. 
+
+For shaping-engine implementers, the names used for the ordering
+categories matter only in that they are unabiguous. 
+
+For a definition of the "base" consonant, refer to step 2.1, which follows.
 
 #### 2.1: Base consonant ####
 
@@ -701,7 +790,7 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
 In Devanagari, the only consonant that can appear in this position is
-a "Ra,Halant" sequence, which will take on the "Rakaar" form when the
+a non-initial "Ra,Halant" sequence, which will take on the "Rakaar" form when the
 `blwf` feature is applied.
 
 #### 2.8: Mark tagging ####
@@ -730,4 +819,151 @@ during the sorting step.
 <!--behavior. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
+
+### 3: Applying the basic substitution features from GSUB ###
+
+The basic-substitution stage applies mandatory substitution features
+using the rules in the font's GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application 
+of GSUB features.
+
+The order in which these substitutions must be performed is fixed for
+all Indic scripts:
+
+	locl
+	nukt
+	akhn
+	rphf 
+	rkrf 
+	pref (not used in Devanagari)
+	blwf 
+	abvf (not used in Devanagari)
+	half
+	pstf
+	vatu
+	cjct
+	cfar (not used in Devanagari)
+
+#### 3.1 locl ####
+
+The `locl` feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.
+
+> Note: Strictly speaking, the use of localized-form substitutions is
+> not part of the shaping process, but of the localization process,
+> and could take place at an earlier point while handling the text
+> run. However, shaping engines are expected to complete the
+> application of the `locl` feature before applying the subsequent
+> GSUB substitutions in the following steps.
+
+#### 3.2: nukt ####
+
+The `nukt` feature replaces "_consonant_,Nukta" sequences with a
+precomposed nukta-variant of the consonant glyph. 
+
+
+
+#### 3.3: akhn ####
+
+The `akhn` feature replaces two specific sequences with required ligatures. 
+
+  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
+  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
+  
+These sequences can occur anywhere in a syllable. The "KSsa" and
+"JNya" characters have orthographic status equivalent to full
+consonants in some languages, and fonts may have `cjct` substitution
+rules designed to match them in subsequences. Therefore, this
+feature must be applied before all other many-to-one substitutions.
+
+
+#### 3.4: rphf ####
+
+The `rphf` feature replaces initial "Ra,Halant" sequences with the
+"Reph" glyph.
+
+  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
+    the `rphf` substitution.
+	
+	
+#### 3.5 rkrf ####
+
+The `rkrf` feature replaces "_consonant_,Halant,Ra" sequences with the
+"Rakaar"-ligature form of the consonant glyph.
+
+#### 3.6 pref ####
+
+> This feature is not used in Devanagari.
+
+<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
+<!--any special forms. --->
+
+#### 3.7: blwf ####
+
+The `blwf` feature replaces below-base-consonant glyphs with any
+special forms. Devanagari includes one below-base consonant
+forms:
+
+  - "Ra,Halant" in a non-syllable-initial position takes on the
+    "Rakaar" form.
+
+Because Devanagari incorporates the `BLWF_MODE_PRE_AND_POST` shaping
+characteristic, any pre-base consonants and any post-base consonants
+may potentially match a `blwf` substitution; therefore, both cases must
+be tagged for comparison. Note that this is not necessarily the case in other
+Indic scripts that use a different `BLWF_MODE_` shaping
+characteristic. 
+
+#### 3.8: abvf ####
+
+> This feature is not used in Devanagari.
+
+#### 3.9: half ####
+
+The `half` feature replaces "_consonant_,Halant" sequences before the
+base consonant with "half forms" of the consonant glyphs. There are
+three exceptions to the default behavior, for which the shaping engine
+must test:
+
+  - Initial "Ra,Halant" sequences, which should have been tagged for
+    the `rphf` feature earlier, must not be tagged for potential
+    `half` substitutions.
+
+  - A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must be
+    tagged for potential `half` substitutions, even though the presence of the
+    zero-width joiner suppresses the `cjct` feature in a later step.
+
+  - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
+    tagged for potential `half` substitutions.
+
+#### 3.10: pstf ####
+
+> This feature is not used in Devanagari.
+
+
+#### 3.11: vatu ####
+
+The `vatu` feature replaces certain sequences with "Vattu variant"
+forms. 
+
+"Vattu variants" are formed from glyphs followed by "Rakaar"
+(the below-base form of "Ra"); therefore, this feature must be applied after
+the `blwf` feature.
+
+#### 3.12: cjct ####
+
+The `cjct` feature replaces sequences of adjacent consonants with
+conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
+
+A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
+"_consonant_,Halant,ZWNJ,_consonant_" must not be tagged to form a conjunct.
+
+The font's GSUB rules might be implemented so that `cjct`
+substitutions apply to half-form consonants; therefore, this feature
+must be applied after the `half` feature. 
+
+#### 3.13: cfar ####
+
+> This feature is not used in Devanagari.
+
 
