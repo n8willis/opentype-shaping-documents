@@ -459,8 +459,29 @@ stage five, however, do not have a mandatory order.
 > are generally combined into conjuncts and only less frequently
 > rendered in half-forms. -->
 
-With regard to the common variations seen among Indic scripts, 
-Bengali's specific shaping characteristics include:
+Indic scripts follow many of the same shaping patterns, but they
+differ in a few critical characteristics that the shaping engine must
+track. These include:
+
+  - The position of the base consonant in a syllable.
+  
+  - The final position of "Reph".
+  
+  - Whether "Reph" must be requested explicitly or if it is formed by
+    a specific, implicit sequence.
+	
+  - Whether the below-base forms feature is applied only to consonants
+    before the base consonant, only to consonants after the base
+    consonant, or to both.
+	
+  - The ordering positions for dependent vowels
+    (matras). Specifically, right-side, above-base, and below-base
+    matras follow different rules in different scripts. 
+	All Indic scripts position left-side matras in the same
+    manner, in the ordering position `POS_PREBASE_MATRA`. 
+
+With regard to these common variations, Bengali's specific shaping
+characteristics include:
 
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
