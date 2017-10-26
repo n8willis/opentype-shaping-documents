@@ -58,7 +58,7 @@ glyph reordering). Therefore, they must additionally be classified by
 how they are treated when shaping a run of text.
 
 
-### Vedic Extenstions character table ###
+### Vedic Extensions character table ###
 
 
 Vedic Extension glyphs should be classified as in the following
