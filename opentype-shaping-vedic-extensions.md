@@ -10,7 +10,7 @@ within text runs in many Indic scripts.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
-      - [Miscellaneous character table](#miscellaneous-character-table)
+      - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Shaping information](#shaping-information)
 
 <!-- markdown-toc end -->
