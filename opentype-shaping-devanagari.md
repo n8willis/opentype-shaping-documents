@@ -902,10 +902,17 @@ The `rkrf` feature replaces "_consonant_,Halant,Ra" sequences with the
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Devanagari includes one below-base consonant
-forms:
+form:
 
-  - "Ra,Halant" in a non-syllable-initial position takes on the
-    "Rakaar" form.
+  - "Halant,Ra" or "Ra,Halant" in a non-syllable-initial position will
+    take on the "Rakaar" form.
+	
+If the active font contains ligatures for the consonant adjacent to
+the "Halant" (i.e., "_consonant_,Halant,Ra"), then that ligature is
+normally applied with the `rkrf` feature in step 3.5. The `blwf`
+feature allows the "Ra" to be substituted with a standalone "Rakaar"
+mark, to work with all consonants that do not have a `rkrf` ligature
+in the font.
 
 Because Devanagari incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -922,13 +929,17 @@ characteristic.
 
 The `half` feature replaces "_consonant_,Halant" sequences before the
 base consonant with "half forms" of the consonant glyphs. There are
-three exceptions to the default behavior, for which the shaping engine
+four exceptions to the default behavior, for which the shaping engine
 must test:
 
   - Initial "Ra,Halant" sequences, which should have been tagged for
     the `rphf` feature earlier, must not be tagged for potential
     `half` substitutions.
 
+  - Non-initial "Ra,Halant" sequences, which should have been tagged
+    for the `rkrf` or `blwf` features earlier, must not be tagged for
+    potential `half` substitutions.
+  
   - A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must be
     tagged for potential `half` substitutions, even though the presence of the
     zero-width joiner suppresses the `cjct` feature in a later step.
@@ -965,5 +976,159 @@ must be applied after the `half` feature.
 #### 3.13: cfar ####
 
 > This feature is not used in Devanagari.
+
+
+### 4: Final reordering ###
+
+The final reordering stage repositions marks, dependent-vowel (matra)
+signs, and "Reph" glyphs to the appropriate location with respect to
+the base consonant. Because multiple substitutions may have occurred
+during the application of the basic-shaping features in the preceding
+stage, these repositioning moves could not be performed during the
+initial reordering stage.
+
+Like the initial reordering stage, the steps involved in this stage
+occur on a per-syllable basis.
+
+<!--- Check that classifications have not been mangled. If the -->
+<!--character is a Halant AND a ligature was formed AND a multiple
+substitution was performed, restore the classification to VIRAMA
+because it was almost certainly lost in the preceding GSUB stage.
+--->
+
+#### 4.1: Base consonant ####
+
+The final reordering stage, like the initial reordering stage, begins
+with determining the base consonant of each syllable, following the
+same algorithm used in stage 2, step 1.
+
+The codepoint of the underlying base consonant will not change between
+the search performed in stage 2, step 1, and the search repeated
+here. However, the application of GSUB shaping features in stage 3
+means that several ligation and many-to-one substitutions may have
+taken place. The final glyph produced by that process may, therefore,
+be a conjunct or ligature form — in most cases, such a glyph will not
+have an assigned Unicode codepoint.
+   
+#### 4.2: Pre-base matras ####
+
+Pre-base dependent vowels (matras) that were reordered during the
+initial reordering stage must be moved to their final position. This
+position is defined as:
+   
+   - after the last standalone "Halant" glyph that comes after the
+     matra's starting position and also comes before the main
+     consonant.
+   - If a zero-width joiner or a zero-width non-joiner follows this
+     last standalone "Halant", the final matra position is moved to
+     after the joiner or non-joiner.
+
+This means that the matra will move to the right of all explicit
+"consonant,Halant" subsequences, but will stop to the left of the base
+consonant, all conjuncts or ligatures that contains the base
+consonant, and all half forms.
+
+#### 4.3: Reph ####
+
+"Reph" must be moved from the beginning of the syllable to its final
+position. Because Devanagari incorporates the `REPH_POS_BEFORE_POST`
+shaping characteristic, this final position is immediately before any
+independent post-base consonant forms (meaning the first post-base
+consonant that has not formed a ligature with the base consonant).
+
+  - If the syllable does not have any post-base consonants, then the
+    final "Reph" position is immediately before the first post-base
+    matra, syllable modifier, or Vedic sign.
+
+
+<!--- #### 4.4: Pre-base consonants ####
+
+Any pre-base reordering consonants must be moved to immediately before
+the base consonant.
+  
+  *** Bengali does not use pre-base reordering consonants *** *** This
+  feature is exhibited by Javanese and Balinese. Possibly *** by
+  Devanagari as well....  --->
+
+#### 4.4: Initial matras ####
+
+Any left-side dependent vowels (matras) that are at the start of a
+word must be tagged for potential substitution by the `init` feature
+of GSUB.
+   
+### 5: Applying all remaining substitution features from GSUB ###
+
+In this stage, the remaining substitution features from the GSUB table
+are applied. The order in which these features are applied is not
+canonical; they should be applied in the order in which they appear in
+the GSUB table in the font. 
+
+	init
+	pres
+	abvs
+	blws
+	psts
+	haln
+
+The `init` feature replaces word-initial glyphs with special
+presentation forms. Generally, these forms involve removing the
+headline instroke from the left side of the glyph.
+
+The `pres` feature replaces pre-base-consonant glyphs with special
+presentations forms. This can include consonant conjuncts, half-form
+consonants, and stylistic variants of left-side dependent vowels
+(matras). 
+
+The `abvs` feature replaces above-base-consonant glyphs with special
+presentation forms. This usually includes contextual variants of
+above-base marks or contextually appropriate mark-and-base ligatures.
+
+The `blws` feature replaces below-base-consonant glyphs with special
+presentation forms. This usually includes replacing consonants that
+are followed by the below-base-consonant form "Rakaar" with contextual
+ligatures.
+
+The `psts` feature replaces post-base-consonant glyphs with special
+presentation forms. This usually includes replacing right-side
+dependent vowels (matras) with stylistic variants or replacing
+post-base-consonant/matra pairs with contextual ligatures. 
+
+The `haln` feature replaces word-final "_consonant_,Halant" pairs with
+special presentation forms. This can include stylistic variants of the
+consonant where placing the "Halant" mark on its own is
+typographically problematic. 
+
+> Note: The `calt` feature, which allows for generalized application
+> of contextual alternate substitutions, is usually applied at this
+> point. However, `calt` is not mandatory for correct Bengali shaping
+> and may be disabled in the application by user preference.
+
+### 6: Applying remaining positioning features from GPOS ###
+
+In this stage, mark positioning, kerning, and other GPOS features are
+applied. As with the preceding stage, the order in which these
+features are applied is not canonical; they should be applied in the
+order in which they appear in the GPOS table in the font.
+
+        dist
+        abvm
+        blwm
+
+> Note: The `kern` feature is usually applied at this stage, if it is
+> present in the font. However, `kern` (like `calt`, above) is not
+> mandatory for shaping Bengali text and may be disabled by user preference.
+
+The `dist` feature adjusts the horizontal positioning of
+glyphs. Unlike `kern`, adjustments made with `dist` do not require the
+application or the user to enable any software _kerning_ features, if
+such features are optional. 
+
+The `abvm` feature positions above-base marks for attachment to base
+characters. In Devanagari, this includes "Reph" in addition to the
+diacritical marks and Vedic signs. 
+
+The `blwm` feature positions below-base marks for attachment to base
+characters. In Devanagari, this includes below-base dependent vowels
+(matras) as well as the below-base consonant form "Rakaar".
 
 

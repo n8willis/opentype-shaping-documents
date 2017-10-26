@@ -1024,13 +1024,13 @@ signs, and "Reph" glyphs to the appropriate location with respect to
 the base consonant. Because multiple substitutions may have occurred
 during the application of the basic-shaping features in the preceding
 stage, these repositioning moves could not be performed during the
-initial reordering stage. 
+initial reordering stage.
 
 Like the initial reordering stage, the steps involved in this stage
 occur on a per-syllable basis.
 
 <!--- Check that classifications have not been mangled. If the -->
-<!--character is a Halant AND a ligature was formed AND a multiple 
+<!--character is a Halant AND a ligature was formed AND a multiple
 substitution was performed, restore the classification to VIRAMA
 because it was almost certainly lost in the preceding GSUB stage.
 --->
@@ -1047,7 +1047,7 @@ here. However, the application of GSUB shaping features in stage 3
 means that several ligation and many-to-one substitutions may have
 taken place. The final glyph produced by that process may, therefore,
 be a conjunct or ligature form — in most cases, such a glyph will not
-have an assigned Unicode codepoint. 
+have an assigned Unicode codepoint.
    
 #### 4.2: Pre-base matras ####
 
@@ -1055,60 +1055,55 @@ Pre-base dependent vowels (matras) that were reordered during the
 initial reordering stage must be moved to their final position. This
 position is defined as:
    
-   - after the last standalone "Halant" glyph that comes after the 
-     matra's starting position and also comes before the main consonant.
-   - If a zero-width joiner or a zero-width non-joiner follows this last
-     standalone "Halant", the final matra position is moved to after
-     the joiner or non-joiner.
+   - after the last standalone "Halant" glyph that comes after the
+     matra's starting position and also comes before the main
+     consonant.
+   - If a zero-width joiner or a zero-width non-joiner follows this
+     last standalone "Halant", the final matra position is moved to
+     after the joiner or non-joiner.
 
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant, all conjuncts or ligatures that contains the base
-consonant, and all half forms. 
+consonant, and all half forms.
 
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Bengali incorporates the
-`REPH_POS_AFTER_SUBJOINED` shaping characteristic, this final
-position is immediately after the base consonant and any subjoined
-(below-base consonant or below-base dependent vowel) forms. 
+position. Because Bengali incorporates the `REPH_POS_AFTER_SUBJOINED`
+shaping characteristic, this final position is immediately after the
+base consonant and any subjoined (below-base consonant or below-base
+dependent vowel) forms.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
     immediately before the first character tagged with the
-   `POS_BEFORE_POST` position or any later position in the sort order.
+    `POS_BEFORE_POST` position or any later position in the sort
+    order.
 
-    -- If there are no characters tagged with `POS_BEFORE_POST` or later
-       positions, then "Reph" is positioned at the end of the syllable.
+    -- If there are no characters tagged with `POS_BEFORE_POST` or
+       later positions, then "Reph" is positioned at the end of the
+       syllable.
 
-Finally, if the final position of "Reph" occurs after a "_matra_,Halant"
-subsequence, then "Reph" must be repositioned to the left of "Halant",
-to allow for potential matching with `abvs` or `psts` substitutions
-from GSUB.
+Finally, if the final position of "Reph" occurs after a
+"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+left of "Halant", to allow for potential matching with `abvs` or
+`psts` substitutions from GSUB.
 
 <!--- #### 4.4: Pre-base consonants ####
 
-Any pre-base reordering consonants must be moved to immediately
-before the base consonant.
+Any pre-base reordering consonants must be moved to immediately before
+the base consonant.
   
-  *** Bengali does not use pre-base reordering consonants *** 
-  *** This feature is exhibited by Javanese and Balinese. Possibly 
-  *** by Devanagari as well....
---->
+  *** Bengali does not use pre-base reordering consonants *** *** This
+  feature is exhibited by Javanese and Balinese. Possibly *** by
+  Devanagari as well....  --->
 
 #### 4.4: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
-word must be tagged for potential substitution by the `init`
-feature of GSUB.
-   
-<!--- #### 4.6: Cluster merging ####
-
-Clusters must be merged (?) if compatibility with Microsoft
-Uniscribe is required.
-
---->
+word must be tagged for potential substitution by the `init` feature
+of GSUB.
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
