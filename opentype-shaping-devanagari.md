@@ -904,7 +904,8 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Devanagari includes one below-base consonant
 form:
 
-  - "Halant,Ra" or "Ra,Halant" in a non-syllable-initial position will
+  - "Halant,Ra" (occuring after the base consonant) or "Ra,Halant"
+    (before the base consonant, but in a non-syllable-initial position) will
     take on the "Rakaar" form.
 	
 If the active font contains ligatures for the consonant adjacent to
