@@ -10,9 +10,11 @@ implementations share.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
-      - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
+      - [Shaping classes](#shaping-classes)
+	  - [Mark-placement subclasses](#mark-placement-subclasses)
       - [Character tables](#character-tables)
   - [The Indic2 shaping model](#the-indic2-shaping-model)
+      - [Script shaping characteristics](#script-shaping-characteristics)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
@@ -24,7 +26,7 @@ implementations share.
 
 ## General information ##
 
-The Indic (or Bhramic) family of scripts includes writing systems
+The Indic family of scripts includes writing systems
 derived from the Bhrami script in ancient India. Although the scripts
 vary considerably in appearance, their shared ancestry means that they
 also share a number of important features and rules. 
@@ -65,6 +67,14 @@ Therefore, new fonts should be engineered to work with the
 shaping model. However, if a font is encountered that supports only
 an older script tag, the shaping engine should deal with it gracefully.
 
+> Note: There are several other scripts derived from the Bhrami script
+> that are often treated separately and not bundled into the "Indic"
+> category by shaping engines. This is because these other scripts
+> evolved to have significantly distinct rules for syllable
+> construction, reordering, and shaping.
+>
+> The scripts include Buginese, Balinese, Javanese, Lao, Myanmar,
+> Thai, and Tibetan.
 
 ## Terminology ##
 
@@ -103,7 +113,7 @@ expected shaping behavior (such as glyph reordering). Therefore,
 Bengali glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
-### Shaping classes and subclasses ###
+### Shaping classes ###
 
 The shaping classes listed in the tables that follow are defined so
 that they capture the positioning rules used by Indic scripts. 
@@ -142,13 +152,16 @@ might affect how the respective glyphs are drawn, such as `tnum`,
 which specifies the usage of tabular-width numerals, and `sups`, which
 replaces the default glyphs with superscript variants.
 
+### Mark-placement subclasses ###
+
 Marks and dependent vowels are further labelled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
-to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's GPOS
-table, however, the shaping rules for Indic scripts require that the
-shaping engine be able to identify marks by their general
-position. 
+to the base character to which it is attached. 
+
+The actual attachment position of these glyphs is determined by the
+lookups found in the font's GPOS table. However, the reordering rules for
+Indic scripts require that the shaping engine be able to identify
+marks by their general position. 
 
 For example, left-side dependent vowels (matras), classified
 with `LEFT_POSITION`, must frequently be reordered, with the final
@@ -187,12 +200,12 @@ of script-specific rules that dictate how characters are reordered
 from their sequence in the input stream into the correct ordering for
 shaping rules to apply.
 
-Specifically, certain consonants in every script are repositioned from
+Specifically, certain consonants in each script are repositioned from
 their logical position (that is, their position in the input
 stream). The most common example is "Ra", which is frequently
 converted into a combining mark-like form. 
 
-The mark must be correctly positioned by attaching it to the correct
+The resulting mark must be correctly positioned by attaching it to the correct
 base character using the active font's `mark` lookup from
 `GPOS`. Therefore, the mark form of the "Ra" must be moved so that it
 is adjacent to the correct base character. Which character in a
@@ -204,3 +217,146 @@ distinct forms that require reordering so that `mark` positioning
 and other lookups function correctly. Dependent vowels (matras) may
 also need to be reordered so that they are adjacent to the correct
 consonant. These functions, too, involve script-specific rule sets.
+
+Because of the script-specific rules involved, it is mandatory that
+the basic substitution features in stage 3 be applied in the order
+specified. 
+
+The remaining substitution features in stage 5 and the positioning
+features in stage 6, however, do not have a mandatory order.
+
+
+### Script shaping characteristics ###
+
+Indic scripts follow many of the same shaping patterns, but they
+differ in a few critical characteristics that the shaping engine must
+track. These include:
+
+  - The rules that determine the base consonant in a syllable.
+  
+  - The final position of "Reph".
+  
+  - How "Reph" is encoded or requested in a syllable.
+	
+  - Whether the below-base forms feature is applied only to consonants
+    before the base consonant, only to consonants after the base
+    consonant, or to both.
+	
+  - The ordering positions for dependent vowels
+    (matras). Specifically, the ordering for left-side, right-side,
+    above-base, and below-base matras follow different rules. The
+    rules employed vary between scripts, except for left-side matras,
+    where all Indic scripts follow the same rule. 
+
+#### Base consonant ####
+
+Locating the base consonant of a syllable generally requires parsing
+the syllable to catch and exclude certain special-treatment consonants
+(such as "Ra"s that will form "Reph"s or consonants that take on
+below-base forms). However, each script has a general base-consonant
+position that determines the appropriate search method. The base
+consonant may be, generally:
+
+  - The first consonant. This is designated `BASE_POS_FIRST`.
+  
+  - The last consonant. This is designated `BASE_POS_LAST`.
+  
+  - The last consonant that is not preceded by a "ZWJ". This position
+    is only used in Sinhala, and is designated `BASE_POS_LAST_SINHALA`.
+
+#### Reph position ####
+
+"Reph" may be positioned:
+
+  - at the beginning of the syllable, in the ordering position
+    `POS_RA_TO_BECOME_REPH`.
+	
+  - immediately before the first subjoined (below-base) consonant, in
+    the ordering position `POS_BEFORE_SUBJOINED`.
+	
+  - immediately after the base consonant, in the ordering position `POS_AFTER_MAIN`.
+	
+  - immediately after the last subjoined (below-base) consonant, in
+    the ordering position `POS_AFTER_SUBJOINED`.
+
+  - immediately beforw the last post-base consonant, in the ordering
+    position `POS_BEFORE_POST`.
+	
+  - immediately after the last post-base consonant, in the ordering
+    position `POS_AFTER_POST`.
+
+#### Reph encoding ####
+
+"Reph" may be:
+
+  - requested explicitly, using the sequence "Ra,Halant,ZWJ". This is
+    designated `REPH_MODE_EXPLICIT`.
+  
+  - Formed implicitly by the sequence "Ra,Halant" when used in certain positions
+    in a syllable. This is designated `REPH_MODE_IMPLICIT`. Because a
+    "Ra,Halant" does _not_ form a "Reph" in _every_ position in a
+    syllable, script-specific tests are required.
+
+  - encoded as a separate codepoint. This codepoint is generally
+    called "Repha", which distinguishes it from the "Reph"s formed by
+    other sequences. A "Repha" may need reordering based on script
+    specific rules, in which case `REPH_MODE_LOGICAL_REPHA` is
+    used. Alternatively, the script may not reorder "Repha"s at all,
+    in which case `REPH_MODE_VISUAL_REPHA` is used.
+  
+#### Below-base forms ####
+
+Below-base consonant forms (the `blwf` feature) may be applied:
+
+  - Only to consonants after the base consonant. This is designated
+    `BLWF_MODE_POST_ONLY`.
+	
+  - To consonants occuring before or after the base consonant. This is
+    designated `BLWF_MODE_PRE_AND_POST`.
+
+#### Left-side matras ####
+
+All Indic scripts position left-side matras in the same
+manner, in the ordering position `POS_PREBASE_MATRA`.
+
+#### Right-side matras ####
+
+Right-side matras may be positioned:
+
+  - immediately before the first subjoined (below-base) consonant, in
+    the ordering position `POS_BEFORE_SUBJOINED`.
+	
+  - immediately after the last subjoined (below-base) consonant, in
+    the ordering position `POS_AFTER_SUBJOINED`.
+
+  - immediately after the last post-base consonant, in the ordering
+    position `POS_AFTER_POST`.
+
+#### Above-base matras ####
+
+Above-base matras may be positioned:
+
+  - immediately before the first subjoined (below-base) consonant, in
+    the ordering position `POS_BEFORE_SUBJOINED`.
+	
+  - immediately after the base consonant, in the ordering position `POS_AFTER_MAIN`.
+	
+  - immediately after the last subjoined (below-base) consonant, in
+    the ordering position `POS_AFTER_SUBJOINED`.
+
+  - immediately after the last post-base consonant, in the ordering
+    position `POS_AFTER_POST`.
+
+
+#### Below-base matras ####
+
+Below-base matras may be positioned:
+
+  - immediately before the first subjoined (below-base) consonant, in
+    the ordering position `POS_BEFORE_SUBJOINED`.
+	
+  - immediately after the last subjoined (below-base) consonant, in
+    the ordering position `POS_AFTER_SUBJOINED`.
+
+  - immediately after the last post-base consonant, in the ordering
+    position `POS_AFTER_POST`.
