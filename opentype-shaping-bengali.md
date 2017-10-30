@@ -10,9 +10,7 @@ runs in the Bengali script.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
-      - [Bengali character table](#bengali-character-table)
-      - [Vedic Extensions character table](#vedic-extensions-character-table)
-      - [Miscellaneous character table](#miscellaneous-character-table)
+      - [Bengali character tables](#bengali-character-tables)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
@@ -153,6 +151,7 @@ category, its shaping class, and its mark-placement subclass. The
 codepoint's Unicode name and an example glyph are also provided.
 
 For example:
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0981`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
