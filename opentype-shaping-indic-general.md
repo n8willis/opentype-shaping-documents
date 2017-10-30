@@ -313,6 +313,16 @@ track. These include:
     rules employed vary between scripts, except for left-side matras,
     where all Indic scripts follow the same rule. 
 
+In the lists that follow, the options for each characteristic are
+mutually exclusive, and they are exhaustive for the set of Indic
+scripts [listed](#general-information) at the beginning of this
+document (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
+Oriya, Tamil, Telugu, Sinhala, and Khmer).
+
+Implementers who wish to cover additional scripts using the same
+method would first need to determine whether any additional options
+are relevent for each characteristic.
+
 #### Base consonant ####
 
 Locating the base consonant of a syllable generally requires parsing
