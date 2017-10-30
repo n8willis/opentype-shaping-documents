@@ -599,7 +599,7 @@ shaping classifications from the tables above.
 	H	  Halant/Virama
 	ZWNJ	  Zero-width non-joiner
 	ZWJ	  Zero-width joiner
-	M	  Matra (up to one of each type: pre-base, below-base, or post-base)
+	M	  Matra (up to one of each type: pre-base, above-base, below-base, or post-base)
 	SM	  Syllable modifier signs
 	VD	  Vedic signs
 	A	  Anudatta
@@ -1042,16 +1042,14 @@ consonant that has not formed a ligature with the base consonant).
     matra, syllable modifier, or Vedic sign.
 
 
-<!--- #### 4.4: Pre-base consonants ####
+#### 4.4: Pre-base consonants ####
 
 Any pre-base reordering consonants must be moved to immediately before
 the base consonant.
   
-  *** Bengali does not use pre-base reordering consonants *** *** This
-  feature is exhibited by Javanese and Balinese. Possibly *** by
-  Devanagari as well....  --->
-
-#### 4.4: Initial matras ####
+  <!--- Double check if this is used in Devnagari --->
+  
+#### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature

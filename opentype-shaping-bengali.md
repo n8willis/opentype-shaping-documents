@@ -905,9 +905,9 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-![KaSaa ligation](/images/bengali/kassa-ligation.png)
+![KSsa ligation](/images/bengali/kassa-ligation.png)
 
-![JaNya ligation](/images/bengali/janya-ligation.png)
+![JNya ligation](/images/bengali/janya-ligation.png)
 
 #### 3.4: rphf ####
 
@@ -1090,16 +1090,20 @@ Finally, if the final position of "Reph" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
-<!--- #### 4.4: Pre-base consonants ####
+#### 4.4: Pre-base consonants ####
 
 Any pre-base reordering consonants must be moved to immediately before
 the base consonant.
   
-  *** Bengali does not use pre-base reordering consonants *** *** This
+Bengali does not use pre-base reordering consonants, so this step will
+involve no work when processing `<bng2>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
+
+<!---  *** Bengali does not use pre-base reordering consonants *** *** This
   feature is exhibited by Javanese and Balinese. Possibly *** by
   Devanagari as well....  --->
 
-#### 4.4: Initial matras ####
+#### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
