@@ -217,7 +217,7 @@ specific, script-aware behavior.
 
 ## Vedic Extensions character table ##
 
-Sanskrit runs written in the Devnagari script may also include
+Sanskrit runs written in the Devanagari script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
