@@ -181,7 +181,7 @@ Character tables for all of the scripts, plus the Vedic Extensions and
 important miscellaneous characters, are available here:
 
   - [Devanagari](opentype-shaping-devanagari.md#devanagari-character-table) (Including Devanagari Extended)
-  - [Bengali](opentype-shaping-bengali.md#bengali-character-table)
+  - [Bengali](character-tables/character-tables-bengali.md)
   - [Vedic Extensions](opentype-shaping-vedic-extensions.md)
   - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) 
 	

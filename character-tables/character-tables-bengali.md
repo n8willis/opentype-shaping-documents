@@ -23,7 +23,7 @@ currency marks and other symbols.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
-codepoints have a_null_ in this column and evoke no special
+codepoints have a _null_ in this column and evoke no special
 mark-placement behavior. Marks tagged with [Mn] in the _Unicode
 category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
@@ -263,8 +263,8 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_consonant_,Halant,_consonant_" sequence. The sequence
+The zero-width joiner is primarily used to prevent the formation of a
+conjunct from a "_consonant_,Halant,_consonant_" sequence. The sequence
 "_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
 conjunct between the two consonants. 
 

@@ -167,12 +167,12 @@ column evoke no special behavior from the shaping engine.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
-codepoints have a_null_ in this column and evoke no special
+codepoints have a _null_ in this column and evoke no special
 mark-placement behavior. Marks tagged with [Mn] in the _Unicode
 category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
 
-Some codepoints in the following table use a _Shaping class_ that
+Some codepoints in the tables use a _Shaping class_ that
 differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
