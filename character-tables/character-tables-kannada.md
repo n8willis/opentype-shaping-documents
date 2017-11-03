@@ -35,141 +35,141 @@ specific, script-aware behavior.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0C80`   | Letter           |                   |                            | &#x0C80; Spacing Candrabindu |
-|`U+0C81`   | Mark [Mn]        |                   |                            | &#x0C81; Candrabindu         |
-|`U+0C82`   | Mark [Mc]        |                   |                            | &#x0C82; Anusvara            |
-|`U+0C83`   | Mark [Mc]        |                   |                            | &#x0C83; Visarga             |
-|`U+0C84`   |                  |                   |                            |                              |
-|`U+0C85`   | Letter           |                   |                            | &#x0C85; A                   |
-|`U+0C86`   | Letter           |                   |                            | &#x0C86; Aa                  |
-|`U+0C87`   | Letter           |                   |                            | &#x0C87; I                   |
-|`U+0C88`   | Letter           |                   |                            | &#x0C88; Ii                  |
-|`U+0C89`   | Letter           |                   |                            | &#x0C89; U                   |
-|`U+0C8A`   | Letter           |                   |                            | &#x0C8A; Uu                  |
-|`U+0C8B`   | Letter           |                   |                            | &#x0C8B; Vocalic R           |
-|`U+0C8C`   | Letter           |                   |                            | &#x0C8C; Vocalic L           |
-|`U+0C8D`   |                  |                   |                            |                              |
-|`U+0C8E`   | Letter           |                   |                            | &#x0C8E; E                   |
-|`U+0C8F`   | Letter           |                   |                            | &#x0C8F; Ee                  |
+|`U+0C80`   | Letter           | _null_            | _null_                     | &#x0C80; Spacing Candrabindu |
+|`U+0C81`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0C81; Candrabindu         |
+|`U+0C82`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0C82; Anusvara            |
+|`U+0C83`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0C83; Visarga             |
+|`U+0C84`   | _unassigned_     |                   |                            |                              |
+|`U+0C85`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C85; A                   |
+|`U+0C86`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C86; Aa                  |
+|`U+0C87`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C87; I                   |
+|`U+0C88`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C88; Ii                  |
+|`U+0C89`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C89; U                   |
+|`U+0C8A`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C8A; Uu                  |
+|`U+0C8B`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C8B; Vocalic R           |
+|`U+0C8C`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C8C; Vocalic L           |
+|`U+0C8D`   | _unassigned_     |                   |                            |                              |
+|`U+0C8E`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C8E; E                   |
+|`U+0C8F`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C8F; Ee                  |
 | | | | |																		
-|`U+0C90`   | Letter           |                   |                            | &#x0C90; Ai                  |
-|`U+0C91`   |                  |                   |                            |                              |
-|`U+0C92`   | Letter           |                   |                            | &#x0C92; O                   |
-|`U+0C93`   | Letter           |                   |                            | &#x0C93; Oo                  |
-|`U+0C94`   | Letter           |                   |                            | &#x0C94; Au                  |
-|`U+0C95`   | Letter           |                   |                            | &#x0C95; Ka                  |
-|`U+0C96`   | Letter           |                   |                            | &#x0C96; Kha                 |
-|`U+0C97`   | Letter           |                   |                            | &#x0C97; Ga                  |
-|`U+0C98`   | Letter           |                   |                            | &#x0C98; Gha                 |
-|`U+0C99`   | Letter           |                   |                            | &#x0C99; Nga                 |
-|`U+0C9A`   | Letter           |                   |                            | &#x0C9A; Ca                  |
-|`U+0C9B`   | Letter           |                   |                            | &#x0C9B; Cha                 |
-|`U+0C9C`   | Letter           |                   |                            | &#x0C9C; Ja                  |
-|`U+0C9D`   | Letter           |                   |                            | &#x0C9D; Jha                 |
-|`U+0C9E`   | Letter           |                   |                            | &#x0C9E; Nya                 |
-|`U+0C9F`   | Letter           |                   |                            | &#x0C9F; Tta                 |
+|`U+0C90`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C90; Ai                  |
+|`U+0C91`   | _unassigned_     |                   |                            |                              |
+|`U+0C92`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C92; O                   |
+|`U+0C93`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C93; Oo                  |
+|`U+0C94`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C94; Au                  |
+|`U+0C95`   | Letter           | CONSONANT         | _null_                     | &#x0C95; Ka                  |
+|`U+0C96`   | Letter           | CONSONANT         | _null_                     | &#x0C96; Kha                 |
+|`U+0C97`   | Letter           | CONSONANT         | _null_                     | &#x0C97; Ga                  |
+|`U+0C98`   | Letter           | CONSONANT         | _null_                     | &#x0C98; Gha                 |
+|`U+0C99`   | Letter           | CONSONANT         | _null_                     | &#x0C99; Nga                 |
+|`U+0C9A`   | Letter           | CONSONANT         | _null_                     | &#x0C9A; Ca                  |
+|`U+0C9B`   | Letter           | CONSONANT         | _null_                     | &#x0C9B; Cha                 |
+|`U+0C9C`   | Letter           | CONSONANT         | _null_                     | &#x0C9C; Ja                  |
+|`U+0C9D`   | Letter           | CONSONANT         | _null_                     | &#x0C9D; Jha                 |
+|`U+0C9E`   | Letter           | CONSONANT         | _null_                     | &#x0C9E; Nya                 |
+|`U+0C9F`   | Letter           | CONSONANT         | _null_                     | &#x0C9F; Tta                 |
 | | | | |																		
-|`U+0CA0`   | Letter           |                   |                            | &#x0CA0; Ttha                |
-|`U+0CA1`   | Letter           |                   |                            | &#x0CA1; Dda                 |
-|`U+0CA2`   | Letter           |                   |                            | &#x0CA2; Ddha                |
-|`U+0CA3`   | Letter           |                   |                            | &#x0CA3; Nna                 |
-|`U+0CA4`   | Letter           |                   |                            | &#x0CA4; Ta                  |
-|`U+0CA5`   | Letter           |                   |                            | &#x0CA5; Tha                 |
-|`U+0CA6`   | Letter           |                   |                            | &#x0CA6; Da                  |
-|`U+0CA7`   | Letter           |                   |                            | &#x0CA7; Dha                 |
-|`U+0CA8`   | Letter           |                   |                            | &#x0CA8; Na                  |
-|`U+0CA9`   |                  |                   |                            |                              |
-|`U+0CAA`   | Letter           |                   |                            | &#x0CAA; Pa                  |
-|`U+0CAB`   | Letter           |                   |                            | &#x0CAB; Pha                 |
-|`U+0CAC`   | Letter           |                   |                            | &#x0CAC; Ba                  |
-|`U+0CAD`   | Letter           |                   |                            | &#x0CAD; Bha                 |
-|`U+0CAE`   | Letter           |                   |                            | &#x0CAE; Ma                  |
-|`U+0CAF`   | Letter           |                   |                            | &#x0CAF; Ya                  |
+|`U+0CA0`   | Letter           | CONSONANT         | _null_                     | &#x0CA0; Ttha                |
+|`U+0CA1`   | Letter           | CONSONANT         | _null_                     | &#x0CA1; Dda                 |
+|`U+0CA2`   | Letter           | CONSONANT         | _null_                     | &#x0CA2; Ddha                |
+|`U+0CA3`   | Letter           | CONSONANT         | _null_                     | &#x0CA3; Nna                 |
+|`U+0CA4`   | Letter           | CONSONANT         | _null_                     | &#x0CA4; Ta                  |
+|`U+0CA5`   | Letter           | CONSONANT         | _null_                     | &#x0CA5; Tha                 |
+|`U+0CA6`   | Letter           | CONSONANT         | _null_                     | &#x0CA6; Da                  |
+|`U+0CA7`   | Letter           | CONSONANT         | _null_                     | &#x0CA7; Dha                 |
+|`U+0CA8`   | Letter           | CONSONANT         | _null_                     | &#x0CA8; Na                  |
+|`U+0CA9`   | _unassigned_     |                   |                            |                              |
+|`U+0CAA`   | Letter           | CONSONANT         | _null_                     | &#x0CAA; Pa                  |
+|`U+0CAB`   | Letter           | CONSONANT         | _null_                     | &#x0CAB; Pha                 |
+|`U+0CAC`   | Letter           | CONSONANT         | _null_                     | &#x0CAC; Ba                  |
+|`U+0CAD`   | Letter           | CONSONANT         | _null_                     | &#x0CAD; Bha                 |
+|`U+0CAE`   | Letter           | CONSONANT         | _null_                     | &#x0CAE; Ma                  |
+|`U+0CAF`   | Letter           | CONSONANT         | _null_                     | &#x0CAF; Ya                  |
 | | | | |																		
-|`U+0CB0`   | Letter           |                   |                            | &#x0CB0; Ra                  |
-|`U+0CB1`   | Letter           |                   |                            | &#x0CB1; Rra                 |
-|`U+0CB2`   | Letter           |                   |                            | &#x0CB2; La                  |
-|`U+0CB3`   | Letter           |                   |                            | &#x0CB3; Lla                 |
-|`U+0CB4`   |                  |                   |                            |                              |
-|`U+0CB5`   | Letter           |                   |                            | &#x0CB5; Va                  |
-|`U+0CB6`   | Letter           |                   |                            | &#x0CB6; Sha                 |
-|`U+0CB7`   | Letter           |                   |                            | &#x0CB7; Ssa                 |
-|`U+0CB8`   | Letter           |                   |                            | &#x0CB8; Sa                  |
-|`U+0CB9`   | Letter           |                   |                            | &#x0CB9; Ha                  |
-|`U+0CBA`   |                  |                   |                            |                              |
-|`U+0CBB`   |                  |                   |                            |                              |
-|`U+0CBC`   | Mark [Mn]        |                   |                            | &#x0CBC; Nukta               |
-|`U+0CBD`   | Letter           |                   |                            | &#x0CBD; Avagraha            |
-|`U+0CBE`   | Mark [Mc]        |                   |                            | &#x0CBE; Sign Aa             |
-|`U+0CBF`   | Mark [Mn]        |                   |                            | &#x0CBF; Sign I              |
+|`U+0CB0`   | Letter           | CONSONANT         | _null_                     | &#x0CB0; Ra                  |
+|`U+0CB1`   | Letter           | CONSONANT         | _null_                     | &#x0CB1; Rra                 |
+|`U+0CB2`   | Letter           | CONSONANT         | _null_                     | &#x0CB2; La                  |
+|`U+0CB3`   | Letter           | CONSONANT         | _null_                     | &#x0CB3; Lla                 |
+|`U+0CB4`   | _unassigned_     |                   |                            |                              |
+|`U+0CB5`   | Letter           | CONSONANT         | _null_                     | &#x0CB5; Va                  |
+|`U+0CB6`   | Letter           | CONSONANT         | _null_                     | &#x0CB6; Sha                 |
+|`U+0CB7`   | Letter           | CONSONANT         | _null_                     | &#x0CB7; Ssa                 |
+|`U+0CB8`   | Letter           | CONSONANT         | _null_                     | &#x0CB8; Sa                  |
+|`U+0CB9`   | Letter           | CONSONANT         | _null_                     | &#x0CB9; Ha                  |
+|`U+0CBA`   | _unassigned_     |                   |                            |                              |
+|`U+0CBB`   | _unassigned_     |                   |                            |                              |
+|`U+0CBC`   | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x0CBC; Nukta               |
+|`U+0CBD`   | Letter           | AVAGRAHA          | _null_                     | &#x0CBD; Avagraha            |
+|`U+0CBE`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CBE; Sign Aa             |
+|`U+0CBF`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0CBF; Sign I              |
 | | | | |																		
-|`U+0CC0`   | Mark [Mc]        |                   |                            | &#x0CC0; Sign Ii             |
-|`U+0CC1`   | Mark [Mc]        |                   |                            | &#x0CC1; Sign U              |
-|`U+0CC2`   | Mark [Mc]        |                   |                            | &#x0CC2; Sign Uu             |
-|`U+0CC3`   | Mark [Mc]        |                   |                            | &#x0CC3; Sign Vocalic R      |
-|`U+0CC4`   | Mark [Mc]        |                   |                            | &#x0CC4; Sign Vocalic Rr     |
+|`U+0CC0`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CC0; Sign Ii             |
+|`U+0CC1`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CC1; Sign U              |
+|`U+0CC2`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CC2; Sign Uu             |
+|`U+0CC3`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CC3; Sign Vocalic R      |
+|`U+0CC4`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CC4; Sign Vocalic Rr     |
 |`U+0CC5`   | _unassigned_     |                   |                            |                              |
-|`U+0CC6`   | Mark [Mn]        |                   |                            | &#x0CC6; Sign E              |
-|`U+0CC7`   | Mark [Mc]        |                   |                            | &#x0CC7; Sign Ee             |
-|`U+0CC8`   | Mark [Mc]        |                   |                            | &#x0CC8; Sign Ai             |
-|`U+0CC9`   |                  |                   |                            |                              |
-|`U+0CCA`   | Mark [Mc]        |                   |                            | &#x0CCA; Sign O              |
-|`U+0CCB`   | Mark [Mc]        |                   |                            | &#x0CCB; Sign Oo             |
-|`U+0CCC`   | Mark [Mc]        |                   |                            | &#x0CCC; Sign Au             |
-|`U+0CCD`   | Mark [Mc]        |                   |                            | &#x0CCD; Virama              |
+|`U+0CC6`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0CC6; Sign E              |
+|`U+0CC7`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CC7; Sign Ee             |
+|`U+0CC8`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND-RIGHT_POSITION     | &#x0CC8; Sign Ai             |
+|`U+0CC9`   | _unassigned_     |                   |                            |                              |
+|`U+0CCA`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CCA; Sign O              |
+|`U+0CCB`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CCB; Sign Oo             |
+|`U+0CCC`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0CCC; Sign Au             |
+|`U+0CCD`   | Mark [Mn]        | VIRAMA            | TOP_POSITION               | &#x0CCD; Virama              |
 |`U+0CCE`   | _unassigned_     |                   |                            |                              |
-|`U+0CCF`   |                  |                   |                            |                              |
+|`U+0CCF`   | _unassigned_     |                   |                            |                              |
 | | | | |																		
-|`U+0CD0`   |                  |                   |                            |                              |
-|`U+0CD1`   |                  |                   |                            |                              |
-|`U+0CD2`   |                  |                   |                            |                              |
-|`U+0CD3`   |                  |                   |                            |                              |
-|`U+0CD4`   |                  |                   |                            |                              |
-|`U+0CD5`   | Mark [Mc]        |                   |                            | &#x0CD5; Length Mark         |
-|`U+0CD6`   | Mark [Mc]        |                   |                            | &#x0CD6; Ai Length Mark      |
-|`U+0CD7`   |                  |                   |                            |                              |
-|`U+0CD8`   |                  |                   |                            |                              |
-|`U+0CD9`   |                  |                   |                            |                              |
-|`U+0CDA`   |                  |                   |                            |                              |
-|`U+0CDB`   |                  |                   |                            |                              |
-|`U+0CDC`   |                  |                   |                            |                              |
-|`U+0CDD`   |                  |                   |                            |                              |
-|`U+0CDE`   | Letter           |                   |                            | &#x0CDE; Fa                  |
-|`U+0CDF`   |                  |                   |                            |                              |
+|`U+0CD0`   | _unassigned_     |                   |                            |                              |
+|`U+0CD1`   | _unassigned_     |                   |                            |                              |
+|`U+0CD2`   | _unassigned_     |                   |                            |                              |
+|`U+0CD3`   | _unassigned_     |                   |                            |                              |
+|`U+0CD4`   | _unassigned_     |                   |                            |                              |
+|`U+0CD5`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CD5; Length Mark         |
+|`U+0CD6`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0CD6; Ai Length Mark      |
+|`U+0CD7`   | _unassigned_     |                   |                            |                              |
+|`U+0CD8`   | _unassigned_     |                   |                            |                              |
+|`U+0CD9`   | _unassigned_     |                   |                            |                              |
+|`U+0CDA`   | _unassigned_     |                   |                            |                              |
+|`U+0CDB`   | _unassigned_     |                   |                            |                              |
+|`U+0CDC`   | _unassigned_     |                   |                            |                              |
+|`U+0CDD`   | _unassigned_     |                   |                            |                              |
+|`U+0CDE`   | Letter           | CONSONANT         | _null_                     | &#x0CDE; Fa                  |
+|`U+0CDF`   | _unassigned_     |                   |                            |                              |
 | | | | |																		
-|`U+0CE0`   | Letter           |                   |                            | &#x0CE0; Vocalic Rr          |
-|`U+0CE1`   | Letter           |                   |                            | &#x0CE1; Vocalic Ll          |
-|`U+0CE2`   |                  |                   |                            | &#x0CE2; Sign Vocalic L      |
-|`U+0CE3`   |                  |                   |                            | &#x0CE3; Sign Vocalic Ll     |
-|`U+0CE4`   |                  |                   |                            |                              |
-|`U+0CE5`   |                  |                   |                            |                              |
-|`U+0CE6`   | Number           |                   |                            | &#x0CE6; Digit Zero          |
-|`U+0CE7`   | Number           |                   |                            | &#x0CE7; Digit One           |
-|`U+0CE8`   | Number           |                   |                            | &#x0CE8; Digit Two           |
-|`U+0CE9`   | Number           |                   |                            | &#x0CE9; Digit Three         |
-|`U+0CEA`   | Number           |                   |                            | &#x0CEA; Digit Four          |
-|`U+0CEB`   | Number           |                   |                            | &#x0CEB; Digit Five          |
-|`U+0CEC`   | Number           |                   |                            | &#x0CEC; Digit Six           |
-|`U+0CED`   | Number           |                   |                            | &#x0CED; Digit Seven         |
-|`U+0CEE`   | Number           |                   |                            | &#x0CEE; Digit Eight         |
-|`U+0CEF`   | Number           |                   |                            | &#x0CEF; Digit Nine          |
+|`U+0CE0`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0CE0; Vocalic Rr          |
+|`U+0CE1`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0CE1; Vocalic Ll          |
+|`U+0CE2`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0CE2; Sign Vocalic L      |
+|`U+0CE3`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0CE3; Sign Vocalic Ll     |
+|`U+0CE4`   | _unassigned_     |                   |                            |                              |
+|`U+0CE5`   | _unassigned_     |                   |                            |                              |
+|`U+0CE6`   | Number           | NUMBER            | _null_                     | &#x0CE6; Digit Zero          |
+|`U+0CE7`   | Number           | NUMBER            | _null_                     | &#x0CE7; Digit One           |
+|`U+0CE8`   | Number           | NUMBER            | _null_                     | &#x0CE8; Digit Two           |
+|`U+0CE9`   | Number           | NUMBER            | _null_                     | &#x0CE9; Digit Three         |
+|`U+0CEA`   | Number           | NUMBER            | _null_                     | &#x0CEA; Digit Four          |
+|`U+0CEB`   | Number           | NUMBER            | _null_                     | &#x0CEB; Digit Five          |
+|`U+0CEC`   | Number           | NUMBER            | _null_                     | &#x0CEC; Digit Six           |
+|`U+0CED`   | Number           | NUMBER            | _null_                     | &#x0CED; Digit Seven         |
+|`U+0CEE`   | Number           | NUMBER            | _null_                     | &#x0CEE; Digit Eight         |
+|`U+0CEF`   | Number           | NUMBER            | _null_                     | &#x0CEF; Digit Nine          |
 | | | | |																		
-|`U+0CF0`   | Letter           |                   |                            |                              |
-|`U+0CF1`   | Letter           |                   |                            | &#x0CF1; Jihvamuliya         |
-|`U+0CF2`   |                  |                   |                            | &#x0CF2; Upadhmaniya         |
-|`U+0CF3`   |                  |                   |                            |                              |
-|`U+0CF4`   |                  |                   |                            |                              |
-|`U+0CF5`   |                  |                   |                            |                              |
-|`U+0CF6`   |                  |                   |                            |                              |
-|`U+0CF7`   |                  |                   |                            |                              |
-|`U+0CF8`   |                  |                   |                            |                              |
-|`U+0CF9`   |                  |                   |                            |                              |
-|`U+0CFA`   |                  |                   |                            |                              |
-|`U+0CFB`   |                  |                   |                            |                              |
-|`U+0CFC`   |                  |                   |                            |                              |
-|`U+0CFD`   |                  |                   |                            |                              |
-|`U+0CFE`   |                  |                   |                            |                              |
-|`U+0CFF`   |                  |                   |                            |                              |
+|`U+0CF0`   | _unassigned_     |                   |                            |                              |
+|`U+0CF1`   | Letter           | CONSONANT_STACKER | _null_                     | &#x0CF1; Jihvamuliya         |
+|`U+0CF2`   | Letter           | CONSONANT_STACKER | _null_                     | &#x0CF2; Upadhmaniya         |
+|`U+0CF3`   | _unassigned_     |                   |                            |                              |
+|`U+0CF4`   | _unassigned_     |                   |                            |                              |
+|`U+0CF5`   | _unassigned_     |                   |                            |                              |
+|`U+0CF6`   | _unassigned_     |                   |                            |                              |
+|`U+0CF7`   | _unassigned_     |                   |                            |                              |
+|`U+0CF8`   | _unassigned_     |                   |                            |                              |
+|`U+0CF9`   | _unassigned_     |                   |                            |                              |
+|`U+0CFA`   | _unassigned_     |                   |                            |                              |
+|`U+0CFB`   | _unassigned_     |                   |                            |                              |
+|`U+0CFC`   | _unassigned_     |                   |                            |                              |
+|`U+0CFD`   | _unassigned_     |                   |                            |                              |
+|`U+0CFE`   | _unassigned_     |                   |                            |                              |
+|`U+0CFF`   | _unassigned_     |                   |                            |                              |
 
 
 
