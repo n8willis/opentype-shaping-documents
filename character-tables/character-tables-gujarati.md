@@ -90,7 +90,7 @@ specific, script-aware behavior.
 |`U+0AB0`   | Letter           | CONSONANT         | _null_                     | &#x0AB0; Ra                  |
 |`U+0AB1`   | _unassigned_     |                   |                            |                              |
 |`U+0AB2`   | Letter           | CONSONANT         | _null_                     | &#x0AB2; La                  |
-|`U+0AB3`   | Letter           | CONSONANT         | _null_                     | &#x0AB1; Lla                 |
+|`U+0AB3`   | Letter           | CONSONANT         | _null_                     | &#x0AB3; Lla                 |
 |`U+0AB4`   | _unassigned_     |                   |                            |                              |
 |`U+0AB5`   | Letter           | CONSONANT         | _null_                     | &#x0AB5; Va                  |
 |`U+0AB6`   | Letter           | CONSONANT         | _null_                     | &#x0AB6; Sha                 |

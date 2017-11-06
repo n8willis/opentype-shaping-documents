@@ -158,7 +158,7 @@ specific, script-aware behavior.
 |`U+0DF1`   | _unassigned_     |                   |                            |                              |
 |`U+0DF2`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0DF2; Sign Vocalic Rr     |
 |`U+0DF3`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0DF3; Sign Vocalic Ll     |
-|`U+0DF4`   | _unassigned_     |                   |                            | &#x0DF4; Kunddaliya          |
+|`U+0DF4`   | Punctuation      | _null_            | _null_                     | &#x0DF4; Kunddaliya          |
 |`U+0DF5`   | _unassigned_     |                   |                            |                              |
 |`U+0DF6`   | _unassigned_     |                   |                            |                              |
 |`U+0DF7`   | _unassigned_     |                   |                            |                              |
