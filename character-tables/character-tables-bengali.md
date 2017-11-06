@@ -159,12 +159,12 @@ specific, script-aware behavior.
 |`U+09F1`   | Letter           | CONSONANT         | _null_                     | &#x09F1; Assamese Wa         |
 |`U+09F2`   | Symbol           | _null_            | _null_                     | &#x09F2; Rupee Mark          |
 |`U+09F3`   | Symbol           | _null_            | _null_                     | &#x09F3; Rupee Sign          |
-|`U+09F4`   | Number           | _null_            | _null_                     | &#x09F4; Numerator One       |
-|`U+09F5`   | Number           | _null_            | _null_                     | &#x09F5; Numerator Two       |
-|`U+09F6`   | Number           | _null_            | _null_                     | &#x09F6; Numerator Three     |
-|`U+09F7`   | Number           | _null_            | _null_                     | &#x09F7; Numerator Four      |
-|`U+09F8`   | Number           | _null_            | _null_                     | &#x09F8; Numerator One Less Than Denominator |
-|`U+09F9`   | Number           | _null_            | _null_                     | &#x09F9; Denominator Sixteen |
+|`U+09F4`   | Number           | NUMBER            | _null_                     | &#x09F4; Numerator One       |
+|`U+09F5`   | Number           | NUMBER            | _null_                     | &#x09F5; Numerator Two       |
+|`U+09F6`   | Number           | NUMBER            | _null_                     | &#x09F6; Numerator Three     |
+|`U+09F7`   | Number           | NUMBER            | _null_                     | &#x09F7; Numerator Four      |
+|`U+09F8`   | Number           | NUMBER            | _null_                     | &#x09F8; Numerator One Less Than Denominator |
+|`U+09F9`   | Number           | NUMBER            | _null_                     | &#x09F9; Denominator Sixteen |
 |`U+09FA`   | Symbol           | _null_            | _null_                     | &#x09FA; Isshar              |
 |`U+09FB`   | Symbol           | _null_            | _null_                     | &#x09FB; Ganda Mark          |
 |`U+09FC`   | Letter           | _null_            | _null_                     | &#x09FC; Vedic Anusvara      |

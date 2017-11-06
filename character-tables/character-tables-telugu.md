@@ -169,7 +169,7 @@ specific, script-aware behavior.
 |`U+0C7C`   | Number           | NUMBER            | _null_                     | &#x0C7C; Fraction One Even P |
 |`U+0C7D`   | Number           | NUMBER            | _null_                     | &#x0C7D; Fraction Two Even P |
 |`U+0C7E`   | Number           | NUMBER            | _null_                     | &#x0C7E; Fraction Three Even P|
-|`U+0C7F`   | Symbol           | SYMBOL            | _null_                     | &#x0C7F; Tuumu               |
+|`U+0C7F`   | Symbol           | _null_            | _null_                     | &#x0C7F; Tuumu               |
 
 
 

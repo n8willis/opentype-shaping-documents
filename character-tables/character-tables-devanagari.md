@@ -144,16 +144,16 @@ specific, script-aware behavior.
 |`U+0963`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0963; Sign Vocalic Ll     |
 |`U+0964`   | Punctuation      | _null_            | _null_                     | &#x0964; Danda               |
 |`U+0965`   | Punctuation      | _null_            | _null_                     | &#x0965; Double Danda        |
-|`U+0966`   | Number           | _null_            | _null_                     | &#x0966; Digit Zero          |
-|`U+0967`   | Number           | _null_            | _null_                     | &#x0967; Digit One           |
-|`U+0968`   | Number           | _null_            | _null_                     | &#x0968; Digit Two           |
-|`U+0969`   | Number           | _null_            | _null_                     | &#x0969; Digit Three         |
-|`U+096A`   | Number           | _null_            | _null_                     | &#x096A; Digit Four          |
-|`U+096B`   | Number           | _null_            | _null_                     | &#x096B; Digit Five          |
-|`U+096C`   | Number           | _null_            | _null_                     | &#x096C; Digit Six           |
-|`U+096D`   | Number           | _null_            | _null_                     | &#x096D; Digit Seven         |
-|`U+096E`   | Number           | _null_            | _null_                     | &#x096E; Digit Eight         |
-|`U+096F`   | Number           | _null_            | _null_                     | &#x096F; Digit Nine          |
+|`U+0966`   | Number           | NUMBER            | _null_                     | &#x0966; Digit Zero          |
+|`U+0967`   | Number           | NUMBER            | _null_                     | &#x0967; Digit One           |
+|`U+0968`   | Number           | NUMBER            | _null_                     | &#x0968; Digit Two           |
+|`U+0969`   | Number           | NUMBER            | _null_                     | &#x0969; Digit Three         |
+|`U+096A`   | Number           | NUMBER            | _null_                     | &#x096A; Digit Four          |
+|`U+096B`   | Number           | NUMBER            | _null_                     | &#x096B; Digit Five          |
+|`U+096C`   | Number           | NUMBER            | _null_                     | &#x096C; Digit Six           |
+|`U+096D`   | Number           | NUMBER            | _null_                     | &#x096D; Digit Seven         |
+|`U+096E`   | Number           | NUMBER            | _null_                     | &#x096E; Digit Eight         |
+|`U+096F`   | Number           | NUMBER            | _null_                     | &#x096F; Digit Nine          |
 | | | | |
 |`U+0970`   | Punctuation      | _null_            | _null_                     | &#x0970; Abbreviation Sign   |
 |`U+0971`   | Punctuation      | _null_            | _null_                     | &#x0971; Sign High Spacing Dot|
