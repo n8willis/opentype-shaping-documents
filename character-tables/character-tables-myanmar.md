@@ -1,25 +1,25 @@
-# Devanagari character tables #
+# Myanmar character tables #
 
 This document lists the per-character shaping information needed to
-[shape Devanagari text](opentype-shaping-devanagari.md).
+[shape Myanmar text](opentype-shaping-myanmar.md).
 
 **Table of Contents**
 
-  - [Devanagari character table](#devanagari-character-table)
-  - [Devanagari Extended character table](#devanagari-extended-character-table)
+  - [Myanmar character table](#myanmar-character-table)
+  - [Myanmar Extended character table](#myanmar-extended-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
 
-## Devanagari character table ##
+## Myanmar character table ##
 
-Devanagari glyphs should be classified as in the following
-table. Codepoints in the Devanagari block with no assigned meaning are
+Myanmar glyphs should be classified as in the following
+table. Codepoints in the Myanmar block with no assigned meaning are
 designated as _unassigned_ in the _Unicode category_ column. 
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Devanagari block, such as
+this does include some valid codepoints in the Myanmar block, such as
 currency marks and other symbols. 
 
 The _Mark-placement subclass_ column indicates mark-placement
@@ -36,188 +36,259 @@ specific, script-aware behavior.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0900`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0900; Inverted Candrabindu|
-|`U+0901`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0901; Candrabindu         |
-|`U+0902`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0902; Anusvara            |
-|`U+0903`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0903; Visarga             |
-|`U+0904`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0904; Short A             |
-|`U+0905`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0905; A                   |
-|`U+0906`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0906; Aa                  |
-|`U+0907`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0907; I                   |
-|`U+0908`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0908; Ii                  |
-|`U+0909`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0909; U                   |
-|`U+090A`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090A; Uu                  |
-|`U+090B`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090B; Vocalic R           |
-|`U+090C`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090C; Vocalic L           |
-|`U+090D`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090D; Candra E            |
-|`U+090E`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090E; Short E             |
-|`U+090F`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x090F; E                   |
+|`U+1000`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1000; Ka                  |
+|`U+1001`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1001; Kha                 |
+|`U+1002`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1002; Ga                  |
+|`U+1003`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x1003; Gha                 |
+|`U+1004`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1004; Nga                 |
+|`U+1005`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1005; Ca                  |
+|`U+1006`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1006; Cha                 |
+|`U+1007`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1007; Ja                  |
+|`U+1008`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1008; Jha                 |
+|`U+1009`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1009; Nya                 |
+|`U+100A`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100A; Nnya                |
+|`U+100B`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100B; Tta                 |
+|`U+100C`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100C; Ttha                |
+|`U+100D`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100D; Dda                 |
+|`U+100E`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100E; DDha                |
+|`U+100F`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x100F; Nna                 |
 | | | | |
-|`U+0910`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0910; Ai                  |
-|`U+0911`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0911; Candra O            |
-|`U+0912`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0912; Short O             |
-|`U+0913`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0913; O                   |
-|`U+0914`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0914; Au                  |
-|`U+0915`   | Letter           | CONSONANT         | _null_                     | &#x0915; Ka                  |
-|`U+0916`   | Letter           | CONSONANT         | _null_                     | &#x0916; Kha                 |
-|`U+0917`   | Letter           | CONSONANT         | _null_                     | &#x0917; Ga                  |
-|`U+0918`   | Letter           | CONSONANT         | _null_                     | &#x0918; Gha                 |
-|`U+0919`   | Letter           | CONSONANT         | _null_                     | &#x0919; Nga                 |
-|`U+091A`   | Letter           | CONSONANT         | _null_                     | &#x091A; Ca                  |
-|`U+091B`   | Letter           | CONSONANT         | _null_                     | &#x091B; Cha                 |
-|`U+091C`   | Letter           | CONSONANT         | _null_                     | &#x091C; Ja                  |
-|`U+091D`   | Letter           | CONSONANT         | _null_                     | &#x091D; Jha                 |
-|`U+091E`   | Letter           | CONSONANT         | _null_                     | &#x091E; Nya                 |
-|`U+091F`   | Letter           | CONSONANT         | _null_                     | &#x091F; Tta                 |
+|`U+1010`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1010; Ta                  |
+|`U+1011`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1011; Tha                 |
+|`U+1012`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1012; Da                  |
+|`U+1013`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1013; Dha                 |
+|`U+1014`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1014; Na                  |
+|`U+1015`   | Letter           | CONSONANT         | _null_                     | &#x1015; Pa                  |
+|`U+1016`   | Letter           | CONSONANT         | _null_                     | &#x1016; Pha                 |
+|`U+1017`   | Letter           | CONSONANT         | _null_                     | &#x1017; Ba                  |
+|`U+1018`   | Letter           | CONSONANT         | _null_                     | &#x1018; Bha                 |
+|`U+1019`   | Letter           | CONSONANT         | _null_                     | &#x1019; Ma                  |
+|`U+101A`   | Letter           | CONSONANT         | _null_                     | &#x101A; Ya                  |
+|`U+101B`   | Letter           | CONSONANT         | _null_                     | &#x101B; Ra                  |
+|`U+101C`   | Letter           | CONSONANT         | _null_                     | &#x101C; La                  |
+|`U+101D`   | Letter           | CONSONANT         | _null_                     | &#x101D; Wa                  |
+|`U+101E`   | Letter           | CONSONANT         | _null_                     | &#x101E; Sa                  |
+|`U+101F`   | Letter           | CONSONANT         | _null_                     | &#x101F; Ha                  |
 | | | | |
-|`U+0920`   | Letter           | CONSONANT         | _null_                     | &#x0920; Ttha                |
-|`U+0921`   | Letter           | CONSONANT         | _null_                     | &#x0921; Dda                 |
-|`U+0922`   | Letter           | CONSONANT         | _null_                     | &#x0922; Ddha                |
-|`U+0923`   | Letter           | CONSONANT         | _null_                     | &#x0923; Nna                 |
-|`U+0924`   | Letter           | CONSONANT         | _null_                     | &#x0924; Ta                  |
-|`U+0925`   | Letter           | CONSONANT         | _null_                     | &#x0925; Tha                 |
-|`U+0926`   | Letter           | CONSONANT         | _null_                     | &#x0926; Da                  |
-|`U+0927`   | Letter           | CONSONANT         | _null_                     | &#x0927; Dha                 |
-|`U+0928`   | Letter           | CONSONANT         | _null_                     | &#x0928; Na                  |
-|`U+0929`   | Letter           | CONSONANT         | _null_                     | &#x0929; Nnna                |
-|`U+092A`   | Letter           | CONSONANT         | _null_                     | &#x092A; Pa                  |
-|`U+092B`   | Letter           | CONSONANT         | _null_                     | &#x092B; Pha                 |
-|`U+092C`   | Letter           | CONSONANT         | _null_                     | &#x092C; Ba                  |
-|`U+092D`   | Letter           | CONSONANT         | _null_                     | &#x092D; Bha                 |
-|`U+092E`   | Letter           | CONSONANT         | _null_                     | &#x092E; Ma                  |
-|`U+092F`   | Letter           | CONSONANT         | _null_                     | &#x092F; Ya                  |
+|`U+1020`   | Letter           | CONSONANT         | _null_                     | &#x1020; Lla                 |
+|`U+1021`   | Letter           | CONSONANT         | _null_                     | &#x1021; A                   |
+|`U+1022`   | Letter           | CONSONANT         | _null_                     | &#x1022; Shan A              |
+|`U+1023`   | Letter           | CONSONANT         | _null_                     | &#x1023; I                   |
+|`U+1024`   | Letter           | CONSONANT         | _null_                     | &#x1024; Ii                  |
+|`U+1025`   | Letter           | CONSONANT         | _null_                     | &#x1025; U                   |
+|`U+1026`   | Letter           | CONSONANT         | _null_                     | &#x1026; Uu                  |
+|`U+1027`   | Letter           | CONSONANT         | _null_                     | &#x1027; E                   |
+|`U+1028`   | Letter           | CONSONANT         | _null_                     | &#x1028; Mon E               |
+|`U+1029`   | Letter           | CONSONANT         | _null_                     | &#x1029; O                   |
+|`U+102A`   | Letter           | CONSONANT         | _null_                     | &#x102A; Au                  |
+|`U+102B`   | Letter           | CONSONANT         | _null_                     | &#x102B; Sign Tall Aa        |
+|`U+102C`   | Letter           | CONSONANT         | _null_                     | &#x102C; Sign Aa             |
+|`U+102D`   | Letter           | CONSONANT         | _null_                     | &#x102D; Sign I              |
+|`U+102E`   | Letter           | CONSONANT         | _null_                     | &#x102E; Sign Ii             |
+|`U+102F`   | Letter           | CONSONANT         | _null_                     | &#x102F; Sign U              |
 | | | | |
-|`U+0930`   | Letter           | CONSONANT         | _null_                     | &#x0930; Ra                  |
-|`U+0931`   | Letter           | CONSONANT         | _null_                     | &#x0931; Rra                 |
-|`U+0932`   | Letter           | CONSONANT         | _null_                     | &#x0932; La                  |
-|`U+0933`   | Letter           | CONSONANT         | _null_                     | &#x0933; Lla                 |
-|`U+0934`   | Letter           | CONSONANT         | _null_                     | &#x0934; Llla                |
-|`U+0935`   | Letter           | CONSONANT         | _null_                     | &#x0935; Va                  |
-|`U+0936`   | Letter           | CONSONANT         | _null_                     | &#x0936; Sha                 |
-|`U+0937`   | Letter           | CONSONANT         | _null_                     | &#x0937; Ssa                 |
-|`U+0938`   | Letter           | CONSONANT         | _null_                     | &#x0938; Sa                  |
-|`U+0939`   | Letter           | CONSONANT         | _null_                     | &#x0939; Ha                  |
-|`U+093A`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x093A; Sign Oe             |
-|`U+093B`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x093B; Sign Ooe            |
-|`U+093C`   | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x093C; Nukta               |
-|`U+093D`   | Letter           | AVAGRAHA          | _null_                     | &#x093D; Avagraha            |
-|`U+093E`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x093E; Sign Aa             |
-|`U+093F`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x093F; Sign I              |
+|`U+1030`   | Letter           | CONSONANT         | _null_                     | &#x1030; Sign Uu             |
+|`U+1031`   | Letter           | CONSONANT         | _null_                     | &#x1031; Sign E              |
+|`U+1032`   | Letter           | CONSONANT         | _null_                     | &#x1032; Sign Ai             |
+|`U+1033`   | Letter           | CONSONANT         | _null_                     | &#x1033; Sign Mon Ii         |
+|`U+1034`   | Letter           | CONSONANT         | _null_                     | &#x1034; Sign Mon O          |
+|`U+1035`   | Letter           | CONSONANT         | _null_                     | &#x1035; Sign E Above        |
+|`U+1036`   | Letter           | CONSONANT         | _null_                     | &#x1036; Anusvara            |
+|`U+1037`   | Letter           | CONSONANT         | _null_                     | &#x1037; Dot Below           |
+|`U+1038`   | Letter           | CONSONANT         | _null_                     | &#x1038; Visarga             |
+|`U+1039`   | Letter           | CONSONANT         | _null_                     | &#x1039; Virama              |
+|`U+103A`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x103A; Asat                |
+|`U+103B`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x103B; Sign Medial Ya      |
+|`U+103C`   | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x103C; Sign Medial Ra      |
+|`U+103D`   | Letter           | AVAGRAHA          | _null_                     | &#x103D; Sign Medial Wa      |
+|`U+103E`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x103E; Sign Medial Ha      |
+|`U+103F`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x103F; Great Sa            |
 | | | | |
-|`U+0940`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0940; Sign Ii             |
-|`U+0941`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0941; Sign U              |
-|`U+0942`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0942; Sign Uu             |
-|`U+0943`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0943; Sign Vocalic R      |
-|`U+0944`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0944; Sign Vocalic Rr     |
-|`U+0945`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0945; Sign Candra E       |
-|`U+0946`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0946; Sign Short E        |
-|`U+0947`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0947; Sign E              |
-|`U+0948`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0948; Sign Ai             |
-|`U+0949`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0949; Sign Candra O       |
-|`U+094A`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x094A; Sign Short O        |
-|`U+094B`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x094B; Sign O              |
-|`U+094C`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x094C; Sign Au             |
-|`U+094D`   | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION            | &#x094D; Virama              |
-|`U+094E`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x094E; Sign Prishthamatra E|
-|`U+094F`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x094F; Sign Aw             |
+|`U+1040`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x1040; Digit Zero          |
+|`U+1041`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1041; Digit One           |
+|`U+1042`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1042; Digit Two           |
+|`U+1043`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1043; Digit Three         |
+|`U+1044`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1044; Digit Four          |
+|`U+1045`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1045; Digit Five          |
+|`U+1046`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1046; Digit Six           |
+|`U+1047`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1047; Digit Seven         |
+|`U+1048`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1048; Digit Eight         |
+|`U+1049`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x1049; Digit Nine          |
+|`U+104A`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x104A; Little Section      |
+|`U+104B`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x104B; Section             |
+|`U+104C`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x104C; Locative            |
+|`U+104D`   | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION            | &#x104D; Completed           |
+|`U+104E`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x104E; Aforementioned      |
+|`U+104F`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x104F; Genitive            |
 | | | | |
-|`U+0950`   | Mark [Mc]        | _null_            | _null_                     | &#x0950; Om                  |
-|`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
-|`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
-|`U+0953`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0953; Grave accent        |
-|`U+0954`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0954; Acute accent        |
-|`U+0955`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0955; Sign Candra Long E  |
-|`U+0956`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0956; Sign Ue             |
-|`U+0957`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0957; Sign Uue            |
-|`U+0958`   | Letter           | CONSONANT         | _null_                     | &#x0958; Qa                  |
-|`U+0959`   | Letter           | CONSONANT         | _null_                     | &#x0959; Khha                |
-|`U+095A`   | Letter           | CONSONANT         | _null_                     | &#x095A; Ghha                |
-|`U+095B`   | Letter           | CONSONANT         | _null_                     | &#x095B; Za                  |
-|`U+095C`   | Letter           | CONSONANT         | _null_                     | &#x095C; Dddha               |
-|`U+095D`   | Letter           | CONSONANT         | _null_                     | &#x095D; Rha                 |
-|`U+095E`   | Letter           | CONSONANT         | _null_                     | &#x095E; Fa                  |
-|`U+095F`   | Letter           | CONSONANT         | _null_                     | &#x095F; Yya                 |
+|`U+1050`   | Mark [Mc]        | _null_            | _null_                     | &#x1050; Sha                 |
+|`U+1051`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1051; Ssa                 |
+|`U+1052`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x1052; Vocalic R           |
+|`U+1053`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x1053; Vocalic Rr          |
+|`U+1054`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x1054; Vocalic L           |
+|`U+1055`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1055; Vocalic Ll          |
+|`U+1056`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1056; Sign Vocalic R      |
+|`U+1057`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1057; Sign Vocalic Rr     |
+|`U+1058`   | Letter           | CONSONANT         | _null_                     | &#x1058; Sign Vocalic L      |
+|`U+1059`   | Letter           | CONSONANT         | _null_                     | &#x1059; Sign Vocalic Ll     |
+|`U+105A`   | Letter           | CONSONANT         | _null_                     | &#x105A; Mon Nga             |
+|`U+105B`   | Letter           | CONSONANT         | _null_                     | &#x105B; Mon Jha             |
+|`U+105C`   | Letter           | CONSONANT         | _null_                     | &#x105C; Mon Bba             |
+|`U+105D`   | Letter           | CONSONANT         | _null_                     | &#x105D; Mon Bbe             |
+|`U+105E`   | Letter           | CONSONANT         | _null_                     | &#x105E; Sign Mon Medial Na  |
+|`U+105F`   | Letter           | CONSONANT         | _null_                     | &#x105F; Sign Mon Medial Ma  |
 | | | | |
-|`U+0960`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0960; Vocalic Rr          |
-|`U+0961`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0961; Vocalic Ll          |
-|`U+0962`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0962; Sign Vocalic L      |
-|`U+0963`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0963; Sign Vocalic Ll     |
-|`U+0964`   | Punctuation      | _null_            | _null_                     | &#x0964; Danda               |
-|`U+0965`   | Punctuation      | _null_            | _null_                     | &#x0965; Double Danda        |
-|`U+0966`   | Number           | NUMBER            | _null_                     | &#x0966; Digit Zero          |
-|`U+0967`   | Number           | NUMBER            | _null_                     | &#x0967; Digit One           |
-|`U+0968`   | Number           | NUMBER            | _null_                     | &#x0968; Digit Two           |
-|`U+0969`   | Number           | NUMBER            | _null_                     | &#x0969; Digit Three         |
-|`U+096A`   | Number           | NUMBER            | _null_                     | &#x096A; Digit Four          |
-|`U+096B`   | Number           | NUMBER            | _null_                     | &#x096B; Digit Five          |
-|`U+096C`   | Number           | NUMBER            | _null_                     | &#x096C; Digit Six           |
-|`U+096D`   | Number           | NUMBER            | _null_                     | &#x096D; Digit Seven         |
-|`U+096E`   | Number           | NUMBER            | _null_                     | &#x096E; Digit Eight         |
-|`U+096F`   | Number           | NUMBER            | _null_                     | &#x096F; Digit Nine          |
+|`U+1060`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1060; Sign Mon Medial La  |
+|`U+1061`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1061; Sgaw Karen Sha      |
+|`U+1062`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1062; Sign Sgaw Karen Eu  |
+|`U+1063`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1063; Tone Sgaw Karen Hathi|
+|`U+1064`   | Punctuation      | _null_            | _null_                     | &#x1064; Tone Sgaw Karen Ke Pho|
+|`U+1065`   | Punctuation      | _null_            | _null_                     | &#x1065; Western Pwo Karen Tha|
+|`U+1066`   | Number           | NUMBER            | _null_                     | &#x1066; Western Pwo Karen Pwa|
+|`U+1067`   | Number           | NUMBER            | _null_                     | &#x1067; Sign Western Pwo Karen Eu|
+|`U+1068`   | Number           | NUMBER            | _null_                     | &#x1068; Sign Western Pwo Karen Ue|
+|`U+1069`   | Number           | NUMBER            | _null_                     | &#x1069; Sign Western Pwo Karen Tone 1|
+|`U+106A`   | Number           | NUMBER            | _null_                     | &#x106A; Sign Western Pwo Karen Tone 2|
+|`U+106B`   | Number           | NUMBER            | _null_                     | &#x106B; Sign Western Pwo Karen Tone 3|
+|`U+106C`   | Number           | NUMBER            | _null_                     | &#x106C; Sign Western Pwo Karen Tone 4|
+|`U+106D`   | Number           | NUMBER            | _null_                     | &#x106D; Sign Western Pwo Karen Tone 5|
+|`U+106E`   | Number           | NUMBER            | _null_                     | &#x106E; Eastern Pwo Karen Nna|
+|`U+106F`   | Number           | NUMBER            | _null_                     | &#x106F; Eastern Pwo Karen Ywa|
 | | | | |
-|`U+0970`   | Punctuation      | _null_            | _null_                     | &#x0970; Abbreviation Sign   |
-|`U+0971`   | Punctuation      | _null_            | _null_                     | &#x0971; Sign High Spacing Dot|
-|`U+0972`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0972; Candra Aa           |
-|`U+0973`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0973; Oe                  |
-|`U+0974`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0974; Ooe                 |
-|`U+0975`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0975; Aw                  |
-|`U+0976`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0976; Ue                  |
-|`U+0977`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0977; Uue                 |
-|`U+0978`   | Letter           | CONSONANT         | _null_                     | &#x0978; Marwari Dda         |
-|`U+0979`   | Letter           | CONSONANT         | _null_                     | &#x0979; Zha                 |
-|`U+097A`   | Letter           | CONSONANT         | _null_                     | &#x097A; Heavy Ya            |
-|`U+097B`   | Letter           | CONSONANT         | _null_                     | &#x097B; Gga                 |
-|`U+097C`   | Letter           | CONSONANT         | _null_                     | &#x097C; Jja                 |
-|`U+097D`   | Letter           | CONSONANT         | _null_                     | &#x097D; Glottal Stop        |
-|`U+097E`   | Letter           | CONSONANT         | _null_                     | &#x097E; Ddda                |
-|`U+097F`   | Letter           | CONSONANT         | _null_                     | &#x097F; Bba                 |
+|`U+1070`   | Punctuation      | _null_            | _null_                     | &#x1070; Eastern Pwo Karen Ghwa|
+|`U+1071`   | Punctuation      | _null_            | _null_                     | &#x1071; Sign Geba Karen I   |
+|`U+1072`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1072; Sign Kayah Oe       |
+|`U+1073`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1073; Sign Kayah U        |
+|`U+1074`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1074; Sign Kayah Ee       |
+|`U+1075`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1075; Shan Ka             |
+|`U+1076`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1076; Shan Kha            |
+|`U+1077`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1077; Shan Ga             |
+|`U+1078`   | Letter           | CONSONANT         | _null_                     | &#x1078; Shan Ca             |
+|`U+1079`   | Letter           | CONSONANT         | _null_                     | &#x1079; Shan Za             |
+|`U+107A`   | Letter           | CONSONANT         | _null_                     | &#x107A; Shan Nya            |
+|`U+107B`   | Letter           | CONSONANT         | _null_                     | &#x107B; Shan Da             |
+|`U+107C`   | Letter           | CONSONANT         | _null_                     | &#x107C; Shan Na             |
+|`U+107D`   | Letter           | CONSONANT         | _null_                     | &#x107D; Shan Pha            |
+|`U+107E`   | Letter           | CONSONANT         | _null_                     | &#x107E; Shan Fa             |
+|`U+107F`   | Letter           | CONSONANT         | _null_                     | &#x107F; Shan Ba             |
+| | | | |
+|`U+1080`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1080; Shan Tha            |
+|`U+1081`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1081; Shan Ha             |
+|`U+1082`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1082; Sign Shan Medial Wa |
+|`U+1083`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x1083; Sign Shan Aa        |
+|`U+1084`   | Punctuation      | _null_            | _null_                     | &#x1084; Sign Shan E         |
+|`U+1085`   | Punctuation      | _null_            | _null_                     | &#x1085; Sign Shan E Above   |
+|`U+1086`   | Number           | NUMBER            | _null_                     | &#x1086; Sign Shan Final Y   |
+|`U+1087`   | Number           | NUMBER            | _null_                     | &#x1087; Sign Shan Tone 2    |
+|`U+1088`   | Number           | NUMBER            | _null_                     | &#x1088; Sign Shan Tone 3    |
+|`U+1089`   | Number           | NUMBER            | _null_                     | &#x1089; Sign Shan Tone 5    |
+|`U+108A`   | Number           | NUMBER            | _null_                     | &#x108A; Sign Shan Tone 6    |
+|`U+108B`   | Number           | NUMBER            | _null_                     | &#x108B; Sign Shan Council Tone 2|
+|`U+108C`   | Number           | NUMBER            | _null_                     | &#x108C; Sign Shan Council Tone 3|
+|`U+108D`   | Number           | NUMBER            | _null_                     | &#x108D; Sign Shan Council Emphatic Tone|
+|`U+108E`   | Number           | NUMBER            | _null_                     | &#x108E; Rumai Palaung Fa    |
+|`U+108F`   | Number           | NUMBER            | _null_                     | &#x108F; Sign Rumai Palaung Tone 5|
+| | | | |
+|`U+1090`   | Punctuation      | _null_            | _null_                     | &#x1090; Shan Digit Zero     |
+|`U+1091`   | Punctuation      | _null_            | _null_                     | &#x1091; Shan Digit One      |
+|`U+1092`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1092; Shan Digit Two      |
+|`U+1093`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1093; Shan Digit Three    |
+|`U+1094`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1094; Shan Digit Four     |
+|`U+1095`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1095; Shan Digit Five     |
+|`U+1096`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1096; Shan Digit Six      |
+|`U+1097`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x1097; Shan Digit Seven    |
+|`U+1098`   | Letter           | CONSONANT         | _null_                     | &#x1098; Shan Digit Eight    |
+|`U+1099`   | Letter           | CONSONANT         | _null_                     | &#x1099; Shan Digit Nine     |
+|`U+109A`   | Letter           | CONSONANT         | _null_                     | &#x109A; Sign Khamti Tone 1  |
+|`U+109B`   | Letter           | CONSONANT         | _null_                     | &#x109B; Sign Khamti Tone 3  |
+|`U+109C`   | Letter           | CONSONANT         | _null_                     | &#x109C; Sign Aiton A        |
+|`U+109D`   | Letter           | CONSONANT         | _null_                     | &#x109D; Sign Aiton Ai       |
+|`U+109E`   | Letter           | CONSONANT         | _null_                     | &#x109E; Shan One            |
+|`U+109F`   | Letter           | CONSONANT         | _null_                     | &#x109F; Shan Exclamation    |
 
 
 
-## Devanagari Extended character table ##
+## Myanmar Extended character table ##
 
+### Myanmar Extended A ###
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+A8E0`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E0; Combining Zero      |
-|`U+A8E1`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E1; Combining One       |
-|`U+A8E2`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E2; Combining Two       |
-|`U+A8E3`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E3; Combining Three     |
-|`U+A8E4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E4; Combining Four      |
-|`U+A8E5`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E5; Combining Five      |
-|`U+A8E6`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E6; Combining Six       |
-|`U+A8E7`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E7; Combining Seven     |
-|`U+A8E8`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E8; Combining Eight     |
-|`U+A8E9`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8E9; Combining Nine      |
-|`U+A8EA`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8EA; Combining A         |
-|`U+A8EB`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8EB; Combining U         |
-|`U+A8EC`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8EC; Combining Ka        |
-|`U+A8ED`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8ED; Combining Na        |
-|`U+A8EE`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8EE; Combining Pa        |
-|`U+A8EF`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8EF; Combining Ra        |
+|`U+AA60`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA60; Khamti Ga           |
+|`U+AA61`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA61; Khamti Ca           |
+|`U+AA62`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA62; Khamti Cha          |
+|`U+AA63`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA63; Khamti Ja           |
+|`U+AA64`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA64; Khamti Jha          |
+|`U+AA65`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA65; Khamti Nya          |
+|`U+AA66`   | Number           | CONSONANT         | _null_                     | &#xAA66; Khamti Tta          |
+|`U+AA67`   | Number           | CONSONANT         | _null_                     | &#xAA67; Khamti Ttha         |
+|`U+AA68`   | Number           | CONSONANT         | _null_                     | &#xAA68; Khamti Dda          |
+|`U+AA69`   | Number           | CONSONANT         | _null_                     | &#xAA69; Khamti Ddha         |
+|`U+AA6A`   | Number           | CONSONANT         | _null_                     | &#xAA6A; Khamti Dha          |
+|`U+AA6B`   | Number           | CONSONANT         | _null_                     | &#xAA6B; Khamti Na           |
+|`U+AA6C`   | Number           | CONSONANT         | _null_                     | &#xAA6C; Khamti Sa           |
+|`U+AA6D`   | Number           | CONSONANT         | _null_                     | &#xAA6D; Khamti Ha           |
+|`U+AA6E`   | Number           | CONSONANT         | _null_                     | &#xAA6E; Khamti Hha          |
+|`U+AA6F`   | Number           | CONSONANT         | _null_                     | &#xAA6F; Khamti Fa           |
 | | | | |
-|`U+A8F0`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F0; Combining Vi        |
-|`U+A8F1`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F1; Combining Avagraha  |
-|`U+A8F2`   | Letter           | BINDU             | _null_                     | &#xA8F2; Spacing Candrabindu |
-|`U+A8F3`   | Letter           | BINDU             | _null_                     | &#xA8F3; Candrabindu Virama  |
-|`U+A8F4`   | Letter           | _null_            | _null_                     | &#xA8F4; Double Candrabindu Virama|
-|`U+A8F5`   | Letter           | _null_            | _null_                     | &#xA8F5; Candrabindu Two     |
-|`U+A8F6`   | Letter           | _null_            | _null_                     | &#xA8F6; Candrabindu Three   |
-|`U+A8F7`   | Letter           | _null_            | _null_                     | &#xA8F7; Candrabindu Avagraha|
-|`U+A8F8`   | Punctuation      | _null_            | _null_                     | &#xA8F8; Pushpika            |
-|`U+A8F9`   | Punctuation      | _null_            | _null_                     | &#xA8F9; Gap Filler          |
-|`U+A8FA`   | Punctuation      | _null_            | _null_                     | &#xA8FA; Caret               |
-|`U+A8FB`   | Letter           | _null_            | _null_                     | &#xA8FB; Headstroke          |
-|`U+A8FC`   | Punctuation      | _null_            | _null_                     | &#xA8FC; Siddham             |
-|`U+A8FD`   | Letter           | _null_            | _null_                     | &#xA8FD; Jain Om             |
-|`U+A8FE`   | _unassigned_     |                   |                            |                              |
-|`U+A8FF`   | _unassigned_     |                   |                            |                              |
+|`U+AA70`   | Mark [Mn]        | _null_            | _null_                     | &#xAA70; Khamti Reduplication|
+|`U+AA71`   | Mark [Mn]        | CONSONANT         | _null_                     | &#xAA71; Khamti Xa           |
+|`U+AA72`   | Letter           | CONSONANT         | _null_                     | &#xAA72; Khamti Za           |
+|`U+AA73`   | Letter           | CONSONANT         | _null_                     | &#xAA73; Khamti Ra           |
+|`U+AA74`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#xAA74; Khamti Oay          |
+|`U+AA75`   | Mark [Mn]        | CONSONANT_PLACEHOLDER| _null_                  | &#xAA75; Khamti Qn           |
+|`U+AA76`   | _unassigned_     | CONSONANT_PLACEHOLDER| _null_                  | &#xAA76; Khamti Hm           |
+|`U+AA77`   | _unassigned_     | _null_            | _null_                     | &#xAA77; Khamti Aiton Exclamation|
+|`U+AA78`   | _unassigned_     | _null_            | _null_                     | &#xAA78; Khamti Aiton One    |
+|`U+AA79`   | _unassigned_     | _null_            | _null_                     | &#xAA79; Khamti Aiton Two    |
+|`U+AA7A`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA7A; Khamti Aiton Ra     |
+|`U+AA7B`   | _unassigned_     | TONE_MARKER       | RIGHT_POSITION             | &#xAA7B; Sign Pao Karen Tone |
+|`U+AA7C`   | _unassigned_     | TONE_MARKER       | TOP_POSITION               | &#xAA7C; Sign Tai Laing Tone |
+|`U+AA7D`   | _unassigned_     | TONE_MARKER       | RIGHT_POSITION             | &#xAA7D; Sign Tai Laing Tone |
+|`U+AA7E`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA7E; Shwe Palaung Cha    |
+|`U+AA7F`   | _unassigned_     | CONSONANT         | _null_                     | &#xAA7F; Shwe Palaung Sha    |
+
+### Myanmar Extended B ###
+
+|`U+A9E0`   | Letter           | CONSONANT         | _null_                     | &#xA9E0; Shan Gha            |
+|`U+A9E1`   | Letter           | CONSONANT         | _null_                     | &#xA9E1; Shan Cha            |
+|`U+A9E2`   | Mark [Mn]        | CONSONANT         | _null_                     | &#xA9E2; Shan Jha            |
+|`U+A9E3`   | Mark [Mn]        | CONSONANT         | _null_                     | &#xA9E3; Shan Nna            |
+|`U+A9E4`   | _unassigned_     | CONSONANT         | _null_                     | &#xA9E4; Shan Bha            |
+|`U+A9E5`   | _unassigned_     | VOWEL_DEPENDENT   | TOP_POSITION               | &#xA9E5; Sign Shan Saw       |
+|`U+A9E6`   | Number           | _null_            | _null_                     | &#xA9E6; Shan Reduplication  |
+|`U+A9E7`   | Number           | CONSONANT         | _null_                     | &#xA9E7; Tai Laing Nya       |
+|`U+A9E8`   | Number           | CONSONANT         | _null_                     | &#xA9E8; Tai Laing Fa        |
+|`U+A9E9`   | Number           | CONSONANT         | _null_                     | &#xA9E9; Tai Laing Ga        |
+|`U+A9EA`   | Number           | CONSONANT         | _null_                     | &#xA9EA; Tai Laing Gha       |
+|`U+A9EB`   | Number           | CONSONANT         | _null_                     | &#xA9EB; Tai Laing Ja        |
+|`U+A9EC`   | Number           | CONSONANT         | _null_                     | &#xA9EC; Tai Laing Jha       |
+|`U+A9ED`   | Number           | CONSONANT         | _null_                     | &#xA9ED; Tai Laing Dda       |
+|`U+A9EE`   | Number           | CONSONANT         | _null_                     | &#xA9EE; Tai Laing Ddha      |
+|`U+A9EF`   | Number           | CONSONANT         | _null_                     | &#xA9EF; Tai Laing Nna       |
+| | | | |
+|`U+A9F0`   | Letter           | NUMBER            | _null_                     | &#xA9F0; Tai Laing Digit Zero|
+|`U+A9F1`   | Letter           | NUMBER            | _null_                     | &#xA9F1; Tai Laing Digit One |
+|`U+A9F2`   | Symbol           | NUMBER            | _null_                     | &#xA9F2; Tai Laing Digit Two |
+|`U+A9F3`   | Symbol           | NUMBER            | _null_                     | &#xA9F3; Tai Laing Digit Three|
+|`U+A9F4`   | Number           | NUMBER            | _null_                     | &#xA9F4; Tai Laing Digit Four|
+|`U+A9F5`   | Number           | NUMBER            | _null_                     | &#xA9F5; Tai Laing Digit Five|
+|`U+A9F6`   | Number           | NUMBER            | _null_                     | &#xA9F6; Tai Laing Digit Six |
+|`U+A9F7`   | Number           | NUMBER            | _null_                     | &#xA9F7; Tai Laing Digit Seven|
+|`U+A9F8`   | Number           | NUMBER            | _null_                     | &#xA9F8; Tai Laing Digit Eight|
+|`U+A9F9`   | Number           | NUMBER            | _null_                     | &#xA9F9; Tai Laing Digit Nine|
+|`U+A9FA`   | Symbol           | CONSONANT         | _null_                     | &#xA9FA; Tai Laing Lla       |
+|`U+A9FB`   | Symbol           | CONSONANT         | _null_                     | &#xA9FB; Tai Laing Da        |
+|`U+A9FC`   | Letter           | CONSONANT         | _null_                     | &#xA9FC; Tai Laing Dha       |
+|`U+A9FD`   | Punctuation      | CONSONANT         | _null_                     | &#xA9FD; Tai Laing Ba        |
+|`U+A9FE`   | _unassigned_     | CONSONANT         | _null_                     | &#xA9FE; Tai Laing Bha       |
+|`U+A9FF`   | _unassigned_     |                   |                            |                              |
 
 
 
 ## Vedic Extensions character table ##
 
-Sanskrit runs written in the Devanagari script may also include
+Sanskrit runs written in the Myanmar script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
@@ -282,7 +353,7 @@ classified as follows.
 ## Miscellaneous character table ##
 
 Other important characters that may be encountered when shaping runs
-of Devanagari text include the dotted-circle placeholder (`U+25CC`), the
+of Myanmar text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
 the no-break space (`U+00A0`).
 
