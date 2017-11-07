@@ -250,6 +250,8 @@ specific, script-aware behavior.
 
 ### Myanmar Extended B ###
 
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
+|:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+A9E0`   | Letter           | CONSONANT         | _null_                     | &#xA9E0; Shan Gha            |
 |`U+A9E1`   | Letter           | CONSONANT         | _null_                     | &#xA9E1; Shan Cha            |
 |`U+A9E2`   | Mark [Mn]        | CONSONANT         | _null_                     | &#xA9E2; Shan Jha            |
