@@ -19,7 +19,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
 this does include some valid codepoints in the Oriya block, such as
-	currency marks and other symbols. 
+currency marks and other symbols. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
