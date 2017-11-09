@@ -6,7 +6,6 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Oriya character table](#oriya-character-table)
-  - [Oriya Extended character table](#oriya-extended-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
