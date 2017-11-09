@@ -116,7 +116,7 @@ specific, script-aware behavior.
 |`U+17C9`   | Mark [Mn]        | REGISTER_SHIFTER  | TOP_POSITION               | &#x17C9; Muusikatoan         |
 |`U+17CA`   | Mark [Mn]        | REGISTER_SHIFTER  | TOP_POSITION               | &#x17CA; Triisap             |
 |`U+17CB`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x17CB; Bantoc              |
-|`U+17CC`   | Mark [Mn]        | CONSONANT_POSTREPHA| TOP_POSITION              | &#x17CC; Robat               |
+|`U+17CC`   | Mark [Mn]        | CONSONANT_POST_REPHA| TOP_POSITION             | &#x17CC; Robat               |
 |`U+17CD`   | Mark [Mn]        | CONSONANT_KILLER  | TOP_POSITION               | &#x17CD; Toandakhiat         |
 |`U+17CE`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x17CE; Kakabat             |
 |`U+17CF`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x17CF; Ahsda               |

@@ -140,16 +140,20 @@ specific behavior.
 these marks are subcategorized as non-spacing; the remaining four are
 spacing-combining. 
 
-Of the non-spacing marks, 20 are cantillation (or tone)
+Of the non-spacing marks, 20 are classified as `CANTILLATION` (or tone-marker)
 indicators, which modify the pitch of vowels. Most of these marks are
 generally positioned above or below the main character, using GPOS
 mark attachment, in a position that does not interact or interfere
-with the main character. They should not require special behavior of
-the shaping engine.
+with the main character. In Unicode, the `CANTILLATION` classification
+is separate from the `TONE_MARKER` classification used in some scripts
+for semantic reasons; the two classifications are identical for
+shaping purposes.
 
-Some of the marks (cantillation and non-cantillation) are overstruck
-on top of the charater that they modify. They, too, should not
-require special behavior of the shaping engine.
+Some of the marks (cantillation and non-cantillation) are classified
+as `OVERSTRUCK` in the _Mark-placement subclass_ column.
+This indicates that the mark is intended to be rendered on top of the
+preceding character. During reordering, `OVERSTRUCK` marks are tagged
+for the ordering position `POS_AFTER_MAIN`.
 
 Some marks are classified, for shaping purposes, as `AVAGRAHA` or
 `VISARGA`. This indicates that the mark behaves more like the Avagraha
@@ -159,3 +163,14 @@ Characters that are categorized in Unicode as letters vary with
 respect to whether or not they trigger special behavior in the shaping
 process. These include letters that are classified as `CONSONANT` and
 letters that are classified as `AVAGRAHA`.
+
+
+
+<!--- 1cf5 and 1cf6 get reclassified as CONSONANT
+
+1ce2 and 1ce8 get treated like tone marks, but SHOULD be allowed only after Visarga.
+
+1ced gets treated like tone mark, but SHOULD be allowed only after U+1CE9..U+1CF1
+
+1ce9 1cec 1cee 1cf1 all take marks in standalone clusters, similar to Avagraha.
+--->

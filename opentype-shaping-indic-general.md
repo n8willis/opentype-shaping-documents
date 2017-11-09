@@ -127,8 +127,13 @@ to their own rules and, thus, have a special class. These include
 `BINDU`, `VISARGA`, `AVAGRAHA`, `NUKTA`, and `VIRAMA`. Some
 less-common marks behave according to rules that are similar to these
 common marks, and are therefore classified with the corresponding
-common mark. The Vedic Extensions also include a `CANTILLATION`
-class for tone marks.
+common mark. 
+
+Less common mark classes include `TONE_MARKER`, `CANTILLATION`,
+`GEMINATION_MARK`, `PURE_KILLER`, `INVISIBLE_STACKER`,
+`REGISTER_SHIFTER`, and `SYLLABLE_MODIFIER`. An explanation of each
+class is included in the shaping documentation of each script in which
+the class occurs.
 
 Letters generally fall into the classes `CONSONANT`,
 `VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
@@ -137,13 +142,27 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
-There are occasional special classes in use, such as
-`CONSONANT_DEAD`, which indicates that a letter should match simple
-tests for consonants, but that, unlike standard consonants, it carries
-no inherent vowel. This lack of an inherent vowel means that the
-letter is likely not accompanied by a `VIRAMA`; failure to recognize
-this distinction could trick naive parsers into mis-identifying the
-letter as the base consonant of a syllable.
+There are several subclasses of consonants that arise on occasion, such as
+`CONSONANT_DEAD`, `CONSONANT_MEDIAL`, `CONSONANT_PLACEHOLDER`,
+`CONSONANT_WITH_STACKER`, `CONSONANT_PRECEDING_REPHA`,
+`CONSONANT_POST_REPHA`, and `CONSONANT_FINAL`. 
+
+These subclasses indicate that the letter should match simple
+tests for consonants (as in the regular expressions used during
+syllable identification), but the subclass may factor into
+script-specific rules encountered in later shaping stages.
+
+For example, `CONSONANT_DEAD` indicates that, unlike standard
+consonants, the dead consonant carries no inherent vowel. This lack of
+an inherent vowel means that the letter is likely not accompanied by a
+`VIRAMA`; failure to recognize this distinction could trick a naive
+parser into mis-identifying the letter as the base consonant of a
+syllable during the base-consonant-identification step. 
+
+Not every script features an instance of each consonant subclass. A
+full explanation of each subclass's behavior is explained in the
+relevant stage of each script's shaping documentation.
+
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -443,6 +462,10 @@ Below-base matras may be positioned:
 A syllable in an Indic consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
+The Nukta, Halant/Virama, and Anudatta marks can affect syllable
+identification. All other signs are regarded as syllable modifier
+signs, including those from the Vedic Extensions block.
+
 Generally speaking, each syllable contains exactly one vowel
 sound. Valid syllables may begin with either consonant or an
 independent vowel.
@@ -492,10 +515,9 @@ as when an isolated codepoint is shown in example text.
 > contain a word-final suffix of consonants.
 >
 > Nevertheless, such word-final suffixes will be correctly matched by
-> the regular expressions listed below. These words are pronounced
+> the regular expressions listed below. These loanwords are pronounced
 > different, which raises issues for potential readers, but the
 > character sequences do not affect the shaping process.
-
 
 
 Syllables should be identified by examining the run and matching

@@ -1,7 +1,7 @@
-# Bengali shaping in OpenType #
+# Kannada shaping in OpenType #
 
 This document details the shaping procedure needed to display text
-runs in the Bengali script.
+runs in the Kannada script.
 
 
 **Table of Contents**
@@ -10,37 +10,37 @@ runs in the Bengali script.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
-      - [Bengali character tables](#bengali-character-tables)
-  - [The `<bng2>` shaping model](#the-bng2-shaping-model)
+      - [Kannada character tables](#kannada-character-tables)
+  - [The `<knd2>` shaping model](#the-knd2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
       - [4: Final reordering](#4-final-reordering)
       - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
       - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
-  - [The `<beng>` shaping model](#the-beng-shaping-model)
-      - [Distinctions from `<bng2>`](#distinctions-from-bng2)
-      - [Advice for handling fonts with `<beng>` features only](#advice-for-handling-fonts-with-beng-features-only)
-      - [Advice for handling text runs composed in `<beng>` format](#advice-for-handling-text-runs-composed-in-beng-format)
+  - [The `<knda>` shaping model](#the-knda-shaping-model)
+      - [Distinctions from `<knd2>`](#distinctions-from-knd2)
+      - [Advice for handling fonts with `<knda>` features only](#advice-for-handling-fonts-with-knda-features-only)
+      - [Advice for handling text runs composed in `<knda>` format](#advice-for-handling-text-runs-composed-in-knda-format)
 
 
 ## General information ##
 
-The Bengali or Bangla script belongs to the Indic family, and follows
+The Kannada script belongs to the Indic family, and follows
 the same general patterns as the other Indic scripts. More
-specifically, it belongs to the North Indic subgroup, in which
-sequences of adjacent consonants are often represented as conjuncts.
+specifically, it belongs to the South Indic subgroup, in which
+sequences of adjacent consonants are often represented as below-base forms.
 
-The Bengali script is used to write multiple languages, most commonly
-Bengali, Assamese, and Manipuri. In addition, Sanskrit may be written
-in Bengali, so Bengali script runs may include glyphs from the Vedic
+The Kannada script is used to write multiple languages, most commonly
+Kannada, plus several minority languages. In addition, Sanskrit may be written
+in Kannada, so Kannada script runs may include glyphs from the Vedic
 Extension block of Unicode. 
 
-There are two extant Bengali script tags defined in OpenType, `<beng>`
-and `<bng2>`. The older script tag, `<beng>`, was deprecated in 2005.
-Therefore, new fonts should be engineered to work with the `<bng2>`
+There are two extant Kannada script tags defined in OpenType, `<knda>`
+and `<knd2>`. The older script tag, `<knda>`, was deprecated in 2005.
+Therefore, new fonts should be engineered to work with the `<knd2>`
 shaping model. However, if a font is encountered that supports only
-`<beng>`, the shaping engine should deal with it gracefully.
+`<knda>`, the shaping engine should deal with it gracefully.
 
 ## Terminology ##
 
@@ -48,22 +48,21 @@ OpenType shaping uses a standard set of terms for Indic scripts.  The
 terms used colloquially in any particular language may vary, however,
 potentially causing confusion.
 
-**Matra** is the standard term for a dependent vowel sign. In the Bengali
+**Matra** is the standard term for a dependent vowel sign. In the Kannada
 language, dependent-vowel signs <!--- that are positioned below the base
-consonant --> may also be referred to as _kar_ forms — e.g., "i-kar" or
-"u-kar".
+consonant --> may also be referred to as _swara_ forms.
 
 The term "matra" is also used to refer to the headline above most
-Bengali letters. To avoid ambiguity, the term **headline** is
+Kannada letters. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
 sign. Unicode documents use the term "virama" most frequently, while
-OpenType documents use the term "halant" most frequently. In the Bengali
-language, this sign is known as the _hasanta_.
+OpenType documents use the term "halant" most frequently. In the Kannada
+language, this sign is known as the _hrasva_.
 
 **Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
-indicating that the preceding vowel should be nasalized. In the Bengali
+indicating that the preceding vowel should be nasalized. In the Kannada
 language, this mark is known as the _candrabindu_.
 
 Where possible, using the standard terminology is preferred, as the
@@ -72,7 +71,7 @@ over all of the others that share a common script.
 
 ## Glyph classification ##
 
-Shaping Bengali text depends on the shaping engine correctly
+Shaping Kannada text depends on the shaping engine correctly
 classifying each glyph in the run. As with most other scripts, the
 classifications must distinguish between consonants, vowels
 (independent and dependent), numerals, punctuation, and various types
@@ -81,7 +80,7 @@ of diacritical mark.
 For most codepoints, the `General Category` property defined in the Unicode
 standard is correct, but it is not sufficient to fully capture the
 expected shaping behavior (such as glyph reordering). Therefore,
-Bengali glyphs must additionally be classified by how they are treated
+Kannada glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
 ### Shaping classes and subclasses ###
@@ -104,11 +103,13 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
-There are occasional special classes in use, such as
-`CONSONANT_DEAD`, which is used for the Bengali "Khanda Ta". In this
-case, the class indicates that "Khanda Ta" should match simple
-tests for consonants, but that, unlike standard consonants, it carries
-no inherent vowel. 
+Kannada uses one subclass of consonant, `CONSONANT_WITH_STACKER`. This
+subclass supports two consonants used only for Sanskrit text runs. The
+letters classified as `CONSONANT_WITH_STACKER` should be treated as
+consonants when [identifying
+syllables](#1-identifying-syllables-and-other-sequences). No
+additional behavior is required.
+
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -136,15 +137,15 @@ have formed ligatures or combined into conjunct forms. Therefore, the
 `LEFT_POSITION` subclass of the character must be tracked throughout
 the shaping process.
 
-### Bengali character tables ###
+### Kannada character tables ###
 
-Separate character tables are provided for the Bengali and Vedic
+Separate character tables are provided for the Kannada and Vedic
 Extensions blocks as well as for other miscellaneous characters that
-are used in `<bng2>` text runs:
+are used in `<knd2>` text runs:
 
-  - [Bengali character table](character-tables/character-tables-bengali.md#bengali-character-table)
-  - [Vedic Extensions character table](character-tables/character-tables-bengali.md#vedic-extensions-character-table)
-  - [Miscellaneous character table](character-tables/character-tables-bengali.md#miscellaneous-character-table)
+  - [Kannada character table](character-tables/character-tables-kannada.md#kannada-character-table)
+  - [Vedic Extensions character table](character-tables/character-tables-kannada.md#vedic-extensions-character-table)
+  - [Miscellaneous character table](character-tables/character-tables-kannada.md#miscellaneous-character-table)
 
 The tables list each codepoint along with its Unicode general
 category, its shaping class, and its mark-placement subclass. The
@@ -154,9 +155,9 @@ For example:
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0981`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
+|`U+0C81`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0C81; Candrabindu         |
 | | | | |
-|`U+0995`   | Letter           | CONSONANT         | _null_                     | &#x0995; Ka                  |
+|`U+0C95`   | Letter           | CONSONANT         | _null_                     | &#x0C95; Ka                  |
 
 
 Codepoints with no assigned meaning are
@@ -179,7 +180,7 @@ specific, script-aware behavior.
 
 
 Other important characters that may be encountered when shaping runs
-of Bengali text include the dotted-circle placeholder (`U+25CC`), the
+of Kannada text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
 the no-break space (`U+00A0`).
 
@@ -213,15 +214,15 @@ isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
 "NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
-In addition to general punctuation, runs of Bengali text often use the
+In addition to general punctuation, runs of Kannada text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
 the Devanagari block.
 
 
 
-## The `<bng2>` shaping model ##
+## The `<knd2>` shaping model ##
 
-Processing a run of `<bng2>` text involves six top-level stages:
+Processing a run of `<knd2>` text involves six top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
@@ -258,47 +259,56 @@ track. These include:
 	All Indic scripts position left-side matras in the same
     manner, in the ordering position `POS_PREBASE_MATRA`. 
 
-With regard to these common variations, Bengali's specific shaping
+With regard to these common variations, Kannada's specific shaping
 characteristics include:
 
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_AFTER_SUBJOINED` = "Reph" is ordered after all subjoined (i.e.,
-     below-base) consonant forms.
+  - `REPH_POS_AFTER_POST` = "Reph" is ordered after the last post-base
+     consonant form.
 
   - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
 
-  - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
-     pre-base consonants and to post-base consonants.
+  - `BLWF_MODE_POST_ONLY` = The below-forms feature is applied only to
+     post-base consonants.
 
-  - `MATRA_POS_TOP` = _null_  = Unlike most other Indic scripts, Bengali
-     does not use any above-base matras. Therefore, this shaping
-     characteristic does not apply.
+  - `MATRA_POS_TOP` = `POS_BEFORE_SUBJOINED`  = Above-base matras are
+    ordered before any subjoined (i.e., below-base) consonant forms.
 
-  - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
-     ordered after all post-base consonant forms.
+  - `MATRA_POS_RIGHT` = Kannada includes right-side matras that follow two
+     different reordering rules. 
+	 
+	 - Matras `U+0CC3`, `U+0CC4`, `U+0CC7`, `U+0CC8`, `U+0CCA`,
+       `U+0CCB`, `U+0CD5`, and `U+0CD6` use `POS_AFTER_SUB` =
+       These right-side matras are ordered after all subjoined (i.e.,
+       below-base) consonant forms. 
+	   
+	 - Matras `U+0CBE`, `U+0CC0`, `U+0CC1`, and `U+0CC2` use
+       `POS_BEFORE_SUB` = These right-side matras are ordered before
+       all subjoined (i.e., below-base) consonant forms.
 
-  - `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
-     ordered after all subjoined (i.e., below-base) consonant forms.
+  - `MATRA_POS_BOTTOM` = `POS_BEFORE_SUBJOINED` = Below-base matras are
+     ordered before the any subjoined (i.e., below-base) consonant forms.
 
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
 should be encoded within a run of text.
 
-> Note: Unlike most other Indic scripts, Bengali does not use
-> above-base matras. Therefore `MATRA_POS_TOP` can be set to _null_.
 
 ### 1: Identifying syllables and other sequences ###
 
-A syllable in Bengali consists of a valid orthographic sequence
+A syllable in Kannada consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
-> Note: The Bengali Unicode block enumerates five modifier signs,
-> "Candrabindu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
-> (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara"
-> (`U+09FC`). In addition, Sanskrit text written in Bengali may
-> include additional signs from Vedic Extensions block.
+> Note: The Kannada Unicode block enumerates four modifier signs,
+> "Candrabindu" (`U+0C81`), "Anusvara" (`U+0C82`), "Visarga" 
+> (`U+0C83`), and "Avagraha" (`U+0CBD`) In addition, Sanskrit text
+> written in Kannada may include additional signs from Vedic
+> Extensions block. 
+>
+> Note also that the "Spacing Candrabindu" (`U+0C80`) is a letter, not
+> a modifier sign.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
 begin with either consonant or an independent vowel. 
@@ -325,39 +335,29 @@ indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
-Bengali also includes two special consonants that can occur after the
+Kannada also includes two special consonants that can occur after the
 base consonant. These post-base consonants will also be separated from
 the base consonant by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced by one of two combining
-mark-like forms. 
+treatment; in many circumstances it is replaced by a combining
+mark-like form. 
 
   - A "Ra,Halant" sequence at the beginning of a syllable is replaced
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
-
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may
-    take on the below-base form "Raphala." 
   
-"Reph" and "Raphala" characters must be reordered after the
-syllable-identification stage is complete. 
-
-> Note: `<bng2>` text contains two Unicode codepoints for "Ra."
-> `U+09B0` and `U+09F0`. 
->
-> `U+09B0` is used in Bengali-language, Manipuri-language, and
-> Sanskrit text. `U+09F0` is used in Assamese-language text.
->
+"Reph" characters must be reordered after the syllable-identification
+stage is complete.
 
 
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
-> Note: Foreign loanwords, when written in the Bengali script, may
+> Note: Foreign loanwords, when written in the Kannada script, may
 > not adhere to the syllable-formation rules described above. In
 > particular, it is not uncommon to encounter foreign loanwords that
 > contain a word-final suffix of consonants.
@@ -373,11 +373,11 @@ Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
 
 The following general-purpose Indic-shaping regular expressions can be
-used to match Bengali syllables. The regular expressions utilize the
+used to match Kannada syllables. The regular expressions utilize the
 shaping classifications from the tables above.
 
 
-> Note: Bengali does not include the Anudatta (`U+0952`). It is
+> Note: Kannada does not include the Anudatta (`U+0952`). It is
 > included in the following expressions in order to correctly match other Indic scripts.
 
 	C	  Consonant
@@ -469,7 +469,7 @@ The final sort order of the ordering categories should be:
 This sort order enumerates all of the possible final positions to
 which a codepoint might be reordered, across all of the Indic
 scripts. It includes some ordering categories not utilized in
-Bengali. 
+Kannada. 
 
 The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
 vowels (matras) and consonants positioned before the base
@@ -528,26 +528,34 @@ run. Another implementation might examine the active font to see if it
 includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
-> scripts. However, Bengali does not utilize pre-base reordering "Ra".
+> scripts. However, Kannada does not utilize pre-base reordering "Ra".
 
 
 #### 2.2: Matra decomposition ####
 
-Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. Bengali has two
-two-part dependent vowels, "O" (`U+09BC`) and "Au" (`U+09CC`). Each
+Second, any multi-part dependent vowels (matras) must be decomposed
+into their independent components. Kannada has five
+multi-part dependent vowels, "Ii" (`U+0CC0`), "Ee" (`U+0CC7`), "Ai"
+(`U+0CC8`), "O" (`U+0CCA`), and "Oo" (`U+0CCB`). Each
 has a canonical decomposition, so this step is unambiguous. 
 
-> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
+> "Ii" (`U+0CC0`) decomposes to "`U+0CBF`,`U+0CD5`"
 >
-> "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
+> "Ee" (`U+0CC7`) decomposes to "`U+0CC6`,`U+0CD5`"
+>
+> "Ii" (`U+0CC8`) decomposes to "`U+0CC6`,`U+0CD6`"
+>
+> "Ii" (`U+0CCA`) decomposes to "`U+0CC6`,`U+0CC2`"
+>
+> "Ii" (`U+0CCB`) decomposes to "`U+0CCA`,`U+0CD5`"
+>
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/bengali/split-matra-decomposition.png)
+![Two-part matra decomposition](/images/kannada/split-matra-decomposition.png)
 
 #### 2.3: Left matras ####
 
@@ -561,7 +569,7 @@ Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
 syllable modifiers, and Vedic signs) must be reordered so that they
 appear in canonical order. 
 
-For `<bng2>` text, the canonical ordering means that any "Nukta"s must
+For `<knd2>` text, the canonical ordering means that any "Nukta"s must
 be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
@@ -582,20 +590,8 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be followed by a "Halant" glyph, with the
-exception of two special-case consonants. 
+consonants will usually be preceded by a "Halant" glyph. 
 
-  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
-    meaning that it carries no inherent vowel, therefore no "Halant"
-    follows it.
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
-    the "Yaphala" form. "Yaphala" behaves like a modifier to the
-    pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant. Because the "Halant" precedes the
-    consonant when forming the "Yaphala", no "Halant" follows it.
-
-<!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
 	
 #### 2.8: Mark tagging ####
 
@@ -638,15 +634,15 @@ all Indic scripts:
 	nukt
 	akhn
 	rphf 
-	rkrf (not used in Bengali)
-	pref (not used in Bengali)
+	rkrf (not used in Kannada)
+	pref
 	blwf 
-	abvf (not used in Bengali)
+	abvf (not used in Kannada)
 	half
 	pstf
-	vatu
+	vatu (not used in Kannada)
 	cjct
-	cfar (not used in Bengali)
+	cfar (not used in Kannada)
 
 #### 3.1 locl ####
 
@@ -666,7 +662,7 @@ The `nukt` feature replaces "_consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 
-![Nukta composition](/images/bengali/nukta-composition.png)
+![Nukta composition](/images/kannada/nukta-composition.png)
 
 #### 3.3: akhn ####
 
@@ -681,9 +677,9 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-![KSsa ligation](/images/bengali/kassa-ligation.png)
+![KSsa ligation](/images/kannada/kassa-ligation.png)
 
-![JNya ligation](/images/bengali/janya-ligation.png)
+![JNya ligation](/images/kannada/janya-ligation.png)
 
 #### 3.4: rphf ####
 
@@ -694,44 +690,27 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     the `rphf` substitution.
 	
 
-![Reph composition](/images/bengali/reph-composition.png)
+![Reph composition](/images/kannada/reph-composition.png)
 
 #### 3.5: rkrf ####
 
-> This feature is not used in Bengali.
+> This feature is not used in Kannada.
 
 #### 3.6 pref ####
 
-> This feature is not used in Bengali.
-
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
+The `pref` feature replaces pre-base-consonant glyphs with
+any special forms.
 
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Bengali includes two below-base consonant
-forms:
+special forms. All consonants in Kannada can take on a below-base consonant
+form.
 
-  - "Ra,Halant" in a non-syllable-initial position takes on the
-    "Raphala" form.
-  - "Ba,Halant" takes on the "Baphala" form. 
-
-Because Bengali incorporates the `BLWF_MODE_PRE_AND_POST` shaping
-characteristic, any pre-base consonants and any post-base consonants
-may potentially match a `blwf` substitution; therefore, both cases must
-be tagged for comparison. Note that this is not necessarily the case in other
-Indic scripts that use a different `BLWF_MODE_` shaping
-characteristic. 
-
-
-![Raphala composition](/images/bengali/raphala-composition.png)
-
-![Baphala composition](/images/bengali/baphala-composition.png)
 
 #### 3.8: abvf ####
 
-> This feature is not used in Bengali.
+> This feature is not used in Kannada.
 
 #### 3.9: half ####
 
@@ -751,27 +730,22 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
+> Note: Kannada does not usually incorporate half forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
 
-![Half-form formation](/images/bengali/half-formation.png)
+![Half-form formation](/images/kannada/half-formation.png)
 
 #### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
-![Yaphala composition](/images/bengali/yaphala-composition.png)
+![Yaphala composition](/images/kannada/yaphala-composition.png)
 
 #### 3.11: vatu ####
 
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
-
-"Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
-
-
-![Vattu variant ligation](/images/bengali/vattu-ligation.png)
+> This feature is not used in Kannada.
 
 #### 3.12: cjct ####
 
@@ -785,12 +759,16 @@ The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
+> Note: Kannada does not usually incorporate conjuncts, but it is
+> possible for a font to implement the `cjct` feature in order to
+> provide for desired typographic variation.
 
-![Conjunct ligation](/images/bengali/pata-conjunct.png)
+
+![Conjunct ligation](/images/kannada/pata-conjunct.png)
 
 #### 3.13: cfar ####
 
-> This feature is not used in Bengali.
+> This feature is not used in Kannada.
 
 
 ### 4: Final reordering ###
@@ -846,10 +824,9 @@ consonant, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Bengali incorporates the `REPH_POS_AFTER_SUBJOINED`
+position. Because Kannada incorporates the `REPH_POS_AFTER_POST`
 shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
-dependent vowel) forms.
+any post-base consonant forms.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
@@ -871,11 +848,11 @@ left of "Halant", to allow for potential matching with `abvs` or
 Any pre-base reordering consonants must be moved to immediately before
 the base consonant.
   
-Bengali does not use pre-base reordering consonants, so this step will
-involve no work when processing `<bng2>` text. It is included here in order
+Kannada does not use pre-base reordering consonants, so this step will
+involve no work when processing `<knd2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
 
-<!---  *** Bengali does not use pre-base reordering consonants *** *** This
+<!---  *** Kannada does not use pre-base reordering consonants *** *** This
   feature is exhibited by Javanese and Balinese. Possibly *** by
   Devanagari as well....  --->
 
@@ -929,7 +906,7 @@ typographically problematic.
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
-> point. However, `calt` is not mandatory for correct Bengali shaping
+> point. However, `calt` is not mandatory for correct Kannada shaping
 > and may be disabled in the application by user preference.
 
 ### 6: Applying remaining positioning features from GPOS ###
@@ -945,7 +922,7 @@ order in which they appear in the GPOS table in the font.
 
 > Note: The `kern` feature is usually applied at this stage, if it is
 > present in the font. However, `kern` (like `calt`, above) is not
-> mandatory for shaping Bengali text and may be disabled by user preference.
+> mandatory for shaping Kannada text and may be disabled by user preference.
 
 The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
@@ -953,54 +930,54 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Bengali, this includes "Reph" in addition to the
+characters. In Kannada, this includes "Reph" in addition to the
 diacritical marks and Vedic signs. 
 
 The `blwm` feature positions below-base marks for attachment to base
-characters. In Bengali, this includes below-base dependent vowels
+characters. In Kannada, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms "Raphala" and
 "Baphala".
 
 
-## The `<beng>` shaping model ##
+## The `<knda>` shaping model ##
 
-The older Bengali script tag, `<beng>`, has been deprecated. However,
+The older Kannada script tag, `<knda>`, has been deprecated. However,
 shaping engines may still encounter fonts that were built to work with
-`<beng>` and some users may still have documents that were written to
-take advantage of `<beng>` shaping.
+`<knda>` and some users may still have documents that were written to
+take advantage of `<knda>` shaping.
 
-### Distinctions from `<bng2>` ###
+### Distinctions from `<knd2>` ###
 
 The most significant distinction between the shaping models is that the
 sequence of "Halant" and consonant glyphs required to suppress the
 inherent vowel (and, for the shaping engine's purposes, to trigger shaping
-features) was swapped when migrating from `<beng>` to
-`<bng2>`. 
+features) was swapped when migrating from `<knda>` to
+`<knd2>`. 
 
-Specifically, the inherent vowel of a consonant in a run of `<beng>`
-text was suppressed by the sequence "Halant,_consonant_". In `<bng2>`
+Specifically, the inherent vowel of a consonant in a run of `<knda>`
+text was suppressed by the sequence "Halant,_consonant_". In `<knd2>`
 text, as described above in this document, the correct sequence is
 "_consonant_,Halant".
 
-Consequently, in `<beng>` text, a "Reph" substitution was triggered by a
-syllable-initial "Halant,Ra" sequence. In `<bng2>` text, the sequence
+Consequently, in `<knda>` text, a "Reph" substitution was triggered by a
+syllable-initial "Halant,Ra" sequence. In `<knd2>` text, the sequence
 must be "Ra,Halant". 
 
-Similarly, in `<beng>` text, a pre-base half-form or
+Similarly, in `<knda>` text, a pre-base half-form or
 consonant-conjunct substitution was triggered by
-"Halant,_consonant_,_consonant_". In `<bng2>` text, the sequence must
+"Halant,_consonant_,_consonant_". In `<knd2>` text, the sequence must
 be "_consonant_,Halant,_consonant_".
 
-### Advice for handling fonts with `<beng>` features only ###
+### Advice for handling fonts with `<knda>` features only ###
 
 Shaping engines may choose to match "Halant,_consonant_" sequences in
 order to apply GSUB substitutions when it is known that the font in
-use supports only the `<beng>` shaping model.
+use supports only the `<knda>` shaping model.
 
-### Advice for handling text runs composed in `<beng>` format ###
+### Advice for handling text runs composed in `<knda>` format ###
 
 Shaping engines may choose to match "Halant,_consonant_" sequences for
 GSUB substitutions or to reorder them to "_consonant_,Halant" when
-processing text runs that are tagged with the `<beng>` script tag and
-it is known that the font in use supports only the `<bng2>` shaping
+processing text runs that are tagged with the `<knda>` script tag and
+it is known that the font in use supports only the `<knd2>` shaping
 model.

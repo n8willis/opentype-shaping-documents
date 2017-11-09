@@ -155,8 +155,8 @@ specific, script-aware behavior.
 |`U+0CEF`   | Number           | NUMBER            | _null_                     | &#x0CEF; Digit Nine          |
 | | | | |																		
 |`U+0CF0`   | _unassigned_     |                   |                            |                              |
-|`U+0CF1`   | Letter           | CONSONANT_STACKER | _null_                     | &#x0CF1; Jihvamuliya         |
-|`U+0CF2`   | Letter           | CONSONANT_STACKER | _null_                     | &#x0CF2; Upadhmaniya         |
+|`U+0CF1`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x0CF1; Jihvamuliya         |
+|`U+0CF2`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x0CF2; Upadhmaniya         |
 |`U+0CF3`   | _unassigned_     |                   |                            |                              |
 |`U+0CF4`   | _unassigned_     |                   |                            |                              |
 |`U+0CF5`   | _unassigned_     |                   |                            |                              |

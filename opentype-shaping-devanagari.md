@@ -324,7 +324,7 @@ mark-like forms.
   - "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
     below-base form "Rakaar." 
 	
-"Reph" and "Rakaar" syllables must be reordered after the
+"Reph" and "Rakaar" characters must be reordered after the
 syllable-identification stage is complete. 
 
 
@@ -337,7 +337,7 @@ as when an isolated codepoint is shown in example text.
 > contain a word-final suffix of consonants.
 >
 > Nevertheless, such word-final suffixes will be correctly matched by
-> the regular expressions listed below. These words are pronounced
+> the regular expressions listed below. These loanwords are pronounced
 > different, which raises issues for potential readers, but the
 > character sequences do not affect the shaping process.
 
@@ -362,6 +362,11 @@ shaping classifications from the tables above.
 	VD	  Vedic signs
 	A	  Anudatta
 	NBSP	  No-break space
+	      
+	{ }	  zero or more occurences of the enclosed expression
+	[ ]	  optional occurence of the enclosed expression
+	<|>	  one of the options separated by the vertical bar
+	( )	  one or two occurences of the enclosed expression
 
 A consonant-based syllable will match the expression:
 ```
