@@ -201,6 +201,15 @@ important miscellaneous characters, are available here:
 
   - [Devanagari](opentype-shaping-devanagari.md#devanagari-character-table) (Including Devanagari Extended)
   - [Bengali](character-tables/character-tables-bengali.md)
+  - [Gujarati](character-tables/character-tables-gujarati.md)
+  - [Gurmukhi](character-tables/character-tables-gurmukhi.md)
+  - [Kannada](character-tables/character-tables-kannada.md)
+  - [Malayalam](character-tables/character-tables-malayalam.md)
+  - [Oriya](character-tables/character-tables-oriya.md)
+  - [Tamil](character-tables/character-tables-tamil.md)
+  - [Telugu](character-tables/character-tables-telugu.md)
+  - [Sinhala](character-tables/character-tables-sinhala.md)
+  - [Khmer](character-tables/character-tables-khmer.md)
   - [Vedic Extensions](opentype-shaping-vedic-extensions.md)
   - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) 
 	
