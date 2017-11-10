@@ -104,7 +104,8 @@ shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
 Kannada uses one subclass of consonant, `CONSONANT_WITH_STACKER`. This
-subclass supports two consonants used only for Sanskrit text runs. The
+subclass supports two consonants, "Jihvamuliya" (`U+0CF1`) and
+"Upadhmaniya" (`U+0CF2`), that are used only for Sanskrit text runs. The
 letters classified as `CONSONANT_WITH_STACKER` should be treated as
 consonants when [identifying
 syllables](#1-identifying-syllables-and-other-sequences). No
@@ -263,7 +264,14 @@ With regard to these common variations, Kannada's specific shaping
 characteristics include:
 
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
-     consonant, not counting any special final-consonant forms.
+     consonant, not counting any consonants with post-base forms.
+	 
+	 - Kannada differs somewhat from other `BASE_POS_LAST` scripts in
+       that all consonants can use post-base forms. Therefore, the
+       general base-consonant search algorithm should identify the first
+       non-"Reph" consonant as the base. This is the expected
+       behavior, as it allows the same search algorithm to be used
+       with all `BASE_POS_LAST` scripts.
 
   - `REPH_POS_AFTER_POST` = "Reph" is ordered after the last post-base
      consonant form.
@@ -279,13 +287,16 @@ characteristics include:
   - `MATRA_POS_RIGHT` = Kannada includes right-side matras that follow two
      different reordering rules. 
 	 
-	 - Matras `U+0CC3`, `U+0CC4`, `U+0CC7`, `U+0CC8`, `U+0CCA`,
-       `U+0CCB`, `U+0CD5`, and `U+0CD6` use `POS_AFTER_SUB` =
+	 - Matras "Sign Vocalic R" (`U+0CC3`), "Sign Vocalic Rr"
+       (`U+0CC4`), "Sign Ee" (`U+0CC7`), "Sign Ai" (`U+0CC8`), "Sign
+       O" (`U+0CCA`), "Sign Oo" (`U+0CCB`), "Length Mark" (`U+0CD5`),
+       and "Ai Length Mark" (`U+0CD6`) use `POS_AFTER_SUBJOINED` =
        These right-side matras are ordered after all subjoined (i.e.,
        below-base) consonant forms. 
 	   
-	 - Matras `U+0CBE`, `U+0CC0`, `U+0CC1`, and `U+0CC2` use
-       `POS_BEFORE_SUB` = These right-side matras are ordered before
+	 - Matras "Sign Aa"(`U+0CBE`), "Sign Ii" (`U+0CC0`), "Sign U"
+       (`U+0CC1`), and "Sign Uu" (`U+0CC2`) use
+       `POS_BEFORE_SUBJOINED` = These right-side matras are ordered before
        all subjoined (i.e., below-base) consonant forms.
 
   - `MATRA_POS_BOTTOM` = `POS_BEFORE_SUBJOINED` = Below-base matras are
@@ -323,23 +334,19 @@ consonant.
 > carries the script's inherent vowel sound. This vowel sound is changed
 > by a dependent vowel (matra) sign following the consonant.
 
-Generally speaking, the base consonant is the final consonant of the
-syllable and its vowel sound designates the end of the syllable. This
-rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
-earlier. 
+Kannada uses the the `BASE_POS_LAST` characteristic mentioned
+earlier. However, because all consonants in the script can potentially
+take on post-base consonant forms, the outcome of the shaping
+characteristic may be counterintuitive.
 
-Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
-other, pre-base consonants will be followed by the "Halant" mark, which
+Generally speaking, the base consonant is the first consonant of the
+syllable, which is rendered in full form, and any subsequent
+consonants are rendered in special post-base forms. 
+
+Each of these post-base consonants will be preceded by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
-
-Kannada also includes two special consonants that can occur after the
-base consonant. These post-base consonants will also be separated from
-the base consonant by a "Halant" mark; the algorithm for correctly
-identifying the base consonant includes a test to recognize these sequences
-and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by a combining
@@ -429,8 +436,7 @@ orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
 > "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ba", "Ta", and "Ya" occasionally
-> take on special forms, depending on their position in the syllable.
+> treatment in some circumstances. 
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the text and on the features
@@ -529,6 +535,13 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
 > scripts. However, Kannada does not utilize pre-base reordering "Ra".
+>
+> Also, it is important to note that all consonants in Kannada have a
+> post-base form, therefore the backwards-search step will
+> automatically move past them until it reaches either a "Ra,Halant"
+> sequence or the first consonant. However, this condition is not the
+> same as the shaping characteristic `BASE_POS_FIRST`, which does not
+> use the above search algorithm at all.
 
 
 #### 2.2: Matra decomposition ####
@@ -557,11 +570,35 @@ completed before the shaping engine begins step three, below.
 
 ![Two-part matra decomposition](/images/kannada/split-matra-decomposition.png)
 
-#### 2.3: Left matras ####
+#### 2.3: Tag matras ####
 
-Third, all left-side dependent-vowel (matra) signs, including those that
+Third, all dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
-moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
+moved to the correct position in the syllable.
+
+Left-side matras should be tagged with `POS_PREBASE_MATRA`.
+
+Above-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
+
+Below-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
+
+Right-side matras should be tagged according to two rules.
+
+  - Matras "Sign Vocalic R" (`U+0CC3`), "Sign Vocalic Rr"
+       (`U+0CC4`), "Sign Ee" (`U+0CC7`), "Sign Ai" (`U+0CC8`), "Sign
+       O" (`U+0CCA`), "Sign Oo" (`U+0CCB`), "Length Mark" (`U+0CD5`),
+       and "Ai Length Mark" (`U+0CD6`) should be tagged with
+       `POS_AFTER_SUBJOINED`.
+	   
+  - Matras "Sign Aa"(`U+0CBE`), "Sign Ii" (`U+0CC0`), "Sign U"
+       (`U+0CC1`), and "Sign Uu" (`U+0CC2`) use
+       `POS_BEFORE_SUBJOINED`.
+
+For simplicity, shaping engines may choose to tag single-part matras
+in an earlier text-processing step, using the information in the
+_Mark-placement subclass_ column of the character tables. It is
+critical at this step, however, that all decomposed matras are also
+correctly tagged before proceeding to the next step.
 
 #### 2.4: Adjacent marks ####
 
@@ -578,6 +615,9 @@ should be reordered.
 Fifth, consonants that occur before the base consonant must be tagged
 with `POS_PREBASE_CONSONANT`.
 
+Kannada does not use any pre-base consonants; this step is listed here
+because it is part of the general processing scheme for shaping Indic scripts.
+
 #### 2.6: Reph ####
 
 Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
@@ -589,8 +629,7 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 #### 2.7: Post-base consonants ####
 
 Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be preceded by a "Halant" glyph. 
+(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
 	
 #### 2.8: Mark tagging ####
@@ -698,8 +737,12 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 #### 3.6 pref ####
 
-The `pref` feature replaces pre-base-consonant glyphs with
+The `pref` feature replaces pre-base consonant glyphs with
 any special forms.
+
+> Note: Kannada does not usually incorporate pre-base consonant forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
 
 #### 3.7: blwf ####
 
@@ -890,9 +933,9 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing consonants that
-are followed by below-base-consonant forms like "Raphala" or
-"Baphala" with contextual ligatures.
+presentation forms. This usually involves replacing multiple
+below-base glyphs (substituted earlier with the `blwf`) feature with
+ligatures or conjunct forms.
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
@@ -930,13 +973,12 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Kannada, this includes "Reph" in addition to the
-diacritical marks and Vedic signs. 
+characters. In Kannada, this includes above-base dependent vowels (matras),
+diacritical marks, and Vedic signs. 
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Kannada, this includes below-base dependent vowels
-(matras) as well as the below-base consonant forms "Raphala" and
-"Baphala".
+(matras) as well as below-base diacritical marks.
 
 
 ## The `<knda>` shaping model ##

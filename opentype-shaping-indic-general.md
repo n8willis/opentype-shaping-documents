@@ -199,7 +199,7 @@ the shaping process.
 Character tables for all of the scripts, plus the Vedic Extensions and
 important miscellaneous characters, are available here:
 
-  - [Devanagari](opentype-shaping-devanagari.md#devanagari-character-table) (Including Devanagari Extended)
+  - [Devanagari](character-tables/character-tables-devanagari.md) (Including Devanagari Extended)
   - [Bengali](character-tables/character-tables-bengali.md)
   - [Gujarati](character-tables/character-tables-gujarati.md)
   - [Gurmukhi](character-tables/character-tables-gurmukhi.md)
@@ -360,9 +360,21 @@ below-base forms). However, each script has a general base-consonant
 position that determines the appropriate search method. The base
 consonant may be, generally:
 
-  - The first consonant. This is designated `BASE_POS_FIRST`.
+  - The first consonant. This is designated `BASE_POS_FIRST`. This is
+    the simplest base-consonant rule. After eliminating any initial
+    "Repha"s from consideration, the first consonant is always the
+    base consonant, without exception.
   
-  - The last consonant. This is designated `BASE_POS_LAST`.
+  - The last consonant, not counting any special forms. This is
+    designated `BASE_POS_LAST`. This is the most complicated
+    base-consonant rule, because the type and variety of special forms
+    vary considerably between scripts. 
+	
+	The `BASE_POS_LAST` search algorithm (described in each script's
+    shaping document) accounts for these special forms in every
+    script. The abundance of special forms in certain scripts may
+    routinely cause the search algorithm to identify a base consonant
+    that is not logically last in the syllable. This is expected behavior.
   
   - The last consonant that is not preceded by a "ZWJ" (zero width
     joiner) character. This position is only used in Sinhala, and is

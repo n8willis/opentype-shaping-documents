@@ -104,11 +104,13 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
-There are occasional special classes in use, such as
-`CONSONANT_DEAD`, which is used for the Bengali "Khanda Ta". In this
-case, the class indicates that "Khanda Ta" should match simple
-tests for consonants, but that, unlike standard consonants, it carries
-no inherent vowel. 
+Bengali uses one sublcass of consonant, `CONSONANT_DEAD`. This
+subclass is used only for the Bengali "Khanda Ta" (`U+09CE`). It indicates that
+"Khanda Ta" should match tests for consonants, such as when [identifying
+syllables](#1-identifying-syllables-and-other-sequences), but that, unlike
+standard consonants, it carries no inherent vowel. The lack of an
+inherent vowel is important during the [initial
+reordering](#2-initial-reordering) stage.
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -549,11 +551,23 @@ completed before the shaping engine begins step three, below.
 
 ![Two-part matra decomposition](/images/bengali/split-matra-decomposition.png)
 
-#### 2.3: Left matras ####
+#### 2.3: Tag matras ####
 
 Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
+
+All right-side dependent-vowel (matra) signs are tagged
+`POS_AFTER_POST`.
+
+All below-base dependent-vowel (matra) signs are tagged
+`POS_AFTER_SUBJOINED`.
+
+For simplicity, shaping engines may choose to tag single-part matras
+in an earlier text-processing step, using the information in the
+_Mark-placement subclass_ column of the character tables. It is
+critical at this step, however, that all decomposed matras are also
+correctly tagged before proceeding to the next step.
 
 #### 2.4: Adjacent marks ####
 

@@ -516,13 +516,13 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-#### 2.3: Left matras ####
+#### 2.3: Tag matras ####
 
-Third, all left-side dependent-vowel (matra) signs, including those that
-resulted from the preceding decomposition step, must be tagged to be
+Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-
+Above-base, below-base, and right side dependent-vowel (matra) signs
+must be tagged with `POS_AFTER_SUBJOINED`.
 
 #### 2.4: Adjacent marks ####
 
@@ -886,11 +886,11 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Devanagari, this includes "Reph" in addition to the
-diacritical marks and Vedic signs. 
+characters. In Devanagari, this includes "Reph" in addition to
+above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Devanagari, this includes below-base dependent vowels
-(matras) as well as the below-base consonant form "Rakaar".
+(matras) and diacritical marks as well as the below-base consonant form "Rakaar".
 
 
