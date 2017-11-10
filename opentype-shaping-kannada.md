@@ -101,7 +101,7 @@ Letters generally fall into the classes `CONSONANT`,
 shaping engine parse and identify key positions in a syllable. For
 example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
-and diacritical marks (which are categorized as `Mark [Mn]`).
+and diacritical marks (some of which are also categorized as `Mark [Mn]`).
 
 Kannada uses one subclass of consonant, `CONSONANT_WITH_STACKER`. This
 subclass supports two consonants, "Jihvamuliya" (`U+0CF1`) and
