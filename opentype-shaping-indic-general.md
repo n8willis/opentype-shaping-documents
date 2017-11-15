@@ -46,7 +46,7 @@ The largest (by number of readers) scripts in the Indic family are:
   - Malayalam
   - Oriya
   - Tamil
-  - Telugu
+  - [Telugu](opentype-shaping-telugu.md)
   - Sinhala
   - Khmer
 
@@ -58,15 +58,20 @@ Text runs in Indic scripts also make use of joiner, non-joiner, and
 placeholder characters from other Unicode blocks, in order to specify
 certain alternate shaping options.
 
-There are two sets of Indic script tags defined in OpenType. The older
-set (including `<deva>`, `<beng>`, and `<mlym>` among others) was
-deprecated in 2005. 
+There are two sets of Indic script tags defined in OpenType. Several
+from the older set (`<deva>`, `<beng>`, `<gujr>`, `<guru>`, `<knda>`,
+`<mlym>`, `<orya>`, `<taml>`, and `<telu>`) were deprecated and
+replaced in 2005.
 
-The new set (including `<dev2>`, `<bng2>`, and `<mlm2>`) was devised
-to overcome shortcomings found in the original model. 
-Therefore, new fonts should be engineered to work with the 
+The new set of replacement tags for these scripts (`<dev2>`, `<bng2>`,
+`<gjr2>`, `<gur2>`, `<knd2>`, `<mlm2>`, `<ory2>`, `<tml2>`, and
+`<tel2>`) was devised to overcome shortcomings found in the original model. 
+Therefore, new fonts should be engineered to work with the updated
 shaping model. However, if a font is encountered that supports only
 an older script tag, the shaping engine should deal with it gracefully.
+
+The `<sinh>` and `<khmr>` tags, unlike the other Indic script tags,
+were not deprecated in 2005 and are still used for Sinhala and Khmer text.
 
 > Note: There are several other scripts derived from the Bhrami script
 > that are often treated separately and not bundled into the "Indic"

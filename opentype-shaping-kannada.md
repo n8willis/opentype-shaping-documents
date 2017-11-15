@@ -353,7 +353,7 @@ treatment; in many circumstances it is replaced by a combining
 mark-like form. 
 
   - A "Ra,Halant" sequence at the beginning of a syllable is replaced
-    with an above-base mark called "Reph" (unless the "Ra" is the only
+    with a right-side mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
   
