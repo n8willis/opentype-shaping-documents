@@ -635,8 +635,19 @@ Seventh, any non-base consonants that occur after a dependent vowel
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
-closest preceding non-mark character, so that they move together
+closest non-mark character the mark has affinity with, so that they move together
 during the sorting step.
+
+For all marks preceding the base consonant, the mark must be tagged
+with the same positioning tag as the closest preceding non-mark
+consonant.
+
+For all marks occuring after the base consonant, the mark must be
+tagged with the same positioning tag as the closest subsequent consonant.
+
+> Note: In this step, joiner and non-joiner characters must also be
+> tagged according to the same rules given for marks, even though
+> these characters are not categorized as marks in Unicode.
 
 <!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
 <!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
@@ -868,7 +879,7 @@ consonant, and all half forms.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Kannada incorporates the `REPH_POS_AFTER_POST`
-shaping characteristic, this final position is immediately after the
+shaping characteristic, this final position is immediately after
 any post-base consonant forms.
 
   - If the syllable does not have a base consonant (such as a syllable
@@ -912,16 +923,14 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
+	init (not used in Kannada)
 	pres
 	abvs
 	blws
 	psts
 	haln
 
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline instroke from the left side of the glyph.
+The `init` feature is not used in Kannada.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form

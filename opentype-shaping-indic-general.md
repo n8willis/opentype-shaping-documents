@@ -730,8 +730,19 @@ the `CONSONANT_DEAD` shaping class.
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
-closest preceding non-mark character, so that they move together
+closest non-mark character the mark has affinity with, so that they move together
 during the sorting step.
+
+For all marks preceding the base consonant, the mark must be tagged
+with the same positioning tag as the closest preceding non-mark
+consonant.
+
+For all marks occuring after the base consonant, the mark must be
+tagged with the same positioning tag as the closest subsequent consonant.
+
+> Note: In this step, joiner and non-joiner characters must also be
+> tagged according to the same rules given for marks, even though
+> these characters are not categorized as marks in Unicode.
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
