@@ -906,15 +906,16 @@ Kannada does not use pre-base reordering consonants, so this step will
 involve no work when processing `<knd2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
 
-<!---  *** Kannada does not use pre-base reordering consonants *** *** This
-  feature is exhibited by Javanese and Balinese. Possibly *** by
-  Devanagari as well....  --->
 
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
+
+Kannada does not use the `init` feature, so this step will
+involve no work when processing `<knd2>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
 
 ### 5: Applying all remaining substitution features from GSUB ###
 

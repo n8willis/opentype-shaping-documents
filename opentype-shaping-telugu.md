@@ -371,6 +371,11 @@ shaping classifications from the tables above.
 > character. They are included in the following expressions in order
 > to correctly match other Indic scripts. 
 
+> Note: Although the Telugu block does not include a "Nukta" mark,
+> there are reports of users using the "Nukta" from other Indic
+> blocks, so shaping engines may encounter a "Nukta" in text runs, and
+> should handle the situation gracefully.
+
 	C	  Consonant
 	V	  Independent vowel
 	N	  Nukta
@@ -584,6 +589,11 @@ For `<tel2>` text, the canonical ordering means that any "Nukta"s must
 be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
+> Note: The Telugu block does not include a "Nukta" mark. However,
+> there are reports of users using the "Nukta" from other Indic
+> blocks, so shaping engines may encounter a "Nukta" in text runs, and
+> should handle the situation gracefully.
+
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the base consonant must be tagged
@@ -685,8 +695,10 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
-
-![Nukta composition](/images/telugu/nukta-composition.png)
+> Note: The Telugu block does not include a "Nukta" mark. However,
+> there are reports of users using the "Nukta" from other Indic
+> blocks, so shaping engines may encounter a "Nukta" in text runs, and
+> should handle the situation gracefully.
 
 #### 3.3: akhn ####
 
@@ -762,7 +774,6 @@ must test:
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
 
-![Half-form formation](/images/telugu/half-formation.png)
 
 #### 3.10: pstf ####
 
@@ -886,6 +897,10 @@ to maintain compatibility with the other Indic scripts.
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
+
+Telugu does not use the `init` feature, so this step will
+involve no work when processing `<tel2>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
