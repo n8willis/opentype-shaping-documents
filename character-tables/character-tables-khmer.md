@@ -1,7 +1,7 @@
 # Khmer character tables #
 
 This document lists the per-character shaping information needed to
-[shape Khmer text](opentype-shaping-khmer.md).
+[shape Khmer text](/opentype-shaping-khmer.md).
 
 **Table of Contents**
 

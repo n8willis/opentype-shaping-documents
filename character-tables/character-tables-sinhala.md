@@ -1,7 +1,7 @@
 # Sinhala character tables #
 
 This document lists the per-character shaping information needed to
-[shape Sinhala text](opentype-shaping-sinhala.md).
+[shape Sinhala text](/opentype-shaping-sinhala.md).
 
 **Table of Contents**
 

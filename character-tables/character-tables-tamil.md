@@ -1,7 +1,7 @@
 # Tamil character tables #
 
 This document lists the per-character shaping information needed to
-[shape Tamil text](opentype-shaping-tamil.md).
+[shape Tamil text](/opentype-shaping-tamil.md).
 
 **Table of Contents**
 

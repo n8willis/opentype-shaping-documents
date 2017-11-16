@@ -1,7 +1,7 @@
 # Gujarati character tables #
 
 This document lists the per-character shaping information needed to
-[shape Gujarati text](opentype-shaping-gujarati.md).
+[shape Gujarati text](/opentype-shaping-gujarati.md).
 
 **Table of Contents**
 

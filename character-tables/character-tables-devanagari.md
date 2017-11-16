@@ -1,7 +1,7 @@
 # Devanagari character tables #
 
 This document lists the per-character shaping information needed to
-[shape Devanagari text](opentype-shaping-devanagari.md).
+[shape Devanagari text](/opentype-shaping-devanagari.md).
 
 **Table of Contents**
 

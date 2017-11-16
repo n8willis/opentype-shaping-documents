@@ -1,7 +1,7 @@
 # Kannada character tables #
 
 This document lists the per-character shaping information needed to
-[shape Kannada text](opentype-shaping-kannada.md).
+[shape Kannada text](/opentype-shaping-kannada.md).
 
 **Table of Contents**
 
