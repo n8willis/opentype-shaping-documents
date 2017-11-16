@@ -1,7 +1,7 @@
 # Telugu character tables #
 
 This document lists the per-character shaping information needed to
-[shape Telugu text](opentype-shaping-telugu.md).
+[shape Telugu text](/opentype-shaping-telugu.md).
 
 **Table of Contents**
 
