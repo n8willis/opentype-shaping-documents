@@ -162,9 +162,9 @@ For example:
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0981`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
+|`U+0A01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0A01; Adak Bindi          |
 | | | | |
-|`U+0995`   | Letter           | CONSONANT         | _null_                     | &#x0995; Ka                  |
+|`U+0A15`   | Letter           | CONSONANT         | _null_                     | &#x0A15; Ka                  |
 
 
 Codepoints with no assigned meaning are
@@ -272,7 +272,7 @@ characteristics include:
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_AFTER_SUBJOINED` = "Reph" is ordered after all subjoined (i.e.,
+  - `REPH_POS_BEFORE_SUBJOINED` = "Reph" is ordered before all subjoined (i.e.,
      below-base) consonant forms.
 
   - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
@@ -280,32 +280,28 @@ characteristics include:
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
 
-  - `MATRA_POS_TOP` = _null_  = Unlike most other Indic scripts, Gurmukhi
-     does not use any above-base matras. Therefore, this shaping
-     characteristic does not apply.
+  - `MATRA_POS_TOP` = `POS_AFTER_POST` = above-base matras are
+     ordered after all post-base consonant forms.
 
   - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
      ordered after all post-base consonant forms.
 
-  - `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
-     ordered after all subjoined (i.e., below-base) consonant forms.
+  - `MATRA_POS_BOTTOM` = `POS_AFTER_POST` = Below-base matras are
+     ordered after all post-base consonant forms.
 
 These characteristics determine how the shaping engine must reorder
 certain glyphs, how base consonants are determined, and how "Reph"
 should be encoded within a run of text.
-
-> Note: Unlike most other Indic scripts, Gurmukhi does not use
-> above-base matras. Therefore `MATRA_POS_TOP` can be set to _null_.
 
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in Gurmukhi consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
-> Note: The Gurmukhi Unicode block enumerates five modifier signs,
-> "Candrabindu" (`U+0981`), "Anusvara" (`U+0982`), "Visarga" 
-> (`U+0983`), "Avagraha" (`U+09BD`), and "Vedic Anusvara"
-> (`U+09FC`). In addition, Sanskrit text written in Gurmukhi may
+> Note: The Gurmukhi Unicode block enumerates six modifier signs,
+> "Adak Bindi" (`U+0A01`), "Bindi" (`U+0A02`), "Visarga" 
+> (`U+0A03`), "Udaat" (`U+0A51`), "Tippi" (`U+0A70`), and "Addak"
+> (`U+0A71`). In addition, Sanskrit text written in Gurmukhi may
 > include additional signs from Vedic Extensions block.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
@@ -340,26 +336,17 @@ identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced by one of two combining
-mark-like forms. 
+treatment; in many circumstances it is replaced by a combining
+mark-like form. 
 
   - A "Ra,Halant" sequence at the beginning of a syllable is replaced
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
-
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may
-    take on the below-base form "Raphala." 
   
-"Reph" and "Raphala" characters must be reordered after the
+"Reph" characters must be reordered after the
 syllable-identification stage is complete. 
 
-> Note: `<gur2>` text contains two Unicode codepoints for "Ra."
-> `U+09B0` and `U+09F0`. 
->
-> `U+09B0` is used in Punjabi-language, Manipuri-language, and
-> Sanskrit text. `U+09F0` is used in Assamese-language text.
->
 
 
 In addition to valid syllables, stand-alone sequences may occur, such
@@ -437,8 +424,8 @@ orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
 > "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ba", "Ta", and "Ya" occasionally
-> take on special forms, depending on their position in the syllable.
+> treatment in some circumstances. This includes the below-base forms
+> of "Ra", "Ha", and "Va".
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the text and on the features
@@ -541,21 +528,16 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 #### 2.2: Matra decomposition ####
 
-Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. Gurmukhi has two
-two-part dependent vowels, "O" (`U+09BC`) and "Au" (`U+09CC`). Each
-has a canonical decomposition, so this step is unambiguous. 
-
-> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
->
-> "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
+Second, any multi-part dependent vowels (matras) must be decomposed
+into their left-side and right-side components. Gurmukhi has no
+two-part dependent vowels, so this step will involve no work when
+processing `<gur2>` text. It is included here in order to maintain
+compatibility with the other Indic scripts.
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
-
-![Two-part matra decomposition](/images/gurmukhi/split-matra-decomposition.png)
 
 #### 2.3: Tag matras ####
 
@@ -563,11 +545,14 @@ Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
+All above-base dependent-vowel (matra) signs are tagged
+`POS_AFTER_POST`.
+
 All right-side dependent-vowel (matra) signs are tagged
 `POS_AFTER_POST`.
 
 All below-base dependent-vowel (matra) signs are tagged
-`POS_AFTER_SUBJOINED`.
+`POS_AFTER_POST`.
 
 For simplicity, shaping engines may choose to tag single-part matras
 in an earlier text-processing step, using the information in the
@@ -602,21 +587,10 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be followed by a "Halant" glyph, with the
-exception of two special-case consonants. 
+consonants will usually be preceded by a "Halant" glyph. 
 
-  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
-    meaning that it carries no inherent vowel, therefore no "Halant"
-    follows it.
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
-    the "Yaphala" form. "Yaphala" behaves like a modifier to the
-    pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant. Because the "Halant" precedes the
-    consonant when forming the "Yaphala", no "Halant" follows it.
+<!--- below = Ha, Ra, Va, post = Ya --->
 
-<!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
-	
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
@@ -637,21 +611,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 <!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
 <!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
 
-<!--- HarfBuzz also tags everything between a post-base consonant or -->
-<!--matra and another post-base consonant as belonging to the latter -->
-<!--post-base consonant. --->
-
-
-<!--- 2.9: Ninth, all post-base glyphs should be merged into a single
-   substring that will sort as a single unit. --->
-   
-<!--- Unsure. This occurs after the stable sort. What happens is that -->
-<!--HB looks at every glyph between the base consonant and the end, -->
-<!--looking for a 'max' value, then merges everything between the base -->
-<!--and the max. --->
-
-<!--- Merging all post-base stuff into one unit is old-spec -->
-<!--behavior. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
@@ -712,6 +671,8 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+> Note: Akhand ligatures are rare in Gurmukhi.
+
 ![KSsa ligation](/images/gurmukhi/kassa-ligation.png)
 
 ![JNya ligation](/images/gurmukhi/janya-ligation.png)
@@ -724,6 +685,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
+> Note: "Reph" usage is rare in Gurmukhi.
 
 ![Reph composition](/images/gurmukhi/reph-composition.png)
 
@@ -741,12 +703,13 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Gurmukhi includes two below-base consonant
+special forms. Gurmukhi includes three below-base consonant
 forms:
 
-  - "Ra,Halant" in a non-syllable-initial position takes on the
-    "Raphala" form.
-  - "Ba,Halant" takes on the "Baphala" form. 
+  - "Halant,Ra" or "Ra,Halant" in a non-syllable-initial position
+    takes on a below-base form.
+  - "Halant,Ha" or "Ha,Halant" takes on a below-base form. 
+  - "Halant,Va" or "Va,Halant" takes on a below-base form. 
 
 Because Gurmukhi incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -782,6 +745,7 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
+> Note: Half forms are rare in Gurmukhi.
 
 ![Half-form formation](/images/gurmukhi/half-formation.png)
 
@@ -789,6 +753,9 @@ must test:
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
+Gurmukhi includes one post-base form:
+
+  - "Halant,Ya" takes on a post-base form.
 
 ![Yaphala composition](/images/gurmukhi/yaphala-composition.png)
 
@@ -797,8 +764,8 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
 
-"Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"); therefore, this feature must be applied after
+"Vattu variants" are formed from glyphs followed by the below-base
+form of "Ra", "Ha", or "Va"; therefore, this feature must be applied after
 the `blwf` feature.
 
 
@@ -877,9 +844,9 @@ consonant, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Gurmukhi incorporates the `REPH_POS_AFTER_SUBJOINED`
+position. Because Gurmukhi incorporates the `REPH_POS_BEFORE_SUBJOINED`
 shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
+base consonant and before any subjoined (below-base consonant or below-base
 dependent vowel) forms.
 
   - If the syllable does not have a base consonant (such as a syllable
@@ -989,8 +956,8 @@ diacritical marks and Vedic signs.
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Gurmukhi, this includes below-base dependent vowels
-(matras) as well as the below-base consonant forms "Raphala" and
-"Baphala".
+(matras) as well as the below-base consonant forms of "Ra", "Ha", and
+"Va".
 
 
 ## The `<guru>` shaping model ##
