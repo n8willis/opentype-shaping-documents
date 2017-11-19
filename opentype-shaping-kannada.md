@@ -105,9 +105,13 @@ and diacritical marks (some of which are also categorized as `Mark [Mn]`).
 
 Kannada uses one subclass of consonant, `CONSONANT_WITH_STACKER`. This
 subclass supports two consonants, "Jihvamuliya" (`U+0CF1`) and
-"Upadhmaniya" (`U+0CF2`), that are used only for Sanskrit text runs. The
-letters classified as `CONSONANT_WITH_STACKER` should be treated as
-consonants when [identifying
+"Upadhmaniya" (`U+0CF2`), that are used only for Sanskrit text
+runs. These consonants may form stacked ligatures with subsequent
+consonants without an intervening "Halant". Such ligature formation,
+if desired, must be implemented in the font.
+
+The letters classified as `CONSONANT_WITH_STACKER` should be treated
+as consonants when [identifying
 syllables](#1-identifying-syllables-and-other-sequences). No
 additional behavior is required.
 

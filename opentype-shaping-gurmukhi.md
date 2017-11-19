@@ -108,11 +108,25 @@ consonant used in Sikh religious texts that is believed to be derived
 from the character "Ya" (`U+0A2F`).
 
 The `CONSONANT_PLACEHOLDER` subclass is used for two special
-vowel-carrier letters, "Iri"(`U+0A72`) and "Ura" (`U+0A73`). Each Gurmukhi
-independent vowels has the form of the corresponding dependent-vowel
-sign (matra) attached to a vowel-carrier letter. In typical text runs,
-the "Iri" and "Ura" characters will not appear independently, but 
-they have the status of consonants for shaping purposes.
+vowel-carrier letters, "Iri"(`U+0A72`) and "Ura" (`U+0A73`). 
+
+Gurmukhi differs from many other Indic scripts in that independent
+vowels are represented by the standard dependent-vowel marks (matras)
+attached to a special vowel-carrier character. However, because each
+independent vowel has been assigned its own codepoint by Unicode, the
+standard `VOWEL_INDEPENDENT` and `VOWEL_DEPENDENT` classifications
+function normally.
+
+The vowel carrier "Aira", with no dependent-vowel mark, represents the
+independent form of the inherent vowel, "A" (`U+0A05`).  In a sense,
+this character serves a double function. 
+
+The other two vowel carriers, "Iri" (`U+0A72`) and "Ura" (`U+0A73`)
+do not normally occur on their own in Gurmukhi syllables, but they may
+appear as standalone entities, much like marks and other symbols do
+when they are referenced or displayed as examples. To support this use
+case, the "Iri" and "Ura" characters have the status of consonants for
+shaping purposes. 
 
 Both subclasses should match tests for consonants, such as when [identifying
 syllables](#1-identifying-syllables-and-other-sequences), but may
@@ -213,6 +227,11 @@ A secondary usage of the zero-width joiner is to prevent the formation of
 "Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
+
+> Note: "Reph" substitutions are rare in Gurmukhi text. `<gur2>` fonts may
+> not implement the "Reph" substitution in GSUB at all. Nevertheless,
+> shaping engines must test for it in order to provide the
+> functionality if it is implemented.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (marks, dependent vowels (matras),
@@ -329,23 +348,32 @@ indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
-Gurmukhi also includes two special consonants that can occur after the
+Gurmukhi also includes special consonants that can occur after the
 base consonant. These post-base consonants will also be separated from
 the base consonant by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
-treatment; in many circumstances it is replaced by a combining
-mark-like form. 
+treatment; in many circumstances it is replaced by one of two combining
+mark-like forms. 
 
-  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
+  - A "Ra,Halant" sequence at the beginning of a syllable may be replaced
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
+
+  - A "Ra,Halant" sequence before the base consonant or a "Halant,Ra"
+    sequence after the base consonant may be replaced with a
+    below-base mark.
   
-"Reph" characters must be reordered after the
-syllable-identification stage is complete. 
+> Note: "Reph" substitutions are rare in Gurmukhi text. `<gur2>` fonts may
+> not implement the "Reph" substitution in GSUB at all. Nevertheless,
+> shaping engines must test for it in order to provide the
+> functionality if it is implemented.
+
+"Reph" characters must be reordered after the syllable-identification
+stage is complete.
 
 
 
@@ -583,6 +611,11 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 > Note: an initial "Ra,Halant" sequence will always become a "Reph"
 > unless the "Ra" is the only consonant in the syllable.
 
+> Note: "Reph" substitutions are rare in Gurmukhi text. `<gur2>` fonts may
+> not implement the "Reph" substitution in GSUB at all. Nevertheless,
+> shaping engines must test for it in order to provide the
+> functionality if it is implemented.
+
 #### 2.7: Post-base consonants ####
 
 Seventh, any non-base consonants that occur after a dependent vowel
@@ -671,7 +704,7 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-> Note: Akhand ligatures are rare in Gurmukhi.
+> Note: Akhand ligatures are rare in Gurmukhi text.
 
 ![KSsa ligation](/images/gurmukhi/kassa-ligation.png)
 
@@ -685,7 +718,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
-> Note: "Reph" usage is rare in Gurmukhi.
+> Note: "Reph" usage is rare in Gurmukhi text.
 
 ![Reph composition](/images/gurmukhi/reph-composition.png)
 
@@ -745,7 +778,7 @@ must test:
   - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
     tagged for potential `half` substitutions.
 
-> Note: Half forms are rare in Gurmukhi.
+> Note: Half forms are rare in Gurmukhi text.
 
 ![Half-form formation](/images/gurmukhi/half-formation.png)
 
