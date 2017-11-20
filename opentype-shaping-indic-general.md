@@ -724,8 +724,8 @@ Seventh, any non-base consonants that occur after a dependent vowel
 consonants will either be followed by a "Halant" glyph or will be in
 the `CONSONANT_DEAD` shaping class. 
 	
-  <!--- Double check: should this be "_consonant_,Halant" instead of
-        "Halant,_consonant_"? --->
+  <!--- Double check: should this be "_Consonant_,Halant" instead of
+        "Halant,_Consonant_"? --->
 	
 #### 2.8: Mark tagging ####
 

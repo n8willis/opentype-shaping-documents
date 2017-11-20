@@ -264,15 +264,15 @@ this situation gracefully.
 
 
 The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_consonant_,Halant,_consonant_" sequence. The sequence
-"_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
+from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
 conjunct between the two consonants. 
 
-Note, however, that the "_consonant_,Halant" subsequence in the above
+Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
 conjunct, the zero-width non-joiner must be used instead. The sequence
-"_consonant_,Halant,ZWNJ,_consonant_" should produce the first
+"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
 consonant in its standard form, followed by an explicit "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
@@ -285,5 +285,5 @@ are defined as non-spacing (marks, dependent vowels (matras),
 below-base consonant forms, and post-base consonant forms) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 

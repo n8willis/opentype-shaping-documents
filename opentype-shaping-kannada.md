@@ -196,15 +196,15 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_consonant_,Halant,_consonant_" sequence. The sequence
-"_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
+from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
 conjunct between the two consonants. 
 
-Note, however, that the "_consonant_,Halant" subsequence in the above
+Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
 conjunct, the zero-width non-joiner must be used instead. The sequence
-"_consonant_,Halant,ZWNJ,_consonant_" should produce the first
+"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
 consonant in its standard form, followed by an explicit "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
@@ -217,7 +217,7 @@ are defined as non-spacing (marks, dependent vowels (matras),
 below-base consonant forms, and post-base consonant forms) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 In addition to general punctuation, runs of Kannada text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
@@ -712,7 +712,7 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: nukt ####
 
-The `nukt` feature replaces "_consonant_,Nukta" sequences with a
+The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 
@@ -772,7 +772,7 @@ form.
 
 #### 3.9: half ####
 
-The `half` feature replaces "_consonant_,Halant" sequences before the
+The `half` feature replaces "_Consonant_,Halant" sequences before the
 base consonant with "half forms" of the consonant glyphs. There are
 three exceptions to the default behavior, for which the shaping engine
 must test:
@@ -781,11 +781,11 @@ must test:
     the `rphf` feature earlier, must not be tagged for potential
     `half` substitutions.
 
-  - A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must be
+  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
     tagged for potential `half` substitutions, even though the presence of the
     zero-width joiner suppresses the `cjct` feature in a later step.
 
-  - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
+  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
 > Note: Kannada does not usually incorporate half forms, but it is
@@ -808,10 +808,10 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 #### 3.12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
+conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
-A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
-"_consonant_,Halant,ZWNJ,_consonant_" must not be tagged to form a conjunct.
+A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
+"_Consonant_,Halant,ZWNJ,_Consonant_" must not be tagged to form a conjunct.
 
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
@@ -956,7 +956,7 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-The `haln` feature replaces word-final "_consonant_,Halant" pairs with
+The `haln` feature replaces word-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
@@ -1011,9 +1011,9 @@ features) was swapped when migrating from `<knda>` to
 `<knd2>`. 
 
 Specifically, the inherent vowel of a consonant in a run of `<knda>`
-text was suppressed by the sequence "Halant,_consonant_". In `<knd2>`
+text was suppressed by the sequence "Halant,_Consonant_". In `<knd2>`
 text, as described above in this document, the correct sequence is
-"_consonant_,Halant".
+"_Consonant_,Halant".
 
 Consequently, in `<knda>` text, a "Reph" substitution was triggered by a
 syllable-initial "Halant,Ra" sequence. In `<knd2>` text, the sequence
@@ -1021,19 +1021,19 @@ must be "Ra,Halant".
 
 Similarly, in `<knda>` text, a pre-base half-form or
 consonant-conjunct substitution was triggered by
-"Halant,_consonant_,_consonant_". In `<knd2>` text, the sequence must
-be "_consonant_,Halant,_consonant_".
+"Halant,_Consonant_,_Consonant_". In `<knd2>` text, the sequence must
+be "_Consonant_,Halant,_Consonant_".
 
 ### Advice for handling fonts with `<knda>` features only ###
 
-Shaping engines may choose to match "Halant,_consonant_" sequences in
+Shaping engines may choose to match "Halant,_Consonant_" sequences in
 order to apply GSUB substitutions when it is known that the font in
 use supports only the `<knda>` shaping model.
 
 ### Advice for handling text runs composed in `<knda>` format ###
 
-Shaping engines may choose to match "Halant,_consonant_" sequences for
-GSUB substitutions or to reorder them to "_consonant_,Halant" when
+Shaping engines may choose to match "Halant,_Consonant_" sequences for
+GSUB substitutions or to reorder them to "_Consonant_,Halant" when
 processing text runs that are tagged with the `<knda>` script tag and
 it is known that the font in use supports only the `<knd2>` shaping
 model.

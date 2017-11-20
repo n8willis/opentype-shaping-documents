@@ -182,15 +182,15 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_consonant_,Halant,_consonant_" sequence. The sequence
-"_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
+from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
 conjunct between the two consonants. 
 
-Note, however, that the "_consonant_,Halant" subsequence in the above
+Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
 conjunct, the zero-width non-joiner must be used instead. The sequence
-"_consonant_,Halant,ZWNJ,_consonant_" should produce the first
+"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
 consonant in its standard form, followed by an explicit "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
@@ -203,7 +203,7 @@ are defined as non-spacing (marks, dependent vowels (matras),
 below-base consonant forms, and post-base consonant forms) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 
 
@@ -632,7 +632,7 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: nukt ####
 
-The `nukt` feature replaces "_consonant_,Nukta" sequences with a
+The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 
@@ -662,7 +662,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 	
 #### 3.5 rkrf ####
 
-The `rkrf` feature replaces "_consonant_,Halant,Ra" sequences with the
+The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
 "Rakaar"-ligature form of the consonant glyph.
 
 #### 3.6 pref ####
@@ -683,7 +683,7 @@ form:
     take on the "Rakaar" form.
 	
 If the active font contains ligatures for the consonant adjacent to
-the "Halant" (i.e., "_consonant_,Halant,Ra"), then that ligature is
+the "Halant" (i.e., "_Consonant_,Halant,Ra"), then that ligature is
 normally applied with the `rkrf` feature in step 3.5. The `blwf`
 feature allows the "Ra" to be substituted with a standalone "Rakaar"
 mark, to work with all consonants that do not have a `rkrf` ligature
@@ -702,7 +702,7 @@ characteristic.
 
 #### 3.9: half ####
 
-The `half` feature replaces "_consonant_,Halant" sequences before the
+The `half` feature replaces "_Consonant_,Halant" sequences before the
 base consonant with "half forms" of the consonant glyphs. There are
 four exceptions to the default behavior, for which the shaping engine
 must test:
@@ -715,11 +715,11 @@ must test:
     for the `rkrf` or `blwf` features earlier, must not be tagged for
     potential `half` substitutions.
   
-  - A sequence matching "_consonant_,Halant,ZWJ,_consonant_" must be
+  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
     tagged for potential `half` substitutions, even though the presence of the
     zero-width joiner suppresses the `cjct` feature in a later step.
 
-  - A sequence matching "_consonant_,Halant,ZWNJ,_consonant_" must not be
+  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
 #### 3.10: pstf ####
@@ -739,10 +739,10 @@ the `blwf` feature.
 #### 3.12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_consonant_,Halant,_consonant_".
+conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
-A sequence matching "_consonant_,Halant,ZWJ,_consonant_" or
-"_consonant_,Halant,ZWNJ,_consonant_" must not be tagged to form a conjunct.
+A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
+"_Consonant_,Halant,ZWNJ,_Consonant_" must not be tagged to form a conjunct.
 
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
@@ -857,8 +857,8 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing consonants that
-are followed by the below-base-consonant form "Rakaar" with contextual
+presentation forms. This usually includes replacing base consonants that
+are adjacent to the below-base-consonant form "Rakaar" with contextual
 ligatures.
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -866,14 +866,14 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-The `haln` feature replaces word-final "_consonant_,Halant" pairs with
+The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
-> point. However, `calt` is not mandatory for correct Bengali shaping
+> point. However, `calt` is not mandatory for correct Devanagari shaping
 > and may be disabled in the application by user preference.
 
 ### 6: Applying remaining positioning features from GPOS ###
@@ -889,7 +889,7 @@ order in which they appear in the GPOS table in the font.
 
 > Note: The `kern` feature is usually applied at this stage, if it is
 > present in the font. However, `kern` (like `calt`, above) is not
-> mandatory for shaping Bengali text and may be disabled by user preference.
+> mandatory for shaping Devanagari text and may be disabled by user preference.
 
 The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
@@ -905,3 +905,45 @@ characters. In Devanagari, this includes below-base dependent vowels
 (matras) and diacritical marks as well as the below-base consonant form "Rakaar".
 
 
+## The `<deva>` shaping model ##
+
+The older Devanagari script tag, `<deva>`, has been deprecated. However,
+shaping engines may still encounter fonts that were built to work with
+`<deva>` and some users may still have documents that were written to
+take advantage of `<deva>` shaping.
+
+### Distinctions from `<dev2>` ###
+
+The most significant distinction between the shaping models is that the
+sequence of "Halant" and consonant glyphs required to suppress the
+inherent vowel (and, for the shaping engine's purposes, to trigger shaping
+features) was swapped when migrating from `<deva>` to
+`<dev2>`. 
+
+Specifically, the inherent vowel of a consonant in a run of `<deva>`
+text was suppressed by the sequence "Halant,_Consonant_". In `<dev2>`
+text, as described above in this document, the correct sequence is
+"_Consonant_,Halant".
+
+Consequently, in `<deva>` text, a "Reph" substitution was triggered by a
+syllable-initial "Halant,Ra" sequence. In `<dev2>` text, the sequence
+must be "Ra,Halant". 
+
+Similarly, in `<deva>` text, a pre-base half-form or
+consonant-conjunct substitution was triggered by
+"Halant,_Consonant_,_Consonant_". In `<dev2>` text, the sequence must
+be "_Consonant_,Halant,_Consonant_".
+
+### Advice for handling fonts with `<deva>` features only ###
+
+Shaping engines may choose to match "Halant,_Consonant_" sequences in
+order to apply GSUB substitutions when it is known that the font in
+use supports only the `<deva>` shaping model.
+
+### Advice for handling text runs composed in `<deva>` format ###
+
+Shaping engines may choose to match "Halant,_Consonant_" sequences for
+GSUB substitutions or to reorder them to "_Consonant_,Halant" when
+processing text runs that are tagged with the `<deva>` script tag and
+it is known that the font in use supports only the `<dev2>` shaping
+model.
