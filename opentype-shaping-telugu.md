@@ -50,8 +50,9 @@ potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. 
 
-The term "matra" is also used to refer to the headline above most
-Telugu letters. To avoid ambiguity, the term **headline** is
+The term "matra" is also used to refer to the headline in other Indic
+scripts, and may be used to describe the distinctive up-tick stroke above most
+Telugu letters by comparison. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
@@ -937,7 +938,7 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-The `haln` feature replaces word-final "_Consonant_,Halant" pairs with
+The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 

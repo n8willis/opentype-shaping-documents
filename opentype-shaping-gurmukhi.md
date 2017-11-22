@@ -946,9 +946,9 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing consonants that
-are followed by below-base-consonant forms like "Raphala" or
-"Baphala" with contextual ligatures.
+presentation forms. This usually includes replacing base consonants that
+are followed by below-base-consonant forms (like those of "Ra", "Ha",
+"Va", or "Yakash") with contextual ligatures.
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side

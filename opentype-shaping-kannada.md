@@ -52,8 +52,9 @@ potentially causing confusion.
 language, dependent-vowel signs <!--- that are positioned below the base
 consonant --> may also be referred to as _swara_ forms.
 
-The term "matra" is also used to refer to the headline above most
-Kannada letters. To avoid ambiguity, the term **headline** is
+The term "matra" is also used to refer to the headline in other Indic
+scripts, and may be used to describe the distinctive cap stroke above most
+Kannada letters by comparison. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
@@ -956,7 +957,7 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-The `haln` feature replaces word-final "_Consonant_,Halant" pairs with
+The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
