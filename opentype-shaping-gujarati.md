@@ -395,8 +395,8 @@ orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
 > "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ra" and "Rra" may
-> take on special forms, depending on their position in the syllable.
+> treatment in some circumstances. "Ra" may take on one of two special
+> forms, depending on its position in the syllable. 
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the text and on the features
