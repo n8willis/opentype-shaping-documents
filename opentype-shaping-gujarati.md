@@ -274,12 +274,12 @@ A syllable in Gujarati consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
 > Note: The Gujarati Unicode block enumerates nine modifier signs,
-> "Inverted Candrabindu" (`U+0900`), "Candrabindu" (`U+0901`),
-> "Anusvara" (`U+0902`), "Visarga" (`U+0903`), "Avagraha" (`U+093D`),
-> "Udatta" (`U+0951`), "Anudatta" (`U+0952`), "Grave Accent"
-> (`U+0953`) and "Acute Accent" (`U+0954`). In addition, Sanskrit text
-> written in Gujarati may include additional signs from Vedic
-> Extensions block. 
+> "Candrabindu" (`U+0A81`), "Anusvara" (`U+0A82`), "Visarga"
+> (`U+0A83`), "Sukun" (`U+0AFA`), "Shadda" (`U+0AFB`), "Maddah"
+> (`U+0AFC`), "Three-Dot Nukta Above" (`U+0AFD`), "Circle Nukta Above"
+> (`U+0AFE`), and "Two-Circle Nukta Above" (`U+0AFF`). In addition,
+> Sanskrit text written in Gujarati may include additional signs from
+> Vedic Extensions block. 
 
 Each syllable contains exactly one vowel sound. Valid syllables may
 begin with either consonant or an independent vowel. 
