@@ -123,12 +123,11 @@ the shaping process.
 
 ### Gujarati character tables ###
 
-Separate character tables are provided for the Gujarati, Gujarati
-Extended, and Vedic Extensions block as well as for other
-miscellaneous characters that are used in `<guj2>` text runs:
+Separate character tables are provided for the Gujarati and Vedic
+Extensions block as well as for other miscellaneous characters that
+are used in `<guj2>` text runs:
 
   - [Gujarati character table](character-tables/character-tables-gujarati.md#gujarati-character-table)
-  - [Gujarati Extended character table](character-tables/character-tables-gujarati.md#gujarati-extended-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-gujarati.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-gujarati.md#miscellaneous-character-table)
 
