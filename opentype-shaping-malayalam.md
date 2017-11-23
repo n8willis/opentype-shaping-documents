@@ -103,7 +103,7 @@ The `CONSONANT_DEAD` subclass is used for the Malayalam _chillu_
 variants of certain consonants. It indicates that the characters
 should match tests for consonants, such as when [identifying 
 syllables](#1-identifying-syllables-and-other-sequences), but that, unlike
-standard consonants, they carries no inherent vowel. The lack of an
+standard consonants, they carry no inherent vowel. The lack of an
 inherent vowel is important during the [initial
 reordering](#2-initial-reordering) stage.
 
@@ -166,9 +166,9 @@ For example:
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0D01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
+|`U+0D01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0D01; Candrabindu         |
 | | | | |
-|`U+0D15`   | Letter           | CONSONANT         | _null_                     | &#x0995; Ka                  |
+|`U+0D15`   | Letter           | CONSONANT         | _null_                     | &#x0D15; Ka                  |
 
 
 Codepoints with no assigned meaning are
