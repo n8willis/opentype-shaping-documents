@@ -18,10 +18,10 @@ runs in the Gujarati script.
       - [4: Final reordering](#4-final-reordering)
       - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
       - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
-  - [The `<gujr>` shaping model](#the-deva-shaping-model)
+  - [The `<gujr>` shaping model](#the-gujr-shaping-model)
       - [Distinctions from `<guj2>`](#distinctions-from-guj2)
-      - [Advice for handling fonts with `<gujr>` features only](#advice-for-handling-fonts-with-deva-features-only)
-      - [Advice for handling text runs composed in `<gujr>` format](#advice-for-handling-text-runs-composed-in-deva-format)
+      - [Advice for handling fonts with `<gujr>` features only](#advice-for-handling-fonts-with-gujr-features-only)
+      - [Advice for handling text runs composed in `<gujr>` format](#advice-for-handling-text-runs-composed-in-gujr-format)
 
 
 ## General information ##

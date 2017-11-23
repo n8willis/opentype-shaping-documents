@@ -40,8 +40,8 @@ The largest (by number of readers) scripts in the Indic family are:
 
   - [Devanagari](opentype-shaping-devanagari.md)
   - [Bengali](opentype-shaping-bengali.md)
-  - Gujarati
-  - Gurmukhi
+  - [Gujarati](opentype-shaping-gujarati.md)
+  - [Gurmukhi](opentype-shaping-gurmukhii.md)
   - [Kannada](opentype-shaping-kannada.md)
   - Malayalam
   - Oriya
