@@ -89,6 +89,11 @@ when shaping a run of text.
 The shaping classes listed in the tables that follow are defined so
 that they capture the positioning rules used by Indic scripts. 
 
+For most codepoints, the _Shaping class_ is synonymous with the `Indic
+Syllabic Category` defined in Unicode. However, there are some
+distinctions, where the defined category does not fully capture the
+behavior of the character in the shaping process.
+
 Several of the diacritic and syllable-modifying marks behave according
 to their own rules and, thus, have a special class. These include
 `BINDU`, `VISARGA`, `AVAGRAHA`, `NUKTA`, and `VIRAMA`. Some
@@ -142,6 +147,12 @@ position determined by whether or not other letters in the syllable
 have formed ligatures or combined into conjunct forms. Therefore, the
 `LEFT_POSITION` subclass of the character must be tracked throughout
 the shaping process.
+
+For most mark and dependent-vowel codepoints, the _Mark-placement
+subclass_ is synonymous with the `Indic Positional Category` defined
+in Unicode. However, there are some distinctions, where the defined
+category does not fully capture the behavior of the character in the
+shaping process. 
 
 ### Kannada character tables ###
 

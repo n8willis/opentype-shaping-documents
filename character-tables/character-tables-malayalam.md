@@ -117,7 +117,7 @@ specific, script-aware behavior.
 |`U+0D4B`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x0D4B; Sign Oo             |
 |`U+0D4C`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x0D4C; Sign Au             |
 |`U+0D4D`   | Mark [Mn]        | VIRAMA            | TOP_POSITION               | &#x0D4D; Virama              |
-|`U+0D4E`   | Letter           | CONSONANT_PREREPHA| _null_                     | &#x0D4E; Dot Reph            |
+|`U+0D4E`   | Letter           | CONSONANT_PRE_REPHA| _null_                    | &#x0D4E; Dot Reph            |
 |`U+0D4F`   | Symbol           | _null_            | _null_                     | &#x0D4F; Para                |
 | | | | |																		
 |`U+0D50`   | _unassigned_     |                   |                            |                              |
