@@ -81,6 +81,11 @@ when shaping a run of text.
 The shaping classes listed in the tables that follow are defined so
 that they capture the positioning rules used by Indic scripts. 
 
+For most codepoints, the _Shaping class_ is synonymous with the `Indic
+Syllabic Category` defined in Unicode. However, there are some
+distinctions, where the defined category does not fully capture the
+behavior of the character in the shaping process.
+
 Several of the diacritic and syllable-modifying marks behave according
 to their own rules and, thus, have a special class. These include
 `BINDU`, `VISARGA`, `AVAGRAHA`, `NUKTA`, and `VIRAMA`. Some
@@ -97,7 +102,7 @@ shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
 Malayalam uses two sublcasses of consonant, `CONSONANT_DEAD` and
-`CONSONANT_PREREPHA`. 
+`CONSONANT_PRE_REPHA`. 
 
 The `CONSONANT_DEAD` subclass is used for the Malayalam _chillu_
 variants of certain consonants. It indicates that the characters
@@ -107,10 +112,12 @@ standard consonants, they carry no inherent vowel. The lack of an
 inherent vowel is important during the [initial
 reordering](#2-initial-reordering) stage.
 
-The `CONSONANT_PREREPHA` subclass is used only for the "Dot Reph"
-(`U+0D4E`), a dead-consonant version of "Reph". In modern Malayalam
-orthography, "Dot Reph" is uncommon. As with `CONSONANT_DEAD`, this
-subclass should match tests for consonants. 
+The `CONSONANT_PRE_REPHA` subclass is used only for the "Dot Reph"
+(`U+0D4E`), a dead-consonant version of "Reph" (or "Repha"). In modern
+Malayalam orthography, "Dot Reph" is uncommon. As with
+`CONSONANT_DEAD`, this subclass should match tests for
+consonants. Because the "Dot Reph" character is a "Reph", however, it
+must be treated as a "Reph" during the initial and final reordering stages.
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -137,6 +144,12 @@ position determined by whether or not other letters in the syllable
 have formed ligatures or combined into conjunct forms. Therefore, the
 `LEFT_POSITION` subclass of the character must be tracked throughout
 the shaping process.
+
+For most mark and dependent-vowel codepoints, the _Mark-placement
+subclass_ is synonymous with the `Indic Positional Category` defined
+in Unicode. However, there are some distinctions, where the defined
+category does not fully capture the behavior of the character in the
+shaping process. 
 
 Malayalam includes two special marks that are classified as
 `PURE_KILLER`, "Vertical Bar Virama" (`U+0D3B`) and "Circular Virama"
@@ -279,7 +292,9 @@ characteristics include:
   - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the base consonant.
 
   - `REPH_MODE_LOGICAL_REPHA` = "Reph" is encoded as its own Unicode
-    codepoint ("Repha"), but it must still be reordered.
+     codepoint ("Repha"), but it must still be reordered. Note that
+     Malayalam text can also use the "Ra,Halant" sequence to invoke an
+     implicit "Reph".
 
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
@@ -337,13 +352,14 @@ indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
-Malayalam also includes three consonants that can occur after the
-base consonant: "Ya", "Va", and "Ra". These post-base consonants will
-also be separated from the base consonant by a "Halant" mark; the algorithm for correctly
-identifying the base consonant includes a test to recognize these sequences
-and not mis-identify the base consonant. 
+Malayalam includes three consonants that can occur after the
+base consonant: "Ya", "Va", and "Ra". Malayalam also includes one
+consonant that can take on a below-base form, "La". 
 
-Malayalam includes one consonant that can take on a below-base form, "La".
+When taking on post-base or below-base form, these consonants will
+be separated from the base consonant by a "Halant" mark; the algorithm
+for correctly identifying the base consonant includes a test to
+recognize these sequences and not mis-identify the base consonant.
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by a combining
@@ -542,13 +558,16 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 #### 2.2: Matra decomposition ####
 
 Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. Malayalam has two
-two-part dependent vowels, "O" (`U+09BC`) and "Au" (`U+09CC`). Each
-has a canonical decomposition, so this step is unambiguous. 
+into their left-side and right-side components. Malayalam has three
+two-part dependent vowels, "O" (`U+0D4A`), "Oo" (`U+0D4B`), and "Au"
+(`U+0D4C`). Each has a canonical decomposition, so this step is
+unambiguous. 
 
-> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
+> "O" (`U+0D4A`) decomposes to "`U+0D46`,`U+0D3E`"
 >
-> "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
+> "Oo" (`U+0D4B`) decomposes to "`U+0D47`,`U+0D3E`"
+>
+> "Au" (`U+0D4C`) decomposes to "`U+0D46`,`U+0D57`"
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
@@ -567,7 +586,7 @@ All right-side dependent-vowel (matra) signs are tagged
 `POS_AFTER_POST`.
 
 All below-base dependent-vowel (matra) signs are tagged
-`POS_AFTER_SUBJOINED`.
+`POS_AFTER_POST`.
 
 For simplicity, shaping engines may choose to tag single-part matras
 in an earlier text-processing step, using the information in the
@@ -602,7 +621,7 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be followed by a "Halant" glyph, with the
+consonants will usually be preceded by a "Halant" glyph, with the
 exception of two special-case consonants. 
 
   - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
@@ -614,8 +633,6 @@ exception of two special-case consonants.
     formed from a consonant. Because the "Halant" precedes the
     consonant when forming the "Yaphala", no "Halant" follows it.
 
-<!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
 	
 #### 2.8: Mark tagging ####
 
