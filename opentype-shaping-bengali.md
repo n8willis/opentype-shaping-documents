@@ -607,17 +607,15 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be followed by a "Halant" glyph, with the
-exception of two special-case consonants. 
+consonants will usually be preceded by a "Halant" glyph. Bengali
+includes two post-base consonants. 
 
   - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
-    meaning that it carries no inherent vowel, therefore no "Halant"
-    follows it.
+    meaning that it carries no inherent vowel.
   - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
     the "Yaphala" form. "Yaphala" behaves like a modifier to the
     pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant. Because the "Halant" precedes the
-    consonant when forming the "Yaphala", no "Halant" follows it.
+    formed from a consonant.
 
 <!--- and "Halant,Yya"
     (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
@@ -645,15 +643,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 <!--- HarfBuzz also tags everything between a post-base consonant or -->
 <!--matra and another post-base consonant as belonging to the latter -->
 <!--post-base consonant. --->
-
-
-<!--- 2.9: Ninth, all post-base glyphs should be merged into a single
-   substring that will sort as a single unit. --->
-   
-<!--- Unsure. This occurs after the stable sort. What happens is that -->
-<!--HB looks at every glyph between the base consonant and the end, -->
-<!--looking for a 'max' value, then merges everything between the base -->
-<!--and the max. --->
 
 <!--- Merging all post-base stuff into one unit is old-spec -->
 <!--behavior. --->
@@ -749,9 +738,10 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
 forms:
 
-  - "Ra,Halant" in a non-syllable-initial position takes on the
-    "Raphala" form.
-  - "Ba,Halant" takes on the "Baphala" form. 
+  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+    non-syllable-initial position) take on the "Raphala" form.
+  - "Ba,Halant" (before the base consonant) and "Halant,Ba" (after the
+    base consonant) take on the "Baphala" form. 
 
 Because Bengali incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
