@@ -292,9 +292,7 @@ characteristics include:
   - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the base consonant.
 
   - `REPH_MODE_LOGICAL_REPHA` = "Reph" is encoded as its own Unicode
-     codepoint ("Repha"), but it must still be reordered. Note that
-     Malayalam text can also use the "Ra,Halant" sequence to invoke an
-     implicit "Reph".
+     codepoint ("Repha"), but it must still be reordered. 
 
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
@@ -365,8 +363,8 @@ As with other Indic scripts, the consonant "Ra" receives special
 treatment. Malayalam differs from many Indic scripts in that "Reph"
 usage is rare in the modern orthography.
 
-In word-initial positions, a "Ra,Halant" sequence is replaced by a
-dead-consonant form, "Chillu R". 
+In word-initial positions, a "Ra,Halant" sequence is typically
+replaced by a dead-consonant form, "Chillu R". 
 
 <!--- Check this --->
 <!--- Check this --->
@@ -374,10 +372,10 @@ dead-consonant form, "Chillu R".
 <!--- Check this --->
 <!--- Check this --->
 
-  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
+<!---  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
-    `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
+    `REPH_MODE_IMPLICIT` characteristic mentioned earlier. --->
 
 <!--- Check this --->
 <!--- Check this --->
@@ -392,8 +390,9 @@ the "Dot Reph" (`U+0D4E`), also known as "Repha".
 > instead of "Reph". Therefore, Malayalam fonts may omit
 > implementation of the "Reph" substitution entirely.
 
-"Reph" and "Repha" characters must be reordered after the
-syllable-identification stage is complete. 
+As is the case with "Reph", "Repha" characters must be reordered after the
+syllable-identification stage is complete. This is the
+`REPH_MODE_LOGICAL_REPHA` shaping characteristic.
 
 
 
@@ -471,7 +470,7 @@ phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
-> "Ra,Halant" glyph sequences, and other consonants that take special
+> "Repha" glyphs, and other consonants that take special
 > treatment in some circumstances. "Ra", "Va", "La", and "Ya" occasionally
 > take on special forms, depending on their position in the syllable.
 >
@@ -633,8 +632,10 @@ with `POS_PREBASE_CONSONANT`.
 Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+> Note: Malayalam differs from many Indic scripts in that "Reph"
+> usage is rare in the modern orthography. In word-initial positions, a
+> "Ra,Halant" sequence is typically replaced by a dead-consonant form,
+> "Chillu R". 
 
 #### 2.7: Post-base consonants ####
 
@@ -688,7 +689,7 @@ all Indic scripts:
 	abvf (not used in Malayalam)
 	half
 	pstf
-	vatu
+	vatu (not used in Malayalam)
 	cjct
 	cfar (not used in Malayalam)
 
@@ -715,15 +716,14 @@ precomposed nukta-variant of the consonant glyph.
 #### 3.3: akhn ####
 
 The `akhn` feature replaces specific sequences with required
-ligatures. For example,
+ligatures. Malayalam differs from many other Indic scripts in that
+there are typically many ligatures in a font that are implemented as
+`akhn` substitutions.
 
   - "Ka,Halant,Ka" is substituted with the "KKa" ligature. 
   - "Da,Halant,Dha" is substituted with the "DDha" ligature. 
   
-These sequences can occur anywhere in a syllable. The "KKa" and
-"DDha" characters have orthographic status equivalent to full
-consonants in some languages, and fonts may have `cjct` substitution
-rules designed to match them in subsequences. Therefore, this
+These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
@@ -766,12 +766,8 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Malayalam includes two below-base consonant
-forms:
-
-  - "Ra,Halant" in a non-syllable-initial position takes on the
-    "Raphala" form.
-  - "Ba,Halant" takes on the "Baphala" form. 
+special forms. Malayalam includes one below-base consonant
+forms, "Halant,La".
 
 Because Malayalam incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -781,7 +777,6 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 
-![Raphala composition](/images/malayalam/raphala-composition.png)
 
 ![Baphala composition](/images/malayalam/baphala-composition.png)
 
@@ -807,27 +802,26 @@ must test:
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
+> Note: Malayalam does not usually incorporate half forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
+
+
 
 ![Half-form formation](/images/malayalam/half-formation.png)
 
 #### 3.10: pstf ####
 
-The `pstf` feature replaces post-base-consonant glyphs with any special forms.
+The `pstf` feature replaces post-base-consonant glyphs with any
+special forms. Malayalam includes three consonants that can take on
+post-base form: "Ra", "Ya", and Va".
 
 
 ![Yaphala composition](/images/malayalam/yaphala-composition.png)
 
 #### 3.11: vatu ####
 
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
-
-"Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
-
-
-![Vattu variant ligation](/images/malayalam/vattu-ligation.png)
+> This feature is not used in Malayalam.
 
 #### 3.12: cjct ####
 
@@ -840,6 +834,10 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+> Note: Malayalam does not usually incorporate conjunct forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
 
 
 ![Conjunct ligation](/images/malayalam/pata-conjunct.png)
@@ -901,11 +899,10 @@ consonant, and all half forms.
 
 #### 4.3: Reph ####
 
-"Reph" must be moved from the beginning of the syllable to its final
-position. Because Malayalam incorporates the `REPH_POS_AFTER_SUBJOINED`
+"Reph" or "Repha" must be moved from the beginning of the syllable to its final
+position. Because Malayalam incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
-dependent vowel) forms.
+base consonant.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
@@ -917,8 +914,8 @@ dependent vowel) forms.
        later positions, then "Reph" is positioned at the end of the
        syllable.
 
-Finally, if the final position of "Reph" occurs after a
-"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+Finally, if the final position of "Reph" or "Repha" occurs after a
+"_matra_,Halant" subsequence, then "Reph"/"Repha" must be repositioned to the
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
@@ -941,6 +938,10 @@ Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
 
+Malayalam does not use the `init` feature, so this step will
+involve no work when processing `<mlm2>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
+
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
@@ -948,16 +949,14 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
+	init (not used in Malayalam)
 	pres
 	abvs
 	blws
 	psts
 	haln
 
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline instroke from the left side of the glyph.
+The `init` feature is not used in Malayalam.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
@@ -1009,13 +1008,12 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Malayalam, this includes "Reph" in addition to the
+characters. In Malayalam, this includes "Repha" in addition to the
 diacritical marks and Vedic signs. 
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Malayalam, this includes below-base dependent vowels
-(matras) as well as the below-base consonant forms "Raphala" and
-"Baphala".
+(matras) as well as the below-base consonant form of "La".
 
 
 ## The `<mlym>` shaping model ##
