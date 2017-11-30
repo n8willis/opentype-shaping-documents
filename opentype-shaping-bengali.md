@@ -343,18 +343,42 @@ syllable and its vowel sound designates the end of the syllable. This
 rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
-Valid consonant-based syllables may include one or more additional 
+<!--- Valid consonant-based syllables may include one or more additional 
 consonants that precede the base consonant. Each of these
 other, pre-base consonants will be followed by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
-do not add a vowel sound.
+do not add a vowel sound. --->
 
-Bengali also includes consonants that can occur after the
+Non-base consonants in a valid syllable will be separated by "Halant"
+marks. Pre-base consonants will be followed by "Halant", while
+post-base consonants will be preceded by "Halant".
+
+	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+	
+The algorithm for correctly identifying the base consonant includes a
+test to recognize these sequences and not mis-identify the base
+consonant.
+
+All consonants in Bengali can potentially occur in pre-base
+position. The "Halant" marks on pre-base consonants indicate that they
+carry no vowel. Instead, they affect syllable pronunciation by
+combining with the base consonant (e.g., "_thr_" or "_spl_").
+
+Three consonants in Bengali are allowed to occur in post-base
+position: "Ya", "Ba", and "Ra".
+
+A post-base "Ya" takes on the "Yaphala" form.
+
+A post-base "Ba" takes on the below-base "Baphala" form. A pre-base
+"Ba" will take on the below-base "Baphala" form if it is not the first
+pre-base consonant in the syllable.
+
+<!--- Bengali also includes consonants that can occur after the
 base consonant. These post-base consonants will also be separated from
 the base consonant by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
-and not mis-identify the base consonant.
+and not mis-identify the base consonant. --->
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by one of two combining
@@ -365,10 +389,10 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - A pre-base or post-base "Ra" that occurs elsewhere in the syllable may
-    take on the below-base form "Raphala." 
+  - A non-initial pre-base "Ra" or a post-base "Ra" takes on the
+    below-base form "Raphala."
   
-"Reph" and "Raphala" characters must be reordered after the
+"Reph" and characters must be reordered after the
 syllable-identification stage is complete. 
 
 > Note: `<bng2>` text contains two Unicode codepoints for "Ra."
