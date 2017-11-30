@@ -49,8 +49,7 @@ terms used colloquially in any particular language may vary, however,
 potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. In the Bengali
-language, dependent-vowel signs <!--- that are positioned below the base
-consonant --> may also be referred to as _kar_ forms — e.g., "i-kar" or
+language, dependent-vowel signs  may also be referred to as _kar_ forms — e.g., "i-kar" or
 "u-kar".
 
 The term "matra" is also used to refer to the headline above most
@@ -58,13 +57,26 @@ Bengali letters. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
-sign. Unicode documents use the term "virama" most frequently, while
+mark. Unicode documents use the term "virama" most frequently, while
 OpenType documents use the term "halant" most frequently. In the Bengali
 language, this sign is known as the _hasanta_.
 
 **Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
 indicating that the preceding vowel should be nasalized. In the Bengali
 language, this mark is known as the _candrabindu_.
+
+The term **base consonant** is also critical to Indic shaping. The
+base consonant of a syllable is the consonant that carries the
+syllable's vowel sound, either the inherent vowel (for an unmarked
+base consonant) or a dependent vowel (with the addition of a matra).
+
+A syllable's base consonant is generally rendered in its full form
+(although it may form ligatures), while other consonants in the
+syllable frequently take on secondary forms. Different GSUB
+substitutions may apply to a script's **pre-base** and **post-base**
+consonants. Some of these substitutions create **above-base** or
+**below-base** forms. The **Reph** form of the consonant "Ra" is an
+example.
 
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
@@ -338,7 +350,7 @@ indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
-Bengali also includes two special consonants that can occur after the
+Bengali also includes consonants that can occur after the
 base consonant. These post-base consonants will also be separated from
 the base consonant by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
@@ -353,7 +365,7 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may
+  - A pre-base or post-base "Ra" that occurs elsewhere in the syllable may
     take on the below-base form "Raphala." 
   
 "Reph" and "Raphala" characters must be reordered after the
@@ -518,12 +530,12 @@ will either be provided by the script's inherent vowel (in which case
 it is not written with a separate character) or the sound will be designated
 by the addition of a dependent-vowel (matra) sign.
 
-Vowel-based syllables, standalone-sequences, and broken text runs will
+Vowel-based syllables, stand-alone sequences, and broken text runs will
 not have base consonants.
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
+  - If the syllable starts with "Ra" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.

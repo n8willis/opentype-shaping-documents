@@ -61,6 +61,19 @@ OpenType documents use the term "halant" most frequently.
 **Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
 indicating that the preceding vowel should be nasalized. 
 
+The term **base consonant** is also critical to Indic shaping. The
+base consonant of a syllable is the consonant that carries the
+syllable's vowel sound, either the inherent vowel (for an unmarked
+base consonant) or a dependent vowel (with the addition of a matra).
+
+A syllable's base consonant is generally rendered in its full form
+(although it may form ligatures), while other consonants in the
+syllable frequently take on secondary forms. Different GSUB
+substitutions may apply to a script's **pre-base** and **post-base**
+consonants. Some of these substitutions create **above-base** or
+**below-base** forms. The **Reph** form of the consonant "Ra" is an
+example.
+
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
 over all of the others that share a common script.
