@@ -899,3 +899,57 @@ order in which they appear in the GPOS table in the font.
         abvm
         blwm
 
+## The old Indic shaping model ##
+
+
+The older Indic script tags (`<deva>`, `<beng>`, `<gujr>`, `<guru>`, `<knda>`,
+`<mlym>`, `<orya>`, `<taml>`, and `<telu>`) have been deprecated. However,
+shaping engines may still encounter fonts that were built to work with
+these tags and some users may still have documents that were written to
+take advantage of the original shaping rules.
+
+### Distinctions from the Indic2 model ###
+
+The most significant distinction between the shaping models is that the
+sequence of "Halant" and consonant glyphs required to suppress the
+inherent vowel (and, for the shaping engine's purposes, to trigger shaping
+features) was altered when migrating from the old to the new shaping model. 
+
+Specifically, the inherent vowel of a consonant in a run of text was
+suppressed by the sequence "_Consonant_,Halant" in all pre-base and
+post-base positions. 
+
+In Indic2 text, as described above in this document, the correct sequence is
+"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
+for post-base consonants.
+
+The change significantly simplifies the regular expressions needed to
+match valid syllables. The Indic2 syllable
+
+	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+
+would have been written for old Indic shaping as
+
+	Pre-baseC Halant Pre-baseC Halant BaseC Post-baseC Halant
+	
+Notably, the old shaping model placed two consonants (here, `BaseC`
+and `Post-baseC`) back-to-back. This required the regular expressions for
+syllable-identification to distinguish between base consonants and
+post-base consonants, which varied from script to script.
+
+In addition, the change allows shaping engines to dispense with several
+reordering issues. 
+
+### Advice for handling fonts with old Indic features only ###
+
+Shaping engines may choose to match post-base "_Consonant_,Halant"
+sequences in order to apply GSUB substitutions when it is known that
+the font in use supports only the old shaping model.
+
+### Advice for handling text runs composed in the old Indic format ###
+
+Shaping engines may choose to match post-base "_Consonant_,Halant"
+sequences for GSUB substitutions or to reorder them to
+"Halant,_Consonant_" when processing text runs that are tagged with
+one of the old Indic script tags and it is known that the font in use supports
+only the Indic2 shaping model.

@@ -1013,33 +1013,40 @@ take advantage of `<telu>` shaping.
 The most significant distinction between the shaping models is that the
 sequence of "Halant" and consonant glyphs required to suppress the
 inherent vowel (and, for the shaping engine's purposes, to trigger shaping
-features) was swapped when migrating from `<telu>` to
+features) was altered when migrating from `<telu>` to
 `<tel2>`. 
 
 Specifically, the inherent vowel of a consonant in a run of `<telu>`
-text was suppressed by the sequence "Halant,_Consonant_". In `<tel2>`
-text, as described above in this document, the correct sequence is
-"_Consonant_,Halant".
+text was suppressed by the sequence "_Consonant_,Halant" in all
+pre-base and post-base positions. 
 
-Consequently, in `<telu>` text, a "Reph" substitution was triggered by a
-syllable-initial "Halant,Ra" sequence. In `<tel2>` text, the sequence
-must be "Ra,Halant". 
+In `<tel2>` text, as described above in this document, the correct sequence is
+"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
+for post-base consonants.
 
-Similarly, in `<telu>` text, a pre-base half-form or
-consonant-conjunct substitution was triggered by
-"Halant,_Consonant_,_Consonant_". In `<tel2>` text, the sequence must
-be "_Consonant_,Halant,_Consonant_".
+The change significantly simplifies the regular expressions needed to
+match valid syllables. The `<tel2>` syllable
+
+	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+
+would have been written for `<telu>` shaping as
+
+	Pre-baseC Halant Pre-baseC Halant BaseC Post-baseC Halant
+	
+
+In addition, the change allows shaping engines to dispense with several
+reordering issues.
 
 ### Advice for handling fonts with `<telu>` features only ###
 
-Shaping engines may choose to match "Halant,_Consonant_" sequences in
-order to apply GSUB substitutions when it is known that the font in
-use supports only the `<telu>` shaping model.
+Shaping engines may choose to match post-base "_Consonant_,Halant"
+sequences in order to apply GSUB substitutions when it is known that
+the font in use supports only the `<telu>` shaping model.
 
 ### Advice for handling text runs composed in `<telu>` format ###
 
-Shaping engines may choose to match "Halant,_Consonant_" sequences for
-GSUB substitutions or to reorder them to "_Consonant_,Halant" when
-processing text runs that are tagged with the `<telu>` script tag and
-it is known that the font in use supports only the `<tel2>` shaping
-model.
+Shaping engines may choose to match post-base "_Consonant_,Halant"
+sequences for GSUB substitutions or to reorder them to
+"Halant,_Consonant_" when processing text runs that are tagged with
+the `<telu>` script tag and it is known that the font in use supports
+only the `<tel2>` shaping model.
