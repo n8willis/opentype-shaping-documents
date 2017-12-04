@@ -343,13 +343,6 @@ syllable and its vowel sound designates the end of the syllable. This
 rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
-<!--- Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
-other, pre-base consonants will be followed by the "Halant" mark, which
-indicates that they carry no vowel. They affect pronunciation by
-combining with the base consonant (e.g., "_str_", "_pl_") but they
-do not add a vowel sound. --->
-
 Non-base consonants in a valid syllable will be separated by "Halant"
 marks. Pre-base consonants will be followed by "Halant", while
 post-base consonants will be preceded by "Halant".
@@ -373,12 +366,6 @@ A post-base "Ya" takes on the "Yaphala" form.
 A post-base "Ba" takes on the below-base "Baphala" form. A pre-base
 "Ba" will take on the below-base "Baphala" form if it is not the first
 pre-base consonant in the syllable.
-
-<!--- Bengali also includes consonants that can occur after the
-base consonant. These post-base consonants will also be separated from
-the base consonant by a "Halant" mark; the algorithm for correctly
-identifying the base consonant includes a test to recognize these sequences
-and not mis-identify the base consonant. --->
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by one of two combining
