@@ -516,7 +516,7 @@ identification. All other signs are regarded as syllable modifier
 signs, including those from the Vedic Extensions block.
 
 Generally speaking, each syllable contains exactly one vowel
-sound. Valid syllables may begin with either consonant or an
+sound. Valid syllables may begin with either a consonant or an
 independent vowel.
 
 > Note: A consonant that is not accompanied by a dependent vowel (matra) sign

@@ -339,7 +339,7 @@ that may be followed by a "tail" of modifier signs.
 > include additional signs from Vedic Extensions block.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
-begin with either consonant or an independent vowel. 
+begin with either a consonant or an independent vowel. 
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
@@ -373,7 +373,8 @@ combining with the base consonant (e.g., "_thr_" or "_spl_").
 
 Three consonants in Malayalam are allowed to occur in post-base
 position: "Ya", "Va", and "Ra". The post-base "Ra" is reordered to
-before the base consonant, while the post-base forms of "Ya" and "Va"
+before the base consonant during the final-reordering stage of the
+shaping process. The post-base forms of "Ya" and "Va"
 remain in post-base position.
 
 Malayalam also includes one consonant that can take on a below-base
@@ -977,8 +978,7 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
-are adjacent to below-base-consonant forms like "Raphala" or
-"Baphala" with contextual ligatures.
+are adjacent to the below-base-consonant form of "La" with contextual ligatures.
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side

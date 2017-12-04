@@ -326,7 +326,7 @@ that may be followed by a "tail" of modifier signs.
 > include additional signs from Vedic Extensions block.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
-begin with either consonant or an independent vowel. 
+begin with either a consonant or an independent vowel. 
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
