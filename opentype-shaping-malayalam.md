@@ -356,21 +356,28 @@ syllable and its vowel sound designates the end of the syllable. This
 rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
-Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
-other, pre-base consonants will be followed by the "Halant" mark, which
-indicates that they carry no vowel. They affect pronunciation by
-combining with the base consonant (e.g., "_str_", "_pl_") but they
-do not add a vowel sound.
+Non-base consonants in a valid syllable will be separated by "Halant"
+marks. Pre-base consonants will be followed by "Halant", while
+post-base consonants will be preceded by "Halant".
 
-Malayalam includes three consonants that can occur after the
-base consonant: "Ya", "Va", and "Ra". Malayalam also includes one
-consonant that can take on a below-base form, "La". 
+	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+	
+The algorithm for correctly identifying the base consonant includes a
+test to recognize these sequences and not mis-identify the base
+consonant.
 
-When taking on post-base or below-base form, these consonants will
-be separated from the base consonant by a "Halant" mark; the algorithm
-for correctly identifying the base consonant includes a test to
-recognize these sequences and not mis-identify the base consonant.
+All consonants in Malayalam can potentially occur in pre-base
+position. The "Halant" marks on pre-base consonants indicate that they
+carry no vowel. Instead, they affect syllable pronunciation by
+combining with the base consonant (e.g., "_thr_" or "_spl_").
+
+Three consonants in Malayalam are allowed to occur in post-base
+position: "Ya", "Va", and "Ra". The post-base "Ra" is reordered to
+before the base consonant, while the post-base forms of "Ya" and "Va"
+remain in post-base position.
+
+Malayalam also includes one consonant that can take on a below-base
+form, "La".
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment. Malayalam differs from many Indic scripts in that "Reph"
@@ -378,23 +385,6 @@ usage is rare in the modern orthography.
 
 In word-initial positions, a "Ra,Halant" sequence is typically
 replaced by a dead-consonant form, "Chillu R". 
-
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
-
-<!---  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
-    with an above-base mark called "Reph" (unless the "Ra" is the only
-    consonant in the syllable). This rule is synonymous with the
-    `REPH_MODE_IMPLICIT` characteristic mentioned earlier. --->
-
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
-<!--- Check this --->
 
 Malayalam text runs may also include the explicit variant of "Reph",
 the "Dot Reph" (`U+0D4E`), also known as "Repha". 
@@ -582,8 +572,6 @@ below-base and post-base consonants to compare again the text
 run. Another implementation might examine the active font to see if it
 includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
-> Note: The algorithm is designed to work for all Indic
-> scripts. However, Malayalam does not utilize pre-base reordering "Ra".
 
 
 #### 2.2: Matra decomposition ####
@@ -656,7 +644,13 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
 consonants will usually be preceded by a "Halant" glyph.
 
+Three consonants in Malayalam are allowed to occur in post-base
+position: "Ya", "Va", and "Ra". 
 
+The post-base "Ra" will normally be reordered to a pre-base position
+during the final-reordering stage. However, shaping engines should tag
+a post-base "Ra" with `POS_POSTBASE_CONSONANT` at this stage for
+consistency.
 
 	
 #### 2.8: Mark tagging ####
@@ -697,7 +691,7 @@ all Indic scripts:
 	akhn
 	rphf 
 	rkrf (not used in Malayalam)
-	pref (not used in Malayalam)
+	pref 
 	blwf 
 	abvf (not used in Malayalam)
 	half
@@ -733,9 +727,6 @@ ligatures. Malayalam differs from many other Indic scripts in that
 there are typically many ligatures in a font that are implemented as
 `akhn` substitutions.
 
-  - "Ka,Halant,Ka" is substituted with the "KKa" ligature. 
-  - "Da,Halant,Dha" is substituted with the "DDha" ligature. 
-  
 These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
@@ -771,10 +762,9 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 #### 3.6 pref ####
 
-> This feature is not used in Malayalam.
-
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
+The `pref` feature replaces reordering-pre-base-consonant glyphs with
+any special forms. Malayalam includes one such reordering consonant,
+"Ra" when it occurs in post-base position.
 
 #### 3.7: blwf ####
 
@@ -934,16 +924,21 @@ left of "Halant", to allow for potential matching with `abvs` or
 
 #### 4.4: Pre-base consonants ####
 
-Any pre-base reordering consonants must be moved to immediately before
+Any pre-base reordering consonants must be moved to before
 the base consonant.
-  
-Malayalam does not use pre-base reordering consonants, so this step will
-involve no work when processing `<mlm2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
 
-<!---  *** Malayalam does not use pre-base reordering consonants *** *** This
-  feature is exhibited by Javanese and Balinese. Possibly *** by
-  Devanagari as well....  --->
+Malayalam includes one such reordering consonant. "Ra" occuring in the
+post-base position is reordered to a pre-base position at this step.
+
+The algorithm for reordering "Ra" in this circumstance is:
+
+  - Only reorder the "Ra" if the current glyph was substituted using
+    the `pref` feature in stage 3, step 6.
+  - Select the final position using [the same method](#42-pre-base-matras) as used for
+    reordering a pre-base matra.
+  - If the pre-base matra positioning algorithm cannot determine the final
+    position, place the "Ra" immediately before the base consonant.
+
 
 #### 4.5: Initial matras ####
 
