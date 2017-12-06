@@ -379,7 +379,7 @@ mark-like forms.
   - A non-initial pre-base "Ra" or a post-base "Ra" takes on the
     below-base form "Raphala."
   
-"Reph" and characters must be reordered after the
+"Reph" characters must be reordered after the
 syllable-identification stage is complete. 
 
 > Note: `<bng2>` text contains two Unicode codepoints for "Ra."
