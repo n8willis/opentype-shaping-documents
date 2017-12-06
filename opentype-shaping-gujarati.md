@@ -942,31 +942,38 @@ take advantage of `<gujr>` shaping.
 ### Distinctions from `<guj2>` ###
 
 The most significant distinction between the shaping models is that the
-sequence of "Halant" and consonant glyphs required to suppress the
-inherent vowel (and, for the shaping engine's purposes, to trigger shaping
+sequence of "Halant" and consonant glyphs used to trigger shaping
 features) was altered when migrating from `<gujr>` to
 `<guj2>`. 
 
-Specifically, the inherent vowel of a consonant in a run of `<gujr>`
-text was suppressed by the sequence "_Consonant_,Halant" in all
-pre-base and post-base positions. 
+Specifically, shaping engines were expected to reorder post-base
+"Halant,_Consonant_" sequences to "_Consonant_,Halant".
 
-In `<guj2>` text, as described above in this document, the correct sequence is
-"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
-for post-base consonants.
+As a result, a font's GSUB substitutions would be written to match
+"_Consonant_,Halant" sequences in all pre-base and post-base positions.
 
-The change significantly simplifies the regular expressions needed to
-match valid syllables. The `<guj2>` syllable
+
+The `<gujr>` syllable
 
 	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
 
-would have been written for `<gujr>` shaping as
+would be reordered to
 
 	Pre-baseC Halant Pre-baseC Halant BaseC Post-baseC Halant
-	
 
-In addition, the change allows shaping engines to dispense with several
-reordering issues.
+before features are applied.
+
+In `<guj2>` text, as described above in this document, there is no
+such reordering. The correct sequence to match for GSUB substitutions is
+"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
+for post-base consonants.
+
+In addition, for some scripts, left-side dependent vowel marks
+(matras) were not repositioned during the final reordering
+stage. For `<gujr>` text, the left-side matra was always positioned
+at the beginning of the syllable.
+
+
 
 ### Advice for handling fonts with `<gujr>` features only ###
 
@@ -981,3 +988,8 @@ sequences for GSUB substitutions or to reorder them to
 "Halant,_Consonant_" when processing text runs that are tagged with
 the `<gujr>` script tag and it is known that the font in use supports
 only the `<guj2>` shaping model.
+
+Shaping engines may also choose to position left-side matras according
+to the `<gujr>` ordering scheme; however, doing so might interfere
+with matching GSUB or GPOS features.
+
