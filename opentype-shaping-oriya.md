@@ -26,13 +26,13 @@ runs in the Oriya script.
 
 ## General information ##
 
-The Oriya or Odiaa script belongs to the Indic family, and follows
+The Oriya or Odia script belongs to the Indic family, and follows
 the same general patterns as the other Indic scripts. Oriya is
 distinctive in some respects because it includes both some features
 common to the North Indic subgroup and some features common to the
 South Indic subgroup.
 
-The Oriya script is used to Oriya or Odia languages. In addition,
+The Oriya script is used to Oriya (or Odia) language. In addition,
 Sanskrit may be written in Oriya, so Oriya script runs may include
 glyphs from the Vedic Extension block of Unicode. 
 
@@ -344,7 +344,48 @@ combining with the base consonant (e.g., "_thr_" or "_spl_").
 Two consonants in Oriya are allowed to occur in post-base
 position: "Ya" and "Yya".
 
-Many Oriya consonants can take on below-base forms in consonant conjuncts.
+Many Oriya consonants are allowed to take on below-base forms in
+consonant conjuncts. 
+
+<!--- 
+KA (0B15), JA (0B1C), NA (0B28), BA (0B2C), WA (0B35), LA (0B32), and
+LLA (0B33) are presented in their half-forms.
+
+TA (0B24), DDHA (0B22), THA (0B25),
+CHA (0B1B), BHA (0B2D), MA (0B2E), and NNA (0B23) are rendered as
+consonant signs placed below consonant letters. These signs retain the
+inherent vowel A. 
+
+Only the sign representing YYA (0B5F) is positioned
+to the right of a consonant.
+
+Some consonant in Oriya are rendered as consonant signs when they
+function as part of a consonant cluster. These signs do not have
+visual similarity with the consonants they represent.
+
+KA      +     TA	↝ K.TA
+Lç	 +	[	↝ ¦
+DA	 +      MA	↝ D.MA
+]ç	 +	c	↝ ]ê
+
+Such consonant clusters may function as consonant and can further take
+other consonant as /ma:tra:/ matras. For example,
+
+TA	+	SA	↝ T.SA	+	NA	↝ T.S.NA
+[ç	+	j	↝ júç		+	_	↝ júð
+
+Diminutive form of consonants: A diminutive form of consonant is used
+as the final component of a consonant cluster. Such diminutive forms
+retain the inherent vowel A and are positioned below the relevant
+consonant.
+
+GA	+	DHA	↝ G.DHA
+Nç	+	^	↝ ‘
+SHA	+	CA	↝ SH.CA
+hç	+	Q	↝ ¾
+
+--->
+
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by a combining
@@ -539,19 +580,28 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 #### 2.2: Matra decomposition ####
 
-Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. Oriya has two
-two-part dependent vowels, "O" (`U+09BC`) and "Au" (`U+09CC`). Each
+Second, any multi-part dependent vowels (matras) must be decomposed
+into their individual components. Oriya has three
+multi-part dependent vowels, "Ai" (`U+0B48`), "O" (`U+0B4B`), and "Au" (`U+09CC`). Each
 has a canonical decomposition, so this step is unambiguous. 
 
-> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
+> "Ai" (`U+0B48`) decomposes to "`U+0B47`,`U+0B56`"
 >
-> "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
+> "O" (`U+09BC`) decomposes to "`U+0B47`,`U+0B3E`"
+>
+> "Au" (`U+09CC`) decomposes to "`U+0B47`,`U+0B57`"
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
+
+> Note: "Au Length Mark" (`U+0B57`) is categorized in Unicode as being a
+> top-and-right matra, a combination that would normally decompose
+> into one above-base mark and one right-side mark. This combination,
+> unlike other multi-part matras, does not affect reordering. In
+> addition, the decomposition is not canonical in
+> Unicode. Consequently, shaping engines may choose to skip it. 
 
 ![Two-part matra decomposition](/images/oriya/split-matra-decomposition.png)
 
@@ -560,6 +610,8 @@ completed before the shaping engine begins step three, below.
 Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
+
+All above-base dependent-vowel (matra) signs are tagged `POS_AFTER_MAIN`.
 
 All right-side dependent-vowel (matra) signs are tagged
 `POS_AFTER_POST`.
@@ -601,17 +653,8 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
 consonants will usually be preceded by a "Halant" glyph. Oriya
-includes two post-base consonants. 
+includes two post-base consonants, `Ya` and `Yya`.
 
-  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
-    meaning that it carries no inherent vowel.
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
-    the "Yaphala" form. "Yaphala" behaves like a modifier to the
-    pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant.
-
-<!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
 	
 #### 2.8: Mark tagging ####
 
@@ -659,7 +702,7 @@ all Indic scripts:
 	rkrf (not used in Oriya)
 	pref (not used in Oriya)
 	blwf 
-	abvf (not used in Oriya)
+	abvf
 	half
 	pstf
 	vatu
