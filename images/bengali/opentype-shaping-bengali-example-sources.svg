@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="650.43113"
-     inkscape:cy="210.50252"
+     inkscape:cx="995.04664"
+     inkscape:cy="830.50252"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -417,5 +417,42 @@
        id="path164-3-5"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;line-height:125%;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 150.84337,251.83067 -0.44442,0.44441 -1.757,-1.75699 -1.757,1.75699 -0.44441,-0.45475 1.757,-1.757 -1.757,-1.74666 0.44441,-0.44442 1.757,1.757 1.757,-1.76733 0.44442,0.45475 -1.757,1.757 z" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="197.90833"
+       y="71.574989"
+       id="text167"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan165"
+         x="197.90833"
+         y="71.574989"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ৈস্মচ → স্মচৈ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="262.86353"
+       y="71.574989"
+       id="text171"
+       inkscape:export-xdpi="266.28577"
+       inkscape:export-ydpi="266.28577"><tspan
+         sodipodi:role="line"
+         id="tspan169"
+         x="262.86353"
+         y="71.574989"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">র্◌ড্ড্ফূ → র্ড্ড্ফূ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="234.15625"
+       y="96.313538"
+       id="text180"><tspan
+         sodipodi:role="line"
+         id="tspan178"
+         x="234.15625"
+         y="96.313538"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.58333302px;font-family:'Noto Serif Bengali';-inkscape-font-specification:'Noto Serif Bengali, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332px">ঙঙৈ→ঙৈ</tspan></text>
   </g>
 </svg>

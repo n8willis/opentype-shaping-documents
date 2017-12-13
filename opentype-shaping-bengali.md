@@ -363,8 +363,11 @@ position: "Ya", "Ba", and "Ra".
 
 A post-base "Ya" takes on the "Yaphala" form.
 
+> Note: some fonts may also implement the "Yaphala" form for a
+> post-base "Yya" (`U+09DF`).
+
 A post-base "Ba" takes on the below-base "Baphala" form. A pre-base
-"Ba" will take on the below-base "Baphala" form if it is not the first
+"Ba" will take on the below-base "Baphala" form unless it is the first
 pre-base consonant in the syllable.
 
 As with other Indic scripts, the consonant "Ra" receives special
@@ -631,17 +634,21 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
 consonants will usually be preceded by a "Halant" glyph. Bengali
-includes two post-base consonants. 
+includes one post-base consonant. 
 
-  - "Khanda Ta" (`U+09CE`) is a "dead" consonant variant of "Ta",
-    meaning that it carries no inherent vowel.
   - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
     the "Yaphala" form. "Yaphala" behaves like a modifier to the
     pronunciation of the preceding vowel, despite the fact that it is
     formed from a consonant.
 
-<!--- and "Halant,Yya"
-    (`U+09CD`,`U+09DF`) both ** Not sure about Yya.... --->
+> Note: some fonts may also implement the "Yaphala" post-base form for
+> "Halant,Yya" (`U+09CD`,`U+09DF`).
+
+![Yaphala composition](/images/bengali/yaphala-composition.png)
+
+
+
+<!---  Not sure about Yya.... --->
 	
 #### 2.8: Mark tagging ####
 
@@ -892,6 +899,8 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
+![Pre-base matra reordering](/images/bengali/left-matra-final-reordering.png)
+
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
@@ -914,6 +923,8 @@ Finally, if the final position of "Reph" occurs after a
 "_matra_,Halant" subsequence, then "Reph" must be repositioned to the
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
+
+![Reph final reordering](/images/bengali/reph-final-reordering.png)
 
 #### 4.4: Pre-base consonants ####
 
@@ -951,6 +962,11 @@ the GSUB table in the font.
 The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
 headline instroke from the left side of the glyph.
+
+![Application of the init feature](/images/bengali/init-feature-applied.png)
+
+<!--- Note: this image required hand-editing in GIMP of the 
+original, `init-feature.png` --->
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
