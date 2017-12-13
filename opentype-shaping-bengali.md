@@ -1026,6 +1026,8 @@ characters. In Bengali, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms "Raphala" and
 "Baphala".
 
+![Application of the blwm feature](/images/bengali/blwm.png)
+
 
 ## The `<beng>` shaping model ##
 
