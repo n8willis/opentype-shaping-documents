@@ -1021,6 +1021,8 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Bengali, this includes "Reph" in addition to the
 diacritical marks and Vedic signs. 
 
+![Application of the abvm feature](/images/bengali/abvm.png)
+
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Bengali, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms "Raphala" and
