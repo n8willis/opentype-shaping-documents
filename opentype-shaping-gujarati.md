@@ -955,11 +955,11 @@ As a result, a font's GSUB substitutions would be written to match
 
 The `<gujr>` syllable
 
-	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+	Pre-baseC Halant BaseC Halant Post-baseC
 
 would be reordered to
 
-	Pre-baseC Halant Pre-baseC Halant BaseC Post-baseC Halant
+	Pre-baseC Halant BaseC Post-baseC Halant
 
 before features are applied.
 

@@ -360,7 +360,7 @@ Non-base consonants in a valid syllable will be separated by "Halant"
 marks. Pre-base consonants will be followed by "Halant", while
 post-base consonants will be preceded by "Halant".
 
-	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+	Pre-baseC Halant BaseC Halant Post-baseC
 	
 The algorithm for correctly identifying the base consonant includes a
 test to recognize these sequences and not mis-identify the base
@@ -1047,11 +1047,11 @@ As a result, a font's GSUB substitutions would be written to match
 
 The `<mlym>` syllable
 
-	Pre-baseC Halant Pre-baseC Halant BaseC Halant Post-baseC
+	Pre-baseC Halant BaseC Halant Post-baseC
 
 would be reordered to
 
-	Pre-baseC Halant Pre-baseC Halant BaseC Post-baseC Halant
+	Pre-baseC Halant BaseC Post-baseC Halant
 
 before features are applied.
 
