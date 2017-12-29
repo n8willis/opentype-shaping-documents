@@ -862,9 +862,9 @@ consonant, and all half forms.
 position. The correct final position depends on the script's
 `REPH_MODE_`. See the individual script pages for more information.
 
-#### 4.4: Pre-base consonants ####
+#### 4.4: Pre-base reordering consonants ####
 
-Any pre-base reordering consonants must be moved to immediately before
+Any pre-base-reordering consonants must be moved to immediately before
 the base consonant.
   
 

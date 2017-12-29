@@ -562,7 +562,7 @@ The algorithm for determining the base consonant is
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant has a below-base or post-base form or is a
-        pre-base reordering "Ra", move to the previous consonant. If
+        pre-base-reordering "Ra", move to the previous consonant. If
         neither condition is true, stop. 
       * If the consonant is the first consonant, stop.
   - The consonant stopped at will be the base consonant.
@@ -575,7 +575,7 @@ run. Another implementation might examine the active font to see if it
 includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
-> scripts. However, Oriya does not utilize pre-base reordering "Ra".
+> scripts. However, Oriya does not utilize pre-base-reordering "Ra".
 
 
 #### 2.2: Matra decomposition ####
@@ -928,18 +928,15 @@ Finally, if the final position of "Reph" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
-#### 4.4: Pre-base consonants ####
+#### 4.4: Pre-base-reordering consonants ####
 
-Any pre-base reordering consonants must be moved to immediately before
+Any pre-base-reordering consonants must be moved to immediately before
 the base consonant.
   
-Oriya does not use pre-base reordering consonants, so this step will
+Oriya does not use pre-base-reordering consonants, so this step will
 involve no work when processing `<ory2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
 
-<!---  *** Oriya does not use pre-base reordering consonants *** *** This
-  feature is exhibited by Javanese and Balinese. Possibly *** by
-  Devanagari as well....  --->
 
 #### 4.5: Initial matras ####
 
