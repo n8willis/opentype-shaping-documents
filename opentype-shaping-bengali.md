@@ -586,7 +586,7 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/bengali/split-matra-decomposition.png)
+![Two-part matra decomposition](/images/bengali/bengali-matra-decompose.png)
 
 #### 2.3: Tag matras ####
 
@@ -644,7 +644,7 @@ includes one post-base consonant.
 > Note: some fonts may also implement the "Yaphala" post-base form for
 > "Halant,Yya" (`U+09CD`,`U+09DF`).
 
-![Yaphala composition](/images/bengali/yaphala-composition.png)
+![Yaphala composition](/images/bengali/bengali-yaphala.png)
 
 
 
@@ -721,7 +721,7 @@ The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 
-![Nukta composition](/images/bengali/nukta-composition.png)
+![Nukta composition](/images/bengali/bengali-nukt.png)
 
 #### 3.3: akhn ####
 
@@ -736,9 +736,9 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-![KSsa ligation](/images/bengali/kassa-ligation.png)
+![KSsa ligation](/images/bengali/bengali-akhn-kssa.png)
 
-![JNya ligation](/images/bengali/janya-ligation.png)
+![JNya ligation](/images/bengali/bengali-akhn-jnya.png)
 
 #### 3.4: rphf ####
 
@@ -749,7 +749,9 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     the `rphf` substitution.
 	
 
-![Reph composition](/images/bengali/reph-composition.png)
+![Reph composition](/images/bengali/bengali-rphf.png)
+
+![Reph composition](/images/bengali/bengali-rphf-as.png)
 
 #### 3.5: rkrf ####
 
@@ -781,9 +783,9 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 
-![Raphala composition](/images/bengali/raphala-composition.png)
+![Raphala composition](/images/bengali/bengali-raphala.png)
 
-![Baphala composition](/images/bengali/baphala-composition.png)
+![Baphala composition](/images/bengali/bengali-baphala.png)
 
 #### 3.8: abvf ####
 
@@ -808,14 +810,14 @@ must test:
     tagged for potential `half` substitutions.
 
 
-![Half-form formation](/images/bengali/half-formation.png)
+![Half-form formation](/images/bengali/bengali-half-ka.png)
 
 #### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
-![Yaphala composition](/images/bengali/yaphala-composition.png)
+![Yaphala composition](/images/bengali/bengali-yaphala.png)
 
 #### 3.11: vatu ####
 
@@ -827,7 +829,7 @@ forms.
 the `blwf` feature.
 
 
-![Vattu variant ligation](/images/bengali/vattu-ligation.png)
+![Vattu variant ligation](/images/bengali/bengali-vatu.png)
 
 #### 3.12: cjct ####
 
@@ -842,7 +844,7 @@ substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
 
-![Conjunct ligation](/images/bengali/pata-conjunct.png)
+![Conjunct ligation](/images/bengali/bengali-cjct.png)
 
 #### 3.13: cfar ####
 
@@ -899,7 +901,7 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
-![Pre-base matra reordering](/images/bengali/left-matra-final-reordering.png)
+![Pre-base matra reordering](/images/bengali/bengali-matra-position.png)
 
 #### 4.3: Reph ####
 
@@ -924,7 +926,7 @@ Finally, if the final position of "Reph" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
-![Reph final reordering](/images/bengali/reph-final-reordering.png)
+![Reph final reordering](/images/bengali/bengali-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
@@ -960,34 +962,47 @@ The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
 headline instroke from the left side of the glyph.
 
-![Application of the init feature](/images/bengali/init-feature-applied.png)
+![Application of the init feature](/images/bengali/bengali-init.png)
 
-<!--- Note: this image required hand-editing in GIMP of the 
-original, `init-feature.png` --->
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
+![Application of the pres feature](/images/bengali/bengali-pres.png)
+
+
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
+
+![Application of the abvs feature](/images/bengali/bengali-abvs.png)
+
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
 are adjacent to below-base-consonant forms like "Raphala" or
 "Baphala" with contextual ligatures.
 
+![Application of the blws feature](/images/bengali/bengali-blws.png)
+
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
-post-base-consonant/matra pairs with contextual ligatures. 
+post-base-consonant/matra pairs with contextual ligatures.
+
+![Application of the psts feature](/images/bengali/bengali-psts.png)
+
 
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
-typographically problematic. 
+typographically problematic.
+
+![Application of the haln feature](/images/bengali/bengali-haln.png)
+
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -1018,14 +1033,14 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Bengali, this includes "Reph" in addition to the
 diacritical marks and Vedic signs. 
 
-![Application of the abvm feature](/images/bengali/abvm.png)
+![Application of the abvm feature](/images/bengali/bengali-abvm.png)
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Bengali, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms "Raphala" and
 "Baphala".
 
-![Application of the blwm feature](/images/bengali/blwm.png)
+![Application of the blwm feature](/images/bengali/bengali-blwm.png)
 
 
 ## The `<beng>` shaping model ##
