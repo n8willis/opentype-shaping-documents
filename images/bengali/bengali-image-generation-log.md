@@ -39,7 +39,7 @@ montage bengali-nukt-before.png right-arrow.png bengali-nukt-after.png -geometry
 
 ## 3.3 `akhn`
 
-### KSSa
+### KSsa
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-akhn-kssa-before.png --features=-init,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf --unicodes=0995,25cc,09cd,09b7
 
