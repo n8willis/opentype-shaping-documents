@@ -659,6 +659,8 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+![Nukta composition](/images/devanagari/devanagari-nukt.png)
+
 
 
 #### 3.3: akhn ####
@@ -675,6 +677,10 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 
+![KSsa ligation](/images/devanagari/devanagari-akhn-kssa.png)
+
+![JNya ligation](/images/devanagari/devanagari-akhn-jnya.png)
+
 #### 3.4: rphf ####
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
@@ -683,11 +689,16 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
+
+![Reph composition](/images/devanagari/devanagari-rphf.png)
 	
 #### 3.5 rkrf ####
 
 The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
 "Rakaar"-ligature form of the consonant glyph.
+
+
+![Rakaar composition](/images/devanagari/devanagari-rkrf.png)
 
 #### 3.6 pref ####
 
@@ -720,6 +731,8 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
+![Below-base form](/images/devanagari/devanagari-blwf.png)
+
 #### 3.8: abvf ####
 
 > This feature is not used in Devanagari.
@@ -746,6 +759,8 @@ must test:
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
+![Half-form formation](/images/devanagari/devanagari-half.png)
+
 #### 3.10: pstf ####
 
 > This feature is not used in Devanagari.
@@ -760,6 +775,8 @@ forms.
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
+![Vattu ligation](/images/devanagari/devanagari-vatu.png)
+
 #### 3.12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
@@ -771,6 +788,8 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+![Conjunct ligation](/images/devanagari/devanagari-cjct.png)
 
 #### 3.13: cfar ####
 
@@ -827,6 +846,8 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
+![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.png)
+
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
@@ -839,6 +860,8 @@ consonant that has not formed a ligature with the base consonant).
     final "Reph" position is immediately before the first post-base
     matra, syllable modifier, or Vedic sign.
 
+
+![Reph positioning](/images/devanagari/devanagari-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
@@ -876,24 +899,34 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
+![Pre-base substitutions](/images/devanagari/devanagari-pres.png)
+
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
+
+![Above-base substitutions](/images/devanagari/devanagari-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
 are adjacent to the below-base-consonant form "Rakaar" with contextual
 ligatures.
 
+![Below-base substitutions](/images/devanagari/devanagari-blws.png)
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
+![Post-base substitutions](/images/devanagari/devanagari-psts.png)
+
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
+
+![Halant substitutions](/images/devanagari/devanagari-haln.png)
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -924,9 +957,13 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Devanagari, this includes "Reph" in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
+![Above-base mark positioning](/images/devanagari/devanagari-abvm.png)
+
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Devanagari, this includes below-base dependent vowels
 (matras) and diacritical marks as well as the below-base consonant form "Rakaar".
+
+![Below-base mark positioning](/images/devanagari/devanagari-blwm.png)
 
 
 ## The `<deva>` shaping model ##
