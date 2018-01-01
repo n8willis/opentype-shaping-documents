@@ -9,6 +9,12 @@ hb-view --font-size=110 --output-file=right-arrow.png --background=FFFFFF00 --ma
 > feature itself is not being explained.
 
 
+## 3.1 `locl`
+
+> Note: Noto Devanagari has a 'MAR' locl feature. 
+
+
+
 ## 3.2 `nukt`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-nukt-before.png --features=-init,-nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,25cc,093c
@@ -104,3 +110,78 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-matra-positi
 montage devanagari-matra-position-before.png right-arrow.png devanagari-matra-position-after.png -geometry +0+0 -background transparent devanagari-matra-position.png
 
 
+## 4.3 Reph position
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-reph-position-before.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0930,094d,25cc,092f,094d,0932,094d,092e,094d,0930
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-reph-position-after.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0930,094d,092f,094d,0932,094d,092e,094d,0930
+
+montage devanagari-reph-position-before.png right-arrow.png devanagari-reph-position-after.png -geometry +0+0 -background transparent devanagari-reph-position.png
+
+
+## 5 `init`
+
+> Note: Noto Devanagari and Murty don't implement `init`.
+
+
+## 5 `pres`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-pres-before.png --features=-init,-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0916,093f
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-pres-after.png --features=-init,+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0916,093f
+
+montage devanagari-pres-before.png right-arrow.png devanagari-pres-after.png -geometry +0+0 -background transparent devanagari-pres.png
+
+
+## 5 `abvs`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvs-before.png --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0930,094d,25cc,0949
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvs-after.png --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0930,094d,25cc,0949
+
+montage devanagari-abvs-before.png right-arrow.png devanagari-abvs-after.png -geometry +0+0 -background transparent devanagari-abvs.png
+
+
+## 5 `blws`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-blws-before.png --features=-init,-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0939,0944
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-blws-after.png --features=-init,+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0939,0944
+
+montage devanagari-blws-before.png right-arrow.png devanagari-blws-after.png -geometry +0+0 -background transparent devanagari-blws.png
+
+
+## 5 `psts`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-psts-before.png --features=-init,-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,093c,0940
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-psts-after.png --features=-init,+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,093c,0940
+
+montage devanagari-psts-before.png right-arrow.png devanagari-psts-after.png -geometry +0+0 -background transparent devanagari-psts.png
+
+
+## 5 `haln`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-before.png --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=25cc,095c,094d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-after.png --features=-init,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=25cc,095c,094d
+
+montage devanagari-haln-before.png right-arrow.png devanagari-haln-after.png -geometry +0+0 -background transparent devanagari-haln.png
+
+
+## `abvm`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvm-before.png --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,0948
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvm-after.png --features=-init,+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,0948
+
+montage devanagari-abvm-before.png right-arrow.png devanagari-abvm-after.png -geometry +0+0 -background transparent devanagari-abvm.png
+
+
+## `blwm`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-blwm-before.png --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0915,0943
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-blwm-after.png --features=-init,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0915,0943
+
+montage devanagari-blwm-before.png right-arrow.png devanagari-blwm-after.png -geometry +0+0 -background transparent devanagari-blwm.png
