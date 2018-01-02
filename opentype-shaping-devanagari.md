@@ -353,7 +353,7 @@ In addition, "Rra,Halant" sequences that precede the base consonant
 may take on a form known as the "eyelash Ra." 
 
 > Note: In `<dev2>` text runs, this substitution is canonically
-> implemented as a [half form](#3.9-half). See the [`<deva>`
+> implemented as a [half form](#39-half). See the [`<deva>`
 > shaping](#the-deva-shaping-model) section for a discussion of the
 > "eyelash Ra" implementation that was used in the `<deva>` model.
 
