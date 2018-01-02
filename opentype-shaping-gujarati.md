@@ -545,9 +545,9 @@ completed before the shaping engine begins step three, below.
 Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-Right side dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
-
 Above-base dependent-vowel (matra) signs must be tagged with `POS_AFTER_SUBJOINED`.
+
+Right-side dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
 
 Below-base dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
 

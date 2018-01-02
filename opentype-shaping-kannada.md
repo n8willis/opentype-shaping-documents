@@ -609,8 +609,6 @@ Left-side matras should be tagged with `POS_PREBASE_MATRA`.
 
 Above-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
 
-Below-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
-
 Right-side matras should be tagged according to two rules.
 
   - Matras "Sign Vocalic R" (`U+0CC3`), "Sign Vocalic Rr"
@@ -622,6 +620,8 @@ Right-side matras should be tagged according to two rules.
   - Matras "Sign Aa"(`U+0CBE`), "Sign Ii" (`U+0CC0`), "Sign U"
        (`U+0CC1`), and "Sign Uu" (`U+0CC2`) use
        `POS_BEFORE_SUBJOINED`.
+
+Below-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
 
 For simplicity, shaping engines may choose to tag single-part matras
 in an earlier text-processing step, using the information in the
