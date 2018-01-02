@@ -348,6 +348,15 @@ mark-like forms.
   - "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
     below-base form "Rakaar." 
 	
+	
+In addition, "Rra,Halant" sequences that precede the base consonant
+may take on a form known as the "eyelash Ra." 
+
+> Note: In `<dev2>` text runs, this substitution is canonically
+> implemented as a [half form](#3.9-half). See the [`<deva>`
+> shaping](#the-deva-shaping-model) section for a discussion of the
+> "eyelash Ra" implementation that was used in the `<deva>` model.
+
 "Reph" and "Rakaar" characters must be reordered after the
 syllable-identification stage is complete. 
 
@@ -545,7 +554,7 @@ completed before the shaping engine begins step three, below.
 Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-Above-base, below-base, and right side dependent-vowel (matra) signs
+Above-base, right-side, and below-base dependent-vowel (matra) signs
 must be tagged with `POS_AFTER_SUBJOINED`.
 
 #### 2.4: Adjacent marks ####
@@ -583,8 +592,8 @@ a non-initial "Ra,Halant" sequence, which will take on the "Rakaar" form when th
 #### 2.8: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
-closest non-mark character the mark has affinity with, so that they move together
-during the sorting step.
+closest non-mark character the mark has affinity with, so that they
+move together during the sorting step.
 
 For all marks preceding the base consonant, the mark must be tagged
 with the same positioning tag as the closest preceding non-mark
@@ -603,18 +612,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 <!--- HarfBuzz also tags everything between a post-base consonant or -->
 <!--matra and another post-base consonant as belonging to the latter -->
 <!--post-base consonant. --->
-
-
-<!--- 2.9: Ninth, all post-base glyphs should be merged into a single
-   substring that will sort as a single unit. --->
-   
-<!--- Unsure. This occurs after the stable sort. What happens is that -->
-<!--HB looks at every glyph between the base consonant and the end, -->
-<!--looking for a 'max' value, then merges everything between the base -->
-<!--and the max. --->
-
-<!--- Merging all post-base stuff into one unit is old-spec -->
-<!--behavior. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
@@ -760,6 +757,14 @@ must test:
     tagged for potential `half` substitutions.
 
 ![Half-form formation](/images/devanagari/devanagari-half.png)
+
+In addition, the sequence "Rra,Halant" (occuring before the base
+consonant) will take on the "eyelash Ra" form. Because this
+substitution is defined as the canonical half form of "Rra" in `<dev2>`, the
+shaping engine does not need to implement any special handling to
+support it. 
+
+![Eyelash Ra formation](/images/devanagari/devanagari-eyelash-ra.png)
 
 #### 3.10: pstf ####
 
@@ -1007,6 +1012,13 @@ In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
 stage. For `<deva>` text, the left-side matra was always positioned
 at the beginning of the syllable.
+
+Finally, in `<deva>` text, the "eyelash Ra" form was encoded as the
+sequence "Ra,Halant,ZWJ". 
+
+In `<dev2>`, the required encoding for "eyelash Ra" is now
+"Rra,Halant", and the substitution is implemented using the `half`
+feature of GSUB.
 
 
 ### Advice for handling fonts with `<deva>` features only ###

@@ -73,11 +73,27 @@ montage devanagari-blwf-before.png right-arrow.png devanagari-blwf-after.png -ge
 
 ## 3.9 `half`
 
+### Half form
+
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-half-before.png --features=-init,-half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0932,094d,0930,25cc,094d
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-half-after.png --features=-init,+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0932,094d,0930,094d
 
 montage devanagari-half-before.png right-arrow.png devanagari-half-after.png -geometry +0+0 -background transparent devanagari-half.png
+
+### Eyelash Ra
+
+> Note that Noto Devanagari eyelash-Ra substitution does not appear to
+> work when using `U+25cc` dotted circle as the "base consonant"
+> substitute. Hence, a real consonant glyph is used instead. But it is
+> important that "Ra" _not_ be used as the "base consonant", as this
+> triggers "Rakaar".
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-eyelash-ra-before.png --features=-init,-half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0931,094d,0932
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-eyelash-ra-after.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0931,094d,0932
+
+montage devanagari-eyelash-ra-before.png right-arrow.png devanagari-eyelash-ra-after.png -geometry +0+0 -background transparent devanagari-eyelash-ra.png
 
 
 ## 3.11 `vatu`
