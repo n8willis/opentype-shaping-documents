@@ -64,9 +64,7 @@ base consonant of a syllable is the consonant that carries the
 syllable's vowel sound, either the inherent vowel (for an unmarked
 base consonant) or a dependent vowel (with the addition of a matra).
 
-A syllable's base consonant is generally rendered in its full form
-(although it may form ligatures), while other consonants in the
-syllable frequently take on secondary forms. Different GSUB
+Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -344,8 +342,9 @@ combining with the base consonant (e.g., "_thr_" or "_spl_").
 Two consonants in Oriya are allowed to occur in post-base
 position: "Ya" and "Yya".
 
-Many Oriya consonants are allowed to take on below-base forms in
-consonant conjuncts. 
+Oriya consonants take on a variety of different forms in
+consonant conjuncts. In some cases, the base consonant takes a
+below-base or mark-like form.
 
 <!--- 
 KA (0B15), JA (0B1C), NA (0B28), BA (0B2C), WA (0B35), LA (0B32), and
@@ -364,7 +363,7 @@ function as part of a consonant cluster. These signs do not have
 visual similarity with the consonants they represent.
 
 KA      +     TA	↝ K.TA
-Lç	 +	[	↝ ¦
+La + Halant	 +	Ta	↝ ¦
 DA	 +      MA	↝ D.MA
 ]ç	 +	c	↝ ]ê
 
@@ -384,6 +383,8 @@ Nç	+	^	↝ ‘
 SHA	+	CA	↝ SH.CA
 hç	+	Q	↝ ¾
 
+
+From info at http://www.ciil-lisindia.net/oriya/oriya.html
 --->
 
 
@@ -395,9 +396,10 @@ mark-like form.
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
-
+  - A syllable-final "Halant,Ra" sequence is replaced with a
+    below-base mark called "Raphala".
   
-"Reph" characters must be reordered after the
+"Reph" and "Raphala" characters must be reordered after the
 syllable-identification stage is complete. 
 
 
@@ -673,16 +675,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
 
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
-
-<!--- HarfBuzz also tags everything between a post-base consonant or -->
-<!--matra and another post-base consonant as belonging to the latter -->
-<!--post-base consonant. --->
-
-<!--- Merging all post-base stuff into one unit is old-spec -->
-<!--behavior. --->
-
 With these steps completed, the syllable can be sorted into the final sort order.
 
 ### 3: Applying the basic substitution features from GSUB ###
@@ -765,19 +757,14 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 > This feature is not used in Oriya.
 
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
-
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Oriya includes two below-base consonant
-forms:
+special forms. Oriya includes one below-base consonant
+form:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
-    non-syllable-initial position) take on the "Raphala" form.
-  - "Ba,Halant" (before the base consonant) and "Halant,Ba" (after the
-    base consonant) take on the "Baphala" form. 
+  - "Halant,Ra" (in a syllable-final position) take on the "Raphala"
+    form. 
 
 Because Oriya incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -788,8 +775,6 @@ characteristic.
 
 
 ![Raphala composition](/images/oriya/raphala-composition.png)
-
-![Baphala composition](/images/oriya/baphala-composition.png)
 
 #### 3.8: abvf ####
 
@@ -825,15 +810,8 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 #### 3.11: vatu ####
 
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
+> This feature is not used in Oriya.
 
-"Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
-
-
-![Vattu variant ligation](/images/oriya/vattu-ligation.png)
 
 #### 3.12: cjct ####
 
@@ -908,10 +886,9 @@ consonant, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Oriya incorporates the `REPH_POS_AFTER_SUBJOINED`
+position. Because Oriya incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
-dependent vowel) forms.
+base consonant.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
@@ -944,6 +921,11 @@ Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
 
+
+Oriya does not use the `init` feature, so this step will
+involve no work when processing `<ory2>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
+
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
@@ -951,16 +933,14 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
+	init (not used in Oriya)
 	pres
 	abvs
 	blws
 	psts
 	haln
 
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline instroke from the left side of the glyph.
+The `init` feature is not used in Oriya.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
@@ -1013,12 +993,11 @@ such features are optional.
 
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Oriya, this includes "Reph" in addition to the
-diacritical marks and Vedic signs. 
+above-base dependent vowels (matras), diacritical marks and Vedic signs. 
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Oriya, this includes below-base dependent vowels
-(matras) as well as the below-base consonant forms "Raphala" and
-"Baphala".
+(matras) as well as the below-base consonant form "Raphala".
 
 
 ## The `<orya>` shaping model ##
