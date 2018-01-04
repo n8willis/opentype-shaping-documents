@@ -540,6 +540,8 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
+![Two-part matra decomposition](/images/gujarati/gujarati-matra-decompose.png)
+
 #### 2.3: Tag matras ####
 
 Third, all left-side dependent-vowel (matra) signs must be tagged to be
@@ -579,9 +581,9 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
-In Gujarati, the only consonant that can appear in this position is
-a non-initial "Ra,Halant" sequence, which will take on the "Rakaar" form when the
-`blwf` feature is applied.
+In Gujarati, no consonants appear in post-base position, so this step
+will not involve any work. It is included here in order
+to maintain compatibility with the other Indic scripts.
 
 #### 2.8: Mark tagging ####
 
@@ -660,8 +662,9 @@ variants, based on examining the language setting of the text run.
 #### 3.2: nukt ####
 
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
-precomposed nukta-variant of the consonant glyph. 
+precomposed nukta-variant of the consonant glyph.
 
+![nukt feature application](/images/gujarati/gujarati-nukt.png)
 
 
 #### 3.3: akhn ####
@@ -678,6 +681,10 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 
+![akhn KSsa formation](/images/gujarati/gujarati-akhn-kssa.png)
+
+![akhn JNya formation](/images/gujarati/gujarati-akhn-jnya.png)
+
 #### 3.4: rphf ####
 
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
@@ -686,11 +693,15 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
+
+![Reph formation](/images/gujarati/gujarati-rphf.png)
 	
 #### 3.5 rkrf ####
 
 The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
 "Rakaar"-ligature form of the consonant glyph.
+
+![Rakaar ligation](/images/gujarati/gujarati-rkrf.png)
 
 #### 3.6 pref ####
 
@@ -723,6 +734,8 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
+![blwf feature application](/images/gujarati/gujarati-blwf.png)
+
 #### 3.8: abvf ####
 
 > This feature is not used in Gujarati.
@@ -749,6 +762,8 @@ must test:
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
+![half-form feature application](/images/gujarati/gujarati-half.png)
+
 #### 3.10: pstf ####
 
 > This feature is not used in Gujarati.
@@ -763,6 +778,8 @@ forms.
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
+![vatu feature application](/images/gujarati/gujarati-vatu.png)
+
 #### 3.12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
@@ -774,6 +791,8 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+![cjct feature application](/images/gujarati/gujarati-cjct.png)
 
 #### 3.13: cfar ####
 
@@ -830,6 +849,8 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
+![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.png)
+
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
@@ -842,6 +863,9 @@ consonant that has not formed a ligature with the base consonant).
     final "Reph" position is immediately before the first post-base
     matra, syllable modifier, or Vedic sign.
 
+
+
+![Reph positioning](/images/gujarati/gujarati-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
@@ -879,9 +903,13 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
+![pres feature application](/images/gujarati/gujarati-pres.png)
+
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
+
+![abvs feature application](/images/gujarati/gujarati-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
