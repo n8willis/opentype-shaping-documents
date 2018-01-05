@@ -916,15 +916,21 @@ presentation forms. This usually includes replacing base consonants that
 are adjacent to the below-base-consonant form "Rakaar" with contextual
 ligatures.
 
+![blws feature application](/images/gujarati/gujarati-blws.png)
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
+![psts feature application](/images/gujarati/gujarati-psts.png)
+
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
+
+![haln feature application](/images/gujarati/gujarati-haln.png)
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this

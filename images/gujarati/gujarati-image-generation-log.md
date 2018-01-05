@@ -140,6 +140,39 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvs-after.png
 montage gujarati-abvs-before.png right-arrow.png gujarati-abvs-after.png -geometry +0+0 -background transparent gujarati-abvs.png
 
 
+## 5 `blws`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-blws-before.png --features=-init,-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0aa3,0ac1
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-blws-after.png --features=-init,+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0aa3,0ac1
+
+montage gujarati-blws-before.png right-arrow.png gujarati-blws-after.png -geometry +0+0 -background transparent gujarati-blws.png
+
+
+## 5 `psts`
+
+> Note: Noto Serif Gujarati implements this as an `abvs` lookup for
+> unknown reasons.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-psts-before.png --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a9c,0acd,0ab0,0abe
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-psts-after.png --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a9c,0acd,0ab0,0abe
+
+montage gujarati-psts-before.png right-arrow.png gujarati-psts-after.png -geometry +0+0 -background transparent gujarati-psts.png
+
+
+## 5 `haln`
+
+> Note: Noto Serif Gujarati implements this as a `blwm` lookup.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-after.png --features=-init,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a95,0acd,0a95,0abc,0acd
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-before.png --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a95,0acd,0a95,0abc,0acd
+
+montage gujarati-haln-before.png right-arrow.png gujarati-haln-after.png -geometry +0+0 -background transparent gujarati-haln.png
+
+
+##
 
 
 
