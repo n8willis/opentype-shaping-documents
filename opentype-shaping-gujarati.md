@@ -778,6 +778,12 @@ forms.
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
+> Note: for Gujarati, the `vatu` feature performs the same set of
+> substitutions as the `rkrf` feature. THe `rkrf` feature is
+> preferred; if a given font implements `rkrf`, it does not
+> necessarily have to implement `vatu`. Nevertheless, shaping engines
+> must support and process both features.
+
 ![vatu feature application](/images/gujarati/gujarati-vatu.png)
 
 #### 3.12: cjct ####
@@ -961,9 +967,13 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Gujarati, this includes "Reph" in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
+![abvm feature application](/images/gujarati/gujarati-abvm.png)
+
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Gujarati, this includes below-base dependent vowels
 (matras) and diacritical marks as well as the below-base consonant form "Rakaar".
+
+![blwm feature application](/images/gujarati/gujarati-blwm.png)
 
 
 ## The `<gujr>` shaping model ##
