@@ -530,8 +530,12 @@ into their components. Gujarati has one multi-part dependent vowel,
 > "Candra O" (`U+0AC9`) decomposes to "`U+0AC5`,`U+0ABE`"
 
 > Note: "Candra O" is atypical in that it would decompose into one
-> above-base mark and one right-side mark. This combination, unlike
-> other multi-part matras, does not affect reordering. In addition,
+> above-base mark and one right-side mark. 
+
+> This combination, unlike other multi-part matras, does not affect
+> reordering: the two decomposed components would be tagged for the
+> `POS_AFTER_SUBJOINED` and `POS_AFTER_POST` sorting positions, and
+> Gujarati has no glyphs that could occur between them. In addition,
 > the decomposition is not canonical in Unicode. Consequently, shaping
 > engines may choose to skip it.
 
