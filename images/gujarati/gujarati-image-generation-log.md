@@ -133,9 +133,9 @@ montage gujarati-pres-before.png right-arrow.png gujarati-pres-after.png -geomet
 
 ## 5 `abvs`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvs-before.png --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0aad,0ac0,0a82
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvs-before.png --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0aa3,0abf
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvs-after.png --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0aad,0ac0,0a82
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvs-after.png --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0aa3,0abf
 
 montage gujarati-abvs-before.png right-arrow.png gujarati-abvs-after.png -geometry +0+0 -background transparent gujarati-abvs.png
 
@@ -172,7 +172,14 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-before.pn
 montage gujarati-haln-before.png right-arrow.png gujarati-haln-after.png -geometry +0+0 -background transparent gujarati-haln.png
 
 
-##
+## 6 `abvm`
+
+
+
+
+
+
+## 6 `blwm`
 
 
 
