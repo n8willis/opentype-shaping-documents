@@ -783,7 +783,7 @@ forms.
 the `blwf` feature.
 
 > Note: for Gujarati, the `vatu` feature performs the same set of
-> substitutions as the `rkrf` feature. THe `rkrf` feature is
+> substitutions as the `rkrf` feature. The `rkrf` feature is
 > preferred; if a given font implements `rkrf`, it does not
 > necessarily have to implement `vatu`. Nevertheless, shaping engines
 > must support and process both features.
