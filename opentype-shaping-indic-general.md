@@ -48,7 +48,6 @@ The largest (by number of readers) scripts in the Indic family are:
   - Tamil
   - [Telugu](opentype-shaping-telugu.md)
   - Sinhala
-  - Khmer
 
 Text runs in Indic scripts may also include characters from the Vedic
 Extensions block in Unicode. This is a set of marks and punctuation
@@ -70,8 +69,8 @@ Therefore, new fonts should be engineered to work with the updated
 shaping model. However, if a font is encountered that supports only
 an older script tag, the shaping engine should deal with it gracefully.
 
-The `<sinh>` and `<khmr>` tags, unlike the other Indic script tags,
-were not deprecated in 2005 and are still used for Sinhala and Khmer text.
+The `<sinh>` tag, unlike the other Indic script tags,
+was not deprecated in 2005 and is still used for Sinhala text.
 
 > Note: There are several other scripts derived from the Bhrami script
 > that are often treated separately and not bundled into the "Indic"
@@ -79,7 +78,7 @@ were not deprecated in 2005 and are still used for Sinhala and Khmer text.
 > evolved to have significantly distinct rules for syllable
 > construction, reordering, and shaping.
 >
-> The scripts include Buginese, Balinese, Javanese, Lao, Myanmar,
+> The scripts include Buginese, Balinese, Javanese, Khmer, Lao, Myanmar,
 > Thai, and Tibetan.
 
 ## Terminology ##
@@ -237,11 +236,11 @@ important miscellaneous characters, are available here:
   - [Tamil](character-tables/character-tables-tamil.md)
   - [Telugu](character-tables/character-tables-telugu.md)
   - [Sinhala](character-tables/character-tables-sinhala.md)
-  - [Khmer](character-tables/character-tables-khmer.md)
   - [Vedic Extensions](opentype-shaping-vedic-extensions.md)
   - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) 
 	
-	
+<!---  - [Khmer](character-tables/character-tables-khmer.md) --->
+<!--- Khmer removed from HarfBuzz's Indic shaper, Jan 2018 --->	
 	
 ## The Indic2 shaping model ##
 
@@ -373,7 +372,7 @@ In the lists that follow, the options for each characteristic are
 mutually exclusive, and they are exhaustive for the set of Indic
 scripts [listed](#general-information) at the beginning of this
 document (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
-Oriya, Tamil, Telugu, Sinhala, and Khmer).
+Oriya, Tamil, Telugu, and Sinhala).
 
 Implementers who wish to cover additional scripts using the same
 method would first need to determine whether any additional options
