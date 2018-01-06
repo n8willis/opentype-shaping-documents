@@ -534,8 +534,8 @@ into their components. Gujarati has one multi-part dependent vowel,
 
 > This combination, unlike other multi-part matras, does not affect
 > reordering: the two decomposed components would be tagged for the
-> `POS_AFTER_SUBJOINED` and `POS_AFTER_POST` sorting positions, and
-> Gujarati has no glyphs that could occur between them. In addition,
+> `POS_AFTER_SUBJOINED` and `POS_AFTER_POST` sorting positions,
+> respectively, and neither will need to be reordered. In addition,
 > the decomposition is not canonical in Unicode. Consequently, shaping
 > engines may choose to skip it.
 
