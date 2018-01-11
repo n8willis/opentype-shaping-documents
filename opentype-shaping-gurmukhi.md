@@ -648,7 +648,8 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
 consonants will usually be preceded by a "Halant" glyph. 
 
-<!--- below = Ha, Ra, Va, post = Ya --->
+![Post-base consonants](/images/gurmukhi/gurmukhi-pstf.png)
+
 
 #### 2.8: Mark tagging ####
 
@@ -666,10 +667,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 > Note: In this step, joiner and non-joiner characters must also be
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
-
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
-
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
@@ -714,8 +711,8 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+![Nukta composition](/images/gurmukhi/gurmukhi-nukt.png)
 
-![Nukta composition](/images/gurmukhi/nukta-composition.png)
 
 #### 3.3: akhn ####
 
@@ -730,11 +727,10 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-> Note: Akhand ligatures are rare in Gurmukhi text.
+> Note: Akhand ligatures are rare in Gurmukhi text. Nevertheless,
+> shaping engines must test for the feature in order to provide the
+> functionality if it is implemented.
 
-![KSsa ligation](/images/gurmukhi/kassa-ligation.png)
-
-![JNya ligation](/images/gurmukhi/janya-ligation.png)
 
 #### 3.4: rphf ####
 
@@ -744,9 +740,10 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
-> Note: "Reph" usage is rare in Gurmukhi text.
+> Note: "Reph" usage is rare in Gurmukhi text. Nevertheless,
+> shaping engines must test for the feature in order to provide the
+> functionality if it is implemented.
 
-![Reph composition](/images/gurmukhi/reph-composition.png)
 
 #### 3.5: rkrf ####
 
@@ -778,9 +775,12 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 
-![Raphala composition](/images/gurmukhi/raphala-composition.png)
 
-![Baphala composition](/images/gurmukhi/baphala-composition.png)
+![Below-base Ra composition](/images/gurmukhi/gurmukhi-blwf-ra.png)
+
+![Below-base Va composition](/images/gurmukhi/gurmukhi-blwf-va.png)
+
+![Below-base Ha composition](/images/gurmukhi/gurmukhi-blwf-ha.png)
 
 #### 3.8: abvf ####
 
@@ -804,9 +804,11 @@ must test:
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
-> Note: Half forms are rare in Gurmukhi text.
+> Note: Half forms are rare in Gurmukhi text. Fonts supporting
+> `<gur2>` may implement the `half` feature using explicit "Halant"
+> glyphs, as illustrated here.
 
-![Half-form formation](/images/gurmukhi/half-formation.png)
+![Half-form formation](/images/gurmukhi/gurmukhi-half.png)
 
 #### 3.10: pstf ####
 
@@ -816,7 +818,7 @@ Gurmukhi includes one post-base form:
 
   - "Halant,Ya" takes on a post-base form.
 
-![Yaphala composition](/images/gurmukhi/yaphala-composition.png)
+![Gurmukhi post-base Ya composition](/images/gurmukhi/gurmukhi-pstf.png)
 
 #### 3.11: vatu ####
 
@@ -827,8 +829,9 @@ forms.
 form of "Ra", "Ha", or "Va"; therefore, this feature must be applied after
 the `blwf` feature.
 
-
-![Vattu variant ligation](/images/gurmukhi/vattu-ligation.png)
+> Note: vattu variants are rare in Gurmukhi text. Nevertheless,
+> shaping engines must test for the feature in order to provide the
+> functionality if it is implemented.
 
 #### 3.12: cjct ####
 
@@ -842,8 +845,9 @@ The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
-
-![Conjunct ligation](/images/gurmukhi/pata-conjunct.png)
+> Note: Conjunct forms are rare in Gurmukhi text. Nevertheless,
+> shaping engines must test for the feature in order to provide the
+> functionality if it is implemented.
 
 #### 3.13: cfar ####
 
@@ -899,6 +903,8 @@ This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
+
+![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.png)
 
 #### 4.3: Reph ####
 
@@ -966,20 +972,28 @@ The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
+![Above-base substitutions](/images/gurmukhi/gurmukhi-abvs.png)
+
+
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
 are followed by below-base-consonant forms (like those of "Ra", "Ha",
 "Va", or "Yakash") with contextual ligatures.
 
+![Below-base substitutions](/images/gurmukhi/gurmukhi-blws.png)
+
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
-post-base-consonant/matra pairs with contextual ligatures. 
+post-base-consonant/matra pairs with contextual ligatures.
 
 The `haln` feature replaces word-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
+
+![Halant form substitutions](/images/gurmukhi/gurmukhi-haln.png)
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -1010,10 +1024,15 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Gurmukhi, this includes "Reph" in addition to the
 diacritical marks and Vedic signs. 
 
+![Above-base mark positioning](/images/gurmukhi/gurmukhi-abvm.png)
+
+
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Gurmukhi, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms of "Ra", "Ha", and
 "Va".
+
+![Below-base mark positioning](/images/gurmukhi/gurmukhi-blwm.png)
 
 
 ## The `<guru>` shaping model ##
