@@ -57,7 +57,7 @@ scripts, and may be used to describe the distinctive cap stroke above most
 Kannada letters by comparison. To avoid ambiguity, the term **headline** is
 used in most Unicode and OpenType shaping documents.
 
-**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
+**Halant** and **Virama** are both standard terms for the above-base "vowel-killer"
 sign. Unicode documents use the term "virama" most frequently, while
 OpenType documents use the term "halant" most frequently. In the Kannada
 language, this sign is known as the _hrasva_.
@@ -678,24 +678,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
 
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
-
-<!--- HarfBuzz also tags everything between a post-base consonant or -->
-<!--matra and another post-base consonant as belonging to the latter -->
-<!--post-base consonant. --->
-
-
-<!--- 2.9: Ninth, all post-base glyphs should be merged into a single
-   substring that will sort as a single unit. --->
-   
-<!--- Unsure. This occurs after the stable sort. What happens is that -->
-<!--HB looks at every glyph between the base consonant and the end, -->
-<!--looking for a 'max' value, then merges everything between the base -->
-<!--and the max. --->
-
-<!--- Merging all post-base stuff into one unit is old-spec -->
-<!--behavior. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
