@@ -886,6 +886,10 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
+Kannada does not use pre-base matras, so this step will
+involve no work when processing `<knd2>` text. It is included here in
+order to maintain compatibility with the other Indic scripts.
+
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
