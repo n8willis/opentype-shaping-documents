@@ -585,11 +585,11 @@ has a canonical decomposition, so this step is unambiguous.
 >
 > "Ee" (`U+0CC7`) decomposes to "`U+0CC6`,`U+0CD5`"
 >
-> "Ii" (`U+0CC8`) decomposes to "`U+0CC6`,`U+0CD6`"
+> "Ai" (`U+0CC8`) decomposes to "`U+0CC6`,`U+0CD6`"
 >
-> "Ii" (`U+0CCA`) decomposes to "`U+0CC6`,`U+0CC2`"
+> "O" (`U+0CCA`) decomposes to "`U+0CC6`,`U+0CC2`"
 >
-> "Ii" (`U+0CCB`) decomposes to "`U+0CCA`,`U+0CD5`"
+> "Oo" (`U+0CCB`) decomposes to "`U+0CCA`,`U+0CD5`"
 >
 
 Because this decomposition is a character-level operation, the shaping
