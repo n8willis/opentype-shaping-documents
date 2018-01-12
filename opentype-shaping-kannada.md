@@ -49,8 +49,7 @@ terms used colloquially in any particular language may vary, however,
 potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. In the Kannada
-language, dependent-vowel signs <!--- that are positioned below the base
-consonant --> may also be referred to as _swara_ forms.
+language, dependent-vowel signs may also be referred to as _swara_ forms.
 
 The term "matra" is also used to refer to the headline in other Indic
 scripts, and may be used to describe the distinctive cap stroke above most
@@ -597,7 +596,7 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/kannada/split-matra-decomposition.png)
+![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.png)
 
 #### 2.3: Tag matras ####
 
@@ -723,7 +722,7 @@ The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 
-![Nukta composition](/images/kannada/nukta-composition.png)
+![Nukta composition](/images/kannada/kannada-nukt.png)
 
 #### 3.3: akhn ####
 
@@ -738,9 +737,9 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-![KSsa ligation](/images/kannada/kassa-ligation.png)
+![KSsa ligation](/images/kannada/kannada-akhn-kssa.png)
 
-![JNya ligation](/images/kannada/janya-ligation.png)
+![JNya ligation](/images/kannada/kannada-akhn-jnya.png)
 
 #### 3.4: rphf ####
 
@@ -751,7 +750,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     the `rphf` substitution.
 	
 
-![Reph composition](/images/kannada/reph-composition.png)
+![Reph composition](/images/kannada/kannada-rphf.png)
 
 #### 3.5: rkrf ####
 
@@ -772,6 +771,8 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. All consonants in Kannada can take on a below-base consonant
 form.
 
+
+![Below-base form composition](/images/kannada/kannada-blwf.png)
 
 #### 3.8: abvf ####
 
@@ -799,14 +800,11 @@ must test:
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
 
-![Half-form formation](/images/kannada/half-formation.png)
 
 #### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-
-![Yaphala composition](/images/kannada/yaphala-composition.png)
 
 #### 3.11: vatu ####
 
@@ -828,8 +826,6 @@ must be applied after the `half` feature.
 > possible for a font to implement the `cjct` feature in order to
 > provide for desired typographic variation.
 
-
-![Conjunct ligation](/images/kannada/pata-conjunct.png)
 
 #### 3.13: cfar ####
 
@@ -912,6 +908,8 @@ Finally, if the final position of "Reph" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
+![Reph positioning](/images/kannada/kannada-reph-positioning.png)
+
 #### 4.4: Pre-base-reordering consonants ####
 
 Any pre-base-reordering consonants must be moved to immediately before
@@ -953,24 +951,34 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
+![Pre-base form compositioning](/images/kannada/kannada-pres.png)
+
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
+
+![Above-base form composition](/images/kannada/kannada-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually involves replacing multiple
 below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
+![Below-base form composition](/images/kannada/kannada-blws.png)
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
+![Post-base form composition](/images/kannada/kannada-psts.png)
+
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
-typographically problematic. 
+typographically problematic.
+
+![Halant form composition](/images/kannada/kannada-haln.png) 
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -1004,6 +1012,8 @@ diacritical marks, and Vedic signs.
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Kannada, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
+
+![Below-base mark positioning](/images/kannada/kannada-blwm.png)
 
 
 ## The `<knda>` shaping model ##
