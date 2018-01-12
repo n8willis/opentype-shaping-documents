@@ -185,7 +185,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-after.p
 montage devanagari-haln-before.png right-arrow.png devanagari-haln-after.png -geometry +0+0 -background transparent devanagari-haln.png
 
 
-## `abvm`
+## 6 `abvm`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvm-before.png --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=092b,0948
 
@@ -194,7 +194,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-abvm-after.p
 montage devanagari-abvm-before.png right-arrow.png devanagari-abvm-after.png -geometry +0+0 -background transparent devanagari-abvm.png
 
 
-## `blwm`
+## 6 `blwm`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-blwm-before.png --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=0915,0943
 
