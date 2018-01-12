@@ -908,7 +908,7 @@ Finally, if the final position of "Reph" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
-![Reph positioning](/images/kannada/kannada-reph-positioning.png)
+![Reph positioning](/images/kannada/kannada-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
