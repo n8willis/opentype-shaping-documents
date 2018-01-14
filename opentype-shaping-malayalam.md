@@ -594,7 +594,7 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/malayalam/split-matra-decomposition.png)
+![Two-part matra decomposition](/images/malayalam/malayalam-matra-decompose.png)
 
 #### 2.3: Tag matras ####
 
@@ -652,6 +652,11 @@ The post-base "Ra" will normally be reordered to a pre-base position
 during the final-reordering stage. However, shaping engines should tag
 a post-base "Ra" with `POS_POSTBASE_CONSONANT` at this stage for
 consistency.
+
+![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
+
+
+![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png)
 
 	
 #### 2.8: Mark tagging ####
@@ -718,8 +723,11 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+> Note: The Malayalam Unicode block does not include a Nukta
+> codepoint, but Malayalam fonts may implement the `nukt` lookup using
+> similar characters from other blocks.
 
-![Nukta composition](/images/malayalam/nukta-composition.png)
+![Nukta composition](/images/malayalam/malayalam-nukt.png)
 
 #### 3.3: akhn ####
 
@@ -731,15 +739,19 @@ there are typically many ligatures in a font that are implemented as
 These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+![Akhand KSsa ligation](/images/malayalam/malayalam-akhn-kssa.png)
+
+
+![Akhand NnTta ligation](/images/malayalam/malayalam-akhn-nntta.png)
+
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
 > instead of "Reph". Therefore, Malayalam fonts may implement "Chillu
 > R" as a substitution for "Ra,Halant" in the `akhn` feature. This
 > ensures that the substitution takes place before the `rphf` feature
 > is applied, so the font may omit the `rphf` feature entirely.
 
-![KKa ligation](/images/malayalam/kka-ligation.png)
+![Akhand Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.png)
 
-![DDha ligation](/images/malayalam/ddha-ligation.png)
 
 #### 3.4: rphf ####
 
@@ -749,13 +761,19 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
+> Note: The "Dot Reph" substitution shown here is typically found only
+> in old-orthography Malayalam writing.
+
+![Dot Reph composition](/images/malayalam/malayalam-dot-reph.png)
+
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
 > instead of "Reph". Therefore, Malayalam fonts may implement "Chillu
 > R" as a substitution for "Ra,Halant" in the `akhn` feature. This
 > ensures that the substitution takes place before the `rphf` feature
 > is applied, so the font may omit the `rphf` feature entirely.
 
-![Reph composition](/images/malayalam/reph-composition.png)
+![Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.png)
+
 
 #### 3.5: rkrf ####
 
@@ -766,6 +784,8 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 The `pref` feature replaces reordering-pre-base-consonant glyphs with
 any special forms. Malayalam includes one such reordering consonant,
 "Ra" when it occurs in post-base position.
+
+![Pre-base Ra formation](/images/malayalam/malayalam-pstf-ra.png)
 
 #### 3.7: blwf ####
 
@@ -780,9 +800,8 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
+![Below-base La formation](/images/malayalam/malayalam-blwf.png)
 
-
-![Baphala composition](/images/malayalam/baphala-composition.png)
 
 #### 3.8: abvf ####
 
@@ -817,11 +836,14 @@ must test:
 #### 3.10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any
-special forms. Malayalam includes three consonants that can take on
-post-base form: "Ra", "Ya", and Va".
+special forms. Malayalam includes two consonants that can take on
+post-base form: "Ya" and Va".
+
+![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
 
 
-![Yaphala composition](/images/malayalam/yaphala-composition.png)
+![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png)
+
 
 #### 3.11: vatu ####
 
@@ -843,8 +865,8 @@ must be applied after the `half` feature.
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
 
+![Conjunct ligation](/images/malayalam/malayalam-cjct.png)
 
-![Conjunct ligation](/images/malayalam/pata-conjunct.png)
 
 #### 3.13: cfar ####
 
@@ -901,6 +923,8 @@ This means that the matra will move to the right of all explicit
 consonant, all conjuncts or ligatures that contains the base
 consonant, and all half forms.
 
+![Matra positioning](/images/malayalam/malayalam-matra-position.png)
+
 #### 4.3: Reph ####
 
 "Reph" or "Repha" must be moved from the beginning of the syllable to its final
@@ -922,6 +946,8 @@ Finally, if the final position of "Reph" or "Repha" occurs after a
 "_matra_,Halant" subsequence, then "Reph"/"Repha" must be repositioned to the
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
+
+![Reph positioning](/images/malayalam/malayalam-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
