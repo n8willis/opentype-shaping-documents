@@ -135,21 +135,51 @@ montage malayalam-matra-position-before.png right-arrow.png malayalam-matra-posi
 
 ## 4.3 Reph position
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-reph-position-before.png --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=25cc,0d4d,0d30,0d39,0d4d,0d23,0d4d,0d21,0d4c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-before.png --features=+akhn,-abvm,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,200d,0d23,0d4d,200d,0d21,0d41
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-reph-position-after.png --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d39,0d4d,0d23,0d4d,0d21,0d4d,0d30,0d4c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.png --features=+akhn,+abvm,+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
 
-montage malayalam-reph-position-before.png right-arrow.png malayalam-reph-position-after.png -geometry +0+0 -background transparent malayalam-reph-position.png
-
-
+montage malayalam-repha-position-before.png right-arrow.png malayalam-repha-position-after.png -geometry +0+0 -background transparent malayalam-repha-position.png
 
 
+## 4.4 Pre-base reordering
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pref-position-before.png --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=25cc,0d4d,0d30,0d39,0d4d,0d23,0d4d,0d21,0d4c
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pref-position-after.png --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d39,0d4d,0d23,0d4d,0d21,0d4d,0d30,0d4c
+
+montage malayalam-pref-position-before.png right-arrow.png malayalam-pref-position-after.png -geometry +0+0 -background transparent malayalam-pref-position.png
 
 
+## 5 `blws`
 
 
+## `psts`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.png --features=-psts,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.png --features=+psts,+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+
+montage malayalam-psts-before.png right-arrow.png malayalam-psts-after.png -geometry +0+0 -background transparent malayalam-psts.png
+
+## `haln`
+
+## 6 `abvm`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-abvm-before.png --features=-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-abvm-after.png --features=+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
+
+montage malayalam-abvm-before.png right-arrow.png malayalam-abvm-after.png -geometry +0+0 -background transparent malayalam-abvm.png
 
 
+## 6 `blwm`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwm-before.png --features=-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d34,0d62
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwm-after.png --features=+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d34,0d62
+
+montage malayalam-blwm-before.png right-arrow.png malayalam-blwm-after.png -geometry +0+0 -background transparent malayalam-blwm.png
 
 
 

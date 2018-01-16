@@ -947,7 +947,7 @@ Finally, if the final position of "Reph" or "Repha" occurs after a
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
-![Reph positioning](/images/malayalam/malayalam-reph-position.png)
+![Repha positioning](/images/malayalam/malayalam-repha-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
@@ -965,6 +965,8 @@ The algorithm for reordering "Ra" in this circumstance is:
     reordering a pre-base matra.
   - If the pre-base matra positioning algorithm cannot determine the final
     position, place the "Ra" immediately before the base consonant.
+
+![Pre-base-reordering consonant positioning](/images/malayalam/malayalam-pref-position.png)
 
 
 #### 4.5: Initial matras ####
@@ -1011,6 +1013,8 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
+![Post-base substitution](/images/malayalam/malayalam-psts.png)
+
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
@@ -1045,9 +1049,13 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Malayalam, this includes "Repha" in addition to the
 diacritical marks and Vedic signs. 
 
+![Above-base mark positioning](/images/malayalam/malayalam-abvm.png)
+
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Malayalam, this includes below-base dependent vowels
 (matras) as well as the below-base consonant form of "La".
+
+![Below-base mark positioning](/images/malayalam/malayalam-blwm.png)
 
 
 ## The `<mlym>` shaping model ##
