@@ -828,10 +828,13 @@ must test:
 > Note: Malayalam does not usually incorporate half forms, but it is
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
+>
+> Note: Some `<mlm2>` fonts may use the `half` feature to implement
+> Chillu substitutions, as in the example below
 
 
+![Half-form formation](/images/malayalam/malayalam-half.png)
 
-![Half-form formation](/images/malayalam/half-formation.png)
 
 #### 3.10: pstf ####
 
@@ -1020,6 +1023,12 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
 
+> Note: Some `<mlm2>` fonts may use the `half` feature to implement
+> Chillu substitutions, as in the example below
+
+![Halant-form formation](/images/malayalam/malayalam-haln.png)
+
+
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Malayalam shaping
@@ -1046,14 +1055,14 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Malayalam, this includes "Repha" in addition to the
+characters. In Malayalam, this includes "Dot Reph" in addition to the
 diacritical marks and Vedic signs. 
 
 ![Above-base mark positioning](/images/malayalam/malayalam-abvm.png)
 
 The `blwm` feature positions below-base marks for attachment to base
-characters. In Malayalam, this includes below-base dependent vowels
-(matras) as well as the below-base consonant form of "La".
+characters. In Malayalam, this includes below-base marks as well as
+the below-base consonant form of "La".
 
 ![Below-base mark positioning](/images/malayalam/malayalam-blwm.png)
 

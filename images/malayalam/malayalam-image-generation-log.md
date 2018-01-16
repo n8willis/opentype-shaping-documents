@@ -109,6 +109,18 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.pn
 
 montage malayalam-blwf-before.png right-arrow.png malayalam-blwf-after.png -geometry +0+0 -background transparent malayalam-blwf.png
 
+## 3.9 `half`
+
+> Note: Added a note to the shaping text about using `half` for Chillu
+> lookups.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.png --features=+half --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,2005,200d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.png --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
+
+montage malayalam-half-before.png right-arrow.png malayalam-half-after.png -geometry +0+0 -background transparent malayalam-half.png
+
+
 ## 3.10 `pstf`
 
 > Note: Uses the same images as 2.7
@@ -153,8 +165,12 @@ montage malayalam-pref-position-before.png right-arrow.png malayalam-pref-positi
 
 ## 5 `blws`
 
+> Note: Noto Serif and Sans Malayalam have blws-like "La" features in
+> other lookups, such as `akhn`. I have not been able to isolate one
+> of them for usage.
 
-## `psts`
+
+## 5 `psts`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.png --features=-psts,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
@@ -162,7 +178,14 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.pn
 
 montage malayalam-psts-before.png right-arrow.png malayalam-psts-after.png -geometry +0+0 -background transparent malayalam-psts.png
 
-## `haln`
+## 5 `haln`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.png --features=-haln --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,2005,200d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.png --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
+
+montage malayalam-haln-before.png right-arrow.png malayalam-haln-after.png -geometry +0+0 -background transparent malayalam-haln.png
+
 
 ## 6 `abvm`
 
