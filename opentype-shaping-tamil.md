@@ -514,7 +514,9 @@ into their components. Tamil has threee multi-part dependent vowels,
 "O" (`U+0BCA`), "Oo" (`U+0BCB`), and "Au" (`U+0BCC`).
 
 > "O" (`U+0BCA`) decomposes to "`U+0BC6`,`U+0BBE`"
+>
 > "Oo" (`U+0BCB`) decomposes to "`U+0BC7`,`U+0BBE`"
+> 
 > "Au" (`U+0BCC`) decomposes to "`U+0BC6`,`U+0BD7`"
 
 
@@ -546,9 +548,13 @@ For `<tml2>` text, the canonical ordering means that any "Nukta"s must
 be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
-Tamil does not incorporate the "Nukta" sign, so this step will
-involve no work when shaping `<tml2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
+> Note: The Tamil Unicode block does not include a "Nukta"
+> codepoint. However, `<tml2>` text runs in minority languages that
+> use the Tamil script may incorporate nukta characters from other
+> blocks. Therefore shaping engines must apply the appropriate
+> mark-reordering move if a character matching the NUKTA shaping class
+> is encountered.
+
 
 #### 2.5: Pre-base consonants ####
 
@@ -604,17 +610,17 @@ The order in which these substitutions must be performed is fixed for
 all Indic scripts:
 
 	locl
-	nukt (not used in Tamil)
+	nukt 
 	akhn
 	rphf (not used in Tamil) 
 	rkrf (not used in Tamil)
-	pref (not used in Tamil)
-	blwf (not used in Tamil)
-	abvf (not used in Tamil)
+	pref 
+	blwf 
+	abvf 
 	half
-	pstf (not used in Tamil)
+	pstf 
 	vatu (not used in Tamil)
-	cjct (not used in Tamil)
+	cjct 
 	cfar (not used in Tamil)
 
 #### 3.1 locl ####
@@ -631,71 +637,73 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: nukt ####
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
-precomposed nukta-variant of the consonant glyph.
 
-![nukt feature application](/images/tamil/tamil-nukt.png)
+The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
+precomposed nukta-variant of the consonant glyph. 
+
+> Note: The Tamil Unicode block does not include a "Nukta"
+> codepoint. However, `<tml2>` text runs in minority languages that
+> use the Tamil script may incorporate nukta characters from other
+> blocks. Therefore shaping engines must apply the `nukt` feature if
+> it is used in the active font.
 
 
 #### 3.3: akhn ####
 
-The `akhn` feature replaces two specific sequences with required ligatures. 
+The `akhn` feature replaces one specific sequence with a required ligature. 
 
   - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
   
-These sequences can occur anywhere in a syllable. The "KSsa" and
-"JNya" characters have orthographic status equivalent to full
+These sequences can occur anywhere in a syllable. The "KSsa" 
+character has orthographic status equivalent to full
 consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-
 ![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.png)
 
-![akhn JNya formation](/images/tamil/tamil-akhn-jnya.png)
 
 #### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
+> This feature is not used in Tamil.
+
+<!--- The `rphf` feature replaces initial "Ra,Halant" sequences with the
 "Reph" glyph.
 
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
     the `rphf` substitution.
 	
 
-![Reph formation](/images/tamil/tamil-rphf.png)
+![Reph formation](/images/tamil/tamil-rphf.png) --->
 	
 #### 3.5 rkrf ####
 
-The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
+> This feature is not used in Tamil.
+
+<!--- The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
 "Rakaar"-ligature form of the consonant glyph.
 
-![Rakaar ligation](/images/tamil/tamil-rkrf.png)
+![Rakaar ligation](/images/tamil/tamil-rkrf.png) --->
 
 #### 3.6 pref ####
 
-> This feature is not used in Tamil.
+The `pref` feature replaces pre-base-consonant glyphs with 
+any special forms.
 
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
+> Note: Tamil does not usually incorporate pre-base-consonant forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
+
 
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Tamil includes one below-base consonant
-form:
+special forms. 
 
-  - "Halant,Ra" (occuring after the base consonant) or "Ra,Halant"
-    (before the base consonant, but in a non-syllable-initial position) will
-    take on the "Rakaar" form.
-	
-If the active font contains ligatures for the consonant adjacent to
-the "Halant" (i.e., "_Consonant_,Halant,Ra"), then that ligature is
-normally applied with the `rkrf` feature in step 3.5. The `blwf`
-feature allows the "Ra" to be substituted with a standalone "Rakaar"
-mark, to work with all consonants that do not have a `rkrf` ligature
-in the font.
+> Note: Tamil does not usually incorporate below-base-consonant forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
+
 
 Because Tamil incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -708,7 +716,13 @@ characteristic.
 
 #### 3.8: abvf ####
 
-> This feature is not used in Tamil.
+The `abvf` feature replaces above-base-consonant glyphs with any
+special forms. 
+
+> Note: Tamil does not usually incorporate above-base-consonant forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
+
 
 #### 3.9: half ####
 
@@ -732,29 +746,26 @@ must test:
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     tagged for potential `half` substitutions.
 
+
+> Note: Tamil does not usually incorporate half forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
+
 ![half-form feature application](/images/tamil/tamil-half.png)
 
 #### 3.10: pstf ####
 
-> This feature is not used in Tamil.
+The `pstf` feature replaces post-base-consonant glyphs with any
+special forms. 
+
+> Note: Tamil does not usually incorporate post-base-consonant forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
 
 
 #### 3.11: vatu ####
 
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
-
-"Vattu variants" are formed from glyphs followed by "Rakaar"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
-
-> Note: for Tamil, the `vatu` feature performs the same set of
-> substitutions as the `rkrf` feature. The `rkrf` feature is
-> preferred; if a given font implements `rkrf`, it does not
-> necessarily have to implement `vatu`. Nevertheless, shaping engines
-> must support and process both features.
-
-![vatu feature application](/images/tamil/tamil-vatu.png)
+> This feature is not used in Tamil.
 
 #### 3.12: cjct ####
 
@@ -767,6 +778,11 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
+
+
+> Note: Tamil does not usually incorporate conjunct forms, but it is
+> possible for a font to implement them in order to provide for
+> desired typographic variation.
 
 ![cjct feature application](/images/tamil/tamil-cjct.png)
 
@@ -839,9 +855,10 @@ consonant that has not formed a ligature with the base consonant).
     final "Reph" position is immediately before the first post-base
     matra, syllable modifier, or Vedic sign.
 
+Tamil does not use "Reph", so this step will involve no work when
+processing `<tml2>` text. It is included here in order to maintain
+compatibility with the other Indic scripts. 
 
-
-![Reph positioning](/images/tamil/tamil-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
 
@@ -889,7 +906,7 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
-are adjacent to the below-base-consonant form "Rakaar" with contextual
+are adjacent to the below-base marks with contextually appropriate
 ligatures.
 
 ![blws feature application](/images/tamil/tamil-blws.png)
@@ -934,14 +951,13 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Tamil, this includes "Reph" in addition to
-above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
+characters. In Tamil, this includes above-base dependent vowels
+(matras), diacritical marks, and Vedic signs.
 
 ![abvm feature application](/images/tamil/tamil-abvm.png)
 
 The `blwm` feature positions below-base marks for attachment to base
-characters. In Tamil, this includes below-base dependent vowels
-(matras) and diacritical marks as well as the below-base consonant form "Rakaar".
+characters. In Tamil, this includes below-base diacritical marks.
 
 ![blwm feature application](/images/tamil/tamil-blwm.png)
 
@@ -981,12 +997,6 @@ In `<tml2>` text, as described above in this document, there is no
 such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
-
-In addition, for some scripts, left-side dependent vowel marks
-(matras) were not repositioned during the final reordering
-stage. For `<taml>` text, the left-side matra was always positioned
-at the beginning of the syllable.
-
 
 
 ### Advice for handling fonts with `<taml>` features only ###
