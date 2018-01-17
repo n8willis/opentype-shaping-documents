@@ -6,6 +6,7 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Sinhala character table](#sinhala-character-table)
+  - [Sinhala archaic numbers table](#sinhala-archaic-numbers-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
@@ -171,6 +172,48 @@ specific, script-aware behavior.
 |`U+0DFE`   | _unassigned_     |                   |                            |                              |
 |`U+0DFF`   | _unassigned_     |                   |                            |                              |
 
+
+
+## Sinhala Archaic Numbers table ##
+
+Sinhala text runs may also include glyphs from the Sinhala Archaic
+Numbers block. These characters should be classified as follows.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
+|:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
+|`U+111E0`  | _unassigned_     |                   |                            |                              |
+|`U+111E1`  | Number           | NUMBER            | _null_                     | &#x111E1; Archaic Digit One  |
+|`U+111E2`  | Number           | NUMBER            | _null_                     | &#x111E2; Archaic Digit Two  |
+|`U+111E3`  | Number           | NUMBER            | _null_                     | &#x111E3; Archaic Digit Three|
+|`U+111E4`  | Number           | NUMBER            | _null_                     | &#x111E4; Archaic Digit Four |
+|`U+111E5`  | Number           | NUMBER            | _null_                     | &#x111E5; Archaic Digit Five |
+|`U+111E6`  | Number           | NUMBER            | _null_                     | &#x111E6; Archaic Digit Six  |
+|`U+111E7`  | Number           | NUMBER            | _null_                     | &#x111E7; Archaic Digit Seven|
+|`U+111E8`  | Number           | NUMBER            | _null_                     | &#x111E8; Archaic Digit Eight|
+|`U+111E9`  | Number           | NUMBER            | _null_                     | &#x111E9; Archaic Digit Nine |
+|`U+111EA`  | Number           | NUMBER            | _null_                     | &#x111EA; Archaic Number Ten |
+|`U+111EB`  | Number           | NUMBER            | _null_                     | &#x111EB; Archaic Number 20  |
+|`U+111EC`  | Number           | NUMBER            | _null_                     | &#x111EC; Archaic Number 30  |
+|`U+111ED`  | Number           | NUMBER            | _null_                     | &#x111ED; Archaic Number 40  |
+|`U+111EE`  | Number           | NUMBER            | _null_                     | &#x111EE; Archaic Number 50  |
+|`U+111EF`  | Number           | NUMBER            | _null_                     | &#x111EF; Archaic Number 60  |
+| | | | |																		
+|`U+111F0`  | Number           | NUMBER            | _null_                     | &#x111F0; Archaic Number 70  |
+|`U+111F1`  | Number           | NUMBER            | _null_                     | &#x111F1; Archaic Number 80  |
+|`U+111F2`  | Number           | NUMBER            | _null_                     | &#x111F2; Archaic Number 90  |
+|`U+111F3`  | Number           | NUMBER            | _null_                     | &#x111F3; Archaic Number 100 |
+|`U+111F4`  | Number           | NUMBER            | _null_                     | &#x111F4; Archaic Number 1000|
+|`U+111F5`  | _unassigned_     |                   |                            |                              |
+|`U+111F6`  | _unassigned_     |                   |                            |                              |
+|`U+111F7`  | _unassigned_     |                   |                            |                              |
+|`U+111F8`  | _unassigned_     |                   |                            |                              |
+|`U+111F9`  | _unassigned_     |                   |                            |                              |
+|`U+111FA`  | _unassigned_     |                   |                            |                              |
+|`U+111FB`  | _unassigned_     |                   |                            |                              |
+|`U+111FC`  | _unassigned_     |                   |                            |                              |
+|`U+111FD`  | _unassigned_     |                   |                            |                              |
+|`U+111FE`  | _unassigned_     |                   |                            |                              |
+|`U+111FF`  | _unassigned_     |                   |                            |                              |
 
 
 ## Vedic Extensions character table ##
