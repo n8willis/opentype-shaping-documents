@@ -1023,7 +1023,7 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the "Halant" mark on its own is
 typographically problematic. 
 
-> Note: Some `<mlm2>` fonts may use the `half` feature to implement
+> Note: Some `<mlm2>` fonts may use the `haln` feature to implement
 > Chillu substitutions, as in the example below
 
 ![Halant-form formation](/images/malayalam/malayalam-haln.png)
