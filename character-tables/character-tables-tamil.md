@@ -6,6 +6,7 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Tamil character table](#tamil-character-table)
+  - [Grantha marks character table](#grantha-marks-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
@@ -171,6 +172,19 @@ specific, script-aware behavior.
 |`U+0BFE`   | _unassigned_     |                   |                            |                              |
 |`U+0BFF`   | _unassigned_     |                   |                            |                              |
 
+
+
+## Grantha marks character table ##
+
+Tamil text runs may also include diacritical and syllable-modifier
+marks from the Grantha block. These characters should be classified as
+follows.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
+|:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
+|`U+11301`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x11301; Grantha Candrabindu|
+|`U+11303`  | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x11303; Grantha Visarga    |
+|`U+1133C`  | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x1133c; Grantha Nukta      |
 
 
 ## Vedic Extensions character table ##
