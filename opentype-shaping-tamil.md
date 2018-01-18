@@ -189,7 +189,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
-
+Tamil text can also include several diacritical marks from the Grantha
+Unicode block, such as Grantha Candrabindu (`U+11301`), Grantha Visarga (`U+11303`), and
+Grantha Nukta (`U+1133C`).
 
 Other important characters that may be encountered when shaping runs
 of Tamil text include the dotted-circle placeholder (`U+25CC`), the
@@ -300,7 +302,10 @@ A syllable in Tamil consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
 > Note: The Tamil Unicode block enumerates one modifier sign,
-> "Anusvara" (`U+0B82`). In addition, Sanskrit text written in Tamil
+> "Anusvara" (`U+0B82`). Tamil text can also include several modifier
+> signs from the Grantha Unicode block, such as Grantha Candrabindu
+> (`U+11301`), Grantha Visarga (`U+11303`), and Grantha Nukta
+> (`U+1133C`).In addition, Sanskrit text written in Tamil 
 > may include additional signs from Vedic Extensions block. 
 >
 > Note: Unlike many other Indic scripts, the Tamil Unicode block
@@ -549,7 +554,10 @@ be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
 > Note: The Tamil Unicode block does not include a "Nukta"
-> codepoint. However, `<tml2>` text runs in minority languages that
+> codepoint. However, Tamil text may include "Grantha Nukta" (`U+1133C`)
+> and other modifier signs from the Grantha Unicode block.
+>
+> In addition, `<tml2>` text runs in minority languages that
 > use the Tamil script may incorporate nukta characters from other
 > blocks. Therefore shaping engines must apply the appropriate
 > mark-reordering move if a character matching the NUKTA shaping class
@@ -642,7 +650,10 @@ The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 > Note: The Tamil Unicode block does not include a "Nukta"
-> codepoint. However, `<tml2>` text runs in minority languages that
+> codepoint. However, Tamil text may include "Grantha Nukta" (`U+1133C`)
+> from the Grantha Unicode block.
+>
+> In addition, `<tml2>` text runs in minority languages that
 > use the Tamil script may incorporate nukta characters from other
 > blocks. Therefore shaping engines must apply the `nukt` feature if
 > it is used in the active font.
