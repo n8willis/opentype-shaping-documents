@@ -149,11 +149,12 @@ shaping process.
 
 ### Tamil character tables ###
 
-Separate character tables are provided for the Tamil and Vedic
+Separate character tables are provided for the Tamil, Grantha, and Vedic
 Extensions block as well as for other miscellaneous characters that
 are used in `<tml2>` text runs:
 
   - [Tamil character table](character-tables/character-tables-tamil.md#tamil-character-table)
+  - [Grantha marks character table](character-tables/character-tables-tamil.md#grantha-marks-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-tamil.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-tamil.md#miscellaneous-character-table)
 
@@ -189,9 +190,10 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
-Tamil text can also include several diacritical marks from the Grantha
-Unicode block, such as Grantha Candrabindu (`U+11301`), Grantha Visarga (`U+11303`), and
-Grantha Nukta (`U+1133C`).
+In addition to the marks in the Tamil Unicode block, Tamil text can
+also include several diacritical marks from the Grantha Unicode block,
+such as Grantha Candrabindu (`U+11301`), Grantha Visarga (`U+11303`),
+and Grantha Nukta (`U+1133C`).
 
 Other important characters that may be encountered when shaping runs
 of Tamil text include the dotted-circle placeholder (`U+25CC`), the
