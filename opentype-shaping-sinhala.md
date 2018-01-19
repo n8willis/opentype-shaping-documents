@@ -524,7 +524,7 @@ has a canonical decomposition, so this step is unambiguous.
 
 > "Ee" (`U+0DDA`) decomposes to "`U+0DD9`,`U+0DCA`"
 >
-> "O" (`U+0DDC`) 
+> "O" (`U+0DDC`)  decomposes to "`U+0DD9`,`U+0DCF`"
 >
 > "Oo" (`U+0DDD`) decomposes to "`U+0DD9`,`U+0DCF`, `U+0DCA`"
 >
@@ -582,7 +582,7 @@ Seventh, any non-base consonants that occur after a dependent vowel
 
 In Sinhala, the only consonant that can appear in this position is
 "Ya". A "Halant,ZWJ,Ya" sequence after the base consonant will take on
-the "Yasaya" form when the `pstf` feature is applied.
+the "Yasaya" form when the `vatu` feature is applied.
 
 #### 2.8: Mark tagging ####
 
@@ -615,14 +615,14 @@ The order in which these substitutions must be performed is fixed for
 all Indic scripts:
 
 	locl
-	nukt
+	nukt (not used in Sinhala)
 	akhn
 	rphf 
-	rkrf 
+	rkrf (not used in Sinhala)
 	pref (not used in Sinhala)
-	blwf 
+	blwf (not used in Sinhala)
 	abvf (not used in Sinhala)
-	half
+	half (not used in Sinhala)
 	pstf
 	vatu
 	cjct
@@ -642,26 +642,17 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: nukt ####
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
-precomposed nukta-variant of the consonant glyph. 
-
-![Nukta composition](/images/sinhala/sinhala-nukt.png)
-
+> This feature is not used in Sinhala.
 
 
 #### 3.3: akhn ####
 
-The `akhn` feature replaces two specific sequences with required ligatures. 
+In Sinhala, the `akhn` feature provides two substitution types.
 
-  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
+  - "Consonant,Halant,ZWJ,Consonant" sequences are used to specify a ligature. 
+  - "Consonant,ZWJ,Halant,Consonant" sequences are used to specify
+    "touching consonant" substitutions. 
   
-These sequences can occur anywhere in a syllable. The "KSsa" and
-"JNya" characters have orthographic status equivalent to full
-consonants in some languages, and fonts may have `cjct` substitution
-rules designed to match them in subsequences. Therefore, this
-feature must be applied before all other many-to-one substitutions.
-
 
 ![KSsa ligation](/images/sinhala/sinhala-akhn-kssa.png)
 
@@ -669,55 +660,26 @@ feature must be applied before all other many-to-one substitutions.
 
 #### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
+The `rphf` feature replaces initial "Ra,Halant,ZWJ" sequences with the
 "Reph" glyph.
-
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
-    the `rphf` substitution.
 	
 
 ![Reph composition](/images/sinhala/sinhala-rphf.png)
 	
 #### 3.5 rkrf ####
 
-The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
-"Rakaar"-ligature form of the consonant glyph.
+> This feature is not used in Sinhala.
 
-
-![Rakaar composition](/images/sinhala/sinhala-rkrf.png)
 
 #### 3.6 pref ####
 
 > This feature is not used in Sinhala.
 
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
 
 #### 3.7: blwf ####
 
-The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Sinhala includes one below-base consonant
-form:
+> This feature is not used in Sinhala.
 
-  - "Halant,Ra" (occuring after the base consonant) or "Ra,Halant"
-    (before the base consonant, but in a non-syllable-initial position) will
-    take on the "Rakaar" form.
-	
-If the active font contains ligatures for the consonant adjacent to
-the "Halant" (i.e., "_Consonant_,Halant,Ra"), then that ligature is
-normally applied with the `rkrf` feature in step 3.5. The `blwf`
-feature allows the "Ra" to be substituted with a standalone "Rakaar"
-mark, to work with all consonants that do not have a `rkrf` ligature
-in the font.
-
-Because Sinhala incorporates the `BLWF_MODE_PRE_AND_POST` shaping
-characteristic, any pre-base consonants and any post-base consonants
-may potentially match a `blwf` substitution; therefore, both cases must
-be tagged for comparison. Note that this is not necessarily the case in other
-Indic scripts that use a different `BLWF_MODE_` shaping
-characteristic. 
-
-![Below-base form](/images/sinhala/sinhala-blwf.png)
 
 #### 3.8: abvf ####
 
@@ -725,40 +687,18 @@ characteristic.
 
 #### 3.9: half ####
 
-The `half` feature replaces "_Consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs. There are
-four exceptions to the default behavior, for which the shaping engine
-must test:
+> This feature is not used in Sinhala.
 
-  - Initial "Ra,Halant" sequences, which should have been tagged for
-    the `rphf` feature earlier, must not be tagged for potential
-    `half` substitutions.
-
-  - Non-initial "Ra,Halant" sequences, which should have been tagged
-    for the `rkrf` or `blwf` features earlier, must not be tagged for
-    potential `half` substitutions.
-  
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
-    tagged for potential `half` substitutions, even though the presence of the
-    zero-width joiner suppresses the `cjct` feature in a later step.
-
-  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
-    tagged for potential `half` substitutions.
-
-![Half-form formation](/images/sinhala/sinhala-half.png)
-
-In addition, the sequence "Rra,Halant" (occuring before the base
-consonant) will take on the "eyelash Ra" form. Because this
-substitution is defined as the canonical half form of "Rra" in `<sinh>`, the
-shaping engine does not need to implement any special handling to
-support it. 
-
-![Eyelash Ra formation](/images/sinhala/sinhala-eyelash-ra.png)
 
 #### 3.10: pstf ####
 
-> This feature is not used in Sinhala.
+In Sinhala, the `pstf` feature replaces multi-part dependent vowels
+(matras) with the right-side matra component of the canonical
+decomposition.
 
+> Note: shaping engines that decomposed multi-part dependent vowels in
+> [stage 2, step 2](#22-matra-decomposition) will not need to perform
+> this substitution.
 
 #### 3.11: vatu ####
 
