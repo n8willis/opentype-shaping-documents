@@ -410,9 +410,9 @@ phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
-> "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ra" and "Rra" may
-> take on special forms, depending on their position in the syllable.
+> "Ra,Halant,ZWJ" glyph sequences, and other consonants that take special
+> treatment in some circumstances. "Ya" may take on special forms,
+> depending on its position in the syllable. 
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the text and on the features
@@ -490,42 +490,57 @@ by the addition of a dependent-vowel (matra) sign.
 Vowel-based syllables, standalone-sequences, and broken text runs will
 not have base consonants.
 
-The algorithm for determining the base consonant is
+Due to the different usage of ZWJ characters in `<sinh>` text runs, a
+different algorithm is required for the shaper to identify the base
+consonant of a syllable. The algorithm for determining the base
+consonant in Sinhala is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
+  - If the syllable starts with "Ra,Halant,ZWJ" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
-      * If the consonant has a below-base or post-base form or is a
-        pre-base-reordering "Ra", move to the previous consonant. If
-        neither condition is true, stop. 
+      * If the consonant is immediately preceded by a ZWJ, move to the
+        previous consonant. If the consonant is not immediately
+        preceded by a ZWJ, stop.
       * If the consonant is the first consonant, stop.
   - The consonant stopped at will be the base consonant.
 
-Shaping engines may choose any method to identify consonants that have
-below-base or post-base forms while executing the above algorithm. For
-example, one implementation may choose to maintain a static table of
-below-base and post-base consonants to compare again the text
-run. Another implementation might examine the active font to see if it
-includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
-> Note: The algorithm is designed to work for all Indic
-> scripts. However, Sinhala does not utilize pre-base-reordering "Ra".
+> Note: Unlike with many other Indic scripts, it is not necessary for
+> the shaping engine to independently determine if any consonant has a
+> post-base or below-base form in the active font. The use of a ZWJ
+> character before a consonant in the search explicitly designates
+> such a special form.
 
 
 #### 2.2: Matra decomposition ####
 
-Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. 
+Second, any multi-part dependent vowels (matras) must be decomposed
+into their individual components. 
 
-Sinhala does not have any two-part dependent vowels; this step is
-listed here because it is part of the general processing scheme for
-shaping Indic scripts.
+Sinhala has four multi-part dependent vowels, "Ee" (`U+0DDA`), "O"
+(`U+0DDC`), "Oo" (`U+0DDD`), and "Au" (`U+0DDE`). Each
+has a canonical decomposition, so this step is unambiguous. 
+
+> "Ee" (`U+0DDA`) decomposes to "`U+0DD9`,`U+0DCA`"
+>
+> "O" (`U+0DDC`) 
+>
+> "Oo" (`U+0DDD`) decomposes to "`U+0DD9`,`U+0DCF`, `U+0DCA`"
+>
+> "Au" (`U+0DDE`) decomposes to "`U+0DD9`,`U+0DDF`"
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
+
+> Note: The decomposition of "Oo" (`U+0DDD`) is atypical; Unicode
+> specifies that the codepoint decomposes to "O" (`U+0DDC`) followed
+> by `U+0DCA`; the "O" codepoint is then decomposed to
+> "`U+0DD9`,`U+0DCF`". Shaping engines must take care not to miss this
+> second decomposition.
+
 
 #### 2.3: Tag matras ####
 
@@ -545,6 +560,8 @@ For `<sinh>` text, the canonical ordering means that any "Nukta"s must
 be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
+> Note: Nukta usage in Sinhala is rare.
+
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the base consonant must be tagged
@@ -552,10 +569,10 @@ with `POS_PREBASE_CONSONANT`.
 
 #### 2.6: Reph ####
 
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
+Sixth, initial "Ra,Halant,ZWJ" sequences that will become "Reph"s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant" sequence will always become a "Reph"
+> Note: an initial "Ra,Halant,ZWJ" sequence will always become a "Reph"
 > unless the "Ra" is the only consonant in the syllable.
 
 #### 2.7: Post-base consonants ####
@@ -564,8 +581,8 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
 In Sinhala, the only consonant that can appear in this position is
-a non-initial "Ra,Halant" sequence, which will take on the "Rakaar" form when the
-`blwf` feature is applied.
+"Ya". A "Halant,ZWJ,Ya" sequence after the base consonant will take on
+the "Yasaya" form when the `pstf` feature is applied.
 
 #### 2.8: Mark tagging ####
 
@@ -584,12 +601,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
 
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
-
-<!--- HarfBuzz also tags everything between a post-base consonant or -->
-<!--matra and another post-base consonant as belonging to the latter -->
-<!--post-base consonant. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
