@@ -43,7 +43,7 @@ potentially causing confusion.
 **Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
 sign. Unicode documents use the term "virama" most frequently, while
 OpenType documents use the term "halant" most frequently. In the
-Sinhalese language, this sign is known as teh _al-lakuna_ or _hal kirīma_.
+Sinhalese language, this sign is known as the _al-lakuna_ or _hal kirīma_.
 
 **Chandrabindu** (or simply **Bindu**) is the standard term for the diacritical mark
 indicating that the preceding vowel should be nasalized. 
