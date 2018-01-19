@@ -239,6 +239,20 @@ classified as follows.
 
 ## Miscellaneous character table ##
 
+In addition to general punctuation, runs of Gurmukhi text often use the
+danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
+the Devanagari block. Gurmukhi text can also incorporate the udatta
+(`U+0951`) and anudatta (`U+0952`) signs from the Devanagari block.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
+|:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
+|`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
+|`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
+|`U+0964`   | Punctuation      | _null_            | _null_                     | &#x0964; Danda               |
+|`U+0965`   | Punctuation      | _null_            | _null_                     | &#x0965; Double Danda        |
+
+
+
 Other important characters that may be encountered when shaping runs
 of Gurmukhi text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and

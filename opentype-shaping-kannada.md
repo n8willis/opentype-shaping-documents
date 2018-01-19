@@ -411,9 +411,10 @@ The following general-purpose Indic-shaping regular expressions can be
 used to match Kannada syllables. The regular expressions utilize the
 shaping classifications from the tables above.
 
+> Note: The Kannada block does not include the Anudatta (`U+0952`)
+> sign. However, Kannada text may include the Anudatta sign from
+> Devanagari as part of the Unicode Script Extensions. 
 
-> Note: Kannada does not include the Anudatta (`U+0952`). It is
-> included in the following expressions in order to correctly match other Indic scripts.
 
 	C	  Consonant
 	V	  Independent vowel

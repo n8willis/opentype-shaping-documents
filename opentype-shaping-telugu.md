@@ -391,12 +391,11 @@ The following general-purpose Indic-shaping regular expressions can be
 used to match Telugu syllables. The regular expressions utilize the
 shaping classifications from the tables above.
 
+> Note: The Telugu block does not include the Anudatta (`U+0952`)
+> sign. However, Telugu text may include the Anudatta sign from
+> Devanagari as part of the Unicode Script Extensions. 
 
-> Note: Telugu does not include the Anudatta (`U+0952`) or a "Nukta"
-> character. They are included in the following expressions in order
-> to correctly match other Indic scripts. 
-
-> Note: Although the Telugu block does not include a "Nukta" mark,
+> Note: The Telugu block does not include a "Nukta" mark, but
 > there are reports of users using the "Nukta" from other Indic
 > blocks, so shaping engines may encounter a "Nukta" in text runs, and
 > should handle the situation gracefully.

@@ -369,6 +369,10 @@ The following general-purpose Indic-shaping regular expressions can be
 used to match Gujarati syllables. The regular expressions utilize the
 shaping classifications from the tables above.
 
+> Note: The Gujarati block does not include the Anudatta (`U+0952`)
+> sign. However, Gujarati text may include the Anudatta sign from
+> Devanagari as part of the Unicode Script Extensions. 
+
 
 	C	  Consonant
 	V	  Independent vowel
