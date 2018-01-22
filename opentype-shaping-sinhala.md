@@ -59,7 +59,7 @@ syllable frequently take on secondary forms. Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
-example.
+example. In the Sinhalese language, the Reph form is known as _repaya_.
 
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
@@ -330,13 +330,11 @@ mark-like form.
     characteristic mentioned earlier.
 
 In addition, the subjoined form of a post-base-consonant "Ra" can be
-explicitly requested with a "ZWJ,Ra" sequence. This form is called
-"Rakar", however, unlike other Indic scripts, "Rakar" does not require
-special treatment by the shaping engine. It is treated like all other
-explicitly requested subjoined forms.
+explicitly requested with a "Halant,ZWJ,Ra" sequence. This form is called
+"Rakaaraansaya".
 
-"Reph" characters must be reordered after the
-syllable-identification stage is complete. 
+"Reph" characters must be reordered after the syllable-identification
+stage is complete. "Rakaaraansaya" is not reordered.
 
 
 In addition to valid syllables, stand-alone sequences may occur, such
@@ -625,7 +623,7 @@ all Indic scripts:
 	half (not used in Sinhala)
 	pstf
 	vatu
-	cjct
+	cjct (not used in Sinhala)
 	cfar (not used in Sinhala)
 
 #### 3.1 locl ####
@@ -651,7 +649,7 @@ In Sinhala, the `akhn` feature provides two substitution types.
 
   - "Consonant,Halant,ZWJ,Consonant" sequences are used to specify a ligature. 
   - "Consonant,ZWJ,Halant,Consonant" sequences are used to specify
-    "touching consonant" substitutions. 
+    "touching consonant" substitutions used in Pali and Sanskrit. 
   
 
 ![KSsa ligation](/images/sinhala/sinhala-akhn-kssa.png)
@@ -685,6 +683,7 @@ The `rphf` feature replaces initial "Ra,Halant,ZWJ" sequences with the
 
 > This feature is not used in Sinhala.
 
+
 #### 3.9: half ####
 
 > This feature is not used in Sinhala.
@@ -700,30 +699,24 @@ decomposition.
 > [stage 2, step 2](#22-matra-decomposition) will not need to perform
 > this substitution.
 
+
 #### 3.11: vatu ####
 
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
+In Sinhala, the `vatu` feature replaces certain sequences with
+ligatures using the subjoined forms of "Ra" or "Ya".
 
-"Vattu variants" are formed from glyphs followed by "Rakaar"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
+  - The sequence "Consonant,Halant,ZWJ,Ra" triggers the
+    "Rakaaraansaya" form of the consonant.
+  - The sequence "Consonant,Halant,ZWJ,Ya" triggers the "Yansaya" form
+    of the consonant.
+  
 
 ![Vattu ligation](/images/sinhala/sinhala-vatu.png)
 
 #### 3.12: cjct ####
 
-The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
+> This feature is not used in Sinhala.
 
-A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
-"_Consonant_,Halant,ZWNJ,_Consonant_" must not be tagged to form a conjunct.
-
-The font's GSUB rules might be implemented so that `cjct`
-substitutions apply to half-form consonants; therefore, this feature
-must be applied after the `half` feature. 
-
-![Conjunct ligation](/images/sinhala/sinhala-cjct.png)
 
 #### 3.13: cfar ####
 
@@ -742,11 +735,6 @@ initial reordering stage.
 Like the initial reordering stage, the steps involved in this stage
 occur on a per-syllable basis.
 
-<!--- Check that classifications have not been mangled. If the -->
-<!--character is a Halant AND a ligature was formed AND a multiple
-substitution was performed, restore the classification to VIRAMA
-because it was almost certainly lost in the preceding GSUB stage.
---->
 
 #### 4.1: Base consonant ####
 
@@ -785,14 +773,9 @@ consonant, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Sinhala incorporates the `REPH_POS_BEFORE_POST`
-shaping characteristic, this final position is immediately before any
-independent post-base consonant forms (meaning the first post-base
-consonant that has not formed a ligature with the base consonant).
-
-  - If the syllable does not have any post-base consonants, then the
-    final "Reph" position is immediately before the first post-base
-    matra, syllable modifier, or Vedic sign.
+position. Because Sinhala incorporates the `REPH_POS_AFTER_MAIN`
+shaping characteristic, this final position is immediately after the
+base consonant.
 
 
 ![Reph positioning](/images/sinhala/sinhala-reph-position.png)
@@ -801,14 +784,22 @@ consonant that has not formed a ligature with the base consonant).
 
 Any pre-base-reordering consonants must be moved to immediately before
 the base consonant.
+
+Sinhala does not use pre-base-reordering consonants, so this step will
+involve no work when processing `<sinh>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
   
-  <!--- Double check if this is used in Devnagari --->
   
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
+
+Sinhala does not use the `init` feature, so this step will
+involve no work when processing `<sinh>` text. It is included here in order
+to maintain compatibility with the other Indic scripts.
+  
    
 ### 5: Applying all remaining substitution features from GSUB ###
 
@@ -817,21 +808,18 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
+	init (not used in Sinhala)
 	pres
 	abvs
 	blws
 	psts
-	haln
+	haln (not used in Sinhala)
 
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline instroke from the left side of the glyph.
+The `init` feature is not used in Sinhala.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
-presentations forms. This can include consonant conjuncts, half-form
-consonants, and stylistic variants of left-side dependent vowels
-(matras). 
+presentations forms. This can include ligatures, "touching consonant" forms,
+and stylistic variants of left-side dependent vowels (matras). 
 
 ![Pre-base substitutions](/images/sinhala/sinhala-pres.png)
 
@@ -842,30 +830,25 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 ![Above-base substitutions](/images/sinhala/sinhala-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
-are adjacent to the below-base-consonant form "Rakaar" with contextual
-ligatures.
+presentation forms. This usually includes replacing base consonants
+and attached below-base marks with contextual ligatures.
 
 ![Below-base substitutions](/images/sinhala/sinhala-blws.png)
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
-post-base-consonant/matra pairs with contextual ligatures. 
+base-consonant/matra pairs with contextual ligatures. 
 
 ![Post-base substitutions](/images/sinhala/sinhala-psts.png)
 
-The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
-special presentation forms. This can include stylistic variants of the
-consonant where placing the "Halant" mark on its own is
-typographically problematic. 
-
-![Halant substitutions](/images/sinhala/sinhala-haln.png)
+The `haln` feature is not used in Sinhala.
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Sinhala shaping
 > and may be disabled in the application by user preference.
+
 
 ### 6: Applying remaining positioning features from GPOS ###
 
@@ -895,7 +878,7 @@ above-base dependent vowels (matras), diacritical marks, and Vedic signs.
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Sinhala, this includes below-base dependent vowels
-(matras) and diacritical marks as well as the below-base consonant form "Rakaar".
+(matras) and diacritical marks.
 
 ![Below-base mark positioning](/images/sinhala/sinhala-blwm.png)
 
