@@ -199,7 +199,7 @@ as `tnum`, which specifies the usage of tabular-width numerals, and
 
 ### Mark-placement subclasses ###
 
-Marks and dependent vowels are further labelled with a mark-placement
+Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. 
 
@@ -290,7 +290,7 @@ features in stage six, however, do not have a mandatory order.
 A single, canonical sequence of ordering positions exists that
 captures all of the possible positions in an Indic syllable. 
 
-Not every position is used in every script and not every sylable will
+Not every position is used in every script and not every syllable will
 contain a character in every position. Whenever characters in a
 syllable are reordered during the shaping process, 
 
@@ -331,14 +331,14 @@ and syllable-modifying or Vedic signs (`POS_SMVD`).
 In addition, several secondary positions are defined to handle various
 reordering rules that deal with relative, rather than absolute,
 positioning. `POS_AFTER_MAIN` means that a character must be
-positioned immedately after the base consonant. `POS_BEFORE_SUBJOINED`
+positioned immediately after the base consonant. `POS_BEFORE_SUBJOINED`
 and `POS_AFTER_SUBJOINED` mean that a character must be positioned
 before or after any below-base consonants, respectively. Similarly,
 `POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
 positioned before or after any post-base consonants, respectively. 
 
 For shaping-engine implementers, the names used for the ordering
-positions matter only in that they are unabiguous. 
+positions matter only in that they are unambiguous. 
 
 The description of the general shaping process that follows will note
 when a character needs to be marked for reordering into some of these
@@ -376,7 +376,7 @@ Oriya, Tamil, Telugu, and Sinhala).
 
 Implementers who wish to cover additional scripts using the same
 method would first need to determine whether any additional options
-are relevent for each characteristic.
+are relevant for each characteristic.
 
 #### Base consonant ####
 
@@ -422,7 +422,7 @@ consonant may be, generally:
   - immediately after the last subjoined (below-base) consonant, in
     the ordering position `POS_AFTER_SUBJOINED`.
 
-  - immediately beforw the last post-base consonant, in the ordering
+  - immediately before the last post-base consonant, in the ordering
     position `POS_BEFORE_POST`.
 	
   - immediately after the last post-base consonant, in the ordering
@@ -454,7 +454,7 @@ Below-base consonant forms (the `blwf` feature) may be applied:
   - Only to consonants after the base consonant. This is designated
     `BLWF_MODE_POST_ONLY`.
 	
-  - To consonants occuring before or after the base consonant. This is
+  - To consonants occurring before or after the base consonant. This is
     designated `BLWF_MODE_PRE_AND_POST`.
 
 #### Left-side matras ####
@@ -759,7 +759,7 @@ For all marks preceding the base consonant, the mark must be tagged
 with the same positioning tag as the closest preceding non-mark
 consonant.
 
-For all marks occuring after the base consonant, the mark must be
+For all marks occurring after the base consonant, the mark must be
 tagged with the same positioning tag as the closest subsequent consonant.
 
 > Note: In this step, joiner and non-joiner characters must also be

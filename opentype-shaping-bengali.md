@@ -121,7 +121,7 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
-Bengali uses one sublcass of consonant, `CONSONANT_DEAD`. This
+Bengali uses one subclass of consonant, `CONSONANT_DEAD`. This
 subclass is used only for the Bengali "Khanda Ta" (`U+09CE`). It indicates that
 "Khanda Ta" should match tests for consonants, such as when [identifying
 syllables](#1-identifying-syllables-and-other-sequences), but that, unlike
@@ -140,7 +140,7 @@ might affect how the respective glyphs are drawn, such as `tnum`,
 which specifies the usage of tabular-width numerals, and `sups`, which
 replaces the default glyphs with superscript variants.
 
-Marks and dependent vowels are further labelled with a mark-placement
+Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
 the glyphs is determined by the lookups found in the font's GPOS
@@ -522,14 +522,14 @@ and syllable-modifying or Vedic signs (`POS_SMVD`).
 In addition, several secondary positions are defined to handle various
 reordering rules that deal with relative, rather than absolute,
 positioning. `POS_AFTER_MAIN` means that a character must be
-positioned immedately after the base consonant. `POS_BEFORE_SUBJOINED`
+positioned immediately after the base consonant. `POS_BEFORE_SUBJOINED`
 and `POS_AFTER_SUBJOINED` mean that a character must be positioned
 before or after any below-base consonants, respectively. Similarly,
 `POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
 positioned before or after any post-base consonants, respectively. 
 
 For shaping-engine implementers, the names used for the ordering
-categories matter only in that they are unabiguous. 
+categories matter only in that they are unambiguous. 
 
 For a definition of the "base" consonant, refer to step 2.1, which follows.
 
@@ -660,22 +660,13 @@ For all marks preceding the base consonant, the mark must be tagged
 with the same positioning tag as the closest preceding non-mark
 consonant.
 
-For all marks occuring after the base consonant, the mark must be
+For all marks occurring after the base consonant, the mark must be
 tagged with the same positioning tag as the closest subsequent consonant.
 
 > Note: In this step, joiner and non-joiner characters must also be
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
 
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
-
-<!--- HarfBuzz also tags everything between a post-base consonant or -->
-<!--matra and another post-base consonant as belonging to the latter -->
-<!--post-base consonant. --->
-
-<!--- Merging all post-base stuff into one unit is old-spec -->
-<!--behavior. --->
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
@@ -960,7 +951,7 @@ the GSUB table in the font.
 
 The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
-headline instroke from the left side of the glyph.
+headline in-stroke from the left side of the glyph.
 
 ![Application of the init feature](/images/bengali/bengali-init.png)
 

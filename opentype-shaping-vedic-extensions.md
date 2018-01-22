@@ -4,7 +4,6 @@ This document outlines the shaping information needed to display
 characters from the Unicode Vedic Extensions block, which may be used
 within text runs in many Indic scripts.
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
   - [General information](#general-information)
@@ -13,7 +12,6 @@ within text runs in many Indic scripts.
       - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Shaping information](#shaping-information)
 
-<!-- markdown-toc end -->
 
 
 ## General information ##
@@ -22,7 +20,7 @@ The Vedic Extensions block encodes letters and marks that are used in
 a large body of ancient literature written in the Vedic Sanskrit
 language.
 
-Primarily an oral language in the time period when the key litature
+Primarily an oral language in the time period when the key literature
 originated, Vedic Sanskrit has no native script. Therefore, texts may
 be typeset in any one of the Indic scripts, using the Vedic Extensions
 to supplement the main script's character set.
@@ -31,7 +29,7 @@ to supplement the main script's character set.
 
 Individual Vedic Extension characters may be named by a combination of
 the Vedic text in which the mark is used, the regional or manuscript
-tradition involved, or a simple visual or phoentic description of the
+tradition involved, or a simple visual or phonetic description of the
 character. Some commonly used general categories are worth noting.
 
 **Udatta** is the term for a high tone on a vowel.
@@ -40,7 +38,7 @@ character. Some commonly used general categories are worth noting.
 
 **Svarita** is the term for a falling or mixed tone on a vowel.
 
-**Anusvara** is the term for a nasalization sound that preceds a consonant.
+**Anusvara** is the term for a nasalization sound that precedes a consonant.
 
 **Visarga** is the term for a soft breathing sound that precedes a vowel.
 
