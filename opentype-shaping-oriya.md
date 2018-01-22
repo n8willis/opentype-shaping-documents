@@ -954,8 +954,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants that
-are adjacent to below-base-consonant forms like "Raphala" or
-"Baphala" with contextual ligatures.
+are adjacent to below-base-consonant forms like "Raphala" with
+contextual ligatures.
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
