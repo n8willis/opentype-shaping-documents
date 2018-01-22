@@ -139,11 +139,11 @@ shaping process.
 ### Sinhala character tables ###
 
 Separate character tables are provided for the Sinhala, Sinhala
-Extended, and Vedic Extensions block as well as for other
+Archaic Numbers, and Vedic Extensions block as well as for other
 miscellaneous characters that are used in `<sinh>` text runs:
 
   - [Sinhala character table](character-tables/character-tables-sinhala.md#sinhala-character-table)
-  - [Sinhala Extended character table](character-tables/character-tables-sinhala.md#sinhala-extended-character-table)
+  - [Sinhala Archaic Numbers character table](character-tables/character-tables-sinhala.md#sinhala-archaic-numbers-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-sinhala.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-sinhala.md#miscellaneous-character-table)
 
