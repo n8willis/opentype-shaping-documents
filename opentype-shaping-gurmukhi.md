@@ -754,8 +754,6 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 > This feature is not used in Gurmukhi.
 
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
 
 #### 3.7: blwf ####
 
