@@ -6,7 +6,7 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Sinhala character table](#sinhala-character-table)
-  - [Sinhala archaic numbers table](#sinhala-archaic-numbers-table)
+  - [Sinhala Archaic Numbers character table](#sinhala-archaic-numbers-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
@@ -174,7 +174,7 @@ specific, script-aware behavior.
 
 
 
-## Sinhala Archaic Numbers table ##
+## Sinhala Archaic Numbers character table ##
 
 Sinhala text runs may also include glyphs from the Sinhala Archaic
 Numbers block. These characters should be classified as follows.
