@@ -45,9 +45,9 @@ The largest (by number of readers) scripts in the Indic family are:
   - [Kannada](opentype-shaping-kannada.md)
   - [Malayalam](opentype-shaping-malayalam.md)
   - [Oriya](opentype-shaping-oriya.md)
-  - Tamil
+  - [Tamil](opentype-shaping-tamil.md)
   - [Telugu](opentype-shaping-telugu.md)
-  - Sinhala
+  - [Sinhala](opentype-shaping-sinhala.md)
 
 Text runs in Indic scripts may also include characters from the Vedic
 Extensions block in Unicode. This is a set of marks and punctuation
