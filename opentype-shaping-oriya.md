@@ -590,9 +590,9 @@ has a canonical decomposition, so this step is unambiguous.
 
 > "Ai" (`U+0B48`) decomposes to "`U+0B47`,`U+0B56`"
 >
-> "O" (`U+09BC`) decomposes to "`U+0B47`,`U+0B3E`"
+> "O" (`U+0B4B`) decomposes to "`U+0B47`,`U+0B3E`"
 >
-> "Au" (`U+09CC`) decomposes to "`U+0B47`,`U+0B57`"
+> "Au" (`U+0B4C`) decomposes to "`U+0B47`,`U+0B57`"
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
