@@ -729,7 +729,6 @@ be tagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
-![blwf feature application](/images/tamil/tamil-blwf.png)
 
 #### 3.8: abvf ####
 
@@ -801,7 +800,6 @@ must be applied after the `half` feature.
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
 
-![cjct feature application](/images/tamil/tamil-cjct.png)
 
 #### 3.13: cfar ####
 
@@ -891,6 +889,10 @@ to maintain compatibility with the other Indic scripts.
 Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
+
+Tamil does not use the `init` feature, so this step will involve no
+work when processing `<tml2>` text. It is included here in order to
+maintain compatibility with the other Indic scripts.
    
 ### 5: Applying all remaining substitution features from GSUB ###
 
