@@ -928,7 +928,6 @@ presentation forms. This usually includes replacing base consonants that
 are adjacent to the below-base marks with contextually appropriate
 ligatures.
 
-![blws feature application](/images/tamil/tamil-blws.png)
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
@@ -978,7 +977,6 @@ characters. In Tamil, this includes above-base dependent vowels
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Tamil, this includes below-base diacritical marks.
 
-![blwm feature application](/images/tamil/tamil-blwm.png)
 
 
 ## The `<taml>` shaping model ##
