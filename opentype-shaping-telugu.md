@@ -571,7 +571,7 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/telugu/split-matra-decomposition.png)
+![Two-part matra decomposition](/images/telugu/telugu-matra-decompose.png)
 
 #### 2.3: Tag matras ####
 
@@ -749,6 +749,8 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. All consonants in Telugu can take on a below-base consonant
 form.
 
+![Below-base form composition](/images/telugu/telugu-blwf.png)
+
 
 #### 3.8: abvf ####
 
@@ -776,6 +778,8 @@ must test:
 > possible for a font to implement them in order to provide for
 > desired typographic variation.
 
+![Half form composition](/images/telugu/telugu-half.png)
+
 
 #### 3.10: pstf ####
 
@@ -802,8 +806,6 @@ must be applied after the `half` feature.
 > possible for a font to implement the `cjct` feature in order to
 > provide for desired typographic variation.
 
-
-![Conjunct ligation](/images/telugu/pata-conjunct.png)
 
 #### 3.13: cfar ####
 
@@ -923,19 +925,27 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
+![Pre-base form ligation](/images/telugu/telugu-pres.png)
+
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
+
+![Above-base form ligation](/images/telugu/telugu-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually involves replacing multiple
 below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
+![Below-base form ligation](/images/telugu/telugu-blws.png)
+
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
+
+![Post-base form ligation](/images/telugu/telugu-psts.png)
 
 The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
 special presentation forms. This can include stylistic variants of the
@@ -946,6 +956,8 @@ typographically problematic.
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Telugu shaping
 > and may be disabled in the application by user preference.
+
+![Halant form ligation](/images/telugu/telugu-haln.png)
 
 ### 6: Applying remaining positioning features from GPOS ###
 
@@ -974,6 +986,8 @@ diacritical marks, and Vedic signs.
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Telugu, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
+
+![Below-base mark positioning](/images/telugu/telugu-blwm.png)
 
 
 ## The `<telu>` shaping model ##
