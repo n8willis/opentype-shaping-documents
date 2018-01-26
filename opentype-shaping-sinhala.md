@@ -578,9 +578,16 @@ Sixth, initial "Ra,Halant,ZWJ" sequences that will become "Reph"s must be tagged
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
-In Sinhala, the only consonant that can appear in this position is
-"Ya". A "Halant,ZWJ,Ya" sequence after the base consonant will take on
-the "Yasaya" form when the `vatu` feature is applied.
+In Sinhala, the only consonants that can appear in this position are
+"Ra" and "Ya". A "Halant,ZWJ,Ya" sequence after the base consonant will take on
+the "Yansaya" form when the `vatu` feature is applied. A
+"Halant,ZWJ,Ra" sequence after the base consonant will take on 
+the "Rakaaraansaya" form when the `vatu` feature is applied.
+
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va.png)
+
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.png)
+
 
 #### 2.8: Mark tagging ####
 
@@ -652,9 +659,9 @@ In Sinhala, the `akhn` feature provides two substitution types.
     "touching consonant" substitutions used in Pali and Sanskrit. 
   
 
-![KSsa ligation](/images/sinhala/sinhala-akhn-kssa.png)
+![Ligature substitution](/images/sinhala/sinhala-akhn-ligature.png)
 
-![JNya ligation](/images/sinhala/sinhala-akhn-jnya.png)
+![Touching consonant substitution](/images/sinhala/sinhala-akhn-touching.png)
 
 #### 3.4: rphf ####
 
@@ -699,6 +706,9 @@ decomposition.
 > [stage 2, step 2](#22-matra-decomposition) will not need to perform
 > this substitution.
 
+![Post-base form substitution](/images/sinhala/sinhala-pstf.png)
+
+
 
 #### 3.11: vatu ####
 
@@ -711,7 +721,9 @@ ligatures using the subjoined forms of "Ra" or "Ya".
     of the consonant.
   
 
-![Vattu ligation](/images/sinhala/sinhala-vatu.png)
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.png)
+
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va.png)
 
 #### 3.12: cjct ####
 
