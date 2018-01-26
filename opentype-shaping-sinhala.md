@@ -539,6 +539,8 @@ completed before the shaping engine begins step three, below.
 > "`U+0DD9`,`U+0DCF`". Shaping engines must take care not to miss this
 > second decomposition.
 
+![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.png)
+
 
 #### 2.3: Tag matras ####
 
