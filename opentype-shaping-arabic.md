@@ -43,10 +43,6 @@ Mongolian uses `<mong>`. The information found below about the `<arab>`
 script shaping model can serve as a general guide; script-specific
 information can be found in the linked document for each script. 
 
-<!--- Guessing on the script tags above; MS OpenType pages went --->
-<!--- offline unexpectedly, and the network is down so IA Wayback --->
-<!--- isn't available at the moment either.... --->
-
 Arabic is a joining script that uses inter-word spaces, so each
 codepoint in a text run may be substituted with one of several
 contextual forms corresponding to its position in a
@@ -66,8 +62,9 @@ may vary, however, potentially causing confusion.
 **Base** glyph or character is the standard term for a Arabic
 character that is capable of taking a diacritical mark. 
 
-Most of the base characters in Arabic are **consonants**, but there
-are several **vowel** base letters. 
+Most of the base characters in Arabic are consonants, but each
+language written with the Arabic script may have one or more vowel
+base letters.
 
 Vowels that are not base characters are frequently omitted from the
 text run entirely. Alternatively, such a vowel may appear as a
@@ -127,7 +124,7 @@ characters. There are six possible values:
     positions in a sequence of characters. When a
     `JOINING_TYPE_TRANSPARENT` character is encountered in a sequence,
     the `JOINING_TYPE` of the preceding character passes
-    through. Diacritical marks are frequently assigned this property. 
+    through. Diacritical marks are frequently assigned this value. 
 	
   - `JOINING_TYPE_JOIN_CAUSING` indicates that the character forces
     the use of joining forms with the preceding and subsequent
@@ -173,7 +170,8 @@ sequence are shaped.
   - `DIAC6` - Superscript "Alef" `U+0670`)
   - `DIAC7` - Madda (`U+0653`)
   - `DIAC8` - Hamza (`U+0654`, `U+0655`)
-            <!--- MS site calls this group(8) madda too !?! --->
+            
+<!--- MS site calls this group(8) madda too !?! --->
 			
 			
 ### Character tables ###
@@ -196,10 +194,29 @@ with retired file-encoding formats:
   - Arabic Presentation Forms-A
   - Arabic Presentation Forms-B
   
-Unless a software application is required to support specific stores  of
+Unless a software application is required to support specific stores of
 documents that are known to have used these older encodings, however, the
 shaping engine should not be expected to handle any text runs
 incorporating codepoints from these blocks.
+
+The tables list each codepoint along with its Unicode general
+category and its joining type. For letters, the table lists the
+codepoint's joining group. For diacritical marks, the table lists the
+codepoint's mark class. The codepoint's Unicode name and an example
+glyph are also provided.
+
+For example:
+
+| Codepoint | Unicode category | Joining type | Joining group | Glyph                        |
+|:----------|:-----------------|:-------------|:--------------|:-----------------------------|
+|`U+0981`   | Mark [Mn]        | BINDU        | TOP_POSITION  | &#x0981; Candrabindu         |
+| | | | |
+|`U+0995`   | Letter           | JOIN_CAUSING | _null_        | &#x0995; Ka                  |
+
+
+Codepoints with no assigned meaning are
+designated as _unassigned_ in the _Unicode category_ column. 
+
 
 <!--- Character table example and explanation --->
 
@@ -210,7 +227,7 @@ left-to-right text marker (`U+200E`) and right-to-left text marker (`U+200F`), a
 the no-break space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
-vowel or diacritical mark in isolation. Real-world text syllables may
+vowel or diacritical mark in isolation. Real-world text documents may
 also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
@@ -227,7 +244,13 @@ sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 <!--- Zero-Width Non Joiner explanation --->
 
-<!--- LTR and RTL marker explanation --->
+The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+the Unicode bidirectionality algorithm (BiDi) to indicate the points
+in a text run at which the writing direction changes.
+
+
+<!--- How shaping is affected by the LTR and RTL markers explanation --->
+
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
@@ -248,7 +271,16 @@ Processing a run of `<arab>` text involves five top-level stages:
 
 ### 1. Compound character composition and decomposition ###
 
-The `ccmp` feature allows a font to substitute pre-composed
+The `ccmp` feature allows a font to substitute
+
+ - mark-and-base sequences with a pre-composed glyph of the mark and
+   base (as is done in with a ligature substitution)
+ - individual compound glyphs with the equivalent decomposed sequence
+ 
+If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB or GPOS lookups, because
+those lookups may be written to match only the `ccmp`-substituted
+glyphs. 
 
 ### 2. Mark reordering ###
 
@@ -256,30 +288,44 @@ The `ccmp` feature allows a font to substitute pre-composed
 ### 3. Applying the language-form substitution features from GSUB ###
 
 `isol` to get isolated forms
+
 `fina` to get final forms
+
 `fin2` Syriac special case
+
 `fin3` Syriac special case #2
+
 `medi` to get medial forms
+
 `med2` Syriac special case
+
 `init` to get initial forms
+
 `rlig` substitutes mandatory ligatures
+
 `calt` substitutes alternative connection forms
 
 
 ### 4. Applying the typographic-form substitution features from GSUB ###
 
 `liga` substitutes optional, on-by-default ligatures
+
 `dlig` substitutes optional, off-by-default ligatures
+
 `cswh` substitutes contextual swash variants (eg, long-noon when X
         subsequent glyphs do not descend below the baseline)
+
 `mset` performs mark positioning by substitution (`mark` is
 preferred!)
 
 ### 5. Applying the positioning features from GPOS ###
 
 `curs` to perform cursive positioning
+
 `kern` to perform kerning
+
 `mark` to position marks to bases
+
 `mkmk` to position marks to marks
 
 
