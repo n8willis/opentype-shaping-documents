@@ -1,6 +1,6 @@
 # Arabic script shaping in OpenType #
 
-This document the general shaping procedure shared by all
+This document the general shaping procedure shared by all 
 Arabic script styles, and defines the common pieces that style-specific
 implementations share. 
 
@@ -11,6 +11,7 @@ implementations share.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
       - [Joining properties](#joining-properties)
+	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The `<arab>` shaping model](#the-arab-shaping-model)
   
@@ -19,21 +20,36 @@ implementations share.
 
 ## General information ##
 
-The Arabic script encompasses multiple distinct styles, including Naskh,
-Nataliq, and Kufi, that share a number of common features and rules,
-but that differ considerably in final appearance. 
-
 The Arabic script is used to write multiple languages, most commonly
-Arabic, Persian, Urdu, Pashto, Kurdish, and Azerbaijani.
+Arabic, Persian, Urdu, Pashto, Kurdish, and Azerbaijani. 
 
-A shaping engine can support all styles of Arabic in a single shaping
-model. In addition, several related scripts that follow similar rules
-and conventions can be supported using the same model. These scripts
-include N'Ko, Syriac, and Mongolian.
+The Arabic script encompasses multiple distinct styles, including Naskh, 
+Nataliq, and Kufi, that share a number of common features and rules,
+but that differ considerably in their final appearance. Due to the
+common features found between the styles, a shaping engine can support
+all styles of Arabic with a single shaping model.
+
+In addition, several other writing systems that observe similar rules
+and conventions can be supported using the same shaping model, even if
+they are not historically related to Arabic. These scripts include:
+
+  - N'Ko
+  - Syriac
+  - Mongolian
+
+Note that each of these scripts has its own independent
+script tag defined in OpenType. N'Ko uses `<nko>`, Syriac uses `<syrc>`, and
+Mongolian uses `<mong>`. The information found below about the `<arab>`
+script shaping model can serve as a general guide; script-specific
+information can be found in the linked document for each script. 
+
+<!--- Guessing on the script tags above; MS OpenType pages went --->
+<!--- offline unexpectedly, and the network is down so IA Wayback --->
+<!--- isn't available at the moment either.... --->
 
 Arabic is a joining script that uses inter-word spaces, so each
 codepoint in a text run may be substituted with one of several
-contextual forms though corresponding to its position in a
+contextual forms corresponding to its position in a
 word. Most, but not all, letter sequences join; shaping engines must
 track which positions trigger joining behavior for each letter.
 
@@ -130,33 +146,114 @@ For example, the Persian letter "Peh" (`U+067E`) is visually
 represented as the Arabic letter "Beh" (`U+0628`), but with two additional
 below-base ijam. Consequently, "Peh" is assigned to the `BEH` `JOINING_GROUP`.
 
+### Mark classification ###
 
-Diacritic classes: No more than one mark of each class on a base;
-DIAC1 and DIAC2 are mutually exclusive:
+Arabic diacritical marks are grouped into classes. Multiple diacritics
+may be placed on the same base, subject to two conditions:
+
+  - No more than one mark from each class is permitted
+  - The DIAC1 and DIAC2 classes are mutually exclusive: a base glyph cannot
+    accept both a DIAC1 mark and a DIAC2 mark.
+	
+Mark-and-base combinations that violate these conditions should be
+regarded as ivalid. Shapers may attempt to deal gracefully with
+such sequences, but no guarantees should be provided as to how the
+sequence are shaped.
+  
 <!--- From MS Uniscribe web docs --->
 
-  - DIAC1 - above-base U+064B, U+064C, U+064E, U+064F, U+0652, U+0657, U+0658, U+06E1
-  - DIAC2 - below-base U+064D, U+0650, U+0656
-  - DIAC3 - seat shadda U+0651
-  - DIAC4 - Qur'anic above-base U+0610 - U+0614, U+0659, U+06D6 - U+06DC, U+06DF, U+06E0, U+06E2, U+06E4, U+06E7, U+06E8, U+06EB, U+06EC
-  - DIAC5 - Qur'anic below-base U+06E3, U+06EA, U+06ED
-  - DIAC6 - superscript alef U+0670
-  - DIAC7 - madda U+0653
-  - DIAC8 - hamza <!--- MS site calls this madda !?! ---> U+0654, U+0655
+  - `DIAC1` - Above-base (`U+064B`, `U+064C`, `U+064E`, `U+064F`,
+            `U+0652`, `U+0657`, `U+0658`, `U+06E1`)
+  - `DIAC2` - Below-base (`U+064D`, `U+0650`, `U+0656`)
+  - `DIAC3` - Seat "Shadda" (`U+0651`)
+  - `DIAC4` - Qur'anic above-base (`U+0610 - U+0614`, `U+0659`, `U+06D6`,
+            `U+06DC`, `U+06DF`, `U+06E0`, `U+06E2`, `U+06E4`,
+            `U+06E7`, `U+06E8`, `U+06EB`, `U+06EC`)
+  - `DIAC5` - Qur'anic below-base (`U+06E3`, `U+06EA`, `U+06ED`)
+  - `DIAC6` - Superscript "Alef" `U+0670`)
+  - `DIAC7` - Madda (`U+0653`)
+  - `DIAC8` - Hamza (`U+0654`, `U+0655`)
+            <!--- MS site calls this group(8) madda too !?! --->
+			
+			
+### Character tables ###
 
-Additional codepoints: "Dotted circle" (`U+25CC`), "ZWNJ" (`U+200C`),
-"ZWJ" (`U+200D`), "LTR" (`U+200E`), "RTL" (`U+200F`).
+Separate character tables are provided for the Arabic, Arabic
+Supplement, Arabic Extended-A, Rumi Numeral Symbols, and Arabic
+Mathematical Symbols blocks, as well as for other miscellaneous
+characters that are used in `<arab>` text runs:
 
+  - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
+  - [Arabic Supplement character table](character-tables/character-tables-arabic-supplement.md#arabic-supplement-character-table)
+  - [Arabic Extended-A character table](character-tables/character-tables-arabic-extended-a.md#arabic-extended-a-character-table)
+  - [Rumi Numeral Symbols character table](character-tables/character-tables-rumi-numeral-symbols.md#rumi-numeral-symbols-character-table)
+  - [Arabic Mathematical Symbols character table](character-tables/character-tables-arabic-mathematical-symbols.md#arabic-mathematical-symbols-character-table)
+  - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
+
+Unicode also defines two blocks that implement backward compatibility
+with retired file-encoding formats:
+
+  - Arabic Presentation Forms-A
+  - Arabic Presentation Forms-B
+  
+Unless a software application is required to support specific stores  of
+documents that are known to have used these older encodings, however, the
+shaping engine should not be expected to handle any text runs
+incorporating codepoints from these blocks.
+
+<!--- Character table example and explanation --->
+
+Other important characters that may be encountered when shaping runs
+of Arabic text include the dotted-circle placeholder (`U+25CC`), the
+zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), the
+left-to-right text marker (`U+200E`) and right-to-left text marker (`U+200F`), and
+the no-break space (`U+00A0`).
+
+The dotted-circle placeholder is frequently used when displaying a
+vowel or diacritical mark in isolation. Real-world text syllables may
+also use other characters, such as hyphens or dashes, in a similar
+placeholder fashion; shaping engines should cope with this situation
+gracefully.
+
+The zero-width joiner is primarily used to force the usage of the
+cursive connecting form of a letter even when the context of the
+adjoining letters would not trigger the connecting form. 
+
+For example, to show the initial form of a letter in isolation (such
+as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
+would be used. To show the medial form of a letter in isolation, the
+sequence "ZWJ,_Letter_,ZWJ" would be used.
+
+
+<!--- Zero-Width Non Joiner explanation --->
+
+<!--- LTR and RTL marker explanation --->
+
+The no-break space is primarily used to display those codepoints that
+are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder.
 
 
 ## The `<arab>` shaping model ##
 
-Decomposition
+Processing a run of `<arab>` text involves five top-level stages:
 
-Mark reordering
+1. Compound character composition and decomposition
+2. Mark reordering
+3. Applying the language-form substitution features from GSUB
+4. Applying the typographic-form substitution features from GSUB
+5. Applying the positioning features from GPOS
 
-GSUB::
-Language-form features:
+
+### 1. Compound character composition and decomposition ###
+
+The `ccmp` feature allows a font to substitute pre-composed
+
+### 2. Mark reordering ###
+
+
+### 3. Applying the language-form substitution features from GSUB ###
 
 `isol` to get isolated forms
 `fina` to get final forms
@@ -165,10 +262,12 @@ Language-form features:
 `medi` to get medial forms
 `med2` Syriac special case
 `init` to get initial forms
-
 `rlig` substitutes mandatory ligatures
+`calt` substitutes alternative connection forms
 
-Typographic-form features:
+
+### 4. Applying the typographic-form substitution features from GSUB ###
+
 `liga` substitutes optional, on-by-default ligatures
 `dlig` substitutes optional, off-by-default ligatures
 `cswh` substitutes contextual swash variants (eg, long-noon when X
@@ -176,20 +275,11 @@ Typographic-form features:
 `mset` performs mark positioning by substitution (`mark` is
 preferred!)
 
-GPOS:
+### 5. Applying the positioning features from GPOS ###
+
 `curs` to perform cursive positioning
 `kern` to perform kerning
 `mark` to position marks to bases
 `mkmk` to position marks to marks
 
 
-Character blocks:
-Arabic
-Arabic Supplement
-Arabic Extended-A
-Arabic Presentation Forms A amd B
-Rumi Numeral Symbols
-Arabic Mathematical Symbols
-N'Ko
-Syriac
-Mongolian
