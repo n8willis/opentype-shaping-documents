@@ -260,53 +260,239 @@ the dotted-circle placeholder.
 
 ## The `<arab>` shaping model ##
 
-Processing a run of `<arab>` text involves five top-level stages:
+Processing a run of `<arab>` text involves seven top-level stages:
 
 1. Compound character composition and decomposition
 2. Mark reordering
-3. Applying the language-form substitution features from GSUB
-4. Applying the typographic-form substitution features from GSUB
-5. Applying the positioning features from GPOS
+3. Compute joining states
+4. Applying the `stch` feature
+5. Applying the language-form substitution features from GSUB
+6. Applying the typographic-form substitution features from GSUB
+7. Applying the positioning features from GPOS
 
 
 ### 1. Compound character composition and decomposition ###
 
 The `ccmp` feature allows a font to substitute
 
- - mark-and-base sequences with a pre-composed glyph of the mark and
-   base (as is done in with a ligature substitution)
- - individual compound glyphs with the equivalent decomposed sequence
+ - mark-and-base sequences with a pre-composed glyph including both
+   the mark and the base (as is done in with a ligature substitution)
+ - individual compound glyphs with the equivalent sequence of
+   decomposed glyphs
  
 If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB or GPOS lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
+
 ### 2. Mark reordering ###
 
+### 3. Compute joining states ###
 
-### 3. Applying the language-form substitution features from GSUB ###
+In order to correctly apply the initial, medial, and final form
+substitutions from GSUB during stage 5, the shaping engine must
+tag every letter for possible application of the appropriate feature.
 
-`isol` to get isolated forms
+To determine which feature is appropriate, the shaping engine must
+examine each word in turn and compute each letter's joining state from
+the letter's `JOINING_TYPE` and the `JOINING_TYPE` of the
+preceding character (if any).
 
-`fina` to get final forms
+This computation starts from the first letter of the word, temporarily
+tagging the letter for `isol` substitution. If the first
+letter is the only letter in the word, the `isol` tag will remain unchanged.
 
-`fin2` Syriac special case
+From here, the algorithm consumes each character in the string, one at
+a time, keeping track of the JOINING_TYPE of the previous character. 
 
-`fin3` Syriac special case #2
+If the current character is JOINING_TYPE_TRANSPARENT, move on to the next
+character but preserve the JOINING_TYPE at its previous state.
+
+If the preceding character's JOINING_TYPE is LEFT, DUAL, or
+JOIN_CAUSING:
+  - If the current character's JOINING_TYPE is RIGHT, DUAL, or
+    JOIN_CAUSING, tag the current character for `fina`, then update
+    the tag for the preceding character:
+	  - `isol` becomes `init`
+	  - `fina` becomes `medi`
+	  - `init` remains `init`
+	  - `medi` remains `medi`
+  - If the current character's JOINING_TYPE is LEFT or NON_JOINING,
+    tag the current character for `isol`, then update
+    the tag for the preceding character:
+	  - `medi` becomes `fina`
+	  - `init` becomes `isol`
+	  - `fina` remains `fina`
+	  - `isol` remains `isol`
+
+If the preceding character's JOINING_TYPE is RIGHT or NON_JOINING:
+  - Tag the current character for `isol`, then update the tag for the
+    preceding character:
+	  - `medi` becomes `fina`
+	  - `init` becomes `isol`
+	  - `fina` remains `fina`
+	  - `isol` remains `isol`
+	  
+When the last character of the word has been processed, proceed to the
+next word and repeat the algorithm, starting at the beginning of the
+next word.
+
+> Note: Because the processing of the characters in the algorithm
+> described above is deterministic, shaping engines may choose to
+> implement the joining-state computation as a state machine, lookup
+> table, or any other means desirable.
+
+<!--- HarfBuzz state table:
+
+Tag for current character:
+
+| Preceding   | NON_JOINING | LEFT | RIGHT | DUAL or JOIN_CAUSING | syrcAL | syrcDR |
+|:------------|:------------|:-----|:------|:---------------------|:-------|:-------|
+| Current     | | | | | | |
+| NON_JOINING | _none_      |      |       |                      |        |        |
+| LEFT        | `isol`      |      |       |                      |        |        |
+| RIGHT       |             |      |       |                      |        |        |
+| DUAL/CAUS   |             |      |       |                      |        |        |
+| syrcAL      |             |      |       |                      |        |        |
+| syrcDR      |             |      |       |                      |        |        |
+
+
+Updated tag for preceding character:
+
+| Preceding   | NON_JOINING | LEFT | RIGHT | DUAL or JOIN_CAUSING | syrcAL | syrcDR |
+|:------------|:------------|:-----|:------|:---------------------|:-------|:-------|
+| Current     | | | | | | |
+| NON_JOINING |             |      |       |                      |        |        |
+| LEFT        |             |      |       |                      |        |        |
+| RIGHT       |             |      |       |                      |        |        |
+| DUAL/CAUS   |             |      |       |                      |        |        |
+| syrcAL      |             |      |       |                      |        |        |
+| syrcDR      |             |      |       |                      |        |        |
+
+--->
+
+At the end of this process, all letters should be tagged for possible
+substitution by one of the `isol`, `init`, `medi`, or `fina` features.
+
+### 4. Applying the `stch` feature ###
+
+The `stch` feature decomposes and stretches special marks that are
+meant to extend to the full width of words to which they are
+attached. It was defined for use in `<syrc>` text runs for the "Syriac
+Abbreviation Mark" (`U+070F`) but it can be used with similar marks in
+other scripts.
+
+To apply the `stch` feature, the shaping engine should decompose the
+`U+070F` glyph into components, resulting in a beginning point, midpoint, and
+endpoint glyphs plus one (or more) extension glyphs: at least one
+extension between the beginning and midpoint glyphs and at least one
+extension between the midpoint and endpoint glyphs. 
+
+The shaping engine must calculate the total length of the word to
+which the mark applies. That length, minus the advance widths of the
+beginning, middle, and endpoint glyphs of the mark, must be divided by
+two. 
+
+The result, divided by the advance width of the extension glyph
+and rounded up to the next integer, tells the shaping engine how many
+copies of the extension glyph must be placed between the midpoint and
+each end of the mark.
+
+Following this procedure ensures that the same
+number of extensions is used on each side of the mark so that it
+remains symmetrical.
+
+Finally, the decomposed mark must be reordered as follows: 
+
+### 5. Applying the language-form substitution features from GSUB ###
+
+The language-substitution phase applies mandatory substitution
+features using the rules in the font's GSUB table. In preparation for
+this stage, glyph sequences should be tagged for possible application 
+of GSUB features.
+
+The order in which these substitutions must be performed is fixed for
+all scripts implemented in the Arabic shaping model:
+
+	locl
+	isol
+	fina
+	fin2 (only used in Syriac)
+	fin3 (only used in Syriac)
+	medi
+	med2 (only used in Syriac)
+	init
+	rlig
+	rclt
+	calt
+	
+
+#### 5.1 locl ####
+
+The `locl` feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.
+
+> Note: Strictly speaking, the use of localized-form substitutions is
+> not part of the shaping process, but of the localization process,
+> and could take place at an earlier point while handling the text
+> run. However, shaping engines are expected to complete the
+> application of the `locl` feature before applying the subsequent
+> GSUB substitutions in the following steps.
+
+
+#### 5.2 isol ####
+
+The `isol` feature substitutes the default glyph for a codepoint with
+the isolated form. It is applied to letters 
+
+> Note: It is common for a font to use the isolated form of a letter
+> as the default, in which case the `isol` feature would apply no
+> substitutions. However, this is only a convention, and the active
+> font may use other forms as the default glyphs for any or all
+> codepoints.
+
+#### 5.3 fina ####
+
+The `fina` feature substitutes the default glyph to get final forms
+
+#### 5.4 fin2 ####
+
+`fin2` Syriac special case: replaces word-final Alaph glyph where not
+preceded by Dalath, Rish, or dotless Dalath-Rish.
+
+#### 5.5 fin3 ####
+
+`fin3` Syriac special case: replaces word-final Alaph glyph where
+preceded by Dalath, Rish, or dotless Dalath-Rish.
+
+#### 5.6 medi ####
 
 `medi` to get medial forms
 
-`med2` Syriac special case
+#### 5.7 med2 ####
+
+`med2` Syriac special case: replaces Alaph glyphs in the middle of
+words when the preceding base character cannot be joined to.
+
+#### 5.8 init ####
 
 `init` to get initial forms
 
+#### 5.9 rlig ####
+
 `rlig` substitutes mandatory ligatures
+
+#### 5.10 rclt ####
+
+`rclt` substitutes required connection forms.
+
+#### 5.11 calt ####
 
 `calt` substitutes alternative connection forms
 
 
-### 4. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from GSUB ###
 
 `liga` substitutes optional, on-by-default ligatures
 
@@ -318,7 +504,7 @@ glyphs.
 `mset` performs mark positioning by substitution (`mark` is
 preferred!)
 
-### 5. Applying the positioning features from GPOS ###
+### 7. Applying the positioning features from GPOS ###
 
 `curs` to perform cursive positioning
 
