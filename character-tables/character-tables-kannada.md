@@ -111,7 +111,7 @@ specific, script-aware behavior.
 |`U+0CC5`   | _unassigned_     |                   |                            |                              |
 |`U+0CC6`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0CC6; Sign E              |
 |`U+0CC7`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CC7; Sign Ee             |
-|`U+0CC8`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND-RIGHT_POSITION     | &#x0CC8; Sign Ai             |
+|`U+0CC8`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CC8; Sign Ai             |
 |`U+0CC9`   | _unassigned_     |                   |                            |                              |
 |`U+0CCA`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CCA; Sign O              |
 |`U+0CCB`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0CCB; Sign Oo             |
