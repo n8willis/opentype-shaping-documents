@@ -115,6 +115,15 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
+Tamil includes one special class of letter, `MODIFYING_LETTER`, which
+is used only for "Visarga" (`U+0B83`). This denotes the character's
+usage in the Tamil language, which treats "Visarga" differently than
+other Indic scripts. In older Tamil texts, "Visarga" may indicate the
+presence of a silent letter; in recent Tamil texts, "Visarga" is used
+to modify the following letter in order to denote a foreign phoneme,
+such as "f". In shaping, "Visarga" should match tests for letters, but
+it is neither a consonant nor a vowel.
+
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
 and do not occur within syllables), need no special attention from the
