@@ -306,11 +306,22 @@ letter is the only letter in the word, the `isol` tag will remain unchanged.
 From here, the algorithm consumes each character in the string, one at
 a time, keeping track of the JOINING_TYPE of the previous character. 
 
+> Note: The following algorithm includes rules for processing `<syrc>`
+> text in addition to `<arab>` text. Implementers concerned only with
+> shaping `<arab>` text can omit the portions for `<syrc>`-specific rules.
+
 If the current character is JOINING_TYPE_TRANSPARENT, move on to the next
-character but preserve the JOINING_TYPE at its previous state.
+character but preserve the currently-tracked JOINING_TYPE at its previous state.
 
 If the preceding character's JOINING_TYPE is LEFT, DUAL, or
 JOIN_CAUSING:
+  - In `<syrc>` text, if the current character is "Alaph", tag the
+    current character for `med2`, then update the tag for the
+    preceding character:
+	  - `isol` becomes `init`
+	  - `fina` becomes `medi`
+	  - `init` remains `init`
+	  - `medi` remains `medi`
   - If the current character's JOINING_TYPE is RIGHT, DUAL, or
     JOIN_CAUSING, tag the current character for `fina`, then update
     the tag for the preceding character:
@@ -334,14 +345,35 @@ If the preceding character's JOINING_TYPE is RIGHT or NON_JOINING:
 	  - `fina` remains `fina`
 	  - `isol` remains `isol`
 	  
-When the last character of the word has been processed, proceed to the
+After testing the final character of the word, if the text is in
+`<syrc>` and current (final) character is "Alaph", perform an additional test:
+  - If the preceding character's JOINING_GROUP is DALATH_RISH,
+    tag the current character for `fin3`, then update the tag for the
+    preceding character:
+	  - `medi` becomes `fina`
+	  - `init` becomes `isol`
+	  - `fina` remains `fina`
+	  - `isol` remains `isol`
+  - If the preceding character's JOINING_GROUP is not DALATH_RISH, tag
+    the current character for `fin2`, then update the tag for the
+    preceding character:
+	  - `medi` becomes `fina`
+	  - `fin2` becomes `fina`
+	  - `fin3` becomes `fina`
+	  - `init` becomes `isol`
+	  - `fina` remains `fina`
+	  - `isol` remains `isol`
+	  - `med2` remains `med2`
+
+
+Once the last character of the word has been processed, proceed to the
 next word and repeat the algorithm, starting at the beginning of the
 next word.
 
 > Note: Because the processing of the characters in the algorithm
 > described above is deterministic, shaping engines may choose to
-> implement the joining-state computation as a state machine, lookup
-> table, or any other means desirable.
+> implement the joining-state computation as a state machine, in a lookup
+> table, or by any other means desirable.
 
 <!--- HarfBuzz state table:
 
@@ -383,13 +415,13 @@ attached. It was defined for use in `<syrc>` text runs for the "Syriac
 Abbreviation Mark" (`U+070F`) but it can be used with similar marks in
 other scripts.
 
-To apply the `stch` feature, the shaping engine should decompose the
-`U+070F` glyph into components, resulting in a beginning point, midpoint, and
-endpoint glyphs plus one (or more) extension glyphs: at least one
-extension between the beginning and midpoint glyphs and at least one
-extension between the midpoint and endpoint glyphs. 
+To apply the `stch` feature, the shaping engine should first decompose the
+`U+070F` glyph into components, which results in a beginning point,
+midpoint, and endpoint glyphs plus one (or more) extension glyphs: at
+least one extension between the beginning and midpoint glyphs and at
+least one extension between the midpoint and endpoint glyphs. 
 
-The shaping engine must calculate the total length of the word to
+The shaping engine must then calculate the total length of the word to
 which the mark applies. That length, minus the advance widths of the
 beginning, middle, and endpoint glyphs of the mark, must be divided by
 two. 
@@ -399,11 +431,17 @@ and rounded up to the next integer, tells the shaping engine how many
 copies of the extension glyph must be placed between the midpoint and
 each end of the mark.
 
-Following this procedure ensures that the same
-number of extensions is used on each side of the mark so that it
-remains symmetrical.
+Following this procedure ensures that the same number of extensions is
+used on each side of the mark so that it remains symmetrical.
 
 Finally, the decomposed mark must be reordered as follows: 
+
+  - All of the glyphs in the sequence for the mark, _except_ for
+    the final glyph, are repositioned as a group so that they precede
+    the word to which the mark is attached.
+  - The final glyph in the mark sequence is repositioned to the end of
+    the word.
+	
 
 ### 5. Applying the language-form substitution features from GSUB ###
 
