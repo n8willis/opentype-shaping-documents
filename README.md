@@ -11,6 +11,10 @@
 > As long as this warning text remains visible, the above 
 > holds true. 
 
+At present, we are seeking comments and bugfixes on the Indic-script
+documents. Interested readers and contributors can begin at the [Indic
+General](opentype-shaping-indic-general.md) shaping document and are encouraged to submit their feedback
+on the text or images of any of the linked Indic scripts.
 
 In its final form, this repository will hold documentation describing
 the shaping behavior used for layout of OpenType text. In particular,
