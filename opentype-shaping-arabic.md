@@ -14,7 +14,13 @@ implementations share.
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The `<arab>` shaping model](#the-arab-shaping-model)
-  
+      - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
+      - [2. Computing letter joining states](#2-computing-letter-joining-states)
+      - [3. Applying the `stch` feature](#3-applying-the-stch-feature)
+      - [4. Applying the language-form substitution features from GSUB](#4-applying-the-language-form-substitution-features-from-gsub)
+      - [5. Applying the typographic-form substitution features from GSUB](#5-applying-the-typographic-form-substitution-features-from-gsub)
+      - [6. Mark reordering](#6-mark-reordering)
+      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -145,7 +151,46 @@ below-base ijam. Consequently, "Peh" is assigned to the `BEH` `JOINING_GROUP`.
 
 ### Mark classification ###
 
-Arabic diacritical marks are grouped into classes. Multiple diacritics
+The Unicode standard defines a _canonical combining class_ for each
+codepoint that is used whenever a sequence needs to be sorted into
+canonical order. 
+
+Several of the Arabic marks belong to standard combining
+classes:
+
+| Codepoint | Combining class | Glyph                              |
+|:----------|:----------------|:-----------------------------------|
+|`U+064B`   | 27              | &#x064B; Fathatan / Open fathatan  |
+|`U+064C`   | 28              | &#x064C; Dammatan / Open dammatan  |
+|`U+064D`   | 29              | &#x064D; Kasratan / Open Kasratan  |
+|`U+064E`   | 30              | &#x064E; Fatha / Small fatha       |
+|`U+064F`   | 31              | &#x064F; Damma / Small damma       |
+|`U+0650`   | 32              | &#x0650; Kasra / Small kasra       |
+|`U+0651`   | 33              | &#x0651; Shadda                    |
+|`U+0652`   | 34              | &#x0652; Sukun                     |
+|`U+0670`   | 35              | &#x0670; Superscript Alef          |
+|           | 220             | Other below-base combining marks   |
+|           | 230             | Other above-base combining marks   |
+
+The numeric values of these combining classes are used during Unicode
+normalization.
+
+A subset of the Arabic marks require special handling when shaping
+Arabic text, during the mark-reordering stage. These include two sets
+of _Modifier Combining Marks_ (MCM) that may need to be repositioned
+closer to the base character, when they occur in sequences of multiple
+marks. 
+
+The sets are:
+  - Below-base (class 220) MCMs: "Hamza below" (`U+0655`), "Small low seen"
+    (`U+06E3`)
+  - Above-base (class 230) MCMs: "Hamza above" (`U+0654`), "Mark noon ghunna"
+    (`U+0658`), "Small high seen" (`U+06DC`), "Small high yeh" (`U+06E7`), "Small high
+    noon" (`U+06E8`), "Small high waw" (`U+08F3`)
+
+These classifications are used in the [mark-reordering stage](#6-mark-reordering).
+
+<!--- Arabic diacritical marks are grouped into classes. Multiple diacritics
 may be placed on the same base, subject to two conditions:
 
   - No more than one mark from each class is permitted
@@ -155,11 +200,11 @@ may be placed on the same base, subject to two conditions:
 Mark-and-base combinations that violate these conditions should be
 regarded as ivalid. Shapers may attempt to deal gracefully with
 such sequences, but no guarantees should be provided as to how the
-sequence are shaped.
+sequence are shaped. --->
   
 <!--- From MS Uniscribe web docs --->
 
-  - `DIAC1` - Above-base (`U+064B`, `U+064C`, `U+064E`, `U+064F`,
+<!---  - `DIAC1` - Above-base (`U+064B`, `U+064C`, `U+064E`, `U+064F`,
             `U+0652`, `U+0657`, `U+0658`, `U+06E1`)
   - `DIAC2` - Below-base (`U+064D`, `U+0650`, `U+0656`)
   - `DIAC3` - Seat "Shadda" (`U+0651`)
@@ -169,7 +214,7 @@ sequence are shaped.
   - `DIAC5` - Qur'anic below-base (`U+06E3`, `U+06EA`, `U+06ED`)
   - `DIAC6` - Superscript "Alef" `U+0670`)
   - `DIAC7` - Madda (`U+0653`)
-  - `DIAC8` - Hamza (`U+0654`, `U+0655`)
+  - `DIAC8` - Hamza (`U+0654`, `U+0655`) --->
             
 <!--- MS site calls this group(8) madda too !?! --->
 			
@@ -202,16 +247,17 @@ incorporating codepoints from these blocks.
 The tables list each codepoint along with its Unicode general
 category and its joining type. For letters, the table lists the
 codepoint's joining group. For diacritical marks, the table lists the
-codepoint's mark class. The codepoint's Unicode name and an example
+codepoint's mark combining class. The codepoint's Unicode name and an example
 glyph are also provided.
 
 For example:
 
-| Codepoint | Unicode category | Joining type | Joining group | Glyph                        |
-|:----------|:-----------------|:-------------|:--------------|:-----------------------------|
-|`U+0981`   | Mark [Mn]        | BINDU        | TOP_POSITION  | &#x0981; Candrabindu         |
-| | | | |
-|`U+0995`   | Letter           | JOIN_CAUSING | _null_        | &#x0995; Ka                  |
+| Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
+|:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
+|`U+0628`   | Letter           | DUAL         | BEH           | _null_     | &#x0628; Beh                 |
+| | | | | |
+|`U+0655`   | Mark [Mc]        | TRANSPARENT  | _null_        | 220_MCM   | &#x0655; Hamza Below         |
+
 
 
 Codepoints with no assigned meaning are
@@ -222,9 +268,10 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Other important characters that may be encountered when shaping runs
 of Arabic text include the dotted-circle placeholder (`U+25CC`), the
-zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), the
-left-to-right text marker (`U+200E`) and right-to-left text marker (`U+200F`), and
-the no-break space (`U+00A0`).
+combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
+and zero-width non-joiner (`U+200C`), the left-to-right text marker
+(`U+200E`) and right-to-left text marker (`U+200F`), and the no-break
+space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
 vowel or diacritical mark in isolation. Real-world text documents may
@@ -232,7 +279,13 @@ also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
-The zero-width joiner is primarily used to force the usage of the
+The combining grapheme joiner (CGJ) is primarily used to alter the
+order in which adjacent marks are positioned during the
+mark-reordering stage, in order to adhere to the needs of a
+non-default language orthography.
+<!--- combining grapheme joiner explanation --->
+
+The zero-width joiner (ZWJ) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
@@ -263,11 +316,11 @@ the dotted-circle placeholder.
 Processing a run of `<arab>` text involves seven top-level stages:
 
 1. Compound character composition and decomposition
-2. Mark reordering
-3. Compute joining states
-4. Applying the `stch` feature
-5. Applying the language-form substitution features from GSUB
-6. Applying the typographic-form substitution features from GSUB
+2. Computing letter joining states
+3. Applying the `stch` feature
+4. Applying the language-form substitution features from GSUB
+5. Applying the typographic-form substitution features from GSUB
+6. Mark reordering
 7. Applying the positioning features from GPOS
 
 
@@ -286,9 +339,7 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-### 2. Mark reordering ###
-
-### 3. Compute joining states ###
+### 2. Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
 substitutions from GSUB during stage 5, the shaping engine must
@@ -407,7 +458,7 @@ Updated tag for preceding character:
 At the end of this process, all letters should be tagged for possible
 substitution by one of the `isol`, `init`, `medi`, or `fina` features.
 
-### 4. Applying the `stch` feature ###
+### 3. Applying the `stch` feature ###
 
 The `stch` feature decomposes and stretches special marks that are
 meant to extend to the full width of words to which they are
@@ -443,7 +494,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### 4. Applying the language-form substitution features from GSUB ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's GSUB table. In preparation for
@@ -466,7 +517,7 @@ all scripts implemented in the Arabic shaping model:
 	calt
 	
 
-#### 5.1 locl ####
+#### 4.1 locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -479,7 +530,7 @@ variants, based on examining the language setting of the text run.
 > GSUB substitutions in the following steps.
 
 
-#### 5.2 isol ####
+#### 4.2 isol ####
 
 The `isol` feature substitutes the default glyph for a codepoint with
 the isolated form. It is applied to letters 
@@ -490,57 +541,106 @@ the isolated form. It is applied to letters
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-#### 5.3 fina ####
+#### 4.3 fina ####
 
 The `fina` feature substitutes the default glyph to get final forms
 
-#### 5.4 fin2 ####
+#### 4.4 fin2 ####
 
 `fin2` Syriac special case: replaces word-final Alaph glyph where not
 preceded by Dalath, Rish, or dotless Dalath-Rish.
 
-#### 5.5 fin3 ####
+#### 4.5 fin3 ####
 
 `fin3` Syriac special case: replaces word-final Alaph glyph where
 preceded by Dalath, Rish, or dotless Dalath-Rish.
 
-#### 5.6 medi ####
+#### 4.6 medi ####
 
 `medi` to get medial forms
 
-#### 5.7 med2 ####
+#### 4.7 med2 ####
 
 `med2` Syriac special case: replaces Alaph glyphs in the middle of
 words when the preceding base character cannot be joined to.
 
-#### 5.8 init ####
+#### 4.8 init ####
 
 `init` to get initial forms
 
-#### 5.9 rlig ####
+#### 4.9 rlig ####
 
 `rlig` substitutes mandatory ligatures
 
-#### 5.10 rclt ####
+#### 4.10 rclt ####
 
 `rclt` substitutes required connection forms.
 
-#### 5.11 calt ####
+#### 4.11 calt ####
 
 `calt` substitutes alternative connection forms
 
 
-### 6. Applying the typographic-form substitution features from GSUB ###
+### 5. Applying the typographic-form substitution features from GSUB ###
 
-`liga` substitutes optional, on-by-default ligatures
+The typographic-substitution phase applies optional substitution
+features using the rules in the font's GSUB table.
 
-`dlig` substitutes optional, off-by-default ligatures
+The order in which these substitution must be performed is fixed for
+all acripts implemented in the Arabic shaping model:
+
+    liga
+	dlig
+	cswh
+	mset
+	
+
+#### 5.1 liga ####
+
+`liga` substitutes optional, on-by-default ligatures.
+
+
+#### 5.2 dlig ####
+
+`dlig` substitutes optional, off-by-default ligatures.
+
+
+#### 5.3 cswh ####
 
 `cswh` substitutes contextual swash variants (eg, long-noon when X
         subsequent glyphs do not descend below the baseline)
 
+
+#### 5.4 mset ####
+
 `mset` performs mark positioning by substitution (`mark` is
 preferred!)
+
+### 6. Mark reordering ###
+
+<!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
+
+Sequences of adjacent marks may need to be reordered before the
+mark-to-base and mark-to-mark positioning features from GPOS can be
+correctly applied.
+
+In particular, those marks that have strong affinity to the base
+character must be placed closest to the base.
+
+The algorithm for reordering a sequence of marks is:
+
+  - First, move any "Shadda" (combining class `33`) characters to the beginning of the mark
+    sequence.
+	
+  -	Second, move any subsequence of combining-class-`230` characters that begins
+       with a `230_MCM` character to the beginning of the sequence,
+       before all "Shadda" characters. The subsequence must be moved
+       as a group.
+
+  - Finally, move any subsequence of combining-class-`220` characters that begins
+       with a `220_MCM` character to the beginning of the sequence,
+       before all "Shadda" characters and before all class-`230`
+       characters. The subsequence must be moved as a group.
 
 ### 7. Applying the positioning features from GPOS ###
 
