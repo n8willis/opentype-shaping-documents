@@ -227,10 +227,10 @@ Mathematical Symbols blocks, as well as for other miscellaneous
 characters that are used in `<arab>` text runs:
 
   - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
-  - [Arabic Supplement character table](character-tables/character-tables-arabic-supplement.md#arabic-supplement-character-table)
-  - [Arabic Extended-A character table](character-tables/character-tables-arabic-extended-a.md#arabic-extended-a-character-table)
-  - [Rumi Numeral Symbols character table](character-tables/character-tables-rumi-numeral-symbols.md#rumi-numeral-symbols-character-table)
-  - [Arabic Mathematical Symbols character table](character-tables/character-tables-arabic-mathematical-symbols.md#arabic-mathematical-symbols-character-table)
+  - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
+  - [Arabic Extended-A character table](character-tables/character-tables-arabic.md#arabic-extended-a-character-table)
+  - [Rumi Numeral Symbols character table](character-tables/character-tables-arabic.md#rumi-numeral-symbols-character-table)
+  - [Arabic Mathematical Symbols character table](character-tables/character-tables-arabic.md#arabic-mathematical-symbols-character-table)
   - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
 
 Unicode also defines two blocks that implement backward compatibility
