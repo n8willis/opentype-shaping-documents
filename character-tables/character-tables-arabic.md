@@ -319,6 +319,64 @@ treated differently during the mark-reordering stage.
 
 
 
+## Arabic Supplement character table ##
+
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                           |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------------------------|
+|`U+0750`   | Letter           | DUAL         | BEH                  | _0_        | &#x0750; Dotless Beh With Horizontal 3 Dots Below               |
+|`U+0751`   | Letter           | DUAL         | BEH                  | _0_        | &#x0751; Beh With 3 Dots Above                                  |
+|`U+0752`   | Letter           | DUAL         | BEH                  | _0_        | &#x0752; Dotless Beh With Inverted 3 Dots Below                 |
+|`U+0753`   | Letter           | DUAL         | BEH                  | _0_        | &#x0753; Dotless Beh With Inverted 3 Dots Below And 2 Dots Above|
+|`U+0754`   | Letter           | DUAL         | BEH                  | _0_        | &#x0754; Dotless Beh With 2 Dots Below And Dot Above            |
+|`U+0755`   | Letter           | DUAL         | BEH                  | _0_        | &#x0755; Dotless Beh With Inverted V Below                      |
+|`U+0756`   | Letter           | DUAL         | BEH                  | _0_        | &#x0756; Dotless Beh With V Above                               |
+|`U+0757`   | Letter           | DUAL         | HAH                  | _0_        | &#x0757; Hah With 2 Dots Above                                  |
+|`U+0758`   | Letter           | DUAL         | HAH                  | _0_        | &#x0758; Hah With Inverted 3 Dots Below                         |
+|`U+0759`   | Letter           | RIGHT        | DAL                  | _0_        | &#x0759; Dal With Vertical 2 Dots Below And Tah Above           |
+|`U+075A`   | Letter           | RIGHT        | DAL                  | _0_        | &#x075A; Dal With Inverted V Below                              |
+|`U+075B`   | Letter           | RIGHT        | REH                  | _0_        | &#x075B; Reh With Bar                                           |
+|`U+075C`   | Letter           | DUAL         | SEEN                 | _0_        | &#x075C; Seen With 4 Dots Above                                 |
+|`U+075D`   | Letter           | DUAL         | AIN                  | _0_        | &#x075D; Ain With 2 Dots Above                                  |
+|`U+075E`   | Letter           | DUAL         | AIN                  | _0_        | &#x075E; Ain With Inverted 3 Dots Above                         |
+|`U+075F`   | Letter           | DUAL         | AIN                  | _0_        | &#x075F; Ain With Vertical 2 Dots Above                         |
+| | | | | |                                                                                                              
+|`U+0760`   | Letter           | DUAL         | FEH                  | _0_        | &#x0760; Dotless Feh With 2 Dots Below                          |
+|`U+0761`   | Letter           | DUAL         | FEH                  | _0_        | &#x0761; Dotless Feh With Inverted 3 Dots Below                 |
+|`U+0762`   | Letter           | DUAL         | GAF                  | _0_        | &#x0762; Keheh With Dot Above                                   |
+|`U+0763`   | Letter           | DUAL         | GAF                  | _0_        | &#x0763; Keheh With 3 Dots Above                                |
+|`U+0764`   | Letter           | DUAL         | GAF                  | _0_        | &#x0764; Keheh With Inverted 3 Dots Below                       |
+|`U+0765`   | Letter           | DUAL         | MEEM                 | _0_        | &#x0765; Meem With Dot Above                                    |
+|`U+0766`   | Letter           | DUAL         | MEEM                 | _0_        | &#x0766; Meem With Dot Below                                    |
+|`U+0767`   | Letter           | DUAL         | NOON                 | _0_        | &#x0767; Noon With 2 Dots Below                                 |
+|`U+0768`   | Letter           | DUAL         | NOON                 | _0_        | &#x0768; Noon With Tah Above                                    |
+|`U+0769`   | Letter           | DUAL         | NOON                 | _0_        | &#x0769; Noon With V Above                                      |
+|`U+076A`   | Letter           | DUAL         | LAM                  | _0_        | &#x076A; Lam With Bar                                           |
+|`U+076B`   | Letter           | RIGHT        | REH                  | _0_        | &#x076B; Reh With Vertical 2 Dots Above                         |
+|`U+076C`   | Letter           | RIGHT        | REH                  | _0_        | &#x076C; Reh With Hamza Above                                   |
+|`U+076D`   | Letter           | DUAL         | SEEN                 | _0_        | &#x076D; Seen With Vertical 2 Dots Above                        |
+|`U+076E`   | Letter           | DUAL         | HAH                  | _0_        | &#x076E; Hah With Tah Below                                     |
+|`U+076F`   | Letter           | DUAL         | HAH                  | _0_        | &#x076F; Hah With Tah And 2 Dots Below                          |
+| | | | | |                                                                                                                      
+|`U+0770`   | Letter           | DUAL         | SEEN                 | _0_        | &#x0770; Seen With 2 Dots And Tah Above                         |
+|`U+0771`   | Letter           | RIGHT        | REH                  | _0_        | &#x0771; Reh With 2 Dots And Tah Above                          |
+|`U+0772`   | Letter           | DUAL         | HAH                  | _0_        | &#x0772; Hah With Tah Above                                     |
+|`U+0773`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0773; Alef With Digit Two Above                              |
+|`U+0774`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0774; Alef With Digit Three Above                            |
+|`U+0775`   | Letter           | DUAL         | FARSI_YEH            | _0_        | &#x0775; Farsi Yeh With Digit Two Above                         |
+|`U+0776`   | Letter           | DUAL         | FARSI_YEH            | _0_        | &#x0776; Farsi Yeh With Digit Three Above                       |
+|`U+0777`   | Letter           | DUAL         | YEH                  | _0_        | &#x0777; Dotless Yeh With Digit Four Below                      |
+|`U+0778`   | Letter           | RIGHT        | WAW                  | _0_        | &#x0778; Waw With Digit Two Above                               |
+|`U+0779`   | Letter           | RIGHT        | WAW                  | _0_        | &#x0779; Waw With Digit Three Above                             |
+|`U+077A`   | Letter           | DUAL         | BURUSHASKI_YEH_BARREE| _0_        | &#x077A; Burushaski Yeh Barree With Digit Two Above             |
+|`U+077B`   | Letter           | DUAL         | BURUSHASKI_YEH_BARREE| _0_        | &#x077B; Burushaski Yeh Barree With Digit Three Above           |
+|`U+077C`   | Letter           | DUAL         | HAH                  | _0_        | &#x077C; Hah With Digit Four Below                              |
+|`U+077D`   | Letter           | DUAL         | SEEN                 | _0_        | &#x077D; Seen With Digit Four Above                             |
+|`U+077E`   | Letter           | DUAL         | SEEN                 | _0_        | &#x077E; Seen With Inverted V Above                             |
+|`U+077F`   | Letter           | DUAL         | KAF                  | _0_        | &#x077F; Kaf With 2 Dots Above                                  |                        
+
+
+
 ## Miscellaneous character table ##
 
 Other important characters that may be encountered when shaping runs
