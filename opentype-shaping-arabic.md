@@ -230,8 +230,11 @@ characters that are used in `<arab>` text runs:
   - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
   - [Arabic Extended-A character table](character-tables/character-tables-arabic.md#arabic-extended-a-character-table)
   - [Rumi Numeral Symbols character table](character-tables/character-tables-arabic.md#rumi-numeral-symbols-character-table)
-  - [Arabic Mathematical Symbols character table](character-tables/character-tables-arabic.md#arabic-mathematical-symbols-character-table)
   - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
+
+<!--- Commenting out Arabic Mathematical Alphabetical Symbols block 
+      since it does not involve text shaping AFAICT. --->
+<!---   - [Arabic Mathematical Alphabetic Symbols character table](character-tables/character-tables-arabic.md#arabic-mathematical-alphabetic-symbols-character-table) --->
 
 Unicode also defines two blocks that implement backward compatibility
 with retired file-encoding formats:

@@ -6,6 +6,9 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Arabic character table](#arabic-character-table)
+  - [Arabic Supplement character table](#arabic-supplement-character-table)
+  - [Arabic Extended-A character table](#arabic-extended-a-character-table)
+  - [Rumi Numeral Symbols character table](#rumi-numeral-symbols-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 
 
@@ -482,6 +485,71 @@ treated differently during the mark-reordering stage.
 |`U+08FD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FD; Right Arrowhead Above With Dot               |
 |`U+08FE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FE; Damma With Dot                               |
 |`U+08FF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FF; Mark Sideways Noon Ghunna                    |          
+
+
+## Rumi Numeral Symbols character table ##
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
+|`U+10E60`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E60; Digit One            |
+|`U+10E61`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E61; Digit Two            |
+|`U+10E62`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E62; Digit Three          |
+|`U+10E63`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E63; Digit Four           |
+|`U+10E64`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E64; Digit Five           |
+|`U+10E65`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E65; Digit Six            |
+|`U+10E66`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E66; Digit Seven          |
+|`U+10E67`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E67; Digit Eight          |
+|`U+10E68`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E68; Digit Nine           |
+|`U+10E69`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E69; Number Ten           |
+|`U+10E6A`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6A; Number Twenty        |
+|`U+10E6B`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6B; Number Thirty        |
+|`U+10E6C`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6C; Number Forty         |
+|`U+10E6D`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6D; Number Fifty         |
+|`U+10E6E`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6E; Number Sixty         |
+|`U+10E6F`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6F; Number Seventy       |
+| | | | | |                                                                                          
+|`U+10E70`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E70; Number Eighty        |
+|`U+10E71`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E71; Number Ninety        |
+|`U+10E72`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E72; Number One Hundred   |
+|`U+10E73`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E73; Number Two Hundred   |
+|`U+10E74`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E74; Number Three Hundred |
+|`U+10E75`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E75; Number Four Hundred  |
+|`U+10E76`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E76; Number Five Hundred  |
+|`U+10E77`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E77; Number Six Hundred   |
+|`U+10E78`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E78; Number Seven Hundred |
+|`U+10E79`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E79; Number Eight Hundred |
+|`U+10E7A`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7A; Number Nine Hundred  |
+|`U+10E7B`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7B; Fraction One Half    |
+|`U+10E7C`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7C; Fraction One Quarter |
+|`U+10E7D`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7D; Fraction One Third   |
+|`U+10E7E`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7E; Fraction Two Thirds  |
+|`U+10E7F`  | _unasigned_      |              |                      |            |                                |
+
+
+<!--- 
+## Arabic Mathematical Alphabetic Symbols character table ##
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
+|`U+10E60`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E60; Digit One            |
+|`U+10E61`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E61; Digit Two            |
+|`U+10E62`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E62; Digit Three          |
+|`U+10E63`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E63; Digit Four           |
+|`U+10E64`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E64; Digit Five           |
+|`U+10E65`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E65; Digit Six            |
+|`U+10E66`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E66; Digit Seven          |
+|`U+10E67`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E67; Digit Eight          |
+|`U+10E68`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E68; Digit Nine           |
+|`U+10E69`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E69; Number Ten           |
+|`U+10E6A`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6A; Number Twenty        |
+|`U+10E6B`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6B; Number Thirty        |
+|`U+10E6C`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6C; Number Forty         |
+|`U+10E6D`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6D; Number Fifty         |
+|`U+10E6E`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6E; Number Sixty         |
+|`U+10E6F`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E6F; Number Seventy       |
+| | | | | |                                                                                          
+
+--->
 
 
 ## Miscellaneous character table ##
