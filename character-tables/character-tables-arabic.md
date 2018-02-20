@@ -381,37 +381,37 @@ treated differently during the mark-reordering stage.
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
-|`U+08A0`   | Letter           | D            | BEH                  | _0_        | &#x08A0; Dotless Beh With V Below                     |
-|`U+08A1`   | Letter           | D            | BEH                  | _0_        | &#x08A1; Beh With Hamza Above                         |
-|`U+08A2`   | Letter           | D            | HAH                  | _0_        | &#x08A2; Hah With Dot Below And 2 Dots Above          |
-|`U+08A3`   | Letter           | D            | TAH                  | _0_        | &#x08A3; Tah With 2 Dots Above                        |
-|`U+08A4`   | Letter           | D            | FEH                  | _0_        | &#x08A4; Dotless Feh With Dot Below And 3 Dots Above  |
-|`U+08A5`   | Letter           | D            | QAF                  | _0_        | &#x08A5; Qaf With Dot Below                           |
-|`U+08A6`   | Letter           | D            | LAM                  | _0_        | &#x08A6; Lam With Double Bar                          |
-|`U+08A7`   | Letter           | D            | MEEM                 | _0_        | &#x08A7; Meem With 3 Dots Above                       |
-|`U+08A8`   | Letter           | D            | YEH                  | _0_        | &#x08A8; Yeh With Hamza Above                         |
-|`U+08A9`   | Letter           | D            | YEH                  | _0_        | &#x08A9; Yeh With Dot Above                           |
-|`U+08AA`   | Letter           | R            | REH                  | _0_        | &#x08AA; Reh With Loop                                |
-|`U+08AB`   | Letter           | R            | WAW                  | _0_        | &#x08AB; Waw With Dot Within                          |
-|`U+08AC`   | Letter           | R            | ROHINGYA_YEH         | _0_        | &#x08AC; Rohingya Yeh                                 |
-|`U+08AD`   | Letter           | NON          | _null_               | _0_        | &#x08AD; Low Alef                                     |
-|`U+08AE`   | Letter           | R            | DAL                  | _0_        | &#x08AE; Dal With 3 Dots Below                        |
-|`U+08AF`   | Letter           | D            | SAD                  | _0_        | &#x08AF; Sad With 3 Dots Below                        |
+|`U+08A0`   | Letter           | DUAL         | BEH                  | _0_        | &#x08A0; Dotless Beh With V Below                     |
+|`U+08A1`   | Letter           | DUAL         | BEH                  | _0_        | &#x08A1; Beh With Hamza Above                         |
+|`U+08A2`   | Letter           | DUAL         | HAH                  | _0_        | &#x08A2; Hah With Dot Below And 2 Dots Above          |
+|`U+08A3`   | Letter           | DUAL         | TAH                  | _0_        | &#x08A3; Tah With 2 Dots Above                        |
+|`U+08A4`   | Letter           | DUAL         | FEH                  | _0_        | &#x08A4; Dotless Feh With Dot Below And 3 Dots Above  |
+|`U+08A5`   | Letter           | DUAL         | QAF                  | _0_        | &#x08A5; Qaf With Dot Below                           |
+|`U+08A6`   | Letter           | DUAL         | LAM                  | _0_        | &#x08A6; Lam With Double Bar                          |
+|`U+08A7`   | Letter           | DUAL         | MEEM                 | _0_        | &#x08A7; Meem With 3 Dots Above                       |
+|`U+08A8`   | Letter           | DUAL         | YEH                  | _0_        | &#x08A8; Yeh With Hamza Above                         |
+|`U+08A9`   | Letter           | DUAL         | YEH                  | _0_        | &#x08A9; Yeh With Dot Above                           |
+|`U+08AA`   | Letter           | RIGHT        | REH                  | _0_        | &#x08AA; Reh With Loop                                |
+|`U+08AB`   | Letter           | RIGHT        | WAW                  | _0_        | &#x08AB; Waw With Dot Within                          |
+|`U+08AC`   | Letter           | RIGHT        | ROHINGYA_YEH         | _0_        | &#x08AC; Rohingya Yeh                                 |
+|`U+08AD`   | Letter           | NON_JOINING  | _null_               | _0_        | &#x08AD; Low Alef                                     |
+|`U+08AE`   | Letter           | RIGHT        | DAL                  | _0_        | &#x08AE; Dal With 3 Dots Below                        |
+|`U+08AF`   | Letter           | DUAL         | SAD                  | _0_        | &#x08AF; Sad With 3 Dots Below                        |
 | | | | | |                                                                                                              
-|`U+08B0`   | Letter           | D            | GAF                  | _0_        | &#x08B0; Keheh With Stroke Below                      |
-|`U+08B1`   | Letter           | R            | STRAIGHT_WAW         | _0_        | &#x08B1; Straight Waw                                 |
-|`U+08B2`   | Letter           | R            | REH                  | _0_        | &#x08B2; Reh With Dot And Inverted V Above            |
-|`U+08B3`   | Letter           | D            | AIN                  | _0_        | &#x08B3; Ain With 3 Dots Below                        |
-|`U+08B4`   | Letter           | D            | KAF                  | _0_        | &#x08B4; Kaf With Dot Below                           |
+|`U+08B0`   | Letter           | DUAL         | GAF                  | _0_        | &#x08B0; Keheh With Stroke Below                      |
+|`U+08B1`   | Letter           | RIGHT        | STRAIGHT_WAW         | _0_        | &#x08B1; Straight Waw                                 |
+|`U+08B2`   | Letter           | RIGHT        | REH                  | _0_        | &#x08B2; Reh With Dot And Inverted V Above            |
+|`U+08B3`   | Letter           | DUAL         | AIN                  | _0_        | &#x08B3; Ain With 3 Dots Below                        |
+|`U+08B4`   | Letter           | DUAL         | KAF                  | _0_        | &#x08B4; Kaf With Dot Below                           |
 |`U+08B5`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08B6`   | Letter           | D            | BEH                  | _0_        | &#x08B6; Beh With Meem Above                          |
-|`U+08B7`   | Letter           | D            | BEH                  | _0_        | &#x08B7; Dotless Beh With 3 Dots Below And Meem Above |
-|`U+08B8`   | Letter           | D            | BEH                  | _0_        | &#x08B8; Dotless Beh With Teh Above                   |
-|`U+08B9`   | Letter           | R            | REH                  | _0_        | &#x08B9; Reh With Noon Above                          |
-|`U+08BA`   | Letter           | D            | YEH                  | _0_        | &#x08BA; Yeh With Noon Above                          |
-|`U+08BB`   | Letter           | D            | AFRICAN_FEH          | _0_        | &#x08BB; African Feh                                  |
-|`U+08BC`   | Letter           | D            | AFRICAN_QAF          | _0_        | &#x08BC; African Qaf                                  |
-|`U+08BD`   | Letter           | D            | AFRICAN_NOON         | _0_        | &#x08BD; African Noon                                 |
+|`U+08B6`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B6; Beh With Meem Above                          |
+|`U+08B7`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B7; Dotless Beh With 3 Dots Below And Meem Above |
+|`U+08B8`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B8; Dotless Beh With Teh Above                   |
+|`U+08B9`   | Letter           | RIGHT        | REH                  | _0_        | &#x08B9; Reh With Noon Above                          |
+|`U+08BA`   | Letter           | DUAL         | YEH                  | _0_        | &#x08BA; Yeh With Noon Above                          |
+|`U+08BB`   | Letter           | DUAL         | AFRICAN_FEH          | _0_        | &#x08BB; African Feh                                  |
+|`U+08BC`   | Letter           | DUAL         | AFRICAN_QAF          | _0_        | &#x08BC; African Qaf                                  |
+|`U+08BD`   | Letter           | DUAL         | AFRICAN_NOON         | _0_        | &#x08BD; African Noon                                 |
 |`U+08BE`   | _unassigned_     |              |                      |            |                                                       |
 |`U+08BF`   | _unassigned_     |              |                      |            |                                                       |
 | | | | | |                                                                                                                      
