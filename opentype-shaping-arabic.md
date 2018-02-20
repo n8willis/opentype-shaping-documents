@@ -259,7 +259,7 @@ For example:
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+0628`   | Letter           | DUAL         | BEH           | _null_     | &#x0628; Beh                 |
 | | | | | |
-|`U+0655`   | Mark [Mc]        | TRANSPARENT  | _null_        | 220_MCM   | &#x0655; Hamza Below         |
+|`U+0655`   | Mark [Mn]        | TRANSPARENT  | _null_        | 220_MCM   | &#x0655; Hamza Below         |
 
 
 
