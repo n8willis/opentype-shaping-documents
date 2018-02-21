@@ -51,9 +51,10 @@ information can be found in the linked document for each script.
 
 Arabic is a joining script that uses inter-word spaces, so each
 codepoint in a text run may be substituted with one of several
-contextual forms corresponding to its position in a
-word. Most, but not all, letter sequences join; shaping engines must
-track which positions trigger joining behavior for each letter.
+contextual forms corresponding to what, if any, characters appear
+before and after the codepoint. Most, but not all, letter sequences
+join; shaping engines must track which positions trigger joining
+behavior for each letter. 
 
 Arabic is written (and, therefore, rendered) from right to
 left. Shaping engines must track the directionality of the text run
@@ -348,10 +349,26 @@ In order to correctly apply the initial, medial, and final form
 substitutions from GSUB during stage 5, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
+> Note: The following algorithm includes rules for processing `<syrc>`
+> text in addition to `<arab>` text. Implementers concerned only with
+> shaping `<arab>` text can omit the portions for `<syrc>`-specific
+> rules. 
+
 To determine which feature is appropriate, the shaping engine must
 examine each word in turn and compute each letter's joining state from
 the letter's `JOINING_TYPE` and the `JOINING_TYPE` of the
 preceding character (if any).
+
+> Note: Although Arabic uses inter-word spaces, the `init` feature
+> does _not_ refer to word-initial letters only and the `fina` feature
+> does _not_ refer to word-final letters only.
+>
+> Rather, both of these terms are defined with respect to whether or
+> not the preceding and subsequent letters form joins with the current
+> letter. The letters at word boundaries will, naturally, take on
+> initial and final forms, but initial and final forms of letters also
+> occur regularly within words, when the letter in question is
+> adjacent to a letter than does not form joins.
 
 This computation starts from the first letter of the word, temporarily
 tagging the letter for `isol` substitution. If the first
@@ -359,10 +376,6 @@ letter is the only letter in the word, the `isol` tag will remain unchanged.
 
 From here, the algorithm consumes each character in the string, one at
 a time, keeping track of the JOINING_TYPE of the previous character. 
-
-> Note: The following algorithm includes rules for processing `<syrc>`
-> text in addition to `<arab>` text. Implementers concerned only with
-> shaping `<arab>` text can omit the portions for `<syrc>`-specific rules.
 
 If the current character is JOINING_TYPE_TRANSPARENT, move on to the next
 character but preserve the currently-tracked JOINING_TYPE at its previous state.
@@ -532,6 +545,8 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
+![Localized form substitution](/images/arabic/arabic-locl.png)
+
 
 #### 4.2 isol ####
 
@@ -544,10 +559,16 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
+![Isolated form substitution](/images/arabic/arabic-isol.png)
+
+
 #### 4.3 fina ####
 
 The `fina` feature substitutes the default glyph for a codepoint with
-the final form of the letter.
+the terminal (or final) form of the letter.
+
+![Final form substitution](/images/arabic/arabic-fina.png)
+
 
 #### 4.4 fin2 ####
 
@@ -562,6 +583,9 @@ This feature is not used in Arabic.
 The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
+![Medial form substitution](/images/arabic/arabic-medi.png)
+
+
 #### 4.7 med2 ####
 
 This feature is not used in Arabic.
@@ -571,11 +595,17 @@ This feature is not used in Arabic.
 The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
+![Initial form substitution](/images/arabic/arabic-init.png)
+
+
 #### 4.9 rlig ####
 
 The `rlig` feature substitutes glyph sequences with mandatory
 ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
+
+![Required ligature substitution](/images/arabic/arabic-rlig.png)
+
 
 #### 4.10 rclt ####
 
@@ -598,8 +628,11 @@ connection to an adjacent glyph.
 
 The `calt` feature, in contrast to `rclt` above, performs
 substitutions that are not mandatory for orthographic
-correctness. However, like `rclt`, the substitutions made by `calt`
-cannot be disabled by application-level user interfaces.
+correctness. However, unlike `rclt`, the substitutions made by `calt`
+can be disabled by application-level user interfaces.
+
+![Contextual alternate substitution](/images/arabic/arabic-calt.png)
+
 
 
 ### 5. Applying the typographic-form substitution features from GSUB ###
@@ -618,9 +651,12 @@ all acripts implemented in the Arabic shaping model:
 
 #### 5.1 liga ####
 
-The `liga` feature substitutes optional ligatures that are on by
-default. Substitutions made by `liga` may be disabled by
+The `liga` feature substitutes standard optional ligatures that are on
+by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
+
+![Standard ligature substitution](/images/arabic/arabic-liga.png)
+
 
 
 #### 5.2 dlig ####
@@ -709,7 +745,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 
-#### 7.4 `mark` ####
+#### 7.4 `mkmk` ####
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
