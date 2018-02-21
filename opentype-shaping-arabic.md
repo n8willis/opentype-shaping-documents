@@ -536,7 +536,7 @@ variants, based on examining the language setting of the text run.
 #### 4.2 isol ####
 
 The `isol` feature substitutes the default glyph for a codepoint with
-the isolated form. It is applied to letters 
+the isolated form of the letter.
 
 > Note: It is common for a font to use the isolated form of a letter
 > as the default, in which case the `isol` feature would apply no
@@ -546,42 +546,60 @@ the isolated form. It is applied to letters
 
 #### 4.3 fina ####
 
-The `fina` feature substitutes the default glyph to get final forms
+The `fina` feature substitutes the default glyph for a codepoint with
+the final form of the letter.
 
 #### 4.4 fin2 ####
 
-`fin2` Syriac special case: replaces word-final Alaph glyph where not
-preceded by Dalath, Rish, or dotless Dalath-Rish.
+This feature is not used in Arabic.
 
 #### 4.5 fin3 ####
 
-`fin3` Syriac special case: replaces word-final Alaph glyph where
-preceded by Dalath, Rish, or dotless Dalath-Rish.
+This feature is not used in Arabic.
 
 #### 4.6 medi ####
 
-`medi` to get medial forms
+The `medi` feature substitutes the default glyph for a codepoint with
+the medial form of the letter.
 
 #### 4.7 med2 ####
 
-`med2` Syriac special case: replaces Alaph glyphs in the middle of
-words when the preceding base character cannot be joined to.
+This feature is not used in Arabic.
 
 #### 4.8 init ####
 
-`init` to get initial forms
+The `init` feature substitutes the default glyph for a codepoint with
+the initial form of the letter.
 
 #### 4.9 rlig ####
 
-`rlig` substitutes mandatory ligatures
+The `rlig` feature substitutes glyph sequences with mandatory
+ligatures. Substitutions made by `rlig` cannot be disabled by
+application-level user interfaces.
 
 #### 4.10 rclt ####
 
-`rclt` substitutes required connection forms.
+The `rclt` feature substitutes glyphs with contextual alternate
+forms. In general, this involves replacing the default form of a
+connecting glyph with an alternate that provides a preferable
+connection to an adjacent glyph.
+
+The `rclt` feature should be used to perform such substitutions that
+are required by the orthography of the active script and
+language. Substitutions made by `rclt` cannot be disabled by 
+application-level user interfaces.
 
 #### 4.11 calt ####
 
-`calt` substitutes alternative connection forms
+The `calt` feature substitutes glyphs with contextual alternate
+forms. In general, this involves replacing the default form of a
+connecting glyph with an alternate that provides a preferable
+connection to an adjacent glyph.
+
+The `calt` feature, in contrast to `rclt` above, performs
+substitutions that are not mandatory for orthographic
+correctness. However, like `rclt`, the substitutions made by `calt`
+cannot be disabled by application-level user interfaces.
 
 
 ### 5. Applying the typographic-form substitution features from GSUB ###
@@ -600,24 +618,39 @@ all acripts implemented in the Arabic shaping model:
 
 #### 5.1 liga ####
 
-`liga` substitutes optional, on-by-default ligatures.
+The `liga` feature substitutes optional ligatures that are on by
+default. Substitutions made by `liga` may be disabled by
+application-level user interfaces.
 
 
 #### 5.2 dlig ####
 
-`dlig` substitutes optional, off-by-default ligatures.
+The `dlig` feature substitutes optional ligatures that are off by
+default. Substitutions made by `dlig` may be disabled by
+application-level user interfaces.
 
 
 #### 5.3 cswh ####
 
-`cswh` substitutes contextual swash variants (eg, long-noon when X
-        subsequent glyphs do not descend below the baseline)
+The `cswh` feature substitutes contextual swash variants of
+glyphs. For example, the active font might substitute a longer variant
+of "Noon" when a certain number of subsequent glyphs do not descend
+below the baseline.
 
 
 #### 5.4 mset ####
 
-`mset` performs mark positioning by substitution (`mark` is
-preferred!)
+The `mset` feature performs mark positioning by substituting sequences
+of bases and marks with precomposed base-and-mark glyphs.
+
+> Note: Positioning marks with the `mark` and `mkmk` features of GPOS is
+> preferred, because `mset` can interfere with the OpenType shaping
+> process. For example, substitution rules contained in `mset` may not be able to
+> account for necessary mark-reordering adjustments conducted in the
+> next stage.
+> 
+> Nevertheless, when the active font uses `mset` substituions, the
+> shaping engine must deal with the situation gracefully.
 
 ### 6. Mark reordering ###
 
@@ -632,8 +665,8 @@ character must be placed closest to the base.
 
 The algorithm for reordering a sequence of marks is:
 
-  - First, move any "Shadda" (combining class `33`) characters to the beginning of the mark
-    sequence.
+  - First, move any "Shadda" (combining class `33`) characters to the
+    beginning of the mark sequence.
 	
   -	Second, move any subsequence of combining-class-`230` characters that begins
        with a `230_MCM` character to the beginning of the sequence,
@@ -647,12 +680,39 @@ The algorithm for reordering a sequence of marks is:
 
 ### 7. Applying the positioning features from GPOS ###
 
-`curs` to perform cursive positioning
+The positioning stage adjusts the positions oooooof mark and base
+glyphs.
 
-`kern` to perform kerning
+The order in which these features are applied is fixed for
+all acripts implemented in the Arabic shaping model:
 
-`mark` to position marks to bases
+    curs
+	kern
+	mark
+	mkmk
 
-`mkmk` to position marks to marks
+#### 7.1 `curs` ####
+
+The `curs` feature perform cursive positioning. Each glyph has an
+entry point and exit point; the `curs` feature positions glyphs so
+that the entry point of the current glyph meets the exit point of the
+preceding glyph.
+
+
+#### 7.2 `kern` ####
+
+The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
+
+
+#### 7.3 `mark` ####
+
+The `mark` feature positions marks with respect to base glyphs.
+
+
+#### 7.4 `mark` ####
+
+The `mkmk` feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.
 
 
