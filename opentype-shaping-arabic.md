@@ -223,8 +223,8 @@ sequence are shaped. --->
 ### Character tables ###
 
 Separate character tables are provided for the Arabic, Arabic
-Supplement, Arabic Extended-A, Rumi Numeral Symbols, and Arabic
-Mathematical Symbols blocks, as well as for other miscellaneous
+Supplement, Arabic Extended-A, and Rumi Numeral Symbols, <!---and Arabic
+Mathematical Symbols blocks,---> as well as for other miscellaneous
 characters that are used in `<arab>` text runs:
 
   - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
@@ -572,11 +572,11 @@ the terminal (or final) form of the letter.
 
 #### 4.4 fin2 ####
 
-This feature is not used in Arabic.
+This feature is not used in `<arab>` text.
 
 #### 4.5 fin3 ####
 
-This feature is not used in Arabic.
+This feature is not used in `<arab>` text.
 
 #### 4.6 medi ####
 
@@ -588,7 +588,7 @@ the medial form of the letter.
 
 #### 4.7 med2 ####
 
-This feature is not used in Arabic.
+This feature is not used in `<arab>` text.
 
 #### 4.8 init ####
 
@@ -651,7 +651,7 @@ all acripts implemented in the Arabic shaping model:
 
 #### 5.1 liga ####
 
-The `liga` feature substitutes standard optional ligatures that are on
+The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
@@ -661,8 +661,8 @@ application-level user interfaces.
 
 #### 5.2 dlig ####
 
-The `dlig` feature substitutes optional ligatures that are off by
-default. Substitutions made by `dlig` may be disabled by
+The `dlig` feature substitutes additional optional ligatures that are
+off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 
@@ -734,6 +734,8 @@ entry point and exit point; the `curs` feature positions glyphs so
 that the entry point of the current glyph meets the exit point of the
 preceding glyph.
 
+![Cursive positioning](/images/arabic/arabic-curs.png)
+
 
 #### 7.2 `kern` ####
 
@@ -743,6 +745,8 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 #### 7.3 `mark` ####
 
 The `mark` feature positions marks with respect to base glyphs.
+
+![Mark positioning](/images/arabic/arabic-mark.png)
 
 
 #### 7.4 `mkmk` ####

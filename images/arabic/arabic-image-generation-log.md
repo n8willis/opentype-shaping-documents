@@ -94,9 +94,22 @@ montage arabic-liga-before.png right-arrow.png arabic-liga-after.png -geometry +
 > None found. Could be emulated with `mark`, however.
 
 
+## 7.1 `curs`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-curs-before.png --features=-curs --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0642,0633,0645
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-curs-after.png --features=+curs --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0642,0633,0645
+
+montage arabic-curs-before.png right-arrow.png arabic-curs-after.png -geometry +0+0 -background transparent arabic-curs.png
 
 
+## 7.3 `mark`
 
+hb-view --font-size=110 --margin=2,32,2,32 --output-file=arabic-mark-before.png --features=-mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0643,0653
+
+hb-view --font-size=110 --margin=2,32,2,16 --output-file=arabic-mark-after.png --features=+mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0643,0653
+
+montage arabic-mark-before.png right-arrow.png arabic-mark-after.png -geometry +0+0 -background transparent arabic-mark.png
 
 
 
