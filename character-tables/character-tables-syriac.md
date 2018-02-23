@@ -155,8 +155,8 @@ Malayalam, also known as Garshuni or Syriac Malayalam.
 |`U+0868`   | Letter           | DUAL         | MALAYALAM_LLA        | _0_        | &#x0868; Malayalam Lla                        |
 |`U+0869`   | Letter           | RIGHT        | MALAYALAM_LLLA       | _0_        | &#x0869; Malayalam Llla                       |
 |`U+086A`   | Letter           | RIGHT        | MALAYALAM_SSA        | _0_        | &#x086A; Malayalam Ssa                        |
-|`U+086B`   |                  |              |                      |            |                                               |
-|`U+086C`   |                  |              |                      |            |                                               |
-|`U+086D`   |                  |              |                      |            |                                               |
-|`U+086E`   |                  |              |                      |            |                                               |
-|`U+086F`   |                  |              |                      |            |                                               |
+|`U+086B`   | _unassigned_     |              |                      |            |                                               |
+|`U+086C`   | _unassigned_     |              |                      |            |                                               |
+|`U+086D`   | _unassigned_     |              |                      |            |                                               |
+|`U+086E`   | _unassigned_     |              |                      |            |                                               |
+|`U+086F`   | _unassigned_     |              |                      |            |                                               |
