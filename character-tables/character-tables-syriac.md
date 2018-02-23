@@ -139,3 +139,24 @@ treated differently during the mark-reordering stage.
 
 ## Syriac Supplement character table ##
 
+The Syriac Supplement block includes letters needed to write Suriyani
+Malayalam, also known as Garshuni or Syriac Malayalam.
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
+|`U+0860`   | Letter           | DUAL         | MALAYALAM_NGA        | _0_        | &#x0860; Malayalam Nga                        |
+|`U+0861`   | Letter           | NON_JOINING  | MALAYALAM_JA         | _0_        | &#x0861; Malayalam Ja                         |
+|`U+0862`   | Letter           | DUAL         | MALAYALAM_NYA        | _0_        | &#x0862; Malayalam Nya                        |
+|`U+0863`   | Letter           | DUAL         | MALAYALAM_TTA        | _0_        | &#x0863; Malayalam Tta                        |
+|`U+0864`   | Letter           | DUAL         | MALAYALAM_NNA        | _0_        | &#x0864; Malayalam Nna                        |
+|`U+0865`   | Letter           | DUAL         | MALAYALAM_NNNA       | _0_        | &#x0865; Malayalam Nnna                       |
+|`U+0866`   | Letter           | NON_JOINING  | MALAYALAM_BHA        | _0_        | &#x0866; Malayalam Bha                        |
+|`U+0867`   | Letter           | RIGHT        | MALAYALAM_RA         | _0_        | &#x0867; Malayalam Ra                         |
+|`U+0868`   | Letter           | DUAL         | MALAYALAM_LLA        | _0_        | &#x0868; Malayalam Lla                        |
+|`U+0869`   | Letter           | RIGHT        | MALAYALAM_LLLA       | _0_        | &#x0869; Malayalam Llla                       |
+|`U+086A`   | Letter           | RIGHT        | MALAYALAM_SSA        | _0_        | &#x086A; Malayalam Ssa                        |
+|`U+086B`   |                  |              |                      |            |                                               |
+|`U+086C`   |                  |              |                      |            |                                               |
+|`U+086D`   |                  |              |                      |            |                                               |
+|`U+086E`   |                  |              |                      |            |                                               |
+|`U+086F`   |                  |              |                      |            |                                               |
