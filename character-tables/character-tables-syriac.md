@@ -134,9 +134,6 @@ treated differently during the mark-reordering stage.
 
 
 
-
-
-
 ## Syriac Supplement character table ##
 
 The Syriac Supplement block includes letters needed to write Suriyani
@@ -160,3 +157,73 @@ Malayalam, also known as Garshuni or Syriac Malayalam.
 |`U+086D`   | _unassigned_     |              |                      |            |                                               |
 |`U+086E`   | _unassigned_     |              |                      |            |                                               |
 |`U+086F`   | _unassigned_     |              |                      |            |                                               |
+
+
+
+## Miscellaneous character table ##
+
+Other important characters that may be encountered when shaping runs
+of Syriac text include the dotted-circle placeholder (`U+25CC`), the
+combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
+and zero-width non-joiner (`U+200C`), the left-to-right text marker
+(`U+200E`) and right-to-left text marker (`U+200F`), and the no-break
+space (`U+00A0`).
+
+The dotted-circle placeholder is frequently used when displaying a
+combining mark in isolation. Real-world text syllables may also use
+other characters, such as hyphens or dashes, in a similar placeholder
+fashion; shaping engines should cope with this situation gracefully.
+
+In addition, Syriac text runs may include the "Tatweel" or kashida
+codepoint (`U+0640`) from the Arabic block, because the Syriac block
+does not encode a separate kashida character.
+
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
+|`U+00A0`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x00A0; No-break space        |
+|`U+034F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x034F; Combining grapheme joiner |
+|`U+0640`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x0640; Arabic Tatweel        |
+|`U+200C`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200C; Zero-width non-joiner |
+|`U+200D`   | Other            | JOIN_CAUSING | _null_               | _0_        | &#x200D; Zero-width joiner     |
+|`U+200E`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200E; Left-to-Right marker  |
+|`U+200F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200F; Right-to-Left marker  |
+|`U+2010`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2010; Hyphen                |
+|`U+2011`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2011; No-break hyphen       |
+|`U+2012`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2012; Figure dash           |
+|`U+2013`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2013; En dash               |
+|`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
+|`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
+| | | | | | |
+
+
+The combining grapheme joiner (CGJ) is primarily used to alter the
+order in which adjacent marks are positioned during the
+mark-reordering stage, in order to adhere to the needs of a
+non-default language orthography.
+<!--- combining grapheme joiner explanation --->
+
+The zero-width joiner (ZWJ) is primarily used to force the usage of the
+cursive connecting form of a letter even when the context of the
+adjoining letters would not trigger the connecting form. 
+
+For example, to show the initial form of a letter in isolation (such
+as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
+would be used. To show the medial form of a letter in isolation, the
+sequence "ZWJ,_Letter_,ZWJ" would be used.
+
+
+<!--- Zero-Width Non Joiner explanation --->
+
+The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+the Unicode bidirectionality algorithm (BiDi) to indicate the points
+in a text run at which the writing direction changes.
+
+
+<!--- How shaping is affected by the LTR and RTL markers explanation --->
+
+
+The no-break space is primarily used to display those codepoints that
+are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder.

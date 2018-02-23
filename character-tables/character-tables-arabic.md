@@ -556,48 +556,61 @@ treated differently during the mark-reordering stage.
 
 Other important characters that may be encountered when shaping runs
 of Arabic text include the dotted-circle placeholder (`U+25CC`), the
-zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
-the no-break space (`U+00A0`).
+combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
+and zero-width non-joiner (`U+200C`), the left-to-right text marker
+(`U+200E`) and right-to-left text marker (`U+200F`), and the no-break
+space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
-combining mark in isolation. Real-world ext syllables may also use
+combining mark in isolation. Real-world text syllables may also use
 other characters, such as hyphens or dashes, in a similar placeholder
 fashion; shaping engines should cope with this situation gracefully.
 
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
-|`U+00A0`   | Separator        | PLACEHOLDER  | _null_               | _0_        | &#x00A0; No-break space        |
-|`U+200C`   | Other            | NON_JOINER   | _null_               | _0_        | &#x200C; Zero-width non-joiner |
-|`U+200D`   | Other            | JOINER       | _null_               | _0_        | &#x200D; Zero-width joiner     |
-|`U+2010`   | Punctuation      | PLACEHOLDER  | _null_               | _0_        | &#x2010; Hyphen                |
-|`U+2011`   | Punctuation      | PLACEHOLDER  | _null_               | _0_        | &#x2011; No-break hyphen       |
-|`U+2012`   | Punctuation      | PLACEHOLDER  | _null_               | _0_        | &#x2012; Figure dash           |
-|`U+2013`   | Punctuation      | PLACEHOLDER  | _null_               | _0_        | &#x2013; En dash               |
-|`U+2014`   | Punctuation      | PLACEHOLDER  | _null_               | _0_        | &#x2014; Em dash               |
-|`U+25CC`   | Symbol           | DOTTED_CIRCL | _null_               | _0_        | &#x25CC; Dotted circle         |
+|`U+00A0`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x00A0; No-break space        |
+|`U+034F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x034F; Combining grapheme joiner |
+|`U+200C`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200C; Zero-width non-joiner |
+|`U+200D`   | Other            | JOIN_CAUSING | _null_               | _0_        | &#x200D; Zero-width joiner     |
+|`U+200E`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200E; Left-to-Right marker  |
+|`U+200F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200F; Right-to-Left marker  |
+|`U+2010`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2010; Hyphen                |
+|`U+2011`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2011; No-break hyphen       |
+|`U+2012`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2012; Figure dash           |
+|`U+2013`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2013; En dash               |
+|`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
+|`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_consonant_,Halant,_consonant_" sequence. The sequence
-"_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
-conjunct between the two consonants.
 
-Note, however, that the "_consonant_,Halant" subsequence in the above
-example may still trigger a half-forms feature. To prevent the
-application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_consonant_,Halant,ZWNJ,_consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+The combining grapheme joiner (CGJ) is primarily used to alter the
+order in which adjacent marks are positioned during the
+mark-reordering stage, in order to adhere to the needs of a
+non-default language orthography.
+<!--- combining grapheme joiner explanation --->
 
-A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
-otherwise would.
+The zero-width joiner (ZWJ) is primarily used to force the usage of the
+cursive connecting form of a letter even when the context of the
+adjoining letters would not trigger the connecting form. 
+
+For example, to show the initial form of a letter in isolation (such
+as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
+would be used. To show the medial form of a letter in isolation, the
+sequence "ZWJ,_Letter_,ZWJ" would be used.
+
+
+<!--- Zero-Width Non Joiner explanation --->
+
+The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+the Unicode bidirectionality algorithm (BiDi) to indicate the points
+in a text run at which the writing direction changes.
+
+
+<!--- How shaping is affected by the LTR and RTL markers explanation --->
+
 
 The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
+are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
 isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+the dotted-circle placeholder.

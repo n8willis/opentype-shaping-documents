@@ -223,8 +223,7 @@ sequence are shaped. --->
 ### Character tables ###
 
 Separate character tables are provided for the Arabic, Arabic
-Supplement, Arabic Extended-A, and Rumi Numeral Symbols, <!---and Arabic
-Mathematical Symbols blocks,---> as well as for other miscellaneous
+Supplement, Arabic Extended-A, and Rumi Numeral Symbols, as well as for other miscellaneous
 characters that are used in `<arab>` text runs:
 
   - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
