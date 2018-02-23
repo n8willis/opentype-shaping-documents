@@ -660,7 +660,7 @@ The algorithm for reordering a sequence of marks is:
 
 ### 7. Applying the positioning features from GPOS ###
 
-The positioning stage adjusts the positions oooooof mark and base
+The positioning stage adjusts the positions of mark and base
 glyphs.
 
 The order in which these features are applied is fixed for
