@@ -136,12 +136,13 @@ characters. There are six possible values:
 Syriac letters are also assigned to a `JOINING_GROUP` that indicates
 which fundamental character they behave like with regard to joining
 behavior. Each of the basic letters in the Syriac block tends to
-belong to its own `JOINING_GROUP`, while extended letters and letters
-from the supplemental block are usually assigned to the
-`JOINING_GROUP` that corresponds to the character's base letter with
-no diacritics. 
+belong to its own `JOINING_GROUP`, while extended letters are often
+assigned to the `JOINING_GROUP` that corresponds to the character's
+base letter. 
 
-<!--- For example, --->
+For example, the letter "Persian Bheth" is rendered as the base Syriac
+"Beth" with an additional stroke at the top. Therefore, it is assigned
+to the `BETH` joining group.
 
 In addition to the standard joining types, `<syrc>` text features two
 `JOINING_GROUP`s that trigger special behavior: `ALAPH` and
@@ -159,16 +160,16 @@ on the preceding glyph.
     left-joining (that is, belonging to the `DUAL`, `LEFT`, or
     `JOIN_CAUSING` `JOINING_GROUP`s.)
 
+The `DALATH_RISH` joining group includes the standard letters "Dalath"
+and "Rish" as well as the "Dotless Dalath-Rish", an ambiguous letter
+that is used in transcribing historical documents when it is
+impossible to distinguish whether the letter in the source text is
+"Dalath" or "Rish".
+
 Shaping engines may choose to define pseudo-`JOINING_TYPE`s
 corresponding to the `ALAPH` and `DALATH_RISH` joining groups, or may
 track the appropriate `JOINING_GROUP` properties by any other means
 preferred.
-
-<!--- Add discussion of Alaph / Dotless Dalath-Rish here --->
-
-
-
-
 
 
 
@@ -224,9 +225,6 @@ For example:
 Codepoints with no assigned meaning are
 designated as _unassigned_ in the _Unicode category_ column. 
 
-
-<!--- Character table example and explanation --->
-
 Other important characters that may be encountered when shaping runs
 of Syriac text include the dotted-circle placeholder (`U+25CC`), the
 combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
@@ -235,10 +233,13 @@ and zero-width non-joiner (`U+200C`), the left-to-right text marker
 space (`U+00A0`).
 
 The dotted-circle placeholder is frequently used when displaying a
-vowel or diacritical mark in isolation. Real-world text documents may
-also use other characters, such as hyphens or dashes, in a similar
-placeholder fashion; shaping engines should cope with this situation
-gracefully.
+combining mark in isolation. Real-world text syllables may also use
+other characters, such as hyphens or dashes, in a similar placeholder
+fashion; shaping engines should cope with this situation gracefully.
+
+In addition, Syriac text runs may include the "Tatweel" or kashida
+codepoint (`U+0640`) from the Arabic block, because the Syriac block
+does not encode a separate kashida character.
 
 The combining grapheme joiner (CGJ) is primarily used to alter the
 order in which adjacent marks are positioned during the
@@ -267,9 +268,10 @@ in a text run at which the writing direction changes.
 
 
 The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
+are defined as non-spacing (such as vowel points or diacritical marks) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder.
+
 
 
 ## The `<syrc>` shaping model ##
