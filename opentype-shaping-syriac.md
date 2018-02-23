@@ -136,9 +136,10 @@ characters. There are six possible values:
 Syriac letters are also assigned to a `JOINING_GROUP` that indicates
 which fundamental character they behave like with regard to joining
 behavior. Each of the basic letters in the Syriac block tends to
-belong to its own `JOINING_GROUP`, while letters from the supplemental and
-extended blocks are usually assigned to the `JOINING_GROUP` that
-corresponds to the character's base letter with no diacritics.
+belong to its own `JOINING_GROUP`, while extended letters and letters
+from the supplemental block are usually assigned to the
+`JOINING_GROUP` that corresponds to the character's base letter with
+no diacritics. 
 
 <!--- For example, --->
 
@@ -195,9 +196,8 @@ These classifications are used in the [mark-reordering stage](#6-mark-reordering
 			
 ### Character tables ###
 
-Separate character tables are provided for the Syriac, Syriac
-Supplement, Syriac Extended-A, and Rumi Numeral Symbols, <!---and Syriac
-Mathematical Symbols blocks,---> as well as for other miscellaneous
+Separate character tables are provided for the Syriac and Syriac
+Supplement Unicode blocks, as well as for other miscellaneous
 characters that are used in `<syrc>` text runs:
 
   - [Syriac character table](character-tables/character-tables-syriac.md#syriac-character-table)
@@ -470,7 +470,7 @@ this stage, glyph sequences should be tagged for possible application
 of GSUB features.
 
 The order in which these substitutions must be performed is fixed for
-all scripts implemented in the Syriac shaping model:
+all scripts implemented in the Arabic shaping model:
 
 	locl
 	isol
