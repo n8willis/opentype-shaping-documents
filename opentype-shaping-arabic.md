@@ -692,9 +692,9 @@ of bases and marks with precomposed base-and-mark glyphs.
 
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 
-Sequences of adjacent marks may need to be reordered before the
-mark-to-base and mark-to-mark positioning features from GPOS can be
-correctly applied.
+Sequences of adjacent marks must be reordered so that they appear in
+canonical order before the mark-to-base and mark-to-mark positioning
+features from GPOS can be correctly applied.
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
