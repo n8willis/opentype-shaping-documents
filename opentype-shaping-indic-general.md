@@ -507,7 +507,7 @@ Below-base matras may be positioned:
 
 ### 1: Identifying syllables and other sequences ###
 
-A syllable in an Indic consists of a valid orthographic sequence
+A syllable in an Indic script consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
 The Nukta, Halant/Virama, and Anudatta marks can affect syllable
