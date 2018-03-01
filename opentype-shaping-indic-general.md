@@ -569,19 +569,48 @@ as when an isolated codepoint is shown in example text.
 
 
 Syllables should be identified by examining the run and matching
-glyphs, based on their categorization, using regular expressions. 
+glyphs, based on their shaping class, using regular expressions. 
 
 The following general-purpose regular expressions can be
-used to match Indic syllables. The regular expressions utilize the
-shaping classifications from the tables above.
+used to match Indic syllables. 
 
-	C	  Consonant
+The regular expressions utilize the shaping classes from the tables
+above. For the purpose of syllable identification, more general
+classes can be used -- grouping related classes (such as special
+subclasses of consonants) that must still be treated differently later
+in the shaping process. This simplifies the resulting expressions.
+
+The _Consonant_ identification class includes standard consonants as
+well as the subclasses `CONSONANT_DEAD`, `CONSONANT_MEDIAL`,
+`CONSONANT_PLACEHOLDER`, `CONSONANT_WITH_STACKER`,
+`CONSONANT_PRE_REPHA`, `CONSONANT_POST_REPHA`, and `CONSONANT_FINAL`.
+
+> Note: The _Consonant_ identification class does include the
+> consonant "Ra", even though "Ra" is tested for separately in certain
+> positions.
+
+The _Matra_ identification class includes dependent vowels (matras)
+as well as certain marks that behave like matras in syllable
+formation: those classified as `CONSONANT_KILLER` or `PURE_KILLER`.
+
+The _Syllable modifier sign_ identification class includes marks in the
+`SYLLABLE_MODIFIER`, `BINDU`, `VISARGA`, and `GEMINATION_MARK` shaping classes.
+
+The _Vedic signs_ identification class includes marks in the
+`CANTILLATION` shaping class.
+
+> Note: The _Vedic signs_ identification class does include the mark
+> "Anudatta", even though "Anudatta" is tested for separately in
+> certain positions.
+
+	C	  Consonant 
+	Ra	  The consonant "Ra"
 	V	  Independent vowel
 	N	  Nukta
 	H	  Halant/Virama
 	ZWNJ	  Zero-width non-joiner
 	ZWJ	  Zero-width joiner
-	M	  Matra (up to one of each type: pre-base, above-base, below-base, or post-base)
+	M	  Matra (dependent vowel sign): up to one of each type: pre-base, above-base, below-base, or post-base
 	SM	  Syllable modifier signs
 	VD	  Vedic signs
 	A	  Anudatta
@@ -591,7 +620,7 @@ shaping classifications from the tables above.
 	[ ]	  optional occurence of the enclosed expression
 	<|>	  one of the options separated by the vertical bar
 	( )	  one or two occurences of the enclosed expression
-	  
+
 
 A consonant-based syllable will match the expression:
 ```
@@ -607,6 +636,12 @@ A stand-alone sequence (which can only occur at the start of a word) will match 
 ```
 [Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
 ```
+
+<!--- Not needed; Dot Reph in Malayalam is the only one, and it is
+      classified as CONSONANT_PRE_REPHA which means no special
+      treatement is needed. 
+> Note: In scripts that include an explicit "Repha" character, that
+> "Repha" may take the place of a `[Ra+H]` subexpression. --->
 
 A sequence that does not match any of these expressions should be
 regarded as broken. The shaping engine may make a best-effort attempt
