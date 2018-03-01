@@ -166,7 +166,7 @@ and diacritical marks (some of which are also categorized as `Mark [Mn]`).
 
 There are several subclasses of consonants that arise on occasion, such as
 `CONSONANT_DEAD`, `CONSONANT_MEDIAL`, `CONSONANT_PLACEHOLDER`,
-`CONSONANT_WITH_STACKER`, `CONSONANT_PRE_REPHA`, and `CONSONANT_FINAL`. 
+`CONSONANT_WITH_STACKER`, and `CONSONANT_PRE_REPHA`. 
 
 These subclasses indicate that the letter should match simple
 tests for consonants (as in the regular expressions used during
@@ -581,8 +581,8 @@ in the shaping process. This simplifies the resulting expressions.
 
 The _Consonant_ identification class includes standard consonants as
 well as the subclasses `CONSONANT_DEAD`, `CONSONANT_MEDIAL`,
-`CONSONANT_PLACEHOLDER`, `CONSONANT_WITH_STACKER`,
-`CONSONANT_PRE_REPHA`, and `CONSONANT_FINAL`.
+`CONSONANT_PLACEHOLDER`, `CONSONANT_WITH_STACKER`, and
+`CONSONANT_PRE_REPHA`.
 
 > Note: The _Consonant_ identification class does include the
 > consonant "Ra", even though "Ra" is tested for separately in certain
