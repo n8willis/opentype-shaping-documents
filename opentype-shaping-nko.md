@@ -141,7 +141,7 @@ normalization.
 Separate character tables are provided for the NKo block and for other miscellaneous
 characters that are used in `<nko>` text runs:
 
-  - [NKo character table](character-tables/character-tables-nko.md#arabic-character-table)
+  - [NKo character table](character-tables/character-tables-nko.md#nko-character-table)
   - [Miscellaneous character table](character-tables/character-tables-nko.md#miscellaneous-character-table)
 
 
@@ -418,7 +418,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Localized form substitution](/images/arabic/arabic-locl.png)
+![Localized form substitution](/images/nko/nko-locl.png)
 
 
 #### 4.2 isol ####
@@ -432,7 +432,7 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-![Isolated form substitution](/images/arabic/arabic-isol.png)
+![Isolated form substitution](/images/nko/nko-isol.png)
 
 
 #### 4.3 fina ####
@@ -440,7 +440,7 @@ the isolated form of the letter.
 The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
-![Final form substitution](/images/arabic/arabic-fina.png)
+![Final form substitution](/images/nko/nko-fina.png)
 
 
 #### 4.4 fin2 ####
@@ -456,7 +456,7 @@ This feature is not used in `<nko>` text.
 The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
-![Medial form substitution](/images/arabic/arabic-medi.png)
+![Medial form substitution](/images/nko/nko-medi.png)
 
 
 #### 4.7 med2 ####
@@ -468,7 +468,7 @@ This feature is not used in `<nko>` text.
 The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
-![Initial form substitution](/images/arabic/arabic-init.png)
+![Initial form substitution](/images/nko/nko-init.png)
 
 
 #### 4.9 rlig ####
@@ -495,7 +495,7 @@ substitutions that are not mandatory for orthographic
 correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-![Contextual alternate substitution](/images/arabic/arabic-calt.png)
+![Contextual alternate substitution](/images/nko/nko-calt.png)
 
 
 
@@ -519,7 +519,7 @@ The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Standard ligature substitution](/images/arabic/arabic-liga.png)
+![Standard ligature substitution](/images/nko/nko-liga.png)
 
 
 
@@ -599,7 +599,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Mark positioning](/images/arabic/arabic-mark.png)
+![Mark positioning](/images/nko/nko-mark.png)
 
 
 #### 7.4 `mkmk` ####
