@@ -574,10 +574,10 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 Second, any two-part dependent vowels (matras) must be decomposed
 into their left-side and right-side components. Bengali has two
-two-part dependent vowels, "O" (`U+09BC`) and "Au" (`U+09CC`). Each
+two-part dependent vowels, "O" (`U+09CB`) and "Au" (`U+09CC`). Each
 has a canonical decomposition, so this step is unambiguous. 
 
-> "O" (`U+09BC`) decomposes to "`U+09C7`,`U+09BE`"
+> "O" (`U+09CB`) decomposes to "`U+09C7`,`U+09BE`"
 >
 > "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
 
