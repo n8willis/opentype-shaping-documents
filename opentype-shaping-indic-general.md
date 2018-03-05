@@ -590,7 +590,7 @@ well as the subclasses `CONSONANT_DEAD`, `CONSONANT_MEDIAL`,
 
 The _Matra_ identification class includes dependent vowels (matras)
 as well as certain marks that behave like matras in syllable
-formation: those classified as `CONSONANT_KILLER` or `PURE_KILLER`.
+formation: those classified as `PURE_KILLER`.
 
 The _Syllable modifier sign_ identification class includes marks in the
 `SYLLABLE_MODIFIER`, `BINDU`, `VISARGA`, and `GEMINATION_MARK` shaping classes.
