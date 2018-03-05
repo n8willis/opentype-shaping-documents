@@ -531,7 +531,9 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 Second, any multi-part dependent vowels (matras) must be decomposed
 into their components. Tamil has three multi-part dependent vowels,
-"O" (`U+0BCA`), "Oo" (`U+0BCB`), and "Au" (`U+0BCC`).
+"O" (`U+0BCA`), "Oo" (`U+0BCB`), and "Au" (`U+0BCC`). Each
+has a canonical decomposition, so this step is unambiguous. 
+
 
 > "O" (`U+0BCA`) decomposes to "`U+0BC6`,`U+0BBE`"
 >
