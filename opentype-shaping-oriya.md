@@ -585,7 +585,7 @@ includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 Second, any multi-part dependent vowels (matras) must be decomposed
 into their individual components. Oriya has three
-multi-part dependent vowels, "Ai" (`U+0B48`), "O" (`U+0B4B`), and "Au" (`U+09CC`). Each
+multi-part dependent vowels, "Ai" (`U+0B48`), "O" (`U+0B4B`), and "Au" (`U+0B4C`). Each
 has a canonical decomposition, so this step is unambiguous. 
 
 > "Ai" (`U+0B48`) decomposes to "`U+0B47`,`U+0B56`"
@@ -601,12 +601,16 @@ completed before the shaping engine begins step three, below.
 
 > Note: "Au Length Mark" (`U+0B57`) is categorized in Unicode as being a
 > top-and-right matra, a combination that would normally decompose
-> into one above-base mark and one right-side mark. This combination,
-> unlike other multi-part matras, does not affect reordering. In
-> addition, the decomposition is not canonical in
-> Unicode. Consequently, shaping engines may choose to skip it. 
+> into one above-base mark and one right-side mark
+> (`U+0B3E`,`U+0B56`). This combination, unlike other multi-part
+> matras, does not affect reordering. 
+> 
+> In addition, the decomposition is not canonical in
+> Unicode, so performing the decomposition may trigger unknown
+> behavior from other components of the software stack. Consequently,
+> shaping engines may choose to skip it. 
 
-![Two-part matra decomposition](/images/oriya/oriya-matra-decomposition.png)
+![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.png)
 
 #### 2.3: Tag matras ####
 
