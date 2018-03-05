@@ -597,6 +597,13 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
+> Note: The decomposition of "Oo" (`U+0CCB`) is atypical; Unicode
+> specifies that the codepoint decomposes to "O" (`U+0CCA`) followed
+> by `U+0CD5`; the "O" codepoint is then decomposed to
+> "`U+0CC6`,`U+0CC2`". Shaping engines must take care not to miss this
+> second decomposition.
+
+
 ![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.png)
 
 #### 2.3: Tag matras ####
