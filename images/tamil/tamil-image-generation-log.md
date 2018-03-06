@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-tamil.md](/[opentype-shaping-tamil.md)
+# Commands used to generate the images in [opentype-shaping-tamil.md](../../opentype-shaping-tamil.md)
 
 ## Arrow general
 

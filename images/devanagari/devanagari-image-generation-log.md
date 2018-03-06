@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-devanagari.md](/[opentype-shaping-devanagari.md)
+# Commands used to generate the images in [opentype-shaping-devanagari.md](../../opentype-shaping-devanagari.md)
 
 ## Arrow general
 

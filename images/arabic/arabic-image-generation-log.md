@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-arabic.md](/[opentype-shaping-arabic.md)
+# Commands used to generate the images in [opentype-shaping-arabic.md](../../opentype-shaping-arabic.md)
 
 ## Arrow general
 

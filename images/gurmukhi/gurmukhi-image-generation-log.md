@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-gurmukhi.md](/[opentype-shaping-gurmukhi.md)
+# Commands used to generate the images in [opentype-shaping-gurmukhi.md](../../opentype-shaping-gurmukhi.md)
 
 ## Arrow general
 

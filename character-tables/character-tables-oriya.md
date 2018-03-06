@@ -1,7 +1,7 @@
 # Oriya character tables #
 
 This document lists the per-character shaping information needed to
-[shape Oriya text](/opentype-shaping-oriya.md).
+[shape Oriya text](../opentype-shaping-oriya.md).
 
 **Table of Contents**
 

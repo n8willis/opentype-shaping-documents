@@ -1,7 +1,7 @@
 # Bengali character tables #
 
 This document lists the per-character shaping information needed to
-[shape Bengali text](/opentype-shaping-bengali.md).
+[shape Bengali text](../opentype-shaping-bengali.md).
 
 **Table of Contents**
 

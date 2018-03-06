@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-malayalam.md](/[opentype-shaping-malayalam.md)
+# Commands used to generate the images in [opentype-shaping-malayalam.md](../../opentype-shaping-malayalam.md)
 
 ## Arrow general
 

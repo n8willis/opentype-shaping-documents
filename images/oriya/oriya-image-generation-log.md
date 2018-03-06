@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-oriya.md](/[opentype-shaping-oriya.md)
+# Commands used to generate the images in [opentype-shaping-oriya.md](../../opentype-shaping-oriya.md)
 
 ## Arrow general
 

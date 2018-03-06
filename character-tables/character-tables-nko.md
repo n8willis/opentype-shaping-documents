@@ -1,7 +1,7 @@
 # N'Ko character tables #
 
 This document lists the per-character shaping information needed to
-[shape N'Ko text](opentype-shaping-nko.md).
+[shape N'Ko text](../opentype-shaping-nko.md).
 
 **Table of Contents**
 

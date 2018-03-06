@@ -1,7 +1,7 @@
 # Malayalam character tables #
 
 This document lists the per-character shaping information needed to
-[shape Malayalam text](/opentype-shaping-malayalam.md).
+[shape Malayalam text](../opentype-shaping-malayalam.md).
 
 **Table of Contents**
 

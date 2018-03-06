@@ -1,4 +1,5 @@
-# Commands used to generate the images in [opentype-shaping-kannada.md](/[opentype-shaping-kannada.md)
+# Commands used to generate the images in
+[opentype-shaping-kannada.md](../../opentype-shaping-kannada.md)
 
 ## Arrow general
 

@@ -1,7 +1,7 @@
 # Gurmukhi character tables #
 
 This document lists the per-character shaping information needed to
-[shape Gurmukhi text](/opentype-shaping-gurmukhi.md).
+[shape Gurmukhi text](../opentype-shaping-gurmukhi.md).
 
 **Table of Contents**
 
