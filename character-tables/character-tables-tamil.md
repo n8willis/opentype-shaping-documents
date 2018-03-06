@@ -281,6 +281,8 @@ this situation gracefully.
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
+|`U+00B2`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x00B2; Superscript Two       |
+|`U+00B3`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x00B3; Superscript Three     |
 |`U+200C`   | Other            | NON_JOINER        | _null_                     | &#x200C; Zero-width non-joiner |
 |`U+200D`   | Other            | JOINER            | _null_                     | &#x200D; Zero-width joiner     |
 |`U+2010`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2010; Hyphen                |
@@ -288,6 +290,10 @@ this situation gracefully.
 |`U+2012`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2012; Figure dash           |
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
+|`U+2074`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2074; Superscript Four      |
+|`U+2082`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2082; Subscript Two       |
+|`U+2083`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2083; Subscript Three     |
+|`U+2084`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2084; Subscript Four      |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
@@ -315,3 +321,7 @@ isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
 "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
+Tamil text sometimes uses the Latin numerals 2, 3, and 4 in
+superscript or subscript positions to annotate Sanskrit. When used in
+this fashion, the superscripts and subscripts are treated as
+`SYLLABLE_MODIFIER` signs for shaping purposes.

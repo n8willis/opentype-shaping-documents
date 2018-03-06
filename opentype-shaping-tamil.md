@@ -239,6 +239,10 @@ isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. These sequences will match
 "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
+Tamil text sometimes uses the Latin numerals 2, 3, and 4 in
+superscript or subscript positions to annotate Sanskrit. When used in
+this fashion, the superscripts and subscripts are treated as
+`SYLLABLE_MODIFIER` signs for shaping purposes.
 
 
 
