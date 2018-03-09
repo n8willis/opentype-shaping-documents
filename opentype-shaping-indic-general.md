@@ -152,10 +152,9 @@ common marks, and are therefore classified with the corresponding
 common mark. 
 
 Less common mark classes include `TONE_MARKER`, `CANTILLATION`,
-`GEMINATION_MARK`, `PURE_KILLER`, `INVISIBLE_STACKER`,
-`REGISTER_SHIFTER`, and `SYLLABLE_MODIFIER`. An explanation of each
-class is included in the shaping documentation of each script in which
-the class occurs.
+`GEMINATION_MARK`, `PURE_KILLER`,  and `SYLLABLE_MODIFIER`. An
+explanation of each class is included in the shaping documentation of
+each script in which the class occurs.
 
 Letters generally fall into the classes `CONSONANT`,
 `VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
