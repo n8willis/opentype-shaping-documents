@@ -539,6 +539,23 @@ completed before the shaping engine begins step three, below.
 > "`U+0DD9`,`U+0DCF`". Shaping engines must take care not to miss this
 > second decomposition.
 
+> Note: For Sinhala, the `pstf` substitution feature of GSUB is
+> defined as replacing the entire multi-part matra with its right-side
+> component. 
+>
+> The Microsoft Uniscribe shaping engine historically
+> supported this behavior -- in a sense, decomposing each matra into
+> its left-side component followed by a duplicate of the original
+> matra, then substituting the duplicated matra with the right-side
+> matra component in [stage 3, step 10](#310-pstf), when the `pstf`
+> feature is applied. 
+>
+> Fonts that were engineered to support this behavior might not
+> include GPOS positioning rules for the right-side matra components,
+> relying instead on the `pstf` substitution to provide a suitable
+> replacement. Shaping engines should do their best to deal gracefully
+> with fonts that were developed only with this behavior in mind.
+
 ![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.png)
 
 
@@ -704,9 +721,29 @@ In Sinhala, the `pstf` feature replaces multi-part dependent vowels
 (matras) with the right-side matra component of the canonical
 decomposition.
 
-> Note: shaping engines that decomposed multi-part dependent vowels in
-> [stage 2, step 2](#22-matra-decomposition) will not need to perform
-> this substitution.
+> Note: This substitution is possible because all multi-part dependent
+> vowels in Sinhala use the same left-side matra component, `U+0DD9`.
+>
+> The Microsoft Uniscribe shaping engine historically
+> supported this behavior by handling the decomposition of multi-part
+> dependent vowels in [stage 2, step 2](#22-matra-decomposition)
+> differently for Sinhala -- in a sense, decomposing each matra into
+> its left-side component followed by a duplicate of the original
+> matra, then substituting the duplicated matra with the right-side
+> matra component when the `pstf` feature is applied. 
+> 
+> Shaping engines may, optionally, decompose multi-part dependent
+> vowels in [stage 2, step 2](#22-matra-decomposition) into their
+> canonical Unicode decompositions, as is done in other scripts, and
+> substitute the decomposed right-side matra components at that point.
+> 
+> Doing so will negate the need to apply the `pstf` substitution.
+> However, fonts that were engineered to support the
+> Uniscribe-supported behavior might not include GPOS positioning
+> rules for the right-side matra components, relying instead on the
+> `pstf` substitution to provide a suitable replacement. Shaping
+> engines should do their best to deal gracefully with fonts that were
+> developed only with this behavior in mind.
 
 ![Post-base form substitution](/images/sinhala/sinhala-pstf.png)
 
