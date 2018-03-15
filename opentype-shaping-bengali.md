@@ -155,7 +155,38 @@ have formed ligatures or combined into conjunct forms. Therefore, the
 `LEFT_POSITION` subclass of the character must be tracked throughout
 the shaping process.
 
-For most mark and dependent-vowel codepoints, the _Mark-placement
+There are four basic _mark-placement subclasses_ for dependent vowels
+(matras). Each corresponds to the visual position of the matra with
+respect to the base consonant to which it is attached:
+
+  - `LEFT_POSITION` matras are positioned to the left of the base consonant.
+  - `RIGHT_POSITION` matras are positioned to the right of the base consonant.
+  - `TOP_POSITION` matras are positioned above the base consonant.
+  - `BOTTOM_POSITION` matras are positioned below base consonant.
+  
+These positions may also be referred to elsewhere in shaping documents as:
+
+  - _Pre-base_ matras
+  - _Post-base_ matras
+  - _Above-base_ matras
+  - _Below-base_ matras
+  
+respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
+corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
+_Above_, and _Below_ terminology is used in the official descriptions
+of OpenType GSUB and GPOS features. Shaping engines may, internally,
+use whichever terminology is preferred.
+
+In addition, dependent-vowel codepoints that are composed of multiple
+components will be designated in character tables as having a compound
+_mark-placement subclass_, such as `TOP_AND_RIGHT` or `LEFT_AND_RIGHT`. 
+
+However, these multi-part matras are decomposed into separate matra
+components during the shaping process. After the decomposition, each
+matra component will belong to exactly one of the four basic
+_mark-placement subclasses_.
+
+For most mark and dependent-vowel codepoints, the _mark-placement
 subclass_ is synonymous with the `Indic Positional Category` defined
 in Unicode. However, there are some distinctions, where the defined
 category does not fully capture the behavior of the character in the
