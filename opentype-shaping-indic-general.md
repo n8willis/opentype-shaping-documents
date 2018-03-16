@@ -685,7 +685,9 @@ The shaping engine may make a best-effort attempt to shape broken
 sequences, but making guarantees about the correctness or appearance
 of the final result is out of scope for this document.
 
-> Note: "standalone" syllables can be used to display sample 
+> Note: "standalone" syllables can be used to display examples of
+> letters, marks, and other characters without requiring full
+> syllables or words.
 
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
