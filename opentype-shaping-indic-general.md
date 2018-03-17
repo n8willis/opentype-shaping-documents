@@ -627,8 +627,19 @@ simplifies the resulting expressions.
 	_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 <!---	_anudatta_	= "Anudatta" --->
 
+> Note: the _ra_ identification class is mutually exclusive with 
+> the _consonant_ class. The union of the _consonant_ and _ra_ classes
+> is used in the regular expression elements below in order to
+> correctly identify "Ra" characters that do not trigger "Reph" or
+> "Rakaar" shaping behavior.
+>
+> Note, also, that the cantillation mark "combining Ra" in the
+> Devanagari Extended block does _not_ belong to the _ra_
+> identification class, and that the other "combining consonant"
+> cantillation marks in the Devanagari Extended block do not belong to
+> the _consonant_ identification class.
 
-> Note: The _other_ identification category includes codepoints that
+> Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
 > though some of these codepoints (such as `MODIFYING_LETTER`) can
 > occur within words, they evoke no behavior from the shaping
