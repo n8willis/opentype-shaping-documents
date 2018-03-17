@@ -176,6 +176,10 @@ specific, script-aware behavior.
 
 ## Devanagari Extended character table ##
 
+> Note: the cantillation marks of the "combining consonant" variery in
+> the Devanagari Extended block are _not_ considered consonants for
+> shaping purposes (including syllable identification, the
+> determination of the base consonant, or positioning "Reph").
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
