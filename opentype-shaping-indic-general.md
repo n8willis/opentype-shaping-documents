@@ -28,7 +28,7 @@ implementations share.
 ## General information ##
 
 The Indic family of scripts includes writing systems
-derived from the Bhrami script in ancient India. Although the scripts
+derived from the Brahmi script in ancient India. Although the scripts
 vary considerably in appearance, their shared ancestry means that they
 also share a number of important features and rules. 
 
