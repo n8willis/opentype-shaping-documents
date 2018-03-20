@@ -31,10 +31,10 @@ conventions, even if they are not historically related to
 Arabic. Therefore, OpenType defines many of the same GSUB and GPOS
 features as supported for the corresponding script tags. These scripts include:
 
-  - [Arabic]()
-  - [N'Ko]()
-  - [Syriac]()
-  - [Mongolian]()
+  - [Arabic](opentype-shaping-arabic.md)
+  - [N'Ko](opentype-shaping-nko.md)
+  - [Syriac](opentype-shaping-syriac.md)
+  - [Mongolian](opentype-shaping-mongolian.md)
 
 The information found below is intended to serve as a general guide;
 script-specific information can be found in the linked document for
