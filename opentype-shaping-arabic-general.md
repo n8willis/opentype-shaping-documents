@@ -1,8 +1,7 @@
-# Arabic script shaping in OpenType #
+# Arabic-style shaping in OpenType #
 
-This document the general shaping procedure shared by all 
-Arabic script styles, and defines the common pieces that style-specific
-implementations share. 
+This document the general shaping procedure shared by Arabic, N'Ko,
+Syriac, and Mongolian. 
 
 
 **Table of Contents**
@@ -26,70 +25,41 @@ implementations share.
 
 ## General information ##
 
-The Arabic script is used to write multiple languages, most commonly
-Arabic, Persian, Urdu, Pashto, Kurdish, and Azerbaijani. 
+Several scripts can be supported by the general OpenType shaping model
+used for Arabic. These writing systems observe similar rules and
+conventions, even if they are not historically related to
+Arabic. Therefore, OpenType defines many of the same GSUB and GPOS
+features as supported for the corresponding script tags. These scripts include:
 
-The Arabic script encompasses multiple distinct styles, including Naskh, 
-Nataliq, and Kufi, that share a number of common features and rules,
-but that differ considerably in their final appearance. Due to the
-common features found between the styles, a shaping engine can support
-all styles of Arabic with a single shaping model.
+  - [Arabic]()
+  - [N'Ko]()
+  - [Syriac]()
+  - [Mongolian]()
 
-In addition, several other writing systems that observe similar rules
-and conventions can be supported using the same shaping model, even if
-they are not historically related to Arabic. These scripts include:
+The information found below is intended to serve as a general guide;
+script-specific information can be found in the linked document for
+each script.
 
-  - N'Ko
-  - Syriac
-  - Mongolian
+Each of these writing systems uses a joining script that uses
+inter-word spaces. Therefore, each codepoint in a text run may be
+substituted with one of several contextual forms corresponding to
+what, if any, characters appear before and after the codepoint. Most,
+but not all, letter sequences join; shaping engines must track which
+positions trigger joining behavior for each letter. 
 
-Note that each of these scripts has its own independent
-script tag defined in OpenType. N'Ko uses `<nko>`, Syriac uses `<syrc>`, and
-Mongolian uses `<mong>`. The information found below about the `<arab>`
-script shaping model can serve as a general guide; script-specific
-information can be found in the linked document for each script. 
-
-Arabic is a joining script that uses inter-word spaces, so each
-codepoint in a text run may be substituted with one of several
-contextual forms corresponding to what, if any, characters appear
-before and after the codepoint. Most, but not all, letter sequences
-join; shaping engines must track which positions trigger joining
-behavior for each letter. 
-
-Arabic is written (and, therefore, rendered) from right to
-left. Shaping engines must track the directionality of the text run
-when scripts of different direction are mixed.
+Arabic, N'Ko, and Syriac are written (and, therefore, rendered) from right to
+left. Mongolian is written vertically, from top to bottom. Shaping
+engines must track the directionality of the text run when scripts of
+different direction are mixed.
 
 ## Terminology ##
 
 OpenType shaping uses a standard set of terms for elements of the
-Arabic script. The terms used colloquially in any particular language
+supported scripts. The terms used colloquially in any particular language
 may vary, however, potentially causing confusion.
 
-**Base** glyph or character is the standard term for a Arabic
+**Base** glyph or character is the standard term for a
 character that is capable of taking a diacritical mark. 
-
-Most of the base characters in Arabic are consonants, but each
-language written with the Arabic script may have one or more vowel
-base letters.
-
-Vowels that are not base characters are frequently omitted from the
-text run entirely. Alternatively, such a vowel may appear as a
-diacritical mark called a **ḥarakah**.
-
-**Ijam** is the standard term for an above- or below-base dot that
-distinguishes one consonant from another. Ijam are not considered
-diacritics; they are integral to the consonant of which they are a part.
-
-**Shadda** and **tashdid** are both standard terms for the "consonant
-doubling" diacritical mark.
-
-**Hamza** is the standard term for the glottal stop
-semi-consonant. The hamza is not regarded as a full letter in most
-languages, although it can appear as a stand-alone letter within
-words. In some sequences, the hamza attaches to an adjacent letter;
-when a hamza-supporting letter is not adjacent, however, the hamza can
-appear on its own.
 
 **Kashida** (or **tatweel**) is the term for a glyph inserted into a
 sequence for the purpose of elongating the baseline stroke of a
@@ -99,16 +69,17 @@ frequently. Kashidas are typically inserted in order to justify lines
 of text. 
 
 
+
 ## Glyph classification ##
 
-Because Arabic is a joining (or cursive) script, proper shaping of
+In joining (or cursive) scripts, proper shaping of
 text runs involves identifying the joining behavior of each character,
 then combining that information with any preceding or subsequent
 characters to determine the contextually correct form for display.
 
 ### Joining properties ###
 
-Arabic characters are assigned a `JOINING_TYPE` property in the
+Characters are assigned a `JOINING_TYPE` property in the
 Unicode standard that indicates how they join to adjacent
 characters. There are six possible values: 
 
@@ -139,16 +110,23 @@ characters. There are six possible values:
     `JOIN_CAUSING` characters.
   
 
-Arabic letters are also assigned to a `JOINING_GROUP` that indicates
-which fundamental character they behave like with regard to joining
-behavior. Each of the basic letters in the Arabic block tends to
-belong to its own `JOINING_GROUP`, while letters from the supplemental and
-extended blocks are usually assigned to the `JOINING_GROUP` that
-corresponds to the character's base letter, with no diacritics or ijam.
+In some scripts (such as Arabic and Syriac), letters are also assigned
+to a `JOINING_GROUP` that indicates which fundamental character they
+behave like with regard to joining behavior. Each of the basic letters
+in the script typically belongs to its own `JOINING_GROUP`, while
+supplemental and accented letters are usually assigned to the
+`JOINING_GROUP` that corresponds to the underlying base letter, with
+no diacritics or other marks. 
 
 For example, the Persian letter "Peh" (`U+067E`) is visually
 represented as the Arabic letter "Beh" (`U+0628`), but with two additional
-below-base ijam. Consequently, "Peh" is assigned to the `BEH` `JOINING_GROUP`.
+below-base "ijam" marks. Consequently, "Peh" is assigned to the `BEH`
+`JOINING_GROUP`.
+
+Mongolian and N'Ko, notably, do not make use of joining groups. Every
+letter in these scripts belongs to the _null_ or `NO_JOINING_GROUP`
+group.
+
 
 ### Mark classification ###
 
@@ -156,8 +134,8 @@ The Unicode standard defines a _canonical combining class_ for each
 codepoint that is used whenever a sequence needs to be sorted into
 canonical order. 
 
-Several of the Arabic marks belong to standard combining
-classes:
+The marks in most scripts belong to the standard combining
+classes. For example:
 
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
@@ -174,120 +152,37 @@ classes:
 |           | 230             | Other above-base combining marks   |
 
 The numeric values of these combining classes are used during Unicode
-normalization.
+normalization. Sequences of marks are sorted by combining class,
+reordering the sequence into increasing numercial order.
 
-A subset of the Arabic marks require special handling when shaping
-Arabic text, during the mark-reordering stage. These include two sets
-of _Modifier Combining Marks_ (MCM) that may need to be repositioned
-closer to the base character, when they occur in sequences of multiple
-marks. 
+In addition, some Arabic and Syriac marks require special handling
+when shaping Arabic text, during the mark-reordering stage. These
+marks fall into two classes of _Modifier Combining Marks_ (MCM) that
+may need to be repositioned closer to the base character, when they
+occur in sequences of multiple marks. 
 
 The sets are:
-  - Below-base (class 220) MCMs: "Hamza below" (`U+0655`), "Small low seen"
-    (`U+06E3`)
-  - Above-base (class 230) MCMs: "Hamza above" (`U+0654`), "Mark noon ghunna"
-    (`U+0658`), "Small high seen" (`U+06DC`), "Small high yeh" (`U+06E7`), "Small high
-    noon" (`U+06E8`), "Small high waw" (`U+08F3`)
-
+  - Below-base (class 220) MCMs
+  - Above-base (class 230) MCMs
+  
 These classifications are used in the [mark-reordering stage](#6-mark-reordering).
 
-	
+Lists of the marks that belong to each MCM classes are included in the
+script-specific shaping documents for Arabic and Syriac.
+			
 			
 ### Character tables ###
 
-Separate character tables are provided for the Arabic, Arabic
-Supplement, Arabic Extended-A, and Rumi Numeral Symbols, as well as for other miscellaneous
-characters that are used in `<arab>` text runs:
+Character tables for all of the scripts, plus important miscellaneous
+characters, are available here: 
 
-  - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
-  - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
-  - [Arabic Extended-A character table](character-tables/character-tables-arabic.md#arabic-extended-a-character-table)
-  - [Rumi Numeral Symbols character table](character-tables/character-tables-arabic.md#rumi-numeral-symbols-character-table)
-  - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
-
-<!--- Commenting out Arabic Mathematical Alphabetical Symbols block 
-      since it does not involve text shaping AFAICT. --->
-<!---   - [Arabic Mathematical Alphabetic Symbols character table](character-tables/character-tables-arabic.md#arabic-mathematical-alphabetic-symbols-character-table) --->
-
-Unicode also defines two blocks that implement backward compatibility
-with retired file-encoding formats:
-
-  - Arabic Presentation Forms-A
-  - Arabic Presentation Forms-B
-  
-Unless a software application is required to support specific stores of
-documents that are known to have used these older encodings, however, the
-shaping engine should not be expected to handle any text runs
-incorporating codepoints from these blocks.
-
-The tables list each codepoint along with its Unicode general
-category and its joining type. For letters, the table lists the
-codepoint's joining group. For diacritical marks, the table lists the
-codepoint's mark combining class. The codepoint's Unicode name and an example
-glyph are also provided.
-
-For example:
-
-| Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
-|:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
-|`U+0628`   | Letter           | DUAL         | BEH           | _null_     | &#x0628; Beh                 |
-| | | | | |
-|`U+0655`   | Mark [Mn]        | TRANSPARENT  | _null_        | 220_MCM   | &#x0655; Hamza Below         |
+  - [Arabic](character-tables/character-tables-arabic.md#arabic-character-table)
+  - [Syriac](character-tables/character-tables-syriac.md#syriac-character-table)
+  - [N'Ko](character-tables/character-tables-nko.md#nko-character-table)
+  - [Mongolian](character-tables/character-tables-mongolian.md#mongolian-character-table)
 
 
-
-Codepoints with no assigned meaning are
-designated as _unassigned_ in the _Unicode category_ column. 
-
-
-<!--- Character table example and explanation --->
-
-Other important characters that may be encountered when shaping runs
-of Arabic text include the dotted-circle placeholder (`U+25CC`), the
-combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
-and zero-width non-joiner (`U+200C`), the left-to-right text marker
-(`U+200E`) and right-to-left text marker (`U+200F`), and the no-break
-space (`U+00A0`).
-
-The dotted-circle placeholder is frequently used when displaying a
-vowel or diacritical mark in isolation. Real-world text documents may
-also use other characters, such as hyphens or dashes, in a similar
-placeholder fashion; shaping engines should cope with this situation
-gracefully.
-
-The combining grapheme joiner (CGJ) is primarily used to alter the
-order in which adjacent marks are positioned during the
-mark-reordering stage, in order to adhere to the needs of a
-non-default language orthography.
-<!--- combining grapheme joiner explanation --->
-
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
-cursive connecting form of a letter even when the context of the
-adjoining letters would not trigger the connecting form. 
-
-For example, to show the initial form of a letter in isolation (such
-as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
-would be used. To show the medial form of a letter in isolation, the
-sequence "ZWJ,_Letter_,ZWJ" would be used.
-
-
-<!--- Zero-Width Non Joiner explanation --->
-
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
-the Unicode bidirectionality algorithm (BiDi) to indicate the points
-in a text run at which the writing direction changes.
-
-
-<!--- How shaping is affected by the LTR and RTL markers explanation --->
-
-
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder.
-
-
-## The `<arab>` shaping model ##
+## The general Arabic-based shaping model ##
 
 Processing a run of `<arab>` text involves seven top-level stages:
 
@@ -321,19 +216,17 @@ In order to correctly apply the initial, medial, and final form
 substitutions from GSUB during stage 5, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
-> Note: The following algorithm includes rules for processing `<syrc>`
-> text in addition to `<arab>` text. Implementers concerned only with
-> shaping `<arab>` text can omit the portions for `<syrc>`-specific
-> rules. 
+> Note: not all of the rules detailed below apply to every script that
+> is supported by the general Arabic shaping model.
 
 To determine which feature is appropriate, the shaping engine must
 examine each word in turn and compute each letter's joining state from
 the letter's `JOINING_TYPE` and the `JOINING_TYPE` of the
 preceding character (if any).
 
-> Note: Although Arabic uses inter-word spaces, the `init` feature
-> does _not_ refer to word-initial letters only and the `fina` feature
-> does _not_ refer to word-final letters only.
+> Note: Although the supported scripts use inter-word spaces, the
+> `init` feature does _not_ refer to word-initial letters only and the
+> `fina` feature does _not_ refer to word-final letters only.
 >
 > Rather, both of these terms are defined with respect to whether or
 > not the preceding and subsequent letters form joins with the current
@@ -490,25 +383,23 @@ this stage, glyph sequences should be tagged for possible application
 of GSUB features.
 
 The order in which these substitutions must be performed is fixed for
-all scripts implemented in the Arabic shaping model:
+all scripts implemented with the Arabic shaping model:
 
 	locl
 	isol
 	fina
-	fin2 (not used in <arab>)
-	fin3 (not used in <arab>)
+	fin2 (only used in Syriac)
+	fin3 (only used in Syriac)
 	medi
-	med2 (not used in <arab>)
+	med2 (only used in Syriac)
 	init
 	rlig
 	rclt
 	calt
 	
+See the individual script pages for further detail on each feature and
+for script-specific information.
 
-#### 4.1 locl ####
-
-The `locl` feature replaces default glyphs with any language-specific
-variants, based on examining the language setting of the text run.
 
 > Note: Strictly speaking, the use of localized-form substitutions is
 > not part of the shaping process, but of the localization process,
@@ -516,95 +407,6 @@ variants, based on examining the language setting of the text run.
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
-
-![Localized form substitution](/images/arabic/arabic-locl.png)
-
-
-#### 4.2 isol ####
-
-The `isol` feature substitutes the default glyph for a codepoint with
-the isolated form of the letter.
-
-> Note: It is common for a font to use the isolated form of a letter
-> as the default, in which case the `isol` feature would apply no
-> substitutions. However, this is only a convention, and the active
-> font may use other forms as the default glyphs for any or all
-> codepoints.
-
-![Isolated form substitution](/images/arabic/arabic-isol.png)
-
-
-#### 4.3 fina ####
-
-The `fina` feature substitutes the default glyph for a codepoint with
-the terminal (or final) form of the letter.
-
-![Final form substitution](/images/arabic/arabic-fina.png)
-
-
-#### 4.4 fin2 ####
-
-This feature is not used in `<arab>` text.
-
-#### 4.5 fin3 ####
-
-This feature is not used in `<arab>` text.
-
-#### 4.6 medi ####
-
-The `medi` feature substitutes the default glyph for a codepoint with
-the medial form of the letter.
-
-![Medial form substitution](/images/arabic/arabic-medi.png)
-
-
-#### 4.7 med2 ####
-
-This feature is not used in `<arab>` text.
-
-#### 4.8 init ####
-
-The `init` feature substitutes the default glyph for a codepoint with
-the initial form of the letter.
-
-![Initial form substitution](/images/arabic/arabic-init.png)
-
-
-#### 4.9 rlig ####
-
-The `rlig` feature substitutes glyph sequences with mandatory
-ligatures. Substitutions made by `rlig` cannot be disabled by
-application-level user interfaces.
-
-![Required ligature substitution](/images/arabic/arabic-rlig.png)
-
-
-#### 4.10 rclt ####
-
-The `rclt` feature substitutes glyphs with contextual alternate
-forms. In general, this involves replacing the default form of a
-connecting glyph with an alternate that provides a preferable
-connection to an adjacent glyph.
-
-The `rclt` feature should be used to perform such substitutions that
-are required by the orthography of the active script and
-language. Substitutions made by `rclt` cannot be disabled by 
-application-level user interfaces.
-
-#### 4.11 calt ####
-
-The `calt` feature substitutes glyphs with contextual alternate
-forms. In general, this involves replacing the default form of a
-connecting glyph with an alternate that provides a preferable
-connection to an adjacent glyph.
-
-The `calt` feature, in contrast to `rclt` above, performs
-substitutions that are not mandatory for orthographic
-correctness. However, unlike `rclt`, the substitutions made by `calt`
-can be disabled by application-level user interfaces.
-
-![Contextual alternate substitution](/images/arabic/arabic-calt.png)
-
 
 
 ### 5. Applying the typographic-form substitution features from GSUB ###
@@ -620,45 +422,9 @@ all acripts implemented in the Arabic shaping model:
 	cswh
 	mset
 	
+See the individual script pages for further detail on each feature and
+for script-specific information.
 
-#### 5.1 liga ####
-
-The `liga` feature substitutes standard, optional ligatures that are on
-by default. Substitutions made by `liga` may be disabled by
-application-level user interfaces.
-
-![Standard ligature substitution](/images/arabic/arabic-liga.png)
-
-
-
-#### 5.2 dlig ####
-
-The `dlig` feature substitutes additional optional ligatures that are
-off by default. Substitutions made by `dlig` may be disabled by
-application-level user interfaces.
-
-
-#### 5.3 cswh ####
-
-The `cswh` feature substitutes contextual swash variants of
-glyphs. For example, the active font might substitute a longer variant
-of "Noon" when a certain number of subsequent glyphs do not descend
-below the baseline.
-
-
-#### 5.4 mset ####
-
-The `mset` feature performs mark positioning by substituting sequences
-of bases and marks with precomposed base-and-mark glyphs.
-
-> Note: Positioning marks with the `mark` and `mkmk` features of GPOS is
-> preferred, because `mset` can interfere with the OpenType shaping
-> process. For example, substitution rules contained in `mset` may not be able to
-> account for necessary mark-reordering adjustments conducted in the
-> next stage.
-> 
-> Nevertheless, when the active font uses `mset` substituions, the
-> shaping engine must deal with the situation gracefully.
 
 ### 6. Mark reordering ###
 
@@ -699,32 +465,7 @@ all acripts implemented in the Arabic shaping model:
 	mark
 	mkmk
 
-#### 7.1 `curs` ####
 
-The `curs` feature perform cursive positioning. Each glyph has an
-entry point and exit point; the `curs` feature positions glyphs so
-that the entry point of the current glyph meets the exit point of the
-preceding glyph.
-
-![Cursive positioning](/images/arabic/arabic-curs.png)
-
-
-#### 7.2 `kern` ####
-
-The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
-
-
-#### 7.3 `mark` ####
-
-The `mark` feature positions marks with respect to base glyphs.
-
-![Mark positioning](/images/arabic/arabic-mark.png)
-
-
-#### 7.4 `mkmk` ####
-
-The `mkmk` feature positions marks with respect to preceding marks,
-providing proper positioning for sequences of marks that attach to the
-same base glyph.
-
+See the individual script pages for further detail on each feature and
+for script-specific information.
 
