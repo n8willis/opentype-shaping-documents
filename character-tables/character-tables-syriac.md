@@ -1,7 +1,7 @@
 # Syriac character tables #
 
 This document lists the per-character shaping information needed to
-[shape Syriac text](./opentype-shaping-syriac.md).
+[shape Syriac text](../opentype-shaping-syriac.md).
 
 **Table of Contents**
 
