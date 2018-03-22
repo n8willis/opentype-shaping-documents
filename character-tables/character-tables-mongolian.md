@@ -56,11 +56,11 @@ treated differently during the mark-reordering stage.
 |`U+1807`   | Punctuation      | DUAL         | _null_               | _0_        | &#x1807; Sibe Syllable Boundary Mark          |
 |`U+1808`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x1808; Manchu Comma                         |
 |`U+1809`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x1809; Manchu Full Stop                     |
-|`U+180A`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x180A; Mongolian Nirugu                     |
+|`U+180A`   | Punctuation      | JOIN_CAUSING | _null_               | _0_        | &#x180A; Mongolian Nirugu                     |
 |`U+180B`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180B; Free Variation Selector One          |
 |`U+180C`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180C; Free Variation Selector Two          |
 |`U+180D`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180D; Free Variation Selector Three        |
-|`U+180E`   | Formatting       | TRANSPARENT  | _null_               | _0_        | &#x180E; Mongolian Vowel Separator            |
+|`U+180E`   | Formatting       | NON_JOINING  | _null_               | _0_        | &#x180E; Mongolian Vowel Separator            |
 |`U+180F`   | _unassigned_     |              |                      |            |                                               |
 | | | | | |                                                                                  
 |`U+1810`   | Number           | NON_JOINING  | _null_               | _0_        | &#x1810; Digit Zero                           |
@@ -225,7 +225,7 @@ treated differently during the mark-reordering stage.
 |`U+18A6`   | Letter           | DUAL         | _null_               | _0_        | &#x18A6; Ali Gali Half U                      |
 |`U+18A7`   | Letter           | DUAL         | _null_               | _0_        | &#x18A7; Ali Gali Half Ya                     |
 |`U+18A8`   | Letter           | DUAL         | _null_               | _0_        | &#x18A8; Manchu Ali Gali Bha                  |
-|`U+18A9`   | Mark [Mn]        |              | _null_               | 228        | &#x18A9; Ali Gali Dagalga                     |
+|`U+18A9`   | Mark [Mn]        | TRANSPARENT  | _null_               | 228        | &#x18A9; Ali Gali Dagalga                     |
 |`U+18AA`   | Letter           | DUAL         | _null_               | _0_        | &#x18AA; Manchu Ali Gali Lha                  |
 |`U+18AB`   | _unassigned_     |              |                      |            |                                               |
 |`U+18AC`   | _unassigned_     |              |                      |            |                                               |
