@@ -42,7 +42,7 @@ with Arabic, a shaping engine can support Mongolian with the same
 shaping model [used for Arabic and related writing systems](opentype-shaping-arabic-general.md).
 
 However, several other, unrelated scripts are also used to write
-Mongolian, including `Phags-Pa, Soyombo, Zanabazar, Cyrillic, and
+Mongolian, including 'Phags-Pa, Soyombo, Zanabazar Square, Cyrillic, and
 Latin. Each of these scripts has its own OpenType shaping rules and its
 Unicode block, and does not use the general Arabic shaping model.
 
@@ -78,23 +78,24 @@ Manchu languages, but may be encountered in Tibetan or Sanskrit.
 A number of consonants in Mongolian take on different forms depending
 on the vowels used elsewhere in the word. In addition, some letters
 take on different forms when depending on whether they occur in the
-first syllable of a word or whether they are used in a ntaive
+first syllable of a word or whether they are used in a native
 Mongolian word versus a foreign word. Mongolian fonts implement
 substitutions capturing most of these form rules using GSUB. However,
 there are occasions where the correct form may not be determined from
 context alone.
 
 To indicate the correct form, the text run can include a **free
-variation selector** immediately after the consonant in
+variation selector** immediately after the letter in
 question. There are three free variation selectors defined for
-Mongolian, the form that each selector triggers for each consonant is
+Mongolian; the form that each selector triggers for each letter is
 defined in the Unicode Mongolian block. Free variation selectors have
 no visual appearance and no advance width; they are used only to
 trigger the proper substitution in the active font's GSUB tables.
 
 In some Mongolian words, a word-final "A" or "E" is written
-disconnected from the preceding letter. The **Mongolian vowel
-separator** formatting character is included between the two letters.
+disconnected from the preceding letter. In such situations, the
+**Mongolian vowel separator** formatting character can be included
+between the two letters to trigger such a space.
 
 **Kashida** (or **tatweel**) is the Arabic term for a glyph inserted
 into a sequence for the purpose of elongating the baseline stroke of
@@ -193,9 +194,9 @@ For example:
 
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
-|`U+0628`   | Letter           | DUAL         | BEH           | _null_     | &#x0628; Beh                 |
+|`U+1828`   | Letter           | DUAL         | _null_        | _0_        | &#x1828; Na                  |
 | | | | | |
-|`U+0655`   | Mark [Mn]        | TRANSPARENT  | _null_        | 220_MCM   | &#x0655; Hamza Below         |
+|`U+1885`   | Mark [Mn]        | TRANSPARENT  | _null_        | _0_        | &#x1885; Ali Gali Baluda     |
 
 
 
@@ -208,7 +209,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 Other important characters that may be encountered when shaping runs
 of Mongolian text include the dotted-circle placeholder (`U+25CC`),
 the zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`),
-the no-break space (`U+00A0`) and the narrow no-break space(``).
+the no-break space (`U+00A0`) and the narrow no-break space(`U+202F`).
 
 The dotted-circle placeholder is frequently used when displaying a
 diacritical mark in isolation. Real-world text documents may
