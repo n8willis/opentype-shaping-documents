@@ -153,7 +153,7 @@ classes. For example:
 
 The numeric values of these combining classes are used during Unicode
 normalization. Sequences of marks are sorted by combining class,
-reordering the sequence into increasing numercial order.
+reordering the sequence into increasing numerical order.
 
 In addition, some Arabic and Syriac marks require special handling
 when shaping Arabic text, during the mark-reordering stage. These
@@ -415,7 +415,7 @@ The typographic-substitution phase applies optional substitution
 features using the rules in the font's GSUB table.
 
 The order in which these substitution must be performed is fixed for
-all acripts implemented in the Arabic shaping model:
+all scripts implemented in the Arabic shaping model:
 
     liga
 	dlig
@@ -458,7 +458,7 @@ The positioning stage adjusts the positions of mark and base
 glyphs.
 
 The order in which these features are applied is fixed for
-all acripts implemented in the Arabic shaping model:
+all scripts implemented in the Arabic shaping model:
 
     curs
 	kern
