@@ -243,23 +243,39 @@ used to denote the beginning of a text.
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
-|`U+0860`   | Letter           | DUAL         | MALAYALAM_NGA        | _0_        | &#x0860; Malayalam Nga                        |
-|`U+0861`   | Letter           | NON_JOINING  | MALAYALAM_JA         | _0_        | &#x0861; Malayalam Ja                         |
-|`U+0862`   | Letter           | DUAL         | MALAYALAM_NYA        | _0_        | &#x0862; Malayalam Nya                        |
-|`U+0863`   | Letter           | DUAL         | MALAYALAM_TTA        | _0_        | &#x0863; Malayalam Tta                        |
-|`U+0864`   | Letter           | DUAL         | MALAYALAM_NNA        | _0_        | &#x0864; Malayalam Nna                        |
-|`U+0865`   | Letter           | DUAL         | MALAYALAM_NNNA       | _0_        | &#x0865; Malayalam Nnna                       |
-|`U+0866`   | Letter           | NON_JOINING  | MALAYALAM_BHA        | _0_        | &#x0866; Malayalam Bha                        |
-|`U+0867`   | Letter           | RIGHT        | MALAYALAM_RA         | _0_        | &#x0867; Malayalam Ra                         |
-|`U+0868`   | Letter           | DUAL         | MALAYALAM_LLA        | _0_        | &#x0868; Malayalam Lla                        |
-|`U+0869`   | Letter           | RIGHT        | MALAYALAM_LLLA       | _0_        | &#x0869; Malayalam Llla                       |
-|`U+086A`   | Letter           | RIGHT        | MALAYALAM_SSA        | _0_        | &#x086A; Malayalam Ssa                        |
-|`U+086B`   | _unassigned_     |              |                      |            |                                               |
-|`U+086C`   | _unassigned_     |              |                      |            |                                               |
-|`U+086D`   | _unassigned_     |              |                      |            |                                               |
-|`U+086E`   | _unassigned_     |              |                      |            |                                               |
-|`U+086F`   | _unassigned_     |              |                      |            |                                               |
-
+|`U+11660`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11660; Birga with Ornament                 |
+|`U+11661`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11661; Rotated Birga                       |
+|`U+11662`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11662; Double Birga with Ornament          |
+|`U+11663`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11663; Triple Birga with Ornament          |
+|`U+11664`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11664; Birga with Double Ornament          |
+|`U+11665`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11665; Rotated Birga with Ornament         |
+|`U+11666`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11666; Rotated Birga with Double Ornament  |
+|`U+11667`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11667; Inverted Birga                      |
+|`U+11668`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11668; Inverted Birga with Double Ornament |
+|`U+11669`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x11669; Swirl Birga                         |
+|`U+1166A`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x1166A; Swirl Birga with Ornament           |
+|`U+1166B`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x1166B; Swirl Birga with Double Ornament    |
+|`U+1166C`  | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x1166C; Turned Swirl Birga with Double Ornament|
+|`U+1166D`  | _unassigned_     |              |                      |            |                                               |
+|`U+1166E`  | _unassigned_     |              |                      |            |                                               |
+|`U+1166F`  | _unassigned_     |              |                      |            |                                               |
+| | | | | |
+|`U+11670`  | _unassigned_     |              |                      |            |                                               |
+|`U+11671`  | _unassigned_     |              |                      |            |                                               |
+|`U+11672`  | _unassigned_     |              |                      |            |                                               |
+|`U+11673`  | _unassigned_     |              |                      |            |                                               |
+|`U+11674`  | _unassigned_     |              |                      |            |                                               |
+|`U+11675`  | _unassigned_     |              |                      |            |                                               |
+|`U+11676`  | _unassigned_     |              |                      |            |                                               |
+|`U+11677`  | _unassigned_     |              |                      |            |                                               |
+|`U+11678`  | _unassigned_     |              |                      |            |                                               |
+|`U+11679`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167A`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167B`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167C`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167D`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167E`  | _unassigned_     |              |                      |            |                                               |
+|`U+1167F`  | _unassigned_     |              |                      |            |                                               |
 
 
 ## Miscellaneous character table ##
@@ -281,26 +297,17 @@ fashion; shaping engines should cope with this situation gracefully.
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
 |`U+00A0`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x00A0; No-break space        |
-|`U+034F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x034F; Combining grapheme joiner |
-|`U+0640`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x0640; Arabic Tatweel        |
 |`U+200C`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200C; Zero-width non-joiner |
 |`U+200D`   | Other            | JOIN_CAUSING | _null_               | _0_        | &#x200D; Zero-width joiner     |
-|`U+200E`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200E; Left-to-Right marker  |
-|`U+200F`   | Other            | NON_JOINING  | _null_               | _0_        | &#x200F; Right-to-Left marker  |
 |`U+2010`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2010; Hyphen                |
 |`U+2011`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2011; No-break hyphen       |
 |`U+2012`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2012; Figure dash           |
 |`U+2013`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
+|`U+202F`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x202F; Narrow No-Break Space |
 |`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
 | | | | | | |
 
-
-The combining grapheme joiner (CGJ) is primarily used to alter the
-order in which adjacent marks are positioned during the
-mark-reordering stage, in order to adhere to the needs of a
-non-default language orthography.
-<!--- combining grapheme joiner explanation --->
 
 The zero-width joiner (ZWJ) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
@@ -314,15 +321,10 @@ sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 <!--- Zero-Width Non Joiner explanation --->
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
-the Unicode bidirectionality algorithm (BiDi) to indicate the points
-in a text run at which the writing direction changes.
-
-
-<!--- How shaping is affected by the LTR and RTL markers explanation --->
-
-
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder.
+
+The narrow no-break space is used in Mongolian to insert a small gap
+between a word and its suffix. 
