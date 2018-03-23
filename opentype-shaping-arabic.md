@@ -612,7 +612,7 @@ can be disabled by application-level user interfaces.
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's GSUB table.
 
-The order in which these substitution must be performed is fixed for
+The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
 
     liga
