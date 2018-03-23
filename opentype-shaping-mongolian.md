@@ -97,6 +97,9 @@ disconnected from the preceding letter. In such situations, the
 **Mongolian vowel separator** formatting character can be included
 between the two letters to trigger such a space.
 
+Sibe text may use the **Sibe syllable boundary marker** (`U+1807`) to
+denote syllable boundaries in foreign loanwords.
+
 **Kashida** (or **tatweel**) is the Arabic term for a glyph inserted
 into a sequence for the purpose of elongating the baseline stroke of
 an Arabic letter. Mongolian features a similar character, called
@@ -144,7 +147,12 @@ characters. There are six possible values:
     `JOIN_CAUSING` characters.
   
   
-Almost all letters in Mongolian are of joining type `DUAL`. 
+> Note: Almost all characters in Mongolian are of joining type
+> `DUAL`. The exceptions are `TRANSPARENT`, `NON_JOINING`, and
+> `JOIN_CAUSING`. Thus, the ambiguity that might be encountered due to
+> the usage of `LEFT` and `RIGHT` in the names of the other joining
+> types (which are so named in reference to the relative positions as
+> used in Arabic and related scripts) is avoided.
 
 In other scripts using the Arabic shaping model, letters are also
 assigned to a `JOINING_GROUP` that indicates which fundamental
@@ -204,8 +212,6 @@ Codepoints with no assigned meaning are
 designated as _unassigned_ in the _Unicode category_ column. 
 
 
-<!--- Character table example and explanation --->
-
 Other important characters that may be encountered when shaping runs
 of Mongolian text include the dotted-circle placeholder (`U+25CC`),
 the zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`),
@@ -228,8 +234,6 @@ sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 
 <!--- Zero-Width Non Joiner explanation --->
-
-
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as diacritical marks) in an
@@ -537,7 +541,7 @@ can be disabled by application-level user interfaces.
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's GSUB table.
 
-The order in which these substitution must be performed is fixed for
+The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
 
     liga
@@ -566,9 +570,9 @@ application-level user interfaces.
 #### 5.3 cswh ####
 
 The `cswh` feature substitutes contextual swash variants of
-glyphs. For example, the active font might substitute a longer variant
+glyphs. <!---For example, the active font might substitute a longer variant
 of "Noon" when a certain number of subsequent glyphs do not descend
-below the baseline.
+below the baseline.--->
 
 
 #### 5.4 mset ####
