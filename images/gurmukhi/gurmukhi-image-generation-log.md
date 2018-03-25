@@ -72,6 +72,12 @@ montage gurmukhi-blwf-ha-before.png right-arrow.png gurmukhi-blwf-ha-after.png -
 
 > Note: Gurmukhi fonts seem to stick to explicit halant-forms.
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-before.png --features=-init,-half,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a2d,0a4d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-after.png --features=-init,+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a2d,0a4d
+
+montage gurmukhi-half-before.png right-arrow.png gurmukhi-half-after.png -geometry +0+0 -background transparent gurmukhi-half.png
+
 
 ## 3.10 `pstf`
 
