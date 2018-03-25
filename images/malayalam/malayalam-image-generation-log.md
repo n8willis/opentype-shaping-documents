@@ -189,7 +189,7 @@ montage malayalam-haln-before.png right-arrow.png malayalam-haln-after.png -geom
 
 ## 6 `abvm`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-abvm-before.png --features=-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
+hb-view --font-size=110 --margin=2,32,2,16 --output-file=malayalam-abvm-before.png --features=-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-abvm-after.png --features=+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
 
