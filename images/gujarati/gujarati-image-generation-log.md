@@ -174,9 +174,9 @@ montage gujarati-haln-before.png right-arrow.png gujarati-haln-after.png -geomet
 
 ## 6 `abvm`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvm-before.png --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0a87
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvm-before.png --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0ab9
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvm-after.png --features=-init,+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0a87
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-abvm-after.png --features=-init,+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0ab0,0acd,0ab9
 
 montage gujarati-abvm-before.png right-arrow.png gujarati-abvm-after.png -geometry +0+0 -background transparent gujarati-abvm.png
 
