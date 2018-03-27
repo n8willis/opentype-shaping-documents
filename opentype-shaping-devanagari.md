@@ -918,16 +918,14 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
+	init (not used in Devanagari)
 	pres
 	abvs
 	blws
 	psts
 	haln
 
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline in-stroke from the left side of the glyph.
+The `init` feature is not used in Devanagari.
 
 The `pres` feature replaces pre-base-consonant glyphs with special
 presentations forms. This can include consonant conjuncts, half-form
