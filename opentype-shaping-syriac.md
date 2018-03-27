@@ -166,6 +166,8 @@ that is used in transcribing historical documents when it is
 impossible to distinguish whether the letter in the source text is
 "Dalath" or "Rish".
 
+![](/images/syriac/syriac-dalath-rish.png)
+
 Shaping engines may choose to define pseudo-`JOINING_TYPE`s
 corresponding to the `ALAPH` and `DALATH_RISH` joining groups, or may
 track the appropriate `JOINING_GROUP` properties by any other means
@@ -237,9 +239,14 @@ combining mark in isolation. Real-world text syllables may also use
 other characters, such as hyphens or dashes, in a similar placeholder
 fashion; shaping engines should cope with this situation gracefully.
 
-In addition, Syriac text runs may include the "Tatweel" or kashida
-codepoint (`U+0640`) from the Arabic block, because the Syriac block
-does not encode a separate kashida character.
+In addition, Syriac text runs may include the "tatweel" or kashida
+(`U+0640`) and "shadda" (`U+0651`) codepoints from the Arabic block,
+because the Syriac block does not encode a separate kashida or shadda
+character. 
+
+Modern texts may also make use of Arabic punctuation marks, and texts
+using Syriac to write Arabic (called "Garshuni") may also employ
+Arabic ḥarakah (vowel) marks.
 
 The combining grapheme joiner (CGJ) is primarily used to alter the
 order in which adjacent marks are positioned during the
@@ -499,7 +506,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Localized form substitution](/images/syriac/syriac-locl.png)
+<!--- ![Localized form substitution](/images/syriac/syriac-locl.png) --->
 
 
 #### 4.2 isol ####
@@ -513,7 +520,7 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-![Isolated form substitution](/images/syriac/syriac-isol.png)
+<!--- ![Isolated form substitution](/images/syriac/syriac-isol.png) --->
 
 
 #### 4.3 fina ####
@@ -530,12 +537,16 @@ The `fin2` feature replaces word-final Alaph glyph that are not
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
+![Final form-2 substitution](/images/syriac/syriac-fin2.png)
+
 
 #### 4.5 fin3 ####
 
 The `fin3` feature replaces word-final Alaph glyph that are 
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
+
+![Final form-3 substitution](/images/syriac/syriac-fin3.png)
 
 
 #### 4.6 medi ####
@@ -638,9 +649,10 @@ Sequences of adjacent marks must be reordered so that they appear in
 canonical order before the mark-to-base and mark-to-mark positioning
 features from GPOS can be correctly applied.
 
-> Note: The following algorithm contains steps specific to shaping
-> `<arab>` text runs. It is included to maintain compatibility with the
-> general-purpose Arabic shaping model.
+> Note: The following algorithm contains steps specific to reordering
+> Arabic marks. Since Garshuni text, which uses the Syriac script to
+> write the Arabic language, employs Arabic marks, shaping engines
+> should not omit the mark-reordering logic. 
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
