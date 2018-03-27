@@ -563,6 +563,8 @@ The `med2` feature replaces Alaph glyphs in the middle of a
 word that are preceded by a base character that cannot be joined to
 with a special medial form.
 
+![Medial form-2 substitution](/images/syriac/syriac-med2.png)
+
 
 #### 4.8 init ####
 

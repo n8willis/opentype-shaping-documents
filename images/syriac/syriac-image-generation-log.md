@@ -6,6 +6,20 @@ hb-view --font-size=110 --output-file=right-arrow.png --background=FFFFFF00 --ma
 
 ## Dalath Rish group ##
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-dalath-rish.png --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf --unicodes=0715,072a,0716
+
+
+## 3. `stch`
+
+> Note: Noto seems to implement this in a set of `calt` substitutions,
+> for unknown reasons.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-stch-before.png --features=-stch,-calt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf --unicodes=0712,0732,070f,0728,0721,0735,0710
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-stch-after.png --features=+stch --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf --unicodes=0712,0732,070f,0728,0721,0735,0710
+
+montage syriac-stch-before.png right-arrow.png syriac-stch-after.png -geometry +0+0 -background transparent syriac-stch.png
+
 
 ## 4.1 `locl`
 
@@ -53,6 +67,62 @@ montage syriac-medi-before.png right-arrow.png syriac-medi-after.png -geometry +
 
 ## 4.7 `med2`
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-before.png --features=-med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=25cc,0710,25cc
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-after.png --features=+med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=25cc,0710,25cc
+
+montage syriac-med2-before.png right-arrow.png syriac-med2-after.png -geometry +0+0 -background transparent syriac-med2.png
+
+
+## 4.8 `init`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-before.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0727,25cc
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-after.png --features=+init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0727,25cc
+
+montage syriac-init-before.png right-arrow.png syriac-init-after.png -geometry +0+0 -background transparent syriac-init.png
+
+
+## 4.9 `rlig`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-rlig-before.png --features=-rlig --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=072a,25cc,0308
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-rlig-after.png --features=+rlig --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=072a,0308
+
+montage syriac-rlig-before.png right-arrow.png syriac-rlig-after.png -geometry +0+0 -background transparent syriac-rlig.png
+
+
+## 4.11 `calt`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-calt-before.png --features=-calt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=0720,071c
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-calt-after.png --features=+calt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=0720,071c
+
+montage syriac-calt-before.png right-arrow.png syriac-calt-after.png -geometry +0+0 -background transparent syriac-calt.png
+
+
+## 5.1 `liga`
+
+> Note: Noto Syriac implements this as a `calt` lookup for unknown reasons.
+>
+> This seems to be a known shortcoming. See
+> [https://github.com/googlei18n/noto-fonts/issues/665](https://github.com/googlei18n/noto-fonts/issues/665)
+> for more information.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-liga-before.png --features=-calt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0720,0710
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-liga-after.png --features=+calt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0720,0710
+
+montage syriac-liga-before.png right-arrow.png syriac-liga-after.png -geometry +0+0 -background transparent syriac-liga.png
+
+
+## 5.2 `dlig`
+
+> Note: none found in Noto Syriac.
+>
+> This seems to be a known shortcoming. See
+> [https://github.com/googlei18n/noto-fonts/issues/665](https://github.com/googlei18n/noto-fonts/issues/665)
+> for more information.
 
 
 
