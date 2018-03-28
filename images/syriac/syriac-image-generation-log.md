@@ -125,12 +125,19 @@ montage syriac-liga-before.png right-arrow.png syriac-liga-after.png -geometry +
 > for more information.
 
 
+## 7.3 `mark`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-mark-before.png --features=-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf --unicodes=0712,0733
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-mark-after.png --features=+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf --unicodes=0712,0733
+
+montage syriac-mark-before.png right-arrow.png syriac-mark-after.png -geometry +0+0 -background transparent syriac-mark.png
 
 
+## 7.4 `mkmk`
 
-
-
-
+> Note: Noto Sans Syriac (all) fonts have a `mkmk` table but it does
+> not seem to work.
 
 
 
