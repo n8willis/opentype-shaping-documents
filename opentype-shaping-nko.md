@@ -418,7 +418,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Localized form substitution](/images/nko/nko-locl.png)
+<!--- ![Localized form substitution](/images/nko/nko-locl.png) --->
 
 
 #### 4.2 isol ####
@@ -432,7 +432,7 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-![Isolated form substitution](/images/nko/nko-isol.png)
+<!--- ![Isolated form substitution](/images/nko/nko-isol.png) --->
 
 
 #### 4.3 fina ####
@@ -495,7 +495,7 @@ substitutions that are not mandatory for orthographic
 correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-![Contextual alternate substitution](/images/nko/nko-calt.png)
+<!--- ![Contextual alternate substitution](/images/nko/nko-calt.png) --->
 
 
 
@@ -519,7 +519,7 @@ The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Standard ligature substitution](/images/nko/nko-liga.png)
+<!--- ![Standard ligature substitution](/images/nko/nko-liga.png) --->
 
 
 
