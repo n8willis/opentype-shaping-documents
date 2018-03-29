@@ -465,9 +465,8 @@ and double-dot tone mark (double-dot bangjeom), `U+302E` and
 
 
 Other important characters that may be encountered when shaping runs
-of Bengali text include the dotted-circle placeholder (`U+25CC`), the
-zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
-the no-break space (`U+00A0`).
+of Hangul text include the dotted-circle placeholder (`U+25CC`), the
+zero-width joiner (`U+200D`), and zero-width non-joiner (`U+200C`).
 
 The dotted-circle placeholder is frequently used when displaying a
 mark in isolation. Real-world text may also use other characters, such
