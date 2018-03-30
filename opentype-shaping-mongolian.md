@@ -86,11 +86,33 @@ context alone.
 
 To indicate the correct form, the text run can include a **free
 variation selector** immediately after the letter in
-question. There are three free variation selectors defined for
-Mongolian; the form that each selector triggers for each letter is
-defined in the Unicode Mongolian block. Free variation selectors have
-no visual appearance and no advance width; they are used only to
-trigger the proper substitution in the active font's GSUB tables.
+question. There are three free variation selectors in the Mongolian
+block (FVS1, FVS2, and FVS3), although some letters have alternate
+forms defined only for FVS1 or only for FVS1 and FVS2.
+
+In addition, letters vary as to whether alternate forms exist for the
+isolated, initial, medial, or final position, or for several
+positions. The forms that each selector triggers for each letter is
+defined in the Unicode Mongolian block. 
+
+For example, the letter "Manchu I" (`U+1873`) has three alternate
+forms defined for the medial position:
+
+![Non FVS form substitution](/images/mongolian/mongolian-fvs-none.png)
+
+![FVS1 form substitution](/images/mongolian/mongolian-fvs-fvs1.png)
+
+![FVS2 form substitution](/images/mongolian/mongolian-fvs-fvs2.png)
+
+![FVS3 form substitution](/images/mongolian/mongolian-fvs-fvs3.png)
+
+
+Free variation selectors have no visual appearance and no advance
+width; they are used only to trigger the proper substitution in the
+active font's GSUB tables. 
+
+
+
 
 In some Mongolian words, a word-final "A" or "E" is written
 disconnected from the preceding letter. In such situations, the
@@ -499,6 +521,13 @@ the medial form of the letter.
 ![Medial form substitution](/images/mongolian/mongolian-medi.png)
 
 
+The Mongolian free-variation selectors can also be used in conjunction
+with `medi` to trigger alternate forms of certain letters as required
+by the orthography.
+
+![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.png)
+
+
 #### 4.7 med2 ####
 
 This feature is not used in `<mong>` text.
@@ -509,6 +538,13 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 ![Initial form substitution](/images/mongolian/mongolian-init.png)
+
+
+The Mongolian free-variation selectors can also be used in conjunction
+with `init` to trigger alternate forms of certain letters as required
+by the orthography.
+
+![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.png)
 
 
 #### 4.9 rlig ####
@@ -544,7 +580,7 @@ substitutions that are not mandatory for orthographic
 correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-![Contextual alternate substitution](/images/mongolian/mongolian-calt.png)
+<!--- ![Contextual alternate substitution](/images/mongolian/mongolian-calt.png) --->
 
 
 
@@ -568,7 +604,7 @@ The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Standard ligature substitution](/images/mongolian/mongolian-liga.png)
+<!--- ![Standard ligature substitution](/images/mongolian/mongolian-liga.png) --->
 
 
 
@@ -647,7 +683,7 @@ entry point and exit point; the `curs` feature positions glyphs so
 that the entry point of the current glyph meets the exit point of the
 preceding glyph.
 
-![Cursive positioning](/images/mongolian/mongolian-curs.png)
+<!--- ![Cursive positioning](/images/mongolian/mongolian-curs.png) --->
 
 
 #### 7.2 `kern` ####
@@ -659,7 +695,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Mark positioning](/images/mongolian/mongolian-mark.png)
+<!--- ![Mark positioning](/images/mongolian/mongolian-mark.png) --->
 
 
 #### 7.4 `mkmk` ####
