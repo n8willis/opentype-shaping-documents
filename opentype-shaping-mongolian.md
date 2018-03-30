@@ -446,8 +446,6 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Localized form substitution](/images/mongolian/mongolian-locl.png)
-
 
 #### 4.2 isol ####
 
@@ -463,12 +461,26 @@ the isolated form of the letter.
 ![Isolated form substitution](/images/mongolian/mongolian-isol.png)
 
 
+The Mongolian free-variation selectors can also be used in conjunction
+with `isol` to trigger alternate forms of certain letters as required
+by the orthography.
+
+![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.png)
+
+
 #### 4.3 fina ####
 
 The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 ![Final form substitution](/images/mongolian/mongolian-fina.png)
+
+
+The Mongolian free-variation selectors can also be used in conjunction
+with `fina` to trigger alternate forms of certain letters as required
+by the orthography.
+
+![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.png)
 
 
 #### 4.4 fin2 ####
