@@ -39,9 +39,9 @@ In addition, several other writing systems that observe similar rules
 and conventions can be supported using the same shaping model, even if
 they are not historically related to Arabic. These scripts include:
 
-  - N'Ko
-  - Syriac
-  - Mongolian
+  - [N'Ko](opentype-shaping-nko.md)
+  - [Syriac](opentype-shaping-syriac.md)
+  - [Mongolian](opentype-shaping-mongolian.md)
 
 Note that each of these scripts has its own independent
 script tag defined in OpenType. N'Ko uses `<nko>`, Syriac uses `<syrc>`, and
