@@ -18,4 +18,4 @@
       - [N'Ko](character-tables-nko.md)
       - [Mongolian](character-tables-mongolian.md)
   - Hangul
-      - [Hangul](character-tables-hangul.md)
+      - [Hangul Jamo](character-tables-hangul.md)
