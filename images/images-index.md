@@ -16,11 +16,12 @@ The font files used must be publicly and freely available, open-source
 fonts. By default, the Noto fonts from Google are the starting point.
 
 The image file names follow a simple, but important, pattern:
-	_script_-_featureillustrated_.png
+
+    _script_-_featureillustrated_.png
 	
 Intermediary images copy the pattern but append _-before_ or _-after_
-when the before-or-after state of an applied OpenType feature, or some
-other suffix as appropriate.
+when depicting the before-or-after state of an applied OpenType
+feature, or some other suffix as appropriate.
 
 If you are suggesting an update to an image, please utilize the same
 commands and general syntax. If you are suggesting adding a new image,
