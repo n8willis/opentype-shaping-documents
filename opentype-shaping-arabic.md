@@ -196,8 +196,9 @@ These classifications are used in the [mark-reordering stage](#6-mark-reordering
 ### Character tables ###
 
 Separate character tables are provided for the Arabic, Arabic
-Supplement, Arabic Extended-A, and Rumi Numeral Symbols, as well as for other miscellaneous
-characters that are used in `<arab>` text runs:
+Supplement, Arabic Extended-A, and Rumi Numeral Symbols blocks, as
+well as for other miscellaneous characters that are used in `<arab>`
+text runs:
 
   - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
   - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
