@@ -116,16 +116,16 @@ set of valid trailing consonants includes several compound consonant
 pairs that can never occur in leading form.
 
 For example, the basic consonant "Kiyeok" (&#x1100;) is encoded as `U+1100`
-in its leading (choseong) form and as `U+11A8` in its trailing
+in its leading (choseong) form but as `U+11A8` in its trailing
 (jongseong) form. The tense or emphatic form of the consonant,
 "Ssangkiyeok" (&#x1101;), is encoded in its leading (choseong) form as
-`U+1101` and in its trailing (jongseong) form as `U+11A9`, and is
-rendered as a doubled version of the basic consonant.
+`U+1101` but in its trailing (jongseong) form as `U+11A9`, and is
+rendered visually as a doubled version of the basic consonant.
 
-Two of the compound trailing consonants, "Kiyeok-sios" (&#11aa;
-`U+11AA`) and "Rieul-kiyeok" (&#11b0; `U+11B0`) also incorporate the
+Two of the compound trailing consonants, "Kiyeok-sios" (&#x11aa;
+`U+11AA`) and "Rieul-kiyeok" (&#x11b0; `U+11B0`) also incorporate the
 Kiyeok basic consonant. But Kiyeok-sios and Rieul-kiyeok are never
-used as leading consonants, so they are not encoded in leading
+used as leading consonants, therefore they are not encoded in leading
 (choseong) forms.
 
 > Note: compound consonant jamo are not written as sequences of basic
