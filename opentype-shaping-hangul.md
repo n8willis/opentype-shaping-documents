@@ -27,7 +27,7 @@ North Korea and South Korea as well as regions within China. It may
 also be used to write the Cia-Cia language in Indonesia.
 
 Hangul syllables are formed from individual alphabetic letters that
-are arranged into square blocks using pre-defined patterns. The
+are arranged into square cells using pre-defined patterns. The
 syllables themselves are monospaced in a run of text, using interword
 spacing and punctuation.
 
@@ -64,10 +64,10 @@ are also defined in Unicode.  Many of these Old Korean jamo are
 compound forms that concatenate two or three basic jamo. 
   
 A **syllable** is formed by arranging a sequence of jamo into its
-appropriate square-block form. The horizontal and vertical positioning
-of each jamo in the block depends on the content of the syllable. The
+appropriate square-cell form. The horizontal and vertical positioning
+of each jamo in the cell depends on the content of the syllable. The
 exact shape and proportions of each jamo will also vary with its final
-position in the block. 
+position in the cell. 
 
 Valid syllables must be either of the form "**`L`**,**`V`**" or of the form
 "**`L`**,**`V`**,**`T`**". That is, each syllable must begin with one leading
@@ -122,8 +122,8 @@ in its leading (choseong) form but as `U+11A8` in its trailing
 `U+1101` but in its trailing (jongseong) form as `U+11A9`, and is
 rendered visually as a doubled version of the basic consonant.
 
-Two of the compound trailing consonants, "Kiyeok-sios" (&#x11aa;
-`U+11AA`) and "Rieul-kiyeok" (&#x11b0; `U+11B0`) also incorporate the
+In addition, two compound trailing consonants, "Kiyeok-sios" (&#x11aa;
+`U+11AA`) and "Rieul-kiyeok" (&#x11b0; `U+11B0`), also incorporate the
 Kiyeok basic consonant. But Kiyeok-sios and Rieul-kiyeok are never
 used as leading consonants, therefore they are not encoded in leading
 (choseong) forms.
@@ -289,38 +289,215 @@ regular expression:
 	<|>	  one of the options separated by the vertical bar
 
 
+The expression matches five possible syllable types:
+
+  - `Slvt`
+  - `Slv`
+  - `Slv`,`T`
+  - `L`,`V`
+  - `L`,`V`,`T`
+
+Sequences of jamo that do not match the above expression should be
+treated as runs of standalone jamo letters.
+
+After the syllables have been identified, each of the subsequent 
+shaping stages occurs on a per-syllable basis.
 
 
+### 2. Determining if the syllable can be composed into a Hangul Syllables codepoint ###
 
 
-<L> 
-    <L,V> 
-    <L,V,T>
-    <LV>
-    <LVT>
-    <LV, T>
+#### 2.1 Fully precomposed syllables ####
+
+A precomposed `Slvt` or `Slv` syllable requires no shaping if the active
+font includes a glyph for the corresponding Hangul Syllables
+codepoint. If the glyph is present, the shaping engine can render it
+and proceed directly to stage six without further work. If the glyph
+is not present, the shaping engine must proceed to stage four 
+
+The other syllable types involve jamo, and each syllable must be
+examined to determine if it composes into a codepoint in the Hangul
+Syllables block.
 
 
+#### 2.2 Partially precomposed syllables ####
 
-### 2. Determining if the syllable can be composed into a Hangul Syllable codepoint ###
+For "`Slv`,`T`" syllables, the `Slv` codepoint must first be
+decomposed into its constituent jamo. Then, the resulting
+"`L`,`V`,`T`" syllable must be examined in the [next
+step](#23-fully-jamo-syllables). 
+
+The decomposition of the `Slv` syllable is canonical, and uses the
+algorithm defined in [stage four](#4-fully-decomposing-the-syllable-if-composition-is-not-possible).
+
+
+#### 2.3 Fully jamo syllables ####
+
+For "`L`,`V`" and "`L`,`V`,`T`" syllables, the `COMPOSING_BEHAVIOR` of
+each jamo must be examined. 
+
+If all jamo in the syllable have `COMPOSING_BEHAVIOR` of `YES`, then
+the shaping engine should proceed to stage three and attempt to
+compose the jamo into the corresponding Hangul Syllables codepoint.
+
+If any of the jamo in the syllable have `COMPOSING_BEHAVIOR` of `NO`,
+then the shaping engine should proceed to stage five and shape the
+syllable using GSUB features.
 
 
 ### 3. Composing the syllable (if composition is possible) ###
 
+Unicode defines a canonical algorithm for composing jamo into Hangul
+Syllables codepoints. The algorithm leverages the strict jamo-ordering
+of the syllables in the block to provide an algebraic method to
+determine the codepoint of a syllable using the codepoints of its
+constituent `L`, `V`, and (if needed) `T` jamo as input.
+
+The algorithm defines the following consonants:
+
+```
+	SBase = AC00
+	LBase = 1100
+	VBase = 1161
+	TBase = 11A7
+	LCount = 19
+	VCount = 21
+	TCount = 28
+	NCount = (VCount * TCount) = 588
+	SCount = (LCount * NCount) = 11172
+```
+	
+For a jamo sequence "`L`,`V`", where both `L` and `V` are of
+`COMPOSING_BEHAVIOR` `YES`, the composed syllable codepoint is found
+by computing:
+
+```
+	LIndex = L - LBase
+	VIndex = V - VBase
+	LVIndex = LIndex * NCount + VIndex * TCount
+	Slv = SBase + LVIndex
+```
+
+Similarly, for a jamo sequence "`L`,`V`,'T'", where `L`, `V`, and `T`
+are all of `COMPOSING_BEHAVIOR` `YES`, the composed syllable codepoint
+is found 
+by computing:
+
+```
+	LIndex = L - LBase
+	VIndex = V - VBase
+	TIndex = T - TBase
+	LVIndex = LIndex * NCount + VIndex * TCount
+	Slvt = SBase + LVIndex + TIndex
+```
+
+After the syllable codepoint has been found, the shaping engine must
+verify that the codepoint's glyph exists in the active font. If the
+glyph is present, the shaping engine must substitute the input jamo
+sequence with the glyph. The shaping engine can then proceed to stage
+six. 
+
+If the needed codepoint is missing, the shaping engine should perform
+no substitution and must proceed to stage five with the original `L`,
+`V`, and (if used) `T` jamo. 
+
 
 ### 4. Fully decomposing the syllable (if composition is not possible) ###
+
+An "`Slv`,`T`" syllable that does not compose into a Hangul Syllables
+codepoint or that composes into a Hangul Syllables codepoint which is
+missing in the active font must be fully decomposed into jamo.
+
+Similarly, a precomposed `Slvt` or `Slv` syllable requires no shaping
+if the active font includes a glyph for the corresponding Hangul
+Syllables codepoint. If the corresponding codepoint is missing in the
+active font, however, the syllable must be fully decomposed into jamo.
+
+Unicode defines a canonical algorithm for decomposing Hangul Syllables
+codepoints into constituent jamo. The algorithm leverages the strict
+jamo-ordering of the syllables in the block to provide an algebraic method to
+determine the codepoints of a syllable's `L`, `V`, and (if needed) `T`
+jamo from the syllable's codepoint.
+
+The algorithm defines the following consonants:
+
+```
+	SBase = AC00
+	LBase = 1100
+	VBase = 1161
+	TBase = 11A7
+	LCount = 19
+	VCount = 21
+	TCount = 28
+	NCount = (VCount * TCount) = 588
+	SCount = (LCount * NCount) = 11172
+```
+	
+For a syllable codepoint S, the codepoints of the constituent `L`,
+`V`, and `T` jamo are found by computing:
+
+```
+	SIndex = S - SBase
+	LIndex = SIndex div NCount
+	VIndex = (SIndex mod NCount) div TCount
+	TIndex = SIndex mod TCount
+	L = LBase + LIndex
+	V = VBase + VIndex
+	T = TBase + TIndex if TIndex > 0
+```
+
+If `TIndex` = 0, then the syllable has no `T` jamo in the
+trailing-consonant (jongseong) position.
+
+With the syllable decomposed, the shaping engine can proceed to stage
+five with the `L`, `V`, and (if used) `T` jamo. 
 
 
 ### 5. Shaping the fully decomposed syllable with GSUB features ###
 
+With the syllable fully decomposed into a sequence of jamo, the next
+stage applies mandatory substitution features using rules in the
+font's GSUB table. 
+
 
 #### 5.1 ccmp ####
 
+
 #### 5.2 ljmo ####
+
+This feature replaces the default (i.e., standalone) forms of leading
+consonant (choseong) glyphs with alternate forms that fit into
+syllable-appropriate positions.
+
+The appropriate shape of the choseong glyph depends on the shape of
+the vowel (jungseong) that follows. For example, a tall jungseong forces
+the usage of a tall choseong form.
+
+In addition, if the syllable ends in a trailing consonant (jongseong),
+then shorter forms of both the leading consonant (choseong) and vowel
+(jungseong) glyphs will be used in order to provide sufficient
+vertical space. 
+
 
 #### 5.3 vjmo ####
 
+This feature replaces the default (i.e., standalone) forms of vowel
+(jungseong) glyphs with alternate forms that fit into
+syllable-appropriate positions.
+
+The appropriate shape of the jungseong glyph depends on the presence
+or absence of a trailing consonant (jongseong) at the end of the syllable.
+
+If the syllable ends in a trailing consonant (jongseong), then shorter
+forms of both the leading consonant (choseong) and vowel (jungseong)
+glyphs will be used in order to provide sufficient vertical space.
+
+
 #### 5.4 tjmo ####
+
+This feature replaces the default (i.e., standalone) forms of trailing
+consonant (jongseong) glyphs with alternate forms that fit into
+syllable-appropriate positions.
 
 
 ### 6. Reordering tone marks ###
