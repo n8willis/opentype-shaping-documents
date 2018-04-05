@@ -378,10 +378,9 @@ by computing:
 	Slv = SBase + LVIndex
 ```
 
-Similarly, for a jamo sequence "`L`,`V`,'T'", where `L`, `V`, and `T`
+Similarly, for a jamo sequence "`L`,`V`,`T`", where `L`, `V`, and `T`
 are all of `COMPOSING_BEHAVIOR` `YES`, the composed syllable codepoint
-is found 
-by computing:
+is found by computing:
 
 ```
 	LIndex = L - LBase
@@ -462,12 +461,20 @@ font's GSUB table.
 
 #### 5.1 ccmp ####
 
+The `ccmp` feature allows a font to substitute basic-jamo sequences
+with a pre-composed glyph including compound jamo. 
+ 
+If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the `ccmp`-substituted
+glyphs. 
+
 
 #### 5.2 ljmo ####
 
 This feature replaces the default (i.e., standalone) forms of leading
-consonant (choseong) glyphs with alternate forms that fit into
-syllable-appropriate positions.
+consonant (choseong) glyphs in a syllable cell with alternate forms
+that fit into syllable-appropriate positions.
 
 The appropriate shape of the choseong glyph depends on the shape of
 the vowel (jungseong) that follows. For example, a tall jungseong forces
@@ -482,7 +489,7 @@ vertical space.
 #### 5.3 vjmo ####
 
 This feature replaces the default (i.e., standalone) forms of vowel
-(jungseong) glyphs with alternate forms that fit into
+(jungseong) glyphs in a syllable cell with alternate forms that fit into
 syllable-appropriate positions.
 
 The appropriate shape of the jungseong glyph depends on the presence
@@ -496,8 +503,13 @@ glyphs will be used in order to provide sufficient vertical space.
 #### 5.4 tjmo ####
 
 This feature replaces the default (i.e., standalone) forms of trailing
-consonant (jongseong) glyphs with alternate forms that fit into
-syllable-appropriate positions.
+consonant (jongseong) glyphs in a syllable cell with alternate forms
+that fit into syllable-appropriate positions.
+
+Because jongseong jamo are always preceded by a choseong jamo and a
+jungseong jamo, there is less variation in shape that the alternate
+forms can take on. A given font may, however, include several
+context-dependent alternates for stylistic or typographic variation.
 
 
 ### 6. Reordering tone marks ###

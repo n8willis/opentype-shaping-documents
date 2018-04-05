@@ -318,7 +318,7 @@ classified as type "L" for leading consonants (choseong).
 
 
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
-|:----------|:-----------------|:----------|:----------|:------------ --------------------|
+|:----------|:-----------------|:----------|:----------|:---------------------------------|
 |`U+A960`   | Letter           | L         | NO        | &#xA960; Tikeut-Mieum            |
 |`U+A961`   | Letter           | L         | NO        | &#xA961; Tikeut-Pieup            |
 |`U+A962`   | Letter           | L         | NO        | &#xA962; Tikeut-Sios             |
