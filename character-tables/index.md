@@ -1,1 +1,0 @@
-character-tables-index.md
