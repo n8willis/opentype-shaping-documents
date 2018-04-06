@@ -9,6 +9,8 @@ This document lists the per-character shaping information needed to
   - [Hangul Jamo Extended-A character table](#hangul-jamo-extended-a-character-table)
   - [Hangul Jamo Extended-B character table](#hangul-jamo-extended-b-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
+  
+  - [Hangul Syllables: summary](#hangul-syllables-character-table)
       
 
 ## Hangul Jamo character table ##
@@ -493,3 +495,26 @@ by a line break.
 |`U+200D`   | Other            | _null_    | _null_    | &#x200D; Zero-width joiner       |
 |`U+2060`   | Other            | _null_    | _null_    | &#x2060; Word joiner             |
 |`U+25CC`   | Symbol           | _null_    | _null_    | &#x25CC; Dotted circle           |
+
+
+## Hangul Syllables character table ##
+
+The Hangul Syllables block is too large to include a full character
+table in this document.
+
+Each syllable codepoint is classified either as type `LV` or type `LVT`,
+indicating whether or not the syllable includes a trailing consonant
+(jongseong) at the end.
+
+Syllable codepoints are sorted in Hangul alphabetic order, first by
+leading consonant (choseong), followed by vowel (jungseong), followed
+by trailing consonant (jongseong).
+
+This enables the algorithmic composition and decomposition of combining
+jamo sequences and syllable codepoints.
+
+| Codepoint | Unicode category | Syllable type | Glyph                            |
+|:----------|:-----------------|:--------------|:---------------------------------|
+|`U+AC00`   | Letter [Lo]      | LV            | &#xac00; G-A                     |
+| | | | |
+|`U+D5CC`   | Letter [Lo]      | LVT           | &#xd5cc; H-A-N                   |

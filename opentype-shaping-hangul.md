@@ -74,6 +74,13 @@ Valid syllables must be either of the form "**`L`**,**`V`**" or of the form
 consonant, must include one vowel in the second position, and may or may
 not end with one trailing consonant. 
 
+![LV syllable](images/hangul/hangul-lv-syllable.png)
+
+
+![LVT syllable](images/hangul/hangul-lvt-syllable.png)
+
+
+
 All possible syllables for Modern Korean are defined in the Hangul
 Syllables block of Unicode. A sequence of individual jamo codepoints
 that corresponds to a valid Modern Korean syllable can therefore be
@@ -190,8 +197,13 @@ jamo for Old Korean. The Hangul Jamo Extended-B block contains
 additional `V` (jungseong) and `T` (jongseong) jamo for Old Korean.
 
 The Hangul Syllables block contains all of the valid permutations of the
-Modern Korean jamo. Due to the size of the block, no character table
-is provided.
+Modern Korean jamo. Each syllable codepoint can be classified by
+syllable type, either `LV` or `LVT`. These types are synonymous with
+the "Hangul Syllable Type" property in Unicode. Due to the size of the
+Hangul Syllables block, a full character table is not
+provided. However, a
+[summary](character-tables/character-tables-hangul.md#hangul-syllables-character-table)
+is included to show the ranges of `LV` and `LVT` syllables.
 
 Unicode also defines a Hangul Compatibility Jamo block that implements
 backward compatibility with a retired file-encoding format. Unless a
@@ -400,6 +412,9 @@ If the needed codepoint is missing, the shaping engine should perform
 no substitution and must proceed to stage five with the original `L`,
 `V`, and (if used) `T` jamo. 
 
+![Syllable composition](images/hangul/hangul-compose.png)
+
+
 
 ### 4. Fully decomposing the syllable (if composition is not possible) ###
 
@@ -451,6 +466,9 @@ trailing-consonant (jongseong) position.
 With the syllable decomposed, the shaping engine can proceed to stage
 five with the `L`, `V`, and (if used) `T` jamo. 
 
+![Syllable decomposition](images/hangul/hangul-decompose.png)
+
+
 
 ### 5. Shaping the fully decomposed syllable with GSUB features ###
 
@@ -485,6 +503,8 @@ then shorter forms of both the leading consonant (choseong) and vowel
 (jungseong) glyphs will be used in order to provide sufficient
 vertical space. 
 
+![L Jamo feature application](images/hangul/hangul-ljmo.png)
+
 
 #### 5.3 vjmo ####
 
@@ -499,6 +519,8 @@ If the syllable ends in a trailing consonant (jongseong), then shorter
 forms of both the leading consonant (choseong) and vowel (jungseong)
 glyphs will be used in order to provide sufficient vertical space.
 
+![V Jamo feature application](images/hangul/hangul-vjmo.png)
+
 
 #### 5.4 tjmo ####
 
@@ -510,6 +532,8 @@ Because jongseong jamo are always preceded by a choseong jamo and a
 jungseong jamo, there is less variation in shape that the alternate
 forms can take on. A given font may, however, include several
 context-dependent alternates for stylistic or typographic variation.
+
+![T Jamo feature application](images/hangul/hangul-tjmo.png)
 
 
 ### 6. Reordering tone marks ###
