@@ -14,8 +14,13 @@ implementations share.
 	  - [Composing behavior](#composing-behavior)
 	  - [Character tables](#character-tables)
   - [The `<hang>` shaping model](#the-arab-shaping-model)
-      - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
-      - [2. Computing letter joining states](#2-computing-letter-joining-states)
+      - [1. Identifying syllables](#1-identifying-syllables)
+      - [2. Determining if the syllable can be composed into a Hangul Syllables codepoint](#2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint)
+      - [3. Composing the syllable (if composition is possible)](#3-composing-the-syllable-if-composition-is-possible)
+      - [4. Fully decomposing the syllable (if composition is not possible)](#4-fully-decomposing-the-syllable-if-composition-is-not-possible)
+      - [5. Shaping the fully decomposed syllable with GSUB features](#5-shaping-the-fully-decomposed-syllable-with-gsub-features)
+      - [6. Reordering tone marks](#6-reordering-tone-marks)
+ 
 
 
 
@@ -256,7 +261,7 @@ by a line break.
 Processing a run of `<hang>` text involves six top-level stages:
 
 1. Identifying syllables
-2. Determining if the syllable can be composed into a Hangul Syllable codepoint
+2. Determining if the syllable can be composed into a Hangul Syllables codepoint
 3. Composing the syllable (if composition is possible)
 4. Fully decomposing the syllable (if composition is not possible)
 5. Shaping the fully decomposed syllable with GSUB features
@@ -538,9 +543,15 @@ context-dependent alternates for stylistic or typographic variation.
 
 ### 6. Reordering tone marks ###
 
+Any tone marks should now be reordered. In the text run, marks occur immediately after
+the syllable to which they apply. After reordering, each mark should
+be placed immediately to the left of the syllable.
 
-
-
+This reordering move is the same regardless of whether the syllable in
+question is a precomposed syllable codepoint from the Hangul Syllables
+block or a jamo-based syllable composed via the application of GSUB
+features. Therefore, the reording must take place at the end of the
+shaping process.
 
 
 
