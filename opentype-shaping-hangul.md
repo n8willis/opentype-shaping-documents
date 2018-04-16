@@ -330,7 +330,7 @@ A precomposed `Slvt` or `Slv` syllable requires no shaping if the active
 font includes a glyph for the corresponding Hangul Syllables
 codepoint. If the glyph is present, the shaping engine can render it
 and proceed directly to stage six without further work. If the glyph
-is not present, the shaping engine must proceed to stage four 
+is not present, the shaping engine must proceed to stage four.
 
 The other syllable types involve jamo, and each syllable must be
 examined to determine if it composes into a codepoint in the Hangul
@@ -482,7 +482,7 @@ stage applies mandatory substitution features using rules in the
 font's GSUB table. 
 
 
-#### 5.1 ccmp ####
+#### 5.1 `ccmp` ####
 
 The `ccmp` feature allows a font to substitute basic-jamo sequences
 with a pre-composed glyph including compound jamo. 
@@ -493,7 +493,7 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-#### 5.2 ljmo ####
+#### 5.2 `ljmo` ####
 
 This feature replaces the default (i.e., standalone) forms of leading
 consonant (choseong) glyphs in a syllable cell with alternate forms
@@ -511,7 +511,7 @@ vertical space.
 ![L Jamo feature application](images/hangul/hangul-ljmo.png)
 
 
-#### 5.3 vjmo ####
+#### 5.3 `vjmo` ####
 
 This feature replaces the default (i.e., standalone) forms of vowel
 (jungseong) glyphs in a syllable cell with alternate forms that fit into
@@ -527,7 +527,7 @@ glyphs will be used in order to provide sufficient vertical space.
 ![V Jamo feature application](images/hangul/hangul-vjmo.png)
 
 
-#### 5.4 tjmo ####
+#### 5.4 `tjmo` ####
 
 This feature replaces the default (i.e., standalone) forms of trailing
 consonant (jongseong) glyphs in a syllable cell with alternate forms
@@ -550,7 +550,7 @@ be placed immediately to the left of the syllable.
 This reordering move is the same regardless of whether the syllable in
 question is a precomposed syllable codepoint from the Hangul Syllables
 block or a jamo-based syllable composed via the application of GSUB
-features. Therefore, the reording must take place at the end of the
+features. Therefore, the reordering must take place at the end of the
 shaping process.
 
 
