@@ -131,7 +131,7 @@ and various types of diacritical mark.
 For most codepoints, the `General Category` property defined in the
 Unicode standard is correct, but it is not sufficient to fully capture
 the expected shaping behavior (such as glyph reordering). Therefore,
-Bengali glyphs must additionally be classified by how they are treated
+Indic glyphs must additionally be classified by how they are treated
 when shaping a run of text.
 
 ### Shaping classes ###
