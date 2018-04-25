@@ -404,7 +404,7 @@ special treatment.
 	Note, however, that "Medial Ra" is a separate codepoint from the
     standard "Ra" (`U+101B`). 
 	
-  - A syllable-initial "Ra" may be part of a "Kinzi"-triggering
+  - A syllable-initial "Ra" may also be part of a "Kinzi"-triggering
     sequence. 
 	
 	Notably, however, although "Ra" alone will take on the "Reph" form
@@ -552,9 +552,7 @@ phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
-> "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ba", "Ta", and "Ya" occasionally
-> take on special forms, depending on their position in the syllable.
+> "Kinzi"-forming sequences, and pre-base-reordering medial consonants.
 >
 > These reordering moves are mandatory. The final-reordering stage
 > may make additional moves, depending on the text and on the features
@@ -569,11 +567,11 @@ relative position with respect to each other.
 The final sort order of the ordering categories should be:
 
 
-	POS_RA_TO_BECOME_REPH
+<!---	POS_RA_TO_BECOME_REPH --->
 
 	POS_PREBASE_MATRA
 	
-<!---	POS_PREBASE_CONSONANT --->
+	POS_PREBASE_CONSONANT
 
 	POS_BASE_CONSONANT
 	POS_AFTER_MAIN
@@ -651,8 +649,11 @@ The algorithm for determining the base consonant is
 Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-All right-side, above-base, and below-base dependent-vowel (matra)
+All right-side and above-base dependent-vowel (matra)
 signs are tagged `POS_AFTER_SUBJOINED`.
+
+All below-base dependent-vowel (matra) signs are tagged
+`POS_BELOWBASE_CONSONANT`. 
 
 For simplicity, shaping engines may choose to tag matras
 in an earlier text-processing step, using the information in the
@@ -660,24 +661,24 @@ _Mark-placement subclass_ column of the character tables. It is
 critical at this step, however, that all matras correctly tagged
 before proceeding to the next step. 
 
-#### 2.3: Adjacent marks ####
+#### 2.3: Anusvara ####
 
-Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
-syllable modifiers, and Vedic signs) must be reordered so that they
-appear in canonical order. 
+Fourth, any `ANUSVARA` marks appearing immediately after a below-base
+vowel sign must be tagged with `POS_BEFORE_SUBJOINED`.
 
-For `<mym2>` text, the canonical ordering means that any "Nukta"s must
-be placed before all other marks. No other marks in the subsequence
-should be reordered.
 
-<!--- MS spec says Anusvara must be reordered to immediately before -->
-<!--  right-side vowels.... What to do? --->
+#### 2.4: Pre-base reordering consonants ####
+
+Fifth, all pre-base-reordering consonants must be tagged with
+`POS_PREBASE_CONSONANT`. 
+
+Myanmar has one pre-base-reordering consonant: "Medial Ra".
 
 
 #### 2.5: Kinzi ####
 
 Sixth, initial "Kinzi"-triggering sequences that will become "Kinzi"s
-must be tagged with `POS_RA_TO_BECOME_REPH`.
+must be tagged with `POS_AFTER_MAIN`.
 
 The sequences are:
 
@@ -688,15 +689,15 @@ The sequences are:
 
 #### 2.6: Post-base consonants ####
 
-Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be preceded by a "Halant" glyph. 
+Seventh, any non-base consonants that occur after the base consonant
+must be tagged with `POS_AFTER_MAIN`. Such consonants will usually be
+preceded by a "Halant" glyph.
 
 
 
-<!---  Not sure about Yya.... --->
-	
 #### 2.7: Mark tagging ####
+
+<!--- not sure this is done!!! --->
 
 Eighth, all marks must be tagged with the same positioning tag as the
 closest non-mark character the mark has affinity with, so that they move together
