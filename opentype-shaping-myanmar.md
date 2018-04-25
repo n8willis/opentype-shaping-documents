@@ -50,7 +50,7 @@ may vary, however, potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. Syllables
 in Myanmar script can include sequences of multiple vowels and,
-therefore, mutiple matras.
+therefore, multiple matras.
 
 **Halant** and **Virama** are both standard terms for the below-base
 "vowel-killer" mark. Unicode documents use the term "virama" most
@@ -59,7 +59,7 @@ frequently.
 
 **Asat** is the term for the "pure killer" character in Myanmar. An
 asat after a consonant serves a similar function as a halant by
-supressing the inherent vowel of the consonant, but the asat is
+suppressing the inherent vowel of the consonant, but the asat is
 rendered visually, either as an above-base mark or in a substitution
 form triggered by an adjacent codepoint.
 
@@ -338,14 +338,17 @@ characteristics include:
 > syllable's content.
 
 	
-  - The ordering positions for right-side, above-base, and below-base
-    matras is the same. All are reorderd to immediately after all
-    subjoined consonants.
+  - The ordering positions for right-side and above-base matras is the
+    same. All are reordered to immediately after all subjoined consonants.
 	
+  - Below-base matras are reordered to immediately before any
+    right-side and above-base matras.
+    	
 > Note: For comparison with the General Indic shaping model, this
 > characteristic would correspond to `MATRA_POS_TOP`,
-> `MATRA_POS_RIGHT`, and `MATRA_POS_BOTTOM` all taking the ordering
-> position `POS_AFTER_SUBJOINED`.
+> `MATRA_POS_RIGHT` taking the ordering position 
+> `POS_AFTER_SUBJOINED`, and `MATRA_POS_BOTTOM` taking the ordering
+> position `POS_BELOWBASE_CONSONANT`. 
 
 
 
@@ -420,8 +423,6 @@ special treatment.
 	  - "Nga,Asat,Halant"
 	  - "Mon Nga,Asat,Halant"
   
-
-
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
@@ -434,7 +435,6 @@ as when an isolated codepoint is shown in example text.
 > the regular expressions listed below. These loanwords are pronounced
 > different, which raises issues for potential readers, but the
 > character sequences do not affect the shaping process.
-
 
 
 Syllables should be identified by examining the run and matching
@@ -498,12 +498,12 @@ simplifies the resulting expressions.
 > placeholders for missing letters.
 
 > Note: the tone marker codepoints are divided up between two
-> identification classes, reflecting the differeing orthographic rules
+> identification classes, reflecting the differing orthographic rules
 > they follow. The _pt_ identification class constitutes the "Pwo
 > tone" markers, while the _sm_ identification class includes the
 > remaining tone markers and other syllable modifiers.
 
-These idenfication classes form the bases of the following regular
+These identification classes form the bases of the following regular
 expression elements:
 
     C	= (_consonant_ | _ra_)
@@ -524,7 +524,6 @@ A consonant-based syllable will match the expression:
 ```
 (K | _cs_)? (C | _vowel_ | _d_ | _gb_)._vs_? (_halant_ (C | _vowel_)._vs_?)* Tail
 ```
-
 
 
 
@@ -664,7 +663,9 @@ before proceeding to the next step.
 #### 2.3: Anusvara ####
 
 Fourth, any `ANUSVARA` marks appearing immediately after a below-base
-vowel sign must be tagged with `POS_BEFORE_SUBJOINED`.
+vowel sign must be tagged with `POS_BEFORE_SUBJOINED`, so that the
+marks are reordered to a position immediately before the below-base
+vowel signs.
 
 
 #### 2.4: Pre-base reordering consonants ####
@@ -724,8 +725,7 @@ using the rules in the font's GSUB table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
 of GSUB features.
 
-The order in which these substitutions must be performed is fixed for
-all Indic scripts:
+The order in which these substitutions must be performed is fixed:
 
 	locl
 	ccmp
@@ -749,7 +749,7 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: ccmp ####
 
-
+The `ccmp` feature 
 
 
 #### 3.3: rphf ####
@@ -769,16 +769,13 @@ the "Kinzi" glyph. The sequences are:
 The `pref` feature replaces pre-base-consonant glyphs with
 any special forms.
 
+
 #### 3.5: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Myanmar includes two below-base consonant
+special forms. Myanmar includes several below-base consonant
 forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
-    non-syllable-initial position) take on the "Raphala" form.
-  - "Ba,Halant" (before the base consonant) and "Halant,Ba" (after the
-    base consonant) take on the "Baphala" form. 
 
 Because Myanmar incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants
@@ -798,8 +795,6 @@ characteristic.
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 ![Yaphala composition](/images/myanmar/myanmar-yaphala.png)
-
-
 
 
 
@@ -866,6 +861,8 @@ order in which they appear in the GPOS table in the font.
         dist
         abvm
         blwm
+		mark
+		mkmk
 
 > Note: The `kern` feature is usually applied at this stage, if it is
 > present in the font. However, `kern` is not mandatory for shaping
