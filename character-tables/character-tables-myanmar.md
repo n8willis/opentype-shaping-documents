@@ -94,7 +94,7 @@ specific, script-aware behavior.
 |`U+1034`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1034; Sign Mon O          |
 |`U+1035`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x1035; Sign E Above        |
 |`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1036; Anusvara            |
-|`U+1037`   | Mark [Mn]        | TONE_MARKER       | TOP_POSITION               | &#x1037; Dot Below           |
+|`U+1037`   | Mark [Mn]        | TONE_MARKER       | BOTTOM_POSITION            | &#x1037; Dot Below           |
 |`U+1038`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x1038; Visarga             |
 |`U+1039`   | Mark [Mn]        | INVISIBLE_STACKER | _null_                     | &#x1039; Virama              |
 |`U+103A`   | Mark [Mn]        | PURE_KILLER       | TOP_POSITION               | &#x103A; Asat                |
