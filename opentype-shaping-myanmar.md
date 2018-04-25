@@ -15,9 +15,8 @@ runs in the Myanmar script.
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+      - [4: Applying all remaining substitution features from GSUB](#4-applying-all-remaining-substitution-features-from-gsub)
+      - [5: Applying remaining positioning features from GPOS](#5-applying-remaining-positioning-features-from-gpos)
   - [The `<mymr>` shaping model](#the-mymr-shaping-model)
       - [Distinctions from `<mym2>`](#distinctions-from-mym2)
       - [Advice for handling fonts with `<mymr>` features only](#advice-for-handling-fonts-with-mymr-features-only)
@@ -802,92 +801,9 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 
-### 4: Final reordering ###
-
-The final reordering stage repositions marks, dependent-vowel (matra)
-signs, and "Reph" glyphs to the appropriate location with respect to
-the base consonant. Because multiple substitutions may have occurred
-during the application of the basic-shaping features in the preceding
-stage, these repositioning moves could not be performed during the
-initial reordering stage.
-
-Like the initial reordering stage, the steps involved in this stage
-occur on a per-syllable basis.
-
-<!--- Check that classifications have not been mangled. If the -->
-<!--character is a Halant AND a ligature was formed AND a multiple
-substitution was performed, restore the classification to VIRAMA
-because it was almost certainly lost in the preceding GSUB stage.
---->
-
-#### 4.1: Base consonant ####
-
-The final reordering stage, like the initial reordering stage, begins
-with determining the base consonant of each syllable, following the
-same algorithm used in stage 2, step 1.
-
-The codepoint of the underlying base consonant will not change between
-the search performed in stage 2, step 1, and the search repeated
-here. However, the application of GSUB shaping features in stage 3
-means that several ligation and many-to-one substitutions may have
-taken place. The final glyph produced by that process may, therefore,
-be a conjunct or ligature form — in most cases, such a glyph will not
-have an assigned Unicode codepoint.
-   
-#### 4.2: Pre-base matras ####
-
-Pre-base dependent vowels (matras) that were reordered during the
-initial reordering stage must be moved to their final position. This
-position is defined as:
-   
-   - after the last standalone "Halant" glyph that comes after the
-     matra's starting position and also comes before the main
-     consonant.
-   - If a zero-width joiner or a zero-width non-joiner follows this
-     last standalone "Halant", the final matra position is moved to
-     after the joiner or non-joiner.
-
-This means that the matra will move to the right of all explicit
-"consonant,Halant" subsequences, but will stop to the left of the base
-consonant, all conjuncts or ligatures that contains the base
-consonant, and all half forms.
-
-![Pre-base matra reordering](/images/myanmar/myanmar-matra-position.png)
-
-#### 4.3: Reph ####
-
-"Reph" must be moved from the beginning of the syllable to its final
-position. Because Myanmar incorporates the `REPH_POS_AFTER_SUBJOINED`
-shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
-dependent vowel) forms.
-
-  - If the syllable does not have a base consonant (such as a syllable
-    based on an independent vowel), then the final "Reph" position is
-    immediately before the first character tagged with the
-    `POS_BEFORE_POST` position or any later position in the sort
-    order.
-
-    -- If there are no characters tagged with `POS_BEFORE_POST` or
-       later positions, then "Reph" is positioned at the end of the
-       syllable.
-
-Finally, if the final position of "Reph" occurs after a
-"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
-left of "Halant", to allow for potential matching with `abvs` or
-`psts` substitutions from GSUB.
-
-![Reph final reordering](/images/myanmar/myanmar-reph-position.png)
-
-#### 4.4: Pre-base-reordering consonants ####
-
-Any pre-base-reordering consonants must be moved to immediately before
-the base consonant.
-  
 
 
-
-### 5: Applying all remaining substitution features from GSUB ###
+### 4: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
 are applied. The order in which these features are applied is not
@@ -940,7 +856,7 @@ application-level user interfaces.
 
 
 
-### 6: Applying remaining positioning features from GPOS ###
+### 5: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
 applied. As with the preceding stage, the order in which these
