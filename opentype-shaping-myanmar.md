@@ -53,9 +53,10 @@ may vary, however, potentially causing confusion.
 in Myanmar script can include sequences of multiple vowels and,
 therefore, mutiple matras.
 
-**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
-mark. Unicode documents use the term "virama" most frequently, while
-OpenType documents use the term "halant" most frequently. 
+**Halant** and **Virama** are both standard terms for the below-base
+"vowel-killer" mark. Unicode documents use the term "virama" most
+frequently, while OpenType documents use the term "halant" most
+frequently.
 
 **Asat** is the term for the "pure killer" character in Myanmar. An
 asat after a consonant serves a similar function as a halant by
@@ -63,8 +64,8 @@ supressing the inherent vowel of the consonant, but the asat is
 rendered visually, either as an above-base mark or in a substitution
 form triggered by an adjacent codepoint.
 
-The asat may be placed following a consonant to denote that the
-consonant is doubled. The asat may also be followed by a halant, a
+An asat may be placed following a consonant to denote that the
+consonant is doubled. An asat may also be followed by a halant, a
 sequence that is used to trigger the "Kinzi" special form.
 
 **Chandrabindu** (or simply **Bindu**) is the standard term for the
@@ -136,13 +137,16 @@ shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
 Myanmar uses one subclass of consonant, `CONSONANT_MEDIAL`. This
-subclass is used for special non-base forms of "Ya", "Ra", "Wa", and
-"Ha" that serve to modify the syllable's vowel sound. These medial
-consonants are rendered as non-spacing marks attached to the base
-consonant.
+subclass is used for special non-base variants of several consonants that
+serve to modify the syllable's vowel sound. These medial consonants
+are rendered as non-spacing marks attached to the base consonant.
 
 > Note: The medial "Ra" is reordered to pre-base-consonant
-> position. THe other medial consonants do not require reordering.
+> position. The other medial consonants do not require reordering.
+
+> Note: The medial consonants are encoded in separate codepoints,
+> distinguishing them from the standard (non-medial) variant of the
+> corresponding consonant. 
 
 In addition, the Myanmar and Myanmar Extended Unicode blocks include
 several codepoints classified as `CONSONANT_PLACEHOLDER`. These
@@ -150,10 +154,9 @@ codepoints are used in verbal transcriptions to take tone
 marks. However, these glyphs are not consonants in the true sense and
 are unlikely to occur within normal words.
 
-Other characters, such as symbols and miscellaneous letters (for
-example, letter-like symbols that only occur as standalone entities
-and do not occur within syllables), need no special attention from the
-shaping engine, so they are not assigned a shaping class.
+Other characters, such as symbols, need no special
+attention from the shaping engine, so they are not assigned a shaping
+class.
 
 Numbers are classified as `NUMBER`, even though they evoke no special
 behavior from the Indic shaping rules, because there are OpenType features that
@@ -257,17 +260,11 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+The zero-width joiner is primarily used to prevent the formation of a
+subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoined form for the second consonant. 
 
-Note, however, that the "_Consonant_,Halant" subsequence in the above
-example may still trigger a half-forms feature. To prevent the
-application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
 <!---
 A secondary usage of the zero-width joiner is to prevent the formation of
 "Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
@@ -333,55 +330,37 @@ characteristics include:
 
   - Medial Ra is reordered to pre-base position.
 
-  - Prebase matras are reordered to the beginning of the
+  - Pre-base matras are reordered to the beginning of the
     syllable. Multiple pre-base matras can occur; any such sequences
     must be moved together, as a block, at the reordering stage.
 
 > Note: For comparison with the General Indic shaping model, this
-> characteristic is distinct to Mynanmar script. Indic scripts apply a
-> different reordering rule to pre-base matras that depends on the
-> syllable contents.
+> characteristic is distinct to Mynanmar script. Indic scripts apply 
+> different reordering rules to pre-base matras that depend on the
+> syllable's content.
 
 	
-  - The ordering positions for dependent vowels
-    (matras). Specifically, right-side, above-base, and below-base
-    matras follow different rules in different scripts. 
-	All Indic scripts position left-side matras in the same
-    manner, in the ordering position `POS_PREBASE_MATRA`. 
+  - The ordering positions for right-side, above-base, and below-base
+    matras is the same. All are reorderd to immediately after all
+    subjoined consonants.
+	
+> Note: For comparison with the General Indic shaping model, this
+> characteristic would correspond to `MATRA_POS_TOP`,
+> `MATRA_POS_RIGHT`, and `MATRA_POS_BOTTOM` all taking the ordering
+> position `POS_AFTER_SUBJOINED`.
 
-<!--- cut edit took place here --->
 
-  - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
-     pre-base consonants and to post-base consonants.
-
-<!--- need to record actual positions here --->
-  - `MATRA_POS_TOP` = _null_  = Unlike most other Indic scripts, Myanmar
-     does not use any above-base matras. Therefore, this shaping
-     characteristic does not apply.
-
-  - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
-     ordered after all post-base consonant forms.
-
-  - `MATRA_POS_BOTTOM` = `POS_AFTER_SUBJOINED` = Below-base matras are
-     ordered after all subjoined (i.e., below-base) consonant forms.
-
-These characteristics determine how the shaping engine must reorder
-certain glyphs, how base consonants are determined, and how "Reph"
-should be encoded within a run of text.
-
-> Note: Unlike most other Indic scripts, Myanmar does not use
-> above-base matras. Therefore `MATRA_POS_TOP` can be set to _null_.
 
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in Myanmar consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
-> Note: The Myanmar Unicode block enumerates three modifier signs,
-> "Anusvara" (`U+1036`), "Dot Below" (`U+1037`), and "Visarga" 
-> (`U+1038`). There are also twenty tone markers in the Myanmar and Myanmar
-> Extended-A blocks. In addition, Sanskrit text written in Myanmar may
-> include additional signs from Vedic Extensions block.
+> Note: The Myanmar Unicode block enumerates two modifier signs,
+> "Anusvara" (`U+1036`) and "Visarga" (`U+1038`). There are also
+> twenty-one tone markers in the Myanmar and Myanmar Extended-A
+> blocks. In addition, Sanskrit text written in Myanmar may include
+> additional signs from Vedic Extensions block.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
 begin with either a consonant or an independent vowel. 
@@ -397,40 +376,51 @@ consonant.
 > by a dependent vowel (matra) sign following the consonant.
 
 Generally speaking, the base consonant is the first consonant of the
-syllable and its vowel sound designates the end of the syllable. This
-rule is synonymous with the `BASE_POS_FIRST` characteristic mentioned
-earlier. 
+syllable and its vowel sound designates the end of the syllable. The
+exception to this rule is consonants that are part of a
+"Kinzi"-triggering sequence.
 
 Post-base consonants in a valid syllable will be preceded by "Halant"
 marks. 
 
 	BaseC Halant Post-baseC
 	
-<!--- Note about medial consonants being separate codepoints? --->
-
 The algorithm for correctly identifying the base consonant includes a
 test to recognize these sequences and not mis-identify the base
 consonant.
 
-<!--- seems to not be true (below) --->
-All consonants in Myanmar can potentially occur in pre-base
-position. The "Halant" marks on pre-base consonants indicate that they
-carry no vowel. Instead, they affect syllable pronunciation by
-combining with the base consonant (e.g., "_thr_" or "_spl_").
+Medial consonants will not be preceded by a "Halant". 
+
+> Note: in the Myanmar script, all medial consonants have their own
+> distinct codepoints. Therefore, they can be identfied by codepoint
+> alone, and there is no need for a text run to identify them using
+> any special sequences.
 
 
 As with other Brahmic and Indic scripts, the consonant "Ra" receives
 special treatment. 
 
-  - A "Medial Ra" (`U+`) must be reordered to a position immediately
-    before the syllable's base consonant.
+  - A "Medial Ra" (`U+103C`) must be reordered to a position immediately
+    before the syllable's base consonant. 
 	
-  - A syllable-initial "Ra" may be part of a "Kinzi"-triggering sequence. Notably,
-    however, although "Ra" alone will take on the "Reph" form in Indic
-    scripts, the Myanmar script's "Kinzi" feature can be triggered for
-    three consonants: "Ra", "Nga", and "Mon Nga". In each case, the
-    "Kinzi" form is triggered by an explicit sequence: the consonant,
-    followed by "_Asat_,_Halant_". 
+	Note, however, that "Medial Ra" is a separate codepoint from the
+    standard "Ra" (`U+101B`). 
+	
+  - A syllable-initial "Ra" may be part of a "Kinzi"-triggering
+    sequence. 
+	
+	Notably, however, although "Ra" alone will take on the "Reph" form
+    in Indic scripts, the Myanmar script's "Kinzi" feature can be
+    triggered for three consonants: "Ra" (`U+101B`), "Nga" (`U+1004`),
+    and "Mon Nga" (`U+105A`). In each case, the "Kinzi" form is
+    triggered by an explicit sequence: the consonant, followed by
+    "Asat,Halant".
+	
+	There are, therefore, exactly three "Kinzi"-forming sequences to
+    test for:
+	  - "Ra,Asat,Halant"
+	  - "Nga,Asat,Halant"
+	  - "Mon Nga,Asat,Halant"
   
 
 
@@ -453,18 +443,89 @@ Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
 
 The following regular expressions can be used to match Myanmar-script
-syllables. The regular expressions utilize the shaping classifications
-from the tables above.
+syllables. 
+
+The regular expressions utilize the shaping classes from the tables
+above. For the purpose of syllable identification, more general
+classes can be used, as defined in the following table. This
+simplifies the resulting expressions. 
+
+    _consonant_ = `CONSONANT` | `CONSONANT_PLACEHOLDER`
+	_vowel_		= `VOWEL_INDEPENDENT`
+    _ra_		= "Ra" | "Nga" | "Mon Nga"
+    _halant_	= `INVISIBLE_STACKER`
+	_asat_		= "Asat"
+	_a_			= `ANUSVARA`
+	_db_		= "Dot Below"
+	_zwj_		= `JOINER`
+	_zwnj_		= `NON_JOINER`
+	_mh_		= "Medial Ha" | "Mon Medial La"
+	_mr_		= "Medial Ra"
+	_mw_		= "Medial Wa" | "Shan Medial Wa"
+	_my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
+	_d_			= `NUMBER`
+	_pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
+	              "Western Pwo Karen Tone 1" | "Western Pwo Karen Tone
+				  2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
+				  Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
+				  Tone" 
+	_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
+	              Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
+				  "Shan Council Tone 3" | "Shan Council Emphatic Tone"
+				  | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
+				  Tone 3" | "Aiton A" 
+    _punc_			= "Little Section" | "Section"
+	_matrapre_	= `MATRA`,`LEFT_POSITION`
+	_matrapost_	= `MATRA`,`RIGHT_POSITION`
+	_matraabove_	= `MATRA`,`TOP_POSITION`
+	_matrabelow_	= `MATRA`,`BOTTOM_POSITION`
+	_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
+				  2022 | 25CC | 25FB | 25FC 25FD | 25FE
+	_cs_		= `CONSONANT_WITH_STACKER`
+	_v_			= `VISARGA`
 
 
-<!--- HB merges CONSONANT_PLACEHOLDERs with CONSONANT ? --->
+> Note: the _ra_ identification class is mutually exclusive with 
+> the _consonant_ class. The union of the _consonant_ and _ra_ classes
+> is used in the regular expression elements below in order to
+> correctly identify "Ra", "Nga", and "Mon Nga" characters that do not
+> trigger "Kinzi" forms. 
+>
+> Note, also, that the `CONSONANT_PLACEHOLDER` class is unioned with
+> the `CONSONANT` class for the purpose of syllable identification,
+> even those these two classes should remain separate in general.
 
+> Note: the _gb_ identification class includes several "generic base"
+> codepoints that are often used in real-world text runs to act as
+> placeholders for missing letters.
 
+> Note: the tone marker codepoints are divided up between two
+> identification classes, reflecting the differeing orthographic rules
+> they follow. The _pt_ identification class constitutes the "Pwo
+> tone" markers, while the _sm_ identification class includes the
+> remaining tone markers and other syllable modifiers.
 
+These idenfication classes form the bases of the following regular
+expression elements:
 
+    C	= (_consonant_ | _ra_)
+	Z	= (_zwj_ | _zwnj_)
+	K	= _ra_ _asat_ _halant_
+	Med	= _my_? _mr_? _mw_? _mh_? _asat_?
+	Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
+	Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
+    Pwo	= _pt_ _a_* _db_? _asat_?
+    	
+    Tcomplex	= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
+	Tail		= (_halant_ | Tcomplex)
+	
+Using the above elements, the following regular expressions define the
+possible syllable types:
 
-
-
+A consonant-based syllable will match the expression:
+```
+(K | _cs_)? (C | _vowel_ | _d_ | _gb_)._vs_? (_halant_ (C | _vowel_)._vs_?)* Tail
+```
 
 
 
@@ -511,13 +572,15 @@ The final sort order of the ordering categories should be:
 
 
 	POS_RA_TO_BECOME_REPH
+
 	POS_PREBASE_MATRA
-	POS_PREBASE_CONSONANT
+	
+<!---	POS_PREBASE_CONSONANT --->
 
 	POS_BASE_CONSONANT
 	POS_AFTER_MAIN
 
-	POS_ABOVEBASE_CONSONANT
+<!---	POS_ABOVEBASE_CONSONANT --->
 
 	POS_BEFORE_SUBJOINED
 	POS_BELOWBASE_CONSONANT
@@ -527,22 +590,23 @@ The final sort order of the ordering categories should be:
 	POS_POSTBASE_CONSONANT
 	POS_AFTER_POST
 
-	POS_FINAL_CONSONANT
-	POS_SMVD
+<!---	POS_FINAL_CONSONANT --->
+<!---	POS_SMVD --->
+
+<!--- question: does Myanmar shape handle Vedic signs differently? --->
+<!--- or am I looking at an incomplete version of the reordering --->
+<!--- logic? --->
 
 
 This sort order enumerates all of the possible final positions to
-which a codepoint might be reordered, across all of the Indic
-scripts. It includes some ordering categories not utilized in
-Myanmar. 
+which a codepoint might be reordered in Myanmar script. 
 
-The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
+The basic positions (left to right) are dependent
 vowels (matras) and consonants positioned before the base
 consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
-consonant (`POS_BASE_CONSONANT`), above-base consonants
-(`POS_ABOVEBASE_CONSONANT`), below-base consonants
+consonant (`POS_BASE_CONSONANT`), below-base consonants
 (`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
-(`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
+(`POS_POSTBASE_CONSONANT`), 
 and syllable-modifying or Vedic signs (`POS_SMVD`).
 
 In addition, several secondary positions are defined to handle various
@@ -575,64 +639,30 @@ not have base consonants.
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra" and the syllable contains
-    more than one consonant, exclude the starting "Ra" from the list of
-    consonants to be considered. 
-  - Starting from the end of the syllable, move backwards until a consonant is found.
-      * If the consonant has a below-base or post-base form or is a
-        pre-base-reordering "Ra", move to the previous consonant. If
-        neither condition is true, stop. 
-      * If the consonant is the first consonant, stop.
+  - Starting from the beginning of the syllable, move forwards until a
+    `CONSONANT` is found. 
+      * If the consonant is part of a "Kinzi" sequence, move to the
+        next consonant. 
   - The consonant stopped at will be the base consonant.
 
-Shaping engines may choose any method to identify consonants that have
-below-base or post-base forms while executing the above algorithm. For
-example, one implementation may choose to maintain a static table of
-below-base and post-base consonants to compare again the text
-run. Another implementation might examine the active font to see if it
-includes a relevant `blwf` or `pstf` lookup in the GSUB table.
-
-> Note: The algorithm is designed to work for all Indic
-> scripts. However, Myanmar does not utilize pre-base-reordering "Ra".
+> Note: The algorithm considers only `CONSONANT` class consonants, 
 
 
-#### 2.2: Matra decomposition ####
+#### 2.2: Tag matras ####
 
-Second, any two-part dependent vowels (matras) must be decomposed
-into their left-side and right-side components. Myanmar has two
-two-part dependent vowels, "O" (`U+09CB`) and "Au" (`U+09CC`). Each
-has a canonical decomposition, so this step is unambiguous. 
-
-> "O" (`U+09CB`) decomposes to "`U+09C7`,`U+09BE`"
->
-> "Au" (`U+09CC`) decomposes to "`U+09C7`,`U+09D7`"
-
-Because this decomposition is a character-level operation, the shaping
-engine may choose to perform it earlier, such as during an initial
-Unicode-normalization stage. However, all such decompositions must be
-completed before the shaping engine begins step three, below.
-
-![Two-part matra decomposition](/images/myanmar/myanmar-matra-decompose.png)
-
-#### 2.3: Tag matras ####
-
-Third, all left-side dependent-vowel (matra) signs, including those that
-resulted from the preceding decomposition step, must be tagged to be
+Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-All right-side dependent-vowel (matra) signs are tagged
-`POS_AFTER_POST`.
+All right-side, above-base, and below-base dependent-vowel (matra)
+signs are tagged `POS_AFTER_SUBJOINED`.
 
-All below-base dependent-vowel (matra) signs are tagged
-`POS_AFTER_SUBJOINED`.
-
-For simplicity, shaping engines may choose to tag single-part matras
+For simplicity, shaping engines may choose to tag matras
 in an earlier text-processing step, using the information in the
 _Mark-placement subclass_ column of the character tables. It is
-critical at this step, however, that all decomposed matras are also
-correctly tagged before proceeding to the next step.
+critical at this step, however, that all matras correctly tagged
+before proceeding to the next step. 
 
-#### 2.4: Adjacent marks ####
+#### 2.3: Adjacent marks ####
 
 Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
 syllable modifiers, and Vedic signs) must be reordered so that they
@@ -642,41 +672,33 @@ For `<mym2>` text, the canonical ordering means that any "Nukta"s must
 be placed before all other marks. No other marks in the subsequence
 should be reordered.
 
-#### 2.5: Pre-base consonants ####
+<!--- MS spec says Anusvara must be reordered to immediately before -->
+<!--  right-side vowels.... What to do? --->
 
-Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
 
-#### 2.6: Reph ####
+#### 2.5: Kinzi ####
 
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
-`POS_RA_TO_BECOME_REPH`.
+Sixth, initial "Kinzi"-triggering sequences that will become "Kinzi"s
+must be tagged with `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+The sequences are:
 
-#### 2.7: Post-base consonants ####
+  - "Ra,Asat,Halant"
+  - "Nga,Asat,Halant"
+  - "Mon Nga,Asat,Halant"
+  
+
+#### 2.6: Post-base consonants ####
 
 Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be preceded by a "Halant" glyph. Myanmar
-includes one post-base consonant. 
-
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
-    the "Yaphala" form. "Yaphala" behaves like a modifier to the
-    pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant.
-
-> Note: some fonts may also implement the "Yaphala" post-base form for
-> "Halant,Yya" (`U+09CD`,`U+09DF`).
-
-![Yaphala composition](/images/myanmar/myanmar-yaphala.png)
+consonants will usually be preceded by a "Halant" glyph. 
 
 
 
 <!---  Not sure about Yya.... --->
 	
-#### 2.8: Mark tagging ####
+#### 2.7: Mark tagging ####
 
 Eighth, all marks must be tagged with the same positioning tag as the
 closest non-mark character the mark has affinity with, so that they move together
@@ -707,18 +729,11 @@ The order in which these substitutions must be performed is fixed for
 all Indic scripts:
 
 	locl
-	nukt
-	akhn
+	ccmp
 	rphf 
-	rkrf (not used in Myanmar)
-	pref (not used in Myanmar)
+	pref 
 	blwf 
-	abvf (not used in Myanmar)
-	half
 	pstf
-	vatu
-	cjct
-	cfar (not used in Myanmar)
 
 #### 3.1 locl ####
 
@@ -732,56 +747,30 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-#### 3.2: nukt ####
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
-precomposed nukta-variant of the consonant glyph. 
+#### 3.2: ccmp ####
 
 
-![Nukta composition](/images/myanmar/myanmar-nukt.png)
 
-#### 3.3: akhn ####
 
-The `akhn` feature replaces two specific sequences with required ligatures. 
+#### 3.3: rphf ####
 
-  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
-  
-These sequences can occur anywhere in a syllable. The "KSsa" and
-"JNya" characters have orthographic status equivalent to full
-consonants in some languages, and fonts may have `cjct` substitution
-rules designed to match them in subsequences. Therefore, this
-feature must be applied before all other many-to-one substitutions.
+The `rphf` feature replaces initial "Kinzi"-triggering sequences with
+the "Kinzi" glyph. The sequences are:
 
-![KSsa ligation](/images/myanmar/myanmar-akhn-kssa.png)
+  - "Ra,Asat,Halant"
+  - "Nga,Asat,Halant"
+  - "Mon Nga,Asat,Halant"
 
-![JNya ligation](/images/myanmar/myanmar-akhn-jnya.png)
+![Kinzi composition](/images/myanmar/myanmar-rphf.png)
 
-#### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
-"Reph" glyph.
+#### 3.4 pref ####
 
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
-    the `rphf` substitution.
-	
+The `pref` feature replaces pre-base-consonant glyphs with
+any special forms.
 
-![Reph composition](/images/myanmar/myanmar-rphf.png)
-
-![Reph composition](/images/myanmar/myanmar-rphf-as.png)
-
-#### 3.5: rkrf ####
-
-> This feature is not used in Myanmar.
-
-#### 3.6 pref ####
-
-> This feature is not used in Myanmar.
-
-<!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
-<!--any special forms. --->
-
-#### 3.7: blwf ####
+#### 3.5: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Myanmar includes two below-base consonant
@@ -804,68 +793,13 @@ characteristic.
 
 ![Baphala composition](/images/myanmar/myanmar-baphala.png)
 
-#### 3.8: abvf ####
 
-> This feature is not used in Myanmar.
-
-#### 3.9: half ####
-
-The `half` feature replaces "_Consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs. There are
-three exceptions to the default behavior, for which the shaping engine
-must test:
-
-  - Initial "Ra,Halant" sequences, which should have been tagged for
-    the `rphf` feature earlier, must not be tagged for potential
-    `half` substitutions.
-
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
-    tagged for potential `half` substitutions, even though the presence of the
-    zero-width joiner suppresses the `cjct` feature in a later step.
-
-  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
-    tagged for potential `half` substitutions.
-
-
-![Half-form formation](/images/myanmar/myanmar-half-ka.png)
-
-#### 3.10: pstf ####
+#### 3.6: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
-
 ![Yaphala composition](/images/myanmar/myanmar-yaphala.png)
 
-#### 3.11: vatu ####
-
-The `vatu` feature replaces certain sequences with "Vattu variant"
-forms. 
-
-"Vattu variants" are formed from glyphs followed by "Raphala"
-(the below-base form of "Ra"); therefore, this feature must be applied after
-the `blwf` feature.
-
-
-![Vattu variant ligation](/images/myanmar/myanmar-vatu.png)
-
-#### 3.12: cjct ####
-
-The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
-
-A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
-"_Consonant_,Halant,ZWNJ,_Consonant_" must not be tagged to form a conjunct.
-
-The font's GSUB rules might be implemented so that `cjct`
-substitutions apply to half-form consonants; therefore, this feature
-must be applied after the `half` feature. 
-
-
-![Conjunct ligation](/images/myanmar/myanmar-cjct.png)
-
-#### 3.13: cfar ####
-
-> This feature is not used in Myanmar.
 
 
 ### 4: Final reordering ###
@@ -950,16 +884,8 @@ left of "Halant", to allow for potential matching with `abvs` or
 Any pre-base-reordering consonants must be moved to immediately before
 the base consonant.
   
-Myanmar does not use pre-base-reordering consonants, so this step will
-involve no work when processing `<mym2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
 
 
-#### 4.5: Initial matras ####
-
-Any left-side dependent vowels (matras) that are at the start of a
-word must be tagged for potential substitution by the `init` feature
-of GSUB.
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
@@ -968,18 +894,11 @@ are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
 the GSUB table in the font. 
 
-	init
 	pres
 	abvs
 	blws
 	psts
-	haln
-
-The `init` feature replaces word-initial glyphs with special
-presentation forms. Generally, these forms involve removing the
-headline in-stroke from the left side of the glyph.
-
-![Application of the init feature](/images/myanmar/myanmar-init.png)
+	liga
 
 
 The `pres` feature replaces pre-base-consonant glyphs with special
@@ -1013,18 +932,13 @@ post-base-consonant/matra pairs with contextual ligatures.
 ![Application of the psts feature](/images/myanmar/myanmar-psts.png)
 
 
-The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
-special presentation forms. This can include stylistic variants of the
-consonant where placing the "Halant" mark on its own is
-typographically problematic.
+The `liga` feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by `liga` may be disabled by
+application-level user interfaces.
 
-![Application of the haln feature](/images/myanmar/myanmar-haln.png)
+![Application of the liga feature](/images/myanmar/myanmar-liga.png)
 
 
-> Note: The `calt` feature, which allows for generalized application
-> of contextual alternate substitutions, is usually applied at this
-> point. However, `calt` is not mandatory for correct Myanmar shaping
-> and may be disabled in the application by user preference.
 
 ### 6: Applying remaining positioning features from GPOS ###
 
@@ -1038,13 +952,20 @@ order in which they appear in the GPOS table in the font.
         blwm
 
 > Note: The `kern` feature is usually applied at this stage, if it is
-> present in the font. However, `kern` (like `calt`, above) is not
-> mandatory for shaping Myanmar text and may be disabled by user preference.
+> present in the font. However, `kern` is not mandatory for shaping
+> Myanmar text and may be disabled by user preference.
 
 The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
+
+In Myanmar text, `dist` is typically used to adjust the space of a
+consonant glyph after a pre-base-reordering "Medial Ra", because the
+"Medial Ra" codepoint is classified as being of zero width.
+
+![Application of the dist feature](/images/myanmar/myanmar-dist.png)
+
 
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Myanmar, this includes "Reph" in addition to the
@@ -1122,9 +1043,6 @@ with matching GSUB or GPOS features.
 
 
 
-
-
-POS_AFTER_MAIN
 
 
 
