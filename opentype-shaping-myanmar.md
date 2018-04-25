@@ -288,9 +288,8 @@ Processing a run of `<mym2>` text involves six top-level stages:
 1. Identifying syllables and other sequences
 2. Initial reordering
 3. Applying the basic substitution features from GSUB
-4. Final reordering
-5. Applying all remaining substitution features from GSUB
-6. Applying all remaining positioning features from GPOS
+4. Applying all remaining substitution features from GSUB
+5. Applying all remaining positioning features from GPOS
 
 
 As with other Brahmic and Indic scripts, the initial reordering stage and the
