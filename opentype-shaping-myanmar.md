@@ -983,11 +983,11 @@ As a result, a font's GSUB substitutions would be written to match
 
 The `<mymr>` syllable
 
-	Pre-baseC Halant BaseC Halant Post-baseC
+	BaseC Halant Post-baseC
 
 would be reordered to
 
-	Pre-baseC Halant BaseC Post-baseC Halant
+	BaseC Post-baseC Halant
 
 before features are applied.
 
@@ -995,11 +995,6 @@ In `<mym2>` text, as described above in this document, there is no
 such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
-
-In addition, for some scripts, left-side dependent vowel marks
-(matras) were not repositioned during the final reordering
-stage. For `<mymr>` text, the left-side matra was always positioned
-at the beginning of the syllable.
 
 
 ### Advice for handling fonts with `<mymr>` features only ###
@@ -1016,9 +1011,6 @@ sequences for GSUB substitutions or to reorder them to
 the `<mymr>` script tag and it is known that the font in use supports
 only the `<mym2>` shaping model.
 
-Shaping engines may also choose to position left-side matras according
-to the `<mymr>` ordering scheme; however, doing so might interfere
-with matching GSUB or GPOS features.
 
 
 
