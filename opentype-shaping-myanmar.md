@@ -937,17 +937,27 @@ consonant glyph after a pre-base-reordering "Medial Ra", because the
 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Myanmar, this includes "Reph" in addition to the
-diacritical marks and Vedic signs. 
+characters. In Myanmar, this includes "Kinzi" and "Asat" in addition
+to tone markers, diacritical marks, above-base dependent vowels
+(matras), and Vedic signs.
 
 ![Application of the abvm feature](/images/myanmar/myanmar-abvm.png)
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Myanmar, this includes below-base dependent vowels
-(matras) as well as the below-base consonant forms "Raphala" and
-"Baphala".
+(matras) as well as below-base medial consonants, tone markers,
+diacritical marks, and Vedic signs.
 
 ![Application of the blwm feature](/images/myanmar/myanmar-blwm.png)
+
+
+The `mark` feature positions marks with respect to base glyphs.
+ 
+
+The `mkmk` feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.
+
 
 
 ## The `<mymr>` shaping model ##
