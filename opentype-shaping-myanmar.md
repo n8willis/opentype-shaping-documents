@@ -827,7 +827,11 @@ left-side matras "Sign E" (`U+1031`) or "Shan Sign E" (`U+1084`).
 #### 3.5: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Myanmar includes several below-base-consonant
+special forms. In Myanmar, this usually means replacing
+post-base-consonant "Halant,_Consonant_" sequences with subjoined
+forms of the consonant. 
+
+However, Myanmar includes several other below-base-consonant
 forms, including medial consonants and below-base dependent vowel
 (matra) signs.
 
@@ -865,9 +869,8 @@ the GSUB table in the font.
 
 
 The `pres` feature replaces pre-base-consonant glyphs with special
-presentations forms. This can include consonant conjuncts, half-form
-consonants, and stylistic variants of left-side dependent vowels
-(matras). 
+presentations forms. In Myanmar, this can include stylistic variants
+of left-side dependent vowels (matras) or of "Medial Ra". 
 
 ![Application of the pres feature](/images/myanmar/myanmar-pres.png)
 
@@ -880,17 +883,18 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
-are adjacent to below-base-consonant forms like "Raphala" or
-"Baphala" with contextual ligatures.
+presentation forms. In Myanmar, this can include contextual ligatures
+involving below-base dependent vowel marks (matras), medial
+consonants, or subjoined consonants.
 
 ![Application of the blws feature](/images/myanmar/myanmar-blws.png)
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
-dependent vowels (matras) with stylistic variants or replacing
-post-base-consonant/matra pairs with contextual ligatures.
+dependent vowels (matras) with stylistic variants.
+
+<!--- Example: Medial Ya?? --->
 
 ![Application of the psts feature](/images/myanmar/myanmar-psts.png)
 
