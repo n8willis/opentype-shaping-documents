@@ -29,7 +29,14 @@ The Myanmar or Burmese script is a descendant of the Brahmi script, and follows
 many of the same general patterns found in [Indic
 scripts](opentype-shaping-indic-general.md). However, Myanmar
 incorporates enough distinctions of its own that it is generally not
-advisable to attempt supporting it in a general-purpose Indic shaping engine.
+advisable to attempt supporting it in a general-purpose Indic shaping
+engine. 
+
+For example, Myanmar script includes a "Reph"-like feature known as
+"Kinzi", but (unlike "Reph") Kinzi" can be formed by multiple initial
+consonants. Also, notably, real-world texts written in Myanmar script
+often do not use inter-word spaces, which may make the process of syllable
+identification substantially different from processing Indic scripts.
 
 The Myanmar script is used to write multiple languages, most commonly
 Burmese, Mon, Karen, Kayah, Shan, Palaung, and Pali. In addition,
@@ -122,11 +129,22 @@ behavior of the character in the shaping process.
 
 Several of the diacritic and syllable-modifying marks behave according
 to their own rules and, thus, have a special class. These include
-`BINDU`, `VISARGA`, `AVAGRAHA`, and `VIRAMA`. Some
-less-common marks behave according to rules that are similar to these
-common marks, and are therefore classified with the corresponding
-common mark. The Vedic Extensions also include a `CANTILLATION`
-class for tone marks.
+`BINDU` and `VISARGA`. Some less-common marks behave according to
+rules that are similar to these common marks, and are therefore
+classified with the corresponding common mark. The Vedic Extensions
+also include a `CANTILLATION` class for tone marks.
+
+Myanmar's "halant" codepoint is classified as `INVISIBLE_STACKER`,
+rather than the more common `VIRAMA`. This is to indicate that, unlike
+the "halant"/"virama" characters in several other scripts, the Myanmar
+"halant" is never rendered visually as a glyph.
+
+Myanmar's "Asat" codepoint, however, is rendered visually when it
+appears in a syllable. The "Asat" behaves differently than Indic
+"halant", however. It can be used to kill a consonant's inherent vowel
+sound, but it is not used between consonants to indicate the formation
+of a conjunct or a subjoined form. The "Asat" is classified as
+`PURE_KILLER`.
 
 Letters generally fall into the classes `CONSONANT`,
 `VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
@@ -292,7 +310,7 @@ Processing a run of `<mym2>` text involves six top-level stages:
 5. Applying all remaining positioning features from GPOS
 
 
-As with other Brahmic and Indic scripts, the initial reordering stage and the
+As with other Brahmi-derived and Indic scripts, the initial reordering stage and the
 final reordering stage each involve applying a set of several
 script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
@@ -321,7 +339,7 @@ characteristics include:
 > and the reordering characteristic would correspond to `POS_AFTER_MAIN`.
   
   - The below-base forms feature is applied only to consonants
-    before the base consonant. 
+    after the base consonant. 
 
 > Note: For comparison with the General Indic shaping model, this
 > characteristic would correspond to `BLWF_MODE_POST_ONLY`.
@@ -336,7 +354,6 @@ characteristics include:
 > characteristic is distinct to Mynanmar script. Indic scripts apply 
 > different reordering rules to pre-base matras that depend on the
 > syllable's content.
-
 	
   - The ordering positions for right-side and above-base matras is the
     same. All are reordered to immediately after all subjoined consonants.
@@ -362,6 +379,12 @@ that may be followed by a "tail" of modifier signs.
 > twenty-one tone markers in the Myanmar and Myanmar Extended-A
 > blocks. In addition, Sanskrit text written in Myanmar may include
 > additional signs from Vedic Extensions block.
+
+Because texts written in Myanmar script do not generally employ
+inter-word spaces, however, shaping engines must rely on
+syllable-identification algorithms to recognize word-boundary
+patterns — distinguishing numeric sequences, symbols, punctuation, and other
+miscellaneous script characters from syllables within words.
 
 Each syllable contains exactly one vowel sound. Valid syllables may
 begin with either a consonant or an independent vowel. 
@@ -390,7 +413,7 @@ The algorithm for correctly identifying the base consonant includes a
 test to recognize these sequences and not mis-identify the base
 consonant.
 
-Medial consonants will not be preceded by a "Halant". 
+Medial consonants, however, will not be preceded by a "Halant". 
 
 > Note: in the Myanmar script, all medial consonants have their own
 > distinct codepoints. Therefore, they can be identfied by codepoint
@@ -398,7 +421,7 @@ Medial consonants will not be preceded by a "Halant".
 > any special sequences.
 
 
-As with other Brahmic and Indic scripts, the consonant "Ra" receives
+As with other Brahmi-derived and Indic scripts, the consonant "Ra" receives
 special treatment. 
 
   - A "Medial Ra" (`U+103C`) must be reordered to a position immediately
@@ -412,17 +435,21 @@ special treatment.
 	
 	Notably, however, although "Ra" alone will take on the "Reph" form
     in Indic scripts, the Myanmar script's "Kinzi" feature can be
-    triggered for three consonants: "Ra" (`U+101B`), "Nga" (`U+1004`),
-    and "Mon Nga" (`U+105A`). In each case, the "Kinzi" form is
-    triggered by an explicit sequence: the consonant, followed by
-    "Asat,Halant".
+    triggered for three consonants, depending on the language in use:
+    "Ra" (`U+101B`), "Nga" (`U+1004`), and "Mon Nga" (`U+105A`). In
+    each case, the "Kinzi" form is triggered by an explicit sequence:
+    the consonant, followed by "Asat,Halant".
 	
 	There are, therefore, exactly three "Kinzi"-forming sequences to
     test for:
 	  - "Ra,Asat,Halant"
 	  - "Nga,Asat,Halant"
 	  - "Mon Nga,Asat,Halant"
-  
+
+In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
+consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
+can form a "Kinzi" in Sanskrit written with the Myanmar script.
+
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
@@ -453,7 +480,7 @@ simplifies the resulting expressions.
     _ra_		= "Ra" | "Nga" | "Mon Nga"
     _halant_	= `INVISIBLE_STACKER`
 	_asat_		= "Asat"
-	_a_			= `ANUSVARA`
+	_a_			= "Anusvara"
 	_db_		= "Dot Below"
 	_zwj_		= `JOINER`
 	_zwnj_		= `NON_JOINER`
@@ -481,6 +508,7 @@ simplifies the resulting expressions.
 				  2022 | 25CC | 25FB | 25FC 25FD | 25FE
 	_cs_		= `CONSONANT_WITH_STACKER`
 	_v_			= `VISARGA`
+	_vs_		= "Variation Selector"
 
 
 > Note: the _ra_ identification class is mutually exclusive with 
@@ -596,6 +624,10 @@ The final sort order of the ordering categories should be:
 This sort order enumerates all of the possible final positions to
 which a codepoint might be reordered in Myanmar script. 
 
+The position names mimic those used in the General Indic shaping
+model, for ease of implementation. However, shaping engines are free
+to use any naming scheme they choose.
+
 The basic positions (left to right) are dependent
 vowels (matras) and consonants positioned before the base
 consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
@@ -686,13 +718,23 @@ The sequences are:
   - "Ra,Asat,Halant"
   - "Nga,Asat,Halant"
   - "Mon Nga,Asat,Halant"
-  
+
+In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
+consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
+can form a "Kinzi" in Sanskrit written with the Myanmar script.
+
 
 #### 2.6: Post-base consonants ####
 
-Seventh, any non-base consonants that occur after the base consonant
-must be tagged with `POS_AFTER_MAIN`. Such consonants will usually be
-preceded by a "Halant" glyph.
+Seventh, any remaining non-base consonants that occur after the base
+consonant must be tagged with `POS_AFTER_MAIN`. Full consonants (of
+class `CONSONANT`) will be preceded by a "Halant" glyph. Medial
+consonants (of class `CONSONANT_MEDIAL`) will not be preceded by a
+"Halant" glyph. 
+
+> Note: "Medial Ra" should have been tagged with
+> `POS_PREBASE_CONSONANT` in stage 2, step four, and must not be
+> re-tagged in this step.
 
 
 
@@ -749,7 +791,14 @@ variants, based on examining the language setting of the text run.
 
 #### 3.2: ccmp ####
 
-The `ccmp` feature 
+The `ccmp` feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of glyphs. 
+ 
+If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the `ccmp`-substituted
+glyphs. 
 
 
 #### 3.3: rphf ####
@@ -761,28 +810,29 @@ the "Kinzi" glyph. The sequences are:
   - "Nga,Asat,Halant"
   - "Mon Nga,Asat,Halant"
 
+In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
+consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
+can form a "Kinzi" in Sanskrit written with the Myanmar script.
+
 ![Kinzi composition](/images/myanmar/myanmar-rphf.png)
 
 
 #### 3.4 pref ####
 
 The `pref` feature replaces pre-base-consonant glyphs with
-any special forms.
+any special forms. In Myanmar, this can include variant forms for the
+left-side matras "Sign E" (`U+1031`) or "Shan Sign E" (`U+1084`). 
 
 
 #### 3.5: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Myanmar includes several below-base consonant
-forms:
+special forms. Myanmar includes several below-base-consonant
+forms, including medial consonants and below-base dependent vowel
+(matra) signs.
 
-
-Because Myanmar incorporates the `BLWF_MODE_PRE_AND_POST` shaping
-characteristic, any pre-base consonants and any post-base consonants
-may potentially match a `blwf` substitution; therefore, both cases must
-be tagged for comparison. Note that this is not necessarily the case in other
-Indic scripts that use a different `BLWF_MODE_` shaping
-characteristic. 
+The below-base forms feature is applied only to glyphs occuring after
+the base consonant. 
 
 
 ![Raphala composition](/images/myanmar/myanmar-raphala.png)
@@ -792,7 +842,9 @@ characteristic.
 
 #### 3.6: pstf ####
 
-The `pstf` feature replaces post-base-consonant glyphs with any special forms.
+The `pstf` feature replaces post-base-consonant glyphs with any
+special forms. In Myanmar, this can include variant forms for
+right-side matras and marks. 
 
 ![Yaphala composition](/images/myanmar/myanmar-yaphala.png)
 
