@@ -65,11 +65,11 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-after.png -
 montage hangul-tjmo-before.png right-arrow.png hangul-tjmo-after.png -geometry +0+0 -background transparent hangul-tjmo.png
 
 
+## 6. Tone marks
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tone-before.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc --unicodes=1111,116b,11a8,200c,302f
 
-
-
-
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tone-after.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc --unicodes=1111,116b,11a8,302f
 
 
 

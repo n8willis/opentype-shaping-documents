@@ -553,6 +553,8 @@ block or a jamo-based syllable composed via the application of GSUB
 features. Therefore, the reordering must take place at the end of the
 shaping process.
 
+![Tone-mark reordering](images/hangul/hangul-tone.png)
+
 
 
    
