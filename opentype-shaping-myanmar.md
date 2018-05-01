@@ -651,7 +651,8 @@ The final sort order of the ordering categories should be:
 <!--- question: does Myanmar shape handle Vedic signs differently? --->
 <!--- or am I looking at an incomplete version of the reordering --->
 <!--- logic? --->
-
+<!--- Perhaps SMVD is all just tagged as _POS_AFTER_SUBJOINED --->
+<!--- and captures all tone marks, too? --->
 
 This sort order enumerates all of the possible final positions to
 which a codepoint might be reordered in Myanmar script. 
@@ -790,6 +791,7 @@ tagged with the same positioning tag as the closest subsequent consonant.
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
@@ -805,6 +807,7 @@ The order in which these substitutions must be performed is fixed:
 	pref 
 	blwf 
 	pstf
+
 
 #### 3.1 locl ####
 
@@ -829,6 +832,10 @@ If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
+
+> Note: `ccmp` usage is uncommon in Myanmar fonts. Nevertheless,
+> shaping engines must apply any `ccmp` substitutions if they are
+> present in the active font.
 
 
 #### 3.3: rphf ####
@@ -956,21 +963,22 @@ such features are optional.
 
 In Myanmar text, `dist` is typically used to adjust the space of a
 consonant glyph after a pre-base-reordering "Medial Ra", because the
-"Medial Ra" codepoint is classified as being of zero width.
+"Medial Ra" codepoint is classified as being of zero width, but is
+orthographically a glyph that encloses the adjacent letter.
 
 ![Application of the dist feature](/images/myanmar/myanmar-dist.png)
 
 
-The `abvm` feature positions above-base marks for attachment to base
+The `abvm` feature positions above-base glyphs for attachment to base
 characters. In Myanmar, this includes "Kinzi" and "Asat" in addition
 to tone markers, diacritical marks, above-base dependent vowels
 (matras), and Vedic signs.
 
 ![Application of the abvm feature](/images/myanmar/myanmar-abvm.png)
 
-The `blwm` feature positions below-base marks for attachment to base
-characters. In Myanmar, this includes below-base dependent vowels
-(matras) as well as below-base medial consonants, tone markers,
+The `blwm` feature positions below-base glyphs for attachment to base
+characters. In Myanmar, this includes subjoined consonants as well as
+below-base dependent vowels (matras), medial consonants, tone markers,
 diacritical marks, and Vedic signs.
 
 ![Application of the blwm feature](/images/myanmar/myanmar-blwm.png)
@@ -987,6 +995,8 @@ same base glyph.
 
 ## The `<mymr>` shaping model ##
 
+<!--- This may not be what Uniscribe does. Unclear. --->
+<!--- Check archive.org copy of old-spec MS docs    --->
 The older Myanmar script tag, `<mymr>`, has been deprecated. However,
 shaping engines may still encounter fonts that were built to work with
 `<mymr>` and some users may still have documents that were written to
@@ -1035,34 +1045,3 @@ sequences for GSUB substitutions or to reorder them to
 "Halant,_Consonant_" when processing text runs that are tagged with
 the `<mymr>` script tag and it is known that the font in use supports
 only the `<mym2>` shaping model.
-
-
-
-
-
-
-
-
-locl
-ccmp
-
-Basic features
-rphf
-pref
-blwf
-pstf
-
-liga
-
-other features
-pres
-abvs
-blws
-psts
-
-gpos features
-dist
-abvm
-blwm
-mark
-mkmk
