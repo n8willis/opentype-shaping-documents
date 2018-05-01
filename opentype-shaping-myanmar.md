@@ -641,9 +641,9 @@ The final sort order of the ordering categories should be:
 	POS_BELOWBASE_CONSONANT
 	POS_AFTER_SUBJOINED
 
-	POS_BEFORE_POST
+<!---	POS_BEFORE_POST
 	POS_POSTBASE_CONSONANT
-	POS_AFTER_POST
+	POS_AFTER_POST --->
 
 <!---	POS_FINAL_CONSONANT --->
 <!---	POS_SMVD --->
@@ -664,8 +664,7 @@ The basic positions (left to right) are dependent
 vowels (matras) and consonants positioned before the base
 consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
 consonant (`POS_BASE_CONSONANT`), below-base consonants
-(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
-(`POS_POSTBASE_CONSONANT`), 
+(`POS_BELOWBASE_CONSONANT`),
 and syllable-modifying or Vedic signs (`POS_SMVD`).
 
 In addition, several secondary positions are defined to handle various
@@ -673,9 +672,7 @@ reordering rules that deal with relative, rather than absolute,
 positioning. `POS_AFTER_MAIN` means that a character must be
 positioned immediately after the base consonant. `POS_BEFORE_SUBJOINED`
 and `POS_AFTER_SUBJOINED` mean that a character must be positioned
-before or after any below-base consonants, respectively. Similarly,
-`POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
-positioned before or after any post-base consonants, respectively. 
+before or after any below-base consonants, respectively. 
 
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
