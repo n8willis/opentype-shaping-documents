@@ -110,8 +110,8 @@ specific, script-aware behavior.
 | `U+0F44`  |                  |                   |                            | &#X0F44; Nga                     |
 | `U+0F45`  |                  |                   |                            | &#X0F45; Ca                      |
 | `U+0F46`  |                  |                   |                            | &#X0F46; Cha                     |
-| `U+0F47`  |                  |                   |                            | 		   	                       |
-| `U+0F48`  |                  |                   |                            | &#X0F48; Ja  		                   |
+| `U+0F47`  |                  |                   |                            | &#x0F47; Ja                      |
+| `U+0F48`  |                  |                   |                            |                	                   |
 | `U+0F49`  |                  |                   |                            | &#X0F49; Nya 		                   |
 | `U+0F4A`  |                  |                   |                            | &#X0F4A; Tta 		                   |
 | `U+0F4B`  |                  |                   |                            | &#X0F4B; Ttha		                   |
@@ -154,7 +154,7 @@ specific, script-aware behavior.
 | `U+0F6E`  |                  |                   |                            | 		                       |
 | `U+0F6F`  |                  |                   |                            | 		                       |
 | | | | | |
-| `U+0F70`  |                  |                   |                            | &#X0F70;                     |
+| `U+0F70`  |                  |                   |                            |                              |
 | `U+0F71`  |                  |                   |                            | &#X0F71; Sign Aa                            |
 | `U+0F72`  |                  |                   |                            | &#X0F72; Sign I                             |
 | `U+0F73`  |                  |                   |                            | &#X0F73; Sign Ii                            |
