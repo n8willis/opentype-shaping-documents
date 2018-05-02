@@ -11,9 +11,15 @@
 > As long as this warning text remains visible, the above 
 > holds true. 
 
-At present, we are seeking comments and bugfixes on the Indic-script
-documents. Interested readers and contributors can begin at the [Indic
-General](opentype-shaping-indic-general.md) shaping document and are encouraged to submit their feedback
+At present, we are seeking comments and bugfixes on the Indic-script,
+Arabic-like, and Hangul documents. Interested readers and contributors
+can begin at the
+
+  - [Indic General](opentype-shaping-indic-general.md) 
+  - [Arabic General](opentype-shaping-arabic-general.md)
+  - [Hangul](opentype-shaping-hangul.md)
+  
+shaping documents and are encouraged to submit their feedback
 on the text or images of any of the linked Indic scripts.
 
 In its final form, this repository will hold documentation describing
