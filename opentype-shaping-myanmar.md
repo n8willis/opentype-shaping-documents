@@ -581,10 +581,10 @@ state-machine compiler. The operators represent:
 a* = zero or more copies of a
 b+ = one or more copies of b
 c? = optional instance of c
-d {n} = exactly n copies of d
-d {,n} = zero to n copies of d
-d {n,} = n or more copies of d
-d {n,m} = n to m copies of d
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
 !e = not e
 ^f = character-level not f
 g.h = concatenation of g and h
