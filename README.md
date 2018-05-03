@@ -20,7 +20,7 @@ can begin at the
   - [Hangul](opentype-shaping-hangul.md)
   
 shaping documents and are encouraged to submit their feedback
-on the text or images of any of the linked Indic scripts.
+on the text or images of any of the linked scripts.
 
 In its final form, this repository will hold documentation describing
 the shaping behavior used for layout of OpenType text. In particular,
