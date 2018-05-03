@@ -267,8 +267,7 @@ For example:
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1000`   | Letter           | CONSONANT         | _null_                     | &#x1000; Ka                  |
 | | | | |
-|`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION
-|| &#x1036; Anusvara          |
+|`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1036; Anusvara            |
 
 
 Codepoints with no assigned meaning are
@@ -473,6 +472,10 @@ special treatment.
 	  - "Ra,Asat,Halant"
 	  - "Nga,Asat,Halant"
 	  - "Mon Nga,Asat,Halant"
+
+![Ra Kinzi](images/myanmar/myanmar-kinzi-ra.png)
+![Nga Kinzi](images/myanmar/myanmar-kinzi-nga.png)
+![Mon Nga Kinzi](images/myanmar/myanmar-kinzi-monnga.png)
 
 In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
 consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
