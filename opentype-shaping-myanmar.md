@@ -106,7 +106,7 @@ script. Fonts are not required to inlude the dotted-form variants;
 when they are absent from the active font, the default form of the
 corresponding letter will be used instead.
 
-![Dotted form substitution with variation selector]()
+![Dotted form substitution with variation selector](images/myanmar/myanmar-dotted.png)
 
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
@@ -826,6 +826,8 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
+![Local-forms substitution](images/myanmar/myanmar-locl.png)
+
 
 #### 3.2: ccmp ####
 
@@ -856,14 +858,17 @@ In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
 consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
 can form a "Kinzi" in Sanskrit written with the Myanmar script.
 
-![Kinzi composition](/images/myanmar/myanmar-rphf.png)
+![Kinzi composition](/images/myanmar/myanmar-kinzi-nga.png)
 
 
 #### 3.4 pref ####
 
 The `pref` feature replaces pre-base-consonant glyphs with
-any special forms. In Myanmar, this can include variant forms for the
-left-side matras "Sign E" (`U+1031`) or "Shan Sign E" (`U+1084`). 
+any special forms. In Myanmar, this can include variant forms for
+"Medial Ra" or for the left-side matras "Sign E" (`U+1031`) or "Shan
+Sign E" (`U+1084`)
+
+![pref feature application](/images/myanmar/myanmar-pref.png)
 
 
 #### 3.5: blwf ####
@@ -880,6 +885,8 @@ forms, including medial consonants and below-base dependent vowel
 The below-base forms feature is applied only to glyphs occuring after
 the base consonant. 
 
+![blwf feature application](/images/myanmar/myanmar-blwf.png)
+
 
 
 #### 3.6: pstf ####
@@ -888,6 +895,7 @@ The `pstf` feature replaces post-base-consonant glyphs with any
 special forms. In Myanmar, this can include variant forms for
 right-side matras and marks. 
 
+![pstf feature application](/images/myanmar/myanmar-pstf.png)
 
 
 
