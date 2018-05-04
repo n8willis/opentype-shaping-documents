@@ -290,7 +290,7 @@ specific, script-aware behavior.
 
 Other important characters that may be encountered when shaping runs
 of Myanmar text include the dotted-circle placeholder (`U+25CC`), 
-the no-break space (`U+00A0`), and the zero-width space (`U+20B`).
+the no-break space (`U+00A0`), and the zero-width space (`U+200B`).
 
 The dotted-circle placeholder is frequently used when displaying a
 dependent vowel (matra) or a combining mark in isolation. Real-world
@@ -734,12 +734,14 @@ marks are reordered to a position immediately before the below-base
 vowel signs.
 
 
-#### 2.4: Pre-base reordering consonants ####
+#### 2.4: Pre-base-reordering consonants ####
 
 Fourth, all pre-base-reordering consonants must be tagged with
 `POS_PREBASE_CONSONANT`. 
 
 Myanmar has one pre-base-reordering consonant: "Medial Ra".
+
+![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.png)
 
 
 #### 2.5: Kinzi ####

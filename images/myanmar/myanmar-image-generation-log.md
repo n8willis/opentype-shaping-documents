@@ -44,7 +44,13 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-kinzi-monnga-af
 montage myanmar-kinzi-monnga-before.png right-arrow.png myanmar-kinzi-monnga-after.png -geometry +0+0 -background transparent myanmar-kinzi-monnga.png
 
 
+## 2.4 Medial Ra
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-medial-ra-before.png --features=+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1017,200D,103C
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-medial-ra-after.png --features=+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1017,103C
+
+montage myanmar-medial-ra-before.png right-arrow.png myanmar-medial-ra-after.png -geometry +0+0 -background transparent nyanmar-medial-ra.png
 
 
 
