@@ -6,9 +6,12 @@ hb-view --font-size=110 --output-file=right-arrow.png --background=FFFFFF00 --ma
 
 ## Terminology
 
-### VS
+### Variation Selector
 
 #### No VS
+
+> Note: SIL Padauk 3.x implements the dotted-form feature, but not
+> using Variation Selectors, for unknown reasons.
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-dotted-before.png --features=+psts --background=FFFFFF00 /home/nate/Dropbox/fonts-external/temporary-and-testing/padauk-3.003/PadaukBook-Regular.ttf --unicodes=1022
 
@@ -115,6 +118,25 @@ montage myanmar-pstf-before.png right-arrow.png myanmar-pstf-after.png -geometry
 
 ## 4 pres 
 
+> Note: Noto Sans Myanmar does not implement this as a pres feature.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-pres-before.png --features=-pres,-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100c,103c
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-pres-after.png --features=+pres,+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100c,103c
+
+montage myanmar-pres-before.png right-arrow.png myanmar-pres-after.png -geometry +0+0 -background transparent myanmar-pres.png
+
+
+## 4 abvs
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-abvs-before.png --features=-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100b,102d,1032
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-abvs-after.png --features=+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100b,102d,1032
+
+montage myanmar-abvs-before.png right-arrow.png myanmar-abvs-after.png -geometry +0+0 -background transparent myanmar-abvs.png
+
+
+## 4 blws
 
 
 
