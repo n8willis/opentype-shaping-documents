@@ -608,9 +608,9 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-	_consonant_	= `CONSONANT` | `CONSONANT_DEAD`
-	_vowel_		= `VOWEL_INDEPENDENT`
 	_ra_		= The consonant "Ra" 
+	_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
+	_vowel_		= `VOWEL_INDEPENDENT`
 	_nukta_	  	= `NUKTA`
 	_halant_	= `VIRAMA`
 	_zwj_		= `JOINER`

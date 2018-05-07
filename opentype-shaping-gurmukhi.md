@@ -453,48 +453,117 @@ Syllables should be identified by examining the run and matching
 glyphs, based on their categorization, using regular expressions. 
 
 The following general-purpose Indic-shaping regular expressions can be
-used to match Gurmukhi syllables. The regular expressions utilize the
-shaping classifications from the tables above.
+used to match Gurmukhi syllables. 
 
-> Note: The Gurmukhi block does not include the Anudatta (`U+0952`)
-> sign. However, Gurmukhi text may include the Anudatta sign from
-> Devanagari as part of the Unicode Script Extensions. 
+The regular expressions utilize the shaping classes from the tables
+above. For the purpose of syllable identification, more general
+classes can be used, as defined in the following table. This
+simplifies the resulting expressions. 
 
+	_ra_		= The consonant "Ra" 
+	_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
+	_vowel_		= `VOWEL_INDEPENDENT`
+	_nukta_	  	= `NUKTA`
+	_halant_	= `VIRAMA`
+	_zwj_		= `JOINER`
+	_zwnj_		= `NON_JOINER`
+	_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+	_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+	_vedicsign_	= `CANTILLATION`
+	_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+	_dottedcircle_	= `DOTTED_CIRCLE`
+	_repha_		= `CONSONANT_PRE_REPHA`
+	_consonantmedial_	= `CONSONANT_MEDIAL`
+	_symbol_	= `SYMBOL`
+	_consonantwithstacker_	= `CONSONANT_WITH_STACKER`
+	_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+<!---	_anudatta_	= "Anudatta" --->
 
-	C	  Consonant
-	V	  Independent vowel
-	N	  Nukta
-	H	  Halant/Virama
-	ZWNJ	  Zero-width non-joiner
-	ZWJ	  Zero-width joiner
-	M	  Matra (up to one of each type: pre-base, below-base, or post-base)
-	SM	  Syllable modifier signs
-	VD	  Vedic signs
-	A	  Anudatta
-	NBSP	  No-break space
-	      
-	{ }	  zero or more occurences of the enclosed expression
-	[ ]	  optional occurence of the enclosed expression
-	<|>	  one of the options separated by the vertical bar
-	( )	  one or two occurences of the enclosed expression
+> Note: the _ra_ identification class is mutually exclusive with 
+> the _consonant_ class. The union of the _consonant_ and _ra_ classes
+> is used in the regular expression elements below in order to
+> correctly identify "Ra" characters that do not trigger "Reph" or
+> "Rakaar" shaping behavior.
+>
+> Note, also, that the cantillation mark "combining Ra" in the
+> Devanagari Extended block does _not_ belong to the _ra_
+> identification class, and that the other "combining consonant"
+> cantillation marks in the Devanagari Extended block do not belong to
+> the _consonant_ identification class.
+
+> Note: The _other_ identification class includes codepoints that
+> do not interact with adjacent characters for shaping purposes. Even
+> though some of these codepoints (such as `MODIFYING_LETTER`) can
+> occur within words, they evoke no behavior from the shaping
+> engine and do not factor into the regular expressions that
+> follow. Therefore, the shaping engine may choose to ignore them
+> during syllable identification; they are listed here for completeness.
+
+These idenfication classes form the bases of the following regular
+expression elements:
+
+    C	= (_consonant_ | _ra_)
+    Z	= _zwj_|_zwnj_
+	REPH	= (_ra_ _halant_ | _repha_)
+	CN		= C._zwj_?._nukta_?
+	FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
+	S	= _symbol_._nukta_?
+	MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
+	SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
+	HALANT_GROUP	= (Z?.H.(_zwj_._nukta_?)?)
+	FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
+	MEDIAL_GROUP	= _consonantmedial_?
+	HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
+
+Using the above elements, the following regular expressions define the
+possible syllable types:
 
 A consonant-based syllable will match the expression:
 ```
-{C+[N]+<H+[<ZWNJ|ZWJ>]|<ZWNJ|ZWJ>+H>} + C+[N]+[A] + [< H+[<ZWNJ|ZWJ>] | {M}+[N]+[H]>]+[SM]+[(VD)]
+(_repha_|_consonantwithstacker_)? (CN.HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 A vowel-based syllable will match the expression:
 ```
-[Ra+H]+V+[N]+[<[<ZWJ|ZWNJ>]+H+C|ZWJ+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
+REPH? _vowel_._nukta_? (_zwj_ | (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
 ```
 
-A stand-alone sequence (which can only occur at the start of a word) will match the expression:
+A standalone syllable will match the expression:
 ```
-[Ra+H]+NBSP+[N]+[<[<ZWJ|ZWNJ>]+H+C>]+[{M}+[N]+[H]]+[SM]+[(VD)]
+((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_)._nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
-A sequence that does not match any of these expressions should be
-regarded as broken. The shaping engine may make a best-effort attempt
+A symbol-based syllable will match the expression:
+```
+S SYLLABLE_TAIL
+```
+
+A broken syllable will match the expression:
+```
+REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+```
+
+
+The expressions above use state-machine syntax from the Ragel
+state-machine compiler. The operators represent:
+
+```
+a* = zero or more copies of a
+b+ = one or more copies of b
+c? = optional instance of c
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
+!e = not e
+^f = character-level not f
+g.h = concatenation of g and h
+i|j = i or j
+( ) = grouping of expression elements
+```
+
+
+The shaping engine may make a best-effort attempt
 to shape the broken sequence, but making guarantees about the
 correctness or appearance of the final result is out of scope for this
 document.
