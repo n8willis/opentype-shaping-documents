@@ -266,8 +266,8 @@ important miscellaneous characters, are available here:
   - [Telugu](character-tables/character-tables-telugu.md)
   - [Sinhala](character-tables/character-tables-sinhala.md)
 
-<--- - [Vedic Extensions](opentype-shaping-vedic-extensions.md) --->
-<--- - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) --->
+<!--- - [Vedic Extensions](opentype-shaping-vedic-extensions.md) --->
+<!--- - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) --->
 	
 <!---  - [Khmer](character-tables/character-tables-khmer.md) --->
 <!--- Khmer removed from HarfBuzz's Indic shaper, Jan 2018 --->	
