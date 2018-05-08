@@ -609,23 +609,25 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-	_ra_		= The consonant "Ra" 
-	_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
-	_vowel_		= `VOWEL_INDEPENDENT`
-	_nukta_	  	= `NUKTA`
-	_halant_	= `VIRAMA`
-	_zwj_		= `JOINER`
-	_zwnj_		= `NON_JOINER`
-	_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
-	_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
-	_vedicsign_	= `CANTILLATION`
-	_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
-	_dottedcircle_	= `DOTTED_CIRCLE`
-	_repha_		= `CONSONANT_PRE_REPHA`
-	_consonantmedial_	= `CONSONANT_MEDIAL`
-	_symbol_	= `SYMBOL`
-	_consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-	_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+```
+_ra_		= The consonant "Ra" 
+_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
+_vowel_		= `VOWEL_INDEPENDENT`
+_nukta_	  	= `NUKTA`
+_halant_	= `VIRAMA`
+_zwj_		= `JOINER`
+_zwnj_		= `NON_JOINER`
+_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+_vedicsign_	= `CANTILLATION`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_dottedcircle_	= `DOTTED_CIRCLE`
+_repha_		= `CONSONANT_PRE_REPHA`
+_consonantmedial_	= `CONSONANT_MEDIAL`
+_symbol_	= `SYMBOL`
+_consonantwithstacker_	= `CONSONANT_WITH_STACKER`
+_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+```
 <!---	_anudatta_	= "Anudatta" --->
 
 > Note: the _ra_ identification class is mutually exclusive with 
