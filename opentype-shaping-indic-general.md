@@ -804,7 +804,7 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 These idenfication classes form the bases of the following regular
 expression elements:
 
-```
+```markdown
 C	= (_consonant_ | _ra_)
 Z	= _zwj_|_zwnj_
 REPH	= (_ra_ _halant_ | _repha_)
@@ -823,27 +823,27 @@ Using the above elements, the following regular expressions define the
 possible syllable types:
 
 A consonant-based syllable will match the expression:
-```
+```markdown
 (_repha_|_consonantwithstacker_)? (CN.HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 A vowel-based syllable will match the expression:
-```
+```markdown
 REPH? _vowel_._nukta_? (_zwj_ | (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
 ```
 
 A standalone syllable will match the expression:
-```
+```markdown
 ((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_)._nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 A symbol-based syllable will match the expression:
-```
+```markdown
 S SYLLABLE_TAIL
 ```
 
 A broken syllable will match the expression:
-```
+```markdown
 REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
@@ -851,7 +851,7 @@ REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABL
 The expressions above use state-machine syntax from the Ragel
 state-machine compiler. The operators represent:
 
-```
+```markdown
 a* = zero or more copies of a
 b+ = one or more copies of b
 c? = optional instance of c
