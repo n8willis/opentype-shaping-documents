@@ -610,23 +610,23 @@ classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
 ```
-<i>ra</i>		= The consonant "Ra" 
-<i>consonant</i>	= ( `CONSONANT` | `CONSONANT_DEAD` ) - <i>ra<i>
-<i>vowel</i>		= `VOWEL_INDEPENDENT`
-<i>nukta</i>	  	= `NUKTA`
-<i>halant</i>	= `VIRAMA`
-<i>zwj</i>		= `JOINER`
-<i>zwnj</i>		= `NON_JOINER`
-<i>matra</i>		= `VOWEL_DEPENDENT` | `PURE_KILLER`
-<i>syllablemodifier</i>	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
-<i>vedicsign</i>	= `CANTILLATION`
-<i>placeholder</i>	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
-<i>dottedcircle</i>	= `DOTTED_CIRCLE`
-<i>repha</i>		= `CONSONANT_PRE_REPHA`
-<i>consonantmedial</i>	= `CONSONANT_MEDIAL`
-<i>symbol</i>	= `SYMBOL`
-<i>consonantwithstacker</i>	= `CONSONANT_WITH_STACKER`
-<i>other</i>		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+&lt;i&gt;ra&lt;/i&gt;		= The consonant "Ra" 
+&lt;i&gt;consonant&lt;/i&gt;	= ( `CONSONANT` | `CONSONANT_DEAD` ) - &lt;i&gt;ra&lt;i&gt;
+&lt;i&gt;vowel&lt;/i&gt;		= `VOWEL_INDEPENDENT`
+&lt;i&gt;nukta&lt;/i&gt;	  	= `NUKTA`
+&lt;i&gt;halant&lt;/i&gt;	= `VIRAMA`
+&lt;i&gt;zwj&lt;/i&gt;		= `JOINER`
+&lt;i&gt;zwnj&lt;/i&gt;		= `NON_JOINER`
+&lt;i&gt;matra&lt;/i&gt;		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+&lt;i&gt;syllablemodifier&lt;/i&gt;	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+&lt;i&gt;vedicsign&lt;/i&gt;	= `CANTILLATION`
+&lt;i&gt;placeholder&lt;/i&gt;	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+&lt;i&gt;dottedcircle&lt;/i&gt;	= `DOTTED_CIRCLE`
+&lt;i&gt;repha&lt;/i&gt;		= `CONSONANT_PRE_REPHA`
+&lt;i&gt;consonantmedial&lt;/i&gt;	= `CONSONANT_MEDIAL`
+&lt;i&gt;symbol&lt;/i&gt;	= `SYMBOL`
+&lt;i&gt;consonantwithstacker&lt;/i&gt;	= `CONSONANT_WITH_STACKER`
+&lt;i&gt;other&lt;/i&gt;		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 ```
 
 <!---	_anudatta_	= "Anudatta" --->
