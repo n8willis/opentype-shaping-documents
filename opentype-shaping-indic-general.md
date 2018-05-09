@@ -535,156 +535,6 @@ Below-base matras may be positioned:
     position `POS_AFTER_POST`.
 
 
-### 2: Initial reordering ###
-
-The initial reordering stage is used to relocate glyphs from the
-phonetic order in which they occur in a run of text to the
-orthographic order in which they are presented visually.
-
-This may mean moving dependent-vowel (matra) glyphs, "Ra,Halant"
-sequences, and other consonants that take special 
-treatment in some circumstances.
-
-These reordering moves are mandatory. The final-reordering stage
-may make additional moves, depending on the text and on the features
-implemented in the active font.
-
-The syllable should be processed by tagging each glyph with its
-intended position based on its ordering category. After all glyphs
-have been tagged, the entire syllable should be sorted in stable order,
-so that glyphs of the same ordering category remain in the same
-relative position with respect to each other.
-
-The final sort order of the ordering categories should be:
-
-
-	POS_RA_TO_BECOME_REPH
-	POS_PREBASE_MATRA
-	POS_PREBASE_CONSONANT
-
-	POS_BASE_CONSONANT
-	POS_AFTER_MAIN
-
-	POS_ABOVEBASE_CONSONANT
-
-	POS_BEFORE_SUBJOINED
-	POS_BELOWBASE_CONSONANT
-	POS_AFTER_SUBJOINED
-
-	POS_BEFORE_POST
-	POS_POSTBASE_CONSONANT
-	POS_AFTER_POST
-
-	POS_FINAL_CONSONANT
-	POS_SMVD
-
-
-This sort order enumerates all of the possible final positions to
-which a codepoint might be reordered, across all of the Indic
-scripts. Not every position will be utilized in every script.
-
-Additional information about the ordering positions is available in
-the [sort ordering](#sort-ordering) section of this document.
-
-#### 2.1: Base consonant ####
-
-The first step is to determine the base consonant of the syllable, if
-there is one, and tag it as `POS_BASE_CONSONANT`.
-
-The algorithm used to find the base consonant varies according to the
-base-consonant shaping characteristic of the script.
-
-For `BASE_POS_FIRST` scripts, the first consonant of the syllable is
-the base consonant.
-
-For `BASE_POS_LAST` scripts, the base consonant is the last consonant
-in the syllable, excluding all consonants that will take on special
-post-base, final, or below-base forms, and excluding all pre-base
-reordering "Ra"s. For a detailed explanation of the search algorithm
-employed, see the page for each specific script.
-
-For Sinhala, which uses `BASE_POS_LAST_SINHALA`, the base consonant is
-the last consonant that is not preceded by a zero-width joiner
-("ZWJ").
-
-
-#### 2.2: Matra decomposition ####
-
-Second, any two-part or three-part dependent vowels (matras) must be decomposed
-into their component parts.
-
-Because this decomposition is a character-level operation, the shaping
-engine may choose to perform it earlier, such as during an initial
-Unicode-normalization stage. However, all such decompositions must be
-completed before the shaping engine begins step three, below.
-
-
-#### 2.3: Tag decomposed matras ####
-
-Third, all dependent-vowel (matra) signs must be tagged with
-their final position. 
-
-All single-part matras can be tagged based on their Mark-positioning
-subclass. The shaping engine may choose to perform this tagging
-earlier, such as during an initial Unicode-normalization stage.
-
-Matras that resulted from the preceding decomposition step, however,
-may not have been tagged when they were decomposed. If not, they must
-be tagged for reordering before proceeding to the next step.
-
-
-<!--- Should this be ALL matras? Or all non-right. non-below-base -->
-<!--  matras?                                                    --->
-
-#### 2.4: Adjacent marks ####
-
-Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
-syllable modifiers, and Vedic signs) must be reordered so that they
-appear in canonical order. 
-
-The canonical ordering means that any "Nukta"s must
-be placed before all other marks. No other marks in the subsequence
-should be reordered.
-
-#### 2.5: Pre-base consonants ####
-
-Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
-
-#### 2.6: Reph ####
-
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
-`POS_RA_TO_BECOME_REPH`.
-
-#### 2.7: Post-base consonants ####
-
-Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will either be followed by a "Halant" glyph or will be in
-the `CONSONANT_DEAD` shaping class. 
-	
-  <!--- Double check: should this be "_Consonant_,Halant" instead of
-        "Halant,_Consonant_"? --->
-	
-#### 2.8: Mark tagging ####
-
-Eighth, all marks must be tagged with the same positioning tag as the
-closest non-mark character the mark has affinity with, so that they move together
-during the sorting step.
-
-For all marks preceding the base consonant, the mark must be tagged
-with the same positioning tag as the closest preceding non-mark
-consonant.
-
-For all marks occurring after the base consonant, the mark must be
-tagged with the same positioning tag as the closest subsequent consonant.
-
-> Note: In this step, joiner and non-joiner characters must also be
-> tagged according to the same rules given for marks, even though
-> these characters are not categorized as marks in Unicode.
-
-With these steps completed, the syllable can be sorted into the final sort order.
-
 ### 1: Identifying syllables and other sequences ###
 
 A syllable in an Indic script consists of a valid orthographic sequence
@@ -880,6 +730,157 @@ of the final result is out of scope for this document.
 
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
+
+
+### 2: Initial reordering ###
+
+The initial reordering stage is used to relocate glyphs from the
+phonetic order in which they occur in a run of text to the
+orthographic order in which they are presented visually.
+
+This may mean moving dependent-vowel (matra) glyphs, "Ra,Halant"
+sequences, and other consonants that take special 
+treatment in some circumstances.
+
+These reordering moves are mandatory. The final-reordering stage
+may make additional moves, depending on the text and on the features
+implemented in the active font.
+
+The syllable should be processed by tagging each glyph with its
+intended position based on its ordering category. After all glyphs
+have been tagged, the entire syllable should be sorted in stable order,
+so that glyphs of the same ordering category remain in the same
+relative position with respect to each other.
+
+The final sort order of the ordering categories should be:
+
+
+	POS_RA_TO_BECOME_REPH
+	POS_PREBASE_MATRA
+	POS_PREBASE_CONSONANT
+
+	POS_BASE_CONSONANT
+	POS_AFTER_MAIN
+
+	POS_ABOVEBASE_CONSONANT
+
+	POS_BEFORE_SUBJOINED
+	POS_BELOWBASE_CONSONANT
+	POS_AFTER_SUBJOINED
+
+	POS_BEFORE_POST
+	POS_POSTBASE_CONSONANT
+	POS_AFTER_POST
+
+	POS_FINAL_CONSONANT
+	POS_SMVD
+
+
+This sort order enumerates all of the possible final positions to
+which a codepoint might be reordered, across all of the Indic
+scripts. Not every position will be utilized in every script.
+
+Additional information about the ordering positions is available in
+the [sort ordering](#sort-ordering) section of this document.
+
+#### 2.1: Base consonant ####
+
+The first step is to determine the base consonant of the syllable, if
+there is one, and tag it as `POS_BASE_CONSONANT`.
+
+The algorithm used to find the base consonant varies according to the
+base-consonant shaping characteristic of the script.
+
+For `BASE_POS_FIRST` scripts, the first consonant of the syllable is
+the base consonant.
+
+For `BASE_POS_LAST` scripts, the base consonant is the last consonant
+in the syllable, excluding all consonants that will take on special
+post-base, final, or below-base forms, and excluding all pre-base
+reordering "Ra"s. For a detailed explanation of the search algorithm
+employed, see the page for each specific script.
+
+For Sinhala, which uses `BASE_POS_LAST_SINHALA`, the base consonant is
+the last consonant that is not preceded by a zero-width joiner
+("ZWJ").
+
+
+#### 2.2: Matra decomposition ####
+
+Second, any two-part or three-part dependent vowels (matras) must be decomposed
+into their component parts.
+
+Because this decomposition is a character-level operation, the shaping
+engine may choose to perform it earlier, such as during an initial
+Unicode-normalization stage. However, all such decompositions must be
+completed before the shaping engine begins step three, below.
+
+
+#### 2.3: Tag decomposed matras ####
+
+Third, all dependent-vowel (matra) signs must be tagged with
+their final position. 
+
+All single-part matras can be tagged based on their Mark-positioning
+subclass. The shaping engine may choose to perform this tagging
+earlier, such as during an initial Unicode-normalization stage.
+
+Matras that resulted from the preceding decomposition step, however,
+may not have been tagged when they were decomposed. If not, they must
+be tagged for reordering before proceeding to the next step.
+
+
+<!--- Should this be ALL matras? Or all non-right. non-below-base -->
+<!--  matras?                                                    --->
+
+#### 2.4: Adjacent marks ####
+
+Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
+syllable modifiers, and Vedic signs) must be reordered so that they
+appear in canonical order. 
+
+The canonical ordering means that any "Nukta"s must
+be placed before all other marks. No other marks in the subsequence
+should be reordered.
+
+#### 2.5: Pre-base consonants ####
+
+Fifth, consonants that occur before the base consonant must be tagged
+with `POS_PREBASE_CONSONANT`.
+
+#### 2.6: Reph ####
+
+Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
+`POS_RA_TO_BECOME_REPH`.
+
+#### 2.7: Post-base consonants ####
+
+Seventh, any non-base consonants that occur after a dependent vowel
+(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
+consonants will either be followed by a "Halant" glyph or will be in
+the `CONSONANT_DEAD` shaping class. 
+	
+  <!--- Double check: should this be "_Consonant_,Halant" instead of
+        "Halant,_Consonant_"? --->
+	
+#### 2.8: Mark tagging ####
+
+Eighth, all marks must be tagged with the same positioning tag as the
+closest non-mark character the mark has affinity with, so that they move together
+during the sorting step.
+
+For all marks preceding the base consonant, the mark must be tagged
+with the same positioning tag as the closest preceding non-mark
+consonant.
+
+For all marks occurring after the base consonant, the mark must be
+tagged with the same positioning tag as the closest subsequent consonant.
+
+> Note: In this step, joiner and non-joiner characters must also be
+> tagged according to the same rules given for marks, even though
+> these characters are not categorized as marks in Unicode.
+
+With these steps completed, the syllable can be sorted into the final sort order.
 
 
 ### 3: Applying the basic substitution features from GSUB ###
