@@ -759,25 +759,25 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-<tt style="padding:16px;background-color:#f6f8fa;">
-<i>ra</i>		= The consonant "Ra" 
-<br><i>consonant</i>	= ( `CONSONANT` | `CONSONANT_DEAD` ) - <i>ra<i>
-<br><i>vowel</i>		= `VOWEL_INDEPENDENT`
-<br><i>nukta</i>	  	= `NUKTA`
-<br><i>halant</i>	= `VIRAMA`
-<br><i>zwj</i>		= `JOINER`
-<br><i>zwnj</i>		= `NON_JOINER`
-<br><i>matra</i>		= `VOWEL_DEPENDENT` | `PURE_KILLER`
-<br><i>syllablemodifier</i>	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
-<br><i>vedicsign</i>	= `CANTILLATION`
-<br><i>placeholder</i>	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
-<br><i>dottedcircle</i>	= `DOTTED_CIRCLE`
-<br><i>repha</i>		= `CONSONANT_PRE_REPHA`
-<br><i>consonantmedial</i>	= `CONSONANT_MEDIAL`
-<br><i>symbol</i>	= `SYMBOL`
-<br><i>consonantwithstacker</i>	= `CONSONANT_WITH_STACKER`
-<br><i>other</i>		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
-</tt>
+```markdown
+_ra_		= The consonant "Ra" 
+_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
+_vowel_		= `VOWEL_INDEPENDENT`
+_nukta_	  	= `NUKTA`
+_halant_	= `VIRAMA`
+_zwj_		= `JOINER`
+_zwnj_		= `NON_JOINER`
+_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+_vedicsign_	= `CANTILLATION`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_dottedcircle_	= `DOTTED_CIRCLE`
+_repha_		= `CONSONANT_PRE_REPHA`
+_consonantmedial_	= `CONSONANT_MEDIAL`
+_symbol_	= `SYMBOL`
+_consonantwithstacker_	= `CONSONANT_WITH_STACKER`
+_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+```
 
 <!---	_anudatta_	= "Anudatta" --->
 
