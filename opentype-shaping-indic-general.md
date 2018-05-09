@@ -609,25 +609,25 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-<pre>
-_ra_		= The consonant "Ra" 
-_consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
-_vowel_		= `VOWEL_INDEPENDENT`
-_nukta_	  	= `NUKTA`
-_halant_	= `VIRAMA`
-_zwj_		= `JOINER`
-_zwnj_		= `NON_JOINER`
-_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
-_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
-_vedicsign_	= `CANTILLATION`
-_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
-_dottedcircle_	= `DOTTED_CIRCLE`
-_repha_		= `CONSONANT_PRE_REPHA`
-_consonantmedial_	= `CONSONANT_MEDIAL`
-_symbol_	= `SYMBOL`
-_consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
-</pre>
+```
+<i>ra</i>		= The consonant "Ra" 
+<i>consonant</i>	= ( `CONSONANT` | `CONSONANT_DEAD` ) - <i>ra<i>
+<i>vowel</i>		= `VOWEL_INDEPENDENT`
+<i>nukta</i>	  	= `NUKTA`
+<i>halant</i>	= `VIRAMA`
+<i>zwj</i>		= `JOINER`
+<i>zwnj</i>		= `NON_JOINER`
+<i>matra</i>		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+<i>syllablemodifier</i>	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+<i>vedicsign</i>	= `CANTILLATION`
+<i>placeholder</i>	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+<i>dottedcircle</i>	= `DOTTED_CIRCLE`
+<i>repha</i>		= `CONSONANT_PRE_REPHA`
+<i>consonantmedial</i>	= `CONSONANT_MEDIAL`
+<i>symbol</i>	= `SYMBOL`
+<i>consonantwithstacker</i>	= `CONSONANT_WITH_STACKER`
+<i>other</i>		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+```
 
 <!---	_anudatta_	= "Anudatta" --->
 
