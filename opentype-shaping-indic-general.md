@@ -609,7 +609,7 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-<code>
+<pre>
 _ra_		= The consonant "Ra" 
 _consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
@@ -627,7 +627,8 @@ _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
 _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
-</code>
+</pre>
+
 <!---	_anudatta_	= "Anudatta" --->
 
 > Note: the _ra_ identification class is mutually exclusive with 
