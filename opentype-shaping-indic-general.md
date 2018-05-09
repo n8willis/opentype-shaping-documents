@@ -535,203 +535,6 @@ Below-base matras may be positioned:
     position `POS_AFTER_POST`.
 
 
-### 1: Identifying syllables and other sequences ###
-
-A syllable in an Indic script consists of a valid orthographic sequence
-that may be followed by a "tail" of modifier signs. 
-
-The Nukta, Halant/Virama, and Anudatta marks can affect syllable
-identification. All other signs are regarded as syllable modifier
-signs, including those from the Vedic Extensions block.
-
-Generally speaking, each syllable contains exactly one vowel
-sound. Valid syllables may begin with either a consonant or an
-independent vowel.
-
-> Note: A consonant that is not accompanied by a dependent vowel (matra) sign
-> carries the script's inherent vowel sound. This vowel sound is changed
-> by a dependent vowel (matra) sign following the consonant.
-
-Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
-other, pre-base consonants will be followed by the "Halant" mark, which
-indicates that they carry no vowel. They affect pronunciation by
-combining with the base consonant (e.g., "_str_", "_pl_") but they
-do not add a vowel sound.
-
-Some Indic scripts also include special consonants that can occur after the
-base consonant. These post-base consonants and final consonants will
-also be separated from the base consonant by a "Halant" mark; the
-algorithm for correctly identifying the base consonant includes a test
-to recognize these sequences and not mis-identify the base consonant.
-
-In Indic scripts, the consonant "Ra" receives special treatment; in
-many circumstances it is replaced by one of two combining mark-like forms. 
-
-  - A "Ra,Halant" sequence at the beginning of a syllable may be replaced
-    with an above-base mark called "Reph" (unless the "Ra" is the only
-    consonant in the syllable). 
-
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may
-    take on a below-base form (called "Rakaar" in Devanagari and most
-    other scripts, and called "Raphala" in Bengali).
-
-In addition, some scripts reorder post-base "Ra"s to a pre-base
-position. These re-ordering "Ra"s may take on a different form, but
-they are letter-like rather than mark-like forms.
-
-"Reph", "Rakaar", "Raphala", and reordering "Ra" characters must be
-reordered after the syllable-identification stage is complete. 
-
-
-In addition to valid syllables, stand-alone sequences may occur, such
-as when an isolated codepoint is shown in example text.
-
-> Note: Foreign loanwords, when written in Indic scripts, may
-> not adhere to the syllable-formation rules described above. In
-> particular, it is not uncommon to encounter foreign loanwords that
-> contain a word-final suffix of consonants.
->
-> Nevertheless, such word-final suffixes will be correctly matched by
-> the regular expressions listed below. These loanwords are pronounced
-> different, which raises issues for potential readers, but the
-> character sequences do not affect the shaping process.
-
-
-Syllables should be identified by examining the run and matching
-glyphs, based on their shaping class, using regular expressions. 
-
-The following general-purpose regular expressions can be
-used to match Indic syllables. 
-
-The regular expressions utilize the shaping classes from the tables
-above. For the purpose of syllable identification, more general
-classes can be used, as defined in the following table. This
-simplifies the resulting expressions. 
-
-```
-&lt;i&gt;ra&lt;/i&gt;		= The consonant "Ra" 
-&lt;i&gt;consonant&lt;/i&gt;	= ( `CONSONANT` | `CONSONANT_DEAD` ) - &lt;i&gt;ra&lt;i&gt;
-&lt;i&gt;vowel&lt;/i&gt;		= `VOWEL_INDEPENDENT`
-&lt;i&gt;nukta&lt;/i&gt;	  	= `NUKTA`
-&lt;i&gt;halant&lt;/i&gt;	= `VIRAMA`
-&lt;i&gt;zwj&lt;/i&gt;		= `JOINER`
-&lt;i&gt;zwnj&lt;/i&gt;		= `NON_JOINER`
-&lt;i&gt;matra&lt;/i&gt;		= `VOWEL_DEPENDENT` | `PURE_KILLER`
-&lt;i&gt;syllablemodifier&lt;/i&gt;	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
-&lt;i&gt;vedicsign&lt;/i&gt;	= `CANTILLATION`
-&lt;i&gt;placeholder&lt;/i&gt;	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
-&lt;i&gt;dottedcircle&lt;/i&gt;	= `DOTTED_CIRCLE`
-&lt;i&gt;repha&lt;/i&gt;		= `CONSONANT_PRE_REPHA`
-&lt;i&gt;consonantmedial&lt;/i&gt;	= `CONSONANT_MEDIAL`
-&lt;i&gt;symbol&lt;/i&gt;	= `SYMBOL`
-&lt;i&gt;consonantwithstacker&lt;/i&gt;	= `CONSONANT_WITH_STACKER`
-&lt;i&gt;other&lt;/i&gt;		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
-```
-
-<!---	_anudatta_	= "Anudatta" --->
-
-> Note: the _ra_ identification class is mutually exclusive with 
-> the _consonant_ class. The union of the _consonant_ and _ra_ classes
-> is used in the regular expression elements below in order to
-> correctly identify "Ra" characters that do not trigger "Reph" or
-> "Rakaar" shaping behavior.
->
-> Note, also, that the cantillation mark "combining Ra" in the
-> Devanagari Extended block does _not_ belong to the _ra_
-> identification class, and that the other "combining consonant"
-> cantillation marks in the Devanagari Extended block do not belong to
-> the _consonant_ identification class.
-
-> Note: The _other_ identification class includes codepoints that
-> do not interact with adjacent characters for shaping purposes. Even
-> though some of these codepoints (such as `MODIFYING_LETTER`) can
-> occur within words, they evoke no behavior from the shaping
-> engine and do not factor into the regular expressions that
-> follow. Therefore, the shaping engine may choose to ignore them
-> during syllable identification; they are listed here for completeness.
-
-These idenfication classes form the bases of the following regular
-expression elements:
-
-```
-C	= (_consonant_ | _ra_)
-Z	= _zwj_|_zwnj_
-REPH	= (_ra_ _halant_ | _repha_)
-CN		= C._zwj_?._nukta_?
-FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
-S	= _symbol_._nukta_?
-MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
-SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
-HALANT_GROUP	= (Z?._halant_.(_zwj_._nukta_?)?)
-FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
-MEDIAL_GROUP	= _consonantmedial_?
-HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
-```
-
-Using the above elements, the following regular expressions define the
-possible syllable types:
-
-A consonant-based syllable will match the expression:
-```
-(_repha_|_consonantwithstacker_)? (CN.HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
-```
-
-A vowel-based syllable will match the expression:
-```
-REPH? _vowel_._nukta_? (_zwj_ | (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
-```
-
-A standalone syllable will match the expression:
-```
-((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_)._nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
-```
-
-A symbol-based syllable will match the expression:
-```
-S SYLLABLE_TAIL
-```
-
-A broken syllable will match the expression:
-```
-REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
-```
-
-
-The expressions above use state-machine syntax from the Ragel
-state-machine compiler. The operators represent:
-
-```
-a* = zero or more copies of a
-b+ = one or more copies of b
-c? = optional instance of c
-d{n} = exactly n copies of d
-d{,n} = zero to n copies of d
-d{n,} = n or more copies of d
-d{n,m} = n to m copies of d
-!e = not e
-^f = character-level not f
-g.h = concatenation of g and h
-i|j = i or j
-( ) = grouping of expression elements
-```
-
-
-
-
-
-The shaping engine may make a best-effort attempt to shape broken
-sequences, but making guarantees about the correctness or appearance
-of the final result is out of scope for this document.
-
-> Note: "standalone" syllables can be used to display examples of
-> letters, marks, and other characters without requiring full
-> syllables or words.
-
-After the syllables have been identified, each of the subsequent 
-shaping stages occurs on a per-syllable basis.
-
-
 ### 2: Initial reordering ###
 
 The initial reordering stage is used to relocate glyphs from the
@@ -881,6 +684,203 @@ tagged with the same positioning tag as the closest subsequent consonant.
 > these characters are not categorized as marks in Unicode.
 
 With these steps completed, the syllable can be sorted into the final sort order.
+
+### 1: Identifying syllables and other sequences ###
+
+A syllable in an Indic script consists of a valid orthographic sequence
+that may be followed by a "tail" of modifier signs. 
+
+The Nukta, Halant/Virama, and Anudatta marks can affect syllable
+identification. All other signs are regarded as syllable modifier
+signs, including those from the Vedic Extensions block.
+
+Generally speaking, each syllable contains exactly one vowel
+sound. Valid syllables may begin with either a consonant or an
+independent vowel.
+
+> Note: A consonant that is not accompanied by a dependent vowel (matra) sign
+> carries the script's inherent vowel sound. This vowel sound is changed
+> by a dependent vowel (matra) sign following the consonant.
+
+Valid consonant-based syllables may include one or more additional 
+consonants that precede the base consonant. Each of these
+other, pre-base consonants will be followed by the "Halant" mark, which
+indicates that they carry no vowel. They affect pronunciation by
+combining with the base consonant (e.g., "_str_", "_pl_") but they
+do not add a vowel sound.
+
+Some Indic scripts also include special consonants that can occur after the
+base consonant. These post-base consonants and final consonants will
+also be separated from the base consonant by a "Halant" mark; the
+algorithm for correctly identifying the base consonant includes a test
+to recognize these sequences and not mis-identify the base consonant.
+
+In Indic scripts, the consonant "Ra" receives special treatment; in
+many circumstances it is replaced by one of two combining mark-like forms. 
+
+  - A "Ra,Halant" sequence at the beginning of a syllable may be replaced
+    with an above-base mark called "Reph" (unless the "Ra" is the only
+    consonant in the syllable). 
+
+  - "Ra,Halant" sequences that occur elsewhere in the syllable may
+    take on a below-base form (called "Rakaar" in Devanagari and most
+    other scripts, and called "Raphala" in Bengali).
+
+In addition, some scripts reorder post-base "Ra"s to a pre-base
+position. These re-ordering "Ra"s may take on a different form, but
+they are letter-like rather than mark-like forms.
+
+"Reph", "Rakaar", "Raphala", and reordering "Ra" characters must be
+reordered after the syllable-identification stage is complete. 
+
+
+In addition to valid syllables, stand-alone sequences may occur, such
+as when an isolated codepoint is shown in example text.
+
+> Note: Foreign loanwords, when written in Indic scripts, may
+> not adhere to the syllable-formation rules described above. In
+> particular, it is not uncommon to encounter foreign loanwords that
+> contain a word-final suffix of consonants.
+>
+> Nevertheless, such word-final suffixes will be correctly matched by
+> the regular expressions listed below. These loanwords are pronounced
+> different, which raises issues for potential readers, but the
+> character sequences do not affect the shaping process.
+
+
+Syllables should be identified by examining the run and matching
+glyphs, based on their shaping class, using regular expressions. 
+
+The following general-purpose regular expressions can be
+used to match Indic syllables. 
+
+The regular expressions utilize the shaping classes from the tables
+above. For the purpose of syllable identification, more general
+classes can be used, as defined in the following table. This
+simplifies the resulting expressions. 
+
+<tt style="padding:16px;background-color:#f6f8fa;">
+<i>ra</i>		= The consonant "Ra" 
+<br><i>consonant</i>	= ( `CONSONANT` | `CONSONANT_DEAD` ) - <i>ra<i>
+<br><i>vowel</i>		= `VOWEL_INDEPENDENT`
+<br><i>nukta</i>	  	= `NUKTA`
+<br><i>halant</i>	= `VIRAMA`
+<br><i>zwj</i>		= `JOINER`
+<br><i>zwnj</i>		= `NON_JOINER`
+<br><i>matra</i>		= `VOWEL_DEPENDENT` | `PURE_KILLER`
+<br><i>syllablemodifier</i>	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
+<br><i>vedicsign</i>	= `CANTILLATION`
+<br><i>placeholder</i>	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+<br><i>dottedcircle</i>	= `DOTTED_CIRCLE`
+<br><i>repha</i>		= `CONSONANT_PRE_REPHA`
+<br><i>consonantmedial</i>	= `CONSONANT_MEDIAL`
+<br><i>symbol</i>	= `SYMBOL`
+<br><i>consonantwithstacker</i>	= `CONSONANT_WITH_STACKER`
+<br><i>other</i>		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+</tt>
+
+<!---	_anudatta_	= "Anudatta" --->
+
+> Note: the _ra_ identification class is mutually exclusive with 
+> the _consonant_ class. The union of the _consonant_ and _ra_ classes
+> is used in the regular expression elements below in order to
+> correctly identify "Ra" characters that do not trigger "Reph" or
+> "Rakaar" shaping behavior.
+>
+> Note, also, that the cantillation mark "combining Ra" in the
+> Devanagari Extended block does _not_ belong to the _ra_
+> identification class, and that the other "combining consonant"
+> cantillation marks in the Devanagari Extended block do not belong to
+> the _consonant_ identification class.
+
+> Note: The _other_ identification class includes codepoints that
+> do not interact with adjacent characters for shaping purposes. Even
+> though some of these codepoints (such as `MODIFYING_LETTER`) can
+> occur within words, they evoke no behavior from the shaping
+> engine and do not factor into the regular expressions that
+> follow. Therefore, the shaping engine may choose to ignore them
+> during syllable identification; they are listed here for completeness.
+
+These idenfication classes form the bases of the following regular
+expression elements:
+
+```
+C	= (_consonant_ | _ra_)
+Z	= _zwj_|_zwnj_
+REPH	= (_ra_ _halant_ | _repha_)
+CN		= C._zwj_?._nukta_?
+FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
+S	= _symbol_._nukta_?
+MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
+SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
+HALANT_GROUP	= (Z?._halant_.(_zwj_._nukta_?)?)
+FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
+MEDIAL_GROUP	= _consonantmedial_?
+HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
+```
+
+Using the above elements, the following regular expressions define the
+possible syllable types:
+
+A consonant-based syllable will match the expression:
+```
+(_repha_|_consonantwithstacker_)? (CN.HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+```
+
+A vowel-based syllable will match the expression:
+```
+REPH? _vowel_._nukta_? (_zwj_ | (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
+```
+
+A standalone syllable will match the expression:
+```
+((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_)._nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+```
+
+A symbol-based syllable will match the expression:
+```
+S SYLLABLE_TAIL
+```
+
+A broken syllable will match the expression:
+```
+REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+```
+
+
+The expressions above use state-machine syntax from the Ragel
+state-machine compiler. The operators represent:
+
+```
+a* = zero or more copies of a
+b+ = one or more copies of b
+c? = optional instance of c
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
+!e = not e
+^f = character-level not f
+g.h = concatenation of g and h
+i|j = i or j
+( ) = grouping of expression elements
+```
+
+
+
+
+
+The shaping engine may make a best-effort attempt to shape broken
+sequences, but making guarantees about the correctness or appearance
+of the final result is out of scope for this document.
+
+> Note: "standalone" syllables can be used to display examples of
+> letters, marks, and other characters without requiring full
+> syllables or words.
+
+After the syllables have been identified, each of the subsequent 
+shaping stages occurs on a per-syllable basis.
+
 
 ### 3: Applying the basic substitution features from GSUB ###
 
