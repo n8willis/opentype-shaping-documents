@@ -609,7 +609,7 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-```
+<code>
 _ra_		= The consonant "Ra" 
 _consonant_	= ( `CONSONANT` | `CONSONANT_DEAD` ) - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
@@ -627,7 +627,7 @@ _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
 _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
-```
+</code>
 <!---	_anudatta_	= "Anudatta" --->
 
 > Note: the _ra_ identification class is mutually exclusive with 
@@ -653,18 +653,20 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 These idenfication classes form the bases of the following regular
 expression elements:
 
-    C	= (_consonant_ | _ra_)
-    Z	= _zwj_|_zwnj_
-	REPH	= (_ra_ _halant_ | _repha_)
-	CN		= C._zwj_?._nukta_?
-	FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
-	S	= _symbol_._nukta_?
-	MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
-	SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
-	HALANT_GROUP	= (Z?.H.(_zwj_._nukta_?)?)
-	FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
-	MEDIAL_GROUP	= _consonantmedial_?
-	HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
+```
+C	= (_consonant_ | _ra_)
+Z	= _zwj_|_zwnj_
+REPH	= (_ra_ _halant_ | _repha_)
+CN		= C._zwj_?._nukta_?
+FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
+S	= _symbol_._nukta_?
+MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
+SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
+HALANT_GROUP	= (Z?._halant_.(_zwj_._nukta_?)?)
+FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
+MEDIAL_GROUP	= _consonantmedial_?
+HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
+```
 
 Using the above elements, the following regular expressions define the
 possible syllable types:
