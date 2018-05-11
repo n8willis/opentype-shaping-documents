@@ -499,41 +499,42 @@ above. For the purpose of syllable identification, more general
 classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
-    _consonant_ = `CONSONANT` | `CONSONANT_PLACEHOLDER`
-	_vowel_		= `VOWEL_INDEPENDENT`
-    _ra_		= "Ra" | "Nga" | "Mon Nga"
-    _halant_	= `INVISIBLE_STACKER`
-	_asat_		= "Asat"
-	_a_			= "Anusvara"
-	_db_		= "Dot Below"
-	_zwj_		= `JOINER`
-	_zwnj_		= `NON_JOINER`
-	_mh_		= "Medial Ha" | "Mon Medial La"
-	_mr_		= "Medial Ra"
-	_mw_		= "Medial Wa" | "Shan Medial Wa"
-	_my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
-	_d_			= `NUMBER`
-	_pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
-	              "Western Pwo Karen Tone 1" | "Western Pwo Karen Tone
-				  2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
-				  Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
-				  Tone" 
-	_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
-	              Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
-				  "Shan Council Tone 3" | "Shan Council Emphatic Tone"
-				  | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
-				  Tone 3" | "Aiton A" 
-    _punc_			= "Little Section" | "Section"
-	_matrapre_	= `MATRA`,`LEFT_POSITION`
-	_matrapost_	= `MATRA`,`RIGHT_POSITION`
-	_matraabove_	= `MATRA`,`TOP_POSITION`
-	_matrabelow_	= `MATRA`,`BOTTOM_POSITION`
-	_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
-				  2022 | 25CC | 25FB | 25FC 25FD | 25FE
-	_cs_		= `CONSONANT_WITH_STACKER`
-	_v_			= `VISARGA`
-	_vs_		= "Variation Selector"
-
+```markdown
+_ra_		= "Ra" | "Nga" | "Mon Nga"
+_consonant_ = `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
+_vowel_		= `VOWEL_INDEPENDENT`
+_halant_	= `INVISIBLE_STACKER`
+_asat_		= "Asat"
+_a_			= "Anusvara"
+_db_		= "Dot Below"
+_zwj_		= `JOINER`
+_zwnj_		= `NON_JOINER`
+_mh_		= "Medial Ha" | "Mon Medial La"
+_mr_		= "Medial Ra"
+_mw_		= "Medial Wa" | "Shan Medial Wa"
+_my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
+_d_			= `NUMBER`
+_pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
+	          "Western Pwo Karen Tone 1" | "Western Pwo Karen Tone
+			  2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
+			  Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
+			  Tone" 
+ _sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
+              Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
+			  "Shan Council Tone 3" | "Shan Council Emphatic Tone"
+			  | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
+			  Tone 3" | "Aiton A" 
+_punc_			= "Little Section" | "Section"
+_matrapre_	= `MATRA`,`LEFT_POSITION`
+_matrapost_	= `MATRA`,`RIGHT_POSITION`
+_matraabove_	= `MATRA`,`TOP_POSITION`
+_matrabelow_	= `MATRA`,`BOTTOM_POSITION`
+_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
+              2022 | 25CC | 25FB | 25FC 25FD | 25FE
+_cs_		= `CONSONANT_WITH_STACKER`
+_v_			= `VISARGA`
+_vs_		= "Variation Selector"
+```
 
 > Note: the _ra_ identification class is mutually exclusive with 
 > the _consonant_ class. The union of the _consonant_ and _ra_ classes
@@ -558,29 +559,30 @@ simplifies the resulting expressions.
 These identification classes form the bases of the following regular
 expression elements:
 
-    C	= (_consonant_ | _ra_)
-	Z	= (_zwj_ | _zwnj_)
-	K	= _ra_ _asat_ _halant_
-	Med	= _my_? _mr_? _mw_? _mh_? _asat_?
-	Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
-	Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
-    Pwo	= _pt_ _a_* _db_? _asat_?
-    	
-    Tcomplex	= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
-	Tail		= (_halant_ | Tcomplex)
-	
+```markdown
+C	= _consonant_ | _ra_
+Z	= _zwj_ | _zwnj_
+K	= _ra_ _asat_ _halant_
+Med	= _my_? _mr_? _mw_? _mh_? _asat_?
+Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
+Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
+Pwo	= _pt_ _a_* _db_? _asat_?
+Tcomplex	= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
+Tail		= _halant_ | Tcomplex
+```
+
 Using the above elements, the following regular expressions define the
 possible syllable types:
 
 A consonant-based syllable will match the expression:
-```
-(K | _cs_)? (C | _vowel_ | _d_ | _gb_)._vs_? (_halant_ (C | _vowel_)._vs_?)* Tail
+```markdown
+(K | _cs_)? (C | _vowel_ | _d_ | _gb_) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
 ```
 
 The expressions above use state-machine syntax from the Ragel
 state-machine compiler. The operators represent:
 
-```
+```markdown
 a* = zero or more copies of a
 b+ = one or more copies of b
 c? = optional instance of c
