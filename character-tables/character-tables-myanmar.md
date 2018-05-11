@@ -19,8 +19,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Myanmar block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -203,8 +207,8 @@ specific, script-aware behavior.
 |`U+109B`   | Mark [Mc]        | TONE_MARKER       | RIGHT_POSITION             | &#x109B; Sign Khamti Tone 3  |
 |`U+109C`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x109C; Sign Aiton A        |
 |`U+109D`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x109D; Sign Aiton Ai       |
-|`U+109E`   | Symbol           | _null_            | _null_                     | &#x109E; Shan One            |
-|`U+109F`   | Symbol           | _null_            | _null_                     | &#x109F; Shan Exclamation    |
+|`U+109E`   | Symbol           | SYMBOL            | _null_                     | &#x109E; Shan One            |
+|`U+109F`   | Symbol           | SYMBOL            | _null_                     | &#x109F; Shan Exclamation    |
 
 
 
@@ -238,9 +242,9 @@ specific, script-aware behavior.
 |`U+AA74`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#xAA74; Khamti Oay          |
 |`U+AA75`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#xAA75; Khamti Qn           |
 |`U+AA76`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#xAA76; Khamti Hm           |
-|`U+AA77`   | Symbol           | _null_            | _null_                     | &#xAA77; Khamti Aiton Exclamation|
-|`U+AA78`   | Symbol           | _null_            | _null_                     | &#xAA78; Khamti Aiton One    |
-|`U+AA79`   | Symbol           | _null_            | _null_                     | &#xAA79; Khamti Aiton Two    |
+|`U+AA77`   | Symbol           | SYMBOL            | _null_                     | &#xAA77; Khamti Aiton Exclamation|
+|`U+AA78`   | Symbol           | SYMBOL            | _null_                     | &#xAA78; Khamti Aiton One    |
+|`U+AA79`   | Symbol           | SYMBOL            | _null_                     | &#xAA79; Khamti Aiton Two    |
 |`U+AA7A`   | Letter           | CONSONANT         | _null_                     | &#xAA7A; Khamti Aiton Ra     |
 |`U+AA7B`   | Mark [Mc]        | TONE_MARKER       | RIGHT_POSITION             | &#xAA7B; Sign Pao Karen Tone |
 |`U+AA7C`   | Mark [Mn]        | TONE_MARKER       | TOP_POSITION               | &#xAA7C; Sign Tai Laing Tone 2|

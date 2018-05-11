@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Gujarati block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -155,8 +159,8 @@ specific, script-aware behavior.
 |`U+0AEE`   | Number           | NUMBER            | _null_                     | &#x0AEE; Digit Eight         |
 |`U+0AEF`   | Number           | NUMBER            | _null_                     | &#x0AEF; Digit Nine          |
 | | | | |
-|`U+0AF0`   | Symbol           | _null_            | _null_                     | &#x0AF0; Abbreviation        |
-|`U+0AF1`   | Symbol           | _null_            | _null_                     | &#x0AF1; Rupee Sign          |
+|`U+0AF0`   | Symbol           | SYMBOL            | _null_                     | &#x0AF0; Abbreviation        |
+|`U+0AF1`   | Symbol           | SYMBOL            | _null_                     | &#x0AF1; Rupee Sign          |
 |`U+0AF2`   | _unassigned_     |                   |                            |                              |
 |`U+0AF3`   | _unassigned_     |                   |                            |                              |
 |`U+0AF4`   | _unassigned_     |                   |                            |                              |

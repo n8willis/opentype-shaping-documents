@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Bengali block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -157,16 +161,16 @@ specific, script-aware behavior.
 | | | | |
 |`U+09F0`   | Letter           | CONSONANT         | _null_                     | &#x09F0; Assamese Ra         |
 |`U+09F1`   | Letter           | CONSONANT         | _null_                     | &#x09F1; Assamese Wa         |
-|`U+09F2`   | Symbol           | _null_            | _null_                     | &#x09F2; Rupee Mark          |
-|`U+09F3`   | Symbol           | _null_            | _null_                     | &#x09F3; Rupee Sign          |
+|`U+09F2`   | Symbol           | SYMBOL            | _null_                     | &#x09F2; Rupee Mark          |
+|`U+09F3`   | Symbol           | SYMBOL            | _null_                     | &#x09F3; Rupee Sign          |
 |`U+09F4`   | Number           | NUMBER            | _null_                     | &#x09F4; Numerator One       |
 |`U+09F5`   | Number           | NUMBER            | _null_                     | &#x09F5; Numerator Two       |
 |`U+09F6`   | Number           | NUMBER            | _null_                     | &#x09F6; Numerator Three     |
 |`U+09F7`   | Number           | NUMBER            | _null_                     | &#x09F7; Numerator Four      |
 |`U+09F8`   | Number           | NUMBER            | _null_                     | &#x09F8; Numerator One Less Than Denominator |
 |`U+09F9`   | Number           | NUMBER            | _null_                     | &#x09F9; Denominator Sixteen |
-|`U+09FA`   | Symbol           | _null_            | _null_                     | &#x09FA; Isshar              |
-|`U+09FB`   | Symbol           | _null_            | _null_                     | &#x09FB; Ganda Mark          |
+|`U+09FA`   | Symbol           | SYMBOL            | _null_                     | &#x09FA; Isshar              |
+|`U+09FB`   | Symbol           | SYMBOL            | _null_                     | &#x09FB; Ganda Mark          |
 |`U+09FC`   | Letter           | _null_            | _null_                     | &#x09FC; Vedic Anusvara      |
 |`U+09FD`   | Punctuation      | _null_            | _null_                     | &#x09FD; Abbreviation Sign   |
 |`U+09FE`   | _unassigned_     |                   |                            |                              |

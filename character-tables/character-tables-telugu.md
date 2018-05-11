@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Telugu block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -169,7 +173,7 @@ specific, script-aware behavior.
 |`U+0C7C`   | Number           | NUMBER            | _null_                     | &#x0C7C; Fraction One Even P |
 |`U+0C7D`   | Number           | NUMBER            | _null_                     | &#x0C7D; Fraction Two Even P |
 |`U+0C7E`   | Number           | NUMBER            | _null_                     | &#x0C7E; Fraction Three Even P|
-|`U+0C7F`   | Symbol           | _null_            | _null_                     | &#x0C7F; Tuumu               |
+|`U+0C7F`   | Symbol           | SYMBOL            | _null_                     | &#x0C7F; Tuumu               |
 
 
 

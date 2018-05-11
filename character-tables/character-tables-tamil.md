@@ -19,8 +19,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Tamil block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -158,14 +162,14 @@ specific, script-aware behavior.
 |`U+0BF0`   | Number           | NUMBER            | _null_                     | &#x0BF0; Number Ten          |
 |`U+0BF1`   | Number           | NUMBER            | _null_                     | &#x0BF1; Number One Hundred  |
 |`U+0BF2`   | Number           | NUMBER            | _null_                     | &#x0BF2; Number One Thousand |
-|`U+0BF3`   | Symbol           | _null_            | _null_                     | &#x0BF3; Day Sign            |
-|`U+0BF4`   | Symbol           | _null_            | _null_                     | &#x0BF4; Month Sign          |
-|`U+0BF5`   | Symbol           | _null_            | _null_                     | &#x0BF5; Year Sign           |
-|`U+0BF6`   | Symbol           | _null_            | _null_                     | &#x0BF6; Debit Sign          |
-|`U+0BF7`   | Symbol           | _null_            | _null_                     | &#x0BF7; Credit Sign         |
-|`U+0BF8`   | Symbol           | _null_            | _null_                     | &#x0BF8; As Above Sign       |
-|`U+0BF9`   | Symbol           | _null_            | _null_                     | &#x0BF9; Tamil Rupee Sign    |
-|`U+0BFA`   | Symbol           | _null_            | _null_                     | &#x0BFA; Number Sign         |
+|`U+0BF3`   | Symbol           | SYMBOL            | _null_                     | &#x0BF3; Day Sign            |
+|`U+0BF4`   | Symbol           | SYMBOL            | _null_                     | &#x0BF4; Month Sign          |
+|`U+0BF5`   | Symbol           | SYMBOL            | _null_                     | &#x0BF5; Year Sign           |
+|`U+0BF6`   | Symbol           | SYMBOL            | _null_                     | &#x0BF6; Debit Sign          |
+|`U+0BF7`   | Symbol           | SYMBOL            | _null_                     | &#x0BF7; Credit Sign         |
+|`U+0BF8`   | Symbol           | SYMBOL            | _null_                     | &#x0BF8; As Above Sign       |
+|`U+0BF9`   | Symbol           | SYMBOL            | _null_                     | &#x0BF9; Tamil Rupee Sign    |
+|`U+0BFA`   | Symbol           | SYMBOL            | _null_                     | &#x0BFA; Number Sign         |
 |`U+0BFB`   | _unassigned_     |                   |                            |                              |
 |`U+0BFC`   | _unassigned_     |                   |                            |                              |
 |`U+0BFD`   | _unassigned_     |                   |                            |                              |

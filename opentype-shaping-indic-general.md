@@ -625,11 +625,11 @@ _dottedcircle_	= `DOTTED_CIRCLE`
 _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL`
+_avagraha_	= `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
 _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 ```
 
-<!---	_anudatta_	= "Anudatta" --->
 
 > Note: the _ra_ identification class is mutually exclusive with 
 > the _consonant_ class. The union of the _consonant_ and _ra_ classes
@@ -658,15 +658,15 @@ expression elements:
 C	= (_consonant_ | _ra_)
 Z	= _zwj_|_zwnj_
 REPH	= (_ra_ _halant_ | _repha_)
-CN		= C._zwj_?._nukta_?
+CN		= C _zwj_? _nukta_?
 FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
-S	= _symbol_._nukta_?
-MATRA_GROUP	= Z{0,3}._matra_._nukta_?.(_halant_ | FORCED_RAKAR)?
-SYLLABLE_TAIL	= (Z?._syllablemodifier_._syllablemodifier_?._zwnj_?)? _vedicsign_{0,3}?
-HALANT_GROUP	= (Z?._halant_.(_zwj_._nukta_?)?)
-FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_._zwnj_
+S	= _symbol_ _nukta_?
+MATRA_GROUP	= Z{0,3} _matra_ _nukta_? (_halant_ | FORCED_RAKAR)?
+SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _avagraha_{0,3} _vedicsign_{0,2}
+HALANT_GROUP	= (Z? _halant_ (_zwj_ _nukta_?)?)
+FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_ _zwnj_
 MEDIAL_GROUP	= _consonantmedial_?
-HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_._zwj_)? MATRA_GROUP{0,4})
+HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_ _zwj_)? MATRA_GROUP{0,4})
 ```
 
 Using the above elements, the following regular expressions define the
@@ -674,17 +674,17 @@ possible syllable types:
 
 A consonant-based syllable will match the expression:
 ```markdown
-(_repha_|_consonantwithstacker_)? (CN.HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+(_repha_|_consonantwithstacker_)? (CN HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 A vowel-based syllable will match the expression:
 ```markdown
-REPH? _vowel_._nukta_? (_zwj_ | (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
+REPH? _vowel_ _nukta_? (_zwj_ | (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
 ```
 
 A standalone syllable will match the expression:
 ```markdown
-((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_)._nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_) _nukta_? (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 A symbol-based syllable will match the expression:
@@ -694,7 +694,7 @@ S SYLLABLE_TAIL
 
 A broken syllable will match the expression:
 ```markdown
-REPH? _nukta_? (HALANT_GROUP.CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+REPH? _nukta_? (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
 
 

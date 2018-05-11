@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Malayalam block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -118,7 +122,7 @@ specific, script-aware behavior.
 |`U+0D4C`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x0D4C; Sign Au             |
 |`U+0D4D`   | Mark [Mn]        | VIRAMA            | TOP_POSITION               | &#x0D4D; Virama              |
 |`U+0D4E`   | Letter           | CONSONANT_PRE_REPHA| _null_                    | &#x0D4E; Dot Reph            |
-|`U+0D4F`   | Symbol           | _null_            | _null_                     | &#x0D4F; Para                |
+|`U+0D4F`   | Symbol           | SYMBOL            | _null_                     | &#x0D4F; Para                |
 | | | | |																		
 |`U+0D50`   | _unassigned_     |                   |                            |                              |
 |`U+0D51`   | _unassigned_     |                   |                            |                              |
@@ -163,7 +167,7 @@ specific, script-aware behavior.
 |`U+0D76`   | Number           | NUMBER            |                            | &#x0D76; Fraction 1/16       |
 |`U+0D77`   | Number           | NUMBER            |                            | &#x0D77; Fraction 1/8        |
 |`U+0D78`   | Number           | NUMBER            | _null_                     | &#x0D78; Fraction 3/16       |
-|`U+0D79`   | Symbol           | _null_            | _null_                     | &#x0D79; Date Mark           |
+|`U+0D79`   | Symbol           | SYMBOL            | _null_                     | &#x0D79; Date Mark           |
 |`U+0D7A`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0D7A; Chillu Nn           |
 |`U+0D7B`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0D7B; Chillu N            |
 |`U+0D7C`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0D7C; Chillu Rr           |

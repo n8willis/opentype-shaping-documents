@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Khmer block, such as
-currency marks and other symbols. 
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process. 
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -132,7 +136,7 @@ specific, script-aware behavior.
 |`U+17D8`   | Punctuation      | _null_            | _null_                     | &#x17D8; Beyyal              |
 |`U+17D9`   | Punctuation      | _null_            | _null_                     | &#x17D9; Phnaek Muan         |
 |`U+17DA`   | Punctuation      | _null_            | _null_                     | &#x17DA; Koomuut             |
-|`U+17DB`   | Symbol           | _null_            | _null_                     | &#x17DB; Riel                |
+|`U+17DB`   | Symbol           | SYMBOL            | _null_                     | &#x17DB; Riel                |
 |`U+17DC`   | Letter           | ANUSVARA          | _null_                     | &#x17DC; Avakrahasanya       |
 |`U+17DD`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x17DD; Atthacan            |
 |`U+17DE`   | _unassigned_     |                   |                            |                              |

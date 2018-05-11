@@ -18,8 +18,12 @@ designated as _unassigned_ in the _Unicode category_ column.
 
 Assigned codepoints with a _null_ in the _Shaping class_
 column evoke no special behavior from the shaping engine. Note that
-this does include some valid codepoints in the Tibetan block, such as
-currency marks and other symbols.
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.
+
+> Note: the `NUMBER` and `SYMBOL` _Shaping classes_ are important
+> during syllable identification, but generally evoke no further
+> special behavior during the rest of the shaping process.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
@@ -36,65 +40,65 @@ specific, script-aware behavior.
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                                            |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------------------------|
 | `U+0F00`  | Letter           |                   |                            | &#x0F00; Syllable Om                             |
-| `U+0F01`  | Symbol           |                   |                            | &#x0F01; Gter Yig Mgo Truncated A                |
-| `U+0F02`  | Symbol           |                   |                            | &#x0F02; Gter Yig Mgo -Um Rnam Bcad Ma           |
-| `U+0F03`  | Symbol           |                   |                            | &#x0F03; Gter Yig Mgo -Um Gter Tsheg Ma          |
-| `U+0F04`  | Punctuation      |                   |                            | &#x0F04; Initial Yig Mgo Mdun Ma                 |
-| `U+0F05`  | Punctuation      |                   |                            | &#x0F05; Closing Yig Mgo Sgab Ma                 |
-| `U+0F06`  | Punctuation      |                   |                            | &#x0F06; Caret Yig Mgo Phur Shad Ma              |
-| `U+0F07`  | Punctuation      |                   |                            | &#x0F07; Yig Mgo Tsheg Shad Ma                   |
-| `U+0F08`  | Punctuation      |                   |                            | &#x0F08; Sbrul Shad                              |
-| `U+0F09`  | Punctuation      |                   |                            | &#x0F09; Bskur Yig Mgo                           |
-| `U+0F0A`  | Punctuation      |                   |                            | &#x0F0A; Bka- Shog Yig Mgo                       |
-| `U+0F0B`  | Punctuation      |                   |                            | &#x0F0B; Intersyllabic Tsheg                     |
-| `U+0F0C`  | Punctuation      |                   |                            | &#x0F0C; Delimiter Tsheg Bstar                   |
-| `U+0F0D`  | Punctuation      |                   |                            | &#x0F0D; Shad                                    |
-| `U+0F0E`  | Punctuation      |                   |                            | &#x0F0E; Nyis Shad                               |
-| `U+0F0F`  | Punctuation      |                   |                            | &#x0F0F; Tsheg Shad                              |
+| `U+0F01`  | Symbol           | SYMBOL            |                            | &#x0F01; Gter Yig Mgo Truncated A                |
+| `U+0F02`  | Symbol           | SYMBOL            |                            | &#x0F02; Gter Yig Mgo -Um Rnam Bcad Ma           |
+| `U+0F03`  | Symbol           | SYMBOL            |                            | &#x0F03; Gter Yig Mgo -Um Gter Tsheg Ma          |
+| `U+0F04`  | Punctuation      | _null_            |                            | &#x0F04; Initial Yig Mgo Mdun Ma                 |
+| `U+0F05`  | Punctuation      | _null_            |                            | &#x0F05; Closing Yig Mgo Sgab Ma                 |
+| `U+0F06`  | Punctuation      | _null_            |                            | &#x0F06; Caret Yig Mgo Phur Shad Ma              |
+| `U+0F07`  | Punctuation      | _null_            |                            | &#x0F07; Yig Mgo Tsheg Shad Ma                   |
+| `U+0F08`  | Punctuation      | _null_            |                            | &#x0F08; Sbrul Shad                              |
+| `U+0F09`  | Punctuation      | _null_            |                            | &#x0F09; Bskur Yig Mgo                           |
+| `U+0F0A`  | Punctuation      | _null_            |                            | &#x0F0A; Bka- Shog Yig Mgo                       |
+| `U+0F0B`  | Punctuation      | _null_            |                            | &#x0F0B; Intersyllabic Tsheg                     |
+| `U+0F0C`  | Punctuation      | _null_            |                            | &#x0F0C; Delimiter Tsheg Bstar                   |
+| `U+0F0D`  | Punctuation      | _null_            |                            | &#x0F0D; Shad                                    |
+| `U+0F0E`  | Punctuation      | _null_            |                            | &#x0F0E; Nyis Shad                               |
+| `U+0F0F`  | Punctuation      | _null_            |                            | &#x0F0F; Tsheg Shad                              |
 | | | | | |
-| `U+0F10`  | Punctuation      |                   |                            | &#x0F10; Nyis Tsheg Shad                         |
-| `U+0F11`  | Punctuation      |                   |                            | &#x0F11; Rin Chen Spungs Shad                    |
-| `U+0F12`  | Punctuation      |                   |                            | &#x0F12; Rgya Gram Shad                          |
-| `U+0F13`  | Symbol           |                   |                            | &#x0F13; Caret -Dzud Rtags Me Long Can           |
-| `U+0F14`  | Punctuation      |                   |                            | &#x0F14; Gter Tsheg                              |
-| `U+0F15`  | Symbol           |                   |                            | &#x0F15; Logotype Sign Chad Rtags                |
-| `U+0F16`  | Symbol           |                   |                            | &#x0F16; Logotype Sign Lhag Rtags                |
-| `U+0F17`  | Symbol           |                   |                            | &#x0F17; Astrological Sign Sgra Gcan -Char Rtags |
+| `U+0F10`  | Punctuation      | _null_            |                            | &#x0F10; Nyis Tsheg Shad                         |
+| `U+0F11`  | Punctuation      | _null_            |                            | &#x0F11; Rin Chen Spungs Shad                    |
+| `U+0F12`  | Punctuation      | _null_            |                            | &#x0F12; Rgya Gram Shad                          |
+| `U+0F13`  | Symbol           | SYMBOL            |                            | &#x0F13; Caret -Dzud Rtags Me Long Can           |
+| `U+0F14`  | Punctuation      | _null_            |                            | &#x0F14; Gter Tsheg                              |
+| `U+0F15`  | Symbol           | SYMBOL            |                            | &#x0F15; Logotype Sign Chad Rtags                |
+| `U+0F16`  | Symbol           | SYMBOL            |                            | &#x0F16; Logotype Sign Lhag Rtags                |
+| `U+0F17`  | Symbol           | SYMBOL            |                            | &#x0F17; Astrological Sign Sgra Gcan -Char Rtags |
 | `U+0F18`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F18; Astrological Sign -Khyud Pa             |
 | `U+0F19`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F19; Astrological Sign Sdong Tshugs          |
-| `U+0F1A`  | Symbol           |                   |                            | &#x0F1A; Sign Rdel Dkar Gcig                     |
-| `U+0F1B`  | Symbol           |                   |                            | &#x0F1B; Sign Rdel Dkar Gnyis                    |
-| `U+0F1C`  | Symbol           |                   |                            | &#x0F1C; Sign Rdel Dkar Gsum                     |
-| `U+0F1D`  | Symbol           |                   |                            | &#x0F1D; Sign Rdel Nag Gcig                      |
-| `U+0F1E`  | Symbol           |                   |                            | &#x0F1E; Sign Rdel Nag Gnyis                     |
-| `U+0F1F`  | Symbol           |                   |                            | &#x0F1F; Sign Rdel Dkar Rdel Nag                 |
+| `U+0F1A`  | Symbol           | SYMBOL            |                            | &#x0F1A; Sign Rdel Dkar Gcig                     |
+| `U+0F1B`  | Symbol           | SYMBOL            |                            | &#x0F1B; Sign Rdel Dkar Gnyis                    |
+| `U+0F1C`  | Symbol           | SYMBOL            |                            | &#x0F1C; Sign Rdel Dkar Gsum                     |
+| `U+0F1D`  | Symbol           | SYMBOL            |                            | &#x0F1D; Sign Rdel Nag Gcig                      |
+| `U+0F1E`  | Symbol           | SYMBOL            |                            | &#x0F1E; Sign Rdel Nag Gnyis                     |
+| `U+0F1F`  | Symbol           | SYMBOL            |                            | &#x0F1F; Sign Rdel Dkar Rdel Nag                 |
 | | | | | |
-| `U+0F20`  | Number           |                   |                            | &#x0F20; Digit Zero                              |
-| `U+0F21`  | Number           |                   |                            | &#x0F21; Digit One                               |
-| `U+0F22`  | Number           |                   |                            | &#x0F22; Digit Two                               |
-| `U+0F23`  | Number           |                   |                            | &#x0F23; Digit Three                             |
-| `U+0F24`  | Number           |                   |                            | &#x0F24; Digit Four                              |
-| `U+0F25`  | Number           |                   |                            | &#x0F25; Digit Five                              |
-| `U+0F26`  | Number           |                   |                            | &#x0F26; Digit Six                               |
-| `U+0F27`  | Number           |                   |                            | &#x0F27; Digit Seven                             |
-| `U+0F28`  | Number           |                   |                            | &#x0F28; Digit Eight                             |
-| `U+0F29`  | Number           |                   |                            | &#x0F29; Digit Nine                              |
-| `U+0F2A`  | Number           |                   |                            | &#x0F2A; Digit Half One                          |
-| `U+0F2B`  | Number           |                   |                            | &#x0F2B; Digit Half Two                          |
-| `U+0F2C`  | Number           |                   |                            | &#x0F2C; Digit Half Three                        |
-| `U+0F2D`  | Number           |                   |                            | &#x0F2D; Digit Half Four                         |
-| `U+0F2E`  | Number           |                   |                            | &#x0F2E; Digit Half Five                         |
-| `U+0F2F`  | Number           |                   |                            | &#x0F2F; Digit Half Six                          |
+| `U+0F20`  | Number           | NUMBER            |                            | &#x0F20; Digit Zero                              |
+| `U+0F21`  | Number           | NUMBER            |                            | &#x0F21; Digit One                               |
+| `U+0F22`  | Number           | NUMBER            |                            | &#x0F22; Digit Two                               |
+| `U+0F23`  | Number           | NUMBER            |                            | &#x0F23; Digit Three                             |
+| `U+0F24`  | Number           | NUMBER            |                            | &#x0F24; Digit Four                              |
+| `U+0F25`  | Number           | NUMBER            |                            | &#x0F25; Digit Five                              |
+| `U+0F26`  | Number           | NUMBER            |                            | &#x0F26; Digit Six                               |
+| `U+0F27`  | Number           | NUMBER            |                            | &#x0F27; Digit Seven                             |
+| `U+0F28`  | Number           | NUMBER            |                            | &#x0F28; Digit Eight                             |
+| `U+0F29`  | Number           | NUMBER            |                            | &#x0F29; Digit Nine                              |
+| `U+0F2A`  | Number           | NUMBER            |                            | &#x0F2A; Digit Half One                          |
+| `U+0F2B`  | Number           | NUMBER            |                            | &#x0F2B; Digit Half Two                          |
+| `U+0F2C`  | Number           | NUMBER            |                            | &#x0F2C; Digit Half Three                        |
+| `U+0F2D`  | Number           | NUMBER            |                            | &#x0F2D; Digit Half Four                         |
+| `U+0F2E`  | Number           | NUMBER            |                            | &#x0F2E; Digit Half Five                         |
+| `U+0F2F`  | Number           | NUMBER            |                            | &#x0F2F; Digit Half Six                          |
 | | | | | |
-| `U+0F30`  | Number           |                   |                            | &#x0F30; Digit Half Seven                        |
-| `U+0F31`  | Number           |                   |                            | &#x0F31; Digit Half Eight                        |
-| `U+0F32`  | Number           |                   |                            | &#x0F32; Digit Half Nine                         |
-| `U+0F33`  | Number           |                   |                            | &#x0F33; Digit Half Zero                         |
-| `U+0F34`  | Symbol           |                   |                            | &#x0F34; Bsdus Rtags                             |
+| `U+0F30`  | Number           | NUMBER            |                            | &#x0F30; Digit Half Seven                        |
+| `U+0F31`  | Number           | NUMBER            |                            | &#x0F31; Digit Half Eight                        |
+| `U+0F32`  | Number           | NUMBER            |                            | &#x0F32; Digit Half Nine                         |
+| `U+0F33`  | Number           | NUMBER            |                            | &#x0F33; Digit Half Zero                         |
+| `U+0F34`  | Symbol           | SYMBOL            |                            | &#x0F34; Bsdus Rtags                             |
 | `U+0F35`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F35; Ngas Bzung Nyi Zla                      |
-| `U+0F36`  | Symbol           |                   |                            | &#x0F36; Caret -Dzud Rtags Bzhi Mig Can          |
+| `U+0F36`  | Symbol           | SYMBOL            |                            | &#x0F36; Caret -Dzud Rtags Bzhi Mig Can          |
 | `U+0F37`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F37; Ngas Bzung Sgor Rtags                   |
-| `U+0F38`  | Symbol           |                   |                            | &#x0F38; Che Mgo                                 |
+| `U+0F38`  | Symbol           | SYMBOL            |                            | &#x0F38; Che Mgo                                 |
 | `U+0F39`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F39; Tsa -Phru                               |
 | `U+0F3A`  | Punctuation [Ps] |                   |                            | &#x0F3A; Gug Rtags Gyon                          |
 | `U+0F3B`  | Punctuation [Pe] |                   |                            | &#x0F3B; Gug Rtags Gyas                          |
@@ -176,7 +180,7 @@ specific, script-aware behavior.
 | `U+0F82`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F82; Sign Nyi Zla Naa Da                     |
 | `U+0F83`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F83; Sign Sna Ldan                           |
 | `U+0F84`  | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION            | &#x0F84; Halanta                                 |
-| `U+0F85`  | Punctuation      |                   |                            | &#x0F85; Paluta                                  |
+| `U+0F85`  | Punctuation      | _null_            |                            | &#x0F85; Paluta                                  |
 | `U+0F86`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F86; Sign Lci Rtags                          |
 | `U+0F87`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F87; Sign Yang Rtags                         |
 | `U+0F88`  | Letter           |                   |                            | &#x0F88; Sign Lce Tsa Can                        |
@@ -236,37 +240,37 @@ specific, script-aware behavior.
 | `U+0FBB`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FBB; Subjoined Fixed-Form Ya                 |
 | `U+0FBC`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FBC; Subjoined Fixed-Form Ra                 |
 | `U+0FBD`  | _unassigned_     |                   |                            |                                                  |
-| `U+0FBE`  | Symbol           |                   |                            | &#x0FBE; Ku Ru Kha                               |
-| `U+0FBF`  | Symbol           |                   |                            | &#x0FBF; Ku Ru Kha Bzhi Mig Can                  |
+| `U+0FBE`  | Symbol           | SYMBOL            |                            | &#x0FBE; Ku Ru Kha                               |
+| `U+0FBF`  | Symbol           | SYMBOL            |                            | &#x0FBF; Ku Ru Kha Bzhi Mig Can                  |
 | | | | | |
-| `U+0FC0`  | Symbol           |                   |                            | &#x0FC0; Cantillation Sign Heavy Beat            |
-| `U+0FC1`  | Symbol           |                   |                            | &#x0FC1; Cantillation Sign Light Beat            |
-| `U+0FC2`  | Symbol           |                   |                            | &#x0FC2; Cantillation Sign Cang Te-U             |
-| `U+0FC3`  | Symbol           |                   |                            | &#x0FC3; Cantillation Sign Sbub -Chal            |
-| `U+0FC4`  | Symbol           |                   |                            | &#x0FC4; Symbol Dril Bu                          |
-| `U+0FC5`  | Symbol           |                   |                            | &#x0FC5; Symbol Rdo Rje                          |
+| `U+0FC0`  | Symbol           | SYMBOL            |                            | &#x0FC0; Cantillation Sign Heavy Beat            |
+| `U+0FC1`  | Symbol           | SYMBOL            |                            | &#x0FC1; Cantillation Sign Light Beat            |
+| `U+0FC2`  | Symbol           | SYMBOL            |                            | &#x0FC2; Cantillation Sign Cang Te-U             |
+| `U+0FC3`  | Symbol           | SYMBOL            |                            | &#x0FC3; Cantillation Sign Sbub -Chal            |
+| `U+0FC4`  | Symbol           | SYMBOL            |                            | &#x0FC4; Symbol Dril Bu                          |
+| `U+0FC5`  | Symbol           | SYMBOL            |                            | &#x0FC5; Symbol Rdo Rje                          |
 | `U+0FC6`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FC6; Symbol Padma Gdan                       |
-| `U+0FC7`  | Symbol           |                   |                            | &#x0FC7; Symbol Rdo Rje Rgya Gram                |
-| `U+0FC8`  | Symbol           |                   |                            | &#x0FC8; Symbol Phur Pa                          |
-| `U+0FC9`  | Symbol           |                   |                            | &#x0FC9; Symbol Nor Bu                           |
-| `U+0FCA`  | Symbol           |                   |                            | &#x0FCA; Symbol Nor Bu Nyis -Khyil               |
-| `U+0FCB`  | Symbol           |                   |                            | &#x0FCB; Symbol Nor Bu Gsum -Khyil               |
-| `U+0FCC`  | Symbol           |                   |                            | &#x0FCC; Symbol Nor Bu Bzhi -Khyil               |
+| `U+0FC7`  | Symbol           | SYMBOL            |                            | &#x0FC7; Symbol Rdo Rje Rgya Gram                |
+| `U+0FC8`  | Symbol           | SYMBOL            |                            | &#x0FC8; Symbol Phur Pa                          |
+| `U+0FC9`  | Symbol           | SYMBOL            |                            | &#x0FC9; Symbol Nor Bu                           |
+| `U+0FCA`  | Symbol           | SYMBOL            |                            | &#x0FCA; Symbol Nor Bu Nyis -Khyil               |
+| `U+0FCB`  | Symbol           | SYMBOL            |                            | &#x0FCB; Symbol Nor Bu Gsum -Khyil               |
+| `U+0FCC`  | Symbol           | SYMBOL            |                            | &#x0FCC; Symbol Nor Bu Bzhi -Khyil               |
 | `U+0FCD`  | _unassigned_     |                   |                            |                                                  |
-| `U+0FCE`  | Symbol           |                   |                            | &#x0FCE; Sign Rdel Nag Rdel Dkar                 |
-| `U+0FCF`  | Symbol           |                   |                            | &#x0FCF; Sign Rdel Nag Gsum                      |
+| `U+0FCE`  | Symbol           | SYMBOL            |                            | &#x0FCE; Sign Rdel Nag Rdel Dkar                 |
+| `U+0FCF`  | Symbol           | SYMBOL            |                            | &#x0FCF; Sign Rdel Nag Gsum                      |
 | | | | | |
-| `U+0FD0`  | Punctuation      |                   |                            | &#x0FD0; Bska- Shog Gi Mgo Rgyan                 |
-| `U+0FD1`  | Punctuation      |                   |                            | &#x0FD1; Mnyam Yig Gi Mgo Rgyan                  |
-| `U+0FD2`  | Punctuation      |                   |                            | &#x0FD2; Nyis Tsheg                              |
-| `U+0FD3`  | Punctuation      |                   |                            | &#x0FD3; Initial Brda Rnying Yig Mgo Mdun        |
-| `U+0FD4`  | Punctuation      |                   |                            | &#x0FD4; Closing Brda Rnying Yig Mgo Sgab        |
-| `U+0FD5`  | Symbol           |                   |                            | &#x0FD5; Right-Facing Svasti Sign                |
-| `U+0FD6`  | Symbol           |                   |                            | &#x0FD6; Left-Facing Svasti Sign                 |
-| `U+0FD7`  | Symbol           |                   |                            | &#x0FD7; Right-Facing Svasti Sign With Dots      |
-| `U+0FD8`  | Symbol           |                   |                            | &#x0FD8; Left-Facing Svasti Sign With Dots       |
-| `U+0FD9`  | Punctuation      |                   |                            | &#x0FD9; Leading Mchan Rtags                     |
-| `U+0FDA`  | Punctuation      |                   |                            | &#x0FDA; Trailing Mchan Rtags                    |
+| `U+0FD0`  | Punctuation      | _null_            |                            | &#x0FD0; Bska- Shog Gi Mgo Rgyan                 |
+| `U+0FD1`  | Punctuation      | _null_            |                            | &#x0FD1; Mnyam Yig Gi Mgo Rgyan                  |
+| `U+0FD2`  | Punctuation      | _null_            |                            | &#x0FD2; Nyis Tsheg                              |
+| `U+0FD3`  | Punctuation      | _null_            |                            | &#x0FD3; Initial Brda Rnying Yig Mgo Mdun        |
+| `U+0FD4`  | Punctuation      | _null_            |                            | &#x0FD4; Closing Brda Rnying Yig Mgo Sgab        |
+| `U+0FD5`  | Symbol           | SYMBOL            |                            | &#x0FD5; Right-Facing Svasti Sign                |
+| `U+0FD6`  | Symbol           | SYMBOL            |                            | &#x0FD6; Left-Facing Svasti Sign                 |
+| `U+0FD7`  | Symbol           | SYMBOL            |                            | &#x0FD7; Right-Facing Svasti Sign With Dots      |
+| `U+0FD8`  | Symbol           | SYMBOL            |                            | &#x0FD8; Left-Facing Svasti Sign With Dots       |
+| `U+0FD9`  | Punctuation      | _null_            |                            | &#x0FD9; Leading Mchan Rtags                     |
+| `U+0FDA`  | Punctuation      | _null_            |                            | &#x0FDA; Trailing Mchan Rtags                    |
 | `U+0FDB`  | _unassigned_     |                   |                            |                                                  |
 | `U+0FDC`  | _unassigned_     |                   |                            |                                                  |
 | `U+0FDD`  | _unassigned_     |                   |                            |                                                  |
