@@ -450,18 +450,18 @@ These idenfication classes form the bases of the following regular
 expression elements:
 
 ```markdown
-C	= (_consonant_ | _ra_)
-Z	= _zwj_|_zwnj_
-REPH	= (_ra_ _halant_ | _repha_)
+C	= _consonant_ | _ra_
+Z	= _zwj_ | _zwnj_
+REPH	= (_ra_ _halant_) | _repha_
 CN		= C _zwj_? _nukta_?
 FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
 S	= _symbol_ _nukta_?
 MATRA_GROUP	= Z{0,3} _matra_ _nukta_? (_halant_ | FORCED_RAKAR)?
 SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _avagraha_{0,3} _vedicsign_{0,2}
-HALANT_GROUP	= (Z? _halant_ (_zwj_ _nukta_?)?)
-FINAL_HALANT_GROUP	= HALANT_GROUP | _halant_ _zwnj_
+HALANT_GROUP	= Z? _halant_ (_zwj_ _nukta_?)?
+FINAL_HALANT_GROUP	= HALANT_GROUP | (_halant_ _zwnj_)
 MEDIAL_GROUP	= _consonantmedial_?
-HALANT_OR_MATRA_GROUP	= (FINAL_HALANT_GROUP | (_halant_ _zwj_)? MATRA_GROUP{0,4})
+HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP{0,4})
 ```
 
 Using the above elements, the following regular expressions define the
