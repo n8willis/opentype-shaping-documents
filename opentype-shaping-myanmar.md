@@ -18,9 +18,6 @@ runs in the Myanmar script.
       - [4: Applying all remaining substitution features from GSUB](#4-applying-all-remaining-substitution-features-from-gsub)
       - [5: Applying remaining positioning features from GPOS](#5-applying-remaining-positioning-features-from-gpos)
   - [The `<mymr>` shaping model](#the-mymr-shaping-model)
-      - [Distinctions from `<mym2>`](#distinctions-from-mym2)
-      - [Advice for handling fonts with `<mymr>` features only](#advice-for-handling-fonts-with-mymr-features-only)
-      - [Advice for handling text runs composed in `<mymr>` format](#advice-for-handling-text-runs-composed-in-mymr-format)
 
 
 ## General information ##
@@ -501,11 +498,11 @@ simplifies the resulting expressions.
 
 ```markdown
 _ra_		= "Ra" | "Nga" | "Mon Nga"
-_consonant_ = `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
+_consonant_ 	= `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
 _halant_	= `INVISIBLE_STACKER`
 _asat_		= "Asat"
-_a_			= "Anusvara"
+_a_		= "Anusvara"
 _db_		= "Dot Below"
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
@@ -513,24 +510,24 @@ _mh_		= "Medial Ha" | "Mon Medial La"
 _mr_		= "Medial Ra"
 _mw_		= "Medial Wa" | "Shan Medial Wa"
 _my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
-_d_			= `NUMBER`
+_d_		= `NUMBER`
 _pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
 	          "Western Pwo Karen Tone 1" | "Western Pwo Karen Tone
-			  2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
-			  Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
-			  Tone" 
- _sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
-              Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
-			  "Shan Council Tone 3" | "Shan Council Emphatic Tone"
-			  | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
-			  Tone 3" | "Aiton A" 
-_punc_			= "Little Section" | "Section"
-_matrapre_	= `MATRA`,`LEFT_POSITION`
-_matrapost_	= `MATRA`,`RIGHT_POSITION`
-_matraabove_	= `MATRA`,`TOP_POSITION`
-_matrabelow_	= `MATRA`,`BOTTOM_POSITION`
+	          2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
+	          Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
+	          Tone" 
+_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
+	          Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
+	          "Shan Council Tone 3" | "Shan Council Emphatic Tone"
+	          | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
+	          Tone 3" | "Aiton A" 
+_punc_		= "Little Section" | "Section"
+_matrapre_	= `MATRA` & `LEFT_POSITION`
+_matrapost_	= `MATRA` &`RIGHT_POSITION`
+_matraabove_	= `MATRA` & `TOP_POSITION`
+_matrabelow_	= `MATRA` & `BOTTOM_POSITION`
 _gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
-              2022 | 25CC | 25FB | 25FC 25FD | 25FE
+		  2022 | 25CC | 25FB | 25FC 25FD | 25FE
 _cs_		= `CONSONANT_WITH_STACKER`
 _v_			= `VISARGA`
 _vs_		= "Variation Selector"
@@ -545,6 +542,11 @@ _vs_		= "Variation Selector"
 > Note, also, that the `CONSONANT_PLACEHOLDER` class is unioned with
 > the `CONSONANT` class for the purpose of syllable identification,
 > even those these two classes are treated separately in general.
+
+> Note: The _mh_, _mw_, and _my_ identification classes include
+> several medial letters from the non-Burmese languages; they are
+> grouped according to the medial consonants in Burmese that are the
+> closest match in terms of shaping behavior.
 
 > Note: the _gb_ identification class includes several "generic base"
 > codepoints that are often used in real-world text runs to act as
@@ -568,7 +570,7 @@ Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
 Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
 Pwo	= _pt_ _a_* _db_? _asat_?
 Tcomplex	= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
-Tail		= _halant_ | Tcomplex
+Tail	= _halant_ | Tcomplex
 ```
 
 Using the above elements, the following regular expressions define the
@@ -1010,53 +1012,13 @@ same base glyph.
 
 ## The `<mymr>` shaping model ##
 
-<!--- This may not be what Uniscribe does. Unclear. --->
-<!--- Check archive.org copy of old-spec MS docs    --->
 The older Myanmar script tag, `<mymr>`, has been deprecated. However,
 shaping engines may still encounter fonts that were built to work with
 `<mymr>` and some users may still have documents that were written to
 take advantage of `<mymr>` shaping.
 
-### Distinctions from `<mym2>` ###
-
-The most significant distinction between the shaping models is that the
-sequence of "Halant" and consonant glyphs used to trigger shaping
-features was altered when migrating from `<mymr>` to
-`<mym2>`. 
-
-Specifically, shaping engines were expected to reorder post-base
-"Halant,_Consonant_" sequences to "_Consonant_,Halant".
-
-oAs a result, a font's GSUB substitutions would be written to match
-"_Consonant_,Halant" sequences in all pre-base and post-base positions.
-
-
-The `<mymr>` syllable
-
-	BaseC Halant Post-baseC
-
-would be reordered to
-
-	BaseC Post-baseC Halant
-
-before features are applied.
-
-In `<mym2>` text, as described above in this document, there is no
-such reordering. The correct sequence to match for GSUB substitutions is
-"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
-for post-base consonants.
-
-
-### Advice for handling fonts with `<mymr>` features only ###
-
-Shaping engines may choose to match post-base "_Consonant_,Halant"
-sequences in order to apply GSUB substitutions when it is known that
-the font in use supports only the `<mymr>` shaping model.
-
-### Advice for handling text runs composed in `<mymr>` format ###
-
-Shaping engines may choose to match post-base "_Consonant_,Halant"
-sequences for GSUB substitutions or to reorder them to
-"Halant,_Consonant_" when processing text runs that are tagged with
-the `<mymr>` script tag and it is known that the font in use supports
-only the `<mym2>` shaping model.
+Sparse information is available about how the Microsoft Uniscribe
+shaping engine treated `<mymr>` text runs. Documentation from the
+HarfBuzz shaping engine suggests that the Uniscribe `<mymr>` shaper
+did not perform a significant amount of reordering or application of
+Indic-like GSUB features.
