@@ -529,7 +529,7 @@ _matrabelow_	= `MATRA` & `BOTTOM_POSITION`
 _gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
 		  2022 | 25CC | 25FB | 25FC 25FD | 25FE
 _cs_		= `CONSONANT_WITH_STACKER`
-_v_			= `VISARGA`
+_v_		= `VISARGA`
 _vs_		= "Variation Selector"
 ```
 
