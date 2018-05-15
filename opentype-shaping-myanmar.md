@@ -323,7 +323,7 @@ typesetting environment.
 
 ## The `<mym2>` shaping model ##
 
-Processing a run of `<mym2>` text involves six top-level stages:
+Processing a run of `<mym2>` text involves five top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
@@ -336,7 +336,7 @@ As with other Brahmi-derived and Indic scripts, the initial reordering
 stage and the final reordering stage each involve applying a set of several
 script-specific rules. The basic substitution features must be applied
 to the run in a specific order. The remaining substitution features in
-stage five, however, do not have a mandatory order.
+stage four, however, do not have a mandatory order.
 
 
 Myanmar exhibits many of the same shaping patterns found in Indic
