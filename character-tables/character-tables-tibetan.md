@@ -39,238 +39,238 @@ specific, script-aware behavior.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                                            |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------------------------|
-| `U+0F00`  | Letter           |                   |                            | &#x0F00; Syllable Om                             |
-| `U+0F01`  | Symbol           | SYMBOL            |                            | &#x0F01; Gter Yig Mgo Truncated A                |
-| `U+0F02`  | Symbol           | SYMBOL            |                            | &#x0F02; Gter Yig Mgo -Um Rnam Bcad Ma           |
-| `U+0F03`  | Symbol           | SYMBOL            |                            | &#x0F03; Gter Yig Mgo -Um Gter Tsheg Ma          |
-| `U+0F04`  | Punctuation      | _null_            |                            | &#x0F04; Initial Yig Mgo Mdun Ma                 |
-| `U+0F05`  | Punctuation      | _null_            |                            | &#x0F05; Closing Yig Mgo Sgab Ma                 |
-| `U+0F06`  | Punctuation      | _null_            |                            | &#x0F06; Caret Yig Mgo Phur Shad Ma              |
-| `U+0F07`  | Punctuation      | _null_            |                            | &#x0F07; Yig Mgo Tsheg Shad Ma                   |
-| `U+0F08`  | Punctuation      | _null_            |                            | &#x0F08; Sbrul Shad                              |
-| `U+0F09`  | Punctuation      | _null_            |                            | &#x0F09; Bskur Yig Mgo                           |
-| `U+0F0A`  | Punctuation      | _null_            |                            | &#x0F0A; Bka- Shog Yig Mgo                       |
-| `U+0F0B`  | Punctuation      | _null_            |                            | &#x0F0B; Intersyllabic Tsheg                     |
-| `U+0F0C`  | Punctuation      | _null_            |                            | &#x0F0C; Delimiter Tsheg Bstar                   |
-| `U+0F0D`  | Punctuation      | _null_            |                            | &#x0F0D; Shad                                    |
-| `U+0F0E`  | Punctuation      | _null_            |                            | &#x0F0E; Nyis Shad                               |
-| `U+0F0F`  | Punctuation      | _null_            |                            | &#x0F0F; Tsheg Shad                              |
+| `U+0F00`  | Letter           | _null_            | _null_                     | &#x0F00; Syllable Om                             |
+| `U+0F01`  | Symbol           | SYMBOL            | _null_                     | &#x0F01; Gter Yig Mgo Truncated A                |
+| `U+0F02`  | Symbol           | SYMBOL            | _null_                     | &#x0F02; Gter Yig Mgo -Um Rnam Bcad Ma           |
+| `U+0F03`  | Symbol           | SYMBOL            | _null_                     | &#x0F03; Gter Yig Mgo -Um Gter Tsheg Ma          |
+| `U+0F04`  | Punctuation      | _null_            | _null_                     | &#x0F04; Initial Yig Mgo Mdun Ma                 |
+| `U+0F05`  | Punctuation      | _null_            | _null_                     | &#x0F05; Closing Yig Mgo Sgab Ma                 |
+| `U+0F06`  | Punctuation      | _null_            | _null_                     | &#x0F06; Caret Yig Mgo Phur Shad Ma              |
+| `U+0F07`  | Punctuation      | _null_            | _null_                     | &#x0F07; Yig Mgo Tsheg Shad Ma                   |
+| `U+0F08`  | Punctuation      | _null_            | _null_                     | &#x0F08; Sbrul Shad                              |
+| `U+0F09`  | Punctuation      | _null_            | _null_                     | &#x0F09; Bskur Yig Mgo                           |
+| `U+0F0A`  | Punctuation      | _null_            | _null_                     | &#x0F0A; Bka- Shog Yig Mgo                       |
+| `U+0F0B`  | Punctuation      | _null_            | _null_                     | &#x0F0B; Intersyllabic Tsheg                     |
+| `U+0F0C`  | Punctuation      | _null_            | _null_                     | &#x0F0C; Delimiter Tsheg Bstar                   |
+| `U+0F0D`  | Punctuation      | _null_            | _null_                     | &#x0F0D; Shad                                    |
+| `U+0F0E`  | Punctuation      | _null_            | _null_                     | &#x0F0E; Nyis Shad                               |
+| `U+0F0F`  | Punctuation      | _null_            | _null_                     | &#x0F0F; Tsheg Shad                              |
 | | | | | |
-| `U+0F10`  | Punctuation      | _null_            |                            | &#x0F10; Nyis Tsheg Shad                         |
-| `U+0F11`  | Punctuation      | _null_            |                            | &#x0F11; Rin Chen Spungs Shad                    |
-| `U+0F12`  | Punctuation      | _null_            |                            | &#x0F12; Rgya Gram Shad                          |
-| `U+0F13`  | Symbol           | SYMBOL            |                            | &#x0F13; Caret -Dzud Rtags Me Long Can           |
-| `U+0F14`  | Punctuation      | _null_            |                            | &#x0F14; Gter Tsheg                              |
-| `U+0F15`  | Symbol           | SYMBOL            |                            | &#x0F15; Logotype Sign Chad Rtags                |
-| `U+0F16`  | Symbol           | SYMBOL            |                            | &#x0F16; Logotype Sign Lhag Rtags                |
-| `U+0F17`  | Symbol           | SYMBOL            |                            | &#x0F17; Astrological Sign Sgra Gcan -Char Rtags |
-| `U+0F18`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F18; Astrological Sign -Khyud Pa             |
-| `U+0F19`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F19; Astrological Sign Sdong Tshugs          |
-| `U+0F1A`  | Symbol           | SYMBOL            |                            | &#x0F1A; Sign Rdel Dkar Gcig                     |
-| `U+0F1B`  | Symbol           | SYMBOL            |                            | &#x0F1B; Sign Rdel Dkar Gnyis                    |
-| `U+0F1C`  | Symbol           | SYMBOL            |                            | &#x0F1C; Sign Rdel Dkar Gsum                     |
-| `U+0F1D`  | Symbol           | SYMBOL            |                            | &#x0F1D; Sign Rdel Nag Gcig                      |
-| `U+0F1E`  | Symbol           | SYMBOL            |                            | &#x0F1E; Sign Rdel Nag Gnyis                     |
-| `U+0F1F`  | Symbol           | SYMBOL            |                            | &#x0F1F; Sign Rdel Dkar Rdel Nag                 |
+| `U+0F10`  | Punctuation      | _null_            | _null_                     | &#x0F10; Nyis Tsheg Shad                         |
+| `U+0F11`  | Punctuation      | _null_            | _null_                     | &#x0F11; Rin Chen Spungs Shad                    |
+| `U+0F12`  | Punctuation      | _null_            | _null_                     | &#x0F12; Rgya Gram Shad                          |
+| `U+0F13`  | Symbol           | SYMBOL            | _null_                     | &#x0F13; Caret -Dzud Rtags Me Long Can           |
+| `U+0F14`  | Punctuation      | _null_            | _null_                     | &#x0F14; Gter Tsheg                              |
+| `U+0F15`  | Symbol           | SYMBOL            | _null_                     | &#x0F15; Logotype Sign Chad Rtags                |
+| `U+0F16`  | Symbol           | SYMBOL            | _null_                     | &#x0F16; Logotype Sign Lhag Rtags                |
+| `U+0F17`  | Symbol           | SYMBOL            | _null_                     | &#x0F17; Astrological Sign Sgra Gcan -Char Rtags |
+| `U+0F18`  | Mark [Mn]        | _null_            | BOTTOM_POSITION            | &#x0F18; Astrological Sign -Khyud Pa             |
+| `U+0F19`  | Mark [Mn]        | _null_            | BOTTOM_POSITION            | &#x0F19; Astrological Sign Sdong Tshugs          |
+| `U+0F1A`  | Symbol           | SYMBOL            | _null_                     | &#x0F1A; Sign Rdel Dkar Gcig                     |
+| `U+0F1B`  | Symbol           | SYMBOL            | _null_                     | &#x0F1B; Sign Rdel Dkar Gnyis                    |
+| `U+0F1C`  | Symbol           | SYMBOL            | _null_                     | &#x0F1C; Sign Rdel Dkar Gsum                     |
+| `U+0F1D`  | Symbol           | SYMBOL            | _null_                     | &#x0F1D; Sign Rdel Nag Gcig                      |
+| `U+0F1E`  | Symbol           | SYMBOL            | _null_                     | &#x0F1E; Sign Rdel Nag Gnyis                     |
+| `U+0F1F`  | Symbol           | SYMBOL            | _null_                     | &#x0F1F; Sign Rdel Dkar Rdel Nag                 |
 | | | | | |
-| `U+0F20`  | Number           | NUMBER            |                            | &#x0F20; Digit Zero                              |
-| `U+0F21`  | Number           | NUMBER            |                            | &#x0F21; Digit One                               |
-| `U+0F22`  | Number           | NUMBER            |                            | &#x0F22; Digit Two                               |
-| `U+0F23`  | Number           | NUMBER            |                            | &#x0F23; Digit Three                             |
-| `U+0F24`  | Number           | NUMBER            |                            | &#x0F24; Digit Four                              |
-| `U+0F25`  | Number           | NUMBER            |                            | &#x0F25; Digit Five                              |
-| `U+0F26`  | Number           | NUMBER            |                            | &#x0F26; Digit Six                               |
-| `U+0F27`  | Number           | NUMBER            |                            | &#x0F27; Digit Seven                             |
-| `U+0F28`  | Number           | NUMBER            |                            | &#x0F28; Digit Eight                             |
-| `U+0F29`  | Number           | NUMBER            |                            | &#x0F29; Digit Nine                              |
-| `U+0F2A`  | Number           | NUMBER            |                            | &#x0F2A; Digit Half One                          |
-| `U+0F2B`  | Number           | NUMBER            |                            | &#x0F2B; Digit Half Two                          |
-| `U+0F2C`  | Number           | NUMBER            |                            | &#x0F2C; Digit Half Three                        |
-| `U+0F2D`  | Number           | NUMBER            |                            | &#x0F2D; Digit Half Four                         |
-| `U+0F2E`  | Number           | NUMBER            |                            | &#x0F2E; Digit Half Five                         |
-| `U+0F2F`  | Number           | NUMBER            |                            | &#x0F2F; Digit Half Six                          |
+| `U+0F20`  | Number           | NUMBER            | _null_                     | &#x0F20; Digit Zero                              |
+| `U+0F21`  | Number           | NUMBER            | _null_                     | &#x0F21; Digit One                               |
+| `U+0F22`  | Number           | NUMBER            | _null_                     | &#x0F22; Digit Two                               |
+| `U+0F23`  | Number           | NUMBER            | _null_                     | &#x0F23; Digit Three                             |
+| `U+0F24`  | Number           | NUMBER            | _null_                     | &#x0F24; Digit Four                              |
+| `U+0F25`  | Number           | NUMBER            | _null_                     | &#x0F25; Digit Five                              |
+| `U+0F26`  | Number           | NUMBER            | _null_                     | &#x0F26; Digit Six                               |
+| `U+0F27`  | Number           | NUMBER            | _null_                     | &#x0F27; Digit Seven                             |
+| `U+0F28`  | Number           | NUMBER            | _null_                     | &#x0F28; Digit Eight                             |
+| `U+0F29`  | Number           | NUMBER            | _null_                     | &#x0F29; Digit Nine                              |
+| `U+0F2A`  | Number           | NUMBER            | _null_                     | &#x0F2A; Digit Half One                          |
+| `U+0F2B`  | Number           | NUMBER            | _null_                     | &#x0F2B; Digit Half Two                          |
+| `U+0F2C`  | Number           | NUMBER            | _null_                     | &#x0F2C; Digit Half Three                        |
+| `U+0F2D`  | Number           | NUMBER            | _null_                     | &#x0F2D; Digit Half Four                         |
+| `U+0F2E`  | Number           | NUMBER            | _null_                     | &#x0F2E; Digit Half Five                         |
+| `U+0F2F`  | Number           | NUMBER            | _null_                     | &#x0F2F; Digit Half Six                          |
 | | | | | |
-| `U+0F30`  | Number           | NUMBER            |                            | &#x0F30; Digit Half Seven                        |
-| `U+0F31`  | Number           | NUMBER            |                            | &#x0F31; Digit Half Eight                        |
-| `U+0F32`  | Number           | NUMBER            |                            | &#x0F32; Digit Half Nine                         |
-| `U+0F33`  | Number           | NUMBER            |                            | &#x0F33; Digit Half Zero                         |
-| `U+0F34`  | Symbol           | SYMBOL            |                            | &#x0F34; Bsdus Rtags                             |
-| `U+0F35`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F35; Ngas Bzung Nyi Zla                      |
-| `U+0F36`  | Symbol           | SYMBOL            |                            | &#x0F36; Caret -Dzud Rtags Bzhi Mig Can          |
-| `U+0F37`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F37; Ngas Bzung Sgor Rtags                   |
-| `U+0F38`  | Symbol           | SYMBOL            |                            | &#x0F38; Che Mgo                                 |
-| `U+0F39`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F39; Tsa -Phru                               |
-| `U+0F3A`  | Punctuation [Ps] |                   |                            | &#x0F3A; Gug Rtags Gyon                          |
-| `U+0F3B`  | Punctuation [Pe] |                   |                            | &#x0F3B; Gug Rtags Gyas                          |
-| `U+0F3C`  | Punctuation [Ps] |                   |                            | &#x0F3C; Ang Khang Gyon                          |
-| `U+0F3D`  | Punctuation [Pe] |                   |                            | &#x0F3D; Ang Khang Gyas                          |
-| `U+0F3E`  | Mark [Mc]        |                   | RIGHT_POSITION             | &#x0F3E; Sign Yar Tshes                          |
-| `U+0F3F`  | Mark [Mc]        |                   | LEFT_POSITION              | &#x0F3F; Sign Mar Tshes                          |
+| `U+0F30`  | Number           | NUMBER            | _null_                     | &#x0F30; Digit Half Seven                        |
+| `U+0F31`  | Number           | NUMBER            | _null_                     | &#x0F31; Digit Half Eight                        |
+| `U+0F32`  | Number           | NUMBER            | _null_                     | &#x0F32; Digit Half Nine                         |
+| `U+0F33`  | Number           | NUMBER            | _null_                     | &#x0F33; Digit Half Zero                         |
+| `U+0F34`  | Symbol           | SYMBOL            | _null_                     | &#x0F34; Bsdus Rtags                             |
+| `U+0F35`  | Mark [Mn]        | SYLLABLE_MODIFIER | BOTTOM_POSITION            | &#x0F35; Ngas Bzung Nyi Zla                      |
+| `U+0F36`  | Symbol           | SYMBOL            | _null_                     | &#x0F36; Caret -Dzud Rtags Bzhi Mig Can          |
+| `U+0F37`  | Mark [Mn]        | SYLLABLE_MODIFIER | BOTTOM_POSITION            | &#x0F37; Ngas Bzung Sgor Rtags                   |
+| `U+0F38`  | Symbol           | SYMBOL            | _null_                     | &#x0F38; Che Mgo                                 |
+| `U+0F39`  | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0F39; Tsa -Phru                               |
+| `U+0F3A`  | Punctuation [Ps] | _null_            | _null_                     | &#x0F3A; Gug Rtags Gyon                          |
+| `U+0F3B`  | Punctuation [Pe] | _null_            | _null_                     | &#x0F3B; Gug Rtags Gyas                          |
+| `U+0F3C`  | Punctuation [Ps] | _null_            | _null_                     | &#x0F3C; Ang Khang Gyon                          |
+| `U+0F3D`  | Punctuation [Pe] | _null_            | _null_                     | &#x0F3D; Ang Khang Gyas                          |
+| `U+0F3E`  | Mark [Mc]        | _null_            | RIGHT_POSITION             | &#x0F3E; Sign Yar Tshes                          |
+| `U+0F3F`  | Mark [Mc]        | _null_            | LEFT_POSITION              | &#x0F3F; Sign Mar Tshes                          |
 | | | | | |
-| `U+0F40`  | Letter           |                   |                            | &#x0F40; Ka                                      |
-| `U+0F41`  | Letter           |                   |                            | &#x0F41; Kha                                     |
-| `U+0F42`  | Letter           |                   |                            | &#x0F42; Ga                                      |
-| `U+0F43`  | Letter           |                   |                            | &#x0F43; Gha                                     |
-| `U+0F44`  | Letter           |                   |                            | &#x0F44; Nga                                     |
-| `U+0F45`  | Letter           |                   |                            | &#x0F45; Ca                                      |
-| `U+0F46`  | Letter           |                   |                            | &#x0F46; Cha                                     |
-| `U+0F47`  | Letter           |                   |                            | &#x0F47; Ja                                      |
+| `U+0F40`  | Letter           | CONSONANT         | _null_                     | &#x0F40; Ka                                      |
+| `U+0F41`  | Letter           | CONSONANT         | _null_                     | &#x0F41; Kha                                     |
+| `U+0F42`  | Letter           | CONSONANT         | _null_                     | &#x0F42; Ga                                      |
+| `U+0F43`  | Letter           | CONSONANT         | _null_                     | &#x0F43; Gha                                     |
+| `U+0F44`  | Letter           | CONSONANT         | _null_                     | &#x0F44; Nga                                     |
+| `U+0F45`  | Letter           | CONSONANT         | _null_                     | &#x0F45; Ca                                      |
+| `U+0F46`  | Letter           | CONSONANT         | _null_                     | &#x0F46; Cha                                     |
+| `U+0F47`  | Letter           | CONSONANT         | _null_                     | &#x0F47; Ja                                      |
 | `U+0F48`  | _unassigned_     |                   |                            |                                                  |
-| `U+0F49`  | Letter           |                   |                            | &#x0F49; Nya                                     |
-| `U+0F4A`  | Letter           |                   |                            | &#x0F4A; Tta                                     |
-| `U+0F4B`  | Letter           |                   |                            | &#x0F4B; Ttha                                    |
-| `U+0F4C`  | Letter           |                   |                            | &#x0F4C; Dda                                     |
-| `U+0F4D`  | Letter           |                   |                            | &#x0F4D; Ddha                                    |
-| `U+0F4E`  | Letter           |                   |                            | &#x0F4E; Nna                                     |
-| `U+0F4F`  | Letter           |                   |                            | &#x0F4F; Ta                                      |
-| | | | | |
-| `U+0F50`  | Letter           |                   |                            | &#x0F50; Tha                                     |
-| `U+0F51`  | Letter           |                   |                            | &#x0F51; Da                                      |
-| `U+0F52`  | Letter           |                   |                            | &#x0F52; Dha                                     |
-| `U+0F53`  | Letter           |                   |                            | &#x0F53; Na                                      |
-| `U+0F54`  | Letter           |                   |                            | &#x0F54; Pa                                      |
-| `U+0F55`  | Letter           |                   |                            | &#x0F55; Pha                                     |
-| `U+0F56`  | Letter           |                   |                            | &#x0F56; Ba                                      |
-| `U+0F57`  | Letter           |                   |                            | &#x0F57; Bha                                     |
-| `U+0F58`  | Letter           |                   |                            | &#x0F58; Ma                                      |
-| `U+0F59`  | Letter           |                   |                            | &#x0F59; Tsa                                     |
-| `U+0F5A`  | Letter           |                   |                            | &#x0F5A; Tsha                                    |
-| `U+0F5B`  | Letter           |                   |                            | &#x0F5B; Dza                                     |
-| `U+0F5C`  | Letter           |                   |                            | &#x0F5C; Dzha                                    |
-| `U+0F5D`  | Letter           |                   |                            | &#x0F5D; Wa                                      |
-| `U+0F5E`  | Letter           |                   |                            | &#x0F5E; Zha                                     |
-| `U+0F5F`  | Letter           |                   |                            | &#x0F5F; Za                                      |
-| | | | | |
-| `U+0F60`  | Letter           |                   |                            | &#x0F60; -A                                      |
-| `U+0F61`  | Letter           |                   |                            | &#x0F61; Ya                                      |
-| `U+0F62`  | Letter           |                   |                            | &#x0F62; Ra                                      |
-| `U+0F63`  | Letter           |                   |                            | &#x0F63; La                                      |
-| `U+0F64`  | Letter           |                   |                            | &#x0F64; Sha                                     |
-| `U+0F65`  | Letter           |                   |                            | &#x0F65; Ssa                                     |
-| `U+0F66`  | Letter           |                   |                            | &#x0F66; Sa                                      |
-| `U+0F67`  | Letter           |                   |                            | &#x0F67; Ha                                      |
-| `U+0F68`  | Letter           |                   |                            | &#x0F68; A                                       |
-| `U+0F69`  | Letter           |                   |                            | &#x0F69; Kssa                                    |
-| `U+0F6A`  | Letter           |                   |                            | &#x0F6A; Fixed-Form Ra                           |
-| `U+0F6B`  | Letter           |                   |                            | &#x0F6B; Kka                                     |
-| `U+0F6C`  | Letter           |                   |                            | &#x0F6C; Rra                                     |
+| `U+0F49`  | Letter           | CONSONANT         | _null_                     | &#x0F49; Nya                                     |
+| `U+0F4A`  | Letter           | CONSONANT         | _null_                     | &#x0F4A; Tta                                     |
+| `U+0F4B`  | Letter           | CONSONANT         | _null_                     | &#x0F4B; Ttha                                    |
+| `U+0F4C`  | Letter           | CONSONANT         | _null_                     | &#x0F4C; Dda                                     |
+| `U+0F4D`  | Letter           | CONSONANT         | _null_                     | &#x0F4D; Ddha                                    |
+| `U+0F4E`  | Letter           | CONSONANT         | _null_                     | &#x0F4E; Nna                                     |
+| `U+0F4F`  | Letter           | CONSONANT         | _null_                     | &#x0F4F; Ta                                      |
+| | | | | |						 
+| `U+0F50`  | Letter           | CONSONANT         | _null_                     | &#x0F50; Tha                                     |
+| `U+0F51`  | Letter           | CONSONANT         | _null_                     | &#x0F51; Da                                      |
+| `U+0F52`  | Letter           | CONSONANT         | _null_                     | &#x0F52; Dha                                     |
+| `U+0F53`  | Letter           | CONSONANT         | _null_                     | &#x0F53; Na                                      |
+| `U+0F54`  | Letter           | CONSONANT         | _null_                     | &#x0F54; Pa                                      |
+| `U+0F55`  | Letter           | CONSONANT         | _null_                     | &#x0F55; Pha                                     |
+| `U+0F56`  | Letter           | CONSONANT         | _null_                     | &#x0F56; Ba                                      |
+| `U+0F57`  | Letter           | CONSONANT         | _null_                     | &#x0F57; Bha                                     |
+| `U+0F58`  | Letter           | CONSONANT         | _null_                     | &#x0F58; Ma                                      |
+| `U+0F59`  | Letter           | CONSONANT         | _null_                     | &#x0F59; Tsa                                     |
+| `U+0F5A`  | Letter           | CONSONANT         | _null_                     | &#x0F5A; Tsha                                    |
+| `U+0F5B`  | Letter           | CONSONANT         | _null_                     | &#x0F5B; Dza                                     |
+| `U+0F5C`  | Letter           | CONSONANT         | _null_                     | &#x0F5C; Dzha                                    |
+| `U+0F5D`  | Letter           | CONSONANT         | _null_                     | &#x0F5D; Wa                                      |
+| `U+0F5E`  | Letter           | CONSONANT         | _null_                     | &#x0F5E; Zha                                     |
+| `U+0F5F`  | Letter           | CONSONANT         | _null_                     | &#x0F5F; Za                                      |
+| | | | | |						 
+| `U+0F60`  | Letter           | CONSONANT         | _null_                     | &#x0F60; -A                                      |
+| `U+0F61`  | Letter           | CONSONANT         | _null_                     | &#x0F61; Ya                                      |
+| `U+0F62`  | Letter           | CONSONANT         | _null_                     | &#x0F62; Ra                                      |
+| `U+0F63`  | Letter           | CONSONANT         | _null_                     | &#x0F63; La                                      |
+| `U+0F64`  | Letter           | CONSONANT         | _null_                     | &#x0F64; Sha                                     |
+| `U+0F65`  | Letter           | CONSONANT         | _null_                     | &#x0F65; Ssa                                     |
+| `U+0F66`  | Letter           | CONSONANT         | _null_                     | &#x0F66; Sa                                      |
+| `U+0F67`  | Letter           | CONSONANT         | _null_                     | &#x0F67; Ha                                      |
+| `U+0F68`  | Letter           | CONSONANT         | _null_                     | &#x0F68; A                                       |
+| `U+0F69`  | Letter           | CONSONANT         | _null_                     | &#x0F69; Kssa                                    |
+| `U+0F6A`  | Letter           | CONSONANT         | _null_                     | &#x0F6A; Fixed-Form Ra                           |
+| `U+0F6B`  | Letter           | CONSONANT         | _null_                     | &#x0F6B; Kka                                     |
+| `U+0F6C`  | Letter           | CONSONANT         | _null_                     | &#x0F6C; Rra                                     |
 | `U+0F6D`  | _unassigned_     |                   |                            |                                                  |
 | `U+0F6E`  | _unassigned_     |                   |                            |                                                  |
 | `U+0F6F`  | _unassigned_     |                   |                            |                                                  |
 | | | | | |
 | `U+0F70`  | _unassigned_     |                   |                            |                                                  |
-| `U+0F71`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F71; Sign Aa                                 |
-| `U+0F72`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F72; Sign I                                  |
-| `U+0F73`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F73; Sign Ii                                 |
-| `U+0F74`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F74; Sign U                                  |
-| `U+0F75`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F75; Sign Uu                                 |
-| `U+0F76`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F76; Sign Vocalic R                          |
-| `U+0F77`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F77; Sign Vocalic Rr                         |
-| `U+0F78`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F78; Sign Vocalic L                          |
-| `U+0F79`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F79; Sign Vocalic Ll                         |
-| `U+0F7A`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F7A; Sign E                                  |
-| `U+0F7B`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F7B; Sign Ee                                 |
-| `U+0F7C`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F7C; Sign O                                  |
-| `U+0F7D`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F7D; Sign Oo                                 |
-| `U+0F7E`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F7E; Sign Rjes Su Nga Ro                     |
-| `U+0F7F`  | Mark [Mc]        |                   | RIGHT_POSITION             | &#x0F7F; Sign Rnam Bcad                          |
+| `U+0F71`  | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0F71; Sign Aa                                 |
+| `U+0F72`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F72; Sign I                                  |
+| `U+0F73`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F73; Sign Ii                                 |
+| `U+0F74`  | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0F74; Sign U                                  |
+| `U+0F75`  | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0F75; Sign Uu                                 |
+| `U+0F76`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F76; Sign Vocalic R                          |
+| `U+0F77`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F77; Sign Vocalic Rr                         |
+| `U+0F78`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F78; Sign Vocalic L                          |
+| `U+0F79`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F79; Sign Vocalic Ll                         |
+| `U+0F7A`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F7A; Sign E                                  |
+| `U+0F7B`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F7B; Sign Ee                                 |
+| `U+0F7C`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F7C; Sign O                                  |
+| `U+0F7D`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F7D; Sign Oo                                 |
+| `U+0F7E`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0F7E; Sign Rjes Su Nga Ro                     |
+| `U+0F7F`  | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0F7F; Sign Rnam Bcad                          |
 | | | | | |
-| `U+0F80`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F80; Sign Reversed I                         |
-| `U+0F81`  | Mark [Mn]        |                   | TOP_AND_BOTTOM_POSITION    | &#x0F81; Sign Reversed Ii                        |
-| `U+0F82`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F82; Sign Nyi Zla Naa Da                     |
-| `U+0F83`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F83; Sign Sna Ldan                           |
+| `U+0F80`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0F80; Sign Reversed I                         |
+| `U+0F81`  | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_AND_BOTTOM_POSITION    | &#x0F81; Sign Reversed Ii                        |
+| `U+0F82`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0F82; Sign Nyi Zla Naa Da                     |
+| `U+0F83`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0F83; Sign Sna Ldan                           |
 | `U+0F84`  | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION            | &#x0F84; Halanta                                 |
-| `U+0F85`  | Punctuation      | _null_            |                            | &#x0F85; Paluta                                  |
-| `U+0F86`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F86; Sign Lci Rtags                          |
-| `U+0F87`  | Mark [Mn]        |                   | TOP_POSITION               | &#x0F87; Sign Yang Rtags                         |
-| `U+0F88`  | Letter           |                   |                            | &#x0F88; Sign Lce Tsa Can                        |
-| `U+0F89`  | Letter           |                   |                            | &#x0F89; Sign Mchu Can                           |
-| `U+0F8A`  | Letter           |                   |                            | &#x0F8A; Sign Gru Can Rgyings                    |
-| `U+0F8B`  | Letter           |                   |                            | &#x0F8B; Sign Gru Med Rgyings                    |
-| `U+0F8C`  | Letter           |                   |                            | &#x0F8C; Sign Inverted Mchu Can                  |
-| `U+0F8D`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F8D; Subjoined Sign Lce Tsa Can              |
-| `U+0F8E`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F8E; Subjoined Sign Mchu Can                 |
-| `U+0F8F`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F8F; Subjoined Sign Inverted Mchu Can        |
+| `U+0F85`  | Punctuation      | AVAGRAHA          | _null_                     | &#x0F85; Paluta                                  |
+| `U+0F86`  | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0F86; Sign Lci Rtags                          |
+| `U+0F87`  | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0F87; Sign Yang Rtags                         |
+| `U+0F88`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F88; Sign Lce Tsa Can                        |
+| `U+0F89`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F89; Sign Mchu Can                           |
+| `U+0F8A`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F8A; Sign Gru Can Rgyings                    |
+| `U+0F8B`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F8B; Sign Gru Med Rgyings                    |
+| `U+0F8C`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F8C; Sign Inverted Mchu Can                  |
+| `U+0F8D`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F8D; Subjoined Sign Lce Tsa Can              |
+| `U+0F8E`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F8E; Subjoined Sign Mchu Can                 |
+| `U+0F8F`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F8F; Subjoined Sign Inverted Mchu Can        |
 | | | | | |
-| `U+0F90`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F90; Subjoined Ka                            |
-| `U+0F91`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F91; Subjoined Kha                           |
-| `U+0F92`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F92; Subjoined Ga                            |
-| `U+0F93`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F93; Subjoined Gha                           |
-| `U+0F94`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F94; Subjoined Nga                           |
-| `U+0F95`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F95; Subjoined Ca                            |
-| `U+0F96`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F96; Subjoined Cha                           |
-| `U+0F97`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F97; Subjoined Ja                            |
+| `U+0F90`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F90; Subjoined Ka                            |
+| `U+0F91`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F91; Subjoined Kha                           |
+| `U+0F92`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F92; Subjoined Ga                            |
+| `U+0F93`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F93; Subjoined Gha                           |
+| `U+0F94`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F94; Subjoined Nga                           |
+| `U+0F95`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F95; Subjoined Ca                            |
+| `U+0F96`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F96; Subjoined Cha                           |
+| `U+0F97`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F97; Subjoined Ja                            |
 | `U+0F98`  | _unassigned_     |                   |                            |                                                  |
-| `U+0F99`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F99; Subjoined Nya                           |
-| `U+0F9A`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9A; Subjoined Tta                           |
-| `U+0F9B`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9B; Subjoined Ttha                          |
-| `U+0F9C`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9C; Subjoined Dda                           |
-| `U+0F9D`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9D; Subjoined Ddha                          |
-| `U+0F9E`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9E; Subjoined Nna                           |
-| `U+0F9F`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0F9F; Subjoined Ta                            |
-| | | | | |
-| `U+0FA0`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA0; Subjoined Tha                           |
-| `U+0FA1`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA1; Subjoined Da                            |
-| `U+0FA2`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA2; Subjoined Dha                           |
-| `U+0FA3`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA3; Subjoined Na                            |
-| `U+0FA4`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA4; Subjoined Pa                            |
-| `U+0FA5`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA5; Subjoined Pha                           |
-| `U+0FA6`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA6; Subjoined Ba                            |
-| `U+0FA7`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA7; Subjoined Bha                           |
-| `U+0FA8`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA8; Subjoined Ma                            |
-| `U+0FA9`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FA9; Subjoined Tsa                           |
-| `U+0FAA`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAA; Subjoined Tsha                          |
-| `U+0FAB`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAB; Subjoined Dza                           |
-| `U+0FAC`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAC; Subjoined Dzha                          |
-| `U+0FAD`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAD; Subjoined Wa                            |
-| `U+0FAE`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAE; Subjoined Zha                           |
-| `U+0FAF`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FAF; Subjoined Za                            |
-| | | | | |
-| `U+0FB0`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB0; Subjoined -A                            |
-| `U+0FB1`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB1; Subjoined Ya                            |
-| `U+0FB2`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB2; Subjoined Ra                            |
-| `U+0FB3`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB3; Subjoined La                            |
-| `U+0FB4`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB4; Subjoined Sha                           |
-| `U+0FB5`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB5; Subjoined Ssa                           |
-| `U+0FB6`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB6; Subjoined Sa                            |
-| `U+0FB7`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB7; Subjoined Ha                            |
-| `U+0FB8`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB8; Subjoined A                             |
-| `U+0FB9`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FB9; Subjoined Kssa                          |
-| `U+0FBA`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FBA; Subjoined Fixed-Form Wa                 |
-| `U+0FBB`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FBB; Subjoined Fixed-Form Ya                 |
-| `U+0FBC`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FBC; Subjoined Fixed-Form Ra                 |
+| `U+0F99`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F99; Subjoined Nya                           |
+| `U+0F9A`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9A; Subjoined Tta                           |
+| `U+0F9B`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9B; Subjoined Ttha                          |
+| `U+0F9C`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9C; Subjoined Dda                           |
+| `U+0F9D`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9D; Subjoined Ddha                          |
+| `U+0F9E`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9E; Subjoined Nna                           |
+| `U+0F9F`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0F9F; Subjoined Ta                            |
+| | | | | |						
+| `U+0FA0`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA0; Subjoined Tha                           |
+| `U+0FA1`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA1; Subjoined Da                            |
+| `U+0FA2`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA2; Subjoined Dha                           |
+| `U+0FA3`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA3; Subjoined Na                            |
+| `U+0FA4`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA4; Subjoined Pa                            |
+| `U+0FA5`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA5; Subjoined Pha                           |
+| `U+0FA6`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA6; Subjoined Ba                            |
+| `U+0FA7`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA7; Subjoined Bha                           |
+| `U+0FA8`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA8; Subjoined Ma                            |
+| `U+0FA9`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FA9; Subjoined Tsa                           |
+| `U+0FAA`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAA; Subjoined Tsha                          |
+| `U+0FAB`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAB; Subjoined Dza                           |
+| `U+0FAC`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAC; Subjoined Dzha                          |
+| `U+0FAD`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAD; Subjoined Wa                            |
+| `U+0FAE`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAE; Subjoined Zha                           |
+| `U+0FAF`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FAF; Subjoined Za                            |
+| | | | | |						
+| `U+0FB0`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB0; Subjoined -A                            |
+| `U+0FB1`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB1; Subjoined Ya                            |
+| `U+0FB2`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB2; Subjoined Ra                            |
+| `U+0FB3`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB3; Subjoined La                            |
+| `U+0FB4`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB4; Subjoined Sha                           |
+| `U+0FB5`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB5; Subjoined Ssa                           |
+| `U+0FB6`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB6; Subjoined Sa                            |
+| `U+0FB7`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB7; Subjoined Ha                            |
+| `U+0FB8`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB8; Subjoined A                             |
+| `U+0FB9`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FB9; Subjoined Kssa                          |
+| `U+0FBA`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FBA; Subjoined Fixed-Form Wa                 |
+| `U+0FBB`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FBB; Subjoined Fixed-Form Ya                 |
+| `U+0FBC`  | Mark [Mn]        |CONSONANT_SUBJOINED| BOTTOM_POSITION            | &#x0FBC; Subjoined Fixed-Form Ra                 |
 | `U+0FBD`  | _unassigned_     |                   |                            |                                                  |
-| `U+0FBE`  | Symbol           | SYMBOL            |                            | &#x0FBE; Ku Ru Kha                               |
-| `U+0FBF`  | Symbol           | SYMBOL            |                            | &#x0FBF; Ku Ru Kha Bzhi Mig Can                  |
+| `U+0FBE`  | Symbol           | SYMBOL            | _null_                     | &#x0FBE; Ku Ru Kha                               |
+| `U+0FBF`  | Symbol           | SYMBOL            | _null_                     | &#x0FBF; Ku Ru Kha Bzhi Mig Can                  |
 | | | | | |
-| `U+0FC0`  | Symbol           | SYMBOL            |                            | &#x0FC0; Cantillation Sign Heavy Beat            |
-| `U+0FC1`  | Symbol           | SYMBOL            |                            | &#x0FC1; Cantillation Sign Light Beat            |
-| `U+0FC2`  | Symbol           | SYMBOL            |                            | &#x0FC2; Cantillation Sign Cang Te-U             |
-| `U+0FC3`  | Symbol           | SYMBOL            |                            | &#x0FC3; Cantillation Sign Sbub -Chal            |
-| `U+0FC4`  | Symbol           | SYMBOL            |                            | &#x0FC4; Symbol Dril Bu                          |
-| `U+0FC5`  | Symbol           | SYMBOL            |                            | &#x0FC5; Symbol Rdo Rje                          |
-| `U+0FC6`  | Mark [Mn]        |                   | BOTTOM_POSITION            | &#x0FC6; Symbol Padma Gdan                       |
-| `U+0FC7`  | Symbol           | SYMBOL            |                            | &#x0FC7; Symbol Rdo Rje Rgya Gram                |
-| `U+0FC8`  | Symbol           | SYMBOL            |                            | &#x0FC8; Symbol Phur Pa                          |
-| `U+0FC9`  | Symbol           | SYMBOL            |                            | &#x0FC9; Symbol Nor Bu                           |
-| `U+0FCA`  | Symbol           | SYMBOL            |                            | &#x0FCA; Symbol Nor Bu Nyis -Khyil               |
-| `U+0FCB`  | Symbol           | SYMBOL            |                            | &#x0FCB; Symbol Nor Bu Gsum -Khyil               |
-| `U+0FCC`  | Symbol           | SYMBOL            |                            | &#x0FCC; Symbol Nor Bu Bzhi -Khyil               |
+| `U+0FC0`  | Symbol           | SYMBOL            | _null_                     | &#x0FC0; Cantillation Sign Heavy Beat            |
+| `U+0FC1`  | Symbol           | SYMBOL            | _null_                     | &#x0FC1; Cantillation Sign Light Beat            |
+| `U+0FC2`  | Symbol           | SYMBOL            | _null_                     | &#x0FC2; Cantillation Sign Cang Te-U             |
+| `U+0FC3`  | Symbol           | SYMBOL            | _null_                     | &#x0FC3; Cantillation Sign Sbub -Chal            |
+| `U+0FC4`  | Symbol           | SYMBOL            | _null_                     | &#x0FC4; Symbol Dril Bu                          |
+| `U+0FC5`  | Symbol           | SYMBOL            | _null_                     | &#x0FC5; Symbol Rdo Rje                          |
+| `U+0FC6`  | Mark [Mn]        | SYLLABLE_MODIFIER | BOTTOM_POSITION            | &#x0FC6; Symbol Padma Gdan                       |
+| `U+0FC7`  | Symbol           | SYMBOL            | _null_                     | &#x0FC7; Symbol Rdo Rje Rgya Gram                |
+| `U+0FC8`  | Symbol           | SYMBOL            | _null_                     | &#x0FC8; Symbol Phur Pa                          |
+| `U+0FC9`  | Symbol           | SYMBOL            | _null_                     | &#x0FC9; Symbol Nor Bu                           |
+| `U+0FCA`  | Symbol           | SYMBOL            | _null_                     | &#x0FCA; Symbol Nor Bu Nyis -Khyil               |
+| `U+0FCB`  | Symbol           | SYMBOL            | _null_                     | &#x0FCB; Symbol Nor Bu Gsum -Khyil               |
+| `U+0FCC`  | Symbol           | SYMBOL            | _null_                     | &#x0FCC; Symbol Nor Bu Bzhi -Khyil               |
 | `U+0FCD`  | _unassigned_     |                   |                            |                                                  |
-| `U+0FCE`  | Symbol           | SYMBOL            |                            | &#x0FCE; Sign Rdel Nag Rdel Dkar                 |
-| `U+0FCF`  | Symbol           | SYMBOL            |                            | &#x0FCF; Sign Rdel Nag Gsum                      |
+| `U+0FCE`  | Symbol           | SYMBOL            | _null_                     | &#x0FCE; Sign Rdel Nag Rdel Dkar                 |
+| `U+0FCF`  | Symbol           | SYMBOL            | _null_                     | &#x0FCF; Sign Rdel Nag Gsum                      |
 | | | | | |
-| `U+0FD0`  | Punctuation      | _null_            |                            | &#x0FD0; Bska- Shog Gi Mgo Rgyan                 |
-| `U+0FD1`  | Punctuation      | _null_            |                            | &#x0FD1; Mnyam Yig Gi Mgo Rgyan                  |
-| `U+0FD2`  | Punctuation      | _null_            |                            | &#x0FD2; Nyis Tsheg                              |
-| `U+0FD3`  | Punctuation      | _null_            |                            | &#x0FD3; Initial Brda Rnying Yig Mgo Mdun        |
-| `U+0FD4`  | Punctuation      | _null_            |                            | &#x0FD4; Closing Brda Rnying Yig Mgo Sgab        |
-| `U+0FD5`  | Symbol           | SYMBOL            |                            | &#x0FD5; Right-Facing Svasti Sign                |
-| `U+0FD6`  | Symbol           | SYMBOL            |                            | &#x0FD6; Left-Facing Svasti Sign                 |
-| `U+0FD7`  | Symbol           | SYMBOL            |                            | &#x0FD7; Right-Facing Svasti Sign With Dots      |
-| `U+0FD8`  | Symbol           | SYMBOL            |                            | &#x0FD8; Left-Facing Svasti Sign With Dots       |
-| `U+0FD9`  | Punctuation      | _null_            |                            | &#x0FD9; Leading Mchan Rtags                     |
-| `U+0FDA`  | Punctuation      | _null_            |                            | &#x0FDA; Trailing Mchan Rtags                    |
+| `U+0FD0`  | Punctuation      | _null_            | _null_                     | &#x0FD0; Bska- Shog Gi Mgo Rgyan                 |
+| `U+0FD1`  | Punctuation      | _null_            | _null_                     | &#x0FD1; Mnyam Yig Gi Mgo Rgyan                  |
+| `U+0FD2`  | Punctuation      | _null_            | _null_                     | &#x0FD2; Nyis Tsheg                              |
+| `U+0FD3`  | Punctuation      | _null_            | _null_                     | &#x0FD3; Initial Brda Rnying Yig Mgo Mdun        |
+| `U+0FD4`  | Punctuation      | _null_            | _null_                     | &#x0FD4; Closing Brda Rnying Yig Mgo Sgab        |
+| `U+0FD5`  | Symbol           | SYMBOL            | _null_                     | &#x0FD5; Right-Facing Svasti Sign                |
+| `U+0FD6`  | Symbol           | SYMBOL            | _null_                     | &#x0FD6; Left-Facing Svasti Sign                 |
+| `U+0FD7`  | Symbol           | SYMBOL            | _null_                     | &#x0FD7; Right-Facing Svasti Sign With Dots      |
+| `U+0FD8`  | Symbol           | SYMBOL            | _null_                     | &#x0FD8; Left-Facing Svasti Sign With Dots       |
+| `U+0FD9`  | Punctuation      | _null_            | _null_                     | &#x0FD9; Leading Mchan Rtags                     |
+| `U+0FDA`  | Punctuation      | _null_            | _null_                     | &#x0FDA; Trailing Mchan Rtags                    |
 | `U+0FDB`  | _unassigned_     |                   |                            |                                                  |
 | `U+0FDC`  | _unassigned_     |                   |                            |                                                  |
 | `U+0FDD`  | _unassigned_     |                   |                            |                                                  |
@@ -361,12 +361,8 @@ this situation gracefully.
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
 |`U+200C`   | Other            | NON_JOINER        | _null_                     | &#x200C; Zero-width non-joiner |
 |`U+200D`   | Other            | JOINER            | _null_                     | &#x200D; Zero-width joiner     |
-|`U+2010`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2010; Hyphen                |
-|`U+2011`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2011; No-break hyphen       |
-|`U+2012`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2012; Figure dash           |
-|`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
-|`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+|`U+2638`   | Symbol           | SYMBOL            | _null_                     | &#x2638; Wheel of Dharma       |
 
 
 The zero-width joiner is primarily used to prevent the formation of a conjunct
