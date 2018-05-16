@@ -1,7 +1,7 @@
 # Tibetan character tables #
 
 This document lists the per-character shaping information needed to
-[shape Tibetan text](opentype-shaping-tibetan.md).
+[shape Tibetan text](../opentype-shaping-tibetan.md).
 
 **Table of Contents**
 
