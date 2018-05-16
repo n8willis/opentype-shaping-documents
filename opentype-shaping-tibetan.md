@@ -19,11 +19,11 @@ runs in the Tibetan script.
 
 ## General information ##
 
-The Tibetan script was modeled after seventh-century [Indic
+The Tibetan script was modeled on seventh-century [Indic
 scripts](opentype-shaping-indic-general.md) and incorporates several
 patterns and conventions found in Indic scripts. However, Tibetan
-developed independently and possesses enough major distinctions that it is
-generally not advisable to attempt supporting it in a general-purpose
+developed independently and possesses enough major distinctions that
+it is inadvisable to attempt supporting it in a general-purpose
 Indic shaping engine. 
 
 The Tibetan script is used to write multiple languages, most commonly
@@ -31,8 +31,9 @@ Tibetan, Dzongkha, Sikkimese, Ladakhi, and Balti. In addition,
 Sanskrit may be written in Tibetan, so Tibetan script runs may include 
 glyphs from the Vedic Extension block of Unicode. 
 
-The Tibetan script tag defined in OpenType is `<tibt>`. Notably,
-Tibetan was originally included in version 1.0 of the Unicode
+The Tibetan script tag defined in OpenType is `<tibt>`. 
+
+Notably, Tibetan was originally included in version 1.0 of the Unicode
 standard, encoded in a block that closely mirrored the structure of
 the Indic scripts. However, this encoding for Tibetan was removed in
 Unicode 1.1. A new encoding for Tibetan was included in version 2.0 of
@@ -73,8 +74,8 @@ other scripts. --->
 <!--- Tibetan has a bindu, but it seems to be there just for
       transcription --->
 
-The term **head consonant** in Tibetan is similar to the term "base
-consonant" in Indic and Brahmi-derived scripts. The head consonant of
+The term **head consonant** in Tibetan is analogous to the term **base
+consonant** in Indic and Brahmi-derived scripts. The head consonant of
 a syllable is rendered in its full form; subsequent consonants are
 shown in **subjoined** form, stacked below the head consonant.
 
@@ -130,10 +131,10 @@ Tibetan uses two subclasses of consonant, `CONSONANT_SUBJOINED` and
 `CONSONANT_HEAD`. 
 
 The `CONSONANT_SUBJOINED` subclass is used for consonants immediately
-following the base consonant of a syllable and before the vowel
+following the head (or base) consonant of a syllable and before the vowel
 sound. Unlike most Indic scripts, Tibetan explicitly encodes the
 subjoined forms of each consonant in a separate codepoint. Therefore,
-the shaping engine is not responsible for identifying the base and
+the shaping engine is not responsible for identifying the head (or base) and
 below-base consonants (or other special forms) and fonts are not
 responsible for implementing substitution features to substitute
 subjoined forms in context.
@@ -158,21 +159,25 @@ be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
 lookups found in the font's GPOS table.
 
-There are four basic _mark-placement subclasses_ for dependent vowels
+There are two basic _mark-placement subclasses_ for dependent vowel signs
 (matras). Each corresponds to the visual position of the matra with
-respect to the base consonant to which it is attached:
+respect to the head (or base) consonant to which it is attached:
 
-  - `LEFT_POSITION` matras are positioned to the left of the base consonant.
-  - `RIGHT_POSITION` matras are positioned to the right of the base consonant.
-  - `TOP_POSITION` matras are positioned above the base consonant.
-  - `BOTTOM_POSITION` matras are positioned below base consonant.
+  - `TOP_POSITION` matras are positioned above the head consonant.
+  - `BOTTOM_POSITION` matras are positioned below head consonant.
   
+Syllable modifiers and other marks may be placed in `TOP` or `BOTTOM`
+position, or:
+
+  - `LEFT_POSITION` positioned to the left of the head consonant.
+  - `RIGHT_POSITION` positioned to the right of the head consonant.
+
 These positions may also be referred to elsewhere in shaping documents as:
 
-  - _Pre-base_ matras
-  - _Post-base_ matras
-  - _Above-base_ matras
-  - _Below-base_ matras
+  - _Above-base_ 
+  - _Below-base_ 
+  - _Pre-base_ 
+  - _Post-base_ 
   
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
@@ -252,10 +257,11 @@ otherwise would.
 --->
 
 The no-break space is primarily used to insert spaces between
-phrases: Tibetan text does not employ inter-word spaces. Consequently,
-when spaces occur in a text run, they must be preserved: line-breaking
-algorithms must not break lines after a Tibetan space, so the no-break
-space character is used instead of the traditional space.
+phrases. Tibetan text does not employ inter-word spaces. Consequently,
+when spaces are inserted into a text run, it is important that they be
+preserved: line-breaking algorithms must not break lines after a
+Tibetan space, so the no-break space character is used instead of the
+traditional space. 
 
 The no-break space may also be used to display those codepoints that
 are defined as non-spacing (marks, dependent vowels (matras),
@@ -295,32 +301,35 @@ begin with either a consonant or an independent vowel.
 
 The general form of a consonant-based syllable in Tibetan begins with
 an optional pre-base consonant (also called a "prefix"), followed by
-the syllable's base consonant, zero or more subjoined consonants, zero
-or more dependent-vowel signs (matras), an optional post-base
-consonant (also called a "suffix") and zero or more syllable modifiers
-or diacritical marks.
+the syllable's head (or base) consonant, zero or more subjoined
+consonants, zero or more dependent-vowel signs (matras), an optional
+post-base consonant (also called a "suffix") and zero or more syllable
+modifiers or diacritical marks.
 
-The prefix, suffix, and base consonants will all be from the
+The prefix, suffix, and head (or base) consonants will all be from the
 `CONSONANT` shaping class. All subjoined consonants will be from the
 `CONSONANT_SUBJOINED` class.
 
-The prefix, suffix, and base consonant are all shown in their default
-form and position. Any subjoined consonants are stacked below the base
-consonant. Any dependent vowel signs (matras) are rendered as marks
-positioned either above the base consonant or below the consonant stack.
+The prefix, suffix, and head (or base) consonant are all shown in
+their default form and position. Any subjoined consonants are stacked
+below the head consonant. Any dependent vowel signs (matras) are
+rendered as marks positioned either above the head consonant or below
+the consonant stack.
 
-> Note: A base consonant that is not accompanied by a dependent vowel
-> (matra) sign carries the script's inherent vowel sound. This vowel
-> sound is changed by a dependent vowel (matra) sign following the
-> consonant.
+> Note: A head (or base) consonant that is not accompanied by a
+> dependent vowel sign (matra) carries the script's inherent vowel
+> sound. This vowel sound is changed by a dependent vowel sign
+> following the consonant.
 
 > Note: Prefix and suffix consonants do not carry a vowel sound. This
 > does not affect shaping, except in that Tibetan differs from many
 > other scripts in not employing a "halant" or vowel-killer sign to
 > designate the suppression of these sounds.
 
-Certain consonant sequences trigger alternate visual forms in the
-Tibetan orthography.
+Certain consonant sequences may take on alternate shapes to provide a
+better visual fit with adjoining characters (such as within a
+consonant stack). However, these alternates are not considered
+orthographically distinct forms.
 
 Native words in Tibetan do not incorporate more than a single
 dependent-vowel sign (matra) in a syllable. However, multiple
@@ -370,15 +379,30 @@ The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
 substitute a single glyph into an equivalent decomposed sequence of glyphs. 
  
+In `<tibt>` text, this may include decompositions of multi-part
+dependent vowel signs (matras).
+
+The Tibetan Unicode block includes several multi-part matras, most
+intended for use transcribing Sanskrit. However, usage is discouraged
+for several of these matras, and two of the codepoints have been
+officially deprecated. In their place, text authors are encouraged to
+use the corresponding sequence of single-part matras.
+
+  - `U+0F77` is deprecated and should be replaced by "`U+0FB2`,`U+0F81`"
+  - `U+0F79` is deprecated and should be replaced by "`U+0FB3`,`U+0F81`"
+  - `U+0F73` can be replaced by "`U+0F71`,`U+0F72`"
+  - `U+0F75` can be replaced by "`U+0F71`,`U+0F74`"
+  - `U+0F81` can be replaced by "`U+0F71`,`U+0F80`"
+  
 If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-> Note: `ccmp` usage is uncommon in Tibetan fonts. Nevertheless,
+<!--- > Note: `ccmp` usage is uncommon in Tibetan fonts. Nevertheless,
 > shaping engines must apply any `ccmp` substitutions if they are
 > present in the active font.
-
+--->
 
 
 
@@ -404,8 +428,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. In Tibetan, this can include contextual ligatures
-involving below-base dependent vowel marks (matras), medial
-consonants, or subjoined consonants.
+involving below-base dependent vowel marks (matras) or subjoined
+consonants.
 
 ![Application of the blws feature](/images/tibetan/tibetan-blws.png)
 
@@ -445,35 +469,24 @@ order in which they appear in the GPOS table in the font.
 > present in the font. However, `kern` is not mandatory for shaping
 > Tibetan text and may be disabled by user preference.
 
-The `dist` feature adjusts the horizontal positioning of
-glyphs. Unlike `kern`, adjustments made with `dist` do not require the
-application or the user to enable any software _kerning_ features, if
-such features are optional. 
+The `kern` feature adjusts the horizontal positioning of
+glyphs.
 
-In Tibetan text, `dist` is typically used to adjust the space of a
-consonant glyph after a pre-base-reordering "Medial Ra", because the
-"Medial Ra" codepoint is classified as being of zero width, but is
-orthographically a glyph that encloses the adjacent letter.
-
-![Application of the dist feature](/images/tibetan/tibetan-dist.png)
+![Application of the kern feature](/images/tibetan/tibetan-kern.png)
 
 
 The `abvm` feature positions above-base glyphs for attachment to base
-characters. In Tibetan, this includes "Kinzi" and "Asat" in addition
-to tone markers, diacritical marks, above-base dependent vowels
-(matras), and Vedic signs.
+characters. In Tibetan, this includes tone markers, diacritical marks,
+above-base dependent vowels (matras), and Vedic signs.
 
 ![Application of the abvm feature](/images/tibetan/tibetan-abvm.png)
 
 The `blwm` feature positions below-base glyphs for attachment to base
 characters. In Tibetan, this includes subjoined consonants as well as
-below-base dependent vowels (matras), medial consonants, tone markers,
-diacritical marks, and Vedic signs.
+below-base dependent vowels (matras), diacritical marks, and Vedic signs.
 
 ![Application of the blwm feature](/images/tibetan/tibetan-blwm.png)
 
-
- 
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
