@@ -569,7 +569,7 @@ Med	= _my_? _mr_? _mw_? _mh_? _asat_?
 Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
 Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
 Pwo	= _pt_ _a_* _db_? _asat_?
-Tcomplex	= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
+Tcomplex= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
 Tail	= _halant_ | Tcomplex
 ```
 
@@ -635,14 +635,13 @@ The final sort order of the ordering categories should be:
 
 <!---	POS_RA_TO_BECOME_REPH --->
 
+
 	POS_PREBASE_MATRA
 	
 	POS_PREBASE_CONSONANT
 
 	POS_BASE_CONSONANT
 	POS_AFTER_MAIN
-
-<!---	POS_ABOVEBASE_CONSONANT --->
 
 	POS_BEFORE_SUBJOINED
 	POS_BELOWBASE_CONSONANT
@@ -943,7 +942,6 @@ The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants.
 
-<!--- Example: Medial Ya?? --->
 
 ![Application of the psts feature](/images/myanmar/myanmar-psts.png)
 
@@ -963,11 +961,11 @@ applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
 order in which they appear in the GPOS table in the font.
 
-        dist
-        abvm
-        blwm
-		mark
-		mkmk
+	dist
+	abvm
+	blwm
+	mark
+	mkmk
 
 > Note: The `kern` feature is usually applied at this stage, if it is
 > present in the font. However, `kern` is not mandatory for shaping
@@ -978,10 +976,10 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
-In Myanmar text, `dist` is typically used to adjust the space of a
-consonant glyph after a pre-base-reordering "Medial Ra", because the
-"Medial Ra" codepoint is classified as being of zero width, but is
-orthographically a glyph that encloses the adjacent letter.
+In Myanmar text, `dist` is typically used to adjust the space around a
+pre-base-reordering "Medial Ra", because the "Medial Ra" codepoint is
+classified as being of zero width, but is orthographically a glyph
+that encloses the adjacent letter.
 
 ![Application of the dist feature](/images/myanmar/myanmar-dist.png)
 

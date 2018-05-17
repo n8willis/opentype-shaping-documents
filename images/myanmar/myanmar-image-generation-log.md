@@ -138,6 +138,54 @@ montage myanmar-abvs-before.png right-arrow.png myanmar-abvs-after.png -geometry
 
 ## 4 blws
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-blws-before.png --features=-blws  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=aa6b,103c,103e
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-blws-after.png --features=+blws  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=aa6b,103c,103e
+
+montage myanmar-blws-before.png right-arrow.png myanmar-blws-after.png -geometry +0+0 -background transparent myanmar-blws.png
+
+
+## 4 psts
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-psts-before.png --features=-blws  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100b,103b
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-psts-after.png --features=+blws  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=100b,103b
+
+montage myanmar-psts-before.png right-arrow.png myanmar-psts-after.png -geometry +0+0 -background transparent myanmar-psts.png
+
+
+## 4 liga
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-liga-before.png --features=-liga,-blws,-blwf  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1016,103c,103d,103e
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-liga-after.png --features=+liga  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1016,103c,103d,103e
+
+montage myanmar-liga-before.png right-arrow.png myanmar-liga-after.png -geometry +0+0 -background transparent myanmar-liga.png
+
+
+## 5 dist
+
+> Note: Noto Sans Myanmar implements all distance adjustments in
+> `kern`.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-dist-before.png --features=-kern  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=101b,102b,103a,100f,103c
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-dist-after.png --features=+kern  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=101b,102b,103a,100f,103c
+
+montage myanmar-dist-before.png right-arrow.png myanmar-dist-after.png -geometry +0+0 -background transparent myanmar-dist.png
+
+
+## 5 abvm
+
+> Note: Noto Sans Myanmar implements this as `mark`.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-abvm-before.png --features=-mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1004,103a,1039,1008
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-abvm-after.png --features=+mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1004,103a,1039,1008
+
+montage myanmar-abvm-before.png right-arrow.png myanmar-abvm-after.png -geometry +0+0 -background transparent myanmar-abvm.png
+
+
 
 
 
