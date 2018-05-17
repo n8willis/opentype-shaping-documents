@@ -186,13 +186,33 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-abvm-after.png 
 montage myanmar-abvm-before.png right-arrow.png myanmar-abvm-after.png -geometry +0+0 -background transparent myanmar-abvm.png
 
 
+## 5 blwm
+
+> Note: Noto Sans Myanmar implements this as `mark`.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-blwm-before.png --features=-mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1009,1039,101b
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-blwm-after.png --features=+mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1009,1039,101b
+
+montage myanmar-blwm-before.png right-arrow.png myanmar-blwm-after.png -geometry +0+0 -background transparent myanmar-blwm.png
 
 
+## 5 mark
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-mark-before.png --features=-mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=107e,108d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-mark-after.png --features=+mark  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=107e,108d
+
+montage myanmar-mark-before.png right-arrow.png myanmar-mark-after.png -geometry +0+0 -background transparent myanmar-mark.png
 
 
+## 5 mkmk
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-mkmk-before.png --features=-mkmk  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1000,1039,105d,105e
 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-mkmk-after.png --features=+mkmk  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=1000,1039,105d,105e
 
+montage myanmar-mkmk-before.png right-arrow.png myanmar-mkmk-after.png -geometry +0+0 -background transparent myanmar-mkmk.png
 
 
 

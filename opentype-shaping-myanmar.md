@@ -991,6 +991,7 @@ to tone markers, diacritical marks, above-base dependent vowels
 
 ![Application of the abvm feature](/images/myanmar/myanmar-abvm.png)
 
+
 The `blwm` feature positions below-base glyphs for attachment to base
 characters. In Myanmar, this includes subjoined consonants as well as
 below-base dependent vowels (matras), medial consonants, tone markers,
@@ -1000,11 +1001,15 @@ diacritical marks, and Vedic signs.
 
 
 The `mark` feature positions marks with respect to base glyphs.
+
+![Application of the mark feature](/images/myanmar/myanmar-mark.png)
  
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
+
+![Application of the mkmk feature](/images/myanmar/myanmar-mkmk.png)
 
 
 
