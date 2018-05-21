@@ -6,7 +6,6 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Lao character table](#lao-character-table)
-  - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 
 

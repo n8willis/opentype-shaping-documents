@@ -28,8 +28,9 @@ Indic shaping engine.
 
 The Tibetan script is used to write multiple languages, most commonly
 Tibetan, Dzongkha, Sikkimese, Ladakhi, and Balti. In addition,
-Sanskrit may be written in Tibetan, so Tibetan script runs may include 
-glyphs from the Vedic Extension block of Unicode. 
+Sanskrit may be written in Tibetan, but the Tibetan script is not used
+for Vedic texts, therefore Tibetan text runs are not expected to
+include any glyphs from the Vedic Extension block of Unicode. 
 
 The Tibetan script tag defined in OpenType is `<tibt>`. 
 
