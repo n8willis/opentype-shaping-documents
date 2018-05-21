@@ -49,7 +49,7 @@ may vary, however, potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. Syllables
 in Tibetan script can include sequences of multiple vowels and,
-therefore, multiple matras. Each matras is either a **above-base** or
+therefore, multiple matras. Each matra is either a **above-base** or
 a **below-base** form.
 
 Several compound matra codepoints are included in the Tibetan Unicode
@@ -118,8 +118,7 @@ Several of the diacritic and syllable-modifying marks behave according
 to their own rules and, thus, have a special class. These include
 `BINDU` and `VISARGA`. Some less-common marks behave according to
 rules that are similar to these common marks, and are therefore
-classified with the corresponding common mark. The Vedic Extensions
-also include a `CANTILLATION` class for tone marks.
+classified with the corresponding common mark.
 
 Letters generally fall into the classes `CONSONANT`,
 `VOWEL_INDEPENDENT`, and `VOWEL_DEPENDENT`. These classes help the
@@ -400,11 +399,6 @@ performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-<!--- > Note: `ccmp` usage is uncommon in Tibetan fonts. Nevertheless,
-> shaping engines must apply any `ccmp` substitutions if they are
-> present in the active font.
---->
-
 
 
 ### 2: Applying all basic substitution features from GSUB ###
@@ -478,13 +472,13 @@ glyphs.
 
 The `abvm` feature positions above-base glyphs for attachment to base
 characters. In Tibetan, this includes tone markers, diacritical marks,
-above-base dependent vowels (matras), and Vedic signs.
+and above-base dependent vowels (matras).
 
 ![Application of the abvm feature](/images/tibetan/tibetan-abvm.png)
 
 The `blwm` feature positions below-base glyphs for attachment to base
 characters. In Tibetan, this includes subjoined consonants as well as
-below-base dependent vowels (matras), diacritical marks, and Vedic signs.
+below-base dependent vowels (matras), and diacritical marks.
 
 ![Application of the blwm feature](/images/tibetan/tibetan-blwm.png)
 
