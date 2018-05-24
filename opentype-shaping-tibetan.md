@@ -195,12 +195,11 @@ shaping process.
 
 ### Tibetan character tables ###
 
-Separate character tables are provided for the Tibetan and Vedic
-Extensions blocks as well as for other miscellaneous characters that
-are used in `<tibt>` text runs:
+Separate character tables are provided for the Tibetan block as well
+as for other miscellaneous characters that are used in `<tibt>` text
+runs:
 
   - [Tibetan character table](character-tables/character-tables-tibetan.md#tibetan-character-table)
-  - [Vedic Extensions character table](character-tables/character-tables-tibetan.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-tibetan.md#miscellaneous-character-table)
 
 The tables list each codepoint along with its Unicode general
@@ -370,8 +369,6 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Local-forms substitution](images/tibetan/tibetan-locl.png)
-
 
 #### 1.2: ccmp ####
 
@@ -398,6 +395,9 @@ If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
+
+
+![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.png)
 
 
 
@@ -437,6 +437,8 @@ provides a preferable connection to an adjacent glyph in the stack.
 The `calt` feature performs substitutions that are not mandatory for
 orthographic correctness. The substitutions made by `calt`
 can be disabled by application-level user interfaces.
+
+![Application of the calt feature](/images/tibetan/tibetan-calt.png)
 
 
 
@@ -485,5 +487,8 @@ below-base dependent vowels (matras), and diacritical marks.
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
-same base glyph.
+same base glyph. In Tibetanm this also includes attaching marks to
+subjoined consonants or dependent vowels.
+
+![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.png)
 
