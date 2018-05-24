@@ -305,6 +305,8 @@ consonants, zero or more dependent-vowel signs (matras), an optional
 post-base consonant (also called a "suffix") and zero or more syllable
 modifiers or diacritical marks.
 
+![Tibetan syllable example](/images/tibetan/tibetan-syllable.png)
+
 The prefix, suffix, and head (or base) consonants will all be from the
 `CONSONANT` shaping class. All subjoined consonants will be from the
 `CONSONANT_SUBJOINED` class.
