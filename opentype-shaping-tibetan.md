@@ -75,15 +75,29 @@ other scripts. --->
 <!--- Tibetan has a bindu, but it seems to be there just for
       transcription --->
 
-The term **head consonant** in Tibetan is analogous to the term **base
-consonant** in Indic and Brahmi-derived scripts. The head consonant of
-a syllable is rendered in its full form; subsequent consonants are
-shown in **subjoined** form, stacked below the head consonant.
+The term **base consonant** in Tibetan is analogous to its usage in
+Indic and Brahmi-derived scripts. The base consonant of a syllable is
+rendered in its full form; subsequent consonants are generally shown
+in **subjoined** form, stacked below the base consonant.
 
-The Tibetan Unicode block includes separate codepoints for the head
+The Tibetan Unicode block includes separate codepoints for the base
 and subjoined forms of each consonant. Therefore, shaping engines are
-not required to determine the head consonant of a syllable
+not required to determine the base consonant of a syllable
 algorithmically.
+
+Tibetan also employs the term **head consonant**, which refers to the
+consonant in a stack that is in the visually topmost position. Certain
+consonants take on an alternate form when used in stack-initial
+positions (such as "Ra"). When the alternate form is visually the
+topmost consonant in the stack, it is regarded as the head consonant,
+even though the consonant that follows is regarded as the base
+consonant.
+
+For example, the sequence "Ra,Subjoined Ka" (`U+0F62`,`U+0F90`) is
+rendered with the "Ka" in its non-subjoined, base-consonant form and the "Ra"
+positioned above. In this circumstance, the "Ra" would still be
+regarded as the head consonant.
+
 
 
 Where possible, using the standard terminology is preferred, as the
@@ -131,10 +145,10 @@ Tibetan uses two subclasses of consonant, `CONSONANT_SUBJOINED` and
 `CONSONANT_HEAD`. 
 
 The `CONSONANT_SUBJOINED` subclass is used for consonants immediately
-following the head (or base) consonant of a syllable and before the vowel
+following the base consonant of a syllable and before the vowel
 sound. Unlike most Indic scripts, Tibetan explicitly encodes the
 subjoined forms of each consonant in a separate codepoint. Therefore,
-the shaping engine is not responsible for identifying the head (or base) and
+the shaping engine is not responsible for identifying the base and
 below-base consonants (or other special forms) and fonts are not
 responsible for implementing substitution features to substitute
 subjoined forms in context.
@@ -161,16 +175,16 @@ lookups found in the font's GPOS table.
 
 There are two basic _mark-placement subclasses_ for dependent vowel signs
 (matras). Each corresponds to the visual position of the matra with
-respect to the head (or base) consonant to which it is attached:
+respect to the base consonant to which it is attached:
 
-  - `TOP_POSITION` matras are positioned above the head consonant.
-  - `BOTTOM_POSITION` matras are positioned below head consonant.
+  - `TOP_POSITION` matras are positioned above the base consonant.
+  - `BOTTOM_POSITION` matras are positioned below base consonant.
   
 Syllable modifiers and other marks may be placed in `TOP` or `BOTTOM`
 position, or:
 
-  - `LEFT_POSITION` positioned to the left of the head consonant.
-  - `RIGHT_POSITION` positioned to the right of the head consonant.
+  - `LEFT_POSITION` positioned to the left of the base consonant.
+  - `RIGHT_POSITION` positioned to the right of the base consonant.
 
 These positions may also be referred to elsewhere in shaping documents as:
 
@@ -300,24 +314,24 @@ begin with either a consonant or an independent vowel.
 
 The general form of a consonant-based syllable in Tibetan begins with
 an optional pre-base consonant (also called a "prefix"), followed by
-the syllable's head (or base) consonant, zero or more subjoined
+the syllable's base consonant, zero or more subjoined
 consonants, zero or more dependent-vowel signs (matras), an optional
 post-base consonant (also called a "suffix") and zero or more syllable
 modifiers or diacritical marks.
 
 ![Tibetan syllable example](/images/tibetan/tibetan-syllable.png)
 
-The prefix, suffix, and head (or base) consonants will all be from the
+The prefix, suffix, and base consonants will all be from the
 `CONSONANT` shaping class. All subjoined consonants will be from the
 `CONSONANT_SUBJOINED` class.
 
-The prefix, suffix, and head (or base) consonant are all shown in
+The prefix, suffix, and base consonant are all shown in
 their default form and position. Any subjoined consonants are stacked
-below the head consonant. Any dependent vowel signs (matras) are
-rendered as marks positioned either above the head consonant or below
+below the base consonant. Any dependent vowel signs (matras) are
+rendered as marks positioned either above the base consonant or below
 the consonant stack.
 
-> Note: A head (or base) consonant that is not accompanied by a
+> Note: A base consonant that is not accompanied by a
 > dependent vowel sign (matra) carries the script's inherent vowel
 > sound. This vowel sound is changed by a dependent vowel sign
 > following the consonant.
