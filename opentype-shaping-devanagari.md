@@ -475,26 +475,51 @@ SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _avagraha_{
 HALANT_GROUP	= Z? _halant_ (_zwj_ _nukta_?)?
 FINAL_HALANT_GROUP	= HALANT_GROUP | (_halant_ _zwnj_)
 MEDIAL_GROUP	= _consonantmedial_?
-HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP{0,4})
+HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP*)
 ```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encounter more than 4 sequential `(MATRA_GROUP)`
+> instances in any real-word syllables. Thus, implementations may
+> choose to limit occurences by limiting the above expressions to a
+> finite length, such as `(MATRA_GROUP){0,4}` .
+
 
 Using the above elements, the following regular expressions define the
 possible syllable types:
 
 A consonant-based syllable will match the expression:
 ```markdown
-(_repha_|_consonantwithstacker_)? (CN HALANT_GROUP){0,4} CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+(_repha_|_consonantwithstacker_)? (CN HALANT_GROUP)* CN MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encounter more than 4 sequential `(CN HALANT_GROUP)`
+> instances in any real-word syllables. Thus, implementations may
+> choose to limit occurences by limiting the above expressions to a
+> finite length, such as `(CN HALANT_GROUP){0,4}` .
 
 A vowel-based syllable will match the expression:
 ```markdown
-REPH? _vowel_ _nukta_? (_zwj_ | (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
+REPH? _vowel_ _nukta_? (_zwj_ | (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL)
 ```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encounter more than 4 sequential `(HALANT_GROUP CN)`
+> instances in any real-word syllables. Thus, implementations may
+> choose to limit occurences by limiting the above expressions to a
+> finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A standalone syllable will match the expression:
 ```markdown
-((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_) _nukta_? (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+((_repha_|_consonantwithstacker_)? _placeholder_ | REPH? _dottedcircle_) _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encounter more than 4 sequential `(HALANT_GROUP CN)`
+> instances in any real-word syllables. Thus, implementations may
+> choose to limit occurences by limiting the above expressions to a
+> finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -503,8 +528,14 @@ S SYLLABLE_TAIL
 
 A broken syllable will match the expression:
 ```markdown
-REPH? _nukta_? (HALANT_GROUP CN){0,4} MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
+REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TAIL
 ```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encounter more than 4 sequential `(HALANT_GROUP CN)`
+> instances in any real-word syllables. Thus, implementations may
+> choose to limit occurences by limiting the above expressions to a
+> finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 
 The expressions above use state-machine syntax from the Ragel
