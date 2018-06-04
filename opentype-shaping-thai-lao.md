@@ -13,7 +13,7 @@ runs in the Thai and Lao scripts.
       - [Mark combining classes](#mark-combining-classes)
       - [PUA fallback classifications](#pua-fallback-classifications)
       - [Thai and Lao character tables](#thai-and-lao-character-tables)
-  - [The `<thai>`-`<lao >` shaping model](#the-thai-lao&nbsp;-shaping-model)
+  - [The `<thai>`-`<lao >` shaping model](#the-thai-lao-shaping-model)
       - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
       - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
       - [3: Reordering sequences of marks](#2-reordering-sequences-of-marks)
@@ -23,11 +23,6 @@ runs in the Thai and Lao scripts.
       - [2: Applying all basic substitution features from GSUB](#2-applying-all-basic-substitution-features-from-gsub)
       - [3: Applying remaining positioning features from GPOS](#3-applying-remaining-positioning-features-from-gpos)
 
-
-1. Applying the language substitution features from GSUB
-2. Decomposing all Am vowel signs
-3. Reordering sequences of marks
-4. Applying all positioning features from GPOS
 
 
 ## General information ##
@@ -47,7 +42,7 @@ The Thai script is used to write multiple languages, most commonly
 Thai, Pak Thai (or Southern Thai), Kuy, Isan, Lanna (or Northern
 Thai), and Kelantan-Pattani Malay. In addition, the Thai script is
 used to write Sanskrit and Pali. However, the Thai script is not used
-for Vedic texts, therefore Tibetan text runs are not expected to
+for Vedic texts, therefore Thai And Lao text runs are not expected to
 include any glyphs from the Vedic Extension block of Unicode.
 
 The Lao script is used to write multiple languages, most commonly
@@ -190,13 +185,17 @@ The Unicode standard defines a _canonical combining class_ for each mark
 codepoint that is used whenever a sequence of marks needs to be sorted
 into canonical order. 
 
-The Thai and Lao marks belong to standard combining classes:
+The Thai and Lao marks belong to standard combining classes, for example:
 
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
-|`U+0670`   | 35              | &#x0670; Superscript Alef          |
-|           | 220             | Other below-base combining marks   |
-|           | 230             | Other above-base combining marks   |
+|`U+0E38`   | 103             | &#x0E38; Sara U                    |
+|`U+0E47`   | 0               | &#x0E47; Maitaikhu                 |
+|`U+0E4A`   | 107             | &#xOE4A; Mai Tri                   |
+|`U+0EB9`   | 118             | &#x0EB9; Sign Uu                   |
+|`U+0EBC`   | 0               | &#x0E47; Semivowel Sign Lo         |
+|`U+0ECB`   | 122             | &#xOE4A; Tone Mai Catawa           |
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -235,10 +234,10 @@ well as for other miscellaneous characters that are used in `<thai>`
 and `<lao >` text runs: 
 
   - [Thai character table](character-tables/character-tables-thai.md#thai-character-table)
-  - [Miscellaneous character table](character-tables/character-tables-tibetan.md#miscellaneous-character-table)
+  - [Miscellaneous character table](character-tables/character-tables-thai.md#miscellaneous-character-table)
 
   - [Lao character table](character-tables/character-tables-lao.md#lao-character-table)
-  - [Miscellaneous character table](character-tables/character-tables-tibetan.md#miscellaneous-character-table)
+  - [Miscellaneous character table](character-tables/character-tables-lao.md#miscellaneous-character-table)
 
 The tables list each codepoint along with its Unicode general
 category, its shaping class, its mark-placement subclass, and its
@@ -371,7 +370,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Local-forms substitution](images/tibetan/tibetan-locl.png)
+![Local-forms substitution](images/thai/thai-locl.png)
 
 
 #### 1.2: ccmp ####
@@ -460,7 +459,7 @@ order in which they appear in the GPOS table in the font.
 The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
-![Application of the kern feature](/images/tibetan/tibetan-kern.png)
+![Application of the kern feature](/images/thai/thai-kern.png)
 
 
 The `mkmk` feature positions marks with respect to preceding marks,
