@@ -178,13 +178,13 @@ There are two basic _mark-placement subclasses_ for dependent vowel signs
 respect to the base consonant to which it is attached:
 
   - `TOP_POSITION` matras are positioned above the base consonant.
-  - `BOTTOM_POSITION` matras are positioned below base consonant.
+  - `BOTTOM_POSITION` matras are positioned below the base consonant.
   
 Syllable modifiers and other marks may be placed in `TOP` or `BOTTOM`
 position, or:
 
-  - `LEFT_POSITION` positioned to the left of the base consonant.
-  - `RIGHT_POSITION` positioned to the right of the base consonant.
+  - `LEFT_POSITION` marks are positioned to the left of the base consonant.
+  - `RIGHT_POSITION` marks are positioned to the right of the base consonant.
 
 These positions may also be referred to elsewhere in shaping documents as:
 
