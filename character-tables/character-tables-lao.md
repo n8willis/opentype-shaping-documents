@@ -1,7 +1,7 @@
 # Lao character tables #
 
 This document lists the per-character shaping information needed to
-[shape Lao text](../opentype-shaping-thai-lao.md#the-lao-shaping-model).
+[shape Lao text](../opentype-shaping-thai-lao.md#the-thai-lao-shaping-model).
 
 **Table of Contents**
 

@@ -13,7 +13,7 @@ runs in the Thai and Lao scripts.
       - [Mark combining classes](#mark-combining-classes)
       - [PUA fallback classifications](#pua-fallback-classifications)
       - [Thai and Lao character tables](#thai-and-lao-character-tables)
-  - [The `<thai>`-`<lao >` shaping model](#the-thai-lao-shaping-model)
+  - [The `<thai>`/`<lao >` shaping model](#the-thai-lao-shaping-model)
       - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
       - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
       - [3: Reordering sequences of marks](#2-reordering-sequences-of-marks)
@@ -117,6 +117,7 @@ expected shaping behavior. Therefore, Thai and Lao glyphs may
 additionally be classified by how they are treated when shaping a run
 of text.
 
+
 ### Shaping classes and subclasses ###
 
 The shaping classes listed in the tables that follow are defined so
@@ -191,10 +192,10 @@ The Thai and Lao marks belong to standard combining classes, for example:
 |:----------|:----------------|:-----------------------------------|
 |`U+0E38`   | 103             | &#x0E38; Sara U                    |
 |`U+0E47`   | 0               | &#x0E47; Maitaikhu                 |
-|`U+0E4A`   | 107             | &#xOE4A; Mai Tri                   |
+|`U+0E4A`   | 107             | &#x0E4A; Mai Tri                   |
 |`U+0EB9`   | 118             | &#x0EB9; Sign Uu                   |
 |`U+0EBC`   | 0               | &#x0E47; Semivowel Sign Lo         |
-|`U+0ECB`   | 122             | &#xOE4A; Tone Mai Catawa           |
+|`U+0ECB`   | 122             | &#x0E4A; Tone Mai Catawa           |
 
 
 The numeric values of these combining classes are used during Unicode
@@ -319,7 +320,7 @@ below-base consonant forms, and post-base consonant forms) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder. 
 
-## The `<thai>`-`<lao >` shaping model ##
+## The `<thai>`/`<lao >` shaping model ##
 
 Processing a run of `<thai>` or `<lao >` text involves four top-level stages:
 
@@ -370,8 +371,6 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
 
-![Local-forms substitution](images/thai/thai-locl.png)
-
 
 #### 1.2: ccmp ####
 
@@ -393,6 +392,8 @@ performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
+![Glyph decomposition](images/thai/thai-ccmp.png)
+
 
 ### 2. Decomposing all Am vowel signs ###
 
@@ -412,6 +413,8 @@ The shaping engine must keep track of the fact that the "Nikhahit" or
 "Niggahita" marks originated as part of an "Am" sign, because these
 decomposed marks are handled differently during the mark-reordering
 stage.
+
+![Glyph decomposition](images/lao/lao-am.png)
 
   
 ### 3. Reordering sequences of marks ###
@@ -441,6 +444,7 @@ move the
 
 --->
 
+
 ### 4: Applying all positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
@@ -460,6 +464,11 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 ![Application of the kern feature](/images/thai/thai-kern.png)
+
+
+The `mark` feature positions marks with respect to base glyphs.
+
+![Application of the mark feature](/images/thai/thai-mark.png)
 
 
 The `mkmk` feature positions marks with respect to preceding marks,
