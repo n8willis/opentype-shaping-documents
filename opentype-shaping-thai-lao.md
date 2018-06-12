@@ -186,20 +186,37 @@ The Unicode standard defines a _canonical combining class_ for each mark
 codepoint that is used whenever a sequence of marks needs to be sorted
 into canonical order. 
 
-The Thai and Lao marks belong to standard combining classes, for example:
+The numeric values of these combining classes are used during Unicode
+normalization. 
+
+All Thai and Lao marks belong to standard combining classes. However,
+for script-shaping purposes, some marks need to be reassigned to a
+modified class in order to ensure that certain sequences of
+consectutive marks are reordered correctly.
+
+In particular, the Thai "Sara U" (`U+0E38`) and "Sara Uu" (`U+0E39`)
+marks are reassigned from the canonical class 103 to the class 3
+(which is an unused class in Unicode's set of canonical classes).
+
+This ensures that "Sara U" or "Sara Uu" codepoints adjacent to
+"Phinthu" (`U+0E3A`) are not reordered to a position after the
+"Phinthu" mark.
+
 
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
-|`U+0E38`   | 103             | &#x0E38; Sara U                    |
-|`U+0E47`   | 0               | &#x0E47; Maitaikhu                 |
+|`U+0E38`   | 3               | &#x0E38; Sara U                    |
+|`U+0E47`   | _0_             | &#x0E47; Maitaikhu                 |
 |`U+0E4A`   | 107             | &#x0E4A; Mai Tri                   |
 |`U+0EB9`   | 118             | &#x0EB9; Sign Uu                   |
-|`U+0EBC`   | 0               | &#x0E47; Semivowel Sign Lo         |
+|`U+0EBC`   | _0_             | &#x0E47; Semivowel Sign Lo         |
 |`U+0ECB`   | 122             | &#x0E4A; Tone Mai Catawa           |
 
-
-The numeric values of these combining classes are used during Unicode
-normalization.
+> Note: Reassigning marks to modified classes in this manner should
+> not produce any unwanted side effects, because the reassigned class
+> is unused. However, any implementations that need to maintain strict
+> adherence to Unicode's canonical combining classes may choose to
+> handle the Phinthu-reordering issue in a different manner.
 
 
 ### PUA fallback classifications ###
@@ -419,7 +436,26 @@ stage.
   
 ### 3. Reordering sequences of marks ###
 
-A "Nikhahit" or "Niggahita"mark that originated as part of an "Am" sign
+In this stage, sequences of consecutive marks may need to be
+reordered.
+
+In `<thai>` and `<lao >` text runs, two conditions should be checked
+for possible reordering.
+
+  - A "Nikhahit" or "Niggahita" mark that originated as part of an
+    "Am" sign (which was decomposed in stage two, above) must be
+    reordered so that it occurs before any tone markers in the
+    sequence of marks.
+  - A "Phinthu" mark must be reordered so that it occurs after any
+    "Sara U" or "Sara Uu" marks.
+	
+> Note: "Nikhahit" or "Niggahita" marks that were not originally part
+> of an "Am" sign should not be reordered.
+
+> Note: Shaping engines may choose to implement that Phinthu
+> reordering rule by modifying the combining classes assigned to
+> "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
+> the text run, or by performing a sorting step at this stage.
 
 <!--- 
 
