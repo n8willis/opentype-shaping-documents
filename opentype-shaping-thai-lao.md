@@ -583,9 +583,9 @@ ascender must be positioned lower and further to the left.  This is a
 `SHIFT_DOWN_AND_LEFT` replacement action.
 	
 The following table summarizes the actions taken for each of the
-possible consonant (vertical) and vowe/mark (horizontal) sequences:
+possible consonant (vertical) and vowel/mark (horizontal) sequences:
 
-|        | `AV` | `BV` | `TV`  | `AV`,`TV` |
+|        |  AV  |  BV  |  TV   |  AV,TV    |
 |:-------|:-----|:-----|:------|:-----------|
 | **NC** |      |      | `SD`  |            |
 | **AC** | `SL` |      | `SDL` | `SL`       |
