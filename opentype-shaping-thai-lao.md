@@ -16,12 +16,13 @@ runs in the Thai and Lao scripts.
   - [The `<thai>`/`<lao >` shaping model](#the-thai-lao-shaping-model)
       - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
       - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
-      - [3: Reordering sequences of marks](#2-reordering-sequences-of-marks)
-      - [3: Applying all positioning features from GPOS](#3-applying-all-positioning-features-from-gpos)
+      - [3: Reordering sequences of marks](#3-reordering-sequences-of-marks)
+      - [4: Applying all positioning features from GPOS](#3-applying-all-positioning-features-from-gpos)
   - [The PUA fallback shaping model](#the-pua-fallback-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
-      - [2: Applying all basic substitution features from GSUB](#2-applying-all-basic-substitution-features-from-gsub)
-      - [3: Applying remaining positioning features from GPOS](#3-applying-remaining-positioning-features-from-gpos)
+      - [Contextual replacement rules](#contextual-replacement-rules)
+	  - [1. Decomposing all Am vowel signs](#1-decomposing-all-am-vowel-signs)
+      - [2. Reordering sequences of marks](#2-reordering-sequences-of-marks)
+      - [3. Remapping codepoints to the appropriate PUA alternates](#3-remapping-codepoints-to-the-appropriate-pua-alternates)
 
 
 
@@ -245,6 +246,7 @@ There are four possible values:
   - `ABOVE_CONSONANT_LEVEL` or `AV`
   - `TOP_LEVEL` or `TV`
 
+
 ### Thai and Lao character tables ###
 
 Separate character tables are provided for the Thai and Lao blocks as
@@ -452,10 +454,11 @@ for possible reordering.
 > Note: "Nikhahit" or "Niggahita" marks that were not originally part
 > of an "Am" sign should not be reordered.
 
-> Note: Shaping engines may choose to implement that Phinthu
+> Note: Shaping engines may choose to implement the Phinthu
 > reordering rule by modifying the combining classes assigned to
 > "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
 > the text run, or by performing a sorting step at this stage.
+
 
 <!--- 
 
@@ -511,3 +514,130 @@ The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
+
+
+## The PUA fallback shaping model ##
+
+A significant number of  older Thai fonts that do not use the OpenType
+shaping model are still in usage; these fonts employ the Unicode
+"Private Use Area" (`PUA`) to store contextual forms of
+characters.
+
+The PUA shaping model is described at
+[linux.thai.net/~thep/th-otf/shaping.html](https://linux.thai.net/~thep/th-otf/shaping.html)
+. It relies on a set of pre-determined mappings from the codepoints in the
+Unicode Thai block to codepoints in the PUA.
+
+For consonants, these alternate-glyph mappings depend on whether or
+not the consonant includes an ascender, a normal descender, or a
+removable descender.
+
+There are four possible values:
+
+  - `NORMAL_CONSONANT` or `NC`
+  - `ASCENDER_CONSONANT` or `AC`
+  - `DESCENDER_CONSONANT` or `DC`
+  - `REMOVABLE_DESCENDER_CONSONANT` or `RC`
+  
+Furthermore, vowels and marks in these fonts are classified by whether
+they are positioned at the same baseline as consonants, below
+consonants, above consonants, or must be positioned at the top of any
+stacks of marks.
+
+There are four possible values:
+
+  - `CONSONANT_BASELINE_LEVEL` or `CV`
+  - `BELOW_CONSONANT_LEVEL` or `BV`
+  - `ABOVE_CONSONANT_LEVEL` or `AV`
+  - `TOP_LEVEL` or `TV`
+
+
+The classifications of the consonant, vowel, and mark characters in
+the Thai Block are listed in the _PUA_ column of the [Thai character
+table](character-tables/character-tables-thai.md#thai-character-table). 
+
+
+## Contextual replacement rules ##
+
+Codepoints in the Thai Block can be mapped to one of several alternate
+PUA codepoints depending on context:
+
+  - A tone marker that does not follow an above-base vowel sign may be
+    mapped to an alternate that is positioned lower, closer to the top
+    of the consonant. This is a `SHIFT_DOWN` replacement action.
+  - A tone marker, above-base diacritic, or above-base vowel sign
+    following a consonant with an ascender may be mapped to an
+    alternate that is positioned further to the left (thereby
+    preventing a collision with the ascender). This is a `SHIFT_LEFT` replacement action.
+  - A below-base vowel sign that follows a consonant with a
+    non-removable descender may be mapped to an alternate that is
+    positioned lower (thereby preventing a collision with the
+    descender). This is a `SHIFT_DOWN` replacement action.
+  - A consonant with a removable descender may be mapped to a
+    descender-less alternate when the consonant is followed by a
+    below-base vowel sign. This is a `REMOVE_DESCENDER` replacement action.
+	
+The above rules may combine. Specifically, a tone marker that does not
+follow an above-base vowel sign _and_ follows a consonant with an
+ascender must be positioned lower and further to the left.  This is a
+`SHIFT_DOWN_AND_LEFT` replacement action.
+	
+These replacements take the place of both GSUB substitutions and GPOS
+positioning in modern OpenType fonts.
+
+Shaping engines can replace the original codepoints with the
+appropriate alternates from the PUA block by testing for the above
+conditions. 
+
+With each consonant, vowel, and mark character correctly classified,
+the shaping engine can process the text run.
+
+There are three top-level stages:
+
+1. Decomposing all Am vowel signs
+2. Reordering sequences of marks
+3. Remapping codepoints to the appropriate PUA alternates
+
+
+### 1. Decomposing all Am vowel signs ###
+
+The Thai alphabet includes one character that must be decomposed for
+shaping purposes, the vowel sign "Am". The decomposition is
+canonically defined, resulting in the sequence "Nikhahit,Sara Aa".
+
+  - Sara Am (`U+0E33`) decomposes to "Nikhahit,Sara Aa" (`U+0E4D`,`U+0E32`).
+
+The shaping engine must keep track of the fact that the "Nikhahit"
+mark originated as part of an "Am" sign, because these decomposed
+marks are handled differently during the mark-reordering stage.
+
+![Glyph decomposition](images/thai/thai-am.png)
+
+
+### 2. Reordering sequences of marks ###
+
+In this stage, sequences of consecutive marks may need to be
+reordered.
+
+As is the case in OpenType-font text runs, two conditions should be checked
+for possible reordering.
+
+  - A "Nikhahit" mark that originated as part of an "Am" sign (which
+    was decomposed in stage one, above) must be reordered so that it
+    occurs before any tone markers in the sequence of marks.
+  - A "Phinthu" mark must be reordered so that it occurs after any
+    "Sara U" or "Sara Uu" marks.
+	
+> Note: "Nikhahit" marks that were not originally part of an "Am" sign
+> should not be reordered.
+
+> Note: Shaping engines may choose to implement the Phinthu
+> reordering rule by modifying the combining classes assigned to
+> "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
+> the text run, or by performing a sorting step at this stage.
+
+
+### 3. Remapping codepoints to the appropriate PUA alternates ###
+
+The contextual replacement rules described above can be implemented in
+a pair of state machines.
