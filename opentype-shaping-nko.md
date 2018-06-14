@@ -13,7 +13,7 @@ implementations share.
       - [Joining properties](#joining-properties)
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
-  - [The `<nko>` shaping model](#the-arab-shaping-model)
+  - [The `<nko >` shaping model](#the-arab-shaping-model)
       - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
       - [2. Computing letter joining states](#2-computing-letter-joining-states)
       - [3. Applying the `stch` feature](#3-applying-the-stch-feature)
@@ -31,9 +31,9 @@ language family, most commonly Maninka, Dyula, and Bambara.
 
 The N'Ko script uses features and rules derived from those of the
 Arabic script, and OpenType defines N'Ko shaping features with a
-subset of the features used in Arabic shaping.
+subset of the features used in [Arabic](opentype-shaping-arabic.md) shaping.
 Consequently, a shaping engine can support N'Ko and Arabic with a
-single shaping model.
+[single shaping model](opentype-shaping-arabic-general.md).
 
 N'Ko is a joining script that uses inter-word spaces, so each
 codepoint in a text run may be substituted with one of several
@@ -45,6 +45,11 @@ behavior for each letter.
 N'Ko is written (and, therefore, rendered) from right to
 left. Shaping engines must track the directionality of the text run
 when scripts of different direction are mixed.
+
+The N'Ko script tag defined in OpenType is `<nko >`. Because OpenType
+script tags must be exactly four letters long, the `<nko >` tag
+includes a trailing space. 
+
 
 ## Terminology ##
 
@@ -112,7 +117,7 @@ are also assigned to a `JOINING_GROUP` that indicates which
 fundamental character they behave like with regard to joining
 behavior.
 
-Joining groups are not necessary in `<nko>` text shaping, so every
+Joining groups are not necessary in `<nko >` text shaping, so every
 codepoint is assigned to the _null_ `JOINING_GROUP`.
 
 ### Mark classification ###
@@ -139,7 +144,7 @@ normalization.
 ### Character tables ###
 
 Separate character tables are provided for the NKo block and for other miscellaneous
-characters that are used in `<nko>` text runs:
+characters that are used in `<nko >` text runs:
 
   - [NKo character table](character-tables/character-tables-nko.md#nko-character-table)
   - [Miscellaneous character table](character-tables/character-tables-nko.md#miscellaneous-character-table)
@@ -212,9 +217,9 @@ isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder.
 
 
-## The `<nko>` shaping model ##
+## The `<nko >` shaping model ##
 
-Processing a run of `<nko>` text involves seven top-level stages:
+Processing a run of `<nko >` text involves seven top-level stages:
 
 1. Compound character composition and decomposition
 2. Computing letter joining states
@@ -247,8 +252,8 @@ substitutions from GSUB during stage 5, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 > Note: The following algorithm includes rules for processing `<syrc>`
-> text in addition to `<nko>` text. Implementers concerned only with
-> shaping `<nko>` text can omit the portions for `<syrc>`-specific
+> text in addition to `<nko >` text. Implementers concerned only with
+> shaping `<nko >` text can omit the portions for `<syrc>`-specific
 > rules. 
 
 To determine which feature is appropriate, the shaping engine must
@@ -445,11 +450,11 @@ the terminal (or final) form of the letter.
 
 #### 4.4 fin2 ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 #### 4.5 fin3 ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 #### 4.6 medi ####
 
@@ -461,7 +466,7 @@ the medial form of the letter.
 
 #### 4.7 med2 ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 #### 4.8 init ####
 
@@ -473,13 +478,13 @@ the initial form of the letter.
 
 #### 4.9 rlig ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 
 
 #### 4.10 rclt ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 
 
@@ -532,13 +537,13 @@ application-level user interfaces.
 
 #### 5.3 cswh ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 
 
 #### 5.4 mset ####
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 
 ### 6. Mark reordering ###
@@ -552,9 +557,11 @@ features from GPOS can be correctly applied.
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
 
-> Note: N'Ko marks do not generally require reordering. Thie step is
-> included to maintain compatibility with other scripts that use the
-> general Arabic shaping model.
+> Note: because N'Ko does not feature the "Shadda" mark or any
+> marks that belong to _Modifier Combining Marks_ (MCM) classes, this
+> stage should not involve any additional work when processing
+> `<nko >` text runs. It is included here to maintain consistency with
+> other scripts that utilize the general Arabic-based shaping model.
 
 The algorithm for reordering a sequence of marks is:
 
@@ -587,7 +594,7 @@ all scripts implemented in the Arabic shaping model:
 #### 7.1 `curs` ####
 
 
-This feature is not used in `<nko>` text.
+This feature is not used in `<nko >` text.
 
 
 #### 7.2 `kern` ####

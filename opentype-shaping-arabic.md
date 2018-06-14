@@ -44,7 +44,7 @@ they are not historically related to Arabic. These scripts include:
   - [Mongolian](opentype-shaping-mongolian.md)
 
 Note that each of these scripts has its own independent
-script tag defined in OpenType. N'Ko uses `<nko>`, Syriac uses `<syrc>`, and
+script tag defined in OpenType. N'Ko uses `<nko >`, Syriac uses `<syrc>`, and
 Mongolian uses `<mong>`. The information found below about the `<arab>`
 script shaping model can serve as a general guide; script-specific
 information can be found in the linked document for each script. 

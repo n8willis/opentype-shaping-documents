@@ -38,9 +38,9 @@ found between the styles, a shaping engine can support all styles of
 Syriac with a single shaping model.
 
 In OpenType, Syriac shaping shares most of the same features that are
-defined for (Arabic)[] and related scripts, but with a few
+defined for [Arabic](opentype-shaping-arabic.md) and related scripts, but with a few
 Syriac-specific additions. Therefore, shaping engines are advised to
-support Syriac and Arabic using the same shaping model.
+support Syriac and Arabic using the [same shaping model](opentype-shaping-arabic-general.md).
 
 Syriac is a joining script that uses inter-word spaces, so each
 codepoint in a text run may be substituted with one of several

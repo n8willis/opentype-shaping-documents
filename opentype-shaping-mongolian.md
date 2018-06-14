@@ -32,10 +32,10 @@ character set may be used to write Tibetan and Sanskrit.
 
 The classical Mongolian alphabet includes several letters that differ
 phonetically but are identical in their visual appearance, such as "O"
-(`U+1823`) and "U" (`U+1824`). A variant of the classical alphabet,
-called Todo (or "clear") Mongolian, was developed in the 17th Century
-to remove such ambiguous forms. The Todo characters are also included
-in the Mongolian Unicode block.
+(`U+1823`, &#x1823;) and "U" (`U+1824`, &#x1824;). A variant of the
+classical alphabet, called Todo (or "clear") Mongolian, was developed
+in the 17th Century to remove such ambiguous forms. The Todo
+characters are also included in the Mongolian Unicode block.
 
 Due to the common shaping features that the Mongolian script shares
 with Arabic, a shaping engine can support Mongolian with the same
@@ -645,6 +645,12 @@ Sequences of adjacent marks must be reordered so that they appear in
 canonical order before the mark-to-base and mark-to-mark positioning
 features from GPOS can be correctly applied.
 
+> Note: because Mongolian does not feature the "Shadda" mark or any
+> marks that belong to _Modifier Combining Marks_ (MCM) classes, this
+> stage should not involve any additional work when processing
+> `<mong>` text runs. It is included here to maintain consistency with
+> other scripts that utilize the general Arabic-based shaping model.
+
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
 
@@ -662,6 +668,7 @@ The algorithm for reordering a sequence of marks is:
        with a `220_MCM` character to the beginning of the sequence,
        before all "Shadda" characters and before all class-`230`
        characters. The subsequence must be moved as a group.
+
 
 ### 7. Applying the positioning features from GPOS ###
 
