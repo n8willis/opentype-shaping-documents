@@ -581,6 +581,11 @@ The above rules may combine. Specifically, a tone marker that does not
 follow an above-base vowel sign _and_ follows a consonant with an
 ascender must be positioned lower and further to the left.  This is a
 `SHIFT_DOWN_AND_LEFT` replacement action.
+
+Additionally, below-base vowels are handled separately from above-base
+vowels and tone markers; a consonant that is followed by a below-base
+vowel and a tone marker may have to perform two independent
+replacement actions.
 	
 The following table summarizes the actions taken for each of the
 possible consonant (vertical) and vowel/mark (horizontal) sequences:
@@ -626,7 +631,7 @@ marks are handled differently during the mark-reordering stage.
 
 ### 2. Reordering sequences of marks ###
 
-In this stage, sequences of consecutive marks may need to be
+In this stage, certain sequences of consecutive marks may need to be
 reordered.
 
 As is the case in OpenType-font text runs, two conditions should be checked
@@ -650,4 +655,122 @@ for possible reordering.
 ### 3. Remapping codepoints to the appropriate PUA alternates ###
 
 The contextual replacement rules described above can be implemented in
-a pair of state machines.
+a pair of state machines, one for above-base replacement moves and one
+for below-base replacement moves.
+
+Each consonant codepoint and subsequent (possibly empty) sequence of
+marks should be processed in turn through both machines. The output
+for each codepoint will be one of the standard replacement actions:
+
+  - `SD`: replace the codepoint with the `SHIFT_DOWN` alternate
+  - `SL`: replace the codepoint with the `SHIFT_LEFT` alternate
+  - `SDL`: replace the codepoint with the `SHIFT_DOWN_AND_LEFT` alternate
+  - `RD`: replace the codepoint with the `REMOVE_DESCENDER` alternate
+  - _null_: no replacement should be made
+
+The above-base state machine tracks four possible states, designated
+`AS0` through `AS3`. 
+
+The initial states of the possible codepoints are as follows:
+
+| PUA class | initial state |
+|:----------|:--------------|
+| NC        | AS0           |
+| AC        | AS1           |
+| RC        | AS0           |
+| DC        | AS0           |
+| _Other_   | AS3           |
+
+
+The following state machine table lists the replacement action to take
+and the resulting next state for each possible mark type that may
+follow a consonant:
+
+| Input state | AV         | BV         | TV         |
+|:------------|:-----------|:-----------|:-----------|
+| AS0         | _null_,AS3 | _null_,AS0 | `SD`,AS3   |
+| AS1         | `SL`,AS2   | _null_,AS1 | `SDL`,AS2  |
+| AS2         | _null_,AS3 | _null_,AS2 | `SL`,AS3   |
+| AS3         | _null_,AS3 | _null_,AS3 | _null_,AS3 |
+
+
+The below-base state machine tracks three possible states, designated
+`BS0` through `BS2`. 
+
+The initial states of the possible codepoints are as follows:
+
+| PUA class | initial state |
+|:----------|:--------------|
+| NC        | BS0           |
+| AC        | BSO           |
+| RC        | BS1           |
+| DC        | BS2           |
+| _Other_   | BS2           |
+
+
+The following state machine table lists the replacement action to take
+and the resulting next state for each possible mark type that may
+follow a consonant:
+
+| Input state | AV         | BV         | TV         |
+|:------------|:-----------|:-----------|:-----------|
+| BS0         | _null_,BS0 | _null_,BS2 | _null_,BS0 |
+| BS1         | _null_,BS1 | `RD`,BS2   | _null_,BS1 |
+| BS2         | _null_,BS2 | `SD`,BS2   | _null_,BS2 |
+
+
+When the necessary replacement action for each codepoint has been
+determined, codepoints can be replaced with the PUA codepoints from
+the following table.
+
+Note that Windows fonts and MacOS fonts used different mappings.
+
+#### SD mappings ####
+
+| Input    | Windows  | MacOS    |
+|:---------|:---------|:---------|
+| `U+0E48` | `U+F70A` | `U+F88B` |
+| `U+0E49` | `U+F70B` | `U+F88E` |
+| `U+0E4A` | `U+F70C` | `U+F891` |
+| `U+0E4B` | `U+F70D` | `U+F894` |
+| `U+0E4C` | `U+F70E` | `U+F897` |
+| `U+0E38` | `U+F718` | `U+F89B` |
+| `U+0E39` | `U+F719` | `U+F89C` |
+| `U+0E3A` | `U+F71A` | `U+F89D` |
+
+
+#### SL mappings ####
+
+| Input    | Windows  | MacOS    |
+|:---------|:---------|:---------|
+| `U+0E48` | `U+F713` | `U+F88A` |
+| `U+0E49` | `U+F714` | `U+F88D` |
+| `U+0E4A` | `U+F715` | `U+F890` |
+| `U+0E4B` | `U+F716` | `U+F893` |
+| `U+0E4C` | `U+F717` | `U+F896` |
+| `U+0E31` | `U+F710` | `U+F884` |
+| `U+0E34` | `U+F701` | `U+F885` |
+| `U+0E35` | `U+F702` | `U+F886` |
+| `U+0E36` | `U+F703` | `U+F887` |
+| `U+0E37` | `U+F704` | `U+F888` |
+| `U+0E47` | `U+F712` | `U+F889` |
+| `U+0E4D` | `U+F711` | `U+F899` |
+
+
+#### SDL mappings ####
+
+| Input    | Windows  | MacOS    |
+|:---------|:---------|:---------|
+| `U+0E48` | `U+F705` | `U+F88C` |
+| `U+0E49` | `U+F706` | `U+F88F` |
+| `U+0E4A` | `U+F707` | `U+F892` |
+| `U+0E4B` | `U+F708` | `U+F895` |
+| `U+0E4C` | `U+F709` | `U+F898` |
+
+
+#### RD mappings ####
+
+| Input    | Windows  | MacOS    |
+|:---------|:---------|:---------|
+| `U+0E0D` | `U+F70F` | `U+F89A` |
+| `U+0E10` | `U+F700` | `U+F89E` |
