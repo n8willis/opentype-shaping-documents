@@ -572,7 +572,7 @@ many circumstances it is replaced by one of two combining mark-like forms.
     with an above-base mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). 
 
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may
+  - "Halant,Ra" sequences that occur elsewhere in the syllable may
     take on a below-base form (called "Rakaar" in Devanagari and most
     other scripts, and called "Raphala" in Bengali).
 

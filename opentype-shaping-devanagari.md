@@ -376,7 +376,7 @@ mark-like forms.
     This rule is synonymous with the `REPH_MODE_IMPLICIT`
     characteristic mentioned earlier.
 
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
+  - "Halant,Ra" sequences that occur elsewhere in the syllable may take on the
     below-base form "Rakaar." 
 	
 	
@@ -726,7 +726,7 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
 In Devanagari, the only consonant that can appear in this position is
-a non-initial "Ra,Halant" sequence, which will take on the "Rakaar" form when the
+a non-initial "Halant,Ra" sequence, which will take on the "Rakaar" form when the
 `blwf` feature is applied.
 
 #### 2.8: Mark tagging ####

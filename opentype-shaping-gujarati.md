@@ -371,7 +371,7 @@ mark-like forms.
     This rule is synonymous with the `REPH_MODE_IMPLICIT`
     characteristic mentioned earlier.
 
-  - "Ra,Halant" sequences that occur elsewhere in the syllable may take on the
+  - "Halant,Ra" sequences that occur elsewhere in the syllable may take on the
     below-base form "Rakaar." 
 	
 "Reph" and "Rakaar" characters must be reordered after the

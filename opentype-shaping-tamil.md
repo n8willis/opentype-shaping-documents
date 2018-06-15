@@ -835,23 +835,11 @@ feature must be applied before all other many-to-one substitutions.
 
 > This feature is not used in Tamil.
 
-<!--- The `rphf` feature replaces initial "Ra,Halant" sequences with the
-"Reph" glyph.
-
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
-    the `rphf` substitution.
-	
-
-![Reph formation](/images/tamil/tamil-rphf.png) --->
 	
 #### 3.5 rkrf ####
 
 > This feature is not used in Tamil.
 
-<!--- The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
-"Rakaar"-ligature form of the consonant glyph.
-
-![Rakaar ligation](/images/tamil/tamil-rkrf.png) --->
 
 #### 3.6 pref ####
 
