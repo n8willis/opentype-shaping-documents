@@ -107,7 +107,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 | `U+05D7`  | Letter           | _0_        | &#x05D7; Het                         |
 | `U+05D8`  | Letter           | _0_        | &#x05D8; Tet                         |
 | `U+05D9`  | Letter           | _0_        | &#x05D9; Yod                         |
-| `U+05DA`  | Letter           | _0_        | &#x05DA; Final KAF                   |
+| `U+05DA`  | Letter           | _0_        | &#x05DA; Final Kaf                   |
 | `U+05DB`  | Letter           | _0_        | &#x05DB; Kaf                         |
 | `U+05DC`  | Letter           | _0_        | &#x05DC; Lamed                       |
 | `U+05DD`  | Letter           | _0_        | &#x05DD; Final Mem                   |
