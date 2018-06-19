@@ -164,9 +164,9 @@ For example:
 
 | Codepoint | Unicode category | Mark class | Glyph                        |
 |:----------|:-----------------|:-----------|:-----------------------------|
-|`U+07D3`   | Letter           | _0_        | &#x07D3; Ba                  |
+|`U+05D0`   | Letter           | _0_        | &#x05D0; Alef                |
 | | | | | |
-|`U+07EB`   | Mark [Mn]        | 230        | &#x07EB; Combining Short High Tone|
+|`U+05C1`   | Mark [Mn]        | 24         | &#x05C1; Point Shin Dot      |
 
 
 
