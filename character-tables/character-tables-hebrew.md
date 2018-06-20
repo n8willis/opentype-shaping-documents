@@ -154,63 +154,70 @@ designated as _unassigned_ in the _Unicode category_ column.
 This chart includes only the Hebrew codepoints from the Alphabetic
 Presentation Forms block in Unicode.
 
+The _Composition_ column lists the codepoints from the Hebrew block
+that compose into the listed Alphabetic Presentation Form. These
+presentation form compositions are not covered by the standard Unicode
+composition algorithm.
 
-| Codepoint | Unicode category | Mark class | Glyph                                |
-|:----------|:-----------------|:-----------|:-------------------------------------|
-| `U+FB1D`  | Letter           | _0_        | &#xFB1D; Yod With Hiriq                 |
-| `U+FB1E`  | Mark [Mn]        | 26         | &#xFB1E; Point Juedo-Spanish Varika     |
-| `U+FB1F`  | Letter           | _0_        | &#xFB1F; Ligature Yiddish Yod Yod Patah |
-| | | | |
-| `U+FB20`  | Letter           | _0_        | &#xFB20; Alternative Ayin               |
-| `U+FB21`  | Letter           | _0_        | &#xFB21; Wide Alef                      |
-| `U+FB22`  | Letter           | _0_        | &#xFB22; Wide Dalet                     |
-| `U+FB23`  | Letter           | _0_        | &#xFB23; Wide He                        |
-| `U+FB24`  | Letter           | _0_        | &#xFB24; Wide Kaf                       |
-| `U+FB25`  | Letter           | _0_        | &#xFB25; Wide Lamed                     |
-| `U+FB26`  | Letter           | _0_        | &#xFB26; Wide Final Mem                 |
-| `U+FB27`  | Letter           | _0_        | &#xFB27; Wide Resh                      |
-| `U+FB28`  | Letter           | _0_        | &#xFB28; Wide Tav                       |
-| `U+FB29`  | Letter           | _0_        | &#xFB29; Alternative Plus Sign          |
-| `U+FB2A`  | Letter           | _0_        | &#xFB2A; Shin With Shin Dot             |
-| `U+FB2B`  | Letter           | _0_        | &#xFB2B; Shin With Sin Dot              |
-| `U+FB2C`  | Letter           | _0_        | &#xFB2C; Shin With Dagesh And Shin Dot  |
-| `U+FB2D`  | Letter           | _0_        | &#xFB2D; Shin With Dagesh And Sin Dot   |
-| `U+FB2E`  | Letter           | _0_        | &#xFB2E; Alef With Patah                |
-| `U+FB2F`  | Letter           | _0_        | &#xFB2F; Alef With Qamats               |
-| | | | |
-| `U+FB30`  | Letter           | _0_        | &#xFB30; Alef With Mapiq                |
-| `U+FB31`  | Letter           | _0_        | &#xFB31; Bet With Dagesh                |
-| `U+FB32`  | Letter           | _0_        | &#xFB32; Gimel With Dagesh              |
-| `U+FB33`  | Letter           | _0_        | &#xFB33; Dalet With Dagesh              |
-| `U+FB34`  | Letter           | _0_        | &#xFB34; He With Mapiq                  |
-| `U+FB35`  | Letter           | _0_        | &#xFB35; Vav With Dagesh                |
-| `U+FB36`  | Letter           | _0_        | &#xFB36; Zayin With Dagesh              |
-| `U+FB37`  | _unassigned_     |            |                                         |
-| `U+FB38`  | Letter           | _0_        | &#xFB38; Tet With Dagesh                |
-| `U+FB39`  | Letter           | _0_        | &#xFB39; Yod With Dagesh                |
-| `U+FB3A`  | Letter           | _0_        | &#xFB3A; Final Kaf With Dagesh          |
-| `U+FB3B`  | Letter           | _0_        | &#xFB3B; Kaf With Dagesh                |
-| `U+FB3C`  | Letter           | _0_        | &#xFB3C; Lamed With Dagesh              |
-| `U+FB3D`  | _unassigned_     |            |                                         |
-| `U+FB3E`  | Letter           | _0_        | &#xFB3E; Mem With Dagesh                |
-| `U+FB3F`  | _unassigned_     |            |                                         |
-| | | | |
-| `U+FB40`  | Letter           | _0_        | &#xFB40; Nun With Dagesh                |
-| `U+FB41`  | Letter           | _0_        | &#xFB41; Samekh With Dagesh             |
-| `U+FB42`  | _unassigned_     |            |                                         |
-| `U+FB43`  | Letter           | _0_        | &#xFB43; Final Pe With Dagesh           |
-| `U+FB44`  | Letter           | _0_        | &#xFB44; Pe With Dagesh                 |
-| `U+FB45`  | _unassigned_     |            |                                         |
-| `U+FB46`  | Letter           | _0_        | &#xFB46; Tsadi With Dagesh              |
-| `U+FB47`  | Letter           | _0_        | &#xFB47; Qof With Dagesh                |
-| `U+FB48`  | Letter           | _0_        | &#xFB48; Resh With Dagesh               |
-| `U+FB49`  | Letter           | _0_        | &#xFB49; Shin With Dagesh               |
-| `U+FB4A`  | Letter           | _0_        | &#xFB4A; Tav With Dagesh                |
-| `U+FB4B`  | Letter           | _0_        | &#xFB4B; Vav With Holam                 |
-| `U+FB4C`  | Letter           | _0_        | &#xFB4C; Bet With Rafe                  |
-| `U+FB4D`  | Letter           | _0_        | &#xFB4D; Kaf With Rafe                  |
-| `U+FB4E`  | Letter           | _0_        | &#xFB4E; Pe With Rafe                   |
-| `U+FB4F`  | Letter           | _0_        | &#xFB4F; Ligature Alef Lamed            |
+Entries with a _null_ in this column do not need to be composed by the
+shaping engine. 
+
+| Codepoint | Unicode category | Mark class | Composition     | Glyph                                   |
+|:----------|:-----------------|:-----------|:----------------|:----------------------------------------|
+| `U+FB1D`  | Letter           | _0_        |`U+05D9`,`U+05B4`| &#xFB1D; Yod With Hiriq                 |
+| `U+FB1E`  | Mark [Mn]        | 26         | _null_          | &#xFB1E; Point Juedo-Spanish Varika     |
+| `U+FB1F`  | Letter           | _0_        |`U+05F2`,`U+05B7`| &#xFB1F; Ligature Yiddish Yod Yod Patah |
+| | | | | |
+| `U+FB20`  | Letter           | _0_        | _null_          | &#xFB20; Alternative Ayin               |
+| `U+FB21`  | Letter           | _0_        | _null_          | &#xFB21; Wide Alef                      |
+| `U+FB22`  | Letter           | _0_        | _null_          | &#xFB22; Wide Dalet                     |
+| `U+FB23`  | Letter           | _0_        | _null_          | &#xFB23; Wide He                        |
+| `U+FB24`  | Letter           | _0_        | _null_          | &#xFB24; Wide Kaf                       |
+| `U+FB25`  | Letter           | _0_        | _null_          | &#xFB25; Wide Lamed                     |
+| `U+FB26`  | Letter           | _0_        | _null_          | &#xFB26; Wide Final Mem                 |
+| `U+FB27`  | Letter           | _0_        | _null_          | &#xFB27; Wide Resh                      |
+| `U+FB28`  | Letter           | _0_        | _null_          | &#xFB28; Wide Tav                       |
+| `U+FB29`  | Letter           | _0_        | _null_          | &#xFB29; Alternative Plus Sign          |
+| `U+FB2A`  | Letter           | _0_        |`U+05E9`,`U+05C1`| &#xFB2A; Shin With Shin Dot             |
+| `U+FB2B`  | Letter           | _0_        |`U+05E9`,`U+05C2`| &#xFB2B; Shin With Sin Dot              |
+| `U+FB2C`  | Letter           | _0_        |`U+FB2A`,`U+05BC` OR `U+FB49`,`U+05C1`| &#xFB2C; Shin With Dagesh And Shin Dot  |
+| `U+FB2D`  | Letter           | _0_        |`U+FB2B`,`U+05BC` OR `U+FB49`,`U+05C2`| &#xFB2D; Shin With Dagesh And Sin Dot   |
+| `U+FB2E`  | Letter           | _0_        |`U+05D0`,`U+05B7`| &#xFB2E; Alef With Patah                |
+| `U+FB2F`  | Letter           | _0_        |`U+05D0`,`U+05B8`| &#xFB2F; Alef With Qamats               |
+| | | | | |
+| `U+FB30`  | Letter           | _0_        |`U+05D0`,`U+05BC`| &#xFB30; Alef With Mapiq                |
+| `U+FB31`  | Letter           | _0_        |`U+05D1`,`U+05BC`| &#xFB31; Bet With Dagesh                |
+| `U+FB32`  | Letter           | _0_        |`U+05D2`,`U+05BC`| &#xFB32; Gimel With Dagesh              |
+| `U+FB33`  | Letter           | _0_        |`U+05D3`,`U+05BC`| &#xFB33; Dalet With Dagesh              |
+| `U+FB34`  | Letter           | _0_        |`U+05D4`,`U+05BC`| &#xFB34; He With Mapiq                  |
+| `U+FB35`  | Letter           | _0_        |`U+05D5`,`U+05BC`| &#xFB35; Vav With Dagesh                |
+| `U+FB36`  | Letter           | _0_        |`U+05D6`,`U+05BC`| &#xFB36; Zayin With Dagesh              |
+| `U+FB37`  | _unassigned_     |            |                 |                                         |
+| `U+FB38`  | Letter           | _0_        |`U+05D8`,`U+05BC`| &#xFB38; Tet With Dagesh                |
+| `U+FB39`  | Letter           | _0_        |`U+05D9`,`U+05BC`| &#xFB39; Yod With Dagesh                |
+| `U+FB3A`  | Letter           | _0_        |`U+05DA`,`U+05BC`| &#xFB3A; Final Kaf With Dagesh          |
+| `U+FB3B`  | Letter           | _0_        |`U+05DB`,`U+05BC`| &#xFB3B; Kaf With Dagesh                |
+| `U+FB3C`  | Letter           | _0_        |`U+05DC`,`U+05BC`| &#xFB3C; Lamed With Dagesh              |
+| `U+FB3D`  | _unassigned_     |            |                 |                                         |
+| `U+FB3E`  | Letter           | _0_        |`U+05DE`,`U+05BC`| &#xFB3E; Mem With Dagesh                |
+| `U+FB3F`  | _unassigned_     |            |                 |                                         |
+| | | | | |										   
+| `U+FB40`  | Letter           | _0_        |`U+05E0`,`U+05BC`| &#xFB40; Nun With Dagesh                |
+| `U+FB41`  | Letter           | _0_        |`U+05E1`,`U+05BC`| &#xFB41; Samekh With Dagesh             |
+| `U+FB42`  | _unassigned_     |            |                 |                                         |
+| `U+FB43`  | Letter           | _0_        |`U+05E3`,`U+05BC`| &#xFB43; Final Pe With Dagesh           |
+| `U+FB44`  | Letter           | _0_        |`U+05E4`,`U+05BC`| &#xFB44; Pe With Dagesh                 |
+| `U+FB45`  | _unassigned_     |            |                 |                                         |
+| `U+FB46`  | Letter           | _0_        |`U+05E6`,`U+05BC`| &#xFB46; Tsadi With Dagesh              |
+| `U+FB47`  | Letter           | _0_        |`U+05E7`,`U+05BC`| &#xFB47; Qof With Dagesh                |
+| `U+FB48`  | Letter           | _0_        |`U+05E8`,`U+05BC`| &#xFB48; Resh With Dagesh               |
+| `U+FB49`  | Letter           | _0_        |`U+05E9`,`U+05BC`| &#xFB49; Shin With Dagesh               |
+| `U+FB4A`  | Letter           | _0_        |`U+05EA`,`U+05BC`| &#xFB4A; Tav With Dagesh                |
+| `U+FB4B`  | Letter           | _0_        |`U+05D5`,`U+05B9`| &#xFB4B; Vav With Holam                 |
+| `U+FB4C`  | Letter           | _0_        |`U+05D1`,`U+05BF`| &#xFB4C; Bet With Rafe                  |
+| `U+FB4D`  | Letter           | _0_        |`U+05DB`,`U+05BF`| &#xFB4D; Kaf With Rafe                  |
+| `U+FB4E`  | Letter           | _0_        |`U+05E4`,`U+05BF`| &#xFB4E; Pe With Rafe                   |
+| `U+FB4F`  | Letter           | _0_        | _null_          | &#xFB4F; Ligature Alef Lamed            |
 
 
 ## Miscellaneous character table ##
