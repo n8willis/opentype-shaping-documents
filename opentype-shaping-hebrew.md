@@ -228,6 +228,16 @@ Processing a run of `<hebr>` text involves seven top-level stages:
 
 ### 1. Compound character composition and decomposition ###
 
+In this stage, the `ccmp` feature from GPOS is applied and the
+resulting sequence of codepoints should be checked for correct mark
+order. 
+
+> Note: Shaping engines may have already applied Unicode normalization
+> compose or decompose codepoints before beginning the shaping
+> process. Due to the Alphabetic Presentation Forms composition in
+> stage two, however, the `ccmp` feature and any necessary mark
+> reordering must be performed here, as Alphabetic Presentation Forms
+> are not handled by Unicode normalization.
 
 #### 1.1 `ccmp`
 
@@ -255,14 +265,34 @@ Unicode _canonical combining class_ of each mark should be sufficient.
 
 ### 2. Composing any Alphabetic Presentation forms ###
 
-If the active font includes glyphs for codepoints from the Alphabetic
-Presentation Forms block, these precomposed mark-and-base glyphs
-should be preferred over sequences of individual base glyphs and marks
-positioned with GPOS.
+If the active font includes glyphs for precomposed mark-and-base
+codepoints from the Alphabetic Presentation Forms block, these
+precomposed glyphs should be preferred over sequences of individual
+base glyphs and marks positioned with GPOS.
 
 The codepoints in question are not included in the canonical Unicode
 compositions, so the shaping engine should substitute them at this
 stage, before proceeding with the shaping process.
+
+The individual base and mark sequences that should compose to each
+precomposed Hebrew mark-and-base codepoint in the Alphabetic
+Presentation Forms block is listed in _Composition_ column of the
+[Alphabetic Presentation Forms character
+table](character-tables/character-tables-hebrew.md#alphabetic-presentation-forms-character-table). 
+
+For example: 
+
+| Codepoint | Unicode category | Mark class | Composition     | Glyph                                   |
+|:----------|:-----------------|:-----------|:----------------|:----------------------------------------|
+| `U+FB1D`  | Letter           | _0_        |`U+05D9`,`U+05B4`| &#xFB1D; Yod With Hiriq                 |
+| | | | | |
+| `U+FB2B`  | Letter           | _0_        |`U+05E9`,`U+05C2`| &#xFB2B; Shin With Sin Dot              |
+
+Two of the precomposed glyphs, "Shin With Dagesh And Shin Dot"
+(`U+FB2C`) and "Shin With Dagesh And Sin Dot" (`U+FB2D`), have
+multiple possible composing sequences. All of the other precomposed
+glyphs in the block have a single composing sequence.
+
 
 ### 3. Applying the language-form substitution features from GSUB ###
 
@@ -288,9 +318,6 @@ variants, based on examining the language setting of the text run.
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
 > GSUB substitutions in the following steps.
-
-<!--- ![Localized form substitution](/images/hebrew/hebrew-locl.png) --->
-
 
 
 
