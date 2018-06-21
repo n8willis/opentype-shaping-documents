@@ -234,9 +234,12 @@ engines should cope with this situation gracefully.
 
 | Codepoint | Unicode category | Mark class | Glyph                              |
 |:----------|:-----------------|:-----------|:-----------------------------------|
+|`U+00A0`   | Separator        | _0_        | &#x00A0; No-break space            |
 |`U+034F`   | Other            | _0_        | &#x034F; Combining grapheme joiner |
 |`U+200C`   | Other            | _0_        | &#x200C; Zero-width non-joiner     |
 |`U+200D`   | Other            | _0_        | &#x200D; Zero-width joiner         |
+|`U+200E`   | Other            | _0_        | &#x200E; Left-to-Right marker      |
+|`U+200F`   | Other            | _0_        | &#x200F; Right-to-Left marker      |
 |`U+25CC`   | Symbol           | _0_        | &#x25CC; Dotted circle             |
 
 
