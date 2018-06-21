@@ -59,11 +59,11 @@ base characters are used to represent vowels in certain contexts.
 
 Vowels that are not represented with base characters are frequently
 omitted from the text run entirely. Alternatively, such vowels may
-appear as marks called **niqqud**. The Unicode standard also refers to
-niqqud marks as **points**. 
+appear as marks called **niqqud**. Niqqud are also referred to as
+**points** in the Unicode standard.
 
 Pronunciation marks, such as the dot used to distinguish "Shin" from
-"Sin" are also considered niqqud. Niqqud are typically positioned
+"Sin" are also considered **niqqud**. Niqqud are typically positioned
 above or below the base character.
 
 **Dagesh** is the term for a particular diacritic that alters the
@@ -72,7 +72,8 @@ positioned inside the consonant glyph. Other Hebrew diacritics are
 positioned either above or below the base character.
 
 Hebrew also includes a sizable set of **cantillation marks**, in
-addition to vowel, diacritical, and pronunciation marks.
+addition to vowel, diacritical, and pronunciation marks. Cantillation
+marks are also referred to as **tropes**.
 
 
 ## Glyph classification ##
@@ -189,20 +190,13 @@ also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (CGJ), zero-width joiner (ZWJ), and
+zero-width non-joiner (ZWNJ) may be used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 <!--- combining grapheme joiner explanation --->
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
-cursive connecting form of a letter even when the context of the
-adjoining letters would not trigger the connecting form. 
-
-For example, to show the initial form of a letter in isolation (such
-as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
-would be used. To show the medial form of a letter in isolation, the
-sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 
 <!--- Zero-Width Non Joiner explanation --->
@@ -215,8 +209,8 @@ in a text run at which the writing direction changes.
 <!--- How shaping is affected by the LTR and RTL markers explanation --->
 
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
+The no-break space may be used to display those codepoints that
+are defined as non-spacing (such as niqqud or cantillation marks) in an
 isolated context, as an alternative to displaying them superimposed on
 the dotted-circle placeholder.
 
