@@ -102,9 +102,9 @@ The Unicode standard defines a _canonical combining class_ for each
 codepoint that is used whenever a sequence needs to be sorted into
 canonical order. 
 
-Hebrew marks all belong to standard combining classes. Cantillation
-marks are typically assigned to the generic below-base (220) or
-above-base (230) combining classes. Niqqud are assigned to distinct
+Hebrew marks all belong to standard combining classes. Most, but not
+all, cantillation marks are assigned to the generic below-base (220)
+or above-base (230) combining classes. Niqqud are assigned to distinct
 combining classes designed to enforce orthographically correct
 ordering:
 
@@ -125,8 +125,8 @@ normalization.
 			
 ### Character tables ###
 
-The Hebrew block in Unicode contains the codepoints needed for text in
-all languages written using Hebrew.
+The Hebrew block in Unicode contains the codepoints required to
+represent text in all languages written using Hebrew.
 
 The Alphabetic Presentation Forms block in Unicode includes 46
 additional codepoints for Hebrew. Included are several precomposed
@@ -137,15 +137,17 @@ implement the corresponding mark-to-base and ligature features in
 OpenType GSUB anf GPOS tables.
 
 The Alphabetic Presentation Forms block also includes a set of eight
-"wide" variants of standard Hebrew characters and a variant form of
-"Ayin", for backwards compatibility with retired file-encoding
-standards. New usage of these codepoints is not recommended and they are 
-unlikely to occur in contemporary documents. 
+"wide" variants of standard Hebrew characters (`U+FB21` through
+`U+FB28`) and a variant form of "Ayin" (`U+FB20`), for backwards
+compatibility with retired file-encoding standards. New usage of these
+codepoints is not recommended and they are unlikely to occur in
+contemporary documents. 
 
-Unless a software application is required to support specific stores
-of documents that are known to have used these older encodings, the
-shaping engine should not be expected to handle any text runs
-incorporating these backwards-compatibility codepoints.
+Consequently, unless a software application is required to support
+specific stores of documents that are known to have used these older
+encodings, the shaping engine should not be expected to handle any
+text runs incorporating these backwards-compatibility variant
+codepoints.
 
 Separate character tables are provided for the Hebrew block, the
 Hebrew letters included in the Alphabetic Presentation Forms block,
@@ -239,6 +241,7 @@ order.
 > reordering must be performed here, as Alphabetic Presentation Forms
 > are not handled by Unicode normalization.
 
+
 #### 1.1 `ccmp`
 
 The `ccmp` feature allows a font to substitute
@@ -252,6 +255,9 @@ If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB or GPOS lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
+
+![ccmp composition](/images/hebrew/hebrew-ccmp.png)
+
 
 #### 1.2 Mark reordering
 
@@ -293,6 +299,11 @@ Two of the precomposed glyphs, "Shin With Dagesh And Shin Dot"
 multiple possible composing sequences. All of the other precomposed
 glyphs in the block have a single composing sequence.
 
+> Note: the active font may implement these compositions in a `ccmp`
+> lookup in GSUB, in which case this stage will involve no additional work.
+
+![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png)
+
 
 ### 3. Applying the language-form substitution features from GSUB ###
 
@@ -329,15 +340,27 @@ features using the rules in the font's GSUB table.
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Hebrew shaping model:
 
+	liga
 	dlig
 	
 
-#### 4.1 dlig ####
+#### 4.1 liga ####
+
+The `liga` feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by `liga` may be disabled by
+application-level user interfaces.
+
+![Standard ligature substitution](/images/hebrew/hebrew-liga.png)
+
+
+
+#### 4.2 dlig ####
 
 The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
+![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.png)
 
 
 
@@ -347,18 +370,18 @@ The positioning stage adjusts the positions of mark and base
 glyphs.
 
 The order in which these features are applied is fixed for
-all scripts implemented in the Arabic shaping model:
+the Hebrew shaping model:
 
 	kern
 	mark
 
 
-#### 7.2 `kern` ####
+#### 5.1 `kern` ####
 
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 
-#### 7.3 `mark` ####
+#### 5.2 `mark` ####
 
 The `mark` feature positions marks with respect to base glyphs.
 
