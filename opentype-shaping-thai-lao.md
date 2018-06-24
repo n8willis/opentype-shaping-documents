@@ -74,13 +74,13 @@ different vowel sound.
 The Thai term for a dependent vowel sign is **sara**. The Lao term for
 a vowel sign is **sala**. The official names of the Thai vowel signs
 in the Unicode standard includes "sara" (for example, "Sara Am"),
-while the official names of the Lao vowel signs uses "sign" (for
+while the official names of the Lao vowel signs use "sign" (for
 example, "Sign Am").
 
 Some of these dependent-vowel signs are encoded as marks that attach
 to the consonant in **above-base** or **below-base** position. Others
-are encoded as letters that may appear in **pre-base** (left-side) or
-**post-base** (right-side) position.
+are encoded as full letters that may appear in **pre-base**
+(left-side) or **post-base** (right-side) position.
 
 Thai and Lao differ from Indic scripts in that these pre-base dependent
 vowels are entered before typing the consonant to which they
@@ -411,7 +411,7 @@ performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-![Glyph decomposition](images/thai/thai-ccmp.png)
+![Glyph decomposition](images/thai-lao/thai-ccmp.png)
 
 
 ### 2. Decomposing all Am vowel signs ###
@@ -433,7 +433,7 @@ The shaping engine must keep track of the fact that the "Nikhahit" or
 decomposed marks are handled differently during the mark-reordering
 stage.
 
-![Glyph decomposition](images/lao/lao-am.png)
+![Glyph decomposition](images/thai-lao/lao-ccmp.png)
 
   
 ### 3. Reordering sequences of marks ###
@@ -454,7 +454,7 @@ for possible reordering.
 > Note: "Nikhahit" or "Niggahita" marks that were not originally part
 > of an "Am" sign should not be reordered.
 
-> Note: Shaping engines may choose to implement the Phinthu
+> Note: Shaping engines may alternatively choose to implement the Phinthu
 > reordering rule by modifying the combining classes assigned to
 > "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
 > the text run, or by performing a sorting step at this stage.
