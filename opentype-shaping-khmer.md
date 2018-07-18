@@ -239,8 +239,8 @@ shaping process.
 
 ### Khmer character tables ###
 
-Separate character tables are provided for the Khmer and Vedic
-Extensions blocks as well as for other miscellaneous characters that
+Separate character tables are provided for the Khmer and Khmer Symbols
+blocks as well as for other miscellaneous characters that 
 are used in `<khmr>` text runs:
 
   - [Khmer character table](character-tables/character-tables-khmer.md#khmer-character-table)
