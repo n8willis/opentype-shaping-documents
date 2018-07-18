@@ -137,7 +137,7 @@ specific, script-aware behavior.
 |`U+17D9`   | Punctuation      | _null_            | _null_                     | &#x17D9; Phnaek Muan         |
 |`U+17DA`   | Punctuation      | _null_            | _null_                     | &#x17DA; Koomuut             |
 |`U+17DB`   | Symbol           | SYMBOL            | _null_                     | &#x17DB; Riel                |
-|`U+17DC`   | Letter           | ANUSVARA          | _null_                     | &#x17DC; Avakrahasanya       |
+|`U+17DC`   | Letter           | AVAGRAHA          | _null_                     | &#x17DC; Avakrahasanya       |
 |`U+17DD`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x17DD; Atthacan            |
 |`U+17DE`   | _unassigned_     |                   |                            |                              |
 |`U+17DF`   | _unassigned_     |                   |                            |                              |
@@ -179,6 +179,44 @@ specific, script-aware behavior.
 
 ## Khmer Symbols character table ##
 
+The Khmer Symbols block contains miscellaneous symbols used for
+lunar-date calendars. None evoke any special behavior from the shaping engine.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
+|:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
+|`U+19E0`   | Symbol           | _null_            | _null_                     | &#x19E0; Pathamasat          |
+|`U+19E1`   | Symbol           | _null_            | _null_                     | &#x19E1; Muoy Koet           |
+|`U+19E2`   | Symbol           | _null_            | _null_                     | &#x19E2; Pii Koet            |
+|`U+19E3`   | Symbol           | _null_            | _null_                     | &#x19E3; Bei Koet            |
+|`U+19E4`   | Symbol           | _null_            | _null_                     | &#x19E4; Buon Koet           |
+|`U+19E5`   | Symbol           | _null_            | _null_                     | &#x19E5; Pram Koet           |
+|`U+19E6`   | Symbol           | _null_            | _null_                     | &#x19E6; Pram-Muoy Koet      |
+|`U+19E7`   | Symbol           | _null_            | _null_                     | &#x19E7; Pram-Pii Koet       |
+|`U+19E8`   | Symbol           | _null_            | _null_                     | &#x19E8; Pram-Bei Koet       |
+|`U+19E9`   | Symbol           | _null_            | _null_                     | &#x19E9; Pram-Buon Koet      |
+|`U+19EA`   | Symbol           | _null_            | _null_                     | &#x19EA; Dap Koet            |
+|`U+19EB`   | Symbol           | _null_            | _null_                     | &#x19EB; Dap-Muoy Koet       |
+|`U+19EC`   | Symbol           | _null_            | _null_                     | &#x19EC; Dap-Pii Koet        |
+|`U+19ED`   | Symbol           | _null_            | _null_                     | &#x19ED; Dap-Bei Koet        |
+|`U+19EE`   | Symbol           | _null_            | _null_                     | &#x19EE; Dap-Buon Koet       |
+|`U+19EF`   | Symbol           | _null_            | _null_                     | &#x19EF; Dap-Pram Koet       |
+| | | | |
+|`U+19F0`   | Symbol           | _null_            | _null_                     | &#x19F0; Tuteyasat           |
+|`U+19F1`   | Symbol           | _null_            | _null_                     | &#x19F1; Muoy ROC            |
+|`U+19F2`   | Symbol           | _null_            | _null_                     | &#x19F2; Pii Roc             |
+|`U+19F3`   | Symbol           | _null_            | _null_                     | &#x19F3; Bei Roc             |
+|`U+19F4`   | Symbol           | _null_            | _null_                     | &#x19F4; Buon Roc            |
+|`U+19F5`   | Symbol           | _null_            | _null_                     | &#x19F5; Pram Roc            |
+|`U+19F6`   | Symbol           | _null_            | _null_                     | &#x19F6; Pram-Muoy Roc       |
+|`U+19F7`   | Symbol           | _null_            | _null_                     | &#x19F7; Pram-Pii Roc        |
+|`U+19F8`   | Symbol           | _null_            | _null_                     | &#x19F8; Pram-Bei Roc        |
+|`U+19F9`   | Symbol           | _null_            | _null_                     | &#x19F9; Pram-Buon Roc       |
+|`U+19FA`   | Symbol           | _null_            | _null_                     | &#x19FA; Dap Roc             |
+|`U+19FB`   | Symbol           | _null_            | _null_                     | &#x19FB; Dap-Muoy Roc        |
+|`U+19FC`   | Symbol           | _null_            | _null_                     | &#x19FC; Dap-Pii Roc         |
+|`U+19FD`   | Symbol           | _null_            | _null_                     | &#x19FD; Dap-Bei Roc         |
+|`U+19FE`   | Symbol           | _null_            | _null_                     | &#x19FE; Dap-Buon Roc        |
+|`U+19FF`   | Symbol           | _null_            | _null_                     | &#x19FF; Dap-Pram Roc        |
 
 
 ## Miscellaneous character table ##
