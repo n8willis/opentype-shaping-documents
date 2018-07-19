@@ -394,10 +394,9 @@ A syllable in Khmer consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
 > Note: The Khmer Unicode block enumerates two modifier signs,
-> "Anusvara" (`U+1036`) and "Visarga" (`U+1038`). There are also
-> twenty-one tone markers in the Khmer and Khmer Extended-A
-> blocks. In addition, Sanskrit text written in Khmer may include
-> additional signs from Vedic Extensions block.
+> "Nikahit" (`U+17C6`), "Reahmuk" (`U+17C7`), "Bantoc" (`U+17CB`),
+> "Kakabat" (`U+17CE`),  "Ahsda" (`U+17CF`), "Samyok Sannya"
+> (`U+17D0`), "Bathamasat" (`U+17D3`), and "Atthacan" (`U+17DD`). 
 
 Because texts written in Khmer script do not generally employ
 inter-word spaces, however, shaping engines must rely on
@@ -415,8 +414,8 @@ syllable's only vowel sound and, by definition, there is no "base"
 consonant. 
 
 > Note: A consonant that is not accompanied by a dependent vowel (matra) sign
-> carries the script's inherent vowel sound. This vowel sound is changed
-> by a dependent vowel (matra) sign following the consonant.
+> carries the consonant's inherent vowel sound. This vowel sound can be changed
+> by a dependent vowel (matra) sign or by a register shifter following the consonant.
 
 Generally speaking, the base consonant is the first consonant of the
 syllable and its vowel sound designates the end of the syllable. 
@@ -434,8 +433,7 @@ consonant.
 As with other Brahmi-derived and Indic scripts, the consonant "Ra" receives
 special treatment. 
 
-  - A syllable-initial "Ra" may also be part of a "Kinzi"-triggering
-    sequence. 
+  - 
 
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
@@ -456,88 +454,42 @@ classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
 ```markdown
-_ra_		= "Ra" | "Nga" | "Mon Nga"
-_consonant_ 	= `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
+_ra_		= The consonant "Ra" 
+_consonant_	= `CONSONANT` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
-_halant_	= `INVISIBLE_STACKER`
-_asat_		= "Asat"
-_a_		= "Anusvara"
-_db_		= "Dot Below"
+_nukta_	  	= `NUKTA` | `CONSONANT_POST_REPHA`
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
-_mh_		= "Medial Ha" | "Mon Medial La"
-_mr_		= "Medial Ra"
-_mw_		= "Medial Wa" | "Shan Medial Wa"
-_my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
-_d_		= `NUMBER`
-_pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
-	          "Western Pwo Karen Tone 1" | "Western Pwo Karen Tone
-	          2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
-	          Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
-	          Tone" 
-_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
-	          Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
-	          "Shan Council Tone 3" | "Shan Council Emphatic Tone"
-	          | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
-	          Tone 3" | "Aiton A" 
-_punc_		= "Little Section" | "Section"
-_matrapre_	= `MATRA` & `LEFT_POSITION`
-_matrapost_	= `MATRA` &`RIGHT_POSITION`
-_matraabove_	= `MATRA` & `TOP_POSITION`
-_matrabelow_	= `MATRA` & `BOTTOM_POSITION`
-_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
-		  2022 | 25CC | 25FB | 25FC 25FD | 25FE
-_cs_		= `CONSONANT_WITH_STACKER`
-_v_		= `VISARGA`
-_vs_		= "Variation Selector"
+_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER` | `CONSONANT_KILLER`
+_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_dottedcircle_	= `DOTTED_CIRCLE`
+_registershifter_ = `REGISTER_SHIFTER`
+_coeng_		= `COENG`
+_symbol_	= `SYMBOL` | `AVAGRAHA`
 ```
 
-> Note: the _ra_ identification class is mutually exclusive with 
-> the _consonant_ class. The union of the _consonant_ and _ra_ classes
-> is used in the regular expression elements below in order to
-> correctly identify "Ra", "Nga", and "Mon Nga" characters that do not
-> trigger "Kinzi" forms. 
->
-> Note, also, that the `CONSONANT_PLACEHOLDER` class is unioned with
-> the `CONSONANT` class for the purpose of syllable identification,
-> even those these two classes are treated separately in general.
 
-> Note: The _mh_, _mw_, and _my_ identification classes include
-> several medial letters from the non-Burmese languages; they are
-> grouped according to the medial consonants in Burmese that are the
-> closest match in terms of shaping behavior.
-
-> Note: the _gb_ identification class includes several "generic base"
-> codepoints that are often used in real-world text runs to act as
-> placeholders for missing letters.
-
-> Note: the tone marker codepoints are divided up between two
-> identification classes, reflecting the differing orthographic rules
-> they follow. The _pt_ identification class constitutes the "Pwo
-> tone" markers, while the _sm_ identification class includes the
-> remaining tone markers and other syllable modifiers.
 
 These identification classes form the bases of the following regular
 expression elements:
 
 ```markdown
-C	= _consonant_ | _ra_
+C	= _consonant_ | _ra_ | _vowel_
+N	= (_zwnj_? _registershifter_)? (_nukta_ _nukta_?)?
 Z	= _zwj_ | _zwnj_
-K	= _ra_ _asat_ _halant_
-Med	= _my_? _mr_? _mw_? _mh_? _asat_?
-Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
-Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
-Pwo	= _pt_ _a_* _db_? _asat_?
-Tcomplex= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
-Tail	= _halant_ | Tcomplex
+CN	= C N?
+MATRA_GROUP	= Z? M N?
+SYLLABLE_TAIL	= (SM SM?)?
+PARTIAL_CLUSTER	= N? (_coeng_ CN)* MATRA_GROUP* (_coeng_ CN)? SYLLABLE_TAIL
 ```
 
 Using the above elements, the following regular expressions define the
 possible syllable types:
 
-A consonant-based syllable will match the expression:
+A valid syllable will match the expression:
 ```markdown
-(K | _cs_)? (C | _vowel_ | _d_ | _gb_) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
+(C | _placeholder_ | _dottedcircle_) PARTIAL_CLUSTER
 ```
 
 The expressions above use state-machine syntax from the Ragel
