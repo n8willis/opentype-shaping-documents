@@ -483,7 +483,16 @@ consonant may be, generally:
     specific rules, in which case `REPH_MODE_LOGICAL_REPHA` is
     used. Alternatively, the script may not reorder "Repha"s at all,
     in which case `REPH_MODE_VISUAL_REPHA` is used.
-  
+
+> Note: None of the specific scripts currently included in the "Indic"
+> group as it is enumerated in this document make use of the
+> `REPH_MODE_VISUAL_REPHA` encoding. However, `REPH_MODE_VISUAL_REPHA`
+> is used in the [Khmer](opentype-shaping-khmer.md) script. 
+>
+> Because Khmer shares many other characteristics and
+> conventions with the Indic group described by this document,
+> `REPH_MODE_VISUAL_REPHA` is included here for comparison. 
+
 #### Below-base forms ####
 
 Below-base consonant forms (the `blwf` feature) may be applied:
