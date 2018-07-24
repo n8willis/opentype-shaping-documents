@@ -15,8 +15,9 @@ runs in the Khmer script.
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Applying all remaining substitution features from GSUB](#4-applying-all-remaining-substitution-features-from-gsub)
-      - [5: Applying remaining positioning features from GPOS](#5-applying-remaining-positioning-features-from-gpos)
+	  - [4: Final reordering](#4-final-reordering)
+      - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
+      - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
 
 
 ## General information ##
@@ -27,14 +28,6 @@ scripts](opentype-shaping-indic-general.md). However, Khmer
 incorporates enough distinctions of its own that it is generally not
 advisable to attempt supporting it in a general-purpose Indic shaping
 engine. 
-
-<!---
-For example, Khmer script includes a "Reph"-like feature known as
-"Kinzi", but (unlike "Reph") Kinzi" can be formed by multiple initial
-consonants. Also, notably, real-world texts written in Khmer script
-often do not use inter-word spaces, which may make the process of syllable
-identification substantially different from processing Indic scripts.
---->
 
 The Khmer script is used to write multiple languages, most commonly
 Khmer, Tampuan, Krung, Cham, and Pali. In addition,
@@ -152,7 +145,7 @@ of a subjoined form.
 
 "Sign Coeng", the coeng-form generator, is classified as
 `INVISIBLE_STACKER`. This is to indicate that the "Sign Coeng"
-codepoint itself is never rendered visually as a glyph. 
+codepoint itself is never rendered as a visible glyph. 
 
 "Toandakhiat" (`U+17CD`) is classified as `CONSONANT_KILLER`. This
 mark indicates that the previous consonant is not pronounced. Note
@@ -172,8 +165,9 @@ subclass is used only for "Robat", the above-base for of "Ro". The
 unlike "Reph", it is encoded as a separate codepoint; therefore, it is
 not formed by a special sequence of control characters.
 
-"Robat" should pass tests for consonants, even though it is classified
-as a combining mark in Unicode.
+"Robat" is a consonant, but it is classified as a combining mark in
+Unicode. For shaping purposes, "Robat" behaves like the "Nukta" mark
+found in many Indic scripts.
 
 The Khmer glottal-stop consonant "Qa" (`U+17A2`) carries an inherent
 vowel and is also capable of accepting dependent vowels (matras). It
@@ -238,6 +232,11 @@ shaping process.
 
 
 ### Khmer character tables ###
+
+The Khmer block in Unicode includes all of the codepoints necessary to
+write Khmer language text. The Khmer Symbols block contains
+miscellaneous symbols used for lunar-date calendars. The Khmer Symbols
+codepoints to not evoke any special behavior from the shaping engine.
 
 Separate character tables are provided for the Khmer and Khmer Symbols
 blocks as well as for other miscellaneous characters that 
@@ -338,8 +337,9 @@ Processing a run of `<khmr>` text involves five top-level stages:
 1. Identifying syllables and other sequences
 2. Initial reordering
 3. Applying the basic substitution features from GSUB
-4. Applying all remaining substitution features from GSUB
-5. Applying all remaining positioning features from GPOS
+4. Final reordering
+5. Applying all remaining substitution features from GSUB
+6. Applying all remaining positioning features from GPOS
 
 
 As with other Brahmi-derived and Indic scripts, the initial reordering
@@ -361,14 +361,15 @@ characteristics include:
 > characteristic would correspond to `BASE_POS_FIRST`.
   
   - The "Robat" form, which is analagous to "Reph" or "Repha" in Indic
-    scripts, in separately encoded as a non-spacing mark codepoint. The 
+    scripts, in separately encoded as a non-spacing mark
+    codepoint. The "Robat" form does not require reordering.
 
 > Note: For comparison with the General Indic shaping model, the Robat
 > -encoding characteristic would correspond to `REPH_MODE_VISUAL_REPHA`,
 > and the reordering characteristic would be _null_ or some other
-> designation indicating that the "Robat" is not reordered. Because
+> designation indicating that the "Robat" is not reordered. <!---Because
 > "Robat" is typically a syllable-initial feature, shaping engines may
-> also choose to 
+> also choose to --->
   
   - The below-base forms feature is applied to consonants
     before or after the base consonant. 
@@ -393,7 +394,7 @@ characteristics include:
 A syllable in Khmer consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
 
-> Note: The Khmer Unicode block enumerates two modifier signs,
+> Note: The Khmer Unicode block enumerates eight modifier signs,
 > "Nikahit" (`U+17C6`), "Reahmuk" (`U+17C7`), "Bantoc" (`U+17CB`),
 > "Kakabat" (`U+17CE`),  "Ahsda" (`U+17CF`), "Samyok Sannya"
 > (`U+17D0`), "Bathamasat" (`U+17D3`), and "Atthacan" (`U+17DD`). 
@@ -417,23 +418,37 @@ consonant.
 > carries the consonant's inherent vowel sound. This vowel sound can be changed
 > by a dependent vowel (matra) sign or by a register shifter following the consonant.
 
-Generally speaking, the base consonant is the first consonant of the
-syllable and its vowel sound designates the end of the syllable. 
+For a syllable beginning with a consonant, the base consonant is the
+first consonant of the syllable.
 
-Post-base consonants in a valid syllable will be preceded by "Sign Coeng"
-marks. 
+Unlike Indic scripts, where the vowel sound designates the end of the
+syllable, Khmer syllables can end with final consonants that occur
+after a dependent vowel (matra).
 
-	BaseC Sign-Coeng Post-baseC
+All post-base consonants in a valid syllable will be preceded by "Sign Coeng"
+marks. This includes final consonants.
+
+	BaseC Sign-Coeng Post-baseC Matra Sign-Coeng FinalC
 	
-The algorithm for correctly identifying the base consonant includes a
-test to recognize these sequences and not mis-identify the base
-consonant.
+In some Khmer words, an independent vowel can occur in a subjoined
+position like a post-base consonant. In such instances, the
+independent vowel will be preceded by "Sign Coeng".
+
+	BaseC Sign-Coeng IndependentVowel
+
+The algorithms for identifying syllables and for correctly identifying
+the base consonant include test to recognize these sequences.
 
 
-As with other Brahmi-derived and Indic scripts, the consonant "Ra" receives
+As with other Brahmi-derived and Indic scripts, the consonant "Ro" receives
 special treatment. 
 
-  - 
+  - A post-base "Ro" must be reordered to a visually pre-base
+    position. This move is performed during the initial reordering
+    stage.
+  - "Robat", the above-base variant of "Ro", is encoded as a combining
+    mark rather than as a full consonant. "Robat" does not, however,
+    require reordering by the shaping engine.
 
 In addition to valid syllables, stand-alone sequences may occur, such
 as when an isolated codepoint is shown in example text.
@@ -454,7 +469,7 @@ classes can be used, as defined in the following table. This
 simplifies the resulting expressions. 
 
 ```markdown
-_ra_		= The consonant "Ra" 
+_ra_		= The consonant "Ro" 
 _consonant_	= `CONSONANT` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
 _nukta_	  	= `NUKTA` | `CONSONANT_POST_REPHA`
@@ -469,7 +484,9 @@ _coeng_		= `COENG`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 ```
 
-
+> Note: The `CONSONANT_POST_REPHA` shaping class is merged with the
+> `NUKTA` shaping class to reflect the correct orthographic behavior
+> of "Robat".
 
 These identification classes form the bases of the following regular
 expression elements:
@@ -613,10 +630,20 @@ The algorithm for determining the base consonant is
     `CONSONANT` is found. 
   - The consonant stopped at will be the base consonant.
 
-> Note: The algorithm considers only `CONSONANT` class consonants, 
 
 
-#### 2.2: Tag matras ####
+#### 2.2: Tag remaining consonants ####
+
+Second, the remaining consonants and independent vowels should be
+tagged with the appropriate positions.
+
+  - All `CONSONANT`s and `VOWEL_INDEPENDENT`s in the syllable occuring
+    after the base consonant (found in step one) and must be tagged as 
+    `POS_BELOWBASE_CONSONANT`. 
+  - A `CONSONANT`s or `VOWEL_INDEPENDENT`s in the syllable occuring
+    after a dependent vowel (matra) must be tagged as `POS_FINAL_CONSONANT`.
+
+Tag matras ####
 
 Second, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
@@ -783,7 +810,10 @@ right-side matras and marks.
 #### 3.7: cfar ####
 
 
-### 4: Applying all remaining substitution features from GSUB ###
+### 4: Final reordering ###
+
+
+### 5. Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
 are applied. The order in which these features are applied is not
@@ -837,7 +867,7 @@ application-level user interfaces.
 
 
 
-### 5: Applying remaining positioning features from GPOS ###
+### 6: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
 applied. As with the preceding stage, the order in which these
