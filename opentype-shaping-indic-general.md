@@ -880,17 +880,25 @@ completed before the shaping engine begins step three, below.
 Third, all dependent-vowel (matra) signs must be tagged with
 their final position. 
 
-All single-part matras can be tagged based on their Mark-positioning
-subclass. The shaping engine may choose to perform this tagging
-earlier, such as during an initial Unicode-normalization stage.
+Single-part matras can be tagged with the appropriate sort-ordering
+position based on the ordering position of the script's specific
+script-shaping characteristics. 
 
-Matras that resulted from the preceding decomposition step, however,
-may not have been tagged when they were decomposed. If not, they must
-be tagged for reordering before proceeding to the next step.
+In most cases, all matras of the same Mark-positioning subclass (such
+as `LEFT_POSITION`) in a particular script are tagged with the same
+final position (such as `POS_PREBASE_MATRA`). Some scripts, however,
+include matras that must be tagged according to more involved rule
+sets. See the individual script-shaping document for each script to
+find a complete description of the applicable matra-tagging rules.
 
+> Note: The shaping engine may, as an alternative, choose to perform
+> this tagging earlier, such as during an initial Unicode-normalization
+> stage. 
+>
+> Matras that resulted from the preceding decomposition step, however,
+> may not have been tagged when they were decomposed. If not, they must
+> be tagged for reordering before proceeding to the next step.
 
-<!--- Should this be ALL matras? Or all non-right. non-below-base -->
-<!--  matras?                                                    --->
 
 #### 2.4: Adjacent marks ####
 
