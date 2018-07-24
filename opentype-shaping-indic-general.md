@@ -841,6 +841,18 @@ base-consonant shaping characteristic of the script.
 For `BASE_POS_FIRST` scripts, the first consonant of the syllable is
 the base consonant.
 
+> Note: None of the specific scripts currently included in the "Indic"
+> group as it is enumerated in this document make use of the
+> `BASE_POS_FIRST` base-consonant rule. However, the `BASE_POS_FIRST`
+> rule is employed by several Brahmi-derived scripts also used in the
+> region, including both [Myanmar](opentype-shaping-myanmar.md) and
+> [Khmer](opentype-shaping-khmer.md). 
+>
+> Because these scripts share many other characteristics and
+> conventions with the Indic group described by this document,
+> `BASE_POS_FIRST` is included here for comparison. 
+
+
 For `BASE_POS_LAST` scripts, the base consonant is the last consonant
 in the syllable, excluding all consonants that will take on special
 post-base, final, or below-base forms, and excluding all pre-base
