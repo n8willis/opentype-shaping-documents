@@ -78,8 +78,8 @@ was not deprecated in 2005 and is still used for Sinhala text.
 > evolved to have significantly distinct rules for syllable
 > construction, reordering, and shaping.
 >
-> The scripts include Buginese, Balinese, Javanese, Khmer, Lao, [Myanmar](opentype-shaping-myanmar.md),
-> Thai, and [Tibetan](opentype-shaping-tibetan.md).
+> The scripts include Buginese, Balinese, Javanese, [Khmer](opentype-shaping-khmer.md), [Lao](opentype-shaping-thai-lao.md), [Myanmar](opentype-shaping-myanmar.md),
+> [Thai](opentype-shaping-thai-lao.md), and [Tibetan](opentype-shaping-tibetan.md).
 
 ## Terminology ##
 
@@ -266,11 +266,6 @@ important miscellaneous characters, are available here:
   - [Telugu](character-tables/character-tables-telugu.md)
   - [Sinhala](character-tables/character-tables-sinhala.md)
 
-<!--- - [Vedic Extensions](opentype-shaping-vedic-extensions.md) --->
-<!--- - [Miscellaneous Indic Characters](opentype-shaping-miscellaneous-indic-characters.md) --->
-	
-<!---  - [Khmer](character-tables/character-tables-khmer.md) --->
-<!--- Khmer removed from HarfBuzz's Indic shaper, Jan 2018 --->	
 	
 ## The Indic2 shaping model ##
 
@@ -436,6 +431,18 @@ consonant may be, generally:
   - The last consonant that is not preceded by a "ZWJ" (zero width
     joiner) character. This position is only used in Sinhala, and is
     designated `BASE_POS_LAST_SINHALA`.
+
+> Note: None of the specific scripts currently included in the "Indic"
+> group as it is enumerated in this document make use of the
+> `BASE_POS_FIRST` base-consonant rule. However, the `BASE_POS_FIRST`
+> rule is employed by several Brahmi-derived scripts also used in the
+> region, including both [Myanmar](opentype-shaping-myanmar.md) and
+> [Khmer](opentype-shaping-khmer.md). 
+>
+> Because these scripts share many other characteristics and
+> conventions with the Indic group described by this document,
+> `BASE_POS_FIRST` is included here for comparison. 
+
 
 #### Reph position ####
 
