@@ -78,8 +78,12 @@ was not deprecated in 2005 and is still used for Sinhala text.
 > evolved to have significantly distinct rules for syllable
 > construction, reordering, and shaping.
 >
-> The scripts include Buginese, Balinese, Javanese, [Khmer](opentype-shaping-khmer.md), [Lao](opentype-shaping-thai-lao.md), [Myanmar](opentype-shaping-myanmar.md),
-> [Thai](opentype-shaping-thai-lao.md), and [Tibetan](opentype-shaping-tibetan.md).
+> The scripts include Buginese, Balinese, Javanese,
+> [Khmer](opentype-shaping-khmer.md),
+> [Lao](opentype-shaping-thai-lao.md),
+> [Myanmar](opentype-shaping-myanmar.md),
+> [Thai](opentype-shaping-thai-lao.md), and
+> [Tibetan](opentype-shaping-tibetan.md). 
 
 ## Terminology ##
 
@@ -521,6 +525,14 @@ Right-side matras may be positioned:
   - immediately after the last post-base consonant, in the ordering
     position `POS_AFTER_POST`.
 
+> Note: In most scripts, all right-side matras are positioned in the
+> same sort-order position. The Kannada and Telugu scripts, however,
+> feature more complex positioning rules for right-side matras, in
+> which different right-side matras must be sorted into different
+> positions. See the script-specific shaping documents for full
+> details.
+
+
 #### Above-base matras ####
 
 Above-base matras may be positioned:
@@ -886,10 +898,14 @@ script-shaping characteristics.
 
 In most cases, all matras of the same Mark-positioning subclass (such
 as `LEFT_POSITION`) in a particular script are tagged with the same
-final position (such as `POS_PREBASE_MATRA`). Some scripts, however,
-include matras that must be tagged according to more involved rule
-sets. See the individual script-shaping document for each script to
-find a complete description of the applicable matra-tagging rules.
+final position (such as `POS_PREBASE_MATRA`). 
+
+Some scripts, however, include matras that must be tagged according to
+more involved rule sets. In the set of Indic scripts described here,
+this includes [Kannada](opentype-shaping-kannada.md) and
+[Telugu](opentype-shaping-telugu.md). See the individual
+script-shaping document of each script to find a complete description
+of the applicable matra-tagging rules.
 
 > Note: The shaping engine may, as an alternative, choose to perform
 > this tagging earlier, such as during an initial Unicode-normalization
