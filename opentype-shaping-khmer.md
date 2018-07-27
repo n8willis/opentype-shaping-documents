@@ -160,7 +160,7 @@ shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
 Khmer uses one subclass of consonant, `CONSONANT_POST_REPHA`. This
-subclass is used only for "Robat", the above-base for of "Ro". The
+subclass is used only for "Robat", the above-base form of "Ro". The
 "Robat" is similar to the "Reph" found in many Indic scripts but,
 unlike "Reph", it is encoded as a separate codepoint; therefore, it is
 not formed by a special sequence of control characters.
