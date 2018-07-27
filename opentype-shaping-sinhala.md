@@ -11,7 +11,7 @@ runs in the Sinhala script.
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Sinhala character tables](#sinhala-character-tables)
-  - [The `<sinh>` shaping model](#the-dev2-shaping-model)
+  - [The `<sinh>` shaping model](#the-sinh-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)

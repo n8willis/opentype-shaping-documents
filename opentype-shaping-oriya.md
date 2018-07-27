@@ -11,17 +11,17 @@ runs in the Oriya script.
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Oriya character tables](#oriya-character-tables)
-  - [The `<ory2>` shaping model](#the-bng2-shaping-model)
+  - [The `<ory2>` shaping model](#the-ory2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
       - [4: Final reordering](#4-final-reordering)
       - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
       - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
-  - [The `<orya>` shaping model](#the-beng-shaping-model)
-      - [Distinctions from `<ory2>`](#distinctions-from-bng2)
-      - [Advice for handling fonts with `<orya>` features only](#advice-for-handling-fonts-with-beng-features-only)
-      - [Advice for handling text runs composed in `<orya>` format](#advice-for-handling-text-runs-composed-in-beng-format)
+  - [The `<orya>` shaping model](#the-orya-shaping-model)
+      - [Distinctions from `<ory2>`](#distinctions-from-ory2)
+      - [Advice for handling fonts with `<orya>` features only](#advice-for-handling-fonts-with-orya-features-only)
+      - [Advice for handling text runs composed in `<orya>` format](#advice-for-handling-text-runs-composed-in-orya-format)
 
 
 ## General information ##
