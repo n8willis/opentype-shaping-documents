@@ -18,6 +18,8 @@ can begin at the
   - [Indic General](opentype-shaping-indic-general.md) 
   - [Arabic General](opentype-shaping-arabic-general.md)
   - [Hangul](opentype-shaping-hangul.md)
+  - [Hebrew](opentype-shaping-hebrew.md)
+  - [Tibetan](opentype-shaping-tibetan.md)
   
 shaping documents and are encouraged to submit their feedback
 on the text or images of any of the linked scripts.
