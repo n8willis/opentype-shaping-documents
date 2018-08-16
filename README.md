@@ -20,6 +20,7 @@ can begin at the
   - [Hangul](opentype-shaping-hangul.md)
   - [Hebrew](opentype-shaping-hebrew.md)
   - [Tibetan](opentype-shaping-tibetan.md)
+  - [Myanmar](opentype-shaping-myanmar.md)
   
 shaping documents and are encouraged to submit their feedback
 on the text or images of any of the linked scripts.
