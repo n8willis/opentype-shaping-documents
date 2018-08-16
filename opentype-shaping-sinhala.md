@@ -28,7 +28,7 @@ specifically, it belongs to the South Indic subgroup.
 The Sinhala script is used to write multiple languages, most commonly
 Sinhalese and Pali. In addition, Sanskrit may be written
 in Sinhala, so Sinhala script runs may include glyphs from the Vedic
-Extension block of Unicode. 
+Extensions block of Unicode. 
 
 Unlike many other Indic scripts, there is only one extant Sinhala
 script tag defined in OpenType, `<sinh>`.
@@ -368,7 +368,7 @@ explicitly requested with a "Halant,ZWJ,Ra" sequence. This form is called
 stage is complete. "Rakaaraansaya" is not reordered.
 
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Sinhala script, may
@@ -436,7 +436,7 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > follow. Therefore, the shaping engine may choose to ignore them
 > during syllable identification; they are listed here for completeness.
 
-These idenfication classes form the bases of the following regular
+These identification classes form the bases of the following regular
 expression elements:
 
 ```markdown
@@ -457,7 +457,7 @@ HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP*)
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(MATRA_GROUP)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(MATRA_GROUP){0,4}` .
 
 
@@ -472,7 +472,7 @@ A consonant-based syllable will match the expression:
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(CN HALANT_GROUP)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(CN HALANT_GROUP){0,4}` .
 
 A vowel-based syllable will match the expression:
@@ -483,7 +483,7 @@ REPH? _vowel_ _nukta_? (_zwj_ | (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A standalone syllable will match the expression:
@@ -494,7 +494,7 @@ A standalone syllable will match the expression:
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A symbol-based syllable will match the expression:
@@ -510,7 +510,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 

@@ -30,7 +30,7 @@ The Tibetan script is used to write multiple languages, most commonly
 Tibetan, Dzongkha, Sikkimese, Ladakhi, and Balti. In addition,
 Sanskrit may be written in Tibetan, but the Tibetan script is not used
 for Vedic texts, therefore Tibetan text runs are not expected to
-include any glyphs from the Vedic Extension block of Unicode. 
+include any glyphs from the Vedic Extensions block of Unicode. 
 
 The Tibetan script tag defined in OpenType is `<tibt>`. 
 
@@ -153,7 +153,7 @@ below-base consonants (or other special forms) and fonts are not
 responsible for implementing substitution features to substitute
 subjoined forms in context.
 
-The `CONSONANT_HEAD` subclass is used for special tranliteration
+The `CONSONANT_HEAD` subclass is used for special transliteration
 letters that are not found in the Tibetan language. They should pass
 checks for consonants, but do not evoke special shaping behavior.
 
@@ -351,7 +351,7 @@ dependent-vowel sign (matra) in a syllable. However, multiple
 dependent-vowel signs may be used to represent loanwords from
 Sanskrit, Chinese, and many other languages.
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Tibetan script, may
@@ -503,7 +503,7 @@ below-base dependent vowels (matras), and diacritical marks.
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
-same base glyph. In Tibetanm this also includes attaching marks to
+same base glyph. In Tibetan, this also includes attaching marks to
 subjoined consonants or dependent vowels.
 
 ![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.png)

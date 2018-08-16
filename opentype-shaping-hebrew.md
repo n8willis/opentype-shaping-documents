@@ -80,7 +80,7 @@ marks are also referred to as **tropes**.
 
 Because `<hebr>` text runs do not involve reordering or syllable
 identification, Hebrew base characters do not require further
-classificiation for script-shaping purposes.
+classification for script-shaping purposes.
 
 Five Hebrew letters have special word-final forms. Each of these is
 encoded separately in the Hebrew block. They are regarded as
