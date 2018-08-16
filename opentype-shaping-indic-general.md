@@ -430,14 +430,20 @@ consonant may be, generally:
     shaping document) accounts for these special forms in every
     script. The abundance of special forms in certain scripts may
     routinely cause the search algorithm to identify a base consonant
-    that is not logically last in the syllable. This is expected behavior.
+    that is not logically last in the syllable. This is expected
+    behavior.
+	
+	This base-consonant position is used in Devanagari, Bengali,
+	Gujarati, Gurmukhi, Kannada, Malayalam, Oriya, Tamil, and Telugu.
   
   - The last consonant that is not preceded by a "ZWJ" (zero width
-    joiner) character. This position is only used in Sinhala, and is
-    designated `BASE_POS_LAST_SINHALA`.
+    joiner) character. 
+	
+	This position is only used in Sinhala, and is designated
+    `BASE_POS_LAST_SINHALA`.
 
 > Note: None of the specific scripts currently included in the "Indic"
-> group as it is enumerated in this document make use of the
+> script group as it is enumerated in this document make use of the
 > `BASE_POS_FIRST` base-consonant rule. However, the `BASE_POS_FIRST`
 > rule is employed by several Brahmi-derived scripts also used in the
 > region, including both [Myanmar](opentype-shaping-myanmar.md) and
@@ -446,6 +452,17 @@ consonant may be, generally:
 > Because these scripts share many other characteristics and
 > conventions with the Indic group described by this document,
 > `BASE_POS_FIRST` is included here for comparison. 
+
+> Note: The `BASE_POS_LAST` search algorithm is used for Kannada and
+> Telugu, although the unique properties of the Kannada and Telugu
+> orthographies usually result in the search terminating at the first
+> non-"Reph" consonant in a syllable. Namely, all consonants in
+> Kannada and Telugu have a post-base form. 
+>
+> This is the expected behavior for Kannada and Telugu, and still
+> differs from the `BASE_POS_FIRST` rule as used in the Brahmi-derived 
+> scripts mentioned above. See those individual script pages for
+> further detail.
 
 
 #### Reph position ####
