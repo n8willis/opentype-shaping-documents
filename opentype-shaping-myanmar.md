@@ -502,7 +502,7 @@ _consonant_ 	= `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
 _halant_	= `INVISIBLE_STACKER`
 _asat_		= "Asat"
-_a_		= "Anusvara"
+_a_		= "Anusvara" | "Sign Ai"
 _db_		= "Dot Below"
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
@@ -524,10 +524,11 @@ _sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
 _punc_		= "Little Section" | "Section"
 _matrapre_	= `MATRA` & `LEFT_POSITION`
 _matrapost_	= `MATRA` &`RIGHT_POSITION`
-_matraabove_	= `MATRA` & `TOP_POSITION`
+_matraabove_	= `MATRA` & `TOP_POSITION` - _a_
 _matrabelow_	= `MATRA` & `BOTTOM_POSITION`
-_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
-		  2022 | 25CC | 25FB | 25FC 25FD | 25FE
+_gb_		= U+002D | U+00A0 | U+00D7 | U+2012 | U+2013 | U+2014 |
+              U+2015 | U+2022 | U+25CC | U+25FB | U+25FC | U+25FD |
+			  U+25FE 
 _cs_		= `CONSONANT_WITH_STACKER`
 _v_		= `VISARGA`
 _vs_		= "Variation Selector"
@@ -542,12 +543,15 @@ _vs_		= "Variation Selector"
 > Note, also, that the `CONSONANT_PLACEHOLDER` class is unioned with
 > the `CONSONANT` class for the purpose of syllable identification,
 > even those these two classes are treated separately in general.
-
+>
 > Note: The _mh_, _mw_, and _my_ identification classes include
 > several medial letters from the non-Burmese languages; they are
 > grouped according to the medial consonants in Burmese that are the
 > closest match in terms of shaping behavior.
-
+>
+> Note: "Sign Ai" is classified as _a_, not as _matraabove_, in order
+> to implement orthographically correct behavior.
+>
 > Note: the _gb_ identification class includes several "generic base"
 > codepoints that are often used in real-world text runs to act as
 > placeholders for missing letters.
@@ -557,6 +561,7 @@ _vs_		= "Variation Selector"
 > they follow. The _pt_ identification class constitutes the "Pwo
 > tone" markers, while the _sm_ identification class includes the
 > remaining tone markers and other syllable modifiers.
+
 
 These identification classes form the bases of the following regular
 expression elements:
