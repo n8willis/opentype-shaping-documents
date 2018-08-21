@@ -411,7 +411,7 @@ performed before applying any other GSUB lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-![Glyph decomposition](images/thai-lao/thai-ccmp.png)
+![Glyph composition](images/thai-lao/thai-ccmp.png)
 
 
 ### 2. Decomposing all Am vowel signs ###
@@ -433,7 +433,7 @@ The shaping engine must keep track of the fact that the "Nikhahit" or
 decomposed marks are handled differently during the mark-reordering
 stage.
 
-![Glyph decomposition](images/thai-lao/lao-ccmp.png)
+![AM decomposition](images/thai-lao/lao-am-decomposition.png)
 
   
 ### 3. Reordering sequences of marks ###
@@ -502,17 +502,19 @@ order in which they appear in the GPOS table in the font.
 The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
-![Application of the kern feature](/images/thai/thai-kern.png)
+![Application of the kern feature](/images/thai-lao/lao-kern.png)
 
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Application of the mark feature](/images/thai/thai-mark.png)
+![Application of the mark feature](/images/thai-lao/thai-mark.png)
 
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
+
+![Application of the mkmk feature](/images/thai-lao/thai-mkmk.png)
 
 
 
@@ -626,7 +628,7 @@ The shaping engine must keep track of the fact that the "Nikhahit"
 mark originated as part of an "Am" sign, because these decomposed
 marks are handled differently during the mark-reordering stage.
 
-![Glyph decomposition](images/thai/thai-am.png)
+![Glyph decomposition](images/thai-lao/thai-am-decomposition.png)
 
 
 ### 2. Reordering sequences of marks ###
