@@ -179,7 +179,7 @@ characters. There are six possible values:
 In other scripts using the Arabic shaping model, letters are also
 assigned to a `JOINING_GROUP` that indicates which fundamental
 character they behave like with regard to joining behavior. Mongolian,
-however, does not use joining groups; all charactes are assigned to
+however, does not use joining groups; all characters are assigned to
 the _null_ joining group.
 
 

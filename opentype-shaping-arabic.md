@@ -86,7 +86,7 @@ doubling" diacritical mark.
 
 **Hamza** is the standard term for the glottal stop
 semi-consonant. The hamza is not regarded as a full letter in most
-languages, although it can appear as a stand-alone letter within
+languages, although it can appear as a standalone letter within
 words. In some sequences, the hamza attaches to an adjacent letter;
 when a hamza-supporting letter is not adjacent, however, the hamza can
 appear on its own.
@@ -658,7 +658,7 @@ of bases and marks with precomposed base-and-mark glyphs.
 > account for necessary mark-reordering adjustments conducted in the
 > next stage.
 > 
-> Nevertheless, when the active font uses `mset` substituions, the
+> Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
 
 ### 6. Mark reordering ###

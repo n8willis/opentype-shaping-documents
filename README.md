@@ -12,12 +12,18 @@
 > holds true. 
 
 At present, we are seeking comments and bugfixes on the Indic-script,
-Arabic-like, and Hangul documents. Interested readers and contributors
-can begin at the
+Arabic-like, Hangul, Hebrew, Tibetan, and Myanmar
+documents. Interested readers and contributors can begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 
+    - (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
+      Oriya, Tamil, Telugu) 
   - [Arabic General](opentype-shaping-arabic-general.md)
+    - (Arabic, N'Ko, Syriac, Mongolian)
   - [Hangul](opentype-shaping-hangul.md)
+  - [Hebrew](opentype-shaping-hebrew.md)
+  - [Tibetan](opentype-shaping-tibetan.md)
+  - [Myanmar](opentype-shaping-myanmar.md)
   
 shaping documents and are encouraged to submit their feedback
 on the text or images of any of the linked scripts.

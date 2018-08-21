@@ -30,7 +30,7 @@ runs in the Thai and Lao scripts.
 
 The Thai and Lao scripts are both descendants of the Brahmi script,
 and follow many of the same general patterns found in [Indic
-scripts](opentype-shaping-indic-general.md). They are distinct enough
+scripts](opentype-shaping-indic-general.md). They are distinct enough 
 from Indic scripts that they should not be supported by a
 general-purpose Indic shaping engine.
 
@@ -44,7 +44,7 @@ Thai, Pak Thai (or Southern Thai), Kuy, Isan, Lanna (or Northern
 Thai), and Kelantan-Pattani Malay. In addition, the Thai script is
 used to write Sanskrit and Pali. However, the Thai script is not used
 for Vedic texts, therefore Thai And Lao text runs are not expected to
-include any glyphs from the Vedic Extension block of Unicode.
+include any glyphs from the Vedic Extensions block of Unicode.
 
 The Lao script is used to write multiple languages, most commonly
 Lao, Khmu', Hmong, and Isan. 
@@ -88,7 +88,7 @@ apply. Therefore, pre-base dependent vowels do not need to be
 reordered by the shaping engine.
 
 **Phinthu** is the term used for the Thai equivalent of the "halant"
-or "virama" mark that supresses the inherent vowel of a consonant. It
+or "virama" mark that suppresses the inherent vowel of a consonant. It
 is used only when writing Sanskrit or Pali text in the Thai script.
 
 **Nikhahit** is the term for the Thai equivalent of "anusvara". It
@@ -193,7 +193,7 @@ normalization.
 All Thai and Lao marks belong to standard combining classes. However,
 for script-shaping purposes, some marks need to be reassigned to a
 modified class in order to ensure that certain sequences of
-consectutive marks are reordered correctly.
+consecutive marks are reordered correctly.
 
 In particular, the Thai "Sara U" (`U+0E38`) and "Sara Uu" (`U+0E39`)
 marks are reassigned from the canonical class 103 to the class 3
@@ -361,7 +361,7 @@ text does not require a syllable-identification stage.
 Each syllable contains exactly one vowel sound. Valid syllables may
 begin with either a consonant or an independent vowel. 
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 

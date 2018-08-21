@@ -34,7 +34,7 @@ sequences of adjacent consonants are often represented as conjuncts.
 The Gurmukhi script is used to write multiple languages, most commonly
 Punjabi, Sant Bhasha, and Sindhi. In addition, Sanskrit may be written
 in Gurmukhi, so Gurmukhi script runs may include glyphs from the Vedic
-Extension block of Unicode. 
+Extensions block of Unicode. 
 
 There are two extant Gurmukhi script tags defined in OpenType, `<guru>`
 and `<gur2>`. The older script tag, `<guru>`, was deprecated in 2005.
@@ -434,7 +434,7 @@ stage is complete.
 
 
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Gurmukhi script, may
@@ -502,7 +502,7 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > follow. Therefore, the shaping engine may choose to ignore them
 > during syllable identification; they are listed here for completeness.
 
-These idenfication classes form the bases of the following regular
+These identification classes form the bases of the following regular
 expression elements:
 
 ```markdown
@@ -523,7 +523,7 @@ HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP*)
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(MATRA_GROUP)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(MATRA_GROUP){0,4}` .
 
 
@@ -538,7 +538,7 @@ A consonant-based syllable will match the expression:
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(CN HALANT_GROUP)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(CN HALANT_GROUP){0,4}` .
 
 A vowel-based syllable will match the expression:
@@ -549,7 +549,7 @@ REPH? _vowel_ _nukta_? (_zwj_ | (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A standalone syllable will match the expression:
@@ -560,7 +560,7 @@ A standalone syllable will match the expression:
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 A symbol-based syllable will match the expression:
@@ -576,7 +576,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 > Note: Practically speaking, shaping engines are highly unlikely to
 > encounter more than 4 sequential `(HALANT_GROUP CN)`
 > instances in any real-word syllables. Thus, implementations may
-> choose to limit occurences by limiting the above expressions to a
+> choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
 
@@ -696,7 +696,7 @@ not have base consonants.
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
+  - If the syllable starts with "Ra" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.

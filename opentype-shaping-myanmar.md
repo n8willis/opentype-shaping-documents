@@ -38,7 +38,7 @@ identification substantially different from processing Indic scripts.
 The Myanmar script is used to write multiple languages, most commonly
 Burmese, Mon, Karen, Kayah, Shan, Palaung, and Pali. In addition,
 Sanskrit may be written in Myanmar, so Myanmar script runs may include 
-glyphs from the Vedic Extension block of Unicode. 
+glyphs from the Vedic Extensions block of Unicode. 
 
 There are two extant Myanmar script tags defined in OpenType, `<mymr>`
 and `<mym2>`. The older script tag, `<mymr>`, was deprecated in 2005.
@@ -99,7 +99,7 @@ example, akin to the "Reph" form of "Ra" in many Indic scripts.
 Many Myanmar letters may be followed by a **Variation Selector**
 codepoint in order to request the **dotted form** of the corresponding
 glyph, which is preferred for some languages written with Myanmar
-script. Fonts are not required to inlude the dotted-form variants;
+script. Fonts are not required to include the dotted-form variants;
 when they are absent from the active font, the default form of the
 corresponding letter will be used instead.
 
@@ -316,7 +316,7 @@ the dotted-circle placeholder. These sequences will match
 
 The zero-width space may be used between words — even though no visual
 word spacing results — in order to indicate word breaks within a text
-that can be used by line-breaking algorithms in a hgher-level
+that can be used by line-breaking algorithms in a higher-level
 typesetting environment.
 
 
@@ -440,7 +440,7 @@ Medial consonants, if they occur, will not be preceded by a
 modify the vowel sound of the syllable.
 
 > Note: in the Myanmar script, all medial consonants have their own
-> distinct codepoints. Therefore, they can be identfied by codepoint
+> distinct codepoints. Therefore, they can be identified by codepoint
 > alone, and there is no need for a text run to identify them using
 > any special sequences.
 
@@ -478,7 +478,7 @@ In the Myanmar (or Burmese) language, "Nga" is the only "Kinzi"-forming
 consonant. "Mon Nga" can form a "Kinzi" in the Mon language, and "Ra"
 can form a "Kinzi" in Sanskrit written with the Myanmar script.
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Myanmar script, may
@@ -502,7 +502,7 @@ _consonant_ 	= `CONSONANT` | `CONSONANT_PLACEHOLDER` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
 _halant_	= `INVISIBLE_STACKER`
 _asat_		= "Asat"
-_a_		= "Anusvara"
+_a_		= "Anusvara" | "Sign Ai"
 _db_		= "Dot Below"
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
@@ -524,10 +524,11 @@ _sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
 _punc_		= "Little Section" | "Section"
 _matrapre_	= `MATRA` & `LEFT_POSITION`
 _matrapost_	= `MATRA` &`RIGHT_POSITION`
-_matraabove_	= `MATRA` & `TOP_POSITION`
+_matraabove_	= `MATRA` & `TOP_POSITION` - _a_
 _matrabelow_	= `MATRA` & `BOTTOM_POSITION`
-_gb_		= U+002D | 00A0 | 00D7 | 2012 | 2013 | 2014 | 2015 |
-		  2022 | 25CC | 25FB | 25FC 25FD | 25FE
+_gb_		= U+002D | U+00A0 | U+00D7 | U+2012 | U+2013 | U+2014 |
+              U+2015 | U+2022 | U+25CC | U+25FB | U+25FC | U+25FD |
+			  U+25FE 
 _cs_		= `CONSONANT_WITH_STACKER`
 _v_		= `VISARGA`
 _vs_		= "Variation Selector"
@@ -542,12 +543,15 @@ _vs_		= "Variation Selector"
 > Note, also, that the `CONSONANT_PLACEHOLDER` class is unioned with
 > the `CONSONANT` class for the purpose of syllable identification,
 > even those these two classes are treated separately in general.
-
+>
 > Note: The _mh_, _mw_, and _my_ identification classes include
 > several medial letters from the non-Burmese languages; they are
 > grouped according to the medial consonants in Burmese that are the
 > closest match in terms of shaping behavior.
-
+>
+> Note: "Sign Ai" is classified as _a_, not as _matraabove_, in order
+> to implement orthographically correct behavior.
+>
 > Note: the _gb_ identification class includes several "generic base"
 > codepoints that are often used in real-world text runs to act as
 > placeholders for missing letters.
@@ -557,6 +561,7 @@ _vs_		= "Variation Selector"
 > they follow. The _pt_ identification class constitutes the "Pwo
 > tone" markers, while the _sm_ identification class includes the
 > remaining tone markers and other syllable modifiers.
+
 
 These identification classes form the bases of the following regular
 expression elements:
@@ -698,7 +703,7 @@ will either be provided by the script's inherent vowel (in which case
 it is not written with a separate character) or the sound will be designated
 by the addition of a dependent-vowel (matra) sign.
 
-Vowel-based syllables, stand-alone sequences, and broken text runs will
+Vowel-based syllables, standalone sequences, and broken text runs will
 not have base consonants.
 
 The algorithm for determining the base consonant is
@@ -885,7 +890,7 @@ However, Myanmar includes several other below-base-consonant
 forms, including medial consonants and below-base dependent vowel
 (matra) signs.
 
-The below-base forms feature is applied only to glyphs occuring after
+The below-base forms feature is applied only to glyphs occurring after
 the base consonant. 
 
 ![blwf feature application](/images/myanmar/myanmar-blwf.png)

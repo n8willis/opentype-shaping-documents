@@ -34,7 +34,7 @@ sequences of adjacent consonants are often represented as conjuncts.
 The Bengali script is used to write multiple languages, most commonly
 Bengali, Assamese, and Manipuri. In addition, Sanskrit may be written
 in Bengali, so Bengali script runs may include glyphs from the Vedic
-Extension block of Unicode. 
+Extensions block of Unicode. 
 
 There are two extant Bengali script tags defined in OpenType, `<beng>`
 and `<bng2>`. The older script tag, `<beng>`, was deprecated in 2005.
@@ -424,7 +424,7 @@ syllable-identification stage is complete.
 >
 
 
-In addition to valid syllables, stand-alone sequences may occur, such
+In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 > Note: Foreign loanwords, when written in the Bengali script, may
@@ -684,7 +684,7 @@ will either be provided by the script's inherent vowel (in which case
 it is not written with a separate character) or the sound will be designated
 by the addition of a dependent-vowel (matra) sign.
 
-Vowel-based syllables, stand-alone sequences, and broken text runs will
+Vowel-based syllables, standalone sequences, and broken text runs will
 not have base consonants.
 
 The algorithm for determining the base consonant is
