@@ -17,7 +17,7 @@ documents. Interested readers and contributors can begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 
     - (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
-      Oriya, Tamil, Telugu) 
+      Oriya, Tamil, Telugu, Sinhala) 
   - [Arabic General](opentype-shaping-arabic-general.md)
     - (Arabic, N'Ko, Syriac, Mongolian)
   - [Hangul](opentype-shaping-hangul.md)
