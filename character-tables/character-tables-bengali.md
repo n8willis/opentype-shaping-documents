@@ -40,7 +40,7 @@ specific, script-aware behavior.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0980`   | Letter           | _null_            | _null_                     | &#x0980; Anji                |
+|`U+0980`   | Letter           | PLACEHOLDER       | _null_                     | &#x0980; Anji                |
 |`U+0981`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
 |`U+0982`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0982; Anusvara            |
 |`U+0983`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0983; Visarga             |
