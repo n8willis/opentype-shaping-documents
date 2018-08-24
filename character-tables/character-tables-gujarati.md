@@ -170,7 +170,7 @@ specific, script-aware behavior.
 |`U+0AF8`   | _unassigned_     |                   |                            |                              |
 |`U+0AF9`   | Letter           | CONSONANT         | _null_                     | &#x0AF9; Zha                 |
 |`U+0AFA`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0AFA; Sukun               |
-|`U+0AFB`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0AFB; Shadda              |
+|`U+0AFB`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFB; Shadda              |
 |`U+0AFC`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0AFC; Maddah              |
 |`U+0AFD`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFD; Three-Dot Nukta Above|
 |`U+0AFE`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFE; Circle Nukta Above  |
