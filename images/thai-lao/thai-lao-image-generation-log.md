@@ -14,6 +14,7 @@ montage thai-ccmp-before.png right-arrow.png thai-ccmp-after.png -geometry +0+0 
 
 ## 1.2 Decomposition
 
+## 1.2 Am sign decomposition
 
 ## 1.2 Am sign decomposition
 
@@ -23,6 +24,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-am-decomposition-af
 
 montage lao-am-decomposition-before.png right-arrow.png lao-am-decomposition-after.png -geometry +0+0 -background transparent lao-am-decomposition.png
 
+## 4 `kern`
 
 ## 4 `kern`
 
@@ -32,6 +34,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-before.png --f
 
 montage lao-kern-before.png right-arrow.png lao-kern-after.png -geometry +0+0 -background transparent lao-kern.png
 
+## 4 `mark`
 
 ## 4 `mark`
 
