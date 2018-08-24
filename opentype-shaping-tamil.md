@@ -746,7 +746,11 @@ to maintain compatibility with the other Indic scripts.
 
 #### 2.8: Mark tagging ####
 
-Eighth, all marks must be tagged with the same positioning tag as the
+Eighth, all marks must be tagged. Marks in the `BINDU`, `VISARGA`,
+`AVAGRAHA`, `CANTILLATION`, `SYLLABLE_MODIFIER`, `GEMINATION_MARK`,
+and `SYMBOL` categories should be tagged with `POS_SMVD`.
+
+All remaining marks must be tagged with the same positioning tag as the
 closest non-mark character the mark has affinity with, so that they move together
 during the sorting step.
 
