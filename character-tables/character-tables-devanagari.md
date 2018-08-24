@@ -128,8 +128,8 @@ specific, script-aware behavior.
 |`U+0950`   | Mark [Mc]        | _null_            | _null_                     | &#x0950; Om                  |
 |`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
 |`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
-|`U+0953`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0953; Grave accent        |
-|`U+0954`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0954; Acute accent        |
+|`U+0953`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x0953; Grave accent        |
+|`U+0954`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x0954; Acute accent        |
 |`U+0955`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0955; Sign Candra Long E  |
 |`U+0956`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0956; Sign Ue             |
 |`U+0957`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0957; Sign Uue            |
@@ -206,12 +206,12 @@ specific, script-aware behavior.
 | | | | |
 |`U+A8F0`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F0; Combining Vi        |
 |`U+A8F1`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F1; Combining Avagraha  |
-|`U+A8F2`   | Letter           | BINDU             | _null_                     | &#xA8F2; Spacing Candrabindu |
+|`U+A8F2`   | Letter           | SYMBOL            | _null_                     | &#xA8F2; Spacing Candrabindu |
 |`U+A8F3`   | Letter           | BINDU             | _null_                     | &#xA8F3; Candrabindu Virama  |
 |`U+A8F4`   | Letter           | _null_            | _null_                     | &#xA8F4; Double Candrabindu Virama|
 |`U+A8F5`   | Letter           | _null_            | _null_                     | &#xA8F5; Candrabindu Two     |
 |`U+A8F6`   | Letter           | _null_            | _null_                     | &#xA8F6; Candrabindu Three   |
-|`U+A8F7`   | Letter           | _null_            | _null_                     | &#xA8F7; Candrabindu Avagraha|
+|`U+A8F7`   | Letter           | SYMBOL            | _null_                     | &#xA8F7; Candrabindu Avagraha|
 |`U+A8F8`   | Punctuation      | _null_            | _null_                     | &#xA8F8; Pushpika            |
 |`U+A8F9`   | Punctuation      | _null_            | _null_                     | &#xA8F9; Gap Filler          |
 |`U+A8FA`   | Punctuation      | _null_            | _null_                     | &#xA8FA; Caret               |
