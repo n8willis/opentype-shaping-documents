@@ -39,7 +39,7 @@ specific, script-aware behavior.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+0C80`   | Letter           | _null_            | _null_                     | &#x0C80; Spacing Candrabindu |
+|`U+0C80`   | Letter           | PLACEHOLDER       | _null_                     | &#x0C80; Spacing Candrabindu |
 |`U+0C81`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0C81; Candrabindu         |
 |`U+0C82`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0C82; Anusvara            |
 |`U+0C83`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0C83; Visarga             |
