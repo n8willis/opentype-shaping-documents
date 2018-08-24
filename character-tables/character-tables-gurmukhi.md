@@ -125,7 +125,7 @@ specific, script-aware behavior.
 |`U+0A4F`   | _unassigned_     |                   |                            |                              |
 | | | | |
 |`U+0A50`   | _unassigned_     |                   |                            |                              |
-|`U+0A51`   | Mark [Mn]        | _null_            | _null_                     | &#x0A51; Udaat               |
+|`U+0A51`   | Mark [Mn]        | VOWEL_DEPENDENT   | _null_                     | &#x0A51; Udaat               |
 |`U+0A52`   | _unassigned_     |                   |                            |                              |
 |`U+0A53`   | _unassigned_     |                   |                            |                              |
 |`U+0A54`   | _unassigned_     |                   |                            |                              |
@@ -160,8 +160,8 @@ specific, script-aware behavior.
 | | | | |
 |`U+0A70`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0A70; Tippi               |
 |`U+0A71`   | Mark [Mn]        | GEMINATION_MARK   | TOP_POSITION               | &#x0A71; Addak               |
-|`U+0A72`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#x0A72; Iri                 |
-|`U+0A73`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#x0A73; Ura                 |
+|`U+0A72`   | Letter           | CONSONANT         | _null_                     | &#x0A72; Iri                 |
+|`U+0A73`   | Letter           | CONSONANT         | _null_                     | &#x0A73; Ura                 |
 |`U+0A74`   | Letter           | _null_            | _null_                     | &#x0A74; Ek Onkar            |
 |`U+0A75`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x0A75; Yakash              |
 |`U+0A76`   | _unassigned_     |                   |                            |                              |
