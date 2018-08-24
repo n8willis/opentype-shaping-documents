@@ -810,6 +810,9 @@ Eighth, all marks must be tagged. Marks in the `BINDU`, `VISARGA`,
 `AVAGRAHA`, `CANTILLATION`, `SYLLABLE_MODIFIER`, `GEMINATION_MARK`,
 and `SYMBOL` categories should be tagged with `POS_SMVD`.
 
+Oriya includes one exception to the above general rule. The
+"Candrabindu" (`U+0B01`) must be tagged with `POS_BEFORE_SUBJOINED`.
+
 All remaining marks must be tagged with the same positioning tag as the
 closest non-mark character the mark has affinity with, so that they move together
 during the sorting step.
