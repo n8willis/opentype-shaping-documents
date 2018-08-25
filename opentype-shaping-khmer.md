@@ -259,9 +259,9 @@ For example:
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
-|`U+1000`   | Letter           | CONSONANT         | _null_                     | &#x1000; Ka                  |
+|`U+1780`   | Letter           | CONSONANT         | _null_                     | &#x1780; Ka                  |
 | | | | |
-|`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1036; Anusvara            |
+|`U+17C6`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x17C6; Nikahit             |
 
 
 Codepoints with no assigned meaning are
@@ -649,9 +649,10 @@ Each of these dependent vowels decomposes into a left-side component
 identical to the single-part dependent vowel "E" (`U+17C1`) plus a
 right-side component.
 
-Unlike many other scripts, the right-side components in Khmer are not
-assigned Unicode codepoints, therefore these decompositions are not
-canonical. 
+Unlike many other scripts, the decompositions of multi-part dependent
+vowels in Khmer are not defined as canonical in Unicode. Some of the
+right-side components that would result from these decompositions do not
+correspond to assigned Unicode codepoints.
 
 Instead, fonts typically substitute the default glyph with a
 right-side-component glyph using GSUB substitutions. The decomposition

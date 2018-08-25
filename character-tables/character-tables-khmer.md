@@ -114,7 +114,7 @@ specific, script-aware behavior.
 |`U+17C3`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x17C3; Sign Ai             |
 |`U+17C4`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x17C4; Sign Oo             |
 |`U+17C5`   | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_AND_RIGHT_POSITION    | &#x17C5; Sign Au             |
-|`U+17C6`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x17C6; Nikahit             |
+|`U+17C6`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x17C6; Nikahit             |
 |`U+17C7`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x17C7; Reahmuk             |
 |`U+17C8`   | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x17C8; Yuukaleapintu       |
 |`U+17C9`   | Mark [Mn]        | REGISTER_SHIFTER  | TOP_POSITION               | &#x17C9; Muusikatoan         |
