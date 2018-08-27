@@ -53,7 +53,7 @@ frequently, while OpenType documents use the term "halant" most
 frequently.
 
 The Khmer block does include a version of "halant" mark, "Viriam"
-(`U+17D1`). Its usage in Khmer text, howver, differs significantly
+(`U+17D1`). Its usage in Khmer text, however, differs significantly
 from the usage of "halant" in other Brahmi-derived and Indic
 orthographies.
 
@@ -654,7 +654,7 @@ vowels in Khmer are not defined as canonical in Unicode. Some of the
 right-side components that would result from these decompositions do not
 correspond to assigned Unicode codepoints.
 
-Instead, fonts typically substitute the default glyph with a
+Instead, fonts often substitute the default glyph with a
 right-side-component glyph using GSUB substitutions. The decomposition
 step performed here allows the left-side component to be correctly
 reordered by the shaping engine.
@@ -668,6 +668,19 @@ reordered by the shaping engine.
 > "Oo" (`U+17C4`) decomposes to "`U+17C1`,`U+17C4`"
 >
 > "Au" (`U+17C5`) decomposes to "`U+17C1`,`U+17C5`"
+
+Two of the multi-part dependent vowels, "Oe" (`U+17BE`) and "Oo"
+(`U+17C4`), can be decomposed into existing Unicode codepoints. If
+desired, the corresponding decompositions are: 
+
+> "Oe" (`U+17BE`) decomposes to "`U+17C1`,`U+17B8`"
+>
+> "Oo" (`U+17C4`) decomposes to "`U+17C1`,`U+17B6`"
+
+However, shaping engines should take note of the fact that these
+decompositions are non-canonical and therefore, if the active font's
+design employs non-standard stylistic choices, the results may not
+appear as expected.
 
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
