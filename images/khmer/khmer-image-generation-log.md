@@ -35,7 +35,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-matra-decompositi
 montage khmer-matra-decomposition-before.png right-arrow.png khmer-matra-decomposition-after.png -geometry +0+0 -background transparent khmer-matra-decomposition.png
 
 
-## Pre-base-reordering Ro
+## 2.4 Pre-base-reordering Ro
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-pref-before.png --features=-pref --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=1786,25cc,17d2,179a
 
@@ -44,9 +44,14 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-pref-after.png --
 montage khmer-pref-before.png right-arrow.png khmer-pref-after.png -geometry +0+0 -background transparent khmer-pref.png
 
 
-## `locl`
+## 3.1 `locl`
 
-> No examples found.
+No examples found in Noto Khmer.
+
+
+## 3.2 `ccmp`
+
+No examples found in Noto Khmer.
 
 
 ## 3.3 `pref`
@@ -85,7 +90,7 @@ montage khmer-pstf-before.png right-arrow.png khmer-pstf-after.png -geometry +0+
 
 ## 3.7 `cfar`
 
-No examples found in Noto Khmer....
+No examples found in Noto Khmer.
 
 
 ## 4 `pres`

@@ -16,8 +16,6 @@ montage thai-ccmp-before.png right-arrow.png thai-ccmp-after.png -geometry +0+0 
 
 ## 1.2 Am sign decomposition
 
-## 1.2 Am sign decomposition
-
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-am-decomposition-before.png --features=-ccmp --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=25cc,0eb3
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-am-decomposition-after.png --features=+ccmp --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=25cc,0ecd,25cc,0eb2
@@ -26,15 +24,11 @@ montage lao-am-decomposition-before.png right-arrow.png lao-am-decomposition-aft
 
 ## 4 `kern`
 
-## 4 `kern`
-
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-before.png --features=-kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=0ec1,0e9a
 
  hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-after.png --features=+kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=0ec1,0e9a
 
 montage lao-kern-before.png right-arrow.png lao-kern-after.png -geometry +0+0 -background transparent lao-kern.png
-
-## 4 `mark`
 
 ## 4 `mark`
 
