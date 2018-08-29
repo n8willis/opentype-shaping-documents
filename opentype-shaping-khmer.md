@@ -98,6 +98,8 @@ visual representation of its own.
 > as a **coeng**. The term "coeng" refers to the form of the letter
 > that follows the "Sign Coeng" control character.
 
+![Coeng form of Kha](images/khmer/khmer-coeng-kha.png)
+
 Although coengs are typically attached to the base consonant of a
 syllable, in certain circumstances coengs may also be attached to an
 independent vowel. 
@@ -169,6 +171,8 @@ subclass is used only for "Robat", the above-base form of "Ro". The
 "Robat" is similar to the "Reph" found in many Indic scripts but,
 unlike "Reph", "Robat" is encoded as a separate codepoint; therefore, it is
 not formed by a special sequence of control characters.
+
+![Robat](images/khmer/khmer-robat.png)
 
 "Robat" is a consonant, but it is classified as a combining mark in
 Unicode. For shaping purposes, "Robat" behaves like the "Nukta" mark
@@ -370,7 +374,8 @@ characteristics include:
 > Note: For comparison with the General Indic shaping model, the Robat
 > -encoding characteristic would correspond to `REPH_MODE_VISUAL_REPHA`,
 > and the reordering characteristic would be _null_ or some other
-> designation indicating that the "Robat" is not reordered. <!---Because
+> designation indicating that the "Robat" is not reordered. 
+<!---Because 
 > "Robat" is typically a syllable-initial feature, shaping engines may
 > also choose to --->
   
@@ -682,6 +687,8 @@ decompositions are non-canonical and therefore, if the active font's
 design employs non-standard stylistic choices, the results may not
 appear as expected.
 
+![Multi-part matra decomposition](images/khmer/khmer-matra-decomposition.png)
+
 Because this decomposition is a character-level operation, the shaping
 engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
@@ -719,7 +726,7 @@ Fourth, all pre-base-reordering consonants must be tagged with
 
 Khmer has one pre-base-reordering consonant: "Ro".
 
-![Pre-base-reordering Ro](images/khmer/khmer-ro.png)
+![Pre-base-reordering Ro](images/khmer/khmer-pref.png)
 
 
 
@@ -870,6 +877,8 @@ special forms. In Khmer, this may include variant forms of above-base
 dependent vowels and marks.
 <!--- single-sub-lookup 25, 28 --->
 
+![abvf feature application](images/khmer/khmer-abvf.png)
+
 
 #### 3.6: pstf ####
 
@@ -941,6 +950,14 @@ right-side ascenders.
 ![Application of the psts feature](/images/khmer/khmer-psts.png)
 
 
+The `clig` feature substitutes optional ligatures that are on by
+default, but which are activated only in certain
+contexts. Substitutions made by `clig` may be disabled by
+application-level user interfaces.
+
+![Application of the clig feature](images/khmer/khmer-clig.png)
+
+
 The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
@@ -977,9 +994,6 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
-In Khmer fonts, `dist` usage is rare. However, shaping engines should
-apply the `dist` feature if it is included in the active font.
-
 ![Application of the dist feature](/images/khmer/khmer-dist.png)
 
 
@@ -998,16 +1012,9 @@ below-base dependent vowels (matras).
 ![Application of the blwm feature](/images/khmer/khmer-blwm.png)
 
 
-The `mark` feature positions marks with respect to base glyphs.
-
-![Application of the mark feature](/images/khmer/khmer-mark.png)
- 
-
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
-
-![Application of the mkmk feature](/images/khmer/khmer-mkmk.png)
 
 
 
