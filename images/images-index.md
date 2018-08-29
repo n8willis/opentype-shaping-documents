@@ -39,6 +39,12 @@ each script are appreciated, in order to keep the log up-to-date.
       - [Tamil](tamil/tamil-image-generation-log.md)
       - [Telugu](telugu/telugu-image-generation-log.md)
       - [Sinhala](sinhala/sinhala-image-generation-log.md)
+  - Brahmi-derived
+	  - [Khmer](khmer/khmer-image-generation-log.md)
+	  - [Lao](thai-lao/thai-lao-image-generation-log.md)
+	  - [Myanmar](myanmar/myanmar-image-generation-log.md)
+	  - [Thai](thai-lao/thai-lao-image-generation-log.md)
+	  - [Tibetan](tibetan/tibetan-image-generation-log.md)
   - Arabic
       - [Arabic](arabic/arabic-image-generation-log.md)
       - [Syriac](syriac/syriac-image-generation-log.md)
@@ -46,3 +52,5 @@ each script are appreciated, in order to keep the log up-to-date.
       - [Mongolian](mongolian/mongolian-image-generation-log.md)
   - Hangul
       - [Hangul](hangul/hangul-image-generation-log.md)
+  - Hebrew
+      - [Hebrew](hebrew/hebrew-image-generation-log.md)

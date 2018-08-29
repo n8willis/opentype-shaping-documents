@@ -12,7 +12,7 @@
 > holds true. 
 
 At present, we are seeking comments and bugfixes on the Indic-script,
-Arabic-like, Hangul, Hebrew, Tibetan, and Myanmar
+Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, and Myanmar
 documents. Interested readers and contributors can begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 
@@ -22,6 +22,8 @@ documents. Interested readers and contributors can begin at the
     - (Arabic, N'Ko, Syriac, Mongolian)
   - [Hangul](opentype-shaping-hangul.md)
   - [Hebrew](opentype-shaping-hebrew.md)
+  - [Khmer](opentype-shaping-khmer.md)
+  - [Thai and Lao](opentype-shaping-thai-lao.md)
   - [Tibetan](opentype-shaping-tibetan.md)
   - [Myanmar](opentype-shaping-myanmar.md)
   
