@@ -20,7 +20,7 @@ model.
 	  - [4: Glyph reordering](#4-glyph-reordering)
 	      - [4.1: Applying the reordering features from GSUB](#41-applying-the-reordering-features-from-gsub)
 	      - [4.2: Performing property-based reordering moves](#42-performing-property-based-reordering-moves)
-	  - [5: Final feature application](#5 -final-feature-application)
+	  - [5: Final feature application](#5-final-feature-application)
 	      - [5.1: Applying the final topographic features from GSUB](#51-applying-the-final-topographic-features-from-gsub)
 	      - [5.2: Applying the final typographic-presentation features from GSUB](#52-applying-the-final-typographic-presentation-features-from-gsub)
 	      - [5.3: Applying the final positioning features from GPOS](#53-applying-the-final-positioning-features-from-gpos)
@@ -47,7 +47,7 @@ In many ways, the USE model is a generalization of the
 shaping model, with adjustments made to correct shortfalls encountered
 when using the Indic2 shaping model, as well as additional changes
 designed to broaden the number of scripts that can be supported. For
-example, the USE model includes a step applyting contextual
+example, the USE model includes a step applying contextual
 joining-behavior features as is performed in the Arabic-like shaping
 model. 
 
@@ -282,7 +282,7 @@ or orthographic correctness.
 
 An independent cluster will consist of a standalone codepoint that
 does not require further shaping, optionally followed by a variation
-selector. Independent clusters will match the the expression:
+selector. Independent clusters will match the expression:
 ```markdown
 (IND | O | Rsv | WJ) VS?
 ```
@@ -315,9 +315,9 @@ A symbol cluster will match the expression:
 ```
 
 > Note: Practically speaking, shaping engines are highly unlikely to
-> encoutner more than a small number of sequential vowel or modifiers
+> encounter more than a small number of sequential vowel or modifiers
 > in any real-world clusters. Thus, implementations may choose to
-> limit occurences by limiting some of the above expressions to a
+> limit occurrences by limiting some of the above expressions to a
 > finite length, such as `VPre{0,4}` rather than `VPre*`.
 
 The expressions above use state-machine syntax from the Ragel
