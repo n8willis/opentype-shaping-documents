@@ -102,40 +102,79 @@ The UCD properties used for USE character classification are:
 In addition, the Unicode Character Decomposition Mapping (UCDM) is used for
 all split vowels.
 
+### USE overrides ###
+
+Although, in general, the USE shaping model relies on the UGC, UISC,
+and UIPC properties, the USE model makes a small set of standard
+overrides to the properties of certain specific characters.
+
+The following table lists the complete set of USE overrides. Shaping
+engines should implement the override properties in order to guarantee
+correct results.
+
+> Note: A _null_ in the following table indicates that the
+> corresponding Unicode property is not overridden. 
+
+
+| Codepoint | Unicode UISC               | USE override UISC | Unicode UIPC | USE override UIPC | Glyph                                   |
+|:----------|:---------------------------|:------------------|:-------------|:------------------|:----------------------------------------|
+| `U+AA29`  | Vowel_Dependent            | Bindu             | _null_       | _null_            | &#xAA29; Cham Vowel Sign Aa             |
+| `U+0F71`  | Vowel_Dependent            | Nukta             | _null_       | _null_            | &#x0F71; Tibetan Vowel Sign Aa          |
+| `U+A982`  | Consonant_Succeeding_Repha | Tone_Mark         | _null_       | _null_            | &#xA982; Javanese Sign Layar            |
+| `U+0F7F`  | Visarga                    | Consonant_Dead    | _null_       | _null_            | &#x0F7F; Tibetan Sign Rnam Bcad         |
+| `U+11134` | Pure_Killer                | Gemination_Mark   | _null_       | _null_            | &#x11134; Chakma Maayyaa                |
+| `U+0F74`  | _null_                     | _null_            | Bottom       | Top               | &#x0F74; Tibetan Vowel Sign U           |
+| `U+AA35`  | _null_                     | _null_            | Bottom       | Top               | &#xAA35; Cham Consonant Sign            |
+| `U+1A18`  | _null_                     | _null_            | Bottom       | Top               | &#x1A18; Buginese Vowel Sign U          |
+| `U+0F72`  | _null_                     | _null_            | Top          | Bottom            | &#x0F72; Tibetan Vowel Sign I           |
+| `U+OF7A`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7A; Tibetan Vowel Sign E           |
+| `U+OF7B`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7B; Tibetan Vowel Sign Ee          |
+| `U+OF7C`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7C; Tibetan Vowel Sign O           |
+| `U+OF7D`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7D; Tibetan Vowel Sign Oo          |
+| `U+0F80`  | _null_                     | _null_            | Top          | Bottom            | &#x0F80; Tibetan Vowel Sign Reversed Ii |
+| `U+11127` | _null_                     | _null_            | Top          | Bottom            | &#x11127; Chakma Vowel Sign A           |
+| `U+11128` | _null_                     | _null_            | Top          | Bottom            | &#x11128; Chakma Vowel Sign I           |
+| `U+11129` | _null_                     | _null_            | Top          | Bottom            | &#x11129; Chakma Vowel Sign Ii          |
+| `U+1112D` | _null_                     | _null_            | Top          | Bottom            | &#x1112d; Chakma Vowel Sign Ai          |
+| `U+11130` | _null_                     | _null_            | Top          | Bottom            | &#x11130; Chakma Vowel Sign Oi          |
+| | | | | | |
 
 
 ### USE classification table ###
 
 
-| USE classification        | Symbol | Definition |
-|:--------------------------|:-------|:-----------|
-| BASE                      | `B`    |            |
-| Combining grapheme joiner | `CGJ`  | `U+034F`         |
-| CONS_MOD                  | `CM`   | UISC = Nukta _or_ Gemination_Mark _or_ Consonant_Killer           |
-| CONS_WITH_STACKER         | `CS`   | UISC = Consonant_With_Stacker           |
-| CONS_FINAL                | `F`    | (UISC = Consonant_Final & UGC != Lo) _or_ UISC = Consonant_Succeeding_Repha           |
-| CONS_FINAL_MOD            | `FM`   | UISC = Syllable_Modifier           |
-| BASE_OTHER                | `GB`   | UISC = Consonant_Placeholder _or_ U+2015, U+2022, U+25FB–25FE            |
-| HALANT                    | `H`    | UISC = Virama _or_ Invisible_Stacker            |
-| HALANT_NUM                | `HN`   | UISC = Number_Joiner            |
-| BASE_IND                  | `IND`  | (UISC = Consonant_Dead _or_ Modifying_Letter) _or_ (UGC = Po != U+104E, U+2022; U+002D           |
-| CONS_MED                  | `M`    | UISC = Consonant_Medial & UGC != Lo            |
-| BASE_NUM                  | `N`    | UISC = Brahmi_Joining_Number            |
-| OTHER                     | `O`    | Any other SCRIPT_COMMON characters; White space characters, UGC=Zs           |
-| REPHA                     | `R`    | UISC = Consonant_Preceding_Repha _or_ Consonant_Prefixed            |
-| Reserved character        | `Rsv`  | Any character not currently assigned or otherwise reserved in Unicode            |
-| SYM                       | `S`    | UGC = Sc _or_ (UGC = So != U+25CC)           |
-| SYM_MOD                   | `SM`   | U+1B6B, U+1B6C, U+1B6D, U+1B6E, U+1B6F, U+1B70, U+1B71, U+1B72, U+1B73            |
-| CONS_SUB                  | `SUB`  | UISC = Consonant_Subjoined & UGC != Lo            |
-| VOWEL                     | `V`    | UISC = Vowel & UGC != Lo; UISC = Vowel_Dependent & UGC != Lo; UISC = Pure_Killer            |
-| VOWEL_MOD                 | `VM`   | UISC = Bindu & UGC != Lo; UISC = Tone_Mark; UISC = Cantillation_Mark; UISC = Register_Shifter; UISC = Visarga            |
-| VARIATION_SELECTOR        | `VS`   | U+FE00‒FE0F            |
-| Word joiner               | `WJ`   | U+2060            |
-| Zero width joiner         | `ZWJ`  | UISC = Joiner            |
-| Zero width nonjoiner      | `ZWNJ` | UISC = Non_Joiner            |
+| USE classification        | Symbol | Definition                                                                                                    |
+|:--------------------------|:-------|:--------------------------------------------------------------------------------------------------------------|
+| BASE                      | `B`    | UISC = Number _or_ (UISC = Avagraha & UGC = Lo) _or_ (UISC = Bindu & UGC = Lo) _or_ UISC = Consonant _or_ (UISC = Consonant_Final & UGC = Lo) _or_ UISC = Consonant_Head_Letter _or_ (UISC = Consonant_Medial & UGC = Lo) _or_ (UISC = Consonant_Subjoined & UGC = Lo) _or_ UISC = Tone_Letter _or_ (UISC = Vowel & UGC = Lo) _or_ UISC = Vowel_Independent _or_ (UISC = Vowel_Dependent & UGC = Lo) |
+| Combining grapheme joiner | `CGJ`  | `U+034F`                                                                                                      |
+| CONS_MOD                  | `CM`   | UISC = Nukta _or_ Gemination_Mark _or_ Consonant_Killer                                                       |
+| CONS_WITH_STACKER         | `CS`   | UISC = Consonant_With_Stacker                                                                                 |
+| CONS_FINAL                | `F`    | (UISC = Consonant_Final & UGC != Lo) _or_ UISC = Consonant_Succeeding_Repha                                   |
+| CONS_FINAL_MOD            | `FM`   | UISC = Syllable_Modifier                                                                                      |
+| BASE_OTHER                | `GB`   | UISC = Consonant_Placeholder _or_ U+2015, U+2022, U+25FB–25FE                                                 |
+| HALANT                    | `H`    | UISC = Virama _or_ Invisible_Stacker                                                                          |
+| HALANT_NUM                | `HN`   | UISC = Number_Joiner                                                                                          |
+| BASE_IND                  | `IND`  | (UISC = Consonant_Dead _or_ Modifying_Letter) _or_ (UGC = Po != U+104E, U+2022; U+002D                        |
+| CONS_MED                  | `M`    | UISC = Consonant_Medial & UGC != Lo                                                                           |
+| BASE_NUM                  | `N`    | UISC = Brahmi_Joining_Number                                                                                  |
+| OTHER                     | `O`    | Any other SCRIPT_COMMON characters; White space characters, UGC=Zs                                            |
+| REPHA                     | `R`    | UISC = Consonant_Preceding_Repha _or_ Consonant_Prefixed                                                      |
+| Reserved character        | `Rsv`  | Any character not currently assigned or otherwise reserved in Unicode                                         |
+| SYM                       | `S`    | UGC = Sc _or_ (UGC = So != U+25CC)                                                                            |
+| SYM_MOD                   | `SM`   | U+1B6B, U+1B6C, U+1B6D, U+1B6E, U+1B6F, U+1B70, U+1B71, U+1B72, U+1B73                                        |
+| CONS_SUB                  | `SUB`  | UISC = Consonant_Subjoined & UGC != Lo                                                                        |
+| VOWEL                     | `V`    | UISC = Vowel & UGC != Lo; UISC = Vowel_Dependent & UGC != Lo; UISC = Pure_Killer                              |
+| VOWEL_MOD                 | `VM`   | UISC = Bindu & UGC != Lo; UISC = Tone_Mark; UISC = Cantillation_Mark; UISC = Register_Shifter; UISC = Visarga |
+| VARIATION_SELECTOR        | `VS`   | U+FE00‒FE0F                                                                                                   |
+| Word joiner               | `WJ`   | U+2060                                                                                                        |
+| Zero width joiner         | `ZWJ`  | UISC = Joiner                                                                                                 |
+| Zero width nonjoiner      | `ZWNJ` | UISC = Non_Joiner                                                                                             |
 | | | |
 
 ### USE subclasses table ###
+
+> Note: Split-vowel subclasses in the table below do not have a symbol
+> because each split vowel must be decomposed into its components.
 
 | USE classification        | Symbol | Definition                                        |
 |:--------------------------|:-------|:--------------------------------------------------|
@@ -166,6 +205,7 @@ all split vowels.
 | VOWEL_MOD_PRE             |`VMPre` | USE=VM & UIPC = Left                              |
 | VOWEL_MOD_POST            |`VMPst` | USE=VM & UIPC = Right                             |
 | | | |
+
 
 
 ## The USE shaping model ##
