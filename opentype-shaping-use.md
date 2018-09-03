@@ -127,10 +127,10 @@ correct results.
 | `U+AA35`  | _null_                     | _null_            | Bottom       | Top               | &#xAA35; Cham Consonant Sign            |
 | `U+1A18`  | _null_                     | _null_            | Bottom       | Top               | &#x1A18; Buginese Vowel Sign U          |
 | `U+0F72`  | _null_                     | _null_            | Top          | Bottom            | &#x0F72; Tibetan Vowel Sign I           |
-| `U+OF7A`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7A; Tibetan Vowel Sign E           |
-| `U+OF7B`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7B; Tibetan Vowel Sign Ee          |
-| `U+OF7C`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7C; Tibetan Vowel Sign O           |
-| `U+OF7D`  | _null_                     | _null_            | Top          | Bottom            | &#xOF7D; Tibetan Vowel Sign Oo          |
+| `U+0F7A`  | _null_                     | _null_            | Top          | Bottom            | &#x0F7A; Tibetan Vowel Sign E           |
+| `U+0F7B`  | _null_                     | _null_            | Top          | Bottom            | &#x0F7B; Tibetan Vowel Sign Ee          |
+| `U+0F7C`  | _null_                     | _null_            | Top          | Bottom            | &#x0F7C; Tibetan Vowel Sign O           |
+| `U+0F7D`  | _null_                     | _null_            | Top          | Bottom            | &#x0F7D; Tibetan Vowel Sign Oo          |
 | `U+0F80`  | _null_                     | _null_            | Top          | Bottom            | &#x0F80; Tibetan Vowel Sign Reversed Ii |
 | `U+11127` | _null_                     | _null_            | Top          | Bottom            | &#x11127; Chakma Vowel Sign A           |
 | `U+11128` | _null_                     | _null_            | Top          | Bottom            | &#x11128; Chakma Vowel Sign I           |
