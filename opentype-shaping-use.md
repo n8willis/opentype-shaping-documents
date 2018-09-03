@@ -151,22 +151,22 @@ correct results.
 | CONS_WITH_STACKER         | `CS`   | UISC = Consonant_With_Stacker                                                                                 |
 | CONS_FINAL                | `F`    | (UISC = Consonant_Final & UGC != Lo) _or_ UISC = Consonant_Succeeding_Repha                                   |
 | CONS_FINAL_MOD            | `FM`   | UISC = Syllable_Modifier                                                                                      |
-| BASE_OTHER                | `GB`   | UISC = Consonant_Placeholder _or_ U+2015, U+2022, U+25FB–25FE                                                 |
+| BASE_OTHER                | `GB`   | UISC = Consonant_Placeholder _or_ `U+2015`, `U+2022`, `U+25FB`–`U+25FE`                                       |
 | HALANT                    | `H`    | UISC = Virama _or_ Invisible_Stacker                                                                          |
 | HALANT_NUM                | `HN`   | UISC = Number_Joiner                                                                                          |
-| BASE_IND                  | `IND`  | (UISC = Consonant_Dead _or_ Modifying_Letter) _or_ (UGC = Po != U+104E, U+2022; U+002D                        |
+| BASE_IND                  | `IND`  | (UISC = Consonant_Dead _or_ Modifying_Letter) _or_ (UGC = Po != `U+104E`, `U+2022`) _or_ `U+002D`             |
 | CONS_MED                  | `M`    | UISC = Consonant_Medial & UGC != Lo                                                                           |
 | BASE_NUM                  | `N`    | UISC = Brahmi_Joining_Number                                                                                  |
 | OTHER                     | `O`    | Any other SCRIPT_COMMON characters; White space characters, UGC=Zs                                            |
 | REPHA                     | `R`    | UISC = Consonant_Preceding_Repha _or_ Consonant_Prefixed                                                      |
 | Reserved character        | `Rsv`  | Any character not currently assigned or otherwise reserved in Unicode                                         |
-| SYM                       | `S`    | UGC = Sc _or_ (UGC = So != U+25CC)                                                                            |
-| SYM_MOD                   | `SM`   | U+1B6B, U+1B6C, U+1B6D, U+1B6E, U+1B6F, U+1B70, U+1B71, U+1B72, U+1B73                                        |
+| SYM                       | `S`    | UGC = Sc _or_ (UGC = So != `U+25CC`)                                                                          |
+| SYM_MOD                   | `SM`   | `U+1B6B`, `U+1B6C`, `U+1B6D`, `U+1B6E`, `U+1B6F`, `U+1B70`, `U+1B71`, `U+1B72`, `U+1B73`                      |
 | CONS_SUB                  | `SUB`  | UISC = Consonant_Subjoined & UGC != Lo                                                                        |
 | VOWEL                     | `V`    | UISC = Vowel & UGC != Lo; UISC = Vowel_Dependent & UGC != Lo; UISC = Pure_Killer                              |
 | VOWEL_MOD                 | `VM`   | UISC = Bindu & UGC != Lo; UISC = Tone_Mark; UISC = Cantillation_Mark; UISC = Register_Shifter; UISC = Visarga |
-| VARIATION_SELECTOR        | `VS`   | U+FE00‒FE0F                                                                                                   |
-| Word joiner               | `WJ`   | U+2060                                                                                                        |
+| VARIATION_SELECTOR        | `VS`   | `U+FE00`‒`U+FE0F`                                                                                             |
+| Word joiner               | `WJ`   | `U+2060`                                                                                                      |
 | Zero width joiner         | `ZWJ`  | UISC = Joiner                                                                                                 |
 | Zero width nonjoiner      | `ZWNJ` | UISC = Non_Joiner                                                                                             |
 | | | |
