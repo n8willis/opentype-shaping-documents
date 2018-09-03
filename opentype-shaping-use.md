@@ -11,18 +11,19 @@ model.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
   - [The USE shaping model](#the-use-shaping-model)
-      - [1: Cluster identification]
-      - [2: Basic cluster formation]
-	      - [2.1: Applying the basic pre-processing features from GSUB]
-          - [2.2: Applying the basic reordering features from GSUB]
-          - [2.3: Applying the basic orthographic features from GSUB]
-	  - [3: Glyph reordering]
-	      - [3.1 Applying the reordering features from GSUB]
-	      - [3.2 Performing property-based reordering moves]
-	  - [4: Final feature application]
-	      - [4.1: Applying the final topographic features from GSUB]
-	      - [4.2: Applying the final typographic-presentation features from GSUB]
-	      - [4.3: Applying the final positioning features from GPOS]
+      - [1: Split vowel decomposition](#1-split-vowel-decomposition)
+      - [2: Cluster identification](#2-cluster-identification)
+      - [3: Basic cluster formation](#3-basic-cluster-formation)
+	      - [3.1: Applying the basic pre-processing features from GSUB](#31-applying-the-basic-pre-processing-features-from-gsub)
+          - [3.2: Applying the basic reordering features from GSUB](#32-applying-the-basic-reordering-features-from-gsub)
+          - [3.3: Applying the basic orthographic features from GSUB](#33-applying-the-basic-orthographic-features-from-gsub)
+	  - [4: Glyph reordering](#4-glyph-reordering)
+	      - [4.1: Applying the reordering features from GSUB](#41-applying-the-reordering-features-from-gsub)
+	      - [4.2: Performing property-based reordering moves](#42-performing-property-based-reordering-moves)
+	  - [5: Final feature application](#5 -final-feature-application)
+	      - [5.1: Applying the final topographic features from GSUB](#51-applying-the-final-topographic-features-from-gsub)
+	      - [5.2: Applying the final typographic-presentation features from GSUB](#52-applying-the-final-typographic-presentation-features-from-gsub)
+	      - [5.3: Applying the final positioning features from GPOS](#53-applying-the-final-positioning-features-from-gpos)
   
   
   
@@ -62,18 +63,19 @@ supported scripts. These terms are similar to the standard terms used
 for Indic scripts, but with several key distinctions.
 
 A **cluster** is the fundamental unit used in shaping; it consists of
-a sequence of Unicode codepoints that will be processed atomically. An
-individual syllable typically corresponds to a single cluster, but any
-particular cluster may involve more than one syllable or a sequence
-that does not match the syllable-formation rules of the script.
+a sequence of Unicode codepoints that will be processed as an atomic
+unit. An individual syllable typically corresponds to a single
+cluster, but any particular cluster might involve multiple syllables
+or a sequence that does not match the syllable-formation rules of the
+script.
 
 A **base** character in the USE model may be a consonant, an
 independent vowel, a number, or any of several additional character
 classes.
 
-A syllable's base consonant is generally rendered in its full form
+A cluster's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-syllable frequently take on secondary forms. Different GSUB
+cluster frequently take on secondary forms. Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -102,10 +104,11 @@ The UCD properties used for USE character classification are:
 In addition, the Unicode Character Decomposition Mapping (UCDM) is used for
 all split vowels.
 
+
 ### USE overrides ###
 
 Although, in general, the USE shaping model relies on the UGC, UISC,
-and UIPC properties, the USE model makes a small set of standard
+and UIPC properties, the USE model makes a small set of standardized
 overrides to the properties of certain specific characters.
 
 The following table lists the complete set of USE overrides. Shaping
@@ -113,7 +116,8 @@ engines should implement the override properties in order to guarantee
 correct results.
 
 > Note: A _null_ in the following table indicates that the
-> corresponding Unicode property is not overridden. 
+> corresponding Unicode property is not overridden for the codepoint
+> featured in that row. 
 
 
 | Codepoint | Unicode UISC               | USE override UISC | Unicode UIPC | USE override UIPC | Glyph                                   |
@@ -142,6 +146,17 @@ correct results.
 
 ### USE classification table ###
 
+The following table lists the classes utilized in the USE shaping
+model, along with a definition for each class. The class definitions
+refer to the UGC, UISC, and UIPC categories in the Unicode standard,
+or to specific Unicode codepoints.
+
+The symbols given in the "Symbol" column for each class may be used to
+express cluster-matching rules or other algorithms.
+
+Vowels and modifiers may be further subclassified as described in the
+[USE subclasses table](#use-subclasses-table) below.
+
 
 | USE classification        | Symbol | Definition                                                                                                    |
 |:--------------------------|:-------|:--------------------------------------------------------------------------------------------------------------|
@@ -160,62 +175,185 @@ correct results.
 | OTHER                     | `O`    | Any other SCRIPT_COMMON characters; White space characters, UGC=Zs                                            |
 | REPHA                     | `R`    | UISC = Consonant_Preceding_Repha _or_ Consonant_Prefixed                                                      |
 | Reserved character        | `Rsv`  | Any character not currently assigned or otherwise reserved in Unicode                                         |
-| SYM                       | `S`    | UGC = Sc _or_ (UGC = So != `U+25CC`)                                                                          |
+| SYM                       | `S`    | UGC = Sc _or_ (UGC = So & != `U+25CC`)                                                                        |
 | SYM_MOD                   | `SM`   | `U+1B6B`, `U+1B6C`, `U+1B6D`, `U+1B6E`, `U+1B6F`, `U+1B70`, `U+1B71`, `U+1B72`, `U+1B73`                      |
 | CONS_SUB                  | `SUB`  | UISC = Consonant_Subjoined & UGC != Lo                                                                        |
-| VOWEL                     | `V`    | UISC = Vowel & UGC != Lo; UISC = Vowel_Dependent & UGC != Lo; UISC = Pure_Killer                              |
-| VOWEL_MOD                 | `VM`   | UISC = Bindu & UGC != Lo; UISC = Tone_Mark; UISC = Cantillation_Mark; UISC = Register_Shifter; UISC = Visarga |
+| VOWEL                     | `V`    | (UISC = Vowel & UGC != Lo) _or_ (UISC = Vowel_Dependent & UGC != Lo) _or_ UISC = Pure_Killer                  |
+| VOWEL_MOD                 | `VM`   | (UISC = Bindu & UGC != Lo) _or_ UISC = Tone_Mark _or_ Cantillation_Mark _or_ Register_Shifter _or_ Visarga    |
 | VARIATION_SELECTOR        | `VS`   | `U+FE00`‒`U+FE0F`                                                                                             |
 | Word joiner               | `WJ`   | `U+2060`                                                                                                      |
 | Zero width joiner         | `ZWJ`  | UISC = Joiner                                                                                                 |
 | Zero width nonjoiner      | `ZWNJ` | UISC = Non_Joiner                                                                                             |
 | | | |
 
+
 ### USE subclasses table ###
 
-> Note: Split-vowel subclasses in the table below do not have a symbol
-> because each split vowel must be decomposed into its components.
+Vowels and modifiers may be further subclassified based on their
+position relative to base characters. The subclasses incorporated in
+the USE shaping model are defined in the table below.
 
-| USE classification        | Symbol | Definition                                        |
-|:--------------------------|:-------|:--------------------------------------------------|
-| CONS_MOD_ABOVE            |`CMAbv` | USE=CM & UIPC = Top                               |
-| CONS_MOD_BELOW            |`CMBlw` | USE=CM & UIPC = Bottom                            |
-| CONS_FINAL_ABOVE          |`FAbv`  | USE=F & UIPC = Top                                |
-| CONS_FINAL_BELOW          |`FBlw`  | USE=F & UIPC = Bottom                             |
-| CONS_FINAL_POST           |`FPst`  | USE=F & UIPC = Right                              |
-| CONS_MED_ABOVE            |`MAbv`  | USE=M & UIPC = Top                                |
-| CONS_MED_BELOW            |`MBlw`  | USE=M & UIPC = Bottom                             |
-| CONS_MED_PRE              |`MPre`  | USE=M & UIPC = Left                               |
-| CONS_MED_POST             |`MPst`  | USE=M & UIPC = Right                              |
-| SYM_MOD_ABOVE             |`SMAbv` | `U+1B6B`,`U+1B6D`,`U+1B6E`,`U+1B6F`,`U+1B70`,`U+1B71`,`U+1B72`,`U+1B73`|
-| SYM_MOD_BELOW             |`SMBlw` | `U+1B6C`                                          |
-| VOWEL_ABOVE               |`VAbv`  | USE=V & UIPC = Top                                |
-| VOWEL_ABOVE_BELOW         |_null_  | USE=V & UIPC = Top_And_Bottom                     |
-| VOWEL_ABOVE_BELOW_POST    |_null_  | USE=V & UIPC = Top_And_Bottom_And_Right           |
-| VOWEL_ABOVE_POST          |_null_  | USE=V & UIPC = Top_And_Right                      |
-| VOWEL_BELOW               |`VBlw`  | USE=V & UIPC = Bottom _or_ Overstruck             |
-| VOWEL_BELOW_POST          |_null_  | USE=V & UIPC = Bottom_And_Right                   |
-| VOWEL_PRE                 |`VPre`  | USE=V & UIPC = Left                               |
-| VOWEL_PRE_ABOVE           |_null_  | USE=V & UIPC = Top_And_Left                       |
-| VOWEL_PRE_ABOVE_POST      |_null_  | USE=V & UIPC = Top_And_Left_And_Right             |
-| VOWEL_PRE_POST            |_null_  | USE=V & UIPC = Left_And_Right                     |
-| VOWEL_POST                |`VPst`  | USE=V & UIPC = Right                              |
-| VOWEL_MOD_ABOVE           |`VMAbv` | USE=VM & UIPC = Top                               |
-| VOWEL_MOD_BELOW           |`VMBlw` | USE=VM & UIPC = Bottom _or_ Overstruck            |
-| VOWEL_MOD_PRE             |`VMPre` | USE=VM & UIPC = Left                              |
-| VOWEL_MOD_POST            |`VMPst` | USE=VM & UIPC = Right                             |
+Split-vowel subclasses are not assigned a symbol because each split
+vowel must be decomposed into its components.
+
+
+| USE classification     | Symbol  | Definition                                                              |
+|:-----------------------|:--------|:------------------------------------------------------------------------|
+| CONS_MOD_ABOVE         | `CMAbv` | USE=CM & UIPC = Top                                                     |
+| CONS_MOD_BELOW         | `CMBlw` | USE=CM & UIPC = Bottom                                                  |
+| CONS_FINAL_ABOVE       | `FAbv`  | USE=F & UIPC = Top                                                      |
+| CONS_FINAL_BELOW       | `FBlw`  | USE=F & UIPC = Bottom                                                   |
+| CONS_FINAL_POST        | `FPst`  | USE=F & UIPC = Right                                                    |
+| CONS_MED_ABOVE         | `MAbv`  | USE=M & UIPC = Top                                                      |
+| CONS_MED_BELOW         | `MBlw`  | USE=M & UIPC = Bottom                                                   |
+| CONS_MED_PRE           | `MPre`  | USE=M & UIPC = Left                                                     |
+| CONS_MED_POST          | `MPst`  | USE=M & UIPC = Right                                                    |
+| SYM_MOD_ABOVE          | `SMAbv` | `U+1B6B`,`U+1B6D`,`U+1B6E`,`U+1B6F`,`U+1B70`,`U+1B71`,`U+1B72`,`U+1B73` |
+| SYM_MOD_BELOW          | `SMBlw` | `U+1B6C`                                                                |
+| VOWEL_ABOVE            | `VAbv`  | USE=V & UIPC = Top                                                      |
+| VOWEL_ABOVE_BELOW      | _null_  | USE=V & UIPC = Top_And_Bottom                                           |
+| VOWEL_ABOVE_BELOW_POST | _null_  | USE=V & UIPC = Top_And_Bottom_And_Right                                 |
+| VOWEL_ABOVE_POST       | _null_  | USE=V & UIPC = Top_And_Right                                            |
+| VOWEL_BELOW            | `VBlw`  | USE=V & UIPC = Bottom _or_ Overstruck                                   |
+| VOWEL_BELOW_POST       | _null_  | USE=V & UIPC = Bottom_And_Right                                         |
+| VOWEL_PRE              | `VPre`  | USE=V & UIPC = Left                                                     |
+| VOWEL_PRE_ABOVE        | _null_  | USE=V & UIPC = Top_And_Left                                             |
+| VOWEL_PRE_ABOVE_POST   | _null_  | USE=V & UIPC = Top_And_Left_And_Right                                   |
+| VOWEL_PRE_POST         | _null_  | USE=V & UIPC = Left_And_Right                                           |
+| VOWEL_POST             | `VPst`  | USE=V & UIPC = Right                                                    |
+| VOWEL_MOD_ABOVE        | `VMAbv` | USE=VM & UIPC = Top                                                     |
+| VOWEL_MOD_BELOW        | `VMBlw` | USE=VM & UIPC = Bottom _or_ Overstruck                                  |
+| VOWEL_MOD_PRE          | `VMPre` | USE=VM & UIPC = Left                                                    |
+| VOWEL_MOD_POST         | `VMPst` | USE=VM & UIPC = Right                                                   |
 | | | |
 
 
 
 ## The USE shaping model ##
 
-### 1: Cluster identification ###
+The USE shaping model consists of five top-level stages.
+
+1. Decomposition of split vowels
+2. Identifying clusters
+3. Applying basic cluster formation features
+4. Glyph reordering
+5. Applying final features
+
+All scripts supported by the USE model will be processed in this same
+pattern. However, not every script requires that actions be taken in
+every operation.
+
+The first two stages take place for the entire text run being
+shaped. Subsequently, stages 3, 4, and 5 are each conducted in order on a
+per-cluster basis, until every cluster in the run has been processed.
+
+The substitution features from GSUB and the positioning features from
+GPOS are applied to the text run in predefined features groups. Which
+features are applied at each step in the process are described below.
 
 
-### 2: Basic cluster formation ###
+### 1: Split vowel decomposition ###
 
-#### 2.1: Applying the basic pre-processing features from GSUB ####
+Most split vowels have a canonical decomposition defined in the
+Unicode specification. The USE shaping model requires that all such
+split vowels be decomposed into their components before any further
+processing is performed. 
+
+For these vowels, the canonical decomposition must be performed prior
+to cluster identification. Because this decomposition is a
+character-level operation, the shaping engine may choose to perform it
+earlier, such as during an initial Unicode-normalization stage. 
+
+For any split vowels that do not have a canonical decomposition, the
+active font should provide a decomposition via the `ccmp` substitution
+feature in GSUB. 
+
+The cluster-identification rules detailed in stage two are based on
+the canonical decompositions, and do not take non-canonical GSUB
+decomposition into account.
+
+
+### 2. Cluster identification ###
+
+A cluster in the USE model is defined according to a generalized,
+visual pattern that is common to all supported scripts. Consequently,
+the cluster-identification expressions used do not enforce linguistic
+or orthographic correctness.
+
+An independent cluster will consist of a standalone codepoint that
+does not require further shaping, optionally followed by a variation
+selector. Independent clusters will match the the expression:
+```markdown
+(IND | O | Rsv | WJ) VS?
+```
+
+A standard cluster features a required base character and may include
+many optional elements. Standard clusters will match the expression:
+```markdown
+( R | CS )? ( B | GB ) VS? CMAbv* CMBlw* ( ((H B) | SUB) VS? CMAbv* CMBlw* )* MPre? MAbv? MBlw? MPst? VPre* VAbv* VBlw* VPst* VMPre* VMAbv* VMBlw* VMPst* FAbv* FBlw* FPst* FM?
+```
+
+A halant-terminated cluster occurs when any character other than a `B`
+follows a `H`. Halant-terminated clusters will match the expression:
+```markdown
+( R | CS )? (B | GB) VS? CMAbv* CMBlw* ( ((H B) | SUB) VS? CMAbv* CMBlw*)* H
+```
+
+A number-joiner–terminated cluster will match the expression:
+```markdown
+N VS? (HN N VS?)* HN
+```
+
+A numeral cluster will match the expression:
+```markdown
+N VS? (HN N VS?)*
+```
+
+A symbol cluster will match the expression:
+```markdown
+(S | GB) VS? SMAbv* SMBlw*
+```
+
+> Note: Practically speaking, shaping engines are highly unlikely to
+> encoutner more than a small number of sequential vowel or modifiers
+> in any real-world clusters. Thus, implementations may choose to
+> limit occurences by limiting some of the above expressions to a
+> finite length, such as `VPre{0,4}` rather than `VPre*`.
+
+The expressions above use state-machine syntax from the Ragel
+state-machine compiler. The operators represent:
+
+```markdown
+a* = zero or more copies of a
+b+ = one or more copies of b
+c? = optional instance of c
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
+!e = not e
+^f = character-level not f
+g.h = concatenation of g and h
+i|j = i or j
+( ) = grouping of expression elements
+```
+
+Sequences not matching any of the above expressions should be regarded
+as broken. The shaping engine may make a best-effort attempt
+to shape the broken sequence, but making guarantees about the
+correctness or appearance of the final result is out of scope for this
+document.
+
+After the syllables have been identified, each of the subsequent 
+shaping stages occurs on a per-syllable basis.
+
+
+### 3: Basic cluster formation ###
+
+The basic cluster formation stage is used to apply fundamental
+substitutions necessary for script and language correctness.
+
+#### 3.1: Applying the basic pre-processing features from GSUB ####
 
 The basic pre-processing step applies mandatory substitution features
 using the rules in the font's GSUB table. In preparation for this 
@@ -230,15 +368,51 @@ in the font.
 	ccmp
 	nukt
 	akhn
-	
-#### 2.2: Applying the basic reordering features from GSUB ####
+
+The `locl` feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.
+
+> Note: Strictly speaking, the use of localized-form substitutions is
+> not part of the shaping process, but of the localization process,
+> and could take place at an earlier point while handling the text
+> run. However, shaping engines are expected to complete the
+> application of the `locl` feature before applying the subsequent
+> GSUB substitutions in the following steps.
+
+The `ccmp` feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of
+glyphs. 
+
+If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the `ccmp`-substituted
+glyphs.
+
+> Note: The `ccmp` feature may perform decompositions of split vowels
+> that do not have a canonical decomposition defined in Unicode. Split
+> vowels that do have a canonical decomposition were decomposed in
+> stage one.
+
+The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
+precomposed nukta-variant of the consonant glyph. 
+
+The `akhn` feature replaces specific sequences with required
+ligatures. These sequences can occur anywhere in a syllable. 
+Akhand characters have orthographic status equivalent to full
+consonants in some languages, and fonts may have later substitution
+rules designed to match them in subsequences. Therefore, this
+feature must be applied before all other many-to-one substitutions.
+
+
+#### 3.2: Applying the basic reordering features from GSUB ####
 
 The basic reordering step applies mandatory substitution features from
 GSUB that affect reordering elements.
 
 The glyph substitution from these features are applied at this
 step. However, the actual reordering of the glyphs does not take place
-until stage 3, step 1.
+until stage 4, step 1.
 
 The order in which these substitutions must be performed is fixed for
 all USE scripts:
@@ -246,7 +420,26 @@ all USE scripts:
 	rphf
 	pref
 
-#### 2.3: Applying the basic orthographic features from GSUB ####
+##### 3.2.1 `rphf` #####
+
+The `rphf` feature replaces cluster-initial "Ra,Halant" sequences with
+the "Reph" glyph.
+
+> Note: also the glyph substitution is performed in this step, the
+> corresponding glyph reordering move is not performed until a later
+> stage. 
+
+##### 3.2.2 `pref` #####
+
+The `pref` feature replaces pre-base-consonant glyphs with any special
+forms. 
+
+> Note: also the glyph substitution is performed in this step, the
+> corresponding glyph reordering move is not performed until a later
+> stage. 
+
+
+#### 3.3: Applying the basic orthographic features from GSUB ####
 
 The basic orthographic step applies substitution features using the
 rules in the font's GSUB table. In preparation for this stage, glyph
@@ -264,17 +457,38 @@ in the font.
 	vatu
 	cjct
 
+The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
+"Rakaar"-ligature form of the consonant glyph.
 
-### 3: Glyph reordering ###
+The `abvf` feature replaces above-base-consonant glyphs with any
+special forms. 
+
+The `blwf` feature replaces below-base-consonant glyphs with any
+special forms.
+
+The `half` feature replaces "_Consonant_,Halant" sequences before the
+base consonant with "half forms" of the consonant glyphs.
+
+The `pstf` feature replaces post-base-consonant glyphs with any
+special forms.
+
+The `vatu` feature replaces certain sequences with "Vattu variant"
+forms. 
+
+The `cjct` feature replaces sequences of adjacent consonants with
+conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
+
+
+### 4: Glyph reordering ###
 
 
 
-#### 3.1 Applying the reordering features from GSUB ####
+#### 4.1 Applying the reordering features from GSUB ####
 
 	rphf
 	pref
 
-#### 3.2 Performing property-based reordering moves ####
+#### 4.2 Performing property-based reordering moves ####
 
 In this step, any characters that match one of the USE reordering
 classifications should be reordered into their final position. 
@@ -287,18 +501,18 @@ classifications should be reordered into their final position.
 	`VPre`
 	`VMPre`
 
-### 4: Final feature application ###
+### 5: Final feature application ###
 
 
 
-#### 4.1: Applying the final topographic features from GSUB ####
+#### 5.1: Applying the final topographic features from GSUB ####
 
 	isol
 	init
 	medi
 	fina
 
-#### 4.2: Applying the final typographic-presentation features from GSUB ####
+#### 5.2: Applying the final typographic-presentation features from GSUB ####
 
 	abvs
 	blws
@@ -313,7 +527,7 @@ classifications should be reordered into their final position.
 	vert
 	vrt2
 
-#### 4.3: Applying the final positioning features from GPOS ####
+#### 5.3: Applying the final positioning features from GPOS ####
 
 	curs
 	dist
