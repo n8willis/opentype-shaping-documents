@@ -1,0 +1,92 @@
+# Commands used to generate the images in [opentype-shaping-khmer.md](../../opentype-shaping-khmer.md)
+
+## Arrow general
+
+hb-view --font-size=110 --output-file=right-arrow.png --background=FFFFFF00 --margin=0,0,0,0 /usr/share/fonts/opentype/gentiumplus/GentiumPlus-R.ttf --unicodes=2192
+
+## Terminology
+
+### Coeng forms
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-coeng-kha-before.png --features=-blwf,-pstf --preserve-default-ignorables --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=17d2,1783
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-coeng-kha-after.png --features=+blwf,+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=17d2,1783
+
+montage khmer-coeng-kha-before.png right-arrow.png khmer-coeng-kha-after.png -geometry +0+0 -background transparent khmer-coeng-kha.png
+
+
+## The khmr shaping model
+
+### Robat
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-robat.png --features=+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=25cc,17cc
+
+
+## 2.2 Matra decomposition
+
+> Note: Noto Serif Khmer has decompositions for the
+> non-canonical-in-Unicode multi-part matras implemented in `psts`
+> features, but I have not figured out how to activate them in isolation.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-matra-decomposition-before.png --features=-ccmp --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=17c4
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-matra-decomposition-after.png --features=+ccmp,+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=17c1,25cc,17b6
+
+montage khmer-matra-decomposition-before.png right-arrow.png khmer-matra-decomposition-after.png -geometry +0+0 -background transparent khmer-matra-decomposition.png
+
+
+## Pre-base-reordering Ro
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-pref-before.png --features=-pref --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=1786,25cc,17d2,179a
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-pref-after.png --features=+pref --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=1786,17d2,179a
+
+montage khmer-pref-before.png right-arrow.png khmer-pref-after.png -geometry +0+0 -background transparent khmer-pref.png
+
+
+## `locl`
+
+> No examples found.
+
+
+## 3.3 `pref`
+
+Same as pre-base-reordering Ro.
+
+
+## 3.4 `blwf`
+
+> Note: altered bottom-margin number to fit.
+
+hb-view --font-size=110 --margin=2,16,32,16 --output-file=khmer-blwf-before.png --features=-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=178c,25cc,17d2,17af
+
+hb-view --font-size=110 --margin=2,16,32,16 --output-file=khmer-blwf-after.png --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKhmer-Regular.ttf --unicodes=178c,17d2,17af
+
+montage khmer-blwf-before.png right-arrow.png khmer-blwf-after.png -geometry +0+0 -background transparent khmer-blwf.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

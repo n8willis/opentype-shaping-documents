@@ -125,7 +125,7 @@ specific, script-aware behavior.
 |`U+0A4F`   | _unassigned_     |                   |                            |                              |
 | | | | |
 |`U+0A50`   | _unassigned_     |                   |                            |                              |
-|`U+0A51`   | Mark [Mn]        | _null_            | _null_                     | &#x0A51; Udaat               |
+|`U+0A51`   | Mark [Mn]        | VOWEL_DEPENDENT   | _null_                     | &#x0A51; Udaat               |
 |`U+0A52`   | _unassigned_     |                   |                            |                              |
 |`U+0A53`   | _unassigned_     |                   |                            |                              |
 |`U+0A54`   | _unassigned_     |                   |                            |                              |
@@ -160,8 +160,8 @@ specific, script-aware behavior.
 | | | | |
 |`U+0A70`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0A70; Tippi               |
 |`U+0A71`   | Mark [Mn]        | GEMINATION_MARK   | TOP_POSITION               | &#x0A71; Addak               |
-|`U+0A72`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#x0A72; Iri                 |
-|`U+0A73`   | Letter           | CONSONANT_PLACEHOLDER| _null_                  | &#x0A73; Ura                 |
+|`U+0A72`   | Letter           | CONSONANT         | _null_                     | &#x0A72; Iri                 |
+|`U+0A73`   | Letter           | CONSONANT         | _null_                     | &#x0A73; Ura                 |
 |`U+0A74`   | Letter           | _null_            | _null_                     | &#x0A74; Ek Onkar            |
 |`U+0A75`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x0A75; Yakash              |
 |`U+0A76`   | _unassigned_     |                   |                            |                              |
@@ -214,16 +214,16 @@ classified as follows.
 |`U+1CE6`   | Mark [Mn]        | _null_            | OVERSTRUCK                 | &#x1CE6; Sign Reversed Visarga Anudatta |
 |`U+1CE7`   | Mark [Mn]        | _null_            | OVERSTRUCK                 | &#x1CE7; Sign Visarga Udatta With Tail |
 |`U+1CE8`   | Mark [Mn]        | AVAGRAHA          | OVERSTRUCK                 | &#x1CE8; Sign Visarga Anudatta With Tail |
-|`U+1CE9`   | Letter           | AVAGRAHA          | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
+|`U+1CE9`   | Letter           | SYMBOL            | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
 |`U+1CEA`   | Letter           | _null_            | _null_                     | &#x1CEA; Sign Anusvara Bahirgomukha |
 |`U+1CEB`   | Letter           | _null_            | _null_                     | &#x1CEB; Sign Anusvara Vamagomukha |
-|`U+1CEC`   | Letter           | AVAGRAHA          | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
+|`U+1CEC`   | Letter           | SYMBOL            | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
 |`U+1CED`   | Mark [Mn]        | AVAGRAHA          | BOTTOM_POSITION            | &#x1CED; Sign Tiryak         |
-|`U+1CEE`   | Letter           | AVAGRAHA          | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
+|`U+1CEE`   | Letter           | SYMBOL            | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
 |`U+1CEF`   | Letter           | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter           | AVAGRAHA          | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
+|`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
 |`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |

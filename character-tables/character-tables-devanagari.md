@@ -128,8 +128,8 @@ specific, script-aware behavior.
 |`U+0950`   | Mark [Mc]        | _null_            | _null_                     | &#x0950; Om                  |
 |`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
 |`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
-|`U+0953`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0953; Grave accent        |
-|`U+0954`   | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0954; Acute accent        |
+|`U+0953`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x0953; Grave accent        |
+|`U+0954`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x0954; Acute accent        |
 |`U+0955`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0955; Sign Candra Long E  |
 |`U+0956`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0956; Sign Ue             |
 |`U+0957`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0957; Sign Uue            |
@@ -206,12 +206,12 @@ specific, script-aware behavior.
 | | | | |
 |`U+A8F0`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F0; Combining Vi        |
 |`U+A8F1`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#xA8F1; Combining Avagraha  |
-|`U+A8F2`   | Letter           | BINDU             | _null_                     | &#xA8F2; Spacing Candrabindu |
+|`U+A8F2`   | Letter           | SYMBOL            | _null_                     | &#xA8F2; Spacing Candrabindu |
 |`U+A8F3`   | Letter           | BINDU             | _null_                     | &#xA8F3; Candrabindu Virama  |
 |`U+A8F4`   | Letter           | _null_            | _null_                     | &#xA8F4; Double Candrabindu Virama|
 |`U+A8F5`   | Letter           | _null_            | _null_                     | &#xA8F5; Candrabindu Two     |
 |`U+A8F6`   | Letter           | _null_            | _null_                     | &#xA8F6; Candrabindu Three   |
-|`U+A8F7`   | Letter           | _null_            | _null_                     | &#xA8F7; Candrabindu Avagraha|
+|`U+A8F7`   | Letter           | SYMBOL            | _null_                     | &#xA8F7; Candrabindu Avagraha|
 |`U+A8F8`   | Punctuation      | _null_            | _null_                     | &#xA8F8; Pushpika            |
 |`U+A8F9`   | Punctuation      | _null_            | _null_                     | &#xA8F9; Gap Filler          |
 |`U+A8FA`   | Punctuation      | _null_            | _null_                     | &#xA8FA; Caret               |
@@ -260,16 +260,16 @@ classified as follows.
 |`U+1CE6`   | Mark [Mn]        | _null_            | OVERSTRUCK                 | &#x1CE6; Sign Reversed Visarga Anudatta |
 |`U+1CE7`   | Mark [Mn]        | _null_            | OVERSTRUCK                 | &#x1CE7; Sign Visarga Udatta With Tail |
 |`U+1CE8`   | Mark [Mn]        | AVAGRAHA          | OVERSTRUCK                 | &#x1CE8; Sign Visarga Anudatta With Tail |
-|`U+1CE9`   | Letter           | AVAGRAHA          | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
+|`U+1CE9`   | Letter           | SYMBOL            | _null_                     | &#x1CE9; Sign Anusvara Antargomukha |
 |`U+1CEA`   | Letter           | _null_            | _null_                     | &#x1CEA; Sign Anusvara Bahirgomukha |
 |`U+1CEB`   | Letter           | _null_            | _null_                     | &#x1CEB; Sign Anusvara Vamagomukha |
-|`U+1CEC`   | Letter           | AVAGRAHA          | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
+|`U+1CEC`   | Letter           | SYMBOL            | _null_                     | &#x1CEC; Sign Anusvara Vamagomukha With Tail |
 |`U+1CED`   | Mark [Mn]        | AVAGRAHA          | BOTTOM_POSITION            | &#x1CED; Sign Tiryak         |
-|`U+1CEE`   | Letter           | AVAGRAHA          | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
+|`U+1CEE`   | Letter           | SYMBOL            | _null_                     | &#x1CEE; Sign Hexiform Long Anusvara |
 |`U+1CEF`   | Letter           | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter           | AVAGRAHA          | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
+|`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
 |`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |

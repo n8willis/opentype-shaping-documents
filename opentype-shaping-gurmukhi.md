@@ -118,17 +118,18 @@ example, Unicode categorizes dependent vowels as `Mark [Mn]`, but the
 shaping engine must be able to distinguish between dependent vowels
 and diacritical marks (which are categorized as `Mark [Mn]`).
 
-Gurmukhi uses two subclasses of consonant, `CONSONANT_MEDIAL` and
-`CONSONANT_PLACEHOLDER`. 
+Gurmukhi uses one subclass of consonant, `CONSONANT_MEDIAL`.
+
+> Note: Unicode includes a second subclass of consonant,
+> `CONSONANT_PLACEHOLDER`, for two special vowel-carrier letters,
+> "Iri"(`U+0A72`) and "Ura" (`U+0A73`). For shaping purposes, however,
+> both "Iri" and "Ura" are classified as `CONSONANT`.
 
 The `CONSONANT_MEDIAL` subclass is used for "Yakash" (`U+0A75`), a
 consonant used in Sikh religious texts that is believed to be derived
 from the character "Ya" (`U+0A2F`). "Yakash" is positioned in a mark-like,
 below-base form, but it must pass tests for consonants when
 identifying syllables.
-
-The `CONSONANT_PLACEHOLDER` subclass is used for two special
-vowel-carrier letters, "Iri"(`U+0A72`) and "Ura" (`U+0A73`). 
 
 Gurmukhi differs from many other Indic scripts in that independent
 vowels are represented by the standard dependent-vowel marks (matras)
@@ -148,9 +149,9 @@ when they are referenced or displayed as examples. To support this use
 case, the "Iri" and "Ura" characters have the status of consonants for
 shaping purposes. 
 
-Both subclasses should match tests for consonants, such as when [identifying
+<!--- Both subclasses should match tests for consonants, such as when [identifying
 syllables](#1-identifying-syllables-and-other-sequences), but may
-require special treatment in other circumstances.
+require special treatment in other circumstances. --->
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -790,7 +791,11 @@ consonants will usually be preceded by a "Halant" glyph.
 
 #### 2.8: Mark tagging ####
 
-Eighth, all marks must be tagged with the same positioning tag as the
+Eighth, all marks must be tagged. Marks in the `BINDU`, `VISARGA`,
+`AVAGRAHA`, `CANTILLATION`, `SYLLABLE_MODIFIER`, `GEMINATION_MARK`,
+and `SYMBOL` categories should be tagged with `POS_SMVD`.
+
+All remaining marks must be tagged with the same positioning tag as the
 closest non-mark character the mark has affinity with, so that they move together
 during the sorting step.
 
