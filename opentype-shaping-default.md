@@ -10,7 +10,11 @@ model for unrecognized scripts.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
+  - [Normalization](#normalization)
   - [The default shaping model](#the-default-shaping-model)
+      - [1: Applying the basic substitution features from GSUB]
+	  - [2: Applying typographic substitution features from GSUB]
+	  - [3: Applying the positioning features from GPOS]
   
   
   
@@ -49,17 +53,39 @@ at all.
 
 However, GSUB and GPOS may also be used to implement a variety of
 OpenType smart features, including several classes of ligature,
-contextual alternates, or contextual positioning rules. Because these
+contextual alternate, or contextual positioning rules. Because these
 features are not required in order to render the text run
 orthographically correct, the features are not considered shaping
 features. Nevertheless, the shaping engine may be expected to apply
 these features in order to simplify the overall text-rendering
 architecture of the implementation.
 
+## Normalization ##
 
 ## The default shaping model ##
 
+### 1: Applying the basic substitution features from GSUB ###
 
+	locl
+	ccmp
+	rlig
+
+### 2: Applying typographic substitution features from GSUB ###
+
+	calt
+	clig
+	curs
+	liga
+	rclt
+
+### 3: Applying the positioning features from GPOS ###
+
+	dist
+	kern
+	mark
+	mkmk
+
+<!---
 collect features
 override features
 data create
@@ -74,3 +100,4 @@ disable otl
 reorder marks
 zero width marks by gdef late
 fallback position
+--->
