@@ -1004,7 +1004,7 @@ consonant, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Tamil incorporates the `REPH_POS_BEFORE_POST`
+position. Because Tamil incorporates the `REPH_POS_AFTER_POST`
 shaping characteristic, this final position is immediately before any
 independent post-base consonant forms (meaning the first post-base
 consonant that has not formed a ligature with the base consonant).
