@@ -1244,6 +1244,12 @@ such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
 
+The old Indic shaping model also did not recognize the
+`BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<mlym>`
+was treated as if it followed the `BLWF_MODE_POST_ONLY`
+characteristic. In other words, below-base form substitutions were
+only applied to consonants after the base consonant.
+
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
 stage. For `<mlym>` text, the left-side matra was always positioned
@@ -1264,6 +1270,10 @@ sequences for GSUB substitutions or to reorder them to
 "Halant,_Consonant_" when processing text runs that are tagged with
 the `<mlym>` script tag and it is known that the font in use supports
 only the `<mlm2>` shaping model.
+
+Shaping engines may also choose to apply `blwf` substitutions to
+below-base consonants occuring before the base consonant when it is
+known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
 to the `<mlym>` ordering scheme; however, doing so might interfere

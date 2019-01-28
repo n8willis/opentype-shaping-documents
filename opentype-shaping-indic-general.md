@@ -1154,13 +1154,18 @@ such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
 
+The old Indic shaping model also did not recognize the
+`BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, all scripts
+were treated as if they followed the `BLWF_MODE_POST_ONLY`
+characteristic. In other words, below-base form substitutions were
+only applied to consonants after the base consonant.
+
 In addition, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
 stage. For `<deva>`, `<beng>`, `<gujr>`, `<guru>`, `<knda>`,
 `<orya>`, and `<telu>` text, the left-side matra was always positioned
 at the beginning of the syllable. For `<mlym>` and `<taml>` text, the
 left-side matra was positioned immediately before the base consonant.
-
 
 
 ### Advice for handling fonts with old Indic features only ###
