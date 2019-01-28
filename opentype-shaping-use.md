@@ -344,8 +344,8 @@ to shape the broken sequence, but making guarantees about the
 correctness or appearance of the final result is out of scope for this
 document.
 
-After the syllables have been identified, each of the subsequent 
-shaping stages occurs on a per-syllable basis.
+After the clusters have been identified, each of the subsequent 
+shaping stages occurs on a per-cluster basis.
 
 
 ### 3: Basic cluster formation ###
@@ -398,7 +398,7 @@ The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 The `akhn` feature replaces specific sequences with required
-ligatures. These sequences can occur anywhere in a syllable. 
+ligatures. These sequences can occur anywhere in a cluster. 
 Akhand characters have orthographic status equivalent to full
 consonants in some languages, and fonts may have later substitution
 rules designed to match them in subsequences. Therefore, this
@@ -410,7 +410,7 @@ feature must be applied before all other many-to-one substitutions.
 The basic reordering step applies mandatory substitution features from
 GSUB that affect reordering elements.
 
-The glyph substitution from these features are applied at this
+For these features, the glyph substitutions themselves are applied at this
 step. However, the actual reordering of the glyphs does not take place
 until stage 4, step 1.
 
@@ -425,7 +425,7 @@ all USE scripts:
 The `rphf` feature replaces cluster-initial "Ra,Halant" sequences with
 the "Reph" glyph.
 
-> Note: also the glyph substitution is performed in this step, the
+> Note: although the glyph substitution is performed in this step, the
 > corresponding glyph reordering move is not performed until a later
 > stage. 
 
@@ -434,7 +434,7 @@ the "Reph" glyph.
 The `pref` feature replaces pre-base-consonant glyphs with any special
 forms. 
 
-> Note: also the glyph substitution is performed in this step, the
+> Note: although the glyph substitution is performed in this step, the
 > corresponding glyph reordering move is not performed until a later
 > stage. 
 
@@ -481,12 +481,54 @@ conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
 ### 4: Glyph reordering ###
 
-
+The glyph-reordering stage 
 
 #### 4.1 Applying the reordering features from GSUB ####
 
+In this step, the reordering moves corresponding to the
+glyph-reordering features in GSUB are performed.
+
+Glyph substitutions that apply to these reordering moves were
+performed in stage 3, step 2.
+
+The order in which these substitutions must be performed is fixed for
+all USE scripts:
+
 	rphf
 	pref
+
+##### 4.1.1 `rphf` #####
+
+In stage 3, step 2, the `rphf` feature replaced cluster-initial
+"Ra,Halant" sequences with the "Reph" glyph. The "Reph" glyph is now
+reordered to its final position. The algorithm to determine the final
+position of the "Reph" glyph is:
+
+  - Move the "Reph" right one position at a time.
+    - If the character immediately following the new position is an
+      explicit "Halant", stop.
+    - If the character immediately before the new position is a full
+      base (`B`) character, stop.
+    - If the end of the cluster is reached, stop.
+
+##### 4.1.2 `pref` #####
+
+In stage 3, step 2, the `pref` feature replaced pre-base-consonant
+glyphs with special forms. The pre-base-consonant glyph is now
+reordered to its final position. The algorithm to determine the final
+position of the pre-base-reordering consonant is:
+
+  - Move the pre-base-reordering consonant left one position at a
+    time.
+    - If the pre-base reordering consonant is to the left of the
+	  first spacing glyph after an explicit "Halant", stop.
+    - When the pre-base reordering consonant is to the left of the
+	  first spacing glyph in the cluster, stop. 
+	- If the beginning of the cluster is reached, stop.
+	
+> Note: Each cluster may have only one pre-base-reordering consonant
+> glyph. 
+
 
 #### 4.2 Performing property-based reordering moves ####
 
