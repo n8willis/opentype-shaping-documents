@@ -107,9 +107,9 @@ orthography.
 |`U+07FA`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x07FA; Lajanyalan                           |
 |`U+07FB`   | _unassigned_     |              |                      |            |                                               |
 |`U+07FC`   | _unassigned_     |              |                      |            |                                               |
-|`U+07FD`   | _unassigned_     |              |                      |            |                                               |
-|`U+07FE`   | _unassigned_     |              |                      |            |                                               |
-|`U+07FF`   | _unassigned_     |              |                      |            |                                               |
+|`U+07FD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x07FD; Dantalayan                           |
+|`U+07FE`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x07FE; Dorome Sign                          |
+|`U+07FF`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x07FF; Taman Sign                           |
 
 
 ## Miscellaneous character table ##

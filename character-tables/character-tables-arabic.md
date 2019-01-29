@@ -438,7 +438,7 @@ treated differently during the mark-reordering stage.
 |`U+08D0`   | _unassigned_     |              |                      |            |                                                       |
 |`U+08D1`   | _unassigned_     |              |                      |            |                                                       |
 |`U+08D2`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08D3`   | _unassigned_     |              |                      |            |                                                       |
+|`U+08D3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D3; Small Low Waw                                |
 |`U+08D4`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D4; Small High Word Ar-Rub                       |
 |`U+08D5`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D5; Small High Sad                               |
 |`U+08D6`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D6; Small High Ain                               |

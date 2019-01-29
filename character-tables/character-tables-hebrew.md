@@ -129,7 +129,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 | `U+05EC`  | _unassigned_     |            |                                      |
 | `U+05ED`  | _unassigned_     |            |                                      |
 | `U+05EE`  | _unassigned_     |            |                                      |
-| `U+05EF`  | _unassigned_     |            |                                      |
+| `U+05EF`  | Letter           | _0_        | &#x05EF; Yod Triangle                |
 | | | | |
 | `U+05F0`  | Letter           | _0_        | &#x05F0; Ligature Yiddish Double Vav |
 | `U+05F1`  | Letter           | _0_        | &#x05F1; Ligature Yiddish Vav Yod    |

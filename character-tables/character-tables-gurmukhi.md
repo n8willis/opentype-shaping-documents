@@ -164,7 +164,7 @@ specific, script-aware behavior.
 |`U+0A73`   | Letter           | CONSONANT         | _null_                     | &#x0A73; Ura                 |
 |`U+0A74`   | Letter           | _null_            | _null_                     | &#x0A74; Ek Onkar            |
 |`U+0A75`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x0A75; Yakash              |
-|`U+0A76`   | _unassigned_     |                   |                            |                              |
+|`U+0A76`   | Punctuation      | _null_            | _null_                     | &#x0A76; Abbreviation Sign   |
 |`U+0A77`   | _unassigned_     |                   |                            |                              |
 |`U+0A78`   | _unassigned_     |                   |                            |                              |
 |`U+0A79`   | _unassigned_     |                   |                            |                              |

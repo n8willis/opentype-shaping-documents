@@ -218,8 +218,8 @@ specific, script-aware behavior.
 |`U+A8FB`   | Letter           | _null_            | _null_                     | &#xA8FB; Headstroke          |
 |`U+A8FC`   | Punctuation      | _null_            | _null_                     | &#xA8FC; Siddham             |
 |`U+A8FD`   | Letter           | _null_            | _null_                     | &#xA8FD; Jain Om             |
-|`U+A8FE`   | _unassigned_     |                   |                            |                              |
-|`U+A8FF`   | _unassigned_     |                   |                            |                              |
+|`U+A8FE`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#xA8FE; Ay                  |
+|`U+A8FF`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#xA8FF; Sign Ay             |
 
 
 

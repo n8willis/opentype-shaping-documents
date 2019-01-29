@@ -173,7 +173,7 @@ treated differently during the mark-reordering stage.
 |`U+1875`   | Letter           | DUAL         | _null_               | _0_        | &#x1875; Manchu Ra                            |
 |`U+1876`   | Letter           | DUAL         | _null_               | _0_        | &#x1876; Manchu Fa                            |
 |`U+1877`   | Letter           | DUAL         | _null_               | _0_        | &#x1877; Manchu Zha                           |
-|`U+1878`   | _unassigned_     |              |                      |            |                                               |
+|`U+1878`   | Letter           | DUAL         | _null_               | _0_        | &#x1878; Cha With Two Dots                    |
 |`U+1879`   | _unassigned_     |              |                      |            |                                               |
 |`U+187A`   | _unassigned_     |              |                      |            |                                               |
 |`U+187B`   | _unassigned_     |              |                      |            |                                               |

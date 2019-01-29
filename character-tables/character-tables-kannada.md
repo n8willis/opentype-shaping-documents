@@ -43,7 +43,7 @@ specific, script-aware behavior.
 |`U+0C81`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0C81; Candrabindu         |
 |`U+0C82`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0C82; Anusvara            |
 |`U+0C83`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0C83; Visarga             |
-|`U+0C84`   | _unassigned_     |                   |                            |                              |
+|`U+0C84`   | Punctuation      | _null_            | _null_                     | &#x0C84; Siddham             |
 |`U+0C85`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C85; A                   |
 |`U+0C86`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C86; Aa                  |
 |`U+0C87`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#x0C87; I                   |

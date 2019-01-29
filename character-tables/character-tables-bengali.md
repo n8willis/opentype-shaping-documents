@@ -173,7 +173,7 @@ specific, script-aware behavior.
 |`U+09FB`   | Symbol           | SYMBOL            | _null_                     | &#x09FB; Ganda Mark          |
 |`U+09FC`   | Letter           | _null_            | _null_                     | &#x09FC; Vedic Anusvara      |
 |`U+09FD`   | Punctuation      | _null_            | _null_                     | &#x09FD; Abbreviation Sign   |
-|`U+09FE`   | _unassigned_     |                   |                            |                              |
+|`U+09FE`   | Mark [Mn]        | SYLLABLE_MODIFIER | TOP_POSITION               | &#x09FE; Sandhi Mark         |
 |`U+09FF`   | _unassigned_     |                   |                            |                              |
  
 
