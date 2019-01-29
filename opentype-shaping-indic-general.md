@@ -442,6 +442,24 @@ consonant may be, generally:
 	This position is only used in Sinhala, and is designated
     `BASE_POS_LAST_SINHALA`.
 
+The scripts currently described in the "Indic" script group  and their
+corresponding base-consonant rules are summarized in the following
+table:
+
+| Script     | Base-consonant rule    |
+|:-----------|:-----------------------|
+| Devanagari | `BASE_POS_LAST`        |
+| Bengali    | `BASE_POS_LAST`        |
+| Gujarati   | `BASE_POS_LAST`        |
+| Gurmukhi   | `BASE_POS_LAST`        |
+| Kannada    | `BASE_POS_LAST`        |
+| Malayalam  | `BASE_POS_LAST`        |
+| Oriya      | `BASE_POS_LAST`        |
+| Tamil      | `BASE_POS_LAST`        |
+| Telugu     | `BASE_POS_LAST`        |
+| Sinhala    | `BASE_POS_LAST_SINHALA`|
+
+
 > Note: None of the specific scripts currently included in the "Indic"
 > script group as it is enumerated in this document make use of the
 > `BASE_POS_FIRST` base-consonant rule. However, the `BASE_POS_FIRST`
@@ -486,6 +504,26 @@ consonant may be, generally:
   - immediately after the last post-base consonant, in the ordering
     position `POS_AFTER_POST`.
 
+The scripts currently described in the "Indic" script group  and their
+corresponding Reph-position rules are summarized in the following
+table:
+
+| Script     | Reph-position rule         |
+|:-----------|:---------------------------|
+| Devanagari | `REPH_POS_BEFORE_POST`     |
+| Bengali    | `REPH_POS_AFTER_SUBJOINED` |
+| Gujarati   | `REPH_POS_BEFORE_POST`     |
+| Gurmukhi   | `REPH_POS_BEFORE_SUBJOINED`|
+| Kannada    | `REPH_POS_AFTER_POST`      |
+| Malayalam  | `REPH_POS_AFTER_MAIN`      |
+| Oriya      | `REPH_POS_AFTER_MAIN`      |
+| Tamil      | `REPH_POS_AFTER_POST`      |
+| Telugu     | `REPH_POS_AFTER_POST`      |
+| Sinhala    | `REPH_POS_AFTER_MAIN`      |
+
+
+
+
 #### Reph encoding ####
 
 "Reph" may be:
@@ -505,6 +543,25 @@ consonant may be, generally:
     used. Alternatively, the script may not reorder "Repha"s at all,
     in which case `REPH_MODE_VISUAL_REPHA` is used.
 
+
+The scripts currently described in the "Indic" script group  and their
+corresponding Reph-encoding rules are summarized in the following
+table:
+
+| Script     | Reph-encoding rule         |
+|:-----------|:---------------------------|
+| Devanagari | `REPH_MODE_IMPLICIT`       |
+| Bengali    | `REPH_MODE_IMPLICIT`       |
+| Gujarati   | `REPH_MODE_IMPLICIT`       |
+| Gurmukhi   | `REPH_MODE_IMPLICIT`       |
+| Kannada    | `REPH_MODE_IMPLICIT`       |
+| Malayalam  | `REPH_MODE_LOGICAL_REPHA`  |
+| Oriya      | `REPH_MODE_IMPLICIT`       |
+| Tamil      | `REPH_MODE_IMPLICIT`       |
+| Telugu     | `REPH_MODE_EXPLICIT`       |
+| Sinhala    | `REPH_MODE_EXPLICIT`       |
+
+
 > Note: None of the specific scripts currently included in the "Indic"
 > group as it is enumerated in this document make use of the
 > `REPH_MODE_VISUAL_REPHA` encoding. However, `REPH_MODE_VISUAL_REPHA`
@@ -513,6 +570,8 @@ consonant may be, generally:
 > Because Khmer shares many other characteristics and
 > conventions with the Indic group described by this document,
 > `REPH_MODE_VISUAL_REPHA` is included here for comparison. 
+
+
 
 #### Below-base forms ####
 
@@ -523,6 +582,25 @@ Below-base consonant forms (the `blwf` feature) may be applied:
 	
   - To consonants occurring before or after the base consonant. This is
     designated `BLWF_MODE_PRE_AND_POST`.
+
+
+The scripts currently described in the "Indic" script group  and their
+corresponding below-base–forms rules are summarized in the following
+table:
+
+| Script     | Below-base–forms rule    |
+|:-----------|:-------------------------|
+| Devanagari | `BLWF_MODE_PRE_AND_POST` |
+| Bengali    | `BLWF_MODE_PRE_AND_POST` |
+| Gujarati   | `BLWF_MODE_PRE_AND_POST` |
+| Gurmukhi   | `BLWF_MODE_PRE_AND_POST` |
+| Kannada    | `BLWF_MODE_POST_ONLY`    |
+| Malayalam  | `BLWF_MODE_PRE_AND_POST` |
+| Oriya      | `BLWF_MODE_PRE_AND_POST` |
+| Tamil      | `BLWF_MODE_PRE_AND_POST` |
+| Telugu     | `BLWF_MODE_POST_ONLY`    |
+| Sinhala    | `BLWF_MODE_PRE_AND_POST` |
+
 
 #### Left-side matras ####
 
@@ -541,6 +619,26 @@ Right-side matras may be positioned:
 
   - immediately after the last post-base consonant, in the ordering
     position `POS_AFTER_POST`.
+
+
+The scripts currently described in the "Indic" script group  and their
+corresponding right-side–matra positions are summarized in the following
+table:
+
+| Script     | Right-side–matra position |
+|:-----------|:--------------------------|
+| Devanagari | `POS_AFTER_SUBJOINED`     |
+| Bengali    | `POS_AFTER_POST`          |
+| Gujarati   | `POS_AFTER_POST`          |
+| Gurmukhi   | `POS_AFTER_POST`          |
+| Kannada    | _varies_                  |
+| Malayalam  | `POS_AFTER_POST`          |
+| Oriya      | `POS_AFTER_POST`          |
+| Tamil      | `POS_AFTER_POST`          |
+| Telugu     | _varies_                  |
+| Sinhala    | `POS_AFTER_SUBJOINED`     |
+
+
 
 > Note: In most scripts, all right-side matras are positioned in the
 > same sort-order position. The Kannada and Telugu scripts, however,
@@ -566,6 +664,25 @@ Above-base matras may be positioned:
     position `POS_AFTER_POST`.
 
 
+The scripts currently described in the "Indic" script group  and their
+corresponding above-base–matra positions are summarized in the following
+table:
+
+| Script     | Above-base–matra position |
+|:-----------|:--------------------------|
+| Devanagari | `POS_AFTER_SUBJOINED`     |
+| Bengali    | _null_                    |
+| Gujarati   | `POS_AFTER_SUBJOINED`     |
+| Gurmukhi   | `POS_AFTER_POST`          |
+| Kannada    | `POS_BEFORE_SUBJOINED`    |
+| Malayalam  | _null_                    |
+| Oriya      | `POS_AFTER_MAIN`          |
+| Tamil      | `POS_AFTER_SUBJOINED`     |
+| Telugu     | `POS_BEFORE_SUBJOINED`    |
+| Sinhala    | `POS_AFTER_SUBJOINED`     |
+
+
+
 #### Below-base matras ####
 
 Below-base matras may be positioned:
@@ -578,6 +695,25 @@ Below-base matras may be positioned:
 
   - immediately after the last post-base consonant, in the ordering
     position `POS_AFTER_POST`.
+
+
+The scripts currently described in the "Indic" script group  and their
+corresponding below-base–matra positions are summarized in the following
+table:
+
+| Script     | Below-base–matra position |
+|:-----------|:--------------------------|
+| Devanagari | `POS_AFTER_SUBJOINED`     |
+| Bengali    | `POS_AFTER_SUBJOINED`     |
+| Gujarati   | `POS_AFTER_POST`          |
+| Gurmukhi   | `POS_AFTER_POST`          |
+| Kannada    | `POS_BEFORE_SUBJOINED`    |
+| Malayalam  | `POS_AFTER_POST`          |
+| Oriya      | `POS_AFTER_SUBJOINED`     |
+| Tamil      | `POS_AFTER_POST`          |
+| Telugu     | `POS_BEFORE_SUBJOINED`    |
+| Sinhala    | `POS_AFTER_SUBJOINED`     |
+
 
 
 ### 1: Identifying syllables and other sequences ###
