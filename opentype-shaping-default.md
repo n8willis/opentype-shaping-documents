@@ -12,9 +12,9 @@ model for unrecognized scripts.
   - [Glyph classification](#glyph-classification)
   - [Normalization](#normalization)
   - [The default shaping model](#the-default-shaping-model)
-      - [1: Applying the basic substitution features from GSUB]
-	  - [2: Applying typographic substitution features from GSUB]
-	  - [3: Applying the positioning features from GPOS]
+      - [1: Applying the basic substitution features from GSUB](#1-applying-the-basic-substitution-features-from-gsub)
+	  - [2: Applying typographic substitution features from GSUB](#2-applying-typographic-substitution-features-from-gsub)
+	  - [3: Applying the positioning features from GPOS](#3-applying-the-positioning-features-from-gpos)
   
   
   
@@ -62,28 +62,192 @@ architecture of the implementation.
 
 ## Normalization ##
 
+Unicode defines algorithms for normalizing a sequence of input
+codepoints into either a canonical composed form or a canonical
+decomposed form. The purpose of these algorithms and of the defined
+normalization forms is to determine equivalent representations of input
+sequences regardless of variations in the input sequences.
+
+For example, a base letter with an attached mark might exist in
+Unicode as a single codepoint, but an input sequence might consist of
+the base letter codepoint followed by the combining mark
+codepoint. Unicode normalization can be used to determine that the
+"letter, mark" sequence is equivalent to the single codepoint. This
+simplifies sorting, searching, string comparison, and many other common
+tasks.
+
+OpenType shaping utilizes Unicode normalization, but OpenType
+shaping has a distinctly different goal: to select the best or most
+appropriate representation of the input codepoint sequence that is
+available in the active font. A full description of the algorithm is
+available in the [normalization](opentype-shaping-normalization.md) document. 
+
+Shaping some complex scripts involves explicit composition or
+decomposition steps. The default shaping model does not involve any
+such steps, but it does proceed with the general assumption that text
+runs have been normalized as part of input sanitization. 
+
+For convenience, shaping engines may choose to implement a single
+normalization routine for all scripts, default and complex. If
+normalization is done before the shaping-model–specific processing is
+done, then there may be no work required in certain shaping steps
+(such as the processing of `ccmp` substitutions from GSUB). However,
+these steps will always be described in the relevant script's shaping
+document. 
+
+
 ## The default shaping model ##
 
+Processing a run of text in the default shaping model involves three
+top-level stages:
+
+1. Applying the basic substitution features from GSUB
+2. Applying typographic substitution features from GSUB
+3. Applying the positioning features from GPOS
+
+Together, these stages cover the application of all GSUB and GPOS
+features that are required or that have been defined by OpenType as
+being on by default.
+
+For convenience, shaping engines may also choose to apply any optional
+or off-by-default OpenType features that have been activated for the
+text run (including those that have been
+enabled by the user and those that have been enabled at the
+application level). However, the order in which such features should
+be applied and how they should interact with OpenType shaping features
+is beyond the scope of this document.
+
+The default shaping model does not involve syllable-identification,
+word-identification, or other preprocessing of the input
+sequence. Shaping engines may choose how to segment longer text runs
+for processing, or may choose to reply on higher-level applications to
+make segmentation decisions.
+
+
 ### 1: Applying the basic substitution features from GSUB ###
+
+The basic-substitution stage applies mandatory substitution features
+using the rules in the font's GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application 
+of GSUB features.
+
+These substitutions include those features designed to provide
+linguistic and orthographic correctness.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	locl
 	ccmp
 	rlig
+	
+The `locl` feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.
+
+> Note: Strictly speaking, the use of localized-form substitutions is
+> not part of the shaping process, but of the localization process,
+> and could take place at an earlier point while handling the text
+> run. However, shaping engines are expected to complete the
+> application of the `locl` feature before applying the subsequent
+> GSUB substitutions in the following steps.
+
+The `ccmp` feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of
+glyphs. 
+
+If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the `ccmp`-substituted
+glyphs.
+
+> Note: The `ccmp` feature may perform compositions or decompositions
+> of glyph sequences that do not have a canonical decomposition
+> defined in Unicode. 
+
+The `rlig` feature substitutes glyph sequences with mandatory
+ligatures. Substitutions made by `rlig` cannot be disabled by
+application-level user interfaces.
+
 
 ### 2: Applying typographic substitution features from GSUB ###
 
+The typographic-substitution phase applies all remaining substitution
+features using the rules in the font's GSUB table. In preparation for
+this stage, glyph sequences should be tagged for possible application 
+of GSUB features.
+
+These substitutions include those features designed to provide
+typographic consistency and correctness.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
+
+
+	rclt
 	calt
 	clig
-	curs
 	liga
-	rclt
+	
+
+The `rclt` feature substitutes glyphs with contextual alternate
+forms. In general, the `rclt` feature is used to perform such
+substitutions that are required by the orthography of the active
+script and language. Substitutions made by `rclt` cannot be disabled
+by application-level user interfaces.
+
+The `calt` feature substitutes glyphs with contextual alternate
+forms. In general, the `calt` feature performs substitutions that are
+not mandatory for orthographic correctness. However, unlike `rclt`,
+the substitutions made by `calt` can be disabled by application-level
+user interfaces.
+
+The `clig` feature substitutes optional ligatures that are on by
+default, but which are activated only in certain
+contexts. Substitutions made by clig may be disabled by
+application-level user interfaces. 
+
+The `liga` feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by `liga` may be disabled by
+application-level user interfaces.
+
 
 ### 3: Applying the positioning features from GPOS ###
 
+The positioning stage adjusts the positions of mark and base
+glyphs. In preparation for this stage, glyph sequences should be
+tagged for possible application of GPOS features.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
+
+
+	curs
 	dist
 	kern
 	mark
 	mkmk
+
+The `curs` feature perform cursive positioning. Each glyph has an
+entry point and exit point; the `curs` feature positions glyphs so
+that the entry point of the current glyph meets the exit point of the
+preceding glyph.
+
+The `dist` feature adjusts the horizontal positioning of
+glyphs. Unlike `kern`, adjustments made with `dist` do not require the
+application or the user to enable any software kerning features, if
+such features are optional.
+
+The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
+
+The `mark` feature positions marks with respect to base glyphs.
+
+The `mkmk` feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.
 
 <!---
 collect features

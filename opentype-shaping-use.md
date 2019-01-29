@@ -35,7 +35,7 @@ model.
 
 "Complex" scripts, in OpenType shaping terminology, are scripts that
 require some combination of glyph reordering, contextual joining
-behavior, or the substitution or context-dependent forms for
+behavior, or the substitution of context-dependent forms for
 linguistic or orthographic correctness.
 
 The scripts covered by this model include Javanese, Balinese,
@@ -481,15 +481,22 @@ conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
 ### 4: Glyph reordering ###
 
-The glyph-reordering stage 
+The glyph-reordering stage moves dependent vowels, diacritics, and
+other mark glyphs in relation to the base consonant. All reordering is
+performed in this stage, which is broken into two distinct steps:
+
+1. Applying the reordering features from GSUB
+2. Performing property-based reordering moves
+
 
 #### 4.1 Applying the reordering features from GSUB ####
 
 In this step, the reordering moves corresponding to the
 glyph-reordering features in GSUB are performed.
 
-Glyph substitutions that apply to these reordering moves were
-performed in stage 3, step 2.
+Any glyph substitutions that apply to characters involved in these
+reordering moves were performed in stage 3, step 2. Therefore, this
+step only requires moving glyphs to their final positions.
 
 The order in which these substitutions must be performed is fixed for
 all USE scripts:
@@ -528,6 +535,9 @@ position of the pre-base-reordering consonant is:
 	
 > Note: Each cluster may have only one pre-base-reordering consonant
 > glyph. 
+>
+> Note: scripts that use pre-base medial consonants may also make use
+> of the `pref` feature reordering.
 
 
 #### 4.2 Performing property-based reordering moves ####
@@ -539,22 +549,64 @@ classifications should be reordered into their final position.
 > reordering characters not addressed by the active font's GSUB
 > features are ordered correctly.
 
-	`R`
-	`VPre`
-	`VMPre`
+The character classes reordered in this step are:
+
+```markdown
+`R`		= `REPHA`
+`VPre`		= `VOWEL_PRE`
+`VMPre`		= `VOWEL_MOD_PRE`
+```
+
+Pre-base `REPHA` glyphs that occur before a full base are reordered
+using the "Reph" reordering algorithm described in step [4.1.1](#411-rphf), just as if
+the `rphf` feature had been applied to the glyph.
+
+Pre-base `VOWEL_PRE` vowel glyphs, including both stand-alone `VOWEL_PRE` vowels
+and `VOWEL_PRE` components of split vowels, are reordered to
+   - before the base glyph
+   - before any other pre-base glyphs that were reordered in earlier steps
+   
+Pre-base `VOWEL_MOD_PRE` vowel-modifier glyphs are reordered to
+   - before the base glyph
+   - before any pre-base `VOWEL_PRE` vowel glyphs
+   - before any other pre-base glyphs that were reordered in earlier steps
+
 
 ### 5: Final feature application ###
 
+The final stage involves applying topographic joining features for
+connected scripts, applying typographic-presentation features from
+GSUB, and applying positioning features from GPOS.
 
 
 #### 5.1: Applying the final topographic features from GSUB ####
 
+For connected scripts, this step applies the substitutions to select
+the correct topographic form for each glyph, based on its position in
+the syllable.
+
+Whether or not each codepoint joins on the left or the right side is
+determined by the `Unicode Joining Type` (UJT) property defined in UCD
+for each codepoint.
+
+> Note: USE does not support positional typographic features for any
+> non-connected scripts.
+	
 	isol
 	init
 	medi
 	fina
 
 #### 5.2: Applying the final typographic-presentation features from GSUB ####
+
+The final typographic-presentation step applies mandatory substitution
+features using the rules in the font's GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application 
+of GSUB features.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	abvs
 	blws
@@ -568,6 +620,57 @@ classifications should be reordered into their final position.
 	rlig
 	vert
 	vrt2
+	
+The `abvs` feature replaces above-base-consonant glyphs with special
+presentation forms. This usually includes contextual variants of
+above-base marks or contextually appropriate mark-and-base ligatures.
+
+The `blws` feature replaces below-base-consonant glyphs with special
+presentation forms. This usually includes replacing consonants that
+are adjacent to special consonant forms with contextual
+ligatures.
+
+The `calt` feature substitutes glyphs with contextual alternate
+forms.  In contrast to `rclt`, the `calt` feature performs
+substitutions that are not mandatory for orthographic
+correctness. However, unlike `rclt`, the substitutions made by `calt`
+can be disabled by application-level user interfaces.
+
+The `clig` feature substitutes optional ligatures that are on by
+default, but which are activated only in certain
+contexts. Substitutions made by clig may be disabled by
+application-level user interfaces. 
+
+The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
+special presentation forms. This can include stylistic variants of the
+consonant where placing the "Halant" mark on its own is
+typographically problematic. 
+
+The `liga` feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by `liga` may be disabled by
+application-level user interfaces.
+
+The `pres` feature replaces pre-base-consonant glyphs with special
+presentations forms. This can include consonant conjuncts, half-form
+consonants, and stylistic variants of left-side dependent vowels
+(matras). 
+
+The `psts` feature replaces post-base-consonant glyphs with special
+presentation forms. This usually includes replacing right-side
+dependent vowels (matras) with stylistic variants or replacing
+post-base-consonant/matra pairs with contextual ligatures. 
+
+The `rclt` feature substitutes glyphs with contextual alternate
+forms. The `rclt` feature should be used to perform such substitutions
+that are required by the orthography of the active script and
+language. Substitutions made by `rclt` cannot be disabled by 
+application-level user interfaces.
+
+The `rlig` feature substitutes glyph sequences with mandatory
+ligatures. Substitutions made by `rlig` cannot be disabled by
+application-level user interfaces.
+
+
 
 #### 5.3: Applying the final positioning features from GPOS ####
 
@@ -579,3 +682,28 @@ classifications should be reordered into their final position.
 	blwm
 	mkmk
 	
+The `curs` feature perform cursive positioning in connected scripts or
+cursive styles. Each cursive glyph has an entry point and exit point;
+the `curs` feature positions glyphs so that the entry point of the
+current glyph meets the exit point of the preceding glyph.
+
+The `dist` feature adjusts the horizontal positioning of
+glyphs. Unlike `kern`, adjustments made with `dist` do not require the
+application or the user to enable any software _kerning_ features, if
+such features are optional. 
+
+The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
+
+The `mark` feature positions marks with respect to base glyphs.
+
+The `abvm` feature positions above-base marks for attachment to base
+characters. This includes above-base dependent vowels (matras),
+diacritical marks, syllable modifiers, and above-base consonant forms. 
+
+The `blwm` feature positions below-base marks for attachment to base
+characters. This includes below-base dependent vowels (matras),
+diacritical marks, syllable modifiers, and below-base consonant forms.
+
+The `mkmk` feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.
