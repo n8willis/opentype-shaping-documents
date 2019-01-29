@@ -702,13 +702,22 @@ Below-base dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
 
 #### 2.4: Adjacent marks ####
 
-Fourth, any subsequences of adjacent marks ("Halant"s, "Nukta"s,
-syllable modifiers, and Vedic signs) must be reordered so that they
-appear in canonical order. 
+Fourth, any subsequences of marks that include a "Nukta" and a
+"Halant" or Vedic sign must be reordered so that the "Nukta" appears
+first.
 
-For `<tml2>` text, the canonical ordering means that any "Nukta"s must
-be placed before all other marks. No other marks in the subsequence
+This means that the subsequence "Halant,Nukta" is reodered to
+"Nukta,Halant" and that the subsequence "_Vedic_sign_,Nukta" is
+reordered to "Nukta,_Vedic_sign".
+
+For subsequences of affected marks that are longer than two, the
+reordering operation must be repeated until the "Nukta" is the first
+character in the subsequence. No other marks in the subsequence
 should be reordered.
+
+This order is canonical in Unicode and is required so that
+"_consonant_,Nukta" substitution rules from GSUB will be correctly
+matched later in the shaping process.
 
 > Note: The Tamil Unicode block does not include a "Nukta"
 > codepoint. However, Tamil text may include "Grantha Nukta" (`U+1133C`)
