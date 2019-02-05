@@ -1182,6 +1182,10 @@ sequences for GSUB substitutions or to reorder them to
 one of the old Indic script tags and it is known that the font in use supports
 only the Indic2 shaping model.
 
+Shaping engines may also choose to apply `blwf` substitutions to
+below-base consonants occuring before the base consonant when it is
+known that the font in use supports an applicable substitution lookup.
+
 Shaping engines may also choose to position left-side matras according
 to the old-model Indic ordering scheme; however, doing so might interfere
 with matching GSUB or GPOS features.
