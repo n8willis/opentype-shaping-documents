@@ -758,7 +758,7 @@ Fourth, any subsequences of marks that include a "Nukta" and a
 "Halant" or Vedic sign must be reordered so that the "Nukta" appears
 first.
 
-This means that the subsequence "Halant,Nukta" is reodered to
+This means that the subsequence "Halant,Nukta" is reordered to
 "Nukta,Halant" and that the subsequence "_Vedic_sign_,Nukta" is
 reordered to "Nukta,_Vedic_sign".
 
