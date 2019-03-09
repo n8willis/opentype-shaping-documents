@@ -389,17 +389,18 @@ position. The "Halant" marks on pre-base consonants indicate that they
 carry no vowel. Instead, they affect syllable pronunciation by
 combining with the base consonant (e.g., "_thr_" or "_spl_").
 
-Three consonants in Bengali are allowed to occur in post-base
-position: "Ya", "Ba", and "Ra".
+Three consonants in Bengali are allowed to occur after the base
+consonant: "Ya", "Ba", and "Ra". When these consonants occur after the
+base consonant, they take on special forms.
 
-A post-base "Ya" takes on the "Yaphala" form.
+A "Ya" after the base consonant takes on the "Yaphala" form.
 
 > Note: some fonts may also implement the "Yaphala" form for a
 > post-base "Yya" (`U+09DF`).
 
-A post-base "Ba" takes on the below-base "Baphala" form. A pre-base
-"Ba" will take on the below-base "Baphala" form unless it is the first
-pre-base consonant in the syllable.
+A "Ba" after the base consonants takes on the below-base "Baphala"
+form. A "Ba" before the base consonant will take on the below-base
+"Baphala" form unless it is the first pre-base consonant in the syllable.
 
 As with other Indic scripts, the consonant "Ra" receives special
 treatment; in many circumstances it is replaced by one of two combining
@@ -410,8 +411,8 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - A non-initial pre-base "Ra" or a post-base "Ra" takes on the
-    below-base form "Raphala."
+  - A non-initial "Ra" before the base consonant or a "Ra" after the
+    base consonant takes on the below-base form "Raphala."
   
 "Reph" characters must be reordered after the
 syllable-identification stage is complete. 
@@ -687,27 +688,91 @@ by the addition of a dependent-vowel (matra) sign.
 Vowel-based syllables, standalone sequences, and broken text runs will
 not have base consonants.
 
+> Note: For consistency with consonant-based syllables, shaping
+> engines may choose to treat the independent vowel of a vowel-based
+> syllable as a "pseudo-base" or surrogate base consonant.
+>
+> Because vowel-based syllables will not include consonants and
+> because independent vowels do not take on special forms or require
+> reordering, many of the steps that follow will involve no
+> work for a vowel-based syllable. However, vowel-based syllables must
+> still be sorted and their marks handled correctly, and GSUB and GPOS
+> lookups must be applied. These steps of the shaping process follow
+> the same rules that are employed for consonant-based syllables.
+
+
+While performing the base-consonant search, shaping engines may
+also encounter special-form consonants, including below-base
+consonants and post-base consonants. Each of these special-form
+consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
+`POS_POSTBASE_CONSONANT`, respectively). 
+ 
+<!--- Regardless of whether the shaping engine tags below-base and
+post-base consonants in advance or during the base-consonant search,
+they must be tagged before proceeding to the next step. --->
+
+> Note: Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+
+
 The algorithm for determining the base consonant is
 
   - If the syllable starts with "Ra" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
-      * If the consonant has a below-base or post-base form or is a
-        pre-base-reordering "Ra", move to the previous consonant. If
-        neither condition is true, stop. 
-      * If the consonant is the first consonant, stop.
+        * If the consonant is the first consonant, stop.
+        * If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant has a post-base form, tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant is a pre-base-reordering "Ra", tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
-
-Shaping engines may choose any method to identify consonants that have
-below-base or post-base forms while executing the above algorithm. For
-example, one implementation may choose to maintain a static table of
-below-base and post-base consonants to compare again the text
-run. Another implementation might examine the active font to see if it
-includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
 > scripts. However, Bengali does not utilize pre-base-reordering "Ra".
+
+Bengali includes one post-base consonant. 
+
+  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
+    the "Yaphala" form. "Yaphala" behaves like a modifier to the
+    pronunciation of the preceding vowel, despite the fact that it is
+    formed from a consonant.
+
+![Yaphala composition](/images/bengali/bengali-yaphala.png)
+
+> Note: some fonts may also implement the "Yaphala" post-base form for
+> "Halant,Yya" (`U+09CD`,`U+09DF`).
+
+Bengali includes two below-base consonant forms:
+
+  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+    non-syllable-initial position) take on the "Raphala" form.
+  - "Ba,Halant" (before the base consonant) and "Halant,Ba" (after the
+    base consonant) take on the "Baphala" form.
+	
+
+![Raphala composition](/images/bengali/bengali-raphala.png)
+
+![Baphala composition](/images/bengali/bengali-baphala.png)
+
+> Note: Because Bengali employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search, only the "Halant,_consonant" 
+> pattern following the base consonant for these below-base forms will
+> be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
+> pattern preceding the base consonant for these below-base forms will
+> also be tagged correctly.
 
 
 #### 2.2: Matra decomposition ####
@@ -767,8 +832,44 @@ matched later in the shaping process.
 
 #### 2.5: Pre-base consonants ####
 
-Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
+Fifth, consonants that occur before the base consonant must be
+tagged. Excluding initial "Ra,Halant" sequences that will become "Reph"s:
+
+  - If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`. 
+  - Otherwise, tag it as `POS_PREBASE_CONSONANT`.
+  
+> Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+Bengali includes two below-base consonant forms:
+
+  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+    non-syllable-initial position) take on the "Raphala" form.
+  - "Ba,Halant" (before the base consonant) and "Halant,Ba" (after the
+    base consonant) take on the "Baphala" form.
+	
+
+![Raphala composition](/images/bengali/bengali-raphala.png)
+
+![Baphala composition](/images/bengali/bengali-baphala.png)
+
+
+> Note: Because Bengali employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search in 2.1, any instances of the
+> "Halant,_consonant"  pattern following the base consonant for these
+> below-base forms will be encountered. The tagging in this step
+> ensures that the "_consonant_,Halant" pattern preceding the base
+> consonant for these below-base forms will also be tagged correctly.
+
 
 #### 2.6: Reph ####
 
@@ -778,22 +879,15 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 > Note: an initial "Ra,Halant" sequence will always become a "Reph"
 > unless the "Ra" is the only consonant in the syllable.
 
-#### 2.7: Post-base consonants ####
+#### 2.7: Final consonants ####
 
-Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be preceded by a "Halant" glyph. Bengali
-includes one post-base consonant. 
+Seventh, all final consonants must be tagged. Consonants that occur
+after the base consonant _and_ after a dependent vowel (matra) sign
+must be tagged with  `POS_FINAL_CONSONANT`.
 
-  - The sequence "Halant,Ya" (`U+09CD`,`U+09AF`)  triggers
-    the "Yaphala" form. "Yaphala" behaves like a modifier to the
-    pronunciation of the preceding vowel, despite the fact that it is
-    formed from a consonant.
-
-> Note: some fonts may also implement the "Yaphala" post-base form for
-> "Halant,Yya" (`U+09CD`,`U+09DF`).
-
-![Yaphala composition](/images/bengali/bengali-yaphala.png)
+> Note: Final consonants occur only in Sinhala and should not be
+> expected in `<bng2>` text runs. This step is included here to
+> maintain compatibility across Indic scripts.
 
 
 
@@ -801,28 +895,43 @@ includes one post-base consonant.
 	
 #### 2.8: Mark tagging ####
 
-Eighth, all marks must be tagged. Marks in the `BINDU`, `VISARGA`,
-`AVAGRAHA`, `CANTILLATION`, `SYLLABLE_MODIFIER`, `GEMINATION_MARK`,
-and `SYMBOL` categories should be tagged with `POS_SMVD`.
-
-All remaining marks must be tagged with the same positioning tag as the
-closest non-mark character the mark has affinity with, so that they move together
-during the sorting step.
-
-For all marks preceding the base consonant, the mark must be tagged
-with the same positioning tag as the closest preceding non-mark
-consonant.
-
-For all marks occurring after the base consonant, the mark must be
-tagged with the same positioning tag as the closest subsequent consonant.
+Eighth, all marks must be tagged. 
 
 > Note: In this step, joiner and non-joiner characters must also be
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
 
+Marks in the `BINDU`, `VISARGA`, `AVAGRAHA`, `CANTILLATION`,
+`SYLLABLE_MODIFIER`, `GEMINATION_MARK`, and `SYMBOL` categories should
+be tagged with `POS_SMVD`. 
+
+All "Nukta"s must be tagged with the same positioning tag as the
+preceding consonant.
+
+All remaining marks (not in the `POS_SMVD` category and not "Nukta"s)
+must be tagged with the same positioning tag as the closest non-mark
+character the mark has affinity with, so that they move together 
+during the sorting step.
+
+There are two possible cases: those marks before the base consonant
+and those marks after the base consonant.
+
+  1. Initially, all remaining marks should be tagged with the same
+  positioning tag as the closest preceding consonant.
+
+  2. For each consonant after the base consonant (such as post-base
+  consonants, below-base consonants, or final consonants), all
+  remaining marks located between that current consonant and any
+  previous consonant should be tagged with the same positioning tag as
+  the current (later) consonant.
+  
+In other words, all consonants preceding the base consonant "own" the
+marks that follow them, while all consonants after the base consonant
+"own" the marks that come before them. When a syllable does not have
+any consonants after the base consonant, the base consonant should
+"own" all the marks that follow it.
 
 With these steps completed, the syllable can be sorted into the final sort order.
-
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features

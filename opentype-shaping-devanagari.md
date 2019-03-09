@@ -740,24 +740,43 @@ a non-initial "Halant,Ra" sequence, which will take on the "Rakaar" form when th
 
 #### 2.8: Mark tagging ####
 
-Eighth, all marks must be tagged. Marks in the `BINDU`, `VISARGA`,
-`AVAGRAHA`, `CANTILLATION`, `SYLLABLE_MODIFIER`, `GEMINATION_MARK`,
-and `SYMBOL` categories should be tagged with `POS_SMVD`.
-
-All remaining marks must be tagged with the same positioning tag as the
-closest non-mark character the mark has affinity with, so that they
-move together during the sorting step.
-
-For all marks preceding the base consonant, the mark must be tagged
-with the same positioning tag as the closest preceding non-mark
-consonant.
-
-For all marks occurring after the base consonant, the mark must be
-tagged with the same positioning tag as the closest subsequent consonant.
+Eighth, all marks must be tagged. 
 
 > Note: In this step, joiner and non-joiner characters must also be
 > tagged according to the same rules given for marks, even though
 > these characters are not categorized as marks in Unicode.
+
+Marks in the `BINDU`, `VISARGA`, `AVAGRAHA`, `CANTILLATION`,
+`SYLLABLE_MODIFIER`, `GEMINATION_MARK`, and `SYMBOL` categories should
+be tagged with `POS_SMVD`. 
+
+All "Nukta"s must be tagged with the same positioning tag as the
+preceding consonant.
+
+All remaining marks (not in the `POS_SMVD` category and not "Nukta"s)
+must be tagged with the same positioning tag as the closest non-mark
+character the mark has affinity with, so that they move together 
+during the sorting step.
+
+There are two possible cases: those marks before the base consonant
+and those marks after the base consonant.
+
+  1. Initially, all remaining marks should be tagged with the same
+  positioning tag as the closest preceding consonant.
+
+  2. For each consonant after the base consonant (such as post-base
+  consonants, below-base consonants, or final consonants), all
+  remaining marks located between that current consonant and any
+  previous consonant should be tagged with the same positioning tag as
+  the current (later) consonant.
+  
+In other words, all consonants preceding the base consonant "own" the
+marks that follow them, while all consonants after the base consonant
+"own" the marks that come before them. When a syllable does not have
+any consonants after the base consonant, the base consonant should
+"own" all the marks that follow it.
+
+With these steps completed, the syllable can be sorted into the final sort order.
 
 <!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
 <!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
@@ -766,7 +785,6 @@ tagged with the same positioning tag as the closest subsequent consonant.
 <!--matra and another post-base consonant as belonging to the latter -->
 <!--post-base consonant. --->
 
-With these steps completed, the syllable can be sorted into the final sort order.
 
 ### 3: Applying the basic substitution features from GSUB ###
 

@@ -1135,14 +1135,16 @@ and those marks after the base consonant.
   positioning tag as the closest preceding consonant.
 
   2. For each consonant after the base consonant (such as post-base
-  consonants, below-base consonants, or final consonants), every mark
-  located between that current consonant and any previous consonant
-  should be tagged with the same positioning tag as the later
-  consonant.
+  consonants, below-base consonants, or final consonants), all
+  remaining marks located between that current consonant and any
+  previous consonant should be tagged with the same positioning tag as
+  the current (later) consonant.
   
 In other words, all consonants preceding the base consonant "own" the
 marks that follow them, while all consonants after the base consonant
-"own" the marks that come before them.
+"own" the marks that come before them. When a syllable does not have
+any consonants after the base consonant, the base consonant should
+"own" all the marks that follow it.
 
 With these steps completed, the syllable can be sorted into the final sort order.
 
