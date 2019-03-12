@@ -11,7 +11,7 @@ runs in the Gujarati script.
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Gujarati character tables](#gujarati-character-tables)
-  - [The `<guj2>` shaping model](#the-guj2-shaping-model)
+  - [The `<gjr2>` shaping model](#the-gjr2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
       - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
@@ -19,7 +19,7 @@ runs in the Gujarati script.
       - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
       - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
   - [The `<gujr>` shaping model](#the-gujr-shaping-model)
-      - [Distinctions from `<guj2>`](#distinctions-from-guj2)
+      - [Distinctions from `<gjr2>`](#distinctions-from-gjr2)
       - [Advice for handling fonts with `<gujr>` features only](#advice-for-handling-fonts-with-gujr-features-only)
       - [Advice for handling text runs composed in `<gujr>` format](#advice-for-handling-text-runs-composed-in-gujr-format)
 
@@ -37,8 +37,8 @@ in Gujarati, so Gujarati script runs may include glyphs from the Vedic
 Extensions block of Unicode. 
 
 There are two extant Gujarati script tags defined in OpenType, `<gujr>`
-and `<guj2>`. The older script tag, `<gujr>`, was deprecated in 2005.
-Therefore, new fonts should be engineered to work with the `<guj2>`
+and `<gjr2>`. The older script tag, `<gujr>`, was deprecated in 2005.
+Therefore, new fonts should be engineered to work with the `<gjr2>`
 shaping model. However, if a font is encountered that supports only
 `<gujr>`, the shaping engine should deal with it gracefully.
 
@@ -180,7 +180,7 @@ shaping process.
 
 Separate character tables are provided for the Gujarati and Vedic
 Extensions block as well as for other miscellaneous characters that
-are used in `<guj2>` text runs:
+are used in `<gjr2>` text runs:
 
   - [Gujarati character table](character-tables/character-tables-gujarati.md#gujarati-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-gujarati.md#vedic-extensions-character-table)
@@ -258,9 +258,9 @@ the dotted-circle placeholder. These sequences will match
 
 
 
-## The `<guj2>` shaping model ##
+## The `<gjr2>` shaping model ##
 
-Processing a run of `<guj2>` text involves six top-level stages:
+Processing a run of `<gjr2>` text involves six top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
@@ -1042,7 +1042,7 @@ Any pre-base-reordering consonants must be moved to immediately before
 the base consonant.
   
 Gujarati does not use pre-base-reordering consonants, so this step will
-involve no work when processing `<guj2>` text. It is included here in order
+involve no work when processing `<gjr2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
   
 #### 4.5: Initial matras ####
@@ -1146,12 +1146,12 @@ shaping engines may still encounter fonts that were built to work with
 `<gujr>` and some users may still have documents that were written to
 take advantage of `<gujr>` shaping.
 
-### Distinctions from `<guj2>` ###
+### Distinctions from `<gjr2>` ###
 
 The most significant distinction between the shaping models is that the
 sequence of "Halant" and consonant glyphs used to trigger shaping
 features) was altered when migrating from `<gujr>` to
-`<guj2>`. 
+`<gjr2>`.
 
 Specifically, shaping engines were expected to reorder post-base
 "Halant,_Consonant_" sequences to "_Consonant_,Halant".
@@ -1170,7 +1170,7 @@ would be reordered to
 
 before features are applied.
 
-In `<guj2>` text, as described above in this document, there is no
+In `<gjr2>` text, as described above in this document, there is no
 such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
@@ -1200,7 +1200,7 @@ Shaping engines may choose to match post-base "_Consonant_,Halant"
 sequences for GSUB substitutions or to reorder them to
 "Halant,_Consonant_" when processing text runs that are tagged with
 the `<gujr>` script tag and it is known that the font in use supports
-only the `<guj2>` shaping model.
+only the `<gjr2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
 below-base consonants occuring before the base consonant when it is
