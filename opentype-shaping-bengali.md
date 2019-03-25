@@ -931,7 +931,10 @@ marks that follow them, while all consonants after the base consonant
 any consonants after the base consonant, the base consonant should
 "own" all the marks that follow it.
 
-With these steps completed, the syllable can be sorted into the final sort order.
+With these steps completed, the syllable can be sorted into the final
+sort order.
+
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
