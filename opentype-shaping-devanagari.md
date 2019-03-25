@@ -213,7 +213,7 @@ column evoke no special behavior from the shaping engine.
 
 The _Mark-placement subclass_ column indicates mark-placement
 positioning for codepoints in the _Mark_ category. Assigned, non-mark
-codepoints have a_null_ in this column and evoke no special
+codepoints have a _null_ in this column and evoke no special
 mark-placement behavior. Marks tagged with [Mn] in the _Unicode
 category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
