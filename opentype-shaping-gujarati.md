@@ -673,14 +673,14 @@ The algorithm for determining the base consonant is
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
-        * If the consonant is the first consonant, stop.
-        * If the consonant has a below-base form, tag it as
-          `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
-        * If the consonant has a post-base form, tag it as
-          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
-        * If the consonant is a pre-base-reordering "Ra", tag it as
-          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
-        * If none of the above conditions is true, stop.
+      * If the consonant is the first consonant, stop.
+      * If the consonant has a below-base form, tag it as
+        `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
+      * If the consonant has a post-base form, tag it as
+        `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+      * If the consonant is a pre-base-reordering "Ra", tag it as
+        `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+      * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
 
 > Note: The algorithm is designed to work for all Indic
