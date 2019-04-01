@@ -395,7 +395,9 @@ mark-like form.
     with a right-side mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_EXPLICIT` characteristic mentioned earlier.
-  
+  - A post-base "Ra" is reordered to before the base consonant during
+    the final-reordering stage of the shaping process. 
+
 "Reph" characters must be reordered after the syllable-identification
 stage is complete.
 
@@ -896,12 +898,10 @@ The `rphf` feature replaces initial "Ra,Halant,ZWJ" sequences with the
 
 #### 3.6 pref ####
 
-The `pref` feature replaces pre-base consonant glyphs with
-any special forms.
+The `pref` feature replaces reordering-pre-base-consonant glyphs with
+any special forms. Telugu includes one such rerdering consonant,
+"Ra" when it occurs in post-base position.
 
-> Note: Telugu does not usually incorporate pre-base consonant forms, but it is
-> possible for a font to implement them in order to provide for
-> desired typographic variation.
 
 #### 3.7: blwf ####
 
@@ -1046,12 +1046,20 @@ left of "Halant", to allow for potential matching with `abvs` or
 
 #### 4.4: Pre-base-reordering consonants ####
 
-Any pre-base-reordering consonants must be moved to immediately before
+Any pre-base-reordering consonants must be moved to before
 the base consonant.
   
-Telugu does not use pre-base-reordering consonants, so this step will
-involve no work when processing `<tel2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
+Telugu includes one such reordering consonant. "Ra" occurring in the
+post-base position is reordered to a pre-base position at this step.
+
+The algorithm for reordering "Ra" in this circumstance is:
+
+  - Only reorder the "Ra" if the current glyph was substituted using
+    the `pref` feature in stage 3, step 6.
+  - Select the final position using [the same method](#42-pre-base-matras) as used for
+    reordering a pre-base matra.
+  - If the pre-base matra positioning algorithm cannot determine the final
+    position, place the "Ra" immediately before the base consonant.
 
 
 #### 4.5: Initial matras ####
