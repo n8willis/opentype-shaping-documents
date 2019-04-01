@@ -885,11 +885,8 @@ many-to-one substitutions.
 
 #### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
+The `rphf` feature replaces initial "Ra,Halant,ZWJ" sequences with the
 "Reph" glyph.
-
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
-    the `rphf` substitution.
 	
 
 
