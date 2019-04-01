@@ -691,24 +691,77 @@ by the addition of a dependent-vowel (matra) sign.
 Vowel-based syllables, standalone-sequences, and broken text runs will
 not have base consonants.
 
+> Note: For consistency with consonant-based syllables, shaping
+> engines may choose to treat the independent vowel of a vowel-based
+> syllable as a "pseudo-base" or surrogate base consonant.
+>
+> Because vowel-based syllables will not include consonants and
+> because independent vowels do not take on special forms or require
+> reordering, many of the steps that follow will involve no
+> work for a vowel-based syllable. However, vowel-based syllables must
+> still be sorted and their marks handled correctly, and GSUB and GPOS
+> lookups must be applied. These steps of the shaping process follow
+> the same rules that are employed for consonant-based syllables.
+
+
+While performing the base-consonant search, shaping engines may
+also encounter special-form consonants, including below-base
+consonants and post-base consonants. Each of these special-form
+consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
+`POS_POSTBASE_CONSONANT`, respectively). 
+ 
+> Note: Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+
+
 The algorithm for determining the base consonant is
 
   - If the syllable starts with "Ra" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
-      * If the consonant has a below-base or post-base form or is a
-        pre-base-reordering "Ra", move to the previous consonant. If
-        neither condition is true, stop. 
-      * If the consonant is the first consonant, stop.
+        * If the consonant is the first consonant, stop.
+        * If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant has a post-base form, tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant is a pre-base-reordering "Ra", tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
 
-Shaping engines may choose any method to identify consonants that have
-below-base or post-base forms while executing the above algorithm. For
-example, one implementation may choose to maintain a static table of
-below-base and post-base consonants to compare again the text
-run. Another implementation might examine the active font to see if it
-includes a relevant `blwf` or `pstf` lookup in the GSUB table.
+Malayalam includes a pre-base-reordering "Ra".  A "Halant,Ra" sequence
+after the base consonant will be reordered to a pre-base position
+during the final-reordering stage.
+
+Malayalam includes two consonants that can take on
+post-base form: "Ya" and Va".
+
+![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
+
+
+![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png)
+
+Malayalam includes one consonant that can take on a below-base form:
+
+  - "Halant,La" (after the base consonant) and "La,Halant" (before the
+    base consonant) take on a below-base form.
+
+> Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search, only the "Halant,_consonant_" 
+> pattern following the base consonant for these below-base forms will
+> be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
+> pattern preceding the base consonant for these below-base forms will
+> also be tagged correctly.
 
 
 
@@ -773,7 +826,36 @@ matched later in the shaping process.
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
+with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences that will become "Reph"s:
+
+  - If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`. 
+  - Otherwise, tag it as `POS_PREBASE_CONSONANT`.
+  
+> Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+Malayalam includes one consonant that can take on a below-base form:
+
+  - "Halant,La" (after the base consonant) and "La,Halant" (before the
+    base consonant) take on a below-base form.
+
+> Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search in 2.1, any instances of the
+> "Halant,_consonant_"  pattern following the base consonant for these
+> below-base forms will be encountered. The tagging in this step
+> ensures that the "_consonant_,Halant" pattern preceding the base
+> consonant for these below-base forms will also be tagged correctly.
+
+
 
 #### 2.6: Reph ####
 
@@ -785,24 +867,16 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 > "Ra,Halant" sequence is typically replaced by a dead-consonant form,
 > "Chillu R". 
 
-#### 2.7: Post-base consonants ####
+#### 2.7: Final consonants ####
 
-Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. Such
-consonants will usually be preceded by a "Halant" glyph.
+Seventh, all final consonants must be tagged. Consonants that occur
+after the base consonant _and_ after a dependent vowel (matra) sign
+must be tagged with  `POS_FINAL_CONSONANT`.
 
-Three consonants in Malayalam are allowed to occur in post-base
-position: "Ya", "Va", and "Ra". 
+> Note: Final consonants occur only in Sinhala and should not be
+> expected in `<mlm2>` text runs. This step is included here to
+> maintain compatibility across Indic scripts.
 
-The post-base "Ra" will normally be reordered to a pre-base position
-during the final-reordering stage. However, shaping engines should tag
-a post-base "Ra" with `POS_POSTBASE_CONSONANT` at this stage for
-consistency.
-
-![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
-
-
-![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png)
 
 	
 #### 2.8: Mark tagging ####
@@ -954,8 +1028,8 @@ any special forms. Malayalam includes one such reordering consonant,
 #### 3.7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
-special forms. Malayalam includes one below-base consonant
-forms, "Halant,La".
+special forms. Malayalam includes one consonant that can take on a
+below-base form:, "Halant,La".
 
 Because Malayalam incorporates the `BLWF_MODE_PRE_AND_POST` shaping
 characteristic, any pre-base consonants and any post-base consonants

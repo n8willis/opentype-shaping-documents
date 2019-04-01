@@ -707,10 +707,6 @@ consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
  
-<!--- Regardless of whether the shaping engine tags below-base and
-post-base consonants in advance or during the base-consonant search,
-they must be tagged before proceeding to the next step. --->
-
 > Note: Shaping engines may choose any method to identify consonants that
 > have below-base or post-base forms while executing the above
 > algorithm. For example, one implementation may choose to maintain a
@@ -768,7 +764,7 @@ Bengali includes two below-base consonant forms:
 > characteristic, consonants with below-base special forms may occur
 > before or after the base consonant. 
 > 
-> During the base-consonant search, only the "Halant,_consonant" 
+> During the base-consonant search, only the "Halant,_consonant_" 
 > pattern following the base consonant for these below-base forms will
 > be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
 > pattern preceding the base consonant for these below-base forms will
@@ -865,7 +861,7 @@ Bengali includes two below-base consonant forms:
 > before or after the base consonant. 
 > 
 > During the base-consonant search in 2.1, any instances of the
-> "Halant,_consonant"  pattern following the base consonant for these
+> "Halant,_consonant_"  pattern following the base consonant for these
 > below-base forms will be encountered. The tagging in this step
 > ensures that the "_consonant_,Halant" pattern preceding the base
 > consonant for these below-base forms will also be tagged correctly.

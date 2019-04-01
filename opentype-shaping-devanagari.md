@@ -652,27 +652,76 @@ by the addition of a dependent-vowel (matra) sign.
 Vowel-based syllables, standalone-sequences, and broken text runs will
 not have base consonants.
 
+> Note: For consistency with consonant-based syllables, shaping
+> engines may choose to treat the independent vowel of a vowel-based
+> syllable as a "pseudo-base" or surrogate base consonant.
+>
+> Because vowel-based syllables will not include consonants and
+> because independent vowels do not take on special forms or require
+> reordering, many of the steps that follow will involve no
+> work for a vowel-based syllable. However, vowel-based syllables must
+> still be sorted and their marks handled correctly, and GSUB and GPOS
+> lookups must be applied. These steps of the shaping process follow
+> the same rules that are employed for consonant-based syllables.
+
+
+While performing the base-consonant search, shaping engines may
+also encounter special-form consonants, including below-base
+consonants and post-base consonants. Each of these special-form
+consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
+`POS_POSTBASE_CONSONANT`, respectively). 
+ 
+> Note: Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+
+
 The algorithm for determining the base consonant is
 
   - If the syllable starts with "Ra" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
-      * If the consonant has a below-base or post-base form or is a
-        pre-base-reordering "Ra", move to the previous consonant. If
-        neither condition is true, stop. 
-      * If the consonant is the first consonant, stop.
+        * If the consonant is the first consonant, stop.
+        * If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant has a post-base form, tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If the consonant is a pre-base-reordering "Ra", tag it as
+          `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
+        * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
-
-Shaping engines may choose any method to identify consonants that have
-below-base or post-base forms while executing the above algorithm. For
-example, one implementation may choose to maintain a static table of
-below-base and post-base consonants to compare again the text
-run. Another implementation might examine the active font to see if it
-includes a relevant `blwf` or `pstf` lookup in the GSUB table.
 
 > Note: The algorithm is designed to work for all Indic
 > scripts. However, Devanagari does not utilize pre-base-reordering "Ra".
+
+Devanagari includes one below-base consonant form.
+
+  - Halant,Ra" (occurring after the base consonant) and "Ra,Halant"
+    (before the base consonant, but in a non-syllable-initial
+    position) will take on the "Rakaar" form. 
+	
+> Note: the sequence "Rra,Halant" (occurring before the base
+> consonant) will take on the "eyelash Ra" special form. However, this
+> special form is not a below-base form. Instead, it is canonically
+> defined as belonging to the half-form substitutions, so it is
+> addressed by the `half` feature in stage 3, step 9, and is not
+> addressed in this step.
+
+> Note: Because Devanagari employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search, only the "Halant,_consonant_" 
+> pattern following the base consonant for these below-base forms will
+> be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
+> pattern preceding the base consonant for these below-base forms will
+> also be tagged correctly.
 
 
 #### 2.2: Matra decomposition ####
@@ -719,7 +768,44 @@ matched later in the shaping process.
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
+with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
+that will become "Reph"s: 
+
+  - If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`. 
+  - Otherwise, tag it as `POS_PREBASE_CONSONANT`.
+  
+> Shaping engines may choose any method to identify consonants that
+> have below-base or post-base forms while executing the above
+> algorithm. For example, one implementation may choose to maintain a
+> static table of below-base and post-base consonants to compare again
+> the text run. Another implementation might examine the active font
+> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
+> that affects the consonants encountered in the syllable. 
+
+Devanagari includes one below-base consonant form.
+
+  - Halant,Ra" (occurring after the base consonant) and "Ra,Halant"
+    (before the base consonant, but in a non-syllable-initial
+    position) will take on the "Rakaar" form. 
+	
+> Note: the sequence "Rra,Halant" (occurring before the base
+> consonant) will take on the "eyelash Ra" special form. However, this
+> special form is not a below-base form. Instead, it is canonically
+> defined as belonging to the half-form substitutions, so it is
+> addressed by the `half` feature in stage 3, step 9, and is not
+> addressed in this step.
+
+> Note: Because Devanagari employs the `BLWF_MODE_PRE_AND_POST` shaping
+> characteristic, consonants with below-base special forms may occur
+> before or after the base consonant. 
+> 
+> During the base-consonant search in 2.1, any instances of the
+> "Halant,_consonant_"  pattern following the base consonant for these
+> below-base forms will be encountered. The tagging in this step
+> ensures that the "_consonant_,Halant" pattern preceding the base
+> consonant for these below-base forms will also be tagged correctly.
+
 
 #### 2.6: Reph ####
 
@@ -729,14 +815,16 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 > Note: an initial "Ra,Halant" sequence will always become a "Reph"
 > unless the "Ra" is the only consonant in the syllable.
 
-#### 2.7: Post-base consonants ####
+#### 2.7: Final consonants ####
 
-Seventh, any non-base consonants that occur after a dependent vowel
-(matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
+Seventh, all final consonants must be tagged. Consonants that occur
+after the base consonant _and_ after a dependent vowel (matra) sign
+must be tagged with  `POS_FINAL_CONSONANT`.
 
-In Devanagari, the only consonant that can appear in this position is
-a non-initial "Halant,Ra" sequence, which will take on the "Rakaar" form when the
-`blwf` feature is applied.
+> Note: Final consonants occur only in Sinhala and should not be
+> expected in `<dev2>` text runs. This step is included here to
+> maintain compatibility across Indic scripts.
+
 
 #### 2.8: Mark tagging ####
 
