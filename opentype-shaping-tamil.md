@@ -1100,13 +1100,23 @@ consonant, and all half forms.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Tamil incorporates the `REPH_POS_AFTER_POST`
-shaping characteristic, this final position is immediately before any
-independent post-base consonant forms (meaning the first post-base
-consonant that has not formed a ligature with the base consonant).
+shaping characteristic, this final position is immediately after
+any post-base consonant forms.
 
-  - If the syllable does not have any post-base consonants, then the
-    final "Reph" position is immediately before the first post-base
-    matra, syllable modifier, or Vedic sign.
+  - If the syllable does not have a base consonant (such as a syllable
+    based on an independent vowel), then the final "Reph" position is
+    immediately before the first character tagged with the
+    `POS_BEFORE_POST` position or any later position in the sort
+    order.
+
+    -- If there are no characters tagged with `POS_BEFORE_POST` or
+       later positions, then "Reph" is positioned at the end of the
+       syllable.
+
+Finally, if the final position of "Reph" occurs after a
+"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+left of "Halant", to allow for potential matching with `abvs` or
+`psts` substitutions from GSUB.
 
 Tamil does not use "Reph", so this step will involve no work when
 processing `<tml2>` text. It is included here in order to maintain
