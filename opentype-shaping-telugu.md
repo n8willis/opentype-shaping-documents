@@ -683,7 +683,7 @@ consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 > Note: Shaping engines may choose any method to identify consonants that
 > have below-base or post-base forms while executing the above
 > algorithm. For example, one implementation may choose to maintain a
-> static table of below-base and post-base consonants to compare again
+> static table of below-base and post-base consonants to compare against
 > the text run. Another implementation might examine the active font
 > to see if it includes a `blwf` or `pstf` lookup in the GSUB table
 > that affects the consonants encountered in the syllable. 
@@ -811,7 +811,7 @@ that will become "Reph"s:
 > Shaping engines may choose any method to identify consonants that
 > have below-base or post-base forms while executing the above
 > algorithm. For example, one implementation may choose to maintain a
-> static table of below-base and post-base consonants to compare again
+> static table of below-base and post-base consonants to compare against
 > the text run. Another implementation might examine the active font
 > to see if it includes a `blwf` or `pstf` lookup in the GSUB table
 > that affects the consonants encountered in the syllable. 
