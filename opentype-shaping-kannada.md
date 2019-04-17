@@ -419,6 +419,19 @@ mark-like form.
 "Reph" characters must be reordered after the syllable-identification
 stage is complete.
 
+> Note: Generally speaking, OpenType fonts will implement support for
+> any below-base, post-base, and pre-base-reordering consonant forms
+> by including the necessary substitution rules in their `blwf`,
+> `pstf`, and `pref` lookups in GSUB.
+>
+> Consequently, whenever shaping engines need to determine whether or 
+> not a given consonant can take on such a special form, the most
+> appropriate test is to check if the consonant is included in the
+> relevant GSUB lookup. Other implementations are possible, such as
+> maintaining static tables of consonants, but checking for GSUB
+> support ensures that the expected behavior is implemented in the
+> active font, and is therefore the most reliable approach.
+
 
 In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
@@ -710,7 +723,10 @@ encountered during the base-consonant search must be tagged
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
 > lookup in the GSUB table that affects the consonants encountered in
 > the syllable.
-
+>
+> However, checking for GSUB support ensures that the expected
+> behavior is implemented in the active font, and is therefore the
+> most reliable approach.
 
 
 The algorithm for determining the base consonant is
@@ -850,6 +866,10 @@ that will become "Reph"s:
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
 > lookup in the GSUB table that affects the consonants encountered in
 > the syllable.
+>
+> However, checking for GSUB support ensures that the expected
+> behavior is implemented in the active font, and is therefore the
+> most reliable approach.
 
 Kannada does not use any pre-base consonants; this step is listed here
 because it is part of the general processing scheme for shaping Indic scripts.
