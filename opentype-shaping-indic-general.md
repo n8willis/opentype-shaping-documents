@@ -1110,7 +1110,21 @@ matched later in the shaping process.
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
+with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
+that will become "Reph"s: 
+
+  - If the consonant has a below-base form, tag it as
+          `POS_BELOWBASE_CONSONANT`. 
+  - Otherwise, tag it as `POS_PREBASE_CONSONANT`.
+  
+> Note: Shaping engines may choose any method to identify consonants that
+> have below-base, post-base, or pre-base-reordering forms while
+> executing the above algorithm. For example, one implementation may
+> choose to maintain a static table of special-form consonants to
+> compare against the text run. Another implementation might examine
+> the active font to see if it includes a `blwf`, `pstf`, or `pref`
+> lookup in the GSUB table that affects the consonants encountered in
+> the syllable.
 
 #### 2.6: Reph ####
 
