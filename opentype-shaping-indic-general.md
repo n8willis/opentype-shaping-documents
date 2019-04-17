@@ -1033,14 +1033,19 @@ also encounter special-form consonants, including below-base
 consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
+
+Any pre-base-reordering consonant (such as a pre-base-reodering "Ra")
+encountered during the base-consonant search must be tagged
+`POS_POSTBASE_CONSONANT`. 
  
 > Note: Shaping engines may choose any method to identify consonants that
-> have below-base or post-base forms while executing the above
-> algorithm. For example, one implementation may choose to maintain a
-> static table of below-base and post-base consonants to compare against
-> the text run. Another implementation might examine the active font
-> to see if it includes a `blwf` or `pstf` lookup in the GSUB table
-> that affects the consonants encountered in the syllable. 
+> have below-base, post-base, or pre-base-reordering forms while
+> executing the above algorithm. For example, one implementation may
+> choose to maintain a static table of special-form consonants to
+> compare against the text run. Another implementation might examine
+> the active font to see if it includes a `blwf`, `pstf`, or `pref`
+> lookup in the GSUB table that affects the consonants encountered in
+> the syllable.
 
 
 #### 2.2: Matra decomposition ####
