@@ -777,15 +777,11 @@ Above-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
 
 Right-side matras should be tagged according to two rules.
 
-  - Matras "Sign Vocalic R" (`U+0CC3`), "Sign Vocalic Rr"
-       (`U+0CC4`), "Sign Ee" (`U+0CC7`), "Sign Ai" (`U+0CC8`), "Sign
-       O" (`U+0CCA`), "Sign Oo" (`U+0CCB`), "Length Mark" (`U+0CD5`),
-       and "Ai Length Mark" (`U+0CD6`) should be tagged with
-       `POS_AFTER_SUBJOINED`.
-	   
-  - Matras "Sign Aa"(`U+0CBE`), "Sign Ii" (`U+0CC0`), "Sign U"
-       (`U+0CC1`), and "Sign Uu" (`U+0CC2`) use
-       `POS_BEFORE_SUBJOINED`.
+  - Matras "Sign U" (`U+0C41`) and "Sign Uu" (`U+0C42`) should be
+       tagged with `POS_BEFORE_SUBJOINED`.
+
+  - Matras "Sign Vocalic R" (`U+0C43`) and "Sign Vocalic Rr"
+       (`U+0C44`) should be tagged with `POS_AFTER_SUBJOINED`.
 
 Below-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
 
