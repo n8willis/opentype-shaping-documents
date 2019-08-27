@@ -188,6 +188,7 @@ follows.
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+11301`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x11301; Grantha Candrabindu|
 |`U+11303`  | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x11303; Grantha Visarga    |
+|`U+1133B`  | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x1133b; Combining Bindu Below |
 |`U+1133C`  | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x1133c; Grantha Nukta      |
 
 
@@ -241,8 +242,8 @@ classified as follows.
 |`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
-|`U+1CF5`   | Letter           | CONSONANT         | _null_                     | &#x1CF5; Sign Jihvamuliya    |
-|`U+1CF6`   | Letter           | CONSONANT         | _null_                     | &#x1CF6; Sign Upadhmaniya    |
+|`U+1CF5`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF5; Sign Jihvamuliya    |
+|`U+1CF6`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF6; Sign Upadhmaniya    |
 |`U+1CF7`   | Mark [Mc]        | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
