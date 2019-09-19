@@ -803,21 +803,26 @@ has a canonical decomposition, so this step is unambiguous.
 >
 > "Au" (`U+0B4C`) decomposes to "`U+0B47`,`U+0B57`"
 
-Because this decomposition is a character-level operation, the shaping
-engine may choose to perform it earlier, such as during an initial
-Unicode-normalization stage. However, all such decompositions must be
-completed before the shaping engine begins step three, below.
-
 > Note: "Au Length Mark" (`U+0B57`) is categorized in Unicode as being a
 > top-and-right matra, a combination that would normally decompose
-> into one above-base mark and one right-side mark
-> (`U+0B3E`,`U+0B56`). This combination, unlike other multi-part
-> matras, does not affect reordering. 
-> 
+> into one TOP_POSITION mark and one RIGHT_POSITION mark
+> (`U+0B3E`,`U+0B56`). In "Au Length Mark", however, the `U+0B3E`
+> component is intended to be positioned over the `U+0B56` component,
+> not above the base.
+>
+> Consequently, the two decomposed components should both be tagged
+> for the `POS_AFTER_POST` sorting position, and neither will need to
+> be reordered.
+>
 > In addition, the decomposition is not canonical in
 > Unicode, so performing the decomposition may trigger unknown
 > behavior from other components of the software stack. Consequently,
 > shaping engines may choose to skip it. 
+
+Because this decomposition is a character-level operation, the shaping
+engine may choose to perform it earlier, such as during an initial
+Unicode-normalization stage. However, all such decompositions must be
+completed before the shaping engine begins step three, below.
 
 ![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.png)
 
