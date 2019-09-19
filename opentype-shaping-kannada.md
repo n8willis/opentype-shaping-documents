@@ -821,6 +821,12 @@ Right-side matras should be tagged according to two rules.
        (`U+0CC1`), and "Sign Uu" (`U+0CC2`) use
        `POS_BEFORE_SUBJOINED`.
 
+> Note: the right-side matras "Sign Ee" (`U+0CC7`), "Sign Ai"
+> (`U+0CC8`), "Sign O" (`U+0CCA`), and "Sign Oo" (`U+0CCB`) are
+> multi-part matras and were decomposed into independent components
+> during stage 2, step 2. They are listed here only to ensure that the
+> two position-tagging rules used in Kannada are described completely.
+
 Below-base matras should be tagged with `POS_BEFORE_SUBJOINED`.
 
 For simplicity, shaping engines may choose to tag single-part matras
