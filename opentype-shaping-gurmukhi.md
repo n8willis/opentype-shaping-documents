@@ -779,6 +779,10 @@ Gurmukhi includes three below-base consonant forms:
   - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
+Gurmukhi also includes the CONSONANT_MEDIAL subclass, used only for "Yakash"
+(U+0A75), which is rendered as a below-base form. "Yakash" should
+be tagged as `POS_BELOWBASE_CONSONANT`.
+
 > Note: Because Gurmukhi employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
 > before or after the base consonant. 
@@ -788,6 +792,7 @@ Gurmukhi includes three below-base consonant forms:
 > be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
 > pattern preceding the base consonant for these below-base forms will
 > also be tagged correctly.
+
 
 
 #### 2.2: Matra decomposition ####
