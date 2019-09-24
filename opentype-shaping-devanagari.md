@@ -346,13 +346,36 @@ begin with either a consonant or an independent vowel.
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
-the syllable begins with an independent vowel, that vowel is the
-syllable's only vowel sound and, by definition, there is no "base"
-consonant. 
+the syllable begins with an independent vowel, that independent vowel
+is the syllable's only vowel sound and serves as the "base". 
 
 > Note: A consonant that is not accompanied by a dependent vowel (matra) sign
 > carries the script's inherent vowel sound. This vowel sound is changed
 > by a dependent vowel (matra) sign following the consonant.
+
+From the shaping engine's perspective, the main distinctions between a
+syllable with a base consonant and a syllable with an
+independent-vowel base are that a syllable with a base consonant may
+also contain multiple other consonants, including consonants that take
+on special forms depending on where in the syllable they
+appear, and that a syllable with an independent-vowel base will not
+include any depedendent vowel signs (matras).
+
+Because of these distinctions, consonant-based syllables require
+significantly more processing than vowel-based syllables. 
+
+> Note: Shaping engines may choose to treat independent-vowel bases
+> like base consonants for the sake of simplicity or code
+> reuse.
+>
+> Because valid vowel-based syllables are generally simpler,
+> processing a vowel-based syllable should follow all of the logic
+> described for consonant-based syllables in the steps that follow,
+> but only trigger actions where mark-handling is involved.
+>
+> Implementations taking this approach, however, should recognize that
+> making guarantees about the correctness of the results or about
+> language-specific tests is out of scope for this document.
 
 Generally speaking, the base consonant is the final consonant of the
 syllable and its vowel sound designates the end of the syllable. This
@@ -464,6 +487,12 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > identification class, and that the other "combining consonant"
 > cantillation marks in the Devanagari Extended block do not belong to
 > the _consonant_ identification class.
+
+> Note: The _placeholder_ identification class includes codepoints
+> that are often used in place of vowels or consonants when a document
+> needs to display a matra, mark, or special form in isolation or
+> in another context beyond a standard syllable. Examples include
+> hyphens and non-breaking spaces.
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
