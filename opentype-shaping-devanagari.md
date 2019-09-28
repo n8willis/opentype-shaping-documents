@@ -1186,6 +1186,12 @@ The algorithm for finding the final "Reph" position is
     the "Reph" to the end of the syllable.
 
 
+Finally, if the final position of "Reph" occurs after a
+"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+left of "Halant", to allow for potential matching with `abvs` or
+`psts` substitutions from GSUB.
+
+
 ![Reph positioning](/images/devanagari/devanagari-reph-position.png)
 
 #### 4.4: Pre-base-reordering consonants ####
