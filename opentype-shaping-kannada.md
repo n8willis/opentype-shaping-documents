@@ -1160,18 +1160,19 @@ order to maintain compatibility with the other Indic scripts.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Kannada incorporates the `REPH_POS_AFTER_POST`
-shaping characteristic, this final position is immediately after
-any post-base consonant forms.
+shaping characteristic, this final position is defined to be
+immediately after any post-base consonant forms.
 
-  - If the syllable does not have a base consonant (such as a syllable
-    based on an independent vowel), then the final "Reph" position is
-    immediately before the first character tagged with the
-    `POS_BEFORE_POST` position or any later position in the sort
-    order.
 
-    -- If there are no characters tagged with `POS_BEFORE_POST` or
-       later positions, then "Reph" is positioned at the end of the
-       syllable.
+The algorithm for finding the final "Reph" position is
+
+  - Move the "Reph" to the position immediately before
+    the first post-base matra, syllable modifier, or Vedic sign that
+    has a positioning tag of `POS_FINAL_CONSONANT` or later. This
+    will be the final "Reph" position.
+  - If no other location has been located in the previous step, move
+    the "Reph" to the end of the syllable.
+
 
 Finally, if the final position of "Reph" occurs after a
 "_matra_,Halant" subsequence, then "Reph" must be repositioned to the
