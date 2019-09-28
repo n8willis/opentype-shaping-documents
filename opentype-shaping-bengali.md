@@ -1185,10 +1185,13 @@ consonant, and all half forms.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Bengali incorporates the `REPH_POS_AFTER_SUBJOINED`
-shaping characteristic, this final position is immediately after the
-base consonant and any subjoined (below-base consonant or below-base
-dependent vowel) forms.
+shaping characteristic, this final position is defined to be
+immediately after the base consonant and any subjoined (below-base
+consonant or below-base dependent vowel) forms.
 
+The algorithm for finding the final "Reph" position is
+
+<!---
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
     immediately before the first character tagged with the
@@ -1198,6 +1201,34 @@ dependent vowel) forms.
     -- If there are no characters tagged with `POS_BEFORE_POST` or
        later positions, then "Reph" is positioned at the end of the
        syllable.
+--->
+
+  - Starting at the first post-"Reph" consonant, search forward looking
+    for the first explicit "Halant", ending the search when the base
+    consonant is encountered. If such an explicit "Halant" is found,
+    move the "Reph" to the position immediately after this
+    "Halant".
+	  * If a zero-width joiner (ZWJ) or a zero-width non-joiner (ZWNJ)
+        follows this "Halant", move the "Reph" to the position
+        immediately after the ZWJ or ZWNJ. This will be the final
+        "Reph" position. 
+	  * If no ZWJ or ZWNJ follows this "Halant", leave the "Reph" in
+        its position immediately after the "Halant". This will be the
+        final "Reph" position. 
+  - If no such explicit "Halant" is found in the previous step, find
+    the first post-base consonant that has not formed a ligature with
+    the base consonant. If such a non-ligated post-base consonant is
+    found, move the "Reph" to the position immediately before the
+    non-ligated post-base consonant. This will be the final "Reph"
+    position.
+  - If no such non-ligated post-base consonant is found in the
+    previous step, move the "Reph" to the position immediately before
+    the first post-base matra, syllable modifier, or Vedic sign that
+    has a positioning tag of `POS_BEFORE_POST` or later. This
+    will be the final "Reph" position.
+  - If no other location has been located in the previous steps, move
+    the "Reph" to the end of the syllable.
+
 
 Finally, if the final position of "Reph" occurs after a
 "_matra_,Halant" subsequence, then "Reph" must be repositioned to the
