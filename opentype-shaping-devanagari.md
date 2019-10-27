@@ -775,7 +775,7 @@ The algorithm for determining the base consonant is
 
 Devanagari includes one below-base consonant form.
 
-  - Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
+  - "Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
     (before the syllable base, but in a non-syllable-initial
     position) will take on the "Rakaar" form. 
 	
@@ -863,7 +863,7 @@ that will become "Reph"s:
 
 Devanagari includes one below-base consonant form.
 
-  - Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
+  - "Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
     (before the syllable base, but in a non-syllable-initial
     position) will take on the "Rakaar" form. 
 	
