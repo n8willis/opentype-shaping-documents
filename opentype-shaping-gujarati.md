@@ -70,6 +70,11 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
+Syllables may also begin with an **indepedent vowel** instead of a
+consonant. In these syllables, the independent vowel is rendered in
+full-letter form, not as a matra, and the independent vowel serves as the
+syllable base, similar to a base consonant.
+
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
 over all of the others that share a common script.
