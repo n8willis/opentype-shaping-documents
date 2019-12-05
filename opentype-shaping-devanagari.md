@@ -1353,8 +1353,13 @@ for post-base consonants.
 The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<deva>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
-characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+characteristic — with a single exception made for non-syllable-initial
+"Ra,Halant".
+
+In other words, a non-syllable-initial "Ra,Halant" sequence would
+trigger a below-base form substitution, but all other below-base form
+substitutions were applied only to consonants after the base
+consonant.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
