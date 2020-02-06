@@ -1,7 +1,7 @@
 # Notes for preserving Uniscribe compatibility #
 
 This document details behavior that shaping engines may wish to
-implement in order to maintain srict shaping compatibility with
+implement in order to maintain strict shaping compatibility with
 Microsoft's Uniscribe OpenType shaper, including behavior that may be
 regarded as bugs by end users.
 
