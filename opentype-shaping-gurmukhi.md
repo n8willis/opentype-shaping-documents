@@ -794,6 +794,17 @@ encountered during the base-consonant search must be tagged
 > However, checking for GSUB support ensures that the expected
 > behavior is implemented in the active font, and is therefore the
 > most reliable approach.
+>
+> For efficiency, shaping engines may also choose to tag the
+> glyph sequences processed for the potential application of GSUB and
+> GPOS features (which will be applied in stages 3, 5, and 6 as
+> necessary) as they are encountered in this stage. For example, a
+> pre-base "_Consonant_,Halant" sequence encountered during the
+> base-consonant search may be tagged for potential application of
+> `blwf` and `pres` features.
+>
+> It is not mandatory that implementations perform this
+> feature-application tagging at this stage, however. 
 
 
 The algorithm for determining the base consonant is
@@ -1004,6 +1015,13 @@ marks that follow them, while all consonants after the syllable base
 any consonants after the syllable base, the syllable base should
 "own" all the marks that follow it.
 
+> Note: shaping engines that opt to tag glyph sequences for the
+> potential application of GSUB and GPOS features during this stage
+> are advised to tag post-base marks for the potential application of
+> `blwf`, `pstf`, and `psts` features in this step. Fonts may have
+> rules designed to match subsequences incorporating the mark
+> codepoints. 
+
 With these steps completed, the syllable can be sorted into the final sort order.
 
 
@@ -1030,6 +1048,8 @@ all Indic scripts:
 	vatu
 	cjct
 	cfar (not used in Gurmukhi)
+
+
 
 #### 3.1 locl ####
 
