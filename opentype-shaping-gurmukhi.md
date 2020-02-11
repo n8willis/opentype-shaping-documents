@@ -1257,7 +1257,7 @@ the base consonant or syllable base, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Gurmukhi incorporates the `REPH_POS_BEFORE_SUBJOINED`
 shaping characteristic, this final position is immediately after the
-base consonant or syllable base and before any subjoined (below-base consonant or below-base
+syllable base and before any subjoined (below-base consonant or below-base
 dependent vowel) forms.
 
   - If the syllable does not have a base consonant (such as a syllable

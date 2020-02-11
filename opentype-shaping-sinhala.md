@@ -1066,7 +1066,7 @@ the base consonant or syllable base, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Sinhala incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant or syllable base.
+syllable base.
 
 
 ![Reph positioning](/images/sinhala/sinhala-reph-position.png)

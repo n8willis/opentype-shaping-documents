@@ -1255,7 +1255,7 @@ the base consonant or syllable base, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Oriya incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant or syllable base.
+syllable base.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
