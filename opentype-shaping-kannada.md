@@ -791,7 +791,7 @@ The algorithm for determining the base consonant is
 > During the base-consonant search, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. Step 2.5 below exists to ensure that
-> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 #### 2.2: Matra decomposition ####
@@ -915,7 +915,7 @@ because it is part of the general processing scheme for shaping Indic scripts.
 > During the base-consonant search in 2.1, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. The tagging is this step ensures that
-> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 #### 2.6: Reph ####
