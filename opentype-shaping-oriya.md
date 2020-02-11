@@ -310,7 +310,7 @@ characteristics include:
      consonant, not counting any special final-consonant forms.
 
   - `REPH_POS_AFTER_MAIN` = "Reph" is ordered immediately after the
-     base consonant.
+     base consonant or syllable base.
 
   - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
 
@@ -318,7 +318,7 @@ characteristics include:
      pre-base consonants and to post-base consonants.
 
   - `MATRA_POS_TOP` = `POS_AFTER_MAIN`  = Above-base matras are
-    ordered immediately after the base consonant.
+    ordered immediately after the base consonant or syllable base.
 
   - `MATRA_POS_RIGHT` = `POS_AFTER_POST` = Right-side matras are
      ordered after all post-base consonant forms.
@@ -1245,7 +1245,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra position](/images/oriya/oriya-matra-position.png)
 
@@ -1255,7 +1255,7 @@ the base consonant, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Oriya incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant.
+base consonant or syllable base.
 
   - If the syllable does not have a base consonant (such as a syllable
     based on an independent vowel), then the final "Reph" position is
@@ -1328,7 +1328,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonants or
+syllable bases that
 are adjacent to below-base-consonant forms like "Raphala" with
 contextual ligatures.
 
@@ -1430,7 +1431,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<orya>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1453,7 +1454,7 @@ the `<orya>` script tag and it is known that the font in use supports
 only the `<ory2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

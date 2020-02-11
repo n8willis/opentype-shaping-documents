@@ -300,7 +300,7 @@ characteristics include:
      consonant in `<sinh>` text differs from that used by other
      `BASE_POS_LAST` scripts.
 
-  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the base consonant.
+  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the base consonant or syllable base.
 
   - `REPH_MODE_EXPLICIT` = "Reph" is formed by an initial "Ra,Halant,ZWJ" sequence.
 
@@ -785,7 +785,7 @@ matched later in the shaping process.
 
 #### 2.5: Pre-base consonants ####
 
-Fifth, consonants that occur before the base consonant must be tagged
+Fifth, consonants that occur before the base consonant or syllable base must be tagged
 with `POS_PREBASE_CONSONANT`.
 
 #### 2.6: Reph ####
@@ -802,9 +802,9 @@ Seventh, any non-base consonants that occur after a dependent vowel
 (matra) sign must be tagged with `POS_POSTBASE_CONSONANT`. 
 
 In Sinhala, the only consonants that can appear in this position are
-"Ra" and "Ya". A "Halant,ZWJ,Ya" sequence after the base consonant will take on
+"Ra" and "Ya". A "Halant,ZWJ,Ya" sequence after the base consonant or syllable base will take on
 the "Yansaya" form when the `vatu` feature is applied. A
-"Halant,ZWJ,Ra" sequence after the base consonant will take on 
+"Halant,ZWJ,Ra" sequence after the base consonant or syllable base will take on 
 the "Rakaaraansaya" form when the `vatu` feature is applied.
 
 ![Yansaya ligation](/images/sinhala/sinhala-vatu-va.png)
@@ -1057,7 +1057,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.png)
 
@@ -1066,7 +1066,7 @@ the base consonant, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Sinhala incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
-base consonant.
+base consonant or syllable base.
 
 
 ![Reph positioning](/images/sinhala/sinhala-reph-position.png)
@@ -1121,7 +1121,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 ![Above-base substitutions](/images/sinhala/sinhala-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants
+presentation forms. This usually includes replacing base consonants or
+syllable bases
 and attached below-base marks with contextual ligatures.
 
 ![Below-base substitutions](/images/sinhala/sinhala-blws.png)

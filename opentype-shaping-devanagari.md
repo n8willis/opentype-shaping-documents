@@ -408,7 +408,7 @@ mark-like forms.
     below-base form "Rakaar." 
 	
 	
-In addition, "Rra,Halant" sequences that precede the base consonant
+In addition, "Rra,Halant" sequences that precede the base consonant or syllable base
 may take on a form known as the "eyelash Ra." 
 
 > Note: In `<dev2>` text runs, this substitution is canonically
@@ -1096,7 +1096,7 @@ the shaping engine must test:
 ![Half-form formation](/images/devanagari/devanagari-half.png)
 
 In addition, the sequence "Rra,Halant" (occurring before the base
-consonant) will take on the "eyelash Ra" form. Because this
+consonant or syllable base) will take on the "eyelash Ra" form. Because this
 substitution is defined as the canonical half form of "Rra" in `<dev2>`, the
 shaping engine does not need to implement any special handling to
 support it. 
@@ -1194,7 +1194,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.png)
 
@@ -1255,7 +1255,7 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 ![Above-base substitutions](/images/devanagari/devanagari-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonants or syllable bases that
 are adjacent to the below-base-consonant form "Rakaar" with contextual
 ligatures.
 
@@ -1359,7 +1359,7 @@ characteristic — with a single exception made for non-syllable-initial
 In other words, a non-syllable-initial "Ra,Halant" sequence would
 trigger a below-base form substitution, but all other below-base form
 substitutions were applied only to consonants after the base
-consonant.
+consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1389,7 +1389,7 @@ the `<deva>` script tag and it is known that the font in use supports
 only the `<dev2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

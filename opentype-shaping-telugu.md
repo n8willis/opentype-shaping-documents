@@ -424,7 +424,7 @@ mark-like form.
     with a right-side mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_EXPLICIT` characteristic mentioned earlier.
-  - A post-base "Ra" is reordered to before the base consonant during
+  - A post-base "Ra" is reordered to before the base consonant or syllable base during
     the final-reordering stage of the shaping process. 
 
 "Reph" characters must be reordered after the syllable-identification
@@ -781,7 +781,7 @@ The algorithm for determining the base consonant is
   - The consonant stopped at will be the base consonant.
 
 Telugu includes a pre-base-reordering "Ra".  A "Halant,Ra" sequence
-after the base consonant will be reordered to a pre-base position
+after the base consonant or syllable base will be reordered to a pre-base position
 during the final-reordering stage.
 
 > Note: It is important to note that all consonants in Telugu have a
@@ -793,12 +793,12 @@ during the final-reordering stage.
 
 > Note: Because Telugu employs the `BLWF_MODE_POST_ONLY` shaping
 > characteristic, consonants with below-base special forms will occur
-> only after the base consonant. 
+> only after the base consonant or syllable base. 
 > 
 > During the base-consonant search, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. Step 2.5 below exists to ensure that
-> the "_consonant_,Halant" pattern preceding the base consonant in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 
@@ -896,12 +896,12 @@ because it is part of the general processing scheme for shaping Indic scripts.
 
 > Note: Because Telugu employs the `BLWF_MODE_POST_ONLY` shaping
 > characteristic, consonants with below-base special forms will occur
-> only after the base consonant. 
+> only after the base consonant or syllable base. 
 > 
 > During the base-consonant search in 2.1, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. The tagging is this step ensures that
-> the "_consonant_,Halant" pattern preceding the base consonant in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 #### 2.6: Reph ####
@@ -1175,7 +1175,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 
 #### 4.3: Reph ####
@@ -1215,7 +1215,7 @@ The algorithm for reordering "Ra" in this circumstance is:
   - Select the final position using [the same method](#42-pre-base-matras) as used for
     reordering a pre-base matra.
   - If the pre-base matra positioning algorithm cannot determine the final
-    position, place the "Ra" immediately before the base consonant.
+    position, place the "Ra" immediately before the base consonant or syllable base.
 
 
 #### 4.5: Initial matras ####

@@ -384,7 +384,7 @@ rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
 Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
+consonants that precede the base consonant or syllable base. Each of these
 other, pre-base consonants will be followed by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
@@ -890,7 +890,7 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 #### 2.7: Final consonants ####
 
 Seventh, all final consonants must be tagged. Consonants that occur
-after the base consonant _and_ after a dependent vowel (matra) sign
+after the base consonant or syllable base _and_ after a dependent vowel (matra) sign
 must be tagged with  `POS_FINAL_CONSONANT`.
 
 > Note: Final consonants occur only in Sinhala and should not be
@@ -1183,7 +1183,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.png)
 
@@ -1248,7 +1248,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 ![abvs feature application](/images/gujarati/gujarati-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonants or
+syllable bases that
 are adjacent to the below-base-consonant form "Rakaar" with contextual
 ligatures.
 
@@ -1346,7 +1347,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<gujr>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1370,7 +1371,7 @@ the `<gujr>` script tag and it is known that the font in use supports
 only the `<gjr2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

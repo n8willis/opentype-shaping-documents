@@ -428,15 +428,15 @@ rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
 Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
+consonants that precede the base consonant or syllable base. Each of these
 other, pre-base consonants will be followed by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
-combining with the base consonant (e.g., "_str_", "_pl_") but they
+combining with the base consonant or syllable base (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
 Gurmukhi also includes special consonants that can occur after the
-base consonant. These post-base consonants will also be separated from
-the base consonant by a "Halant" mark; the algorithm for correctly
+base consonant or syllable base. These post-base consonants will also be separated from
+the base consonant or syllable base by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
@@ -449,8 +449,8 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - A "Ra,Halant" sequence before the base consonant or a "Halant,Ra"
-    sequence after the base consonant may be replaced with a
+  - A "Ra,Halant" sequence before the base consonant or syllable base or a "Halant,Ra"
+    sequence after the base consonant or syllable base may be replaced with a
     below-base mark.
   
 > Note: "Reph" substitutions are rare in Gurmukhi text. `<gur2>` fonts may
@@ -824,11 +824,11 @@ Gurmukhi includes one post-base form:
 
 Gurmukhi includes three below-base consonant forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 Gurmukhi also includes the CONSONANT_MEDIAL subclass, used only for "Yakash"
@@ -925,11 +925,11 @@ that will become "Reph"s:
 
 Gurmukhi includes three below-base consonant forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 > Note: Because Gurmukhi employs the `BLWF_MODE_PRE_AND_POST` shaping
@@ -1098,11 +1098,11 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Gurmukhi includes three below-base consonant
 forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 Because Gurmukhi incorporates the `BLWF_MODE_PRE_AND_POST` shaping
@@ -1127,7 +1127,7 @@ characteristic.
 #### 3.9: half ####
 
 The `half` feature replaces "_Consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs. There are
+base consonant or syllable base with "half forms" of the consonant glyphs. There are
 three exceptions to the default behavior, for which the shaping engine
 must test:
 
@@ -1248,7 +1248,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.png)
 
@@ -1257,7 +1257,7 @@ the base consonant, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Gurmukhi incorporates the `REPH_POS_BEFORE_SUBJOINED`
 shaping characteristic, this final position is immediately after the
-base consonant and before any subjoined (below-base consonant or below-base
+base consonant or syllable base and before any subjoined (below-base consonant or below-base
 dependent vowel) forms.
 
   - If the syllable does not have a base consonant (such as a syllable
@@ -1322,7 +1322,7 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonant or syllable bases that
 are followed by below-base-consonant forms (like those of "Ra", "Ha",
 "Va", or "Yakash") with contextual ligatures.
 
@@ -1421,7 +1421,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<guru>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1444,7 +1444,7 @@ the `<guru>` script tag and it is known that the font in use supports
 only the `<gur2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

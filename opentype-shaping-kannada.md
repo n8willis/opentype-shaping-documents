@@ -786,12 +786,12 @@ The algorithm for determining the base consonant is
 
 > Note: Because Kannada employs the `BLWF_MODE_POST_ONLY` shaping
 > characteristic, consonants with below-base special forms will occur
-> only after the base consonant. 
+> only after the base consonant or syllable base. 
 > 
 > During the base-consonant search, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. Step 2.5 below exists to ensure that
-> the "_consonant_,Halant" pattern preceding the base consonant in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 #### 2.2: Matra decomposition ####
@@ -910,12 +910,12 @@ because it is part of the general processing scheme for shaping Indic scripts.
 
 > Note: Because Kannada employs the `BLWF_MODE_POST_ONLY` shaping
 > characteristic, consonants with below-base special forms will occur
-> only after the base consonant. 
+> only after the base consonant or syllable base. 
 > 
 > During the base-consonant search in 2.1, therefore, all of these below-base
 > form sequences will be encountered and tagged correctly as
 > "Halant,_consonant_" patterns. The tagging is this step ensures that
-> the "_consonant_,Halant" pattern preceding the base consonant in
+> the "_consonant_,Halant" pattern preceding the base consonant or syllable base in
 > for below-base forms in other Indic scripts will also be tagged correctly.
 
 #### 2.6: Reph ####
@@ -1193,7 +1193,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 Kannada does not use pre-base matras, so this step will
 involve no work when processing `<knd2>` text. It is included here in

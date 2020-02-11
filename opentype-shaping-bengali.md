@@ -162,7 +162,7 @@ the shaping process.
 
 There are four basic _mark-placement subclasses_ for dependent vowels
 (matras). Each corresponds to the visual position of the matra with
-respect to the base consonant to which it is attached:
+respect to the base consonant or syllable base to which it is attached:
 
   - `LEFT_POSITION` matras are positioned to the left of the syllable base.
   - `RIGHT_POSITION` matras are positioned to the right of the syllable base.
@@ -418,16 +418,16 @@ carry no vowel. Instead, they affect syllable pronunciation by
 combining with the base consonant (e.g., "_thr_" or "_spl_").
 
 Three consonants in Bengali are allowed to occur after the base
-consonant: "Ya", "Ba", and "Ra". When these consonants occur after the
-base consonant, they take on special forms.
+consonant or syllable base: "Ya", "Ba", and "Ra". When these consonants occur after the
+base consonant or syllable base, they take on special forms.
 
-A "Ya" after the base consonant takes on the "Yaphala" form.
+A "Ya" after the base consonant or syllable base takes on the "Yaphala" form.
 
 > Note: some fonts may also implement the "Yaphala" form for a
 > post-base "Yya" (`U+09DF`).
 
-A "Ba" after the base consonants takes on the below-base "Baphala"
-form. A "Ba" before the base consonant will take on the below-base
+A "Ba" after the base consonant or syllable bases takes on the below-base "Baphala"
+form. A "Ba" before the base consonant or syllable base will take on the below-base
 "Baphala" form unless it is the first pre-base consonant in the syllable.
 
 As with other Indic scripts, the consonant "Ra" receives special
@@ -439,8 +439,8 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - A non-initial "Ra" before the base consonant or a "Ra" after the
-    base consonant takes on the below-base form "Raphala."
+  - A non-initial "Ra" before the base consonant or syllable base or a "Ra" after the
+    base consonant or syllable base takes on the below-base form "Raphala."
   
 "Reph" characters must be reordered after the
 syllable-identification stage is complete. 
@@ -840,7 +840,7 @@ Bengali includes two below-base consonant forms:
 > During the base-consonant search, only the "Halant,_consonant_" 
 > pattern following the syllable base for these below-base forms will
 > be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
-> pattern preceding the base consonant for these below-base forms will
+> pattern preceding the base consonant or syllable base for these below-base forms will
 > also be tagged correctly.
 
 
@@ -1237,7 +1237,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra reordering](/images/bengali/bengali-matra-position.png)
 
@@ -1421,7 +1421,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<beng>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1444,7 +1444,7 @@ the `<beng>` script tag and it is known that the font in use supports
 only the `<bng2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

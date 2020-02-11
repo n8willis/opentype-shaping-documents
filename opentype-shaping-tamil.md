@@ -1185,7 +1185,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/tamil/tamil-matra-position.png)
 
@@ -1265,7 +1265,8 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 ![abvs feature application](/images/tamil/tamil-abvs.png)
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonants or
+syllable bases that
 are adjacent to the below-base marks with contextually appropriate
 ligatures.
 
@@ -1360,7 +1361,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<taml>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 
 ### Advice for handling fonts with `<taml>` features only ###
@@ -1378,7 +1379,7 @@ the `<taml>` script tag and it is known that the font in use supports
 only the `<tml2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

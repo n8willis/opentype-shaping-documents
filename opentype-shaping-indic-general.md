@@ -332,7 +332,7 @@ syllable are reordered during the shaping process,
 	POS_PREBASE_MATRA
 	POS_PREBASE_CONSONANT
 
-	POS_BASE_CONSONANT
+	POS_SYLLABLE_BASE
 	POS_AFTER_MAIN
 
 	POS_ABOVEBASE_CONSONANT
@@ -355,17 +355,17 @@ could reduce an implementation's code size and complexity.
 
 The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
 vowels (matras) and consonants positioned before the base
-consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
-consonant (`POS_BASE_CONSONANT`), above-base consonants
+consonant or syllable base (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
+consonant or syllable base (`POS_SYLLABLE_BASE`), above-base consonants
 (`POS_ABOVEBASE_CONSONANT`), below-base consonants
-(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
+(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant or syllable base
 (`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
 and syllable-modifying or Vedic signs (`POS_SMVD`).
 
 In addition, several secondary positions are defined to handle various
 reordering rules that deal with relative, rather than absolute,
 positioning. `POS_AFTER_MAIN` means that a character must be
-positioned immediately after the base consonant. `POS_BEFORE_SUBJOINED`
+positioned immediately after the base consonant or syllable base. `POS_BEFORE_SUBJOINED`
 and `POS_AFTER_SUBJOINED` mean that a character must be positioned
 before or after any below-base consonants, respectively. Similarly,
 `POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
@@ -393,8 +393,8 @@ track. These include:
   - How "Reph" is encoded or requested in a syllable.
 	
   - Whether the below-base forms feature is applied only to consonants
-    after the base consonant, or to consonants before the base
-    consonant and those after the base consonant.
+    after the base consonant or syllable base, or to consonants before the base
+    consonant and those after the base consonant or syllable base.
 	
   - The ordering positions for dependent vowels
     (matras). Specifically, the ordering for left-side, right-side, 
@@ -498,7 +498,7 @@ table:
   - immediately before the first subjoined (below-base) consonant, in
     the ordering position `POS_BEFORE_SUBJOINED`.
 	
-  - immediately after the base consonant, in the ordering position `POS_AFTER_MAIN`.
+  - immediately after the base consonant or syllable base, in the ordering position `POS_AFTER_MAIN`.
 	
   - immediately after the last subjoined (below-base) consonant, in
     the ordering position `POS_AFTER_SUBJOINED`.
@@ -582,10 +582,10 @@ table:
 
 Below-base consonant forms (the `blwf` feature) may be applied:
 
-  - Only to consonants after the base consonant. This is designated
+  - Only to consonants after the base consonant or syllable base. This is designated
     `BLWF_MODE_POST_ONLY`.
 	
-  - To consonants occurring before or after the base consonant. This is
+  - To consonants occurring before or after the base consonant or syllable base. This is
     designated `BLWF_MODE_PRE_AND_POST`.
 
 
@@ -660,7 +660,7 @@ Above-base matras may be positioned:
   - immediately before the first subjoined (below-base) consonant, in
     the ordering position `POS_BEFORE_SUBJOINED`.
 	
-  - immediately after the base consonant, in the ordering position `POS_AFTER_MAIN`.
+  - immediately after the base consonant or syllable base, in the ordering position `POS_AFTER_MAIN`.
 	
   - immediately after the last subjoined (below-base) consonant, in
     the ordering position `POS_AFTER_SUBJOINED`.
@@ -746,8 +746,8 @@ combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
 Some Indic scripts also include special consonants that can occur after the
-base consonant. These post-base consonants and final consonants will
-also be separated from the base consonant by a "Halant" mark; the
+base consonant or syllable base. These post-base consonants and final consonants will
+also be separated from the base consonant or syllable base by a "Halant" mark; the
 algorithm for correctly identifying the base consonant includes a test
 to recognize these sequences and not mis-identify the base consonant.
 
@@ -1314,7 +1314,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 #### 4.3: Reph ####
 
@@ -1400,14 +1400,14 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, all scripts
 were treated as if they followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
 stage. For `<deva>`, `<beng>`, `<gujr>`, `<guru>`, `<knda>`,
 `<orya>`, and `<telu>` text, the left-side matra was always positioned
 at the beginning of the syllable. For `<mlym>` and `<taml>` text, the
-left-side matra was positioned immediately before the base consonant.
+left-side matra was positioned immediately before the base consonant or syllable base.
 
 
 ### Advice for handling fonts with old Indic features only ###

@@ -432,7 +432,7 @@ combining with the base consonant (e.g., "_thr_" or "_spl_").
 
 Three consonants in Malayalam are allowed to occur in post-base
 position: "Ya", "Va", and "Ra". The post-base "Ra" is reordered to
-before the base consonant during the final-reordering stage of the
+before the base consonant or syllable base during the final-reordering stage of the
 shaping process. The post-base forms of "Ya" and "Va"
 remain in post-base position.
 
@@ -703,10 +703,10 @@ Malayalam.
 
 The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
 vowels (matras) and consonants positioned before the base
-consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
-consonant (`POS_BASE_CONSONANT`), above-base consonants
+consonant or syllable base (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
+consonant or syllable base (`POS_SYLLABLE_BASE`), above-base consonants
 (`POS_ABOVEBASE_CONSONANT`), below-base consonants
-(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
+(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant or syllable base
 (`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
 and syllable-modifying or Vedic signs (`POS_SMVD`).
 
@@ -808,7 +808,7 @@ The algorithm for determining the base consonant is
   - The consonant stopped at will be the base consonant.
 
 Malayalam includes a pre-base-reordering "Ra".  A "Halant,Ra" sequence
-after the base consonant will be reordered to a pre-base position
+after the base consonant or syllable base will be reordered to a pre-base position
 during the final-reordering stage.
 
 Malayalam includes two consonants that can take on
@@ -821,8 +821,8 @@ post-base form: "Ya" and Va".
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant) and "La,Halant" (before the
-    base consonant) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
+    base consonant or syllable base) take on a below-base form.
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
@@ -919,8 +919,8 @@ that will become "Reph"s:
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant) and "La,Halant" (before the
-    base consonant) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
+    base consonant or syllable base) take on a below-base form.
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
@@ -1253,7 +1253,7 @@ position is defined as:
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant, and all half forms.
+the base consonant or syllable base, and all half forms.
 
 ![Matra positioning](/images/malayalam/malayalam-matra-position.png)
 
@@ -1296,7 +1296,7 @@ The algorithm for reordering "Ra" in this circumstance is:
   - Select the final position using [the same method](#42-pre-base-matras) as used for
     reordering a pre-base matra.
   - If the pre-base matra positioning algorithm cannot determine the final
-    position, place the "Ra" immediately before the base consonant.
+    position, place the "Ra" immediately before the base consonant or syllable base.
 
 ![Pre-base-reordering consonant positioning](/images/malayalam/malayalam-pref-position.png)
 
@@ -1337,7 +1337,8 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonants or
+syllable bases that
 are adjacent to the below-base-consonant form of "La" with contextual ligatures.
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1436,7 +1437,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<mlym>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1460,7 +1461,7 @@ the `<mlym>` script tag and it is known that the font in use supports
 only the `<mlm2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
