@@ -75,6 +75,11 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
+Syllables may also begin with an **indepedent vowel** instead of a
+consonant. In these syllables, the independent vowel is rendered in
+full-letter form, not as a matra, and the independent vowel serves as the
+syllable base, similar to a base consonant.
+
 Where possible, using the standard terminology is preferred, as the
 use of a language-specific term necessitates choosing one language
 over all of the others that share a common script.
@@ -181,12 +186,12 @@ the shaping process.
 
 There are four basic _mark-placement subclasses_ for dependent vowels
 (matras). Each corresponds to the visual position of the matra with
-respect to the base consonant to which it is attached:
+respect to the syllable base to which it is attached:
 
-  - `LEFT_POSITION` matras are positioned to the left of the base consonant.
-  - `RIGHT_POSITION` matras are positioned to the right of the base consonant.
-  - `TOP_POSITION` matras are positioned above the base consonant.
-  - `BOTTOM_POSITION` matras are positioned below base consonant.
+  - `LEFT_POSITION` matras are positioned to the left of the syllable base.
+  - `RIGHT_POSITION` matras are positioned to the right of the syllable base.
+  - `TOP_POSITION` matras are positioned above the syllable base.
+  - `BOTTOM_POSITION` matras are positioned below syllable base.
   
 These positions may also be referred to elsewhere in shaping documents as:
 
@@ -334,7 +339,7 @@ track. These include:
     a specific, implicit sequence.
 	
   - Whether the below-base forms feature is applied only to consonants
-    before the base consonant, only to consonants after the base
+    before the syllable base, only to consonants after the base
     consonant, or to both.
 	
   - The ordering positions for dependent vowels
@@ -386,13 +391,36 @@ begin with either a consonant or an independent vowel.
 
 If the syllable begins with a consonant, then the consonant that
 provides the vowel sound is referred to as the "base" consonant. If
-the syllable begins with an independent vowel, that vowel is the
-syllable's only vowel sound and, by definition, there is no "base"
-consonant. 
+the syllable begins with an independent vowel, that independent vowel
+is the syllable's only vowel sound and serves as the "base". 
 
 > Note: A consonant that is not accompanied by a dependent vowel (matra) sign
 > carries the script's inherent vowel sound. This vowel sound is changed
 > by a dependent vowel (matra) sign following the consonant.
+
+From the shaping engine's perspective, the main distinction between a
+syllable with a base consonant and a syllable with an
+independent-vowel base is that a syllable with an independent-vowel
+base is less likely to include additional consonants in special forms
+and less likely to include depedendent vowel signs
+(matras). Therefore, in the common case, vowel-based syllables may
+involve less reordering, substitution feature applications, and other
+processing than consonant-based syllables.
+
+In some languages and orthographies, vowel-based syllables are
+not permitted to include additional consonants or matras, and certain
+GSUB substitution features do not occur. However, there are often
+known exceptions, and real-world text makes no such guarantees. 
+
+> Note: Shaping engines may choose to treat independent-vowel bases 
+> like base consonants for the sake of simplicity or code
+> reuse.
+>
+> However, implementations that take this approach should note
+> that removing the distinction between base consonants and
+> independent-vowel bases entirely may have unintended
+> consequences. Making guarantees about the correctness of the results
+> or about language-specific tests is out of scope for this document.
 
 Generally speaking, the base consonant is the final consonant of the
 syllable and its vowel sound designates the end of the syllable. This
@@ -400,15 +428,15 @@ rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
 Valid consonant-based syllables may include one or more additional 
-consonants that precede the base consonant. Each of these
+consonants that precede the base consonant or syllable base. Each of these
 other, pre-base consonants will be followed by the "Halant" mark, which
 indicates that they carry no vowel. They affect pronunciation by
-combining with the base consonant (e.g., "_str_", "_pl_") but they
+combining with the base consonant or syllable base (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
 Gurmukhi also includes special consonants that can occur after the
-base consonant. These post-base consonants will also be separated from
-the base consonant by a "Halant" mark; the algorithm for correctly
+base consonant or syllable base. These post-base consonants will also be separated from
+the base consonant or syllable base by a "Halant" mark; the algorithm for correctly
 identifying the base consonant includes a test to recognize these sequences
 and not mis-identify the base consonant.
 
@@ -421,8 +449,8 @@ mark-like forms.
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
 
-  - A "Ra,Halant" sequence before the base consonant or a "Halant,Ra"
-    sequence after the base consonant may be replaced with a
+  - A "Ra,Halant" sequence before the base consonant or syllable base or a "Halant,Ra"
+    sequence after the base consonant or syllable base may be replaced with a
     below-base mark.
   
 > Note: "Reph" substitutions are rare in Gurmukhi text. `<gur2>` fonts may
@@ -489,8 +517,7 @@ _placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
 _dottedcircle_	= `DOTTED_CIRCLE`
 _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
-_symbol_	= `SYMBOL`
-_avagraha_	= `AVAGRAHA`
+_symbol_	= `SYMBOL` | `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
 _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 ```
@@ -507,6 +534,12 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > identification class, and that the other "combining consonant"
 > cantillation marks in the Devanagari Extended block do not belong to
 > the _consonant_ identification class.
+
+> Note: The _placeholder_ identification class includes codepoints
+> that are often used in place of vowels or consonants when a document
+> needs to display a matra, mark, or special form in isolation or
+> in another context beyond a standard syllable. Examples include
+> hyphens and non-breaking spaces.
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -527,7 +560,7 @@ CN		= C _zwj_? _nukta_?
 FORCED_RAKAR	= _zwj_ _halant_ _zwj_ _ra_
 S	= _symbol_ _nukta_?
 MATRA_GROUP	= Z{0,3} _matra_ _nukta_? (_halant_ | FORCED_RAKAR)?
-SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _avagraha_{0,3} _vedicsign_{0,2}
+SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _vedicsign_{0,3}
 HALANT_GROUP	= Z? _halant_ (_zwj_ _nukta_?)?
 FINAL_HALANT_GROUP	= HALANT_GROUP | (_halant_ _zwnj_)
 MEDIAL_GROUP	= _consonantmedial_?
@@ -649,7 +682,7 @@ The final sort order of the ordering categories should be:
 	POS_PREBASE_MATRA
 	POS_PREBASE_CONSONANT
 
-	POS_BASE_CONSONANT
+	POS_SYLLABLE_BASE
 	POS_AFTER_MAIN
 
 	POS_ABOVEBASE_CONSONANT
@@ -671,19 +704,21 @@ which a codepoint might be reordered, across all of the Indic
 scripts. It includes some ordering categories not utilized in
 Gurmukhi. 
 
-The basic positions (left to right) are "Reph" (`POS_RA_TO_BECOME_REPH`), dependent
-vowels (matras) and consonants positioned before the base
-consonant (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base
-consonant (`POS_BASE_CONSONANT`), above-base consonants
+The basic positions (left to right) are "Reph"
+(`POS_RA_TO_BECOME_REPH`), dependent vowels (matras) and consonants
+positioned before the base consonant or syllable base
+(`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base consonant
+or syllable base (`POS_SYLLABLE_BASE`), above-base consonants
 (`POS_ABOVEBASE_CONSONANT`), below-base consonants
-(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base consonant
-(`POS_POSTBASE_CONSONANT`), syllable-final consonants (`POS_FINAL_CONSONANT`),
-and syllable-modifying or Vedic signs (`POS_SMVD`).
+(`POS_BELOWBASE_CONSONANT`), consonants positioned after the base
+consonant or syllable base (`POS_POSTBASE_CONSONANT`), syllable-final
+consonants (`POS_FINAL_CONSONANT`), and syllable-modifying or Vedic
+signs (`POS_SMVD`).
 
 In addition, several secondary positions are defined to handle various
 reordering rules that deal with relative, rather than absolute,
 positioning. `POS_AFTER_MAIN` means that a character must be
-positioned immediately after the base consonant. `POS_BEFORE_SUBJOINED`
+positioned immediately after the syllable base. `POS_BEFORE_SUBJOINED`
 and `POS_AFTER_SUBJOINED` mean that a character must be positioned
 before or after any below-base consonants, respectively. Similarly,
 `POS_BEFORE_POST` and `POS_AFTER_POST` mean that a character must be
@@ -697,7 +732,29 @@ For a definition of the "base" consonant, refer to step 2.1, which follows.
 #### 2.1: Base consonant ####
 
 The first step is to determine the base consonant of the syllable, if
-there is one, and tag it as `POS_BASE_CONSONANT`.
+there is one, and tag it as `POS_SYLLABLE_BASE`.
+
+In a syllable that begins with an independent vowel, the independent
+vowel will always serve as the syllable base, and it should be tagged
+as `POS_SYLLABLE_BASE`. The shaping engine can then proceed to step 2.
+
+In a standalone sequence or other syllable that begins with a placeholder
+or dotted circle, the placeholder or dotted circle will always serve
+as the syllable base, and it should be tagged as
+`POS_SYLLABLE_BASE`. The shaping engine can then proceed to step 2.
+
+In a syllable that begins with a consonant, the shaping engine must
+determine the base consonant by a script-specific algorithm.
+
+> Note: Shaping engines may choose to treat independent-vowel bases 
+> like base consonants for the sake of simplicity or code
+> reuse.
+>
+> However, implementations that take this approach should note
+> that removing the distinction between base consonants and
+> independent-vowel bases entirely may have unintended
+> consequences. Making guarantees about the correctness of the results
+> or about language-specific tests is out of scope for this document.
 
 The base consonant is defined as the consonant in a consonant-based
 syllable that carries the syllable's vowel sound. That vowel sound
@@ -705,21 +762,15 @@ will either be provided by the script's inherent vowel (in which case
 it is not written with a separate character) or the sound will be designated
 by the addition of a dependent-vowel (matra) sign.
 
-Vowel-based syllables, standalone-sequences, and broken text runs will
-not have base consonants.
 
-> Note: For consistency with consonant-based syllables, shaping
-> engines may choose to treat the independent vowel of a vowel-based
-> syllable as a "pseudo-base" or surrogate base consonant.
->
-> Because vowel-based syllables will not include consonants and
+<!--- > Because vowel-based syllables will not include consonants and
 > because independent vowels do not take on special forms or require
 > reordering, many of the steps that follow will involve no
 > work for a vowel-based syllable. However, vowel-based syllables must
 > still be sorted and their marks handled correctly, and GSUB and GPOS
 > lookups must be applied. These steps of the shaping process follow
 > the same rules that are employed for consonant-based syllables.
-
+--->
 
 While performing the base-consonant search, shaping engines may
 also encounter special-form consonants, including below-base
@@ -727,7 +778,7 @@ consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
 
-Any pre-base-reordering consonant (such as a pre-base-reodering "Ra")
+Any pre-base-reordering consonant (such as a pre-base-reordering "Ra")
 encountered during the base-consonant search must be tagged
 `POS_POSTBASE_CONSONANT`. 
  
@@ -772,11 +823,11 @@ Gurmukhi includes one post-base form:
 
 Gurmukhi includes three below-base consonant forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 Gurmukhi also includes the CONSONANT_MEDIAL subclass, used only for "Yakash"
@@ -785,12 +836,12 @@ be tagged as `POS_BELOWBASE_CONSONANT`.
 
 > Note: Because Gurmukhi employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
-> before or after the base consonant. 
+> before or after the syllable base. 
 > 
 > During the base-consonant search, only the "Halant,_consonant_" 
-> pattern following the base consonant for these below-base forms will
+> pattern following the syllable base for these below-base forms will
 > be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
-> pattern preceding the base consonant for these below-base forms will
+> pattern preceding the syllable base for these below-base forms will
 > also be tagged correctly.
 
 
@@ -850,10 +901,9 @@ matched later in the shaping process.
 
 #### 2.5: Pre-base consonants ####
 
-Fifth, consonants that occur before the base consonant must be tagged
-with `POS_PREBASE_CONSONANT`.
-
- Excluding initial "Ra,Halant" sequences that will become "Reph"s:
+Fifth, consonants that occur before the syllable base must be tagged
+with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
+that will become "Reph"s: 
 
   - If the consonant has a below-base form, tag it as
           `POS_BELOWBASE_CONSONANT`. 
@@ -874,22 +924,22 @@ with `POS_PREBASE_CONSONANT`.
 
 Gurmukhi includes three below-base consonant forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 > Note: Because Gurmukhi employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
-> before or after the base consonant. 
+> before or after the syllable base. 
 > 
 > During the base-consonant search in 2.1, any instances of the
-> "Halant,_consonant_"  pattern following the base consonant for these
+> "Halant,_consonant_"  pattern following the syllable base for these
 > below-base forms will be encountered. The tagging in this step
-> ensures that the "_consonant_,Halant" pattern preceding the base
-> consonant for these below-base forms will also be tagged correctly.
+> ensures that the "_consonant_,Halant" pattern preceding the syllable
+> base for these below-base forms will also be tagged correctly.
 
 
 #### 2.6: Reph ####
@@ -908,7 +958,7 @@ Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged wit
 #### 2.7: Final consonants ####
 
 Seventh, all final consonants must be tagged. Consonants that occur
-after the base consonant _and_ after a dependent vowel (matra) sign
+after the syllable base _and_ after a dependent vowel (matra) sign
 must be tagged with  `POS_FINAL_CONSONANT`.
 
 > Note: Final consonants occur only in Sinhala and should not be
@@ -929,29 +979,29 @@ Marks in the `BINDU`, `VISARGA`, `AVAGRAHA`, `CANTILLATION`,
 be tagged with `POS_SMVD`. 
 
 All "Nukta"s must be tagged with the same positioning tag as the
-preceding consonant.
+preceding consonant, independent vowel, placeholder, or dotted circle.
 
 All remaining marks (not in the `POS_SMVD` category and not "Nukta"s)
 must be tagged with the same positioning tag as the closest non-mark
 character the mark has affinity with, so that they move together 
 during the sorting step.
 
-There are two possible cases: those marks before the base consonant
-and those marks after the base consonant.
+There are two possible cases: those marks before the syllable base
+and those marks after the syllable base.
 
   1. Initially, all remaining marks should be tagged with the same
   positioning tag as the closest preceding consonant.
 
-  2. For each consonant after the base consonant (such as post-base
+  2. For each consonant after the syllable base (such as post-base
   consonants, below-base consonants, or final consonants), all
   remaining marks located between that current consonant and any
   previous consonant should be tagged with the same positioning tag as
   the current (later) consonant.
   
-In other words, all consonants preceding the base consonant "own" the
-marks that follow them, while all consonants after the base consonant
+In other words, all consonants preceding the syllable base "own" the
+marks that follow them, while all consonants after the syllable base
 "own" the marks that come before them. When a syllable does not have
-any consonants after the base consonant, the base consonant should
+any consonants after the syllable base, the syllable base should
 "own" all the marks that follow it.
 
 With these steps completed, the syllable can be sorted into the final sort order.
@@ -1047,11 +1097,11 @@ The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Gurmukhi includes three below-base consonant
 forms:
 
-  - "Halant,Ra" (after the base consonant) and "Ra,Halant" (in a
+  - "Halant,Ra" (after the base consonant or syllable base) and "Ra,Halant" (in a
     non-syllable-initial position) take on a below-base form.
-  - "Halant,Ha" (after the base consonant) and "Ha,Halant" (in a
+  - "Halant,Ha" (after the base consonant or syllable base) and "Ha,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
-  - "Halant,Va" (after the base consonant) and "Va,Halant" (in a
+  - "Halant,Va" (after the base consonant or syllable base) and "Va,Halant" (in a
     non-syllable-initial position) take on a below-base form. 
 
 Because Gurmukhi incorporates the `BLWF_MODE_PRE_AND_POST` shaping
@@ -1076,7 +1126,7 @@ characteristic.
 #### 3.9: half ####
 
 The `half` feature replaces "_Consonant_,Halant" sequences before the
-base consonant with "half forms" of the consonant glyphs. There are
+base consonant or syllable base with "half forms" of the consonant glyphs. There are
 three exceptions to the default behavior, for which the shaping engine
 must test:
 
@@ -1145,10 +1195,10 @@ must be applied after the `half` feature.
 
 The final reordering stage repositions marks, dependent-vowel (matra)
 signs, and "Reph" glyphs to the appropriate location with respect to
-the base consonant. Because multiple substitutions may have occurred
-during the application of the basic-shaping features in the preceding
-stage, these repositioning moves could not be performed during the
-initial reordering stage.
+the base consonant or syllable base. Because multiple substitutions
+may have occurred during the application of the basic-shaping features
+in the preceding stage, these repositioning moves could not be
+performed during the initial reordering stage.
 
 Like the initial reordering stage, the steps involved in this stage
 occur on a per-syllable basis.
@@ -1162,16 +1212,24 @@ because it was almost certainly lost in the preceding GSUB stage.
 #### 4.1: Base consonant ####
 
 The final reordering stage, like the initial reordering stage, begins
-with determining the base consonant of each syllable, following the
+with determining the syllable base of each syllable, following the
 same algorithm used in stage 2, step 1.
 
-The codepoint of the underlying base consonant will not change between
-the search performed in stage 2, step 1, and the search repeated
-here. However, the application of GSUB shaping features in stage 3
-means that several ligation and many-to-one substitutions may have
-taken place. The final glyph produced by that process may, therefore,
-be a conjunct or ligature form — in most cases, such a glyph will not
-have an assigned Unicode codepoint.
+In a syllable that begins with an independent vowel, the independent
+vowel will always serve as the syllable base. In a standalone sequence or
+other syllable that begins with a placeholder or a dotted circle, the
+placeholder or dotted circle will always serve as the syllable base.
+
+In a syllable that begins with a consonant, the shaping engine must
+repeat the base-consonant search algorithm used in stage 2, step 1.
+
+The codepoint of the underlying base consonant or syllable base will
+not change between the search performed in stage 2, step 1, and the
+search repeated here. However, the application of GSUB shaping
+features in stage 3 means that several ligation and many-to-one
+substitutions may have taken place. The final glyph produced by that
+process may, therefore, be a conjunct or ligature form — in most
+cases, such a glyph will not have an assigned Unicode codepoint.
    
 #### 4.2: Pre-base matras ####
 
@@ -1188,8 +1246,8 @@ position is defined as:
 
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
-consonant, all conjuncts or ligatures that contains the base
-consonant, and all half forms.
+consonant or syllable base, all conjuncts or ligatures that contain
+the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.png)
 
@@ -1198,7 +1256,7 @@ consonant, and all half forms.
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Gurmukhi incorporates the `REPH_POS_BEFORE_SUBJOINED`
 shaping characteristic, this final position is defined to be
-immediately after the base consonant and before any subjoined
+immediately after the syllable base and before any subjoined
 (below-base consonant or below-base dependent vowel) forms.
 
 The algorithm for finding the final "Reph" position is
@@ -1255,7 +1313,7 @@ left of "Halant", to allow for potential matching with `abvs` or
 #### 4.4: Pre-base-reordering consonants ####
 
 Any pre-base-reordering consonants must be moved to immediately before
-the base consonant.
+the base consonant or syllable base.
   
 Gurmukhi does not use pre-base-reordering consonants, so this step will
 involve no work when processing `<gur2>` text. It is included here in order
@@ -1299,7 +1357,7 @@ above-base marks or contextually appropriate mark-and-base ligatures.
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
-presentation forms. This usually includes replacing base consonants that
+presentation forms. This usually includes replacing base consonant or syllable bases that
 are followed by below-base-consonant forms (like those of "Ra", "Ha",
 "Va", or "Yakash") with contextual ligatures.
 
@@ -1398,7 +1456,7 @@ The old Indic shaping model also did not recognize the
 `BLWF_MODE_PRE_AND_POST` shaping characteristic. Instead, `<guru>`
 was treated as if it followed the `BLWF_MODE_POST_ONLY`
 characteristic. In other words, below-base form substitutions were
-only applied to consonants after the base consonant.
+only applied to consonants after the base consonant or syllable base.
 
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
@@ -1421,7 +1479,7 @@ the `<guru>` script tag and it is known that the font in use supports
 only the `<gur2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant when it is
+below-base consonants occuring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
