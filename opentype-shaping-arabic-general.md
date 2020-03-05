@@ -233,7 +233,7 @@ preceding character (if any).
 > letter. The letters at word boundaries will, naturally, take on
 > initial and final forms, but initial and final forms of letters also
 > occur regularly within words, when the letter in question is
-> adjacent to a letter than does not form joins.
+> adjacent to a letter that does not form joins.
 
 This computation starts from the first letter of the word, temporarily
 tagging the letter for `isol` substitution. If the first
