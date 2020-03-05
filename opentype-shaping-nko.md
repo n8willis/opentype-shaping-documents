@@ -1,6 +1,6 @@
 # N'Ko script shaping in OpenType #
 
-This document the general shaping procedure shared by all 
+This document details the general shaping procedure shared by all
 N'Ko script styles, and defines the common pieces that style-specific
 implementations share. 
 

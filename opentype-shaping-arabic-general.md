@@ -1,6 +1,6 @@
 # Arabic-style shaping in OpenType #
 
-This document the general shaping procedure shared by Arabic, N'Ko,
+This document details the general shaping procedure shared by Arabic, N'Ko,
 Syriac, and Mongolian. 
 
 
