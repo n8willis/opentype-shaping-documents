@@ -618,9 +618,11 @@ application-level user interfaces.
 #### 5.3 cswh ####
 
 The `cswh` feature substitutes contextual swash variants of
-glyphs. <!---For example, the active font might substitute a longer variant
+glyphs. 
+
+<!--- For example, the active font might substitute a longer variant
 of "Noon" when a certain number of subsequent glyphs do not descend
-below the baseline.--->
+below the baseline. --->
 
 
 #### 5.4 mset ####
