@@ -1323,7 +1323,7 @@ Reph-position shaping characteristic, and is conditional upon the
 presence or absence of certain characters (such as post-base
 consonants or "matra,Halant" sequences) in the syllable. 
 
-The algorithm for determining the final Reph position has seven steps.
+The full algorithm for determining the final Reph position has seven steps.
 
 (a) If the script uses Reph-position rule `REPH_POS_AFTER_POST`, jump
 immediately to step (e). Otherwise, proceed to step (b).
@@ -1353,8 +1353,10 @@ Reph-position rule, proceed to step (e).
 
 (e) Move the "Reph" to a position immediately before the first
 post-base matra, syllable modifier sign or Vedic sign that has a
-reordering class after the intended Reph position, then proceed to
-step (mH). If no such matra or sign is found, proceed to step (f).
+reordering class after the intended Reph position in the syllable sort
+order (as listed in [stage 2](#2-initial-reordering)). This will be
+the final "Reph" position. , then proceed to step (mH). If no such
+matra or sign is found, proceed to step (f).
 
 (f) Move the "Reph" to the end of the syllable. 
 

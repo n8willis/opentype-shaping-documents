@@ -1283,8 +1283,15 @@ The algorithm for finding the final "Reph" position is
   - If no such non-ligated post-base consonant is found in the
     previous step, move the "Reph" to the position immediately before
     the first post-base matra, syllable modifier, or Vedic sign that
-    has a positioning tag of `POS_BEFORE_POST` or later. This
-    will be the final "Reph" position.
+    has a positioning tag after the script's "Reph" position in the
+    syllable sort order (as listed in [stage
+    2](#2-initial-reordering)). This will be the final "Reph"
+    position. 
+	> Note: Because Bengali incorporates the
+    > `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this means
+    > any positioning tag of `POS_BEFORE_POST` or later,
+    > although a post-base matra, syllable modifier, or Vedic sign
+    > would not typically be tagged with `POS_BEFORE_POST`.
   - If no other location has been located in the previous steps, move
     the "Reph" to the end of the syllable.
 

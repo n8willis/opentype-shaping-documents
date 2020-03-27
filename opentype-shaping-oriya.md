@@ -1256,18 +1256,24 @@ position. Because Oriya incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
 syllable base.
 
-  - If the syllable does not have a base consonant (such as a syllable
-    based on an independent vowel), then the final "Reph" position is
-    immediately before the first character tagged with the
-    `POS_BEFORE_POST` position or any later position in the sort
-    order.
+The algorithm for finding the final "Reph" position is
 
-    -- If there are no characters tagged with `POS_BEFORE_POST` or
-       later positions, then "Reph" is positioned at the end of the
-       syllable.
+  - Move the "Reph" to the position immediately before
+    the first post-base matra, syllable modifier, or Vedic sign that
+    has a positioning tag after the script's "Reph" position in the
+    syllable sort order (as listed in [stage
+    2](#2-initial-reordering)). This will be the final "Reph"
+    position. 
+	> Note: Because Oriya incorporates the
+    > `REPH_POS_AFTER_MAIN` shaping characteristic, this means
+    > any positioning tag of `POS_ABOVEBASE_CONSONANT` or later,
+    > although a post-base matra, syllable modifier, or Vedic sign
+    > would not typically be tagged with `POS_ABOVEBASE_CONSONANT`.
+  - If no other location has been located in the previous step, move
+    the "Reph" to the end of the syllable.
 
-Finally, if the final position of "Reph" occurs after a
-"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+Finally, if the final position of "Reph" or "Repha" occurs after a
+"_matra_,Halant" subsequence, then "Reph"/"Repha" must be repositioned to the
 left of "Halant", to allow for potential matching with `abvs` or
 `psts` substitutions from GSUB.
 
