@@ -1201,13 +1201,61 @@ the base consonant or syllable base, and all half forms.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. Because Devanagari incorporates the `REPH_POS_BEFORE_POST`
-shaping characteristic, this final position is immediately before any
-independent post-base consonant forms (meaning the first post-base
-consonant that has not formed a ligature with the syllable base).
+shaping characteristic, this final position is defined to be
+immediately before any independent post-base consonant forms (meaning
+the first post-base consonant that has not formed a ligature with the
+syllable base).
 
-  - If the syllable does not have any post-base consonants, then the
-    final "Reph" position is immediately before the first post-base
-    matra, syllable modifier, or Vedic sign.
+The algorithm for finding the final "Reph" position is
+
+<!---
+
+  - Find the first explicit "Halant" between the first post-Reph
+    consonant and the last main consonant. Move the "Reph to the
+    position immediately after this "Halant".
+	- If a zero-width joiner (ZWJ) or a zero-width non-joiner (ZWNJ)
+      follows this "Halant", move the "Reph" to the position
+      immediately after the ZWJ or ZWNJ.
+--->
+
+  - Starting at the first post-"Reph" consonant, search forward looking
+    for the first explicit "Halant", ending the search when the base
+    consonant is encountered. If such an explicit "Halant" is found,
+    move the "Reph" to the position immediately after this
+    "Halant".
+	  * If a zero-width joiner (ZWJ) or a zero-width non-joiner (ZWNJ)
+        follows this "Halant", move the "Reph" to the position
+        immediately after the ZWJ or ZWNJ. This will be the final
+        "Reph" position. 
+	  * If no ZWJ or ZWNJ follows this "Halant", leave the "Reph" in
+        its position immediately after the "Halant". This will be the
+        final "Reph" position. 
+  - If no such explicit "Halant" is found in the previous step, find
+    the first post-base consonant that has not formed a ligature with
+    the base consonant. If such a non-ligated post-base consonant is
+    found, move the "Reph" to the position immediately before the
+    non-ligated post-base consonant. This will be the final "Reph"
+    position.
+  - If no such non-ligated post-base consonant is found in the
+    previous step, move the "Reph" to the position immediately before
+    the first post-base matra, syllable modifier, or Vedic sign that
+    has a positioning tag after the script's "Reph" position in the
+    syllable sort order (as listed in [stage
+    2](#2-initial-reordering)). This will be the final "Reph"
+    position. 
+	> Note: Because Devanagari incorporates the
+    > `REPH_POS_BEFORE_POST` shaping characteristic, this means
+    > any positioning tag of `POS_POSTBASE_CONSONANT` or later,
+    > although a post-base matra, syllable modifier, or Vedic sign
+    > would not typically be tagged with `POS_POSTBASE_CONSONANT`.
+  - If no other location has been located in the previous steps, move
+    the "Reph" to the end of the syllable.
+
+
+Finally, if the final position of "Reph" occurs after a
+"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
+left of "Halant", to allow for potential matching with `abvs` or
+`psts` substitutions from GSUB.
 
 
 ![Reph positioning](/images/devanagari/devanagari-reph-position.png)

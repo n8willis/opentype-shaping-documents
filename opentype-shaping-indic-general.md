@@ -1319,7 +1319,68 @@ the base consonant or syllable base, and all half forms.
 
 "Reph" must be moved from the beginning of the syllable to its final
 position. The correct final position depends on the script's
-`REPH_MODE_`. See the individual script pages for more information.
+Reph-position shaping characteristic, and is conditional upon the
+presence or absence of certain characters (such as post-base
+consonants or "matra,Halant" sequences) in the syllable. 
+
+The full algorithm for determining the final Reph position has seven steps.
+
+(a) If the script uses Reph-position rule `REPH_POS_AFTER_POST`, jump
+immediately to step (e). Otherwise, proceed to step (b).
+
+(b) Find the first explicit "Halant" between the syllable base
+consonant and the first post-Reph consonant. If there is a ZWJ or ZWNJ
+following this "Halant", move the "Reph" to a position immediately
+after the ZWJ or ZWNJ, then proceed to step (mH). Otherwise, move the
+"Reph" to a position immediately after the "Halant", then proceed to
+step (mH). If no such explicit "Halant" is found, proceed to step
+(c).
+
+(c) If the script uses Reph-position rule `REPH_POS_AFTER_MAIN`, find
+the first consonant not ligated with the syllable base, and that is
+not a potential pre-base reordering "Ra". If such a consonant is
+found, move the "Reph" to a position immediately after the
+consonant, then proceed to step (mH). If no such consonant is found,
+proceed to step (d). If the script uses a different Reph-position
+rule, proceed to step (d).
+
+(d) If the script uses Reph-position rule `REPH_POS_BEFORE_POST`, find
+the first post-base consonant not ligated with the syllable base. If
+such a consonant is found, move the "Reph" to a position immediately
+before the consonant, then proceed to step (mH). If no such consonant
+is found, proceed to step (e). If the script uses a different
+Reph-position rule, proceed to step (e).
+
+(e) Move the "Reph" to a position immediately before the first
+post-base matra, syllable modifier sign or Vedic sign that has a
+reordering class after the intended Reph position in the syllable sort
+order (as listed in [stage 2](#2-initial-reordering)). This will be
+the final "Reph" position. , then proceed to step (mH). If no such
+matra or sign is found, proceed to step (f).
+
+(f) Move the "Reph" to the end of the syllable. 
+
+(mH) Finally, if the "Reph" position arrived at in the preceding steps
+is immediately after a "matra,Halant" sequence, move the "Reph" so
+that it is before the "Halant". 
+
+
+Taking the Reph-position–rule conditionals in the above algorithm into
+account, the position-finding steps that may be executed in each
+script are summarized in the following table:
+
+| Script     | Reph-position rule        | a | b | c | d | e | f | mH |
+|:-----------|:--------------------------|:--|:--|:--|:--|:--|:--|:---|
+| Devanagari |`REPH_POS_BEFORE_POST`     |   | • |   | • | • | • | •  |
+| Bengali    |`REPH_POS_AFTER_SUBJOINED` |   | • |   |   |   | • | •  |
+| Gujarati   |`REPH_POS_BEFORE_POST`     |   | • |   | • | • | • | •  |
+| Gurmukhi   |`REPH_POS_BEFORE_SUBJOINED`|   | • |   |   |   | • | •  |
+| Kannada    |`REPH_POS_AFTER_POST`      |   |   |   |   | • | • | •  |
+| Malayalam  |`REPH_POS_AFTER_MAIN`      |   | • | • |   | • | • | •  |
+| Oriya      |`REPH_POS_AFTER_MAIN`      |   | • | • |   | • | • | •  |
+| Tamil      |`REPH_POS_AFTER_POST`      |   |   |   |   | • | • | •  |
+| Telugu     |`REPH_POS_AFTER_POST`      |   |   |   |   | • | • | •  |
+| Sinhala    |`REPH_POS_AFTER_MAIN`      |   | • | • |   | • | • | •  |
 
 #### 4.4: Pre-base reordering consonants ####
 
