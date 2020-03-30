@@ -1004,7 +1004,15 @@ marks that follow them, while all consonants after the syllable base
 any consonants after the syllable base, the syllable base should
 "own" all the marks that follow it.
 
-With these steps completed, the syllable can be sorted into the final sort order.
+
+#### 2.9: Sort syllable ####
+
+With these steps completed, the syllable can be sorted into the final
+sort order as listed at the beginning of stage 2.
+
+The glyphs in the syllable should be sorted in stable order,
+so that glyphs of the same ordering category remain in the same
+relative position with respect to each other.
 
 
 ### 3: Applying the basic substitution features from GSUB ###
