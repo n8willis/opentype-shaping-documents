@@ -901,10 +901,13 @@ the base consonant.
 #### 3.6: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any
-special forms. In Myanmar, this can include variant forms for
-right-side matras and marks. 
+special forms. 
 
-![pstf feature application](/images/myanmar/myanmar-pstf.png)
+> Note: `pstf` usage is uncommon in Myanmar fonts, because the script
+> does not employ special post-base forms of consonants. Nevertheless,
+> shaping engines should apply any `pstf` substitutions if they are
+> present in the active font.
+
 
 
 

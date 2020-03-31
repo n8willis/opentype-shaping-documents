@@ -108,6 +108,15 @@ montage myanmar-blwf-before.png right-arrow.png myanmar-blwf-after.png -geometry
 > https://r12a.github.io/scripts/myanmar/block#charTALL%20AA to
 > distinguish pstf as an initial-shaping feature from the more
 > stylistic applications of psts.
+>
+> Note: The example linked to above is used in the Microsoft
+> script-development spec for Myanmar:
+> https://docs.microsoft.com/en-us/typography/script-development/myanmar#feature-tag-pstf 
+> but this usage is not well-attested in real-world Myanmar
+> fonts. Instead, the "Aa"/"Tall Aa" distinction is made at the
+> encoding level and is expected to happen during text
+> entry. Consequently, this image has been removed from the
+> script-specific shaping document. See issue #85 for the discussion.
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=myanmar-pstf-before.png --features=-pstf  --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf --unicodes=101d,102c
 
