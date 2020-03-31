@@ -74,10 +74,27 @@ post-base forms for consonants eg: Gurmukhi, Malayalam, Khmer."
 
 #### Using MultipleSub for glyph deletion ####
 
+The GSUB specification says that a `MultipleSubst` substitution cannot
+be used to delete a glyph: it always substitutes at least one
+replacement glyph. However, some implementations allow the
+replacement-glyph array to be zero-length. 
 
 
 ### Adjacent-mark reordering ambiguities ###
 
+The Microsoft script-development specifications
+[say](https://docs.microsoft.com/en-us/typography/script-development/devanagari#reorder-characters)
+that marks should be reordered "to canonical order" (step 3 in the
+linked Devanagari document) in the reordering phase. However, the same
+step also describes this step as "Adjacent nukta and halant or nukta
+and vedic sign are always repositioned if necessary, so that the nukta
+is first."
+
+Together, it is somewhat ambiguous as to whether only "Halant,Nukta"
+and "_vedicsign_,Nukta" sequences should be reordered by moving the
+"Nukta" to the beginning, or all sequences of marks require reordering
+into Unicode canonical combining class order, with "Nukta" moving to
+the initial position as a special case.
 
 
 ### Merging of glyph properties ###
@@ -99,6 +116,7 @@ which are applied serially.
 HarfBuzz and Uniscribe both take the approach of retaining the
 properties of the first input glyph in a sequence, propagating those
 properties to the merged output glyph.
+
 
 ## See also ##
 
