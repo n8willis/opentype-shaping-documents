@@ -6,7 +6,7 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Myanmar character table](#myanmar-character-table)
-  - [Myanmar Extended character table](#myanmar-extended-character-table)
+  - [Myanmar Extended character tables](#myanmar-extended-character-tables)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 	  
@@ -212,9 +212,9 @@ specific, script-aware behavior.
 
 
 
-## Myanmar Extended character table ##
+## Myanmar Extended character tables ##
 
-### Myanmar Extended A ###
+### Myanmar Extended A character table ###
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -252,7 +252,7 @@ specific, script-aware behavior.
 |`U+AA7E`   | Letter           | CONSONANT         | _null_                     | &#xAA7E; Shwe Palaung Cha    |
 |`U+AA7F`   | Letter           | CONSONANT         | _null_                     | &#xAA7F; Shwe Palaung Sha    |
 
-### Myanmar Extended B ###
+### Myanmar Extended B character table ###
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
