@@ -30,10 +30,11 @@ advisable to attempt supporting it in a general-purpose Indic shaping
 engine. 
 
 For example, Myanmar script includes a "Reph"-like feature known as
-"Kinzi", but (unlike "Reph") Kinzi" can be formed by multiple initial
-consonants. Also, notably, real-world texts written in Myanmar script
-often do not use inter-word spaces, which may make the process of syllable
-identification substantially different from processing Indic scripts.
+"Kinzi" although, unlike "Reph", a "Kinzi" may be formed by any of
+several initial consonants. Also, notably, real-world texts written in
+Myanmar script often do not use inter-word spaces, which may make the
+process of syllable identification substantially different from
+processing Indic scripts.
 
 The Myanmar script is used to write multiple languages, most commonly
 Burmese, Mon, Karen, Kayah, Shan, Palaung, and Pali. In addition,
