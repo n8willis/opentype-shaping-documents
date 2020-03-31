@@ -10,6 +10,7 @@ specification documents.
   - [OpenType](#opentype)
       - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
       - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
+	  - [Per-script applicability of feature tags](#per-script-applicability-of-feature-tags)
       - [Lookup behavior](#lookup-behavior)
           - [Using MultipleSub for glyph deletion](#using-multiplesub-for-glyph-deletion)
   - [Adjacent-mark reordering ambiguities](#adjacent-mark-reordering-ambiguities)
@@ -53,9 +54,23 @@ must be sorted into numeric order before they are applied.
 Lookups in the GPOS table, however, are not expected to be sorted
 first, because GPOS lookups are applied in a specified order.
 
+### Per-script applicability of feature tags ###
+
+Some OpenType feature tags are defined only to apply to text runs in
+specific scripts. Other feature tags are defined to apply to text in
+any script.
+
+However, the definitions of some feature tags list a limited number of
+example scripts to which the feature should apply, but do not specify
+every supported script.
+
+For example, the `pstf` (post-base forms) tag is
+[described](https://docs.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-pstf)
+as required for "scripts of south and southeast Asia that have
+post-base forms for consonants eg: Gurmukhi, Malayalam, Khmer."
+
+
 ### Lookup behavior ###
-
-
 
 #### Using MultipleSub for glyph deletion ####
 
