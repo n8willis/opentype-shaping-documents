@@ -79,6 +79,37 @@ be used to delete a glyph: it always substitutes at least one
 replacement glyph. However, some implementations allow the
 replacement-glyph array to be zero-length. 
 
+#### Processing nested contextual lookups ####
+
+The GSUB specification allows contextual substitutions to invoke other
+contextual substitutions. It is unclear how implementations ought to
+handle certain cases of these nested lookups.
+
+For example:
+```
+context: 'a'
+subst index 0:
+  context: 'ab'
+  subst index 1: 'b' → 'ab'
+```
+
+This nested set of substitutions could cause an infinite loop on
+certain input strings, if it is interpreted in a naive manner:
+```
+'[]ab' // begin at start of glyph sequence
+'[a]b' // context matches
+'[ab]' // nested context matches at index 0
+'[aab]' // subst applies at index 1
+'[a]ab' // return to parent context, uh oh!
+'a[]ab' // move on to next glyph
+'a[a]b' // context matches, infinite loop!
+```
+
+In short, if a nested contextual substitution can insert glyphs ahead
+of its parent contextual substitution's context, then it creates a
+"stack" that allows Turing-complete computation.
+
+
 
 ### Adjacent-mark reordering ambiguities ###
 
