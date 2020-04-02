@@ -73,7 +73,8 @@ These documents draw from the following existing resources:
    projects. Primarily this includes tests and reproducible issues
    found via [HarfBuzz](https://github.com/harfbuzz/harfbuzz), because
    HarfBuzz intentionally aims to produce results that will 100% match
-   the output of Microsoft Uniscribe.
+   the output of Microsoft Uniscribe (not counting cases where
+   Uniscribe's output is known to be incorrect, of course).
    > Note: occasionally, tests or issues documenting the behavior of
    > Apple CoreText are also included, but CoreText compatibility is
    > not an explicit goal for HarfBuzz.
