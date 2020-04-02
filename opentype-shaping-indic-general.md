@@ -1193,25 +1193,31 @@ character the mark has affinity with, so that they move together
 during the sorting step.
 
 There are two possible cases: those marks before the syllable base
-and those marks after the syllable base.
+and those marks after the syllable base. In addition, an exception is
+made for "Halant" marks that follow a left-side (pre-base) matra.
 
   1. Initially, all remaining marks should be tagged with the same
-  positioning tag as the closest preceding consonant.
+	 positioning tag as the closest preceding consonant.
 
   2. For each consonant after the syllable base (such as post-base
-  consonants, below-base consonants, or final consonants), all
-  remaining marks located between that current consonant and any
-  previous consonant should be tagged with the same positioning tag as
-  the current (later) consonant.
+	 consonants, below-base consonants, or final consonants), all
+	 remaining marks located between that current consonant and any
+	 previous consonant should be tagged with the same positioning tag as
+	 the current (later) consonant.
   
-In other words, all consonants preceding the syllable base "own" the
-marks that follow them, while all consonants after the syllable base
-"own" the marks that come before them. When a syllable does not have
-any consonants after the syllable base, the syllable base should
-"own" all the marks that follow it.
+     In other words, all consonants preceding the syllable base "own" the
+	 marks that follow them, while all consonants after the syllable base
+	 "own" the marks that come before them. When a syllable does not have
+	 any consonants after the syllable base, the syllable base should
+	 "own" all the marks that follow it.
+  
+  3. Finally, "Halant" marks that follow a left-side dependent vowel
+     (matra) should _not_ be tagged with the left-side matra's
+     positioning tag. Instead, the "Halant" should be tagged with the
+     positioning tag of the non-mark character preceding the left-side
+     matra. This prevents the "Halant" mark from being moved with the
+     left-side matra when the syllable is sorted.
 
-<!--- EXCEPTION: Uniscribe does NOT move a halant with a preceding -->
-<!--left-matra. HarfBuzz follows suit, for compatibility reasons. --->
 
 <!--- HarfBuzz also tags everything between a post-base consonant or -->
 <!--matra and another post-base consonant as belonging to the latter -->
