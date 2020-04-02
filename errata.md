@@ -13,6 +13,7 @@ specification documents.
 	  - [Per-script applicability of feature tags](#per-script-applicability-of-feature-tags)
       - [Lookup behavior](#lookup-behavior)
           - [Using MultipleSub for glyph deletion](#using-multiplesub-for-glyph-deletion)
+		  - [Processing nested contextual lookups](#processing-nested-contextual-lookups)
       - [Adjacent-mark reordering ambiguities](#adjacent-mark-reordering-ambiguities)
       - [Merging of glyph properties](#merging-of-glyph-properties)
   - [See also](#see-also)
