@@ -68,7 +68,7 @@ These documents draw from the following existing resources:
 6. The YesLogic [text corpus](https://github.com/yeslogic/corpus),
    which includes real-world text data for several Indic scripts,
    scraped from Wikipedia, Reddit, and multiple online news
-   sources. This data is used to test shaping in Allsorts and Price.
+   sources. This data is used to test shaping in Allsorts and Prince.
 7. Known but unofficial information about other shaping-engine
    projects. Primarily this includes tests and reproducible issues
    found via [HarfBuzz](https://github.com/harfbuzz/harfbuzz), because
