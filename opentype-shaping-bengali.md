@@ -898,6 +898,26 @@ This order is canonical in Unicode and is required so that
 "_consonant_,Nukta" substitution rules from GSUB will be correctly
 matched later in the shaping process.
 
+
+> Note: Bengali includes the consonant "Yya" (`U+09DF`), which is
+> canonically equivalent to the sequence "Ya,Nukta"
+> (`U+09AF`,`U+09BC`). "Ya" can also take on the post-base "Yaphala"
+> form when it occurs in the sequence "`SYLLABLE_BASE`,Halant,Ya".
+>
+> Consequently, shaping engines that encounter a "Ya,Nukta"
+> sequence may wish to recompose that sequence to "Yya" earlier than
+> other nukta-variant substitutions, as a safeguard
+> against the decomposed "Ya" unintentionally triggering a "Yaphala"
+> substitution during GSUB feature application (if the sequence in
+> question happens to match the "Yaphala" substitution rule as well as
+> the "Yya" substitution rule).
+> 
+> A well-behaved font should be expected to include explicit "Yya" and
+> "Yaphala" substitution rules that do not trigger unexpected results,
+> but there is no guarantee that real-world fonts will be well-behaved
+> in this regard.
+
+
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the syllable base must be
@@ -1068,6 +1088,25 @@ precomposed nukta-variant of the consonant glyph.
 
 
 ![Nukta composition](/images/bengali/bengali-nukt.png)
+
+> Note: Bengali includes the consonant "Yya" (`U+09DF`), which is
+> canonically equivalent to the sequence "Ya,Nukta"
+> (`U+09AF`,`U+09BC`). "Ya" can also take on the post-base "Yaphala"
+> form when it occurs in the sequence "`SYLLABLE_BASE`,Halant,Ya".
+>
+> Consequently, shaping engines that encounter a "Ya,Nukta"
+> sequence may wish to recompose that sequence to "Yya" earlier than
+> other nukta-variant substitutions, as a safeguard
+> against the decomposed "Ya" unintentionally triggering a "Yaphala"
+> substitution during GSUB feature application (if the sequence in
+> question happens to match the "Yaphala" substitution rule as well as
+> the "Yya" substitution rule).
+> 
+> A well-behaved font should be expected to include explicit "Yya" and
+> "Yaphala" substitution rules that do not trigger unexpected results,
+> but there is no guarantee that real-world fonts will be well-behaved
+> in this regard.
+
 
 #### 3.3: akhn ####
 
