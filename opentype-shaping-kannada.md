@@ -1391,6 +1391,24 @@ In addition, for some scripts, left-side dependent vowel marks
 stage. For `<knda>` text, the left-side matra was always positioned
 at the beginning of the syllable.
 
+Finally, in `<knda>` text, the sequence "Ra,Halant,ZWJ,_consonant_"
+was treated as equivalent to the sequence
+"Ra,ZWJ,Halant,_consonant_". The current version of the Unicode
+standard states that "Ra,ZWJ,Halant,_consonant_" is the correct
+sequence, which is meant to trigger the full form of "Ra" followed by
+the subjoined form of "_consonant_". 
+
+However, Unicode 4.0 specified "Ra,Halant,ZWJ,_consonant_"
+instead, which was inconsistent with the needs of other Indic
+scripts. Even though this sequence was changed with the release of
+Unicode 5.0, legacy documents and systems might still be encountered
+that use the Unicode 4.0 sequence.
+
+Consequently, shaping engines that encounter a
+"Ra,Halant,ZWJ,_consonant_" sequence in `<knda>` text should reorder
+the sequence to "Ra,ZWJ,Halant,_consonant_" or otherwise produce the
+same behavior as "Ra,ZWJ,Halant,_consonant_".
+
 
 ### Advice for handling fonts with `<knda>` features only ###
 
