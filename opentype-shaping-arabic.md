@@ -445,7 +445,8 @@ Updated tag for preceding character:
 --->
 
 At the end of this process, all letters should be tagged for possible
-substitution by one of the `isol`, `init`, `medi`, or `fina` features.
+substitution by one of the `isol`, `init`, `medi`, `fina`, `fin2`, or `fin3`
+features.
 
 ### 3. Applying the `stch` feature ###
 
