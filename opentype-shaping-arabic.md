@@ -362,14 +362,14 @@ JOIN_CAUSING:
 	  - `fina` becomes `medi`
 	  - `init` remains `init`
 	  - `medi` remains `medi`
-  - If the current character's JOINING_TYPE is RIGHT, DUAL, or
+  - Else, if the current character's JOINING_TYPE is RIGHT, DUAL, or
     JOIN_CAUSING, tag the current character for `fina`, then update
     the tag for the preceding character:
 	  - `isol` becomes `init`
 	  - `fina` becomes `medi`
 	  - `init` remains `init`
 	  - `medi` remains `medi`
-  - If the current character's JOINING_TYPE is LEFT or NON_JOINING,
+  - Else, if the current character's JOINING_TYPE is LEFT or NON_JOINING,
     tag the current character for `isol`, then update
     the tag for the preceding character:
 	  - `medi` becomes `fina`
