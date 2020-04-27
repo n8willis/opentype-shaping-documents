@@ -755,11 +755,12 @@ encountered during the base-consonant search must be tagged
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra" and the syllable contains
+  - If the syllable starts with "Ra,Halant" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
+      * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
       * If the consonant has a below-base form, tag it as
         `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
       * If the consonant has a post-base form, tag it as
