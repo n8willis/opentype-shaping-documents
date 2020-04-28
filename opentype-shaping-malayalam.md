@@ -1261,7 +1261,8 @@ cases, such a glyph will not have an assigned Unicode codepoint.
 Pre-base dependent vowels (matras) that were reordered during the
 initial reordering stage must be moved to their final position. This
 position is defined as:
-   
+
+   - after all "Chillu" glyphs
    - after the last standalone "Halant" glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
@@ -1270,9 +1271,10 @@ position is defined as:
      after the joiner or non-joiner.
 
 This means that the matra will move to the right of all explicit
-"consonant,Halant" subsequences, but will stop to the left of the base
-consonant or syllable base, all conjuncts or ligatures that contain
-the base consonant or syllable base, and all half forms.
+"_Consonant_,Halant" subsequences and all glyphs that resulted from a
+substitution on a "_Consonant_,Halant,ZWJ" subsequence, but will stop
+to the left of the base consonant or syllable base, and all conjuncts
+or ligatures that contain the base consonant or syllable base.
 
 ![Matra positioning](/images/malayalam/malayalam-matra-position.png)
 
