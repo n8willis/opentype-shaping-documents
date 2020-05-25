@@ -49,7 +49,7 @@ potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. 
 
-**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
+**Halant** and **Virama** are both standard terms for the "vowel-killer"
 sign. Unicode documents use the term "virama" most frequently, while
 OpenType documents use the term "halant" most frequently. In the Malayalam
 language, this sign is known as the _chandrakkala_.
