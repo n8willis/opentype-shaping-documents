@@ -814,8 +814,8 @@ post-base form: "Ya" and Va".
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
-    base consonant or syllable base) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) take on
+    a below-base form.
 
 ![Below-base La formation](/images/malayalam/malayalam-blwf-la.png)
 
@@ -914,8 +914,8 @@ that will become "Reph"s:
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
-    base consonant or syllable base) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) take on
+    a below-base form.
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
