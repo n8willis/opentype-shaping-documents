@@ -24,9 +24,9 @@ montage gurmukhi-pstf-before.png right-arrow.png gurmukhi-pstf-after.png -geomet
 
 ## 3.2 `nukt`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-before.png --features=-init,-nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a21,25cc,0a3c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-before.png --features=-init,-nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a38,25cc,0a3c
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-after.png --features=-init,+nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a21,0a3c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-after.png --features=-init,+nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a38,0a3c
 
 montage gurmukhi-nukt-before.png right-arrow.png gurmukhi-nukt-after.png -geometry +0+0 -background transparent gurmukhi-nukt.png
 
