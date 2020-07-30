@@ -243,21 +243,26 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+from a "_Consonant_,Halant,_Consonant_" sequence.
+
+  - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
+    formation of a conjunct between the two consonants. 
 
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+conjunct, the zero-width non-joiner must be used instead.
+
+  - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
+    the first consonant in its standard form, followed by an explicit
+    "Halant". 
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
-otherwise would.
+"Reph".
+
+  - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
+    even where an initial "Ra,Halant" sequence without the zero-width
+    joiner would otherwise produce a "Reph".
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (marks, dependent vowels (matras),
@@ -765,11 +770,12 @@ encountered during the base-consonant search must be tagged
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra" and the syllable contains
+  - If the syllable starts with "Ra,Halant" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
+      * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
       * If the consonant has a below-base form, tag it as
         `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
       * If the consonant has a post-base form, tag it as
