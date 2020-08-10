@@ -1046,7 +1046,7 @@ between fonts. It is also possible that the application of
 one feature on a glyph sequence will perform a substitution that makes
 a later feature no longer applicable to the updated sequence.
 
-Consequently, the flagging must be completed before shaping procedes
+Consequently, the flagging must be completed before shaping proceeds
 to the stages during which features are applied.
 
 Some shaping features, such as `locl`, can potentially apply to any
@@ -1478,9 +1478,7 @@ typographically problematic.
 ### 6: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
-applied.  In preparation for this stage, glyph sequences should be
-flagged for possible application of GSUB features in stage 2,
-step 10.
+applied.
 
 As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
