@@ -1074,14 +1074,7 @@ in GSUB and GPOS application stages that follow.
   - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
             match "_Consonant_,Halant,ZWJ,_Consonant_" or
             "_Consonant_,Halant,ZWNJ,_Consonant_"
-  - `init` should match word-initial letters
-  - `haln` should match word-final "_Consonant_,Halant" sequences
 
-> Note: Word-initial consonants and independent vowels will be flagged
-> for possible `init` feature application here. Any matras that are
-> reordered to a word-initial position during the final-reordering
-> stage will be flagged for possible `init` feature application
-> separately, after final reordering.
 
 
 
