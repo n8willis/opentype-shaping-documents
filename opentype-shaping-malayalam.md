@@ -67,8 +67,10 @@ A syllable's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
 syllable frequently take on secondary forms. Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
-consonants. Some of these substitutions create **above-base** or
-**below-base** forms.
+consonants. The **Reph** form of the consonant "Ra" is an
+example (`post-base` in traditional orthography and `pre-base` in
+reformed orthography). Some of these substitutions create **above-base**
+or **below-base** forms. For instance "La" takes a `below-base` form.
 
 Syllables may also begin with an **indepedent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
