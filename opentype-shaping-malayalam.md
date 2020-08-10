@@ -276,6 +276,13 @@ conjunct, the zero-width non-joiner must be used instead. The sequence
 "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
 consonant in its standard form, followed by an explicit "Halant".
 
+A secondary usage of the zero-width joiner is to prevent the formation of "Reph".
+An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph", even where an
+initial "Ra,Halant" sequence without the zero-width joiner would otherwise produce a "Reph".
+
+> Note: Malayalam differs from many Indic scripts in forming "Reph" producing
+> dead-consonant form "Chillu R" instead.
+
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (marks, dependent vowels (matras),
 below-base consonant forms, and post-base consonant forms) in an
