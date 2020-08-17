@@ -194,11 +194,12 @@ shaping process.
 
 ### Tamil character tables ###
 
-Separate character tables are provided for the Tamil, Grantha marks, and Vedic
-Extensions block as well as for other miscellaneous characters that
-are used in `<tml2>` text runs:
+Separate character tables are provided for the Tamil, Tamil
+Supplement, Grantha marks, and Vedic Extensions block as well as for
+other miscellaneous characters that are used in `<tml2>` text runs:
 
   - [Tamil character table](character-tables/character-tables-tamil.md#tamil-character-table)
+  - [Tamil Supplement character table](character-tables/character-tables-tamil.md#tamil-supplement-character-table)
   - [Grantha marks character table](character-tables/character-tables-tamil.md#grantha-marks-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-tamil.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-tamil.md#miscellaneous-character-table)

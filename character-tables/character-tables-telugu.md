@@ -165,7 +165,7 @@ specific, script-aware behavior.
 |`U+0C74`   | _unassigned_     |                   |                            |                              |
 |`U+0C75`   | _unassigned_     |                   |                            |                              |
 |`U+0C76`   | _unassigned_     |                   |                            |                              |
-|`U+0C77`   | _unassigned_     |                   |                            |                              |
+|`U+0C77`   | Punctuation      | _null_            | _null_                     | &#x0C77; Sign Siddham        |
 |`U+0C78`   | Number           | NUMBER            | _null_                     | &#x0C78; Fraction Zero Odd P |
 |`U+0C79`   | Number           | NUMBER            | _null_                     | &#x0C79; Fraction One Odd P  |
 |`U+0C7A`   | Number           | NUMBER            | _null_                     | &#x0C7A; Fraction Two Odd P  |
@@ -183,7 +183,7 @@ Sanskrit runs written in the Telugu script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
-> Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
+> Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
@@ -224,15 +224,15 @@ classified as follows.
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
 |`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
-|`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
-|`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
+|`U+1CF2`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
 |`U+1CF5`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF5; Sign Jihvamuliya    |
 |`U+1CF6`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF6; Sign Upadhmaniya    |
 |`U+1CF7`   | Mark [Mc]        | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
-|`U+1CFA`   | _unassigned_     |                   |                            |                              |
+|`U+1CFA`   | Letter           | PLACEHOLDER       | _null_                     | &#x1CFA; Sign Double Anusvara Antargomukha |
 |`U+1CFB`   | _unassigned_     |                   |                            |                              |
 |`U+1CFC`   | _unassigned_     |                   |                            |                              |
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
