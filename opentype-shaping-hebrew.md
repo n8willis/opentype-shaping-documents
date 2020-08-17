@@ -134,7 +134,7 @@ combinations of base characters and marks and the "Alef Lamed"
 ligature, any of which may occur in `<hebr>` text runs. Glyphs for
 these presentation forms may be provided by fonts that do not
 implement the corresponding mark-to-base and ligature features in
-OpenType GSUB anf GPOS tables.
+OpenType GSUB and GPOS tables.
 
 The Alphabetic Presentation Forms block also includes a set of eight
 "wide" variants of standard Hebrew characters (`U+FB21` through
