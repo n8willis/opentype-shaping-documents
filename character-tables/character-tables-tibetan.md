@@ -63,8 +63,8 @@ specific, script-aware behavior.
 | `U+0F15`  | Symbol           | SYMBOL            | _null_                     | &#x0F15; Logotype Sign Chad Rtags                |
 | `U+0F16`  | Symbol           | SYMBOL            | _null_                     | &#x0F16; Logotype Sign Lhag Rtags                |
 | `U+0F17`  | Symbol           | SYMBOL            | _null_                     | &#x0F17; Astrological Sign Sgra Gcan -Char Rtags |
-| `U+0F18`  | Mark [Mn]        | _null_            | BOTTOM_POSITION            | &#x0F18; Astrological Sign -Khyud Pa             |
-| `U+0F19`  | Mark [Mn]        | _null_            | BOTTOM_POSITION            | &#x0F19; Astrological Sign Sdong Tshugs          |
+| `U+0F18`  | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0F18; Astrological Sign -Khyud Pa             |
+| `U+0F19`  | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION            | &#x0F19; Astrological Sign Sdong Tshugs          |
 | `U+0F1A`  | Symbol           | SYMBOL            | _null_                     | &#x0F1A; Sign Rdel Dkar Gcig                     |
 | `U+0F1B`  | Symbol           | SYMBOL            | _null_                     | &#x0F1B; Sign Rdel Dkar Gnyis                    |
 | `U+0F1C`  | Symbol           | SYMBOL            | _null_                     | &#x0F1C; Sign Rdel Dkar Gsum                     |
@@ -103,8 +103,8 @@ specific, script-aware behavior.
 | `U+0F3B`  | Punctuation [Pe] | _null_            | _null_                     | &#x0F3B; Gug Rtags Gyas                          |
 | `U+0F3C`  | Punctuation [Ps] | _null_            | _null_                     | &#x0F3C; Ang Khang Gyon                          |
 | `U+0F3D`  | Punctuation [Pe] | _null_            | _null_                     | &#x0F3D; Ang Khang Gyas                          |
-| `U+0F3E`  | Mark [Mc]        | _null_            | RIGHT_POSITION             | &#x0F3E; Sign Yar Tshes                          |
-| `U+0F3F`  | Mark [Mc]        | _null_            | LEFT_POSITION              | &#x0F3F; Sign Mar Tshes                          |
+| `U+0F3E`  | Mark [Mc]        | VOWEL_DEPENDENT   | RIGHT_POSITION             | &#x0F3E; Sign Yar Tshes                          |
+| `U+0F3F`  | Mark [Mc]        | VOWEL_DEPENDENT   | LEFT_POSITION              | &#x0F3F; Sign Mar Tshes                          |
 | | | | | |
 | `U+0F40`  | Letter           | CONSONANT         | _null_                     | &#x0F40; Ka                                      |
 | `U+0F41`  | Letter           | CONSONANT         | _null_                     | &#x0F41; Kha                                     |
@@ -180,8 +180,8 @@ specific, script-aware behavior.
 | `U+0F83`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0F83; Sign Sna Ldan                           |
 | `U+0F84`  | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION            | &#x0F84; Halanta                                 |
 | `U+0F85`  | Punctuation      | AVAGRAHA          | _null_                     | &#x0F85; Paluta                                  |
-| `U+0F86`  | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0F86; Sign Lci Rtags                          |
-| `U+0F87`  | Mark [Mn]        | _null_            | TOP_POSITION               | &#x0F87; Sign Yang Rtags                         |
+| `U+0F86`  | Mark [Mn]        | TONE_MARKER       | TOP_POSITION               | &#x0F86; Sign Lci Rtags                          |
+| `U+0F87`  | Mark [Mn]        | TONE_MARKER       | TOP_POSITION               | &#x0F87; Sign Yang Rtags                         |
 | `U+0F88`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F88; Sign Lce Tsa Can                        |
 | `U+0F89`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F89; Sign Mchu Can                           |
 | `U+0F8A`  | Letter           | CONSONANT_HEAD    | _null_                     | &#x0F8A; Sign Gru Can Rgyings                    |
