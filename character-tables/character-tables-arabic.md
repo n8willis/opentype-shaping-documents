@@ -415,17 +415,17 @@ treated differently during the mark-reordering stage.
 |`U+08BB`   | Letter           | DUAL         | AFRICAN_FEH          | _0_        | &#x08BB; African Feh                                  |
 |`U+08BC`   | Letter           | DUAL         | AFRICAN_QAF          | _0_        | &#x08BC; African Qaf                                  |
 |`U+08BD`   | Letter           | DUAL         | AFRICAN_NOON         | _0_        | &#x08BD; African Noon                                 |
-|`U+08BE`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08BF`   | _unassigned_     |              |                      |            |                                                       |
-| | | | | |                                                                                                                      
-|`U+08C0`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C1`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C2`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C3`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C4`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C5`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C6`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C7`   | _unassigned_     |              |                      |            |                                                       |
+|`U+08BE`   | Letter           | DUAL         | BEH                  | _0_        | &#x08BE; Peh With Small V                             |
+|`U+08BF`   | Letter           | DUAL         | BEH                  | _0_        | &#x08BF; Teh With Small V                             |
+| | | | | |
+|`U+08C0`   | Letter           | DUAL         | BEH                  | _0_        | &#x08C0; Tteh With Small V                            |
+|`U+08C1`   | Letter           | DUAL         | HAH                  | _0_        | &#x08C1; Tcheh With Small V                           |
+|`U+08C2`   | Letter           | DUAL         | GAF                  | _0_        | &#x08C2; Keheh With Small V                           |
+|`U+08C3`   | Letter           | DUAL         | AIN                  | _0_        | &#x08C3; Ghain With 3 Dots Above                      |
+|`U+08C4`   | Letter           | DUAL         | AFRICAN_QAF          | _0_        | &#x08C4; African Qaf With 3 Dots Above                |
+|`U+08C5`   | Letter           | DUAL         | HAH                  | _0_        | &#x08C5; Jeem With 3 Dots Above                       |
+|`U+08C6`   | Letter           | DUAL         | HAH                  | _0_        | &#x08C6; Jeem With 3 Dots Below                       |
+|`U+08C7`   | Letter           | DUAL         | LAM                  | _0_        | &#x08C7; Lam With Small Arabic Tah Above              |
 |`U+08C8`   | _unassigned_     |              |                      |            |                                                       |
 |`U+08C9`   | _unassigned_     |              |                      |            |                                                       |
 |`U+08CA`   | _unassigned_     |              |                      |            |                                                       |

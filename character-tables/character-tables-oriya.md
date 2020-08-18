@@ -129,7 +129,7 @@ specific, script-aware behavior.
 |`U+0B52`   | _unassigned_     |                   |                            |                              |
 |`U+0B53`   | _unassigned_     |                   |                            |                              |
 |`U+0B54`   | _unassigned_     |                   |                            |                              |
-|`U+0B55`   | _unassigned_     |                   |                            |                              |
+|`U+0B55`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0B55; Sign Overline       |
 |`U+0B56`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0B56; Ai Length Mark      |
 |`U+0B57`   | Mark [Mc]        | VOWEL_DEPENDENT   | TOP_AND_RIGHT_POSITION     | &#x0B57; Au Length Mark      |
 |`U+0B58`   | _unassigned_     |                   |                            |                              |

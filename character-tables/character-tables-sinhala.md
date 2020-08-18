@@ -41,7 +41,7 @@ specific, script-aware behavior.
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0D80`   | _unassigned_     |                   |                            |                              |
-|`U+0D81`   | _unassigned_     |                   |                            |                              |
+|`U+0D81`   | Mark [Mn]  _     | BINDU             | TOP_POSITION               | &#x0D81; Candrabindu         |
 |`U+0D82`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0D82; Anusvara            |
 |`U+0D83`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0D83; Visarga             |
 |`U+0D84`   | _unassigned_     |                   |                            |                              |

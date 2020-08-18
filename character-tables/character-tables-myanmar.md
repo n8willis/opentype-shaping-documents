@@ -103,7 +103,7 @@ specific, script-aware behavior.
 |`U+1039`   | Mark [Mn]        | INVISIBLE_STACKER | _null_                     | &#x1039; Virama              |
 |`U+103A`   | Mark [Mn]        | PURE_KILLER       | TOP_POSITION               | &#x103A; Asat                |
 |`U+103B`   | Mark [Mc]        | CONSONANT_MEDIAL  | RIGHT_POSITION             | &#x103B; Sign Medial Ya      |
-|`U+103C`   | Mark [Mc]        | CONSONANT_MEDIAL  | _null_                     | &#x103C; Sign Medial Ra      |
+|`U+103C`   | Mark [Mc]        | CONSONANT_MEDIAL  | TOP_LEFT_AND_BOTTOM_POSITION | &#x103C; Sign Medial Ra      |
 |`U+103D`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x103D; Sign Medial Wa      |
 |`U+103E`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x103E; Sign Medial Ha      |
 |`U+103F`   | Letter           | CONSONANT         | _null_                     | &#x103F; Great Sa            |
