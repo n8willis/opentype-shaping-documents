@@ -468,7 +468,7 @@ _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+_other_		= `OTHER` | `MODIFYING_LETTER`
 ```
 
 
