@@ -508,13 +508,13 @@ _zwnj_		= `NON_JOINER`
 _matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
 _syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
 _vedicsign_	= `CANTILLATION`
-_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER` | `NUMBER`
 _dottedcircle_	= `DOTTED_CIRCLE`
 _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+_other_		= `OTHER` | `MODIFYING_LETTER`
 ```
 
 
@@ -534,7 +534,10 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
 > in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces.
+> hyphens and non-breaking spaces. The _placeholder_ identification
+> class also includes numerals, which are commonly used as word
+> substitutes within normal text. Examples include ordinals (e.g.,
+> "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
