@@ -245,7 +245,7 @@ shaping process.
 The Khmer block in Unicode includes all of the codepoints necessary to
 write Khmer language text. The Khmer Symbols block contains
 miscellaneous symbols used for lunar-date calendars. The Khmer Symbols
-codepoints to not evoke any special behavior from the shaping engine.
+codepoints do not evoke any special behavior from the shaping engine.
 
 Separate character tables are provided for the Khmer and Khmer Symbols
 blocks as well as for other miscellaneous characters that 
