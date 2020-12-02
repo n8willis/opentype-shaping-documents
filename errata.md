@@ -7,6 +7,10 @@ specification documents.
 
 **Table of Contents**
 
+  - [Unicode](#unicode)
+      - [ZWJ and ZWNJ](#zwj-and-zwnj)
+	      - [Scope of ZWJ and ZWNJ](#scope-of-zwj-and-zwnj)
+	      - [ZWJ in redundant ligature lookups](#zwj-in-redundant-ligature-lookups)
   - [OpenType](#opentype)
       - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
       - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
@@ -20,6 +24,53 @@ specification documents.
 
   
   
+## Unicode ##
+
+This section lists errate pertaining to the Unicode Standard.
+
+### ZWJ and ZWNJ ###
+
+#### Scope of ZWJ and ZWNJ ####
+
+Unicode provides the Zero Width Joiner (ZWJ) and Zero Width Non-Joiner
+(ZWNJ) control characters so that a text sequence can "request a
+rendering system to have more or less of a connection between
+characters than they would otherwise have."
+
+The generic examples used in the standard show how ZWJ and ZWNJ
+characters can affect the cursive-joining behavior between two
+characters or the ligature-forming behavior between two
+characters. However, the standard does not explicitly say whether or
+not the presence of a ZWJ or ZWNJ should influence the shaping
+behavior of characters for characters not adjacent to the ZWJ or ZWNJ.
+
+For example, in the sequence "a,b,ZWNJ,c,d" the ZWNJ should prevent
+the application of a ligature between "b" and "c" (if such a ligature
+lookup exists in the active font).
+
+However, if the active font contains a contextual ligature lookup for
+"c,d" when preceded by "b", it is not clear whether or not the ZWNJ
+should inhibit the application of the ligature.
+
+
+#### ZWJ in redundant ligature lookups ####
+
+An "Implementation Notes" section in chapter 23.2 of the Unicode
+Standard says that font vendors should add ZWJ sequences to ligature
+lookups. For example, if the sequence "f,i" triggers the "fi"
+ligature, then the font should also include a lookup that triggers the
+"fi" ligature for "f,ZWJ,i". 
+
+However, the text of chapter 23.2 prior to the "Implementation Notes"
+says that ZWJ and ZWNJ "are not to be used in all cases where
+ligatures or cursive connections are desired; instead, they are meant
+only for over-riding the normal behavior of the text." That logic
+makes the suggested "f,ZWJ,i" ligature lookup superfluous, because it
+duplicates the effects of the existing "f,i" ligature lookup.
+
+Using ZWJ within lookup patterns in the manner suggested by the
+"Implementation Notes" is not common practice. 
+
 
 ## OpenType ##
 
