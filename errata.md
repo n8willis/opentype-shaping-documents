@@ -26,7 +26,7 @@ specification documents.
   
 ## Unicode ##
 
-This section lists errate pertaining to the Unicode Standard.
+This section lists errata pertaining to the Unicode Standard.
 
 ### ZWJ and ZWNJ ###
 
@@ -50,7 +50,8 @@ lookup exists in the active font).
 
 However, if the active font contains a contextual ligature lookup for
 "c,d" when preceded by "b", it is not clear whether or not the ZWNJ
-should inhibit the application of the ligature.
+in the same "a,b,ZWNJ,c,d" sequence should inhibit the application of
+the ligature between "c" and "d".
 
 
 #### ZWJ in redundant ligature lookups ####
