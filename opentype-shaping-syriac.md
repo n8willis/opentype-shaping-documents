@@ -28,7 +28,8 @@ implementations share.
 
 The Syriac script is used to write multiple languages, most commonly
 Classical Syriac and multiple dialects of Aramaic. In addition,
-historical texts use Syriac to write Arabic and Malayalam. 
+historical texts use Syriac to write Arabic, Malayalam, Turkish,
+Kurdish, and Armenian.
 
 The Syriac script encompasses multiple distinct styles, including
 ʾEsṭrangēlā (classical), Maḏnḥāyā (Eastern), and Serṭā (Western), that
@@ -82,8 +83,7 @@ of text.
 a native Syriac letter in order to change it to a foreign loan letter.
 
 **Syāmē** is the name for the diacritical mark that is used to
-indicate the pluralization of a word when the singular and plural
-forms of the word do not differ in their consonantal spelling.
+indicate the pluralization of a word.
 
 The **Syriac Abbreviation Mark** is a Unicode control character used
 to trigger the addition of an overline glyph that may span the length
@@ -162,9 +162,10 @@ on the preceding glyph.
 
 The `DALATH_RISH` joining group includes the standard letters "Dalath"
 and "Rish" as well as the "Dotless Dalath-Rish", an ambiguous letter
-that is used in transcribing historical documents when it is
-impossible to distinguish whether the letter in the source text is
-"Dalath" or "Rish".
+that is used in Old Syriac text, when neither the "Dalath" and "Rish"
+letters featured a dot, and may also be used in transcribing
+historical documents where it is impossible to distinguish whether the
+letter in the source text is "Dalath" or "Rish".
 
 ![](/images/syriac/syriac-dalath-rish.png)
 
