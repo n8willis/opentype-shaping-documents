@@ -1255,8 +1255,9 @@ word must be tagged for potential substitution by the `init` feature
 of GSUB.
 
 Telugu does not use the `init` feature, so this step will
-involve no work when processing `<tel2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
+involve no work when processing `<tel2>` text. It is included here in
+order to maintain compatibility with the other Indic scripts.
+
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
