@@ -494,6 +494,14 @@ and GPOS, but the documents to put backticks around specific lookups,
 like `liga` and `mkmk`. That is because GSUB and GPOS are tables that
 contain the items (the lookups) that the shaping engine acts upon.
 
+
+### Directories ###
+
+Always include a README.md file in each directory. If you add a new
+text file to a directory, check the directory's README.md and see if
+it should be updated as well.
+
+
 ### Marking up sections ###
 
 
