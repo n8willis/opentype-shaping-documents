@@ -15,6 +15,7 @@ specification documents.
       - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
       - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
 	  - [Per-script applicability of feature tags](#per-script-applicability-of-feature-tags)
+      - [Ordering of post-base and below-base consonants in Indic2 base-consonant determination](#ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination)
       - [Lookup behavior](#lookup-behavior)
           - [Using MultipleSub for glyph deletion](#using-multiplesub-for-glyph-deletion)
 		  - [Processing nested contextual lookups](#processing-nested-contextual-lookups)
@@ -121,6 +122,37 @@ For example, the `pstf` (post-base forms) tag is
 [described](https://docs.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-pstf)
 as required for "scripts of south and southeast Asia that have
 post-base forms for consonants eg: Gurmukhi, Malayalam, Khmer."
+
+
+### Ordering of post-base and below-base consonants in Indic2 base-consonant determination ###
+
+The Microsoft script-development specification for all Indic2-model
+scripts
+[states](https://docs.microsoft.com/en-us/typography/script-development/bengali#reorder-characters)
+parenthetically that "post-base forms have to follow below-base forms". 
+
+If this statement is taken to be a rule, it would affect the
+base-consonant search algorithm.
+
+For example, in the Bengali sequence "Ka,Halant,Ba,Halant,Ya"
+(`U+0995`,`U+09CD`,`U+09AC`,`U+09CD`,`U+09AF`), "Ka" would be
+identified as the syllable base, with "Ba" designated a below-base
+form and "Ya" designated a post-base form. However, in the similar
+sequence "Ka,Halant,Ya,Halant,Ba"
+(`U+0995`,`U+09CD`,`U+09AF`,`U+09CD`,`U+09AC`), "Ya" would be
+identified as the base consonant.
+
+Real-world Bengali texts provide counterexamples that contradict the
+assumption that "post-base forms follow below-base forms" is a
+requirement.
+
+In other scripts, such as Telugu, the "post-base forms have to follow
+below-base forms" statement is, perhaps, statistically likely, but is
+certainly not an orthographic rule.
+
+Consequently, it is unclear if the statement should be enforced as a
+rule or if it should be regarded as a suggestion, and it is unclear to
+what degree that answer varies between the Indic2-model scripts.
 
 
 ### Lookup behavior ###
