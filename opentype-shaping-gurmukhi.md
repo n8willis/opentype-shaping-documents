@@ -1077,6 +1077,7 @@ in GSUB and GPOS application stages that follow.
 
 
 
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
