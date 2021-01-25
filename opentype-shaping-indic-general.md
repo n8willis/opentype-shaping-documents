@@ -1411,7 +1411,7 @@ Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
 
-> Note: The `init` feature for word-initial dependent voewls (matras)
+> Note: The `init` feature for word-initial dependent vowels (matras)
 > is defined only for Bengali and should not be expected in fonts for
 > any other scripts. Therefore, this step will involve no work when
 > processing non-`<bng2>` text. 
