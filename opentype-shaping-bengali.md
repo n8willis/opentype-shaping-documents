@@ -1384,6 +1384,26 @@ Any left-side dependent vowels (matras) that are at the start of a
 word must be tagged for potential substitution by the `init` feature
 of GSUB.
 
+> Note: Although the specification defines the `init` feature as being
+> used for word-initial positions only, the feature's origin bases
+> this on the linguistic sense of "word" and that sense may not be
+> precise enough to cover all of the cases encountered in a
+> contemporary text run.
+>
+> In practice, users may expect the `init` feature to be applied when
+> a sequence has a left-side dependent vowel that is preceded by a
+> punctuation character, a currency symbol, an emoji, or any of
+> several other categories of code point. Shaping engines may need to
+> adapt their matching rules to meet users' expectations for this
+> feature. 
+>
+> The Microsoft Uniscribe shaping engine historically tested for a
+> certain range of  Unicode `General Category` and more recent shaping
+> engines follow suit. For more information on Uniscribe
+> compatibility, see the [Uniscribe-bug-compatibility
+> note](/notes/uniscribe-bug-compatibility.md). 
+
+
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
