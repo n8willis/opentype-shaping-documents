@@ -650,7 +650,8 @@ positioned before or after any post-base consonants, respectively.
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
 
-For a definition of the "base" consonant, refer to step 2.1, which follows.
+For a definition of the "base" consonant, refer to step 2.1, which
+follows.
 
 #### 2.1: Base consonant ####
 
@@ -876,12 +877,56 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
+#### 2.10: Flag sequences for possible feature applications ####
+
+With the inital reordering complete, those glyphs in the syllable that
+may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
+flagged for each potential feature. 
+
+This flagging is preliminary; the set of potential features varies
+between different scripts and which features are supported varies
+between fonts. It is also possible that the application of
+one feature on a glyph sequence will perform a substitution that makes
+a later feature no longer applicable to the updated sequence.
+
+Consequently, the flagging must be completed before shaping proceeds
+to the stages during which features are applied.
+
+Some shaping features, such as `locl`, can potentially apply to any
+glyphs. Therefore it is not necessary to maintain a separate flag for
+these features in the bitmask (or other data structure) used to track
+the flags -- although shaping engines may do so if desired.
+
+The sequences to flag are summarized in the list below; a full
+description of each feature's function and interpretation is provided
+in GSUB and GPOS application stages that follow.
+
+  - `nukt` should match "_Consonant_,Nukta" sequences
+  - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
+  - `rphf` should match initial "Ra,Halant" sequences but _not_ match
+            initial "Ra,Halant,ZWJ" sequences
+  - `blwf` should match "Halant,Ra", "Halant,Ha", and "Halant,Va" in
+            post-base positions and "Ra,Halant", "Ha,Halant", and
+            "Va,Halant" in non-initial pre-base positions
+  - `half` should match "_Consonant_,Halant" in pre-base position but
+           _not_ match "Ra,Halant" sequences flagged for `rphf` and
+           _not_ match "_Consonant_,Halant,ZWNJ,_Consonant_" sequences
+  - `pstf` should match initial "Halant,Ya" in post-base position
+  - `vatu` should match "_Consonant_,Halant,Ra",
+           "_Consonant_,Halant,Ha", and "_Consonant_,Halant,Va"
+  - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
+            match "_Consonant_,Halant,ZWJ,_Consonant_" or
+            "_Consonant_,Halant,ZWNJ,_Consonant_"
+
+
+
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's GSUB table. In preparation for this
-stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+stage, glyph sequences should be flagged for possible application 
+of GSUB features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1121,7 +1166,7 @@ to maintain compatibility with the other Indic scripts.
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
-word must be tagged for potential substitution by the `init` feature
+word must be flagged for potential substitution by the `init` feature
 of GSUB.
 
 Sinhala does not use the `init` feature, so this step will
@@ -1132,9 +1177,13 @@ order to maintain compatibility with the other Indic scripts.
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
-are applied. The order in which these features are applied is not
-canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+are applied. In preparation for this stage, glyph sequences should be
+flagged for possible application of GSUB features in stage 2,
+step 10.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	init (not used in Sinhala)
 	pres
@@ -1182,9 +1231,11 @@ The `haln` feature is not used in Sinhala.
 ### 6: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
-applied. As with the preceding stage, the order in which these
-features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+applied.
+
+As with the preceding stage, the order in which these features are
+applied is not canonical; they should be applied in the order in which
+they appear in the GPOS table in the font.
 
         dist
         abvm

@@ -1077,7 +1077,6 @@ in GSUB and GPOS application stages that follow.
 
 
 
-
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
@@ -1412,13 +1411,13 @@ order to maintain compatibility with the other Indic scripts.
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
-are applied.  In preparation for this stage, glyph sequences should be
+are applied. In preparation for this stage, glyph sequences should be
 flagged for possible application of GSUB features in stage 2,
 step 10.
 
-The order in which these features are applied is not
-canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	init
 	pres
@@ -1473,9 +1472,9 @@ typographically problematic.
 In this stage, mark positioning, kerning, and other GPOS features are
 applied.
 
-As with the preceding stage, the order in which these
-features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+As with the preceding stage, the order in which these features are
+applied is not canonical; they should be applied in the order in which
+they appear in the GPOS table in the font.
 
         dist
         abvm
