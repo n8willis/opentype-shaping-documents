@@ -1083,15 +1083,14 @@ in GSUB and GPOS application stages that follow.
   - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
   - `rphf` should match initial "Ra,Halant" sequences but _not_ match
             initial "Ra,Halant,ZWJ" sequences
-  - `blwf` should match "Halant,Ra", "Halant,Ha", and "Halant,Va" in
-            post-base positions and "Ra,Halant", "Ha,Halant", and
-            "Va,Halant" in non-initial pre-base positions
+  - `blwf` should match "Halant,Ra" and "Halant,Ba" in
+            post-base positions and "Ra,Halant" and
+            "Ba,Halant" in non-initial pre-base positions
   - `half` should match "_Consonant_,Halant" in pre-base position but
            _not_ match "Ra,Halant" sequences flagged for `rphf` and
            _not_ match "_Consonant_,Halant,ZWNJ,_Consonant_" sequences
-  - `pstf` should match initial "Halant,Ya" in post-base position
-  - `vatu` should match "_Consonant_,Halant,Ra",
-           "_Consonant_,Halant,Ha", and "_Consonant_,Halant,Va"
+  - `pstf` should match "Halant,Ya" in post-base position
+  - `vatu` should match "_Consonant_,Halant,Ra"
   - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
             match "_Consonant_,Halant,ZWJ,_Consonant_" or
             "_Consonant_,Halant,ZWNJ,_Consonant_"
