@@ -57,9 +57,9 @@ model.
 > `<dev2>`).
 >
 > This terminology either indicates that a shaping engine has
-> implemented support for the Indic2 script within the USE model or is
-> merely a conversational convention to discuss support for the
-> Indic2-model scripts in USE.
+> implemented support for one or more of the Indic2 scripts within the
+> USE model or it is merely a conversational convention to discuss
+> support for the Indic2-model scripts in USE.
 >
 > At the present time, there is no formal definition for an Indic3
 > model, and there are not registered OpenType script tags for
