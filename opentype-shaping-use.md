@@ -52,8 +52,9 @@ joining-behavior features as is performed in the Arabic-like shaping
 model. 
 
 > Note: The term _Indic3_ is sometimes used in comparison to Indic2
-> (or the corresponding increment of existing OpenType shaping modes,
-> such as `<dev3>` in comparison to `<dev2>`).
+> (or the corresponding increment of the script tags for existing
+> OpenType shaping models, such as `<dev3>` in comparison to
+> `<dev2>`).
 >
 > This terminology either indicates that a shaping engine has
 > implemented support for the Indic2 script within the USE model or is
