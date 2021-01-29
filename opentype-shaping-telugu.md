@@ -258,11 +258,16 @@ conjunct, the zero-width non-joiner must be used instead.
     "Halant". 
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph".
+"Reph" in some scripts, or to explicitly request a "Reph" form in
+other scripts.
 
-  - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-    even where an initial "Ra,Halant" sequence without the zero-width
-    joiner would otherwise produce a "Reph".
+  - In Telugu, the default behavior for a syllable beginning with
+    "Ra,Halant" is for the "Ra" to be displayed in full form. An
+    explicit "Ra,Halant,ZWJ" sequence is required to produce a "Reph"
+    instead of this default behavior.
+	
+  - In Telugu, a "Ra,ZWJ,Halant" sequence will prevent the formation
+    of a "Reph" form.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (marks, dependent vowels (matras),
@@ -429,8 +434,9 @@ mark-like form.
     with a right-side mark called "Reph" (unless the "Ra" is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_EXPLICIT` characteristic mentioned earlier.
-  - A post-base "Ra" is reordered to before the base consonant or syllable base during
-    the final-reordering stage of the shaping process. 
+  - A post-base "Ra" is reordered to before the base consonant or
+    syllable base during the final-reordering stage of the shaping
+    process.
 
 "Reph" characters must be reordered after the syllable-identification
 stage is complete.
@@ -928,7 +934,7 @@ after the syllable base _and_ after a dependent vowel (matra) sign
 must be tagged with  `POS_FINAL_CONSONANT`.
 
 > Note: Final consonants occur only in Sinhala and should not be
-> expected in `<knd2>` text runs. This step is included here to
+> expected in `<tel2>` text runs. This step is included here to
 > maintain compatibility across Indic scripts.
 
 
