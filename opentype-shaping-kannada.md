@@ -1127,12 +1127,16 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 #### 3.6 pref ####
 
-The `pref` feature replaces pre-base consonant glyphs with
+The `pref` feature replaces pre-base-reordering consonant glyphs with
 any special forms.
 
-> Note: Kannada does not usually incorporate pre-base consonant forms, but it is
-> possible for a font to implement them in order to provide for
-> desired typographic variation.
+The substitution of the nominal glyph for its special form takes place
+at this stage. However, the actual reordering move is performed later,
+in stage 4, step 4.
+
+> Note: Kannada does not usually incorporate pre-base-reordering
+> consonant forms, but it is possible for a font to implement them in
+> order to provide for desired typographic variation.
 
 #### 3.7: blwf ####
 
