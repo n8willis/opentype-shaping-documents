@@ -450,6 +450,7 @@ hç	+	Q	↝ ¾
 
 
 From info at http://www.ciil-lisindia.net/oriya/oriya.html
+https://web.archive.org/web/20150304085123/http://www.ciil-lisindia.net:80/Oriya/Oriya.html
 --->
 
 
