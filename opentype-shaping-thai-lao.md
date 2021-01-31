@@ -43,7 +43,7 @@ The Thai script is used to write multiple languages, most commonly
 Thai, Pak Thai (or Southern Thai), Kuy, Isan, Lanna (or Northern
 Thai), and Kelantan-Pattani Malay. In addition, the Thai script is
 used to write Sanskrit and Pali. However, the Thai script is not used
-for Vedic texts, therefore Thai And Lao text runs are not expected to
+for Vedic texts, therefore Thai and Lao text runs are not expected to
 include any glyphs from the Vedic Extensions block of Unicode.
 
 The Lao script is used to write multiple languages, most commonly
