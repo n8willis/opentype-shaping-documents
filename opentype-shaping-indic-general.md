@@ -1371,7 +1371,7 @@ position is defined as:
      final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
-"consonant,Halant" subsequences, but will stop to the left of the base
+"_Consonant_,Halant" subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
