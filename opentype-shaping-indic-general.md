@@ -1376,13 +1376,13 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 > Note: OpenType and Unicode both state that if the syllable includes
-> a ZWJ follows the last "Halant", then the final matra position
-> should be after the ZWJ.
+> a ZWJ immediately after the last "Halant", then the final matra
+> position should be after the ZWJ.
 >
 > However, there are several test sequences indicating that
 > Microsoft's Uniscribe shaping engine did not follow this rule (in,
 > at least, Devanagari and Bengali text), and in these circumstances
-> it instead makes the final matra position before the final
+> Uniscribe instead makes the final matra position before the final
 > "Consonant,Halant,ZWJ".
 >
 > Subsequently, the HarfBuzz shaping engine has also followed the same
