@@ -1252,9 +1252,8 @@ position is defined as:
    - after the last standalone "Halant" glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
-   - If a zero-width joiner or a zero-width non-joiner follows this
-     last standalone "Halant", the final matra position is moved to
-     after the joiner or non-joiner.
+   - If a zero-width joiner follows this last standalone "Halant", the
+     final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
@@ -1262,6 +1261,30 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.png)
+
+> Note: OpenType and Unicode both state that if the syllable includes
+> a ZWJ immediately after the last "Halant", then the final matra
+> position should be after the ZWJ.
+>
+> However, there are several test sequences indicating that
+> Microsoft's Uniscribe shaping engine did not follow this rule (in,
+> at least, Devanagari and Bengali text), and in these circumstances
+> Uniscribe instead makes the final matra position before the final
+> "Consonant,Halant,ZWJ".
+>
+> Subsequently, the HarfBuzz shaping engine has also followed the same
+> pattern. If other shaping engine implementations prefer to maintain
+> maximum compatibility with Uniscribe and HarfBuzz, then they should
+> also follow suit.
+
+> Note: The Microsoft script-development specifications for OpenType
+> shaping also state that if a zero-width non-joiner follows the last
+> standalone "Halant", the final matra position is moved to after the
+> non-joiner. However, it is unneccessary to test for this condition,
+> because a "Halant,ZWNJ" subsequence is, by definition, the end of a
+> syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
+> pre-base dependent vowel.
+
 
 #### 4.3: Reph ####
 
