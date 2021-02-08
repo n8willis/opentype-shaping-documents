@@ -1151,7 +1151,7 @@ the shaping engine must test:
     for the `rkrf` or `blwf` features earlier, must not be flagged for
     potential `half` substitutions.
   
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
+  - A sequence matching "_Consonant_,Halant,ZWJ" must be
     flagged for potential `half` substitutions, even though the presence of the
     zero-width joiner suppresses the `cjct` feature in a later step.
 
