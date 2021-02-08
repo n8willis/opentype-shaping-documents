@@ -1157,7 +1157,8 @@ flagged for potential `half` substitutions.
 
 > Note: The presence of the "ZWJ" at the end of the sequence means
 > that the sequence will match the regular-expression test in stage 1
-> even without being followed by a base consonant or syllable base. 
+> the end of a syllable, even without being followed by a base
+> consonant or syllable base.
 >
 > The fact that the regular-expression tests identify a syllable break
 > after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
