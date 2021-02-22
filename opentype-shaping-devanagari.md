@@ -1218,18 +1218,18 @@ conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 "_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
 
-> Note: The presence of the "ZWNJ" at the end of the sequence means
+> Note: The presence of the "ZWJ" at the end of the sequence means
 > that the sequence will match the regular-expression test in stage 1
 > as the end of a syllable.
 > 
 > Because OpenType shaping features in `<dev2`> are defined as
 > applying only within an individual syllable, this means that the
-> presence of the "ZWNJ" will automatically prevent the application of
+> presence of the "ZWJ" will automatically prevent the application of
 > a `cjct` feature by triggering the identification of a syllable
 > break between the two consonants.
 >
 > The fact that the regular-expression tests identify a syllable break
-> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
 > shaping and Unicode encoding, however, and might not have any
 > significance with regard to the definition of syllables used in the
 > language or orthography of the text.
