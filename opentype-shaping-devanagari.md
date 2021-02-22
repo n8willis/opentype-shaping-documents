@@ -1219,7 +1219,7 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 "_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
 
 > Note: The presence of the "ZWJ" in a
-> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence should automatically
+> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
 > inhibit any `cjct` feature rules from matching the sequence as valid
 > input, and thus prevent the `cjct` substitution from being applied.
 
