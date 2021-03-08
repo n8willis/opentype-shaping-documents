@@ -1243,20 +1243,39 @@ characteristic.
 
 The `half` feature replaces "_Consonant_,Halant" sequences before the
 base consonant or syllable base with "half forms" of the consonant
-glyphs. There are three exceptions to the default behavior, for which
+glyphs.
+
+In the most common case, this substitution applies to
+"_Consonant_,Halant" sequences that are followed by another
+_Consonant_.
+
+In addition, a sequence matching "_Consonant_,Halant,ZWJ" must also be
+flagged for potential `half` substitutions.
+
+> Note: The presence of the "ZWJ" at the end of the sequence means
+> that the sequence may match the regular-expression test in stage 1
+> as the end of a syllable, even without being followed by a base
+> consonant or syllable base.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+
+There are three exceptions to the default behavior, for which
 the shaping engine must test:
 
   - Initial "Ra,Halant" sequences, which should have been flagged for
     the `rphf` feature earlier, must not be flagged for potential
     `half` substitutions.
 
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
-    flagged for potential `half` substitutions, even though the presence of the
-    zero-width joiner suppresses the `cjct` feature in a later step.
+  - Non-initial "Ra,Halant" and "Ba,Halant" sequences, which should
+    have been flagged for the `rkrf` or `blwf` features earlier, must
+    not be flagged for potential `half` substitutions.
 
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     flagged for potential `half` substitutions.
-
 
 ![Half-form formation](/images/bengali/bengali-half-ka.png)
 
@@ -1286,6 +1305,35 @@ conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
 A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 "_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
+
+> Note: The presence of the "ZWJ" in a
+> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
+> inhibit any `cjct` feature rules from matching the sequence as valid
+> input, and thus prevent the `cjct` substitution from being applied.
+
+> Note: The presence of the "ZWNJ" in a
+> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence means that the
+> "_Consonant_,Halant,ZWNJ" subsequence will match the
+> regular-expression test in stage 1 as the end of a syllable.
+> 
+> Because OpenType shaping features in `<bng2>` are defined as
+> applying only within an individual syllable, this means that the
+> presence of the "ZWNJ" will automatically prevent the application of
+> a `cjct` feature by triggering the identification of a syllable
+> break between the two consonants.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+>
+> Note, also: The presence of the "ZWJ" means that a
+> "_Consonant_,Halant,ZWJ" sequence may match the regular-expression
+> test in stage 1 as the end of a syllable, even without being
+> followed by a base consonant or syllable base. By definition,
+> however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
+> cannot also include a "_Consonant_" after the ZWJ.
 
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
