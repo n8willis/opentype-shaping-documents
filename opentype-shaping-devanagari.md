@@ -1228,7 +1228,7 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 > "_Consonant_,Halant,ZWNJ" subsequence will match the
 > regular-expression test in stage 1 as the end of a syllable.
 > 
-> Because OpenType shaping features in `<dev2`> are defined as
+> Because OpenType shaping features in `<dev2>` are defined as
 > applying only within an individual syllable, this means that the
 > presence of the "ZWNJ" will automatically prevent the application of
 > a `cjct` feature by triggering the identification of a syllable

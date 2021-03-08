@@ -263,8 +263,8 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence.
+The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence.
 
   - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
     formation of a conjunct between the two consonants. 
@@ -272,7 +272,7 @@ from a "_Consonant_,Halant,_Consonant_" sequence.
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead.
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead.
 
   - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
     the first consonant in its standard form, followed by an explicit
@@ -285,12 +285,12 @@ A secondary usage of the zero-width joiner is to prevent the formation of
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_". 
 
 In addition to general punctuation, runs of Malayalam text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from

@@ -228,8 +228,8 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-In other Indic scripts, the zero-width joiner is used to prevent the
-formation of conjuncts and to suppress the formation of "Reph".
+In other Indic scripts, the zero-width joiner (ZWJ) is used to prevent
+the formation of conjuncts and to suppress the formation of "Reph".
 
 Sinhala, however, differs considerably in its use of "ZWJ".
 
@@ -241,13 +241,17 @@ Sinhala, however, differs considerably in its use of "ZWJ".
  
 ![](sinhala-reph.png)
 
+The zero-width non-joiner (ZWNJ) is not used in shaping runs of
+Sinhala text. The ZWNJ is referenced below in various regular
+expressions and shaping rules, however, because it is used by other
+Indic scripts.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 
 
