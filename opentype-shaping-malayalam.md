@@ -71,7 +71,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -343,7 +343,7 @@ characteristics include:
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the sylable base.
+  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the syllable base.
 
   - `REPH_MODE_LOGICAL_REPHA` = "Reph" is encoded as its own Unicode
      codepoint ("Repha"), but it must still be reordered. 
@@ -395,7 +395,7 @@ From the shaping engine's perspective, the main distinction between a
 syllable with a base consonant and a syllable with an
 independent-vowel base is that a syllable with an independent-vowel
 base is less likely to include additional consonants in special forms
-and less likely to include depedendent vowel signs
+and less likely to include dependent vowel signs
 (matras). Therefore, in the common case, vowel-based syllables may
 involve less reordering, substitution feature applications, and other
 processing than consonant-based syllables.
@@ -617,7 +617,7 @@ A standalone syllable will match the expression:
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
-> Note: Although they are labelled as "standalone syllables" here,
+> Note: Although they are labeled as "standalone syllables" here,
 > many sequences that match the standalone regular expression above
 > are instances where a document needs to display a matra, combining
 > mark, or special form in isolation. Such sequences might not have
@@ -1038,7 +1038,7 @@ relative position with respect to each other.
 
 #### 2.10: Flag sequences for possible feature applications ####
 
-With the inital reordering complete, those glyphs in the syllable that
+With the initial reordering complete, those glyphs in the syllable that
 may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
@@ -1401,7 +1401,7 @@ or ligatures that contain the base consonant or syllable base.
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
 > standalone "Halant", the final matra position is moved to after the
-> non-joiner. However, it is unneccessary to test for this condition,
+> non-joiner. However, it is unnecessary to test for this condition,
 > because a "Halant,ZWNJ" subsequence is, by definition, the end of a
 > syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
 > pre-base dependent vowel.
@@ -1624,7 +1624,7 @@ the `<mlym>` script tag and it is known that the font in use supports
 only the `<mlm2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant or syllable base when it is
+below-base consonants occurring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

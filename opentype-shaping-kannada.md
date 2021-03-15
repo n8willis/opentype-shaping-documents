@@ -78,7 +78,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -582,7 +582,7 @@ A standalone syllable will match the expression:
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
-> Note: Although they are labelled as "standalone syllables" here,
+> Note: Although they are labeled as "standalone syllables" here,
 > many sequences that match the standalone regular expression above
 > are instances where a document needs to display a matra, combining
 > mark, or special form in isolation. Such sequences might not have
@@ -1020,7 +1020,7 @@ relative position with respect to each other.
 
 #### 2.10: Flag sequences for possible feature applications ####
 
-With the inital reordering complete, those glyphs in the syllable that
+With the initial reordering complete, those glyphs in the syllable that
 may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
@@ -1339,7 +1339,7 @@ order to maintain compatibility with the other Indic scripts.
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
 > standalone "Halant", the final matra position is moved to after the
-> non-joiner. However, it is unneccessary to test for this condition,
+> non-joiner. However, it is unnecessary to test for this condition,
 > because a "Halant,ZWNJ" subsequence is, by definition, the end of a
 > syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
 > pre-base dependent vowel.
