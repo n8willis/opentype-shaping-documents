@@ -40,7 +40,7 @@ Greek, Armenian, Georgian, Ethiopic, Cherokee, Tifinagh, and many others.
 Many of these scripts support diacritics and other **marks**. Unicode may
 contain **precomposed** mark-and-base codepoints for some or all
 combinations of marks and base letters in the script. For combinations
-without a codepoint, the desired form can be acheived by following the
+without a codepoint, the desired form can be achieved by following the
 **base** letter with a **combining mark** codepoint. 
 
 The primary concern for the shaping engine is processing the text run into
@@ -206,7 +206,7 @@ user interfaces.
 
 The `clig` feature substitutes optional ligatures that are on by
 default, but which are activated only in certain
-contexts. Substitutions made by clig may be disabled by
+contexts. Substitutions made by `clig` may be disabled by
 application-level user interfaces. 
 
 The `liga` feature substitutes standard, optional ligatures that are on

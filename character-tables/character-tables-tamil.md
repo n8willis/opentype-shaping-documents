@@ -381,29 +381,30 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. The
+sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of
+a conjunct between the two consonants. 
 
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead. The
+sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the
+first consonant in its standard form, followed by an explicit
+"Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
 "Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 Tamil text sometimes uses the Latin numerals 2, 3, and 4 in
 superscript or subscript positions to annotate Sanskrit. When used in

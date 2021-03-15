@@ -120,7 +120,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -844,11 +844,14 @@ _other_		= `OTHER` | `MODIFYING_LETTER`
 > Note: The _placeholder_ identification class includes codepoints
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
-> in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces. The _placeholder_ identification
-> class also includes numerals, which are commonly used as word
-> substitutes within normal text. Examples include ordinals (e.g.,
-> "4th").
+> in another context beyond a standard syllable. Examples of
+> _placeholder_ codepoints include hyphens and non-breaking
+> spaces. Sequences that utilize this approach should be identified as
+> "standalone" syllables.
+>
+> The _placeholder_ identification class also includes numerals, which
+> are commonly used as word substitutes within normal text. Examples
+> include ordinals (e.g., "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -918,6 +921,13 @@ A standalone syllable will match the expression:
 > instances in any real-word syllables. Thus, implementations may
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
+
+> Note: Although they are labeled as "standalone syllables" here,
+> many sequences that match the standalone regular expression above
+> are instances where a document needs to display a matra, combining
+> mark, or special form in isolation. Such sequences might not have
+> any significance with regard to the definition of syllables used in
+> the language or orthography of the text.
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -1239,7 +1249,7 @@ relative position with respect to each other.
 
 #### 2.10: Flag sequences for possible feature applications ####
 
-With the inital reordering complete, those glyphs in the syllable that
+With the initial reordering complete, those glyphs in the syllable that
 may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 

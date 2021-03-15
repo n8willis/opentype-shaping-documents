@@ -72,7 +72,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -252,8 +252,8 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence.
+The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence.
 
   - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
     formation of a conjunct between the two consonants. 
@@ -261,7 +261,7 @@ from a "_Consonant_,Halant,_Consonant_" sequence.
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead.
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead.
 
   - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
     the first consonant in its standard form, followed by an explicit
@@ -274,12 +274,12 @@ A secondary usage of the zero-width joiner is to prevent the formation of
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 Tamil text sometimes uses the Latin numerals 2, 3, and 4 in
 superscript or subscript positions to annotate Sanskrit. When used in
@@ -385,7 +385,7 @@ From the shaping engine's perspective, the main distinction between a
 syllable with a base consonant and a syllable with an
 independent-vowel base is that a syllable with an independent-vowel
 base is less likely to include additional consonants in special forms
-and less likely to include depedendent vowel signs
+and less likely to include dependent vowel signs
 (matras). Therefore, in the common case, vowel-based syllables may
 involve less reordering, substitution feature applications, and other
 processing than consonant-based syllables.
@@ -496,11 +496,14 @@ _other_		= `OTHER` | `MODIFYING_LETTER`
 > Note: The _placeholder_ identification class includes codepoints
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
-> in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces. The _placeholder_ identification
-> class also includes numerals, which are commonly used as word
-> substitutes within normal text. Examples include ordinals (e.g.,
-> "4th").
+> in another context beyond a standard syllable. Examples of
+> _placeholder_ codepoints include hyphens and non-breaking
+> spaces. Sequences that utilize this approach should be identified as
+> "standalone" syllables.
+>
+> The _placeholder_ identification class also includes numerals, which
+> are commonly used as word substitutes within normal text. Examples
+> include ordinals (e.g., "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -570,6 +573,13 @@ A standalone syllable will match the expression:
 > instances in any real-word syllables. Thus, implementations may
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
+
+> Note: Although they are labeled as "standalone syllables" here,
+> many sequences that match the standalone regular expression above
+> are instances where a document needs to display a matra, combining
+> mark, or special form in isolation. Such sequences might not have
+> any significance with regard to the definition of syllables used in
+> the language or orthography of the text.
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -737,7 +747,7 @@ consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
 
-Any pre-base-reordering consonant (such as a pre-base-reodering "Ra")
+Any pre-base-reordering consonant (such as a pre-base-reordering "Ra")
 encountered during the base-consonant search must be tagged
 `POS_POSTBASE_CONSONANT`. 
  
@@ -974,7 +984,7 @@ relative position with respect to each other.
 
 #### 2.10: Flag sequences for possible feature applications ####
 
-With the inital reordering complete, those glyphs in the syllable that
+With the initial reordering complete, those glyphs in the syllable that
 may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
@@ -1139,20 +1149,32 @@ special forms.
 
 The `half` feature replaces "_Consonant_,Halant" sequences before the
 base consonant or syllable base with "half forms" of the consonant
-glyphs. There are four exceptions to the default behavior, for which
-the shaping engine must test:
+glyphs.
+
+In the most common case, this substitution applies to
+"_Consonant_,Halant" sequences that are followed by another
+_Consonant_.
+
+In addition, a sequence matching "_Consonant_,Halant,ZWJ" must also be
+flagged for potential `half` substitutions.
+
+> Note: The presence of the "ZWJ" at the end of the sequence means
+> that the sequence may match the regular-expression test in stage 1
+> as the end of a syllable, even without being followed by a base
+> consonant or syllable base.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+
+There are two exceptions to the default behavior, for which the
+shaping engine must test:
 
   - Initial "Ra,Halant" sequences, which should have been flagged for
     the `rphf` feature earlier, must not be flagged for potential
     `half` substitutions.
-
-  - Non-initial "Ra,Halant" sequences, which should have been flagged
-    for the `rkrf` or `blwf` features earlier, must not be flagged for
-    potential `half` substitutions.
-  
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
-    flagged for potential `half` substitutions, even though the presence of the
-    zero-width joiner suppresses the `cjct` feature in a later step.
 
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
     flagged for potential `half` substitutions.
@@ -1186,6 +1208,35 @@ conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
 A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 "_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
+
+> Note: The presence of the "ZWJ" in a
+> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
+> inhibit any `cjct` feature rules from matching the sequence as valid
+> input, and thus prevent the `cjct` substitution from being applied.
+
+> Note: The presence of the "ZWNJ" in a
+> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence means that the
+> "_Consonant_,Halant,ZWNJ" subsequence will match the
+> regular-expression test in stage 1 as the end of a syllable.
+> 
+> Because OpenType shaping features in `<tml2>` are defined as
+> applying only within an individual syllable, this means that the
+> presence of the "ZWNJ" will automatically prevent the application of
+> a `cjct` feature by triggering the identification of a syllable
+> break between the two consonants.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+>
+> Note, also: The presence of the "ZWJ" means that a
+> "_Consonant_,Halant,ZWJ" sequence may match the regular-expression
+> test in stage 1 as the end of a syllable, even without being
+> followed by a base consonant or syllable base. By definition,
+> however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
+> cannot also include a "_Consonant_" after the ZWJ.
 
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
@@ -1282,7 +1333,7 @@ or ligatures that contain the base consonant or syllable base.
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
 > standalone "Halant", the final matra position is moved to after the
-> non-joiner. However, it is unneccessary to test for this condition,
+> non-joiner. However, it is unnecessary to test for this condition,
 > because a "Halant,ZWNJ" subsequence is, by definition, the end of a
 > syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
 > pre-base dependent vowel.
@@ -1493,7 +1544,7 @@ the `<taml>` script tag and it is known that the font in use supports
 only the `<tml2>` shaping model.
 
 Shaping engines may also choose to apply `blwf` substitutions to
-below-base consonants occuring before the base consonant or syllable base when it is
+below-base consonants occurring before the base consonant or syllable base when it is
 known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according

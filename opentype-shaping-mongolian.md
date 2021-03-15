@@ -636,7 +636,7 @@ of bases and marks with precomposed base-and-mark glyphs.
 > account for necessary mark-reordering adjustments conducted in the
 > next stage.
 > 
-> Nevertheless, when the active font uses `mset` substituions, the
+> Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
 
 ### 6. Mark reordering ###

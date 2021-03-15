@@ -61,7 +61,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example. In the Sinhalese language, the Reph form is known as _repaya_.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -228,8 +228,8 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-In other Indic scripts, the zero-width joiner is used to prevent the
-formation of conjuncts and to suppress the formation of "Reph".
+In other Indic scripts, the zero-width joiner (ZWJ) is used to prevent
+the formation of conjuncts and to suppress the formation of "Reph".
 
 Sinhala, however, differs considerably in its use of "ZWJ".
 
@@ -241,13 +241,17 @@ Sinhala, however, differs considerably in its use of "ZWJ".
  
 ![](sinhala-reph.png)
 
+The zero-width non-joiner (ZWNJ) is not used in shaping runs of
+Sinhala text. The ZWNJ is referenced below in various regular
+expressions and shaping rules, however, because it is used by other
+Indic scripts.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 
 
@@ -346,7 +350,7 @@ From the shaping engine's perspective, the main distinction between a
 syllable with a base consonant and a syllable with an
 independent-vowel base is that a syllable with an independent-vowel
 base is less likely to include additional consonants in special forms
-and less likely to include depedendent vowel signs
+and less likely to include dependent vowel signs
 (matras). Therefore, in the common case, vowel-based syllables may
 involve less reordering, substitution feature applications, and other
 processing than consonant-based syllables.
@@ -458,11 +462,14 @@ _other_		= `OTHER`| `MODIFYING_LETTER`
 > Note: The _placeholder_ identification class includes codepoints
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
-> in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces. The _placeholder_ identification
-> class also includes numerals, which are commonly used as word
-> substitutes within normal text. Examples include ordinals (e.g.,
-> "4th").
+> in another context beyond a standard syllable. Examples of
+> _placeholder_ codepoints include hyphens and non-breaking
+> spaces. Sequences that utilize this approach should be identified as
+> "standalone" syllables.
+>
+> The _placeholder_ identification class also includes numerals, which
+> are commonly used as word substitutes within normal text. Examples
+> include ordinals (e.g., "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -532,6 +539,13 @@ A standalone syllable will match the expression:
 > instances in any real-word syllables. Thus, implementations may
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
+
+> Note: Although they are labeled as "standalone syllables" here,
+> many sequences that match the standalone regular expression above
+> are instances where a document needs to display a matra, combining
+> mark, or special form in isolation. Such sequences might not have
+> any significance with regard to the definition of syllables used in
+> the language or orthography of the text.
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -879,7 +893,7 @@ relative position with respect to each other.
 
 #### 2.10: Flag sequences for possible feature applications ####
 
-With the inital reordering complete, those glyphs in the syllable that
+With the initial reordering complete, those glyphs in the syllable that
 may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
@@ -1128,7 +1142,7 @@ the base consonant or syllable base, and all half forms.
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
 > standalone "Halant", the final matra position is moved to after the
-> non-joiner. However, it is unneccessary to test for this condition,
+> non-joiner. However, it is unnecessary to test for this condition,
 > because a "Halant,ZWNJ" subsequence is, by definition, the end of a
 > syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
 > pre-base dependent vowel.
