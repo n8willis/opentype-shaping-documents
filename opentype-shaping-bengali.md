@@ -239,6 +239,8 @@ class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
 
+#### Special-purpose codepoints ####
+
 Other important characters that may be encountered when shaping runs
 of Bengali text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
@@ -271,6 +273,35 @@ A secondary usage of the zero-width joiner is to prevent the formation of
   - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
+
+The ZWJ and ZWNJ characters are, by definition, non-printing control
+characters and have the _Default_Ignorable_ property in the Unicode
+Character Database. In standard text-display scenarios, their function
+is to signal a request from the user to the shaping engine for some
+particular non-default behavior. As such, they are not rendered
+visually.
+
+> Note: Naturally, there are special circumstances where a user or
+> document might need to request that a ZWJ or ZWNJ be rendered
+> visually, such as when illustrating the OpenType shaping process, or
+> displaying Unicode tables.
+
+Because the ZWJ and ZWNJ are non-printing control characters, they can
+be ignored by any portion of a software text-handling stack not
+involved in the shaping operations that the ZWJ and ZWNJ are designed
+to interface with. For example, spell-checking or collation functions
+will typically ingore ZWJ and ZWNJ.
+
+Similarly, the ZWJ and ZWNJ should be ingored by the shaping engine
+when matching sequences of codepoints against the backtrack and
+lookahead sequences of a font's GSUB or GPOS lookups.
+
+For example:
+
+  - A lookup that substitutes an alternate version of a
+    dependent-vowel (matra) glyph when it is preceded by "Ka,Halant,Tta"
+    should still be applied if the dependent-vowel codepoint is preceded
+    by "Ka,Halant,ZWJ,Tta" in the text run.
 
 The no-break space (NBSP) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
