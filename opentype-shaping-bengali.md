@@ -239,18 +239,43 @@ class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
 
-#### Special-purpose codepoints ####
+#### Special-function codepoints ####
 
 Other important characters that may be encountered when shaping runs
 of Bengali text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
 the no-break space (`U+00A0`).
 
+Each of these is of particular importance to shaping engines, because
+these codepoints interact with the shaping engine, the text run, and
+the active font, either to mediate non-default shaping behavior or to
+relay information about the current shaping process.
+
 The dotted-circle placeholder is frequently used when displaying a
 dependent vowel (matra) or a combining mark in isolation. Real-world
 text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
+
+Dotted-circle placeholder characters (like any Unicode codepoint) can
+appear anywhere in text input sequences and should be rendered
+normally. GPOS positioning lookups should attach mark glyphs to dotted
+circles as they would to other non-mark characters. As visible glyphs,
+dotted circles can also be involved in GSUB substitutions.
+
+In addition to the default input-text handling process, shaping
+engines may also insert dotted-circle placeholders into the text
+sequence. Dotted-circle insertions are required when a non-spacing
+mark or dependent sign is formed with no base character present.
+
+This requirement covers:
+
+  - Dependent signs that are assigned their own individual Unicode
+    codepoints (such as most dependent-vowel marks or matras)
+  
+  - Dependent signs that are formed only by specific sequences of
+    other codepoints (such as "Reph")
+
 
 The zero-width joiner (ZWJ) is primarily used to prevent the formation
 of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. 
