@@ -690,6 +690,40 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
+The primary problem involved in shaping broken syllables is the lack
+of a syllable base (either a base consonant or an independent
+vowel). Without a syllable base, the shaping process cannot implement
+GPOS positioning and other contextual operations that are required
+later in the shaping process.
+
+To make up for this limitation, shaping engines should insert a
+dotted-circle placeholder (`U+25CC`) character into the text stream
+where the missing syllable base was expected to occur. This
+placeholder allows the shaping process to proceed on a best-effort
+basis at handling the broken-syllable sequence, but making guarantees
+about the orthographic correctness or preferred appearance of the
+final result is out of scope for this document.
+
+Shaping engines can perform this dotted-circle insertion at any point
+after the broken syllable has been recognized and before GSUB features
+are applied. However, the best results will likely be attained by
+performing the insertion immediately, before proceeding to
+stage 2. This will enable the maximum number of GSUB and GPOS features
+in the active font to be correctly applied to the text run by ensuring
+that all reordering, tagging, and sorting algorithms are executed as
+usual.
+
+> Note: In software stacks where other text-handling operations, such
+> as Unicode normalization and localization, are performed before the
+> text run is passed to the shaping engine, there is a potential for
+> the dotted-circle insertion to cause unexpected effects.
+>
+> For example, if a `ccmp` or `locl` feature substitutes a variant
+> glyph of non-default size or weight for the dotted-circle
+> placeholder (`U+25CC`) codepoint, then a shaping engine that relies
+> on another software component to handle those features must take
+> additional care to ensure consistency.
+
 
 The expressions above use state-machine syntax from the Ragel
 state-machine compiler. The operators represent:
@@ -712,11 +746,6 @@ i|j = i or j
 
 
 
-
-The shaping engine may make a best-effort attempt
-to shape the broken sequence, but making guarantees about the
-correctness or appearance of the final result is out of scope for this
-document.
 
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
