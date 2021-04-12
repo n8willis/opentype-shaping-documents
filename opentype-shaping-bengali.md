@@ -692,7 +692,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 
 The primary problem involved in shaping broken syllables is the lack
 of a syllable base (either a base consonant or an independent
-vowel). Without a syllable base, the shaping process cannot implement
+vowel). Without a syllable base, the shaping engine cannot perform
 GPOS positioning and other contextual operations that are required
 later in the shaping process.
 
@@ -718,11 +718,11 @@ usual.
 > text run is passed to the shaping engine, there is a potential for
 > the dotted-circle insertion to cause unexpected effects.
 >
-> For example, if a `ccmp` or `locl` feature substitutes a variant
-> glyph of non-default size or weight for the dotted-circle
-> placeholder (`U+25CC`) codepoint, then a shaping engine that relies
-> on another software component to handle those features must take
-> additional care to ensure consistency.
+> For example, if a `ccmp` or `locl` feature substitutes the default
+> dotted-circle placeholder glyph with a variant glyph of a different
+> size or weight for the (`U+25CC`) codepoint, then any shaping engine
+> which relies on another software component to handle that
+> functionality must take additional care to ensure consistency.
 
 
 The expressions above use state-machine syntax from the Ragel
