@@ -101,11 +101,11 @@ montage malayalam-pstf-ra-before.png right-arrow.png malayalam-pstf-ra-after.png
 
 > Note: Noto Serif Malayalam includes a `blwf`-form "La" but does not
 > include a feature that accesses it. It is included in several `akhn`
-> ligatures, though.
+> ligatures, though. Instead, use SMC Rachana font.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-before.png --features=-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d2e,0d4d,0d32
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-before.png --features=-blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf --unicodes=0d4d,0d32
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.png --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d2e,0d4d,0d32
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.png --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana--Regular.ttf --unicodes=0d4d,0d32
 
 montage malayalam-blwf-before.png right-arrow.png malayalam-blwf-after.png -geometry +0+0 -background transparent malayalam-blwf.png
 
