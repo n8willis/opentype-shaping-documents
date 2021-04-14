@@ -41,7 +41,7 @@ specific, script-aware behavior.
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0D80`   | _unassigned_     |                   |                            |                              |
-|`U+0D81`   | _unassigned_     |                   |                            |                              |
+|`U+0D81`   | Mark [Mn]  _     | BINDU             | TOP_POSITION               | &#x0D81; Candrabindu         |
 |`U+0D82`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0D82; Anusvara            |
 |`U+0D83`   | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x0D83; Visarga             |
 |`U+0D84`   | _unassigned_     |                   |                            |                              |
@@ -226,7 +226,7 @@ Sanskrit runs written in the Sinhala script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
-> Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
+> Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
@@ -266,8 +266,8 @@ classified as follows.
 |`U+1CEF`   | Letter           | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
-|`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF2`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
 |`U+1CF5`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF5; Sign Jihvamuliya    |
@@ -275,7 +275,7 @@ classified as follows.
 |`U+1CF7`   | Mark [Mc]        | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
-|`U+1CFA`   | _unassigned_     |                   |                            |                              |
+|`U+1CFA`   | Letter           | PLACEHOLDER       | _null_                     | &#x1CFA; Sign Double Anusvara Antargomukha |
 |`U+1CFB`   | _unassigned_     |                   |                            |                              |
 |`U+1CFC`   | _unassigned_     |                   |                            |                              |
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
@@ -310,27 +310,23 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+The zero-width joiner (ZWJ) is used to request the subjoined form
+of a consonant. The sequence "Consonant_1,Halant,ZWJ,Consonant_2" is
+used to specify the subjoined form of "Consonant_2".
 
-Note, however, that the "_Consonant_,Halant" subsequence in the above
-example may still trigger a half-forms feature. To prevent the
-application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+A secondary usage of the zero-width joiner is to explicitly request
+the formation of "Reph". An initial "Ra,Halant,ZWJ" sequence should
+produce a "Reph".
 
-A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
-otherwise would.
+The zero-width non-joiner (ZWNJ) is not used in shaping runs of
+Sinhala text. The ZWNJ is referenced below in various regular
+expressions and shaping rules, however, because it is used by other
+Indic scripts.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 

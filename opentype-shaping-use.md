@@ -51,6 +51,21 @@ example, the USE model includes a step applying contextual
 joining-behavior features as is performed in the Arabic-like shaping
 model. 
 
+> Note: The term _Indic3_ is sometimes used in comparison to Indic2
+> (or the corresponding increment of the script tags for existing
+> OpenType shaping models, such as `<dev3>` in comparison to
+> `<dev2>`).
+>
+> This terminology either indicates that a shaping engine has
+> implemented support for one or more of the Indic2 scripts within the
+> USE model or it is merely a conversational convention to discuss
+> support for the Indic2-model scripts in USE.
+>
+> At the present time, there is no formal definition for an Indic3
+> model, and there are not registered OpenType script tags for
+> `<dev3>` or any other third generation of the scripts handled by the
+> Indic2 model.
+
 USE was introduced after the release of version 8.0 of the Unicode
 specification. The intent is for USE to support complex scripts added
 to future Unicode releases in addition to those already supported.

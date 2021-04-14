@@ -61,7 +61,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example. In the Sinhalese language, the Reph form is known as _repaya_.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -228,8 +228,8 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-In other Indic scripts, the zero-width joiner is used to prevent the
-formation of conjuncts and to suppress the formation of "Reph".
+In other Indic scripts, the zero-width joiner (ZWJ) is used to prevent
+the formation of conjuncts and to suppress the formation of "Reph".
 
 Sinhala, however, differs considerably in its use of "ZWJ".
 
@@ -241,13 +241,17 @@ Sinhala, however, differs considerably in its use of "ZWJ".
  
 ![](sinhala-reph.png)
 
+The zero-width non-joiner (ZWNJ) is not used in shaping runs of
+Sinhala text. The ZWNJ is referenced below in various regular
+expressions and shaping rules, however, because it is used by other
+Indic scripts.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 
 
@@ -346,7 +350,7 @@ From the shaping engine's perspective, the main distinction between a
 syllable with a base consonant and a syllable with an
 independent-vowel base is that a syllable with an independent-vowel
 base is less likely to include additional consonants in special forms
-and less likely to include depedendent vowel signs
+and less likely to include dependent vowel signs
 (matras). Therefore, in the common case, vowel-based syllables may
 involve less reordering, substitution feature applications, and other
 processing than consonant-based syllables.
@@ -433,13 +437,13 @@ _zwnj_		= `NON_JOINER`
 _matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
 _syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
 _vedicsign_	= `CANTILLATION`
-_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER` | `NUMBER` 
 _dottedcircle_	= `DOTTED_CIRCLE`
 _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+_other_		= `OTHER`| `MODIFYING_LETTER`
 ```
 
 
@@ -458,8 +462,14 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > Note: The _placeholder_ identification class includes codepoints
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
-> in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces.
+> in another context beyond a standard syllable. Examples of
+> _placeholder_ codepoints include hyphens and non-breaking
+> spaces. Sequences that utilize this approach should be identified as
+> "standalone" syllables.
+>
+> The _placeholder_ identification class also includes numerals, which
+> are commonly used as word substitutes within normal text. Examples
+> include ordinals (e.g., "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -529,6 +539,13 @@ A standalone syllable will match the expression:
 > instances in any real-word syllables. Thus, implementations may
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
+
+> Note: Although they are labeled as "standalone syllables" here,
+> many sequences that match the standalone regular expression above
+> are instances where a document needs to display a matra, combining
+> mark, or special form in isolation. Such sequences might not have
+> any significance with regard to the definition of syllables used in
+> the language or orthography of the text.
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -647,7 +664,8 @@ positioned before or after any post-base consonants, respectively.
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
 
-For a definition of the "base" consonant, refer to step 2.1, which follows.
+For a definition of the "base" consonant, refer to step 2.1, which
+follows.
 
 #### 2.1: Base consonant ####
 
@@ -873,12 +891,45 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
+#### 2.10: Flag sequences for possible feature applications ####
+
+With the initial reordering complete, those glyphs in the syllable that
+may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
+flagged for each potential feature. 
+
+This flagging is preliminary; the set of potential features varies
+between different scripts and which features are supported varies
+between fonts. It is also possible that the application of
+one feature on a glyph sequence will perform a substitution that makes
+a later feature no longer applicable to the updated sequence.
+
+Consequently, the flagging must be completed before shaping proceeds
+to the stages during which features are applied.
+
+Some shaping features, such as `locl`, can potentially apply to any
+glyphs. Therefore it is not necessary to maintain a separate flag for
+these features in the bitmask (or other data structure) used to track
+the flags -- although shaping engines may do so if desired.
+
+The sequences to flag are summarized in the list below; a full
+description of each feature's function and interpretation is provided
+in GSUB and GPOS application stages that follow.
+
+  - `akhn` should match "_Consonant_,Halant,ZWJ,_Consonant_" and
+           "_Consonant_,ZWJ,Halant,_Consonant_" sequences
+  - `rphf` should match initial "Ra,Halant,ZWJ" sequences
+  - `pstf` should match "_Matra_" in post-base position
+  - `vatu` should match "Halant,ZWJ,Ra" and "Halant,ZWJ,Va"
+
+
+
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's GSUB table. In preparation for this
-stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+stage, glyph sequences should be flagged for possible application 
+of GSUB features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1063,9 +1114,8 @@ position is defined as:
    - after the last standalone "Halant" glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
-   - If a zero-width joiner or a zero-width non-joiner follows this
-     last standalone "Halant", the final matra position is moved to
-     after the joiner or non-joiner.
+   - If a zero-width joiner follows this last standalone "Halant", the
+     final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
@@ -1073,6 +1123,30 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 ![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.png)
+
+> Note: OpenType and Unicode both state that if the syllable includes
+> a ZWJ immediately after the last "Halant", then the final matra
+> position should be after the ZWJ.
+>
+> However, there are several test sequences indicating that
+> Microsoft's Uniscribe shaping engine did not follow this rule (in,
+> at least, Devanagari and Bengali text), and in these circumstances
+> Uniscribe instead makes the final matra position before the final
+> "Consonant,Halant,ZWJ".
+>
+> Subsequently, the HarfBuzz shaping engine has also followed the same
+> pattern. If other shaping engine implementations prefer to maintain
+> maximum compatibility with Uniscribe and HarfBuzz, then they should
+> also follow suit.
+
+> Note: The Microsoft script-development specifications for OpenType
+> shaping also state that if a zero-width non-joiner follows the last
+> standalone "Halant", the final matra position is moved to after the
+> non-joiner. However, it is unnecessary to test for this condition,
+> because a "Halant,ZWNJ" subsequence is, by definition, the end of a
+> syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
+> pre-base dependent vowel.
+
 
 #### 4.3: Reph ####
 
@@ -1118,20 +1192,24 @@ to maintain compatibility with the other Indic scripts.
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
-word must be tagged for potential substitution by the `init` feature
+word must be flagged for potential substitution by the `init` feature
 of GSUB.
 
 Sinhala does not use the `init` feature, so this step will
-involve no work when processing `<sinh>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
-  
+involve no work when processing `<sinh>` text. It is included here in
+order to maintain compatibility with the other Indic scripts.
+
    
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
-are applied. The order in which these features are applied is not
-canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+are applied. In preparation for this stage, glyph sequences should be
+flagged for possible application of GSUB features in stage 2,
+step 10.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	init (not used in Sinhala)
 	pres
@@ -1179,9 +1257,11 @@ The `haln` feature is not used in Sinhala.
 ### 6: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
-applied. As with the preceding stage, the order in which these
-features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+applied.
+
+As with the preceding stage, the order in which these features are
+applied is not canonical; they should be applied in the order in which
+they appear in the GPOS table in the font.
 
         dist
         abvm

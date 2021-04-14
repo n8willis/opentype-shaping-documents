@@ -78,7 +78,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-Syllables may also begin with an **indepedent vowel** instead of a
+Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
 full-letter form, not as a matra, and the independent vowel serves as the
 syllable base, similar to a base consonant.
@@ -255,29 +255,34 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. 
+
+  - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
+    formation of a conjunct between the two consonants. 
 
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead. 
+
+  - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
+    the first consonant in its standard form, followed by an explicit
+    "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
-otherwise would.
+"Reph". 
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+  - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
+    even where an initial "Ra,Halant" sequence without the zero-width
+    joiner would otherwise produce a "Reph".
+
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 In addition to general punctuation, runs of Kannada text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
@@ -474,13 +479,13 @@ _zwnj_		= `NON_JOINER`
 _matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER`
 _syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA` | `GEMINATION_MARK`
 _vedicsign_	= `CANTILLATION`
-_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
+_placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER` | `NUMBER`
 _dottedcircle_	= `DOTTED_CIRCLE`
 _repha_		= `CONSONANT_PRE_REPHA`
 _consonantmedial_	= `CONSONANT_MEDIAL`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 _consonantwithstacker_	= `CONSONANT_WITH_STACKER`
-_other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
+_other_		= `OTHER` | `MODIFYING_LETTER`
 ```
 
 
@@ -499,8 +504,14 @@ _other_		= `OTHER` | `NUMBER` | `MODIFYING_LETTER`
 > Note: The _placeholder_ identification class includes codepoints
 > that are often used in place of vowels or consonants when a document
 > needs to display a matra, mark, or special form in isolation or
-> in another context beyond a standard syllable. Examples include
-> hyphens and non-breaking spaces.
+> in another context beyond a standard syllable. Examples of
+> _placeholder_ codepoints include hyphens and non-breaking
+> spaces. Sequences that utilize this approach should be identified as
+> "standalone" syllables.
+>
+> The _placeholder_ identification class also includes numerals, which
+> are commonly used as word substitutes within normal text. Examples
+> include ordinals (e.g., "4th").
 
 > Note: The _other_ identification class includes codepoints that
 > do not interact with adjacent characters for shaping purposes. Even
@@ -570,6 +581,13 @@ A standalone syllable will match the expression:
 > instances in any real-word syllables. Thus, implementations may
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
+
+> Note: Although they are labeled as "standalone syllables" here,
+> many sequences that match the standalone regular expression above
+> are instances where a document needs to display a matra, combining
+> mark, or special form in isolation. Such sequences might not have
+> any significance with regard to the definition of syllables used in
+> the language or orthography of the text.
 
 A symbol-based syllable will match the expression:
 ```markdown
@@ -687,7 +705,8 @@ positioned before or after any post-base consonants, respectively.
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
 
-For a definition of the "base" consonant, refer to step 2.1, which follows.
+For a definition of the "base" consonant, refer to step 2.1, which
+follows.
 
 #### 2.1: Base consonant ####
 
@@ -758,11 +777,12 @@ encountered during the base-consonant search must be tagged
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra" and the syllable contains
+  - If the syllable starts with "Ra,Halant" and the syllable contains
     more than one consonant, exclude the starting "Ra" from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
+      * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
       * If the consonant has a below-base form, tag it as
         `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
       * If the consonant has a post-base form, tag it as
@@ -998,12 +1018,53 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
+#### 2.10: Flag sequences for possible feature applications ####
+
+With the initial reordering complete, those glyphs in the syllable that
+may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
+flagged for each potential feature. 
+
+This flagging is preliminary; the set of potential features varies
+between different scripts and which features are supported varies
+between fonts. It is also possible that the application of
+one feature on a glyph sequence will perform a substitution that makes
+a later feature no longer applicable to the updated sequence.
+
+Consequently, the flagging must be completed before shaping proceeds
+to the stages during which features are applied.
+
+Some shaping features, such as `locl`, can potentially apply to any
+glyphs. Therefore it is not necessary to maintain a separate flag for
+these features in the bitmask (or other data structure) used to track
+the flags -- although shaping engines may do so if desired.
+
+The sequences to flag are summarized in the list below; a full
+description of each feature's function and interpretation is provided
+in GSUB and GPOS application stages that follow.
+
+  - `nukt` should match "_Consonant_,Nukta" sequences
+  - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
+  - `rphf` should match initial "Ra,Halant" sequences but _not_ match
+            initial "Ra,Halant,ZWJ" sequences
+  - `pref` should match "_Consonant_,Ra" in post-base positions
+  - `blwf` should match "Halant,_Consonant_" in post-base positions
+  - `half` should match "_Consonant_,Halant" in pre-base position but
+           _not_ match "Ra,Halant" sequences flagged for `rphf` and
+           _not_ match "_Consonant_,Halant,ZWNJ,_Consonant_" sequences
+  - `pstf` should match "Halant,_Consonant_" in post-base position
+  - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
+            match "_Consonant_,Halant,ZWJ,_Consonant_" or
+            "_Consonant_,Halant,ZWNJ,_Consonant_"
+
+
+
+
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's GSUB table. In preparation for this
-stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+stage, glyph sequences should be flagged for possible application 
+of GSUB features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1064,7 +1125,7 @@ feature must be applied before all other many-to-one substitutions.
 The `rphf` feature replaces initial "Ra,Halant" sequences with the
 "Reph" glyph.
 
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be tagged for
+  - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
     the `rphf` substitution.
 	
 
@@ -1076,12 +1137,16 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 #### 3.6 pref ####
 
-The `pref` feature replaces pre-base consonant glyphs with
+The `pref` feature replaces pre-base-reordering consonant glyphs with
 any special forms.
 
-> Note: Kannada does not usually incorporate pre-base consonant forms, but it is
-> possible for a font to implement them in order to provide for
-> desired typographic variation.
+The substitution of the nominal glyph for its special form takes place
+at this stage. However, the actual reordering move is performed later,
+in stage 4, step 4.
+
+> Note: Kannada does not usually incorporate pre-base-reordering
+> consonant forms, but it is possible for a font to implement them in
+> order to provide for desired typographic variation.
 
 #### 3.7: blwf ####
 
@@ -1100,19 +1165,35 @@ form.
 
 The `half` feature replaces "_Consonant_,Halant" sequences before the
 base consonant or syllable base with "half forms" of the consonant
-glyphs. There arethree exceptions to the default behavior, for which
-the shaping engine must test:
+glyphs.
 
-  - Initial "Ra,Halant" sequences, which should have been tagged for
-    the `rphf` feature earlier, must not be tagged for potential
+In the most common case, this substitution applies to
+"_Consonant_,Halant" sequences that are followed by another
+_Consonant_.
+
+In addition, a sequence matching "_Consonant_,Halant,ZWJ" must also be
+flagged for potential `half` substitutions.
+
+> Note: The presence of the "ZWJ" at the end of the sequence means
+> that the sequence may match the regular-expression test in stage 1
+> as the end of a syllable, even without being followed by a base
+> consonant or syllable base.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+
+There are two exceptions to the default behavior, for which the
+shaping engine must test:
+
+  - Initial "Ra,Halant" sequences, which should have been flagged for
+    the `rphf` feature earlier, must not be flagged for potential
     `half` substitutions.
 
-  - A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" must be
-    tagged for potential `half` substitutions, even though the presence of the
-    zero-width joiner suppresses the `cjct` feature in a later step.
-
   - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
-    tagged for potential `half` substitutions.
+    flagged for potential `half` substitutions.
 
 > Note: Kannada does not usually incorporate half forms, but it is
 > possible for a font to implement them in order to provide for
@@ -1134,7 +1215,36 @@ The `cjct` feature replaces sequences of adjacent consonants with
 conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
 
 A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
-"_Consonant_,Halant,ZWNJ,_Consonant_" must not be tagged to form a conjunct.
+"_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
+
+> Note: The presence of the "ZWJ" in a
+> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
+> inhibit any `cjct` feature rules from matching the sequence as valid
+> input, and thus prevent the `cjct` substitution from being applied.
+
+> Note: The presence of the "ZWNJ" in a
+> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence means that the
+> "_Consonant_,Halant,ZWNJ" subsequence will match the
+> regular-expression test in stage 1 as the end of a syllable.
+> 
+> Because OpenType shaping features in `<knd2>` are defined as
+> applying only within an individual syllable, this means that the
+> presence of the "ZWNJ" will automatically prevent the application of
+> a `cjct` feature by triggering the identification of a syllable
+> break between the two consonants.
+>
+> The fact that the regular-expression tests identify a syllable break
+> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> shaping and Unicode encoding, however, and might not have any
+> significance with regard to the definition of syllables used in the
+> language or orthography of the text.
+>
+> Note, also: The presence of the "ZWJ" means that a
+> "_Consonant_,Halant,ZWJ" sequence may match the regular-expression
+> test in stage 1 as the end of a syllable, even without being
+> followed by a base consonant or syllable base. By definition,
+> however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
+> cannot also include a "_Consonant_" after the ZWJ.
 
 The font's GSUB rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
@@ -1199,9 +1309,8 @@ position is defined as:
    - after the last standalone "Halant" glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
-   - If a zero-width joiner or a zero-width non-joiner follows this
-     last standalone "Halant", the final matra position is moved to
-     after the joiner or non-joiner.
+   - If a zero-width joiner follows this last standalone "Halant", the
+     final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
 "consonant,Halant" subsequences, but will stop to the left of the base
@@ -1211,6 +1320,30 @@ the base consonant or syllable base, and all half forms.
 Kannada does not use pre-base matras, so this step will
 involve no work when processing `<knd2>` text. It is included here in
 order to maintain compatibility with the other Indic scripts.
+
+> Note: OpenType and Unicode both state that if the syllable includes
+> a ZWJ immediately after the last "Halant", then the final matra
+> position should be after the ZWJ.
+>
+> However, there are several test sequences indicating that
+> Microsoft's Uniscribe shaping engine did not follow this rule (in,
+> at least, Devanagari and Bengali text), and in these circumstances
+> Uniscribe instead makes the final matra position before the final
+> "Consonant,Halant,ZWJ".
+>
+> Subsequently, the HarfBuzz shaping engine has also followed the same
+> pattern. If other shaping engine implementations prefer to maintain
+> maximum compatibility with Uniscribe and HarfBuzz, then they should
+> also follow suit.
+
+> Note: The Microsoft script-development specifications for OpenType
+> shaping also state that if a zero-width non-joiner follows the last
+> standalone "Halant", the final matra position is moved to after the
+> non-joiner. However, it is unnecessary to test for this condition,
+> because a "Halant,ZWNJ" subsequence is, by definition, the end of a
+> syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
+> pre-base dependent vowel.
+
 
 #### 4.3: Reph ####
 
@@ -1257,19 +1390,24 @@ to maintain compatibility with the other Indic scripts.
 #### 4.5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
-word must be tagged for potential substitution by the `init` feature
+word must be flagged for potential substitution by the `init` feature
 of GSUB.
 
 Kannada does not use the `init` feature, so this step will
-involve no work when processing `<knd2>` text. It is included here in order
-to maintain compatibility with the other Indic scripts.
+involve no work when processing `<knd2>` text. It is included here in
+order to maintain compatibility with the other Indic scripts.
+
 
 ### 5: Applying all remaining substitution features from GSUB ###
 
 In this stage, the remaining substitution features from the GSUB table
-are applied. The order in which these features are applied is not
-canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+are applied. In preparation for this stage, glyph sequences should be
+flagged for possible application of GSUB features in stage 2,
+step 10.
+
+The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.
 
 	init (not used in Kannada)
 	pres
@@ -1322,9 +1460,11 @@ typographically problematic.
 ### 6: Applying remaining positioning features from GPOS ###
 
 In this stage, mark positioning, kerning, and other GPOS features are
-applied. As with the preceding stage, the order in which these
-features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+applied.
+
+As with the preceding stage, the order in which these features are
+applied is not canonical; they should be applied in the order in which
+they appear in the GPOS table in the font.
 
         dist
         abvm

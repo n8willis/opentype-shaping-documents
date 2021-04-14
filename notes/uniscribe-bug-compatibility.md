@@ -10,14 +10,20 @@ regarded as bugs by end users.
   - [Indic standalone-syllable dotted circles](#indic-standalone-syllable-dotted-circles)
   - [Indic syllable cluster merging](#indic-syllable-cluster-merging)
   - [Indic fallback Reph reordering](#indic-fallback-reph-reordering)
+  - [Kannada legacy treatment of Ra,Halant,ZWJ](#kannada-legacy-treatment-of-ra-halant-zwj)
   - [Khmer kerning](#khmer-kerning)
   - [Sinhala matra decomposition](#sinhala-matra-decomposition)
   - [Miscellaneous](#miscellaneous)
+      - [Bengali init feature matching](#bengali-init-feature-matching)
+      - [Old-model post-base Halant reordering](#old-model-post-base-halant-reordering)
+      - [Halants and left matras](#halants-and-left-matras)
+
 
 Compatibility notes in the "miscellaneous" category deal with
-behaviors that are, incompletely documented, deal solely with
+behaviors that are incompletely documented, deal solely with
 deprecated script tags, or do not violate known conventions. Thus, the
 scenarios with which they deal may not be regarded as bugs.
+
 
 
 ## Indic standalone-syllable dotted circles ##
@@ -73,6 +79,11 @@ for any GSUB substitutions that match "Reph,Matra" sequences to be
 activated, if any such substitution rules are present in the active
 font. 
 
+## Kannada legacy treatment of Ra,Halant,ZWJ ##
+
+In the `<knda>` shaping model (which was deprecated in 2005 in favor
+of `<knd2>`), the sequence "Ra,Halant,ZWJ" was treated as equivalent
+to the sequence "Ra,ZWJ,Halant".
 
 ## Khmer kerning ##
 
@@ -116,6 +127,28 @@ rules for the right-side matra components, relying instead on the
 
 
 ## Miscellaneous ##
+
+
+### Bengali init feature matching ###
+
+The `init` feature in Bengali is defined in the OpenType specification
+as applying to word-initial left-side dependent vowels (matras).
+However, Uniscribe specifically applies the feature whenever
+the matra is preceded by any character that falls within the following
+range in the Unicode `General Category` property:
+
+- `GENERAL_CATEGORY_FORMAT` [Cf]
+- `GENERAL_CATEGORY_UNASSIGNED` [Cn]
+- `GENERAL_CATEGORY_PRIVATE_USE` [Co]
+- `GENERAL_CATEGORY_SURROGATE` [Cs]
+- `GENERAL_CATEGORY_LOWERCASE_LETTER` [Ll]
+- `GENERAL_CATEGORY_MODIFIER_LETTER` [Lm]
+- `GENERAL_CATEGORY_OTHER_LETTER` [Lo]
+- `GENERAL_CATEGORY_TITLECASE_LETTER` [Lt]
+- `GENERAL_CATEGORY_UPPERCASE_LETTER` [Lu]
+- `GENERAL_CATEGORY_SPACING_MARK` [Mc]
+- `GENERAL_CATEGORY_ENCLOSING_MARK` [Me]
+- `GENERAL_CATEGORY_NON_SPACING_MARK` [Mn]
 
 
 ### Old-model post-base Halant reordering ###

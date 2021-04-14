@@ -47,7 +47,7 @@ vertically, top to bottom.
 
 ## Terminology ##
 
-OpenType shaping uuses a standard set of terms for elements of the
+OpenType shaping uses a standard set of terms for elements of the
 Hangul script. The terms used colloquially in any particular language
 or country may vary, however, potentially causing confusion.
 

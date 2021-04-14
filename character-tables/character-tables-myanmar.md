@@ -103,7 +103,7 @@ specific, script-aware behavior.
 |`U+1039`   | Mark [Mn]        | INVISIBLE_STACKER | _null_                     | &#x1039; Virama              |
 |`U+103A`   | Mark [Mn]        | PURE_KILLER       | TOP_POSITION               | &#x103A; Asat                |
 |`U+103B`   | Mark [Mc]        | CONSONANT_MEDIAL  | RIGHT_POSITION             | &#x103B; Sign Medial Ya      |
-|`U+103C`   | Mark [Mc]        | CONSONANT_MEDIAL  | _null_                     | &#x103C; Sign Medial Ra      |
+|`U+103C`   | Mark [Mc]        | CONSONANT_MEDIAL  | TOP_LEFT_AND_BOTTOM_POSITION | &#x103C; Sign Medial Ra      |
 |`U+103D`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x103D; Sign Medial Wa      |
 |`U+103E`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION            | &#x103E; Sign Medial Ha      |
 |`U+103F`   | Letter           | CONSONANT         | _null_                     | &#x103F; Great Sa            |
@@ -298,7 +298,7 @@ Sanskrit runs written in the Myanmar script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
-> Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
+> Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
@@ -338,8 +338,8 @@ classified as follows.
 |`U+1CEF`   | Letter           | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
-|`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF2`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
 |`U+1CF5`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF5; Sign Jihvamuliya    |
@@ -347,7 +347,7 @@ classified as follows.
 |`U+1CF7`   | Mark [Mc]        | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
-|`U+1CFA`   | _unassigned_     |                   |                            |                              |
+|`U+1CFA`   | Letter           | PLACEHOLDER       | _null_                     | &#x1CFA; Sign Double Anusvara Antargomukha |
 |`U+1CFB`   | _unassigned_     |                   |                            |                              |
 |`U+1CFC`   | _unassigned_     |                   |                            |                              |
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |

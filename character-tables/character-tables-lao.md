@@ -44,26 +44,26 @@ specific, script-aware behavior.
 |`U+0E83`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0E84`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E84; Kho Tam              |
 |`U+0E85`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E86`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0E86`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E86; Pali Gha             |
 |`U+0E87`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E87; Ngo                  |
 |`U+0E88`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E88; Co                   |
-|`U+0E89`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0E89`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E89; Pali Cha             |
 |`U+0E8A`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E8A; So Tam               |
 |`U+0E8B`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E8C`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0E8C`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E8C; Pali Jha             |
 |`U+0E8D`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E8D; Nyo                  |
-|`U+0E8E`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E8F`   | _unassigned_     |                   |                         |                 |        |                               |
-| | | | | | | |															      
-|`U+0E90`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E91`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E92`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0E93`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0E8E`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E8E; Pali Nya             |
+|`U+0E8F`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E8F; Pali Tta             |
+| | | | | | | |
+|`U+0E90`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E90; Pali Ttha            |
+|`U+0E91`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E91; Pali Dda             |
+|`U+0E92`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E92; Pali Ddha            |
+|`U+0E93`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E93; Pali Nna             |
 |`U+0E94`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E94; Do                   |
 |`U+0E95`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E95; To                   |
 |`U+0E96`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E96; Tho Sung             |
 |`U+0E97`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E97; Tho Tam              |
-|`U+0E98`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0E98`   | Letter           | CONSONANT         |  _null_                 | _0_             | _null_ | &#x0E98; Pali Dha             |
 |`U+0E99`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E99; No                   |
 |`U+0E9A`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E9A; Bo                   |
 |`U+0E9B`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E9B; Po                   |
@@ -72,7 +72,7 @@ specific, script-aware behavior.
 |`U+0E9E`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E9E; Pho Tam              |
 |`U+0E9F`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0E9F; Fo Sung              |
 | | | | | | | |																      
-|`U+0EA0`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0EA0`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA0; Pali Bha             |
 |`U+0EA1`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA1; Mo                   |
 |`U+0EA2`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA2; Yo                   |
 |`U+0EA3`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA3; Lo Ling              |
@@ -80,11 +80,11 @@ specific, script-aware behavior.
 |`U+0EA5`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA5; Lo Loot              |
 |`U+0EA6`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0EA7`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA7; Wo                   |
-|`U+0EA8`   | _unassigned_     |                   |                         |                 |        |                               |
-|`U+0EA9`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0EA8`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA8; Sanskrit Sha         |
+|`U+0EA9`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EA9; Sanskrit Ssa         |
 |`U+0EAA`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EAA; So Sung              |
 |`U+0EAB`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EAB; Ho Sung              |
-|`U+0EAC`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0EAC`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EAC; Pali Lla             |
 |`U+0EAD`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EAD; O                    |
 |`U+0EAE`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EAE; Ho Tam               |
 |`U+0EAF`   | Letter           | _null_            | _null_                  | _0_             | _null_ | &#x0EAF; Ellipsis             |
@@ -99,7 +99,7 @@ specific, script-aware behavior.
 |`U+0EB7`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION            | _0_             | _null_ | &#x0EB7; Sign Yy              |
 |`U+0EB8`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION         | 118             | _null_ | &#x0EB8; Sign U               |
 |`U+0EB9`   | Mark [Mn]        | VOWEL_DEPENDENT   | BOTTOM_POSITION         | 118             | _null_ | &#x0EB9; Sign Uu              |
-|`U+0EBA`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0EBA`   | Mark [Mn]        | VIRAMA            | BOTTOM_POSITION         | 9               | _null_ | &#x0EBA; Pali Virama          |
 |`U+0EBB`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION            | _0_             | _null_ | &#x0EBB; Sign Mai Kon         |
 |`U+0EBC`   | Mark [Mn]        | CONSONANT_MEDIAL  | BOTTOM_POSITION         | _0_             | _null_ | &#x0EBC; Semivowel Sign Lo    |
 |`U+0EBD`   | Letter           | CONSONANT_MEDIAL  | _null_                  | _0_             | _null_ | &#x0EBD; Semivowel Sign Nyo   |
@@ -137,8 +137,8 @@ specific, script-aware behavior.
 |`U+0EDB`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0EDC`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDC; Ho No                |
 |`U+0EDD`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDD; Ho Mo                |
-|`U+0EDE`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDE; Letter Khmu Go       |
-|`U+0EDF`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDF; Letter Khmu Nyo      |
+|`U+0EDE`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDE; Khmu Go              |
+|`U+0EDF`   | Letter           | CONSONANT         | _null_                  | _0_             | _null_ | &#x0EDF; Khmu Nyo             |
 | | | | | | | |
 |`U+0EE0`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0EE1`   | _unassigned_     |                   |                         |                 |        |                               |

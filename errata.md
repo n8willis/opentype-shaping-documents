@@ -7,10 +7,15 @@ specification documents.
 
 **Table of Contents**
 
+  - [Unicode](#unicode)
+      - [ZWJ and ZWNJ](#zwj-and-zwnj)
+	      - [Scope of ZWJ and ZWNJ](#scope-of-zwj-and-zwnj)
+	      - [ZWJ in redundant ligature lookups](#zwj-in-redundant-ligature-lookups)
   - [OpenType](#opentype)
       - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
       - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
 	  - [Per-script applicability of feature tags](#per-script-applicability-of-feature-tags)
+      - [Ordering of post-base and below-base consonants in Indic2 base-consonant determination](#ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination)
       - [Lookup behavior](#lookup-behavior)
           - [Using MultipleSub for glyph deletion](#using-multiplesub-for-glyph-deletion)
 		  - [Processing nested contextual lookups](#processing-nested-contextual-lookups)
@@ -20,6 +25,54 @@ specification documents.
 
   
   
+## Unicode ##
+
+This section lists errata pertaining to the Unicode Standard.
+
+### ZWJ and ZWNJ ###
+
+#### Scope of ZWJ and ZWNJ ####
+
+Unicode provides the Zero Width Joiner (ZWJ) and Zero Width Non-Joiner
+(ZWNJ) control characters so that a text sequence can "request a
+rendering system to have more or less of a connection between
+characters than they would otherwise have."
+
+The generic examples used in the standard show how ZWJ and ZWNJ
+characters can affect the cursive-joining behavior between two
+characters or the ligature-forming behavior between two
+characters. However, the standard does not explicitly say whether or
+not the presence of a ZWJ or ZWNJ should influence the shaping
+behavior of characters for characters not adjacent to the ZWJ or ZWNJ.
+
+For example, in the sequence "a,b,ZWNJ,c,d" the ZWNJ should prevent
+the application of a ligature between "b" and "c" (if such a ligature
+lookup exists in the active font).
+
+However, if the active font contains a contextual ligature lookup for
+"c,d" when preceded by "b", it is not clear whether or not the ZWNJ
+in the same "a,b,ZWNJ,c,d" sequence should inhibit the application of
+the ligature between "c" and "d".
+
+
+#### ZWJ in redundant ligature lookups ####
+
+An "Implementation Notes" section in chapter 23.2 of the Unicode
+Standard says that font vendors should add ZWJ sequences to ligature
+lookups. For example, if the sequence "f,i" triggers the "fi"
+ligature, then the font should also include a lookup that triggers the
+"fi" ligature for "f,ZWJ,i". 
+
+However, the text of chapter 23.2 prior to the "Implementation Notes"
+says that ZWJ and ZWNJ "are not to be used in all cases where
+ligatures or cursive connections are desired; instead, they are meant
+only for over-riding the normal behavior of the text." That logic
+makes the suggested "f,ZWJ,i" ligature lookup superfluous, because it
+duplicates the effects of the existing "f,i" ligature lookup.
+
+Using ZWJ within lookup patterns in the manner suggested by the
+"Implementation Notes" is not common practice. 
+
 
 ## OpenType ##
 
@@ -69,6 +122,37 @@ For example, the `pstf` (post-base forms) tag is
 [described](https://docs.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-pstf)
 as required for "scripts of south and southeast Asia that have
 post-base forms for consonants eg: Gurmukhi, Malayalam, Khmer."
+
+
+### Ordering of post-base and below-base consonants in Indic2 base-consonant determination ###
+
+The Microsoft script-development specification for all Indic2-model
+scripts
+[states](https://docs.microsoft.com/en-us/typography/script-development/bengali#reorder-characters)
+parenthetically that "post-base forms have to follow below-base forms". 
+
+If this statement is taken to be a rule, it would affect the
+base-consonant search algorithm.
+
+For example, in the Bengali sequence "Ka,Halant,Ba,Halant,Ya"
+(`U+0995`,`U+09CD`,`U+09AC`,`U+09CD`,`U+09AF`), "Ka" would be
+identified as the syllable base, with "Ba" designated a below-base
+form and "Ya" designated a post-base form. However, in the similar
+sequence "Ka,Halant,Ya,Halant,Ba"
+(`U+0995`,`U+09CD`,`U+09AF`,`U+09CD`,`U+09AC`), "Ya" would be
+identified as the base consonant.
+
+Real-world Bengali texts provide counterexamples that contradict the
+assumption that "post-base forms follow below-base forms" is a
+requirement.
+
+In other scripts, such as Telugu, the "post-base forms have to follow
+below-base forms" statement is, perhaps, statistically likely, but is
+certainly not an orthographic rule.
+
+Consequently, it is unclear if the statement should be enforced as a
+rule or if it should be regarded as a suggestion, and it is unclear to
+what degree that answer varies between the Indic2-model scripts.
 
 
 ### Lookup behavior ###

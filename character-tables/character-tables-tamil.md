@@ -6,6 +6,7 @@ This document lists the per-character shaping information needed to
 **Table of Contents**
 
   - [Tamil character table](#tamil-character-table)
+  - [Tamil Supplement character table](#tamil-supplement-character-table)
   - [Grantha marks character table](#grantha-marks-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
@@ -178,6 +179,84 @@ specific, script-aware behavior.
 
 
 
+## Tamil Supplement character table ##
+
+Tamil text runs may also include historical symbols and fractions from
+the Tamil Supplement block. These characters should be classified as
+follows.
+
+| Codepoint | Unicode category | Shaping class | Mark-placement subclass | Glyph                         |
+|:----------|:-----------------|:--------------|:------------------------|:------------------------------|
+| `U+11FC0` | Number           | NUMBER        | _null_                  | &#x11FC0; Fraction One Three-Hundred-And-Twentieth |
+| `U+11FC1` | Number           | NUMBER        | _null_                  | &#x11FC1; Fraction One One-Hundred-And-Sixtieth |
+| `U+11FC2` | Number           | NUMBER        | _null_                  | &#x11FC2; Fraction One Eightieth |
+| `U+11FC3` | Number           | NUMBER        | _null_                  | &#x11FC3; Fraction One Sixty-Fourth |
+| `U+11FC4` | Number           | NUMBER        | _null_                  | &#x11FC4; Fraction One Fortieth |
+| `U+11FC5` | Number           | NUMBER        | _null_                  | &#x11FC5; Fraction One Thirty-Second |
+| `U+11FC6` | Number           | NUMBER        | _null_                  | &#x11FC6; Fraction Three Eightieths |
+| `U+11FC7` | Number           | NUMBER        | _null_                  | &#x11FC7; Fraction Three Sixty-Fourths |
+| `U+11FC8` | Number           | NUMBER        | _null_                  | &#x11FC8; Fraction One Twentieth |
+| `U+11FC9` | Number           | NUMBER        | _null_                  | &#x11FC9; Fraction One Sixteenth-1 |
+| `U+11FCA` | Number           | NUMBER        | _null_                  | &#x11FCA; Fraction One Sixteenth-2 |
+| `U+11FCB` | Number           | NUMBER        | _null_                  | &#x11FCB; Fraction One Tenth  |
+| `U+11FCC` | Number           | NUMBER        | _null_                  | &#x11FCC; Fraction One Eighth |
+| `U+11FCD` | Number           | NUMBER        | _null_                  | &#x11FCD; Fraction Three Twentieths |
+| `U+11FCE` | Number           | NUMBER        | _null_                  | &#x11FCE; Fraction Three Sixteenths |
+| `U+11FCF` | Number           | NUMBER        | _null_                  | &#x11FCF; Fraction One Fifth  |
+| | | | |																			           
+| `U+11FD0` | Number           | NUMBER        | _null_                  | &#x11FD0; Fraction One Quarter |
+| `U+11FD1` | Number           | NUMBER        | _null_                  | &#x11FD1; Fraction One Half-1 |
+| `U+11FD2` | Number           | NUMBER        | _null_                  | &#x11FD2; Fraction One Half-2 |
+| `U+11FD3` | Number           | NUMBER        | _null_                  | &#x11FD3; Fraction Three Quarters |
+| `U+11FD4` | Number           | NUMBER        | _null_                  | &#x11FD4; Fraction Downscaling Factor Kiizh |
+| `U+11FD5` | Symbol           | SYMBOL        | _null_                  | &#x11FD5; Sign Nel            |
+| `U+11FD6` | Symbol           | SYMBOL        | _null_                  | &#x11FD6; Sign Cevitu         |
+| `U+11FD7` | Symbol           | SYMBOL        | _null_                  | &#x11FD7; Sign Aazhaakku      |
+| `U+11FD8` | Symbol           | SYMBOL        | _null_                  | &#x11FD8; Sign Uzhakku        |
+| `U+11FD9` | Symbol           | SYMBOL        | _null_                  | &#x11FD9; Sign Muuvuzhakku    |
+| `U+11FDA` | Symbol           | SYMBOL        | _null_                  | &#x11FDA; Sign Kuruni         |
+| `U+11FDB` | Symbol           | SYMBOL        | _null_                  | &#x11FDB; Sign Pathakku       |
+| `U+11FDC` | Symbol           | SYMBOL        | _null_                  | &#x11FDC; Sign Mukkuruni      |
+| `U+11FDD` | Symbol           | SYMBOL        | _null_                  | &#x11FDD; Sign Kaacu          |
+| `U+11FDE` | Symbol           | SYMBOL        | _null_                  | &#x11FDE; Sign Panam          |
+| `U+11FDF` | Symbol           | SYMBOL        | _null_                  | &#x11FDF; Sign Pon            |
+| | | | |																			      
+| `U+11FE0` | Symbol           | SYMBOL        | _null_                  | &#x11FE0; Sign Varaakan       |
+| `U+11FE1` | Symbol           | SYMBOL        | _null_                  | &#x11FE1; Sign Paaram         |
+| `U+11FE2` | Symbol           | SYMBOL        | _null_                  | &#x11FE2; Sign Kuzhi          |
+| `U+11FE3` | Symbol           | SYMBOL        | _null_                  | &#x11FE3; Sign Veli           |
+| `U+11FE4` | Symbol           | SYMBOL        | _null_                  | &#x11FE4; Wet Cultivation Sign |
+| `U+11FE5` | Symbol           | SYMBOL        | _null_                  | &#x11FE5; Dry Cultivation Sign |
+| `U+11FE6` | Symbol           | SYMBOL        | _null_                  | &#x11FE6; Land Sign           |
+| `U+11FE7` | Symbol           | SYMBOL        | _null_                  | &#x11FE7; Salt Pan Sign       |
+| `U+11FE8` | Symbol           | SYMBOL        | _null_                  | &#x11FE8; Traditional Credit Sign |
+| `U+11FE9` | Symbol           | SYMBOL        | _null_                  | &#x11FE9; Traditional Number Sign |
+| `U+11FEA` | Symbol           | SYMBOL        | _null_                  | &#x11FEA; Current Sign        |
+| `U+11FEB` | Symbol           | SYMBOL        | _null_                  | &#x11FEB; And Odd Sign        |
+| `U+11FEC` | Symbol           | SYMBOL        | _null_                  | &#x11FEC; Spent Sign          |
+| `U+11FED` | Symbol           | SYMBOL        | _null_                  | &#x11FED; Total Sign          |
+| `U+11FEE` | Symbol           | SYMBOL        | _null_                  | &#x11FEE; In Possession Sign  |
+| `U+11FEF` | Symbol           | SYMBOL        | _null_                  | &#x11FEF; Starting From Sign  |
+| | | | |
+| `U+11FF0` | Symbol           | SYMBOL        | _null_                  | &#x11FF0; Sign Muthaliya      |
+| `U+11FF1` | Symbol           | SYMBOL        | _null_                  | &#x11FF1; Sign Vakaiyaraa     |
+| `U+11FF2` | _unassigned_     |               |                         |                               |
+| `U+11FF3` | _unassigned_     |               |                         |                               |
+| `U+11FF4` | _unassigned_     |               |                         |                               |
+| `U+11FF5` | _unassigned_     |               |                         |                               |
+| `U+11FF6` | _unassigned_     |               |                         |                               |
+| `U+11FF7` | _unassigned_     |               |                         |                               |
+| `U+11FF8` | _unassigned_     |               |                         |                               |
+| `U+11FF9` | _unassigned_     |               |                         |                               |
+| `U+11FFA` | _unassigned_     |               |                         |                               |
+| `U+11FFB` | _unassigned_     |               |                         |                               |
+| `U+11FFC` | _unassigned_     |               |                         |                               |
+| `U+11FFD` | _unassigned_     |               |                         |                               |
+| `U+11FFE` | _unassigned_     |               |                         |                               |
+| `U+11FFF` | Punctuation      | _null_        | _null_                  | &#x11FFF; End Of Text         |
+
+
+
 ## Grantha marks character table ##
 
 Tamil text runs may also include diacritical and syllable-modifier
@@ -198,7 +277,7 @@ Sanskrit runs written in the Tamil script may also include
 characters from the Vedic Extensions block. These characters should be
 classified as follows.
 
-> Note: See the [Vedic Extensions](opentype-shaping-vedic-extensions.md) 
+> Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
@@ -238,8 +317,8 @@ classified as follows.
 |`U+1CEF`   | Letter           | _null_            | _null_                     | &#x1CEF; Sign Long Anusvara  |
 | | | | |																		
 |`U+1CF0`   | Letter           | _null_            | _null_                     | &#x1CF0; Sign Rthang Long Anusvara |
-|`U+1CF1`   | Letter           | SYMBOL            | _null_                     | &#x1CF1; Sign Anusvara Ubhayato Mukha |
-|`U+1CF2`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF2`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF2; Sign Ardhavisarga   |
+|`U+1CF3`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF3`   | Mark [Mc]        | VISARGA           | _null_                     | &#x1CF3; Sign Rotated Ardhavisarga |
 |`U+1CF4`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CF4; Tone Candra Above   |
 |`U+1CF5`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x1CF5; Sign Jihvamuliya    |
@@ -247,7 +326,7 @@ classified as follows.
 |`U+1CF7`   | Mark [Mc]        | _null_            | _null_                     | &#x1CF7; Sign Atikrama       |
 |`U+1CF8`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF8; Tone Ring Above     |
 |`U+1CF9`   | Mark [Mn]        | CANTILLATION      | _null_                     | &#x1CF9; Tone Double Ring Above |
-|`U+1CFA`   | _unassigned_     |                   |                            |                              |
+|`U+1CFA`   | Letter           | PLACEHOLDER       | _null_                     | &#x1CFA; Sign Double Anusvara Antargomukha |
 |`U+1CFB`   | _unassigned_     |                   |                            |                              |
 |`U+1CFC`   | _unassigned_     |                   |                            |                              |
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
@@ -302,29 +381,30 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
-from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
-conjunct between the two consonants. 
+The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. The
+sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of
+a conjunct between the two consonants. 
 
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
-"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
-consonant in its standard form, followed by an explicit "Halant".
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead. The
+sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the
+first consonant in its standard form, followed by an explicit
+"Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
 "Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 
 Tamil text sometimes uses the Latin numerals 2, 3, and 4 in
 superscript or subscript positions to annotate Sanskrit. When used in
