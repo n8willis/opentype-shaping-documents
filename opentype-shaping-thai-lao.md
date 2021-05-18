@@ -491,9 +491,9 @@ applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
 order in which they appear in the GPOS table in the font.
 
-        kern
-		mark
-		mkmk
+	kern
+	mark
+	mkmk
 
 > Note: The `kern` feature is usually applied at this stage, if it is
 > present in the font. However, `kern` is not mandatory for shaping
