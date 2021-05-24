@@ -487,7 +487,7 @@ _syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA`
 _placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
 _dottedcircle_	= `DOTTED_CIRCLE`
 _registershifter_ = `REGISTER_SHIFTER`
-_coeng_		= `COENG`
+_coeng_		= `INVISIBLE_STACKER`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 ```
 
@@ -1029,6 +1029,3 @@ below-base dependent vowels (matras).
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
-
-
-
