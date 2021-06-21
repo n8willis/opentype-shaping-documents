@@ -965,9 +965,13 @@ right-side ascenders.
 
 
 The `clig` feature substitutes optional ligatures that are on by
-default, but which are activated only in certain
-contexts. Substitutions made by `clig` may be disabled by
-application-level user interfaces.
+default, but which are activated only in certain contexts. 
+
+> Note: In some other scripts, substitutions made by `clig` may be
+> disabled by application-level user interfaces. For Khmer, however,
+> application of `clig` substitutions in mandatory because these
+> substitutions are important for typographic correctness, not merely
+> for user preference.
 
 ![Application of the clig feature](images/khmer/khmer-clig.png)
 
