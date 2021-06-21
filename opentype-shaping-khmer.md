@@ -503,8 +503,8 @@ C	= _consonant_ | _ra_ | _vowel_
 N	= (_zwnj_? _registershifter_)? (_nukta_ _nukta_?)?
 Z	= _zwj_ | _zwnj_
 CN	= C N?
-MATRA_GROUP	= Z? M N?
-SYLLABLE_TAIL	= (SM SM?)?
+MATRA_GROUP	= Z? _matra_ N?
+SYLLABLE_TAIL	= (_syllablemodifier_ _syllablemodifier_?)?
 PARTIAL_CLUSTER	= N? (_coeng_ CN)* MATRA_GROUP* (_coeng_ CN)? SYLLABLE_TAIL
 ```
 
