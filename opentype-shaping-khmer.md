@@ -479,20 +479,28 @@ simplifies the resulting expressions.
 _ra_		= The consonant "Ro" 
 _consonant_	= `CONSONANT` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
-_nukta_	  	= `NUKTA` | `CONSONANT_POST_REPHA`
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
-_matra_		= `VOWEL_DEPENDENT` | `PURE_KILLER` | `CONSONANT_KILLER`
-_syllablemodifier_	= `SYLLABLE_MODIFIER` | `BINDU` | `VISARGA`
+_matra_pre_		= `VOWEL_DEPENDENT`:(`LEFT_POSITION` |
+                                     `TOP_AND_LEFT_POSITION` | 
+									 `LEFT_AND_RIGHT_POSITION` | 
+									 `TOP_LEFT_AND_RIGHT_POSITION`)
+_matra_blw_		= `VOWEL_DEPENDENT`:`BOTTOM_POSITION`
+_matra_abv_		= `VOWEL_DEPENDENT`:`TOP_POSITION`
+_matra_pst_		= `VOWEL_DEPENDENT`:`RIGHT_POSITION` - "Yuukaleapintu"
+_nonspacingmodifier_	= `NUKTA` | `CONSONANT_KILLER` |
+                          `PURE_KILLER` | `SYLLABLE_MODIFIER` 
+						   - "Atthacan" - "Bathamasat"
+_rightmodifier_ = `VISARGA` | "Yuukaleapintu" | "Atthacan" | "Bathamasat"
 _placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
 _dottedcircle_	= `DOTTED_CIRCLE`
-_registershifter_ = `REGISTER_SHIFTER`
+_registershifter_ = `REGISTER_SHIFTER` | `CONSONANT_POST_REPHA` 
 _coeng_		= `INVISIBLE_STACKER`
 _symbol_	= `SYMBOL` | `AVAGRAHA`
 ```
 
 > Note: The `CONSONANT_POST_REPHA` shaping class is merged with the
-> `NUKTA` shaping class to reflect the correct orthographic behavior
+> `REGISTER_SHIFTER` shaping class to reflect the correct orthographic behavior
 > of "Robat".
 
 These identification classes form the bases of the following regular
@@ -500,12 +508,16 @@ expression elements:
 
 ```markdown
 C	= _consonant_ | _ra_ | _vowel_
-N	= (_zwnj_? _registershifter_)? (_nukta_ _nukta_?)?
 Z	= _zwj_ | _zwnj_
-CN	= C N?
-MATRA_GROUP	= Z? _matra_ N?
-SYLLABLE_TAIL	= (_syllablemodifier_ _syllablemodifier_?)?
-PARTIAL_CLUSTER	= N? (_coeng_ CN)* MATRA_GROUP* (_coeng_ CN)? SYLLABLE_TAIL
+
+CN	= C (Z? _registershifter)?
+NONSPACING_GROUP = (Z* _nonspacingmodifier_)*
+RIGHT_GROUP = _rightmodifier_*
+
+MATRA_GROUP	= _matra_pre_? NONSPACING_GROUP _matra_blw_? NONSPACING_GROUP (Z? _matra_abv_)? NONSPACING_GROUP _matra_pst_?
+SYLLABLE_TAIL	= NONSPACING_GROUP MATRA_GROUP NONSPACING_GROUP (_coeng_ C)? RIGHT_GROUP
+
+PARTIAL_CLUSTER	= (_coeng_ C)* (_coeng_ | SYLLABLE_TAIL)
 ```
 
 Using the above elements, the following regular expressions define the
@@ -513,7 +525,7 @@ possible syllable types:
 
 A valid syllable will match the expression:
 ```markdown
-(C | _placeholder_ | _dottedcircle_) PARTIAL_CLUSTER
+(CN | _placeholder_ | _dottedcircle_) PARTIAL_CLUSTER
 ```
 
 The expressions above use state-machine syntax from the Ragel
