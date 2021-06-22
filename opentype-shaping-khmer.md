@@ -481,16 +481,16 @@ _consonant_	= `CONSONANT` - _ra_
 _vowel_		= `VOWEL_INDEPENDENT`
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
-_matra_pre_		= `VOWEL_DEPENDENT`:(`LEFT_POSITION` |
-                                     `TOP_AND_LEFT_POSITION` | 
-									 `LEFT_AND_RIGHT_POSITION` | 
-									 `TOP_LEFT_AND_RIGHT_POSITION`)
+_matra_pre_	= `VOWEL_DEPENDENT`:(`LEFT_POSITION` |
+                                 `TOP_AND_LEFT_POSITION` | 
+                                 `LEFT_AND_RIGHT_POSITION` | 
+                                 `TOP_LEFT_AND_RIGHT_POSITION`)
 _matra_blw_		= `VOWEL_DEPENDENT`:`BOTTOM_POSITION`
 _matra_abv_		= `VOWEL_DEPENDENT`:`TOP_POSITION`
 _matra_pst_		= `VOWEL_DEPENDENT`:`RIGHT_POSITION` - "Yuukaleapintu"
 _nonspacingmodifier_	= `NUKTA` | `CONSONANT_KILLER` |
                           `PURE_KILLER` | `SYLLABLE_MODIFIER` 
-						   - "Atthacan" - "Bathamasat"
+                          - "Atthacan" - "Bathamasat"
 _rightmodifier_ = `VISARGA` | "Yuukaleapintu" | "Atthacan" | "Bathamasat"
 _placeholder_	= `PLACEHOLDER` | `CONSONANT_PLACEHOLDER`
 _dottedcircle_	= `DOTTED_CIRCLE`
