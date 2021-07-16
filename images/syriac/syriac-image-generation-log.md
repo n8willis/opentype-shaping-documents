@@ -67,18 +67,18 @@ montage syriac-medi-before.png right-arrow.png syriac-medi-after.png -geometry +
 
 ## 4.7 `med2`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-before.png --features=-med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=25cc,0710,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-before.png --features=-med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=25cc,0710,25cc
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-after.png --features=+med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=25cc,0710,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-med2-after.png --features=+med2 --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=25cc,0710,25cc
 
 montage syriac-med2-before.png right-arrow.png syriac-med2-after.png -geometry +0+0 -background transparent syriac-med2.png
 
 
 ## 4.8 `init`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-before.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0727,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-before.png --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0721,25cc
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-after.png --features=+init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0727,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-init-after.png --features=+init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf --unicodes=0721,25cc
 
 montage syriac-init-before.png right-arrow.png syriac-init-after.png -geometry +0+0 -background transparent syriac-init.png
 
