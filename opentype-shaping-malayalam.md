@@ -49,7 +49,7 @@ potentially causing confusion.
 
 **Matra** is the standard term for a dependent vowel sign. 
 
-**Halant** and **Virama** are both standard terms for the below-base "vowel-killer"
+**Halant** and **Virama** are both standard terms for the "vowel-killer"
 sign. Unicode documents use the term "virama" most frequently, while
 OpenType documents use the term "halant" most frequently. In the Malayalam
 language, this sign is known as the _chandrakkala_.
@@ -67,9 +67,10 @@ A syllable's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
 syllable frequently take on secondary forms. Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
-consonants. Some of these substitutions create **above-base** or
-**below-base** forms. The **Reph** form of the consonant "Ra" is an
-example.
+consonants. The **Reph** form of the consonant "Ra" is an
+example (post-base in traditional orthography and pre-base in
+reformed orthography). Some of these substitutions create **above-base**
+or **below-base** forms. For instance "La" takes a `below-base` form.
 
 Syllables may also begin with an **independent vowel** instead of a
 consonant. In these syllables, the independent vowel is rendered in
@@ -284,6 +285,12 @@ A secondary usage of the zero-width joiner is to prevent the formation of
   - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
+    
+> Note: Malayalam differs from many Indic scripts in that "Reph"
+> usage is rare in the modern orthography. In word-initial positions, a
+> "Ra,Halant" sequence is typically replaced by a dead-consonant form,
+> "Chillu R".
+
 
 The no-break space (NBSP) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
@@ -840,8 +847,10 @@ post-base form: "Ya" and Va".
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
-    base consonant or syllable base) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) takes on
+    a below-base form.
+
+![Below-base La formation](/images/malayalam/malayalam-blwf-la.png)
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
@@ -938,8 +947,8 @@ that will become "Reph"s:
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) and "La,Halant" (before the
-    base consonant or syllable base) take on a below-base form.
+  - "Halant,La" (after the base consonant or syllable base) takes on
+    a below-base form.
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
