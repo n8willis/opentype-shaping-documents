@@ -68,7 +68,7 @@ A syllable's base consonant is generally rendered in its full form
 syllable frequently take on secondary forms. Different GSUB
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. The **Reph** form of the consonant "Ra" is an
-example (`post-base` in traditional orthography and `pre-base` in
+example (post-base in traditional orthography and pre-base in
 reformed orthography). Some of these substitutions create **above-base**
 or **below-base** forms. For instance "La" takes a `below-base` form.
 
@@ -285,8 +285,11 @@ A secondary usage of the zero-width joiner is to prevent the formation of
   - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
-> Note: Malayalam differs from many Indic scripts in forming "Reph" producing
-> dead-consonant form "Chillu R" instead.
+    
+> Note: Malayalam differs from many Indic scripts in that "Reph"
+> usage is rare in the modern orthography. In word-initial positions, a
+> "Ra,Halant" sequence is typically replaced by a dead-consonant form,
+> "Chillu R".
 
 
 The no-break space (NBSP) is primarily used to display those
@@ -844,7 +847,7 @@ post-base form: "Ya" and Va".
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) take on
+  - "Halant,La" (after the base consonant or syllable base) takes on
     a below-base form.
 
 ![Below-base La formation](/images/malayalam/malayalam-blwf-la.png)
@@ -944,7 +947,7 @@ that will become "Reph"s:
 
 Malayalam includes one consonant that can take on a below-base form:
 
-  - "Halant,La" (after the base consonant or syllable base) take on
+  - "Halant,La" (after the base consonant or syllable base) takes on
     a below-base form.
 
 > Note: Because Malayalam employs the `BLWF_MODE_PRE_AND_POST` shaping
