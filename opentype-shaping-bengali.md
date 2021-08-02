@@ -239,16 +239,43 @@ class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
 
+#### Special-function codepoints ####
+
 Other important characters that may be encountered when shaping runs
 of Bengali text include the dotted-circle placeholder (`U+25CC`), the
 zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
 the no-break space (`U+00A0`).
+
+Each of these is of particular importance to shaping engines, because
+these codepoints interact with the shaping engine, the text run, and
+the active font, either to mediate non-default shaping behavior or to
+relay information about the current shaping process.
 
 The dotted-circle placeholder is frequently used when displaying a
 dependent vowel (matra) or a combining mark in isolation. Real-world
 text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
+
+Dotted-circle placeholder characters (like any Unicode codepoint) can
+appear anywhere in text input sequences and should be rendered
+normally. GPOS positioning lookups should attach mark glyphs to dotted
+circles as they would to other non-mark characters. As visible glyphs,
+dotted circles can also be involved in GSUB substitutions.
+
+In addition to the default input-text handling process, shaping
+engines may also insert dotted-circle placeholders into the text
+sequence. Dotted-circle insertions are required when a non-spacing
+mark or dependent sign is formed with no base character present.
+
+This requirement covers:
+
+  - Dependent signs that are assigned their own individual Unicode
+    codepoints (such as most dependent-vowel marks or matras)
+  
+  - Dependent signs that are formed only by specific sequences of
+    other codepoints (such as "Reph")
+
 
 The zero-width joiner (ZWJ) is primarily used to prevent the formation
 of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. 
@@ -271,6 +298,35 @@ A secondary usage of the zero-width joiner is to prevent the formation of
   - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
+
+The ZWJ and ZWNJ characters are, by definition, non-printing control
+characters and have the _Default_Ignorable_ property in the Unicode
+Character Database. In standard text-display scenarios, their function
+is to signal a request from the user to the shaping engine for some
+particular non-default behavior. As such, they are not rendered
+visually.
+
+> Note: Naturally, there are special circumstances where a user or
+> document might need to request that a ZWJ or ZWNJ be rendered
+> visually, such as when illustrating the OpenType shaping process, or
+> displaying Unicode tables.
+
+Because the ZWJ and ZWNJ are non-printing control characters, they can
+be ignored by any portion of a software text-handling stack not
+involved in the shaping operations that the ZWJ and ZWNJ are designed
+to interface with. For example, spell-checking or collation functions
+will typically ingore ZWJ and ZWNJ.
+
+Similarly, the ZWJ and ZWNJ should be ingored by the shaping engine
+when matching sequences of codepoints against the backtrack and
+lookahead sequences of a font's GSUB or GPOS lookups.
+
+For example:
+
+  - A lookup that substitutes an alternate version of a
+    dependent-vowel (matra) glyph when it is preceded by "Ka,Halant,Tta"
+    should still be applied if the dependent-vowel codepoint is preceded
+    by "Ka,Halant,ZWJ,Tta" in the text run.
 
 The no-break space (NBSP) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
@@ -634,6 +690,40 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
+The primary problem involved in shaping broken syllables is the lack
+of a syllable base (either a base consonant or an independent
+vowel). Without a syllable base, the shaping engine cannot perform
+GPOS positioning and other contextual operations that are required
+later in the shaping process.
+
+To make up for this limitation, shaping engines should insert a
+dotted-circle placeholder (`U+25CC`) character into the text stream
+where the missing syllable base was expected to occur. This
+placeholder allows the shaping process to proceed on a best-effort
+basis at handling the broken-syllable sequence, but making guarantees
+about the orthographic correctness or preferred appearance of the
+final result is out of scope for this document.
+
+Shaping engines can perform this dotted-circle insertion at any point
+after the broken syllable has been recognized and before GSUB features
+are applied. However, the best results will likely be attained by
+performing the insertion immediately, before proceeding to
+stage 2. This will enable the maximum number of GSUB and GPOS features
+in the active font to be correctly applied to the text run by ensuring
+that all reordering, tagging, and sorting algorithms are executed as
+usual.
+
+> Note: In software stacks where other text-handling operations, such
+> as Unicode normalization and localization, are performed before the
+> text run is passed to the shaping engine, there is a potential for
+> the dotted-circle insertion to cause unexpected effects.
+>
+> For example, if a `ccmp` or `locl` feature substitutes the default
+> dotted-circle placeholder glyph with a variant glyph of a different
+> size or weight for the (`U+25CC`) codepoint, then any shaping engine
+> which relies on another software component to handle that
+> functionality must take additional care to ensure consistency.
+
 
 The expressions above use state-machine syntax from the Ragel
 state-machine compiler. The operators represent:
@@ -656,11 +746,6 @@ i|j = i or j
 
 
 
-
-The shaping engine may make a best-effort attempt
-to shape the broken sequence, but making guarantees about the
-correctness or appearance of the final result is out of scope for this
-document.
 
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
