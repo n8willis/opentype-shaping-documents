@@ -352,9 +352,9 @@ Because the ZWJ and ZWNJ are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
 involved in the shaping operations that the ZWJ and ZWNJ are designed
 to interface with. For example, spell-checking or collation functions
-will typically ingore ZWJ and ZWNJ.
+will typically ignore ZWJ and ZWNJ.
 
-Similarly, the ZWJ and ZWNJ should be ingored by the shaping engine
+Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
 lookahead sequences of a font's GSUB or GPOS lookups.
 
