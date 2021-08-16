@@ -234,16 +234,45 @@ Codepoints with no assigned meaning are
 designated as _unassigned_ in the _Unicode category_ column. 
 
 
+#### Special-function codepoints ####
+
 Other important characters that may be encountered when shaping runs
 of Mongolian text include the dotted-circle placeholder (`U+25CC`),
 the zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`),
 the no-break space (`U+00A0`) and the narrow no-break space(`U+202F`).
 
+Each of these is of particular importance to shaping engines, because
+these codepoints interact with the shaping engine, the text run, and
+the active font, either to mediate non-default shaping behavior or to
+relay information about the current shaping process.
+
 The dotted-circle placeholder is frequently used when displaying a
-diacritical mark in isolation. Real-world text documents may
+combining mark in isolation. Real-world text documents may
 also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
+
+Dotted-circle placeholder characters (like any Unicode codepoint) can
+appear anywhere in text input sequences and should be rendered
+normally. GPOS positioning lookups should attach mark glyphs to dotted
+circles as they would to other non-mark characters. As visible glyphs,
+dotted circles can also be involved in GSUB substitutions.
+
+In addition to the default input-text handling process, shaping
+engines may also insert dotted-circle placeholders into the text
+sequence. Dotted-circle insertions are required when a non-spacing
+mark or dependent sign is formed with no base character present.
+
+This requirement covers:
+
+  - Dependent signs that are assigned their own individual Unicode
+    codepoints (such as most dependent-vowel marks or matras)
+  
+  - Dependent signs that are formed only by specific sequences of
+    other codepoints (which is not common in Mongolian but can occur in
+    other scripts)
+
+
 
 The zero-width joiner (ZWJ) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
@@ -254,8 +283,31 @@ as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
 would be used. To show the medial form of a letter in isolation, the
 sequence "ZWJ,_Letter_,ZWJ" would be used.
 
+The zero-width non-joiner (ZWNJ) is primarily used to prevent a
+cursive connection between two adjacent characters that would, under
+normal circumstances, form a join. 
 
-<!--- Zero-Width Non Joiner explanation --->
+The ZWJ and ZWNJ characters are, by definition, non-printing control
+characters and have the _Default_Ignorable_ property in the Unicode
+Character Database. In standard text-display scenarios, their function
+is to signal a request from the user to the shaping engine for some
+particular non-default behavior. As such, they are not rendered
+visually.
+
+> Note: Naturally, there are special circumstances where a user or
+> document might need to request that a ZWJ or ZWNJ be rendered
+> visually, such as when illustrating the OpenType shaping process, or
+> displaying Unicode tables.
+
+Because the ZWJ and ZWNJ are non-printing control characters, they can
+be ignored by any portion of a software text-handling stack not
+involved in the shaping operations that the ZWJ and ZWNJ are designed
+to interface with. For example, spell-checking or collation functions
+will typically ignore ZWJ and ZWNJ.
+
+Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
+when matching sequences of codepoints against the backtrack and
+lookahead sequences of a font's GSUB or GPOS lookups.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as diacritical marks) in an
