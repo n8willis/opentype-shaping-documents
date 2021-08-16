@@ -1223,9 +1223,9 @@ precomposed nukta-variant of the consonant glyph.
 
   - The context defined for a `nukt` feature is:
 
-| Backtrack     | Matching sequence     | Lookahead     |
-|:--------------|:----------------------|:--------------|
-| _none_        | Consonant(full),Nukta | _none_        |
+| Backtrack     | Matching sequence          | Lookahead     |
+|:--------------|:---------------------------|:--------------|
+| _none_        | _Consonant_(full)_,`Nukta` | _none_        |
 
 ![Nukta composition](/images/malayalam/malayalam-nukt.png)
 
@@ -1241,9 +1241,9 @@ feature must be applied before all other many-to-one substitutions.
 
   - The context defined for a `akhn` feature is:
 
-| Backtrack     | Matching sequence        | Lookahead     |
-|:--------------|:-------------------------|:--------------|
-| _none_        | Consonant(full) sequence | _none_        |
+| Backtrack     | Matching sequence            | Lookahead     |
+|:--------------|:-----------------------------|:--------------|
+| _none_        | **Consonant(full) sequence** | _none_        |
 
 
 ![Akhand KSsa ligation](/images/malayalam/malayalam-akhn-kssa.png)
@@ -1275,9 +1275,9 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
   - The context defined for a `rphf` feature is:
 
-| Backtrack             | Matching sequence        | Lookahead     |
-|:----------------------|:-------------------------|:--------------|
-| Beginning of syllable | Ra(full),Halant          | _none_        |
+| Backtrack                 | Matching sequence        | Lookahead     |
+|:--------------------------|:-------------------------|:--------------|
+| **Beginning of syllable** | `Ra`(full),`Halant`      | _none_        |
 
 
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
@@ -1322,7 +1322,7 @@ characteristic.
 
 | Backtrack     | Matching sequence        | Lookahead     |
 |:--------------|:-------------------------|:--------------|
-| Consonant     | Halant,La                | _none_        |
+| _Consonant_   | `Halant`,`La`            | _none_        |
 
 
 ![Below-base La formation](/images/malayalam/malayalam-blwf.png)
@@ -1385,9 +1385,9 @@ post-base form: "Ya" and Va".
 
   - The context defined for a `pstf` feature is:
 
-| Backtrack     | Matching sequence        | Lookahead     |
-|:--------------|:-------------------------|:--------------|
-| Syllable_Base | Halant,Consonant         | _none_        |
+| Backtrack       | Matching sequence        | Lookahead     |
+|:----------------|:-------------------------|:--------------|
+| _Syllable_Base_ | `Halant`,_Consonant_     | _none_        |
 
 
 ![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
