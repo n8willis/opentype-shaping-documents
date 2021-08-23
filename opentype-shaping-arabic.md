@@ -520,35 +520,6 @@ next word.
 > implement the joining-state computation as a state machine, in a lookup
 > table, or by any other means desirable.
 
-<!--- HarfBuzz state table:
-
-Tag for current character:
-
-| Preceding   | NON_JOINING | LEFT | RIGHT | DUAL or JOIN_CAUSING | syrcAL | syrcDR |
-|:------------|:------------|:-----|:------|:---------------------|:-------|:-------|
-| Current     | | | | | | |
-| NON_JOINING | _none_      |      |       |                      |        |        |
-| LEFT        | `isol`      |      |       |                      |        |        |
-| RIGHT       |             |      |       |                      |        |        |
-| DUAL/CAUS   |             |      |       |                      |        |        |
-| syrcAL      |             |      |       |                      |        |        |
-| syrcDR      |             |      |       |                      |        |        |
-
-
-Updated tag for preceding character:
-
-| Preceding   | NON_JOINING | LEFT | RIGHT | DUAL or JOIN_CAUSING | syrcAL | syrcDR |
-|:------------|:------------|:-----|:------|:---------------------|:-------|:-------|
-| Current     | | | | | | |
-| NON_JOINING |             |      |       |                      |        |        |
-| LEFT        |             |      |       |                      |        |        |
-| RIGHT       |             |      |       |                      |        |        |
-| DUAL/CAUS   |             |      |       |                      |        |        |
-| syrcAL      |             |      |       |                      |        |        |
-| syrcDR      |             |      |       |                      |        |        |
-
---->
-
 At the end of this process, all letters should be tagged for possible
 substitution by one of the `isol`, `init`, `medi`, or `fina` features.
 
