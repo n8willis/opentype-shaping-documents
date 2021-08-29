@@ -14,12 +14,12 @@ implementations share.
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The `<mong>` shaping model](#the-arab-shaping-model)
-      - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
-      - [2. Computing letter joining states](#2-computing-letter-joining-states)
-      - [3. Applying the `stch` feature](#3-applying-the-stch-feature)
-      - [4. Applying the language-form substitution features from GSUB](#4-applying-the-language-form-substitution-features-from-gsub)
-      - [5. Applying the typographic-form substitution features from GSUB](#5-applying-the-typographic-form-substitution-features-from-gsub)
-      - [6. Mark reordering](#6-mark-reordering)
+      - [1. Transient reordering of modifier combining marks](#1-transient-reordering-of-modifier-combining-marks)
+      - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
+      - [3. Computing letter joining states](#3-computing-letter-joining-states)
+      - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
+      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
+      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
       - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
   
 
@@ -323,23 +323,79 @@ suffix. Not all Mongolian words incorporate a narrow no-break space.
 
 Processing a run of `<mong>` text involves seven top-level stages:
 
-1. Compound character composition and decomposition
-2. Computing letter joining states
-3. Applying the `stch` feature
-4. Applying the language-form substitution features from GSUB
-5. Applying the typographic-form substitution features from GSUB
-6. Mark reordering
+1. Transient reordering of modifier combining marks
+2. Compound character composition and decomposition
+3. Computing letter joining states
+4. Applying the `stch` feature
+5. Applying the language-form substitution features from GSUB
+6. Applying the typographic-form substitution features from GSUB
 7. Applying the positioning features from GPOS
 
 
-### 1. Compound character composition and decomposition ###
+### 1. Transient reordering of modifier combining marks ###
+
+<!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
+> Note: because Mongolian does not feature the "Shadda" mark or any
+> marks that belong to _Modifier Combining Marks_ (MCM) classes, this
+> stage should not involve any additional work when processing
+> `<mong>` text runs. It is included here to maintain consistency with
+> other scripts that utilize the general Arabic-based shaping model.
+
+Sequences of adjacent marks must be reordered so that they appear in
+the appropriate visual order before the mark-to-base and mark-to-mark
+positioning features from GPOS can be correctly applied.
+
+In particular, those marks that have strong affinity to the base
+character must be placed closest to the base.
+
+This mark-reordering operation is distinct from the standard,
+cross-script mark-reordering performed during Unicode
+normalization. The standard Unicode mark-reordering algorithm is based
+on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
+codepoints, whereas this script-specific reordering utilizes the
+_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+character tables.
+
+The algorithm for reordering a sequence of marks is:
+
+  - First, move any "Shadda" (combining class `33`) characters to the
+    beginning of the mark sequence.
+	
+  -	Second, move any subsequence of combining-class-`230` characters that begins
+       with a `230_MCM` character to the beginning of the sequence,
+       before all "Shadda" characters. The subsequence must be moved
+       as a group.
+
+  - Finally, move any subsequence of combining-class-`220` characters that begins
+       with a `220_MCM` character to the beginning of the sequence,
+       before all "Shadda" characters and before all class-`230`
+       characters. The subsequence must be moved as a group.
+
+> Note: Unicode describes this mark-reordering operation, the Arabic
+> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> which describes it in terms that are distinct from standard,
+> Ccc-based mark reordering.
+>
+> Specifically, AMTRA is designated as an operation performed during
+> text rendering only, which therefore does not impact other
+> Unicode-compliance issues such as allowable input sequences or text
+> encoding.
+>
+> However, shaping engines may choose to perform the reordering of
+> modifier combining marks in conjunction with their Unicode
+> normalization functionality for increased efficiency.
+
+### 2. Compound character composition and decomposition ###
 
 The `ccmp` feature allows a font to substitute
 
  - mark-and-base sequences with a pre-composed glyph including both
-   the mark and the base (as is done in with a ligature substitution)
- - individual compound glyphs with the equivalent sequence of
-   decomposed glyphs
+    the mark and the base (as is done in with a ligature substitution)
+	
+  - individual compound glyphs with the equivalent sequence of
+    decomposed glyphs (such as decomposing a letter with inherent
+    marks into a separate fundamental-letter glyph followed by a
+    marks-only glyph, to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
 performed before applying any other GSUB or GPOS lookups, because
@@ -347,10 +403,10 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-### 2. Computing letter joining states ###
+### 3. Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from GSUB during stage 5, the shaping engine must
+substitutions from GSUB during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 > Note: The following algorithm includes rules for processing `<syrc>`
@@ -449,7 +505,7 @@ next word.
 At the end of this process, all letters should be tagged for possible
 substitution by one of the `isol`, `init`, `medi`, or `fina` features.
 
-### 3. Applying the `stch` feature ###
+### 4. Applying the `stch` feature ###
 
 The `stch` feature decomposes and stretches special marks that are
 meant to extend to the full width of words to which they are
@@ -485,7 +541,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 4. Applying the language-form substitution features from GSUB ###
+### 5. Applying the language-form substitution features from GSUB ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's GSUB table. In preparation for
@@ -508,7 +564,7 @@ all scripts implemented in the Arabic shaping model:
 	calt
 	
 
-#### 4.1 locl ####
+#### 5.1 locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -521,7 +577,7 @@ variants, based on examining the language setting of the text run.
 > GSUB substitutions in the following steps.
 
 
-#### 4.2 isol ####
+#### 5.2 isol ####
 
 The `isol` feature substitutes the default glyph for a codepoint with
 the isolated form of the letter.
@@ -542,7 +598,7 @@ by the orthography.
 ![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.png)
 
 
-#### 4.3 fina ####
+#### 5.3 fina ####
 
 The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
@@ -557,15 +613,15 @@ by the orthography.
 ![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.png)
 
 
-#### 4.4 fin2 ####
+#### 5.4 fin2 ####
 
 This feature is not used in `<mong>` text.
 
-#### 4.5 fin3 ####
+#### 5.5 fin3 ####
 
 This feature is not used in `<mong>` text.
 
-#### 4.6 medi ####
+#### 5.6 medi ####
 
 The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
@@ -580,11 +636,11 @@ by the orthography.
 ![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.png)
 
 
-#### 4.7 med2 ####
+#### 5.7 med2 ####
 
 This feature is not used in `<mong>` text.
 
-#### 4.8 init ####
+#### 5.8 init ####
 
 The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
@@ -599,7 +655,7 @@ by the orthography.
 ![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.png)
 
 
-#### 4.9 rlig ####
+#### 5.9 rlig ####
 
 The `rlig` feature substitutes glyph sequences with mandatory
 ligatures. Substitutions made by `rlig` cannot be disabled by
@@ -608,7 +664,7 @@ application-level user interfaces.
 ![Required ligature substitution](/images/mongolian/mongolian-rlig.png)
 
 
-#### 4.10 rclt ####
+#### 5.10 rclt ####
 
 The `rclt` feature substitutes glyphs with contextual alternate
 forms. In general, this involves replacing the default form of a
@@ -620,7 +676,7 @@ are required by the orthography of the active script and
 language. Substitutions made by `rclt` cannot be disabled by 
 application-level user interfaces.
 
-#### 4.11 calt ####
+#### 5.11 calt ####
 
 The `calt` feature substitutes glyphs with contextual alternate
 forms. In general, this involves replacing the default form of a
@@ -636,7 +692,7 @@ can be disabled by application-level user interfaces.
 
 
 
-### 5. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from GSUB ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's GSUB table.
@@ -650,7 +706,7 @@ all scripts implemented in the Arabic shaping model:
 	mset
 	
 
-#### 5.1 liga ####
+#### 6.1 liga ####
 
 The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
@@ -660,14 +716,14 @@ application-level user interfaces.
 
 
 
-#### 5.2 dlig ####
+#### 6.2 dlig ####
 
 The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 
-#### 5.3 cswh ####
+#### 6.3 cswh ####
 
 The `cswh` feature substitutes contextual swash variants of
 glyphs. 
@@ -677,7 +733,7 @@ of "Noon" when a certain number of subsequent glyphs do not descend
 below the baseline. --->
 
 
-#### 5.4 mset ####
+#### 6.4 mset ####
 
 The `mset` feature performs mark positioning by substituting sequences
 of bases and marks with precomposed base-and-mark glyphs.
@@ -690,39 +746,6 @@ of bases and marks with precomposed base-and-mark glyphs.
 > 
 > Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
-
-### 6. Mark reordering ###
-
-<!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
-
-Sequences of adjacent marks must be reordered so that they appear in
-canonical order before the mark-to-base and mark-to-mark positioning
-features from GPOS can be correctly applied.
-
-> Note: because Mongolian does not feature the "Shadda" mark or any
-> marks that belong to _Modifier Combining Marks_ (MCM) classes, this
-> stage should not involve any additional work when processing
-> `<mong>` text runs. It is included here to maintain consistency with
-> other scripts that utilize the general Arabic-based shaping model.
-
-In particular, those marks that have strong affinity to the base
-character must be placed closest to the base.
-
-The algorithm for reordering a sequence of marks is:
-
-  - First, move any "Shadda" (combining class `33`) characters to the
-    beginning of the mark sequence.
-	
-  -	Second, move any subsequence of combining-class-`230` characters that begins
-       with a `230_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters. The subsequence must be moved
-       as a group.
-
-  - Finally, move any subsequence of combining-class-`220` characters that begins
-       with a `220_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters and before all class-`230`
-       characters. The subsequence must be moved as a group.
-
 
 ### 7. Applying the positioning features from GPOS ###
 
