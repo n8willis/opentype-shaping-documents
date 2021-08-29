@@ -356,6 +356,11 @@ Processing a run of `<syrc>` text involves seven top-level stages:
 
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 
+> Note: The following algorithm contains steps specific to reordering
+> Arabic marks. Since Garshuni text, which uses the Syriac script to
+> write the Arabic language, employs Arabic marks, shaping engines
+> should not omit the mark-reordering logic. 
+
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
 positioning features from GPOS can be correctly applied.
