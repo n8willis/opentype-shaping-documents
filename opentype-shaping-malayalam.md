@@ -1277,7 +1277,7 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
 | Backtrack        | Matching sequence        | Lookahead     |
 |:-----------------|:-------------------------|:--------------|
-| `SYLLABLE_START` | "Ra" (full),`_halant-`   | _none_        |
+| `SYLLABLE_START` | "Ra" (full),`_halant_`   | _none_        |
 
 
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
