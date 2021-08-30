@@ -1222,10 +1222,10 @@ precomposed nukta-variant of the consonant glyph.
 > similar characters from other blocks.
 
   - The context defined for a `nukt` feature is:
-
-| Backtrack     | Matching sequence              | Lookahead     |
-|:--------------|:-------------------------------|:--------------|
-| _none_        | `_consonant_` (full),`_nukta_` | _none_        |
+    
+    | Backtrack     | Matching sequence             | Lookahead     |
+    |:--------------|:------------------------------|:--------------|
+    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 
 ![Nukta composition](/images/malayalam/malayalam-nukt.png)
 
@@ -1240,10 +1240,10 @@ These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
   - The context defined for a `akhn` feature is:
-
-| Backtrack     | Matching sequence           | Lookahead     |
-|:--------------|:----------------------------|:--------------|
-| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+    
+    | Backtrack     | Matching sequence           | Lookahead     |
+    |:--------------|:----------------------------|:--------------|
+    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
 
 
 ![Akhand KSsa ligation](/images/malayalam/malayalam-akhn-kssa.png)
@@ -1274,10 +1274,10 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 ![Dot Reph composition](/images/malayalam/malayalam-dot-reph.png)
 
   - The context defined for a `rphf` feature is:
-
-| Backtrack        | Matching sequence        | Lookahead     |
-|:-----------------|:-------------------------|:--------------|
-| `SYLLABLE_START` | "Ra" (full),`_halant_`   | _none_        |
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
 
 > Note: Modern Malayalam orthography prefers using the "Chillu R"
@@ -1319,10 +1319,10 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
   - The context defined for a `blwf` feature is:
-
-| Backtrack     | Matching sequence        | Lookahead     |
-|:--------------|:-------------------------|:--------------|
-| `_consonant_` | `_halant_`,"La"          | _none_        |
+    
+    | Backtrack     | Matching sequence        | Lookahead     |
+    |:--------------|:-------------------------|:--------------|
+    | `_consonant_` | `_halant_`,"La"          | _none_        |
 
 
 ![Below-base La formation](/images/malayalam/malayalam-blwf.png)
@@ -1384,10 +1384,10 @@ special forms. Malayalam includes two consonants that can take on
 post-base form: "Ya" and Va".
 
   - The context defined for a `pstf` feature is:
-
-| Backtrack       | Matching sequence        | Lookahead     |
-|:----------------|:-------------------------|:--------------|
-| `SYLLABLE_BASE` | `_halant_`,`_consonant_` | _none_        |
+    
+    | Backtrack       | Matching sequence        | Lookahead     |
+    |:----------------|:-------------------------|:--------------|
+    | `SYLLABLE_BASE` | `_halant_`,`_consonant_` | _none_        |
 
 
 ![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png)
