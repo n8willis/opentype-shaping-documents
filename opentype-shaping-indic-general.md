@@ -330,11 +330,17 @@ conjunct, the zero-width non-joiner (ZWNJ) must be used instead.
     "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". 
+"Reph" in those scripts that use an implicit sequence to request a
+"Reph" form.
 
   - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
+
+> Note: this particular usage of ZWJ may not apply to scripts that
+> feature an explicit "Reph" codepoint or an explicit sequence for
+> requesting "Reph". See the script-specific shaping documents for
+> full details.
 
 The ZWJ and ZWNJ characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
@@ -855,9 +861,10 @@ to recognize these sequences and not mis-identify the base consonant.
 In Indic scripts, the consonant "Ra" receives special treatment; in
 many circumstances it is replaced by one of two combining mark-like forms. 
 
-  - A "Ra,Halant" sequence at the beginning of a syllable may be replaced
-    with an above-base mark called "Reph" (unless the "Ra" is the only
-    consonant in the syllable). 
+  - A "Ra,Halant" or "Ra,Halant,ZWJ" sequence at the beginning of a
+    syllable may be replaced with an above-base mark called "Reph"
+    (although script-specifics rules may negate this replacement if
+    the "Ra" is the only consonant in the syllable). 
 
   - "Halant,Ra" sequences that occur elsewhere in the syllable may
     take on a below-base form (called "Rakaar" in Devanagari and most
@@ -1303,8 +1310,9 @@ that will become "Reph"s:
 
 #### 2.6: Reph ####
 
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
-`POS_RA_TO_BECOME_REPH`.
+Sixth, initial "Ra,Halant" (in `REPH_MODE_IMPLICIT` scripts) or
+"Ra,Halant,ZWJ" (in `REPH_MODE_EXPLICIT` scripts) sequences that will
+become "Reph"s must be tagged with `POS_RA_TO_BECOME_REPH`.
 
 #### 2.7: Post-base consonants ####
 
