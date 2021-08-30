@@ -487,8 +487,7 @@ treatment; in many circumstances it is replaced by a combining
 mark-like form. 
 
   - A "Ra,Halant,ZWJ" sequence at the beginning of a syllable is replaced
-    with a right-side mark called "Reph" (unless the "Ra" is the only
-    consonant in the syllable). This rule is synonymous with the
+    with a right-side mark called "Reph". This rule is synonymous with the
     `REPH_MODE_EXPLICIT` characteristic mentioned earlier.
   - A post-base "Ra" is reordered to before the base consonant or
     syllable base during the final-reordering stage of the shaping
@@ -878,9 +877,8 @@ encountered during the base-consonant search must be tagged
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
-    more than one consonant, exclude the starting "Ra" from the list of
-    consonants to be considered. 
+  - If the syllable starts with "Ra,Halant,ZWJ", exclude the starting
+    "Ra" from the list of consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
       * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
@@ -984,7 +982,7 @@ matched later in the shaping process.
 #### 2.5: Pre-base consonants ####
 
 Fifth, consonants that occur before the syllable base must be tagged
-with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
+with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant,ZWJ" sequences
 that will become "Reph"s: 
 
   - If the consonant has a below-base form, tag it as
@@ -1022,8 +1020,7 @@ because it is part of the general processing scheme for shaping Indic scripts.
 Sixth, initial "Ra,Halant,ZWJ" sequences that will become "Reph"s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant,ZWJ" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+> Note: an initial "Ra,Halant,ZWJ" sequence will always become a "Reph".
 
 #### 2.7: Final consonants ####
 
