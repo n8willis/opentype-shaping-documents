@@ -443,8 +443,7 @@ treatment; in many circumstances it is replaced by a combining
 mark-like form. 
 
   - A "Ra,Halant,ZWJ" sequence at the beginning of a syllable
-    is replaced with an above-base mark called "Reph" (unless the "Ra"
-    is the only consonant in the syllable). 
+    is replaced with an above-base mark called "Reph". 
     This rule is synonymous with the `REPH_MODE_EXPLICIT`
     characteristic mentioned earlier.
 
@@ -793,9 +792,8 @@ different algorithm is required for the shaper to identify the base
 consonant of a syllable. The algorithm for determining the base
 consonant in Sinhala is
 
-  - If the syllable starts with "Ra,Halant,ZWJ" and the syllable contains
-    more than one consonant, exclude the starting "Ra" from the list of
-    consonants to be considered. 
+  - If the syllable starts with "Ra,Halant,ZWJ", exclude the starting
+    "Ra" from the list of consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is immediately preceded by a ZWJ, move to the
         previous consonant. If the consonant is not immediately
@@ -898,8 +896,7 @@ with `POS_PREBASE_CONSONANT`.
 Sixth, initial "Ra,Halant,ZWJ" sequences that will become "Reph"s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant,ZWJ" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+> Note: an initial "Ra,Halant,ZWJ" sequence will always become a "Reph".
 
 #### 2.7: Post-base consonants ####
 
