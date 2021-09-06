@@ -1239,7 +1239,7 @@ there are typically many ligatures in a font that are implemented as
 These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-  - The context defined for a `akhn` feature is:
+  - The context defined for an `akhn` feature is:
     
     | Backtrack     | Matching sequence           | Lookahead     |
     |:--------------|:----------------------------|:--------------|
