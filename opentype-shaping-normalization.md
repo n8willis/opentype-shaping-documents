@@ -333,8 +333,8 @@ order:
 Several script-specific shapers require additional reordering to
 compensate for limitations in the Unicode `Ccc` mark-reordering
 model. For example, several Arabic mark sequences are reordered in
-[stage 6](/opentype-shaping-arabic.md#6-mark-reordering) of the Arabic
-shaping model and [stage 6](/opentype-shaping-syriac.md#6-mark-reordering)
+[stage 1](/opentype-shaping-arabic.md#1-transient-reordering-of-modifier-combining-marks) of the Arabic
+shaping model and [stage 1](/opentype-shaping-syriac.md#1-transient-reordering-of-modifier-combining-marks)
 of the Syriac shaping model. 
 
 These are listed briefly in stage 4, step 4, below, but full
@@ -542,8 +542,8 @@ example:
   - In the Hebrew shaper, stage 2, Hebrew Alphabetic Presentation
     Forms, if available in the active font, are composed.
 
-  - In the Arabic shaping model, stage 6, and in the Syriac shaping
-    model, stage 6, certain marks are reordered after normalization
+  - In the Arabic shaping model, stage 1, and in the Syriac shaping
+    model, stage 1, certain marks are reordered after normalization
     and after GSUB feature application.
 
   - In Bengali, "Ya, Nukta" is composed into "Yya" before GSUB feature
