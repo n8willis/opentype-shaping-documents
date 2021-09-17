@@ -1166,6 +1166,12 @@ precomposed nukta-variant of the consonant glyph.
 > blocks. Therefore shaping engines must apply the `nukt` feature if
 > it is used in the active font.
 
+  - The context defined for a `nukt` feature is:
+    
+    | Backtrack     | Matching sequence             | Lookahead     |
+    |:--------------|:------------------------------|:--------------|
+    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+
 
 #### 3.3: akhn ####
 
@@ -1179,12 +1185,26 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+  - The context defined for an `akhn` feature is:
+    
+    | Backtrack     | Matching sequence           | Lookahead     |
+    |:--------------|:----------------------------|:--------------|
+    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+
+
 ![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.png)
 
 
 #### 3.4: rphf ####
 
 > This feature is not used in Tamil.
+
+  - The context defined for a `rphf` feature is:
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+
 
 	
 #### 3.5 rkrf ####

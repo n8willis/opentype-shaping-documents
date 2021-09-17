@@ -1217,6 +1217,13 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+  - The context defined for a `nukt` feature is:
+    
+    | Backtrack     | Matching sequence             | Lookahead     |
+    |:--------------|:------------------------------|:--------------|
+    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+
+
 ![Nukta composition](/images/gurmukhi/gurmukhi-nukt.png)
 
 
@@ -1233,6 +1240,13 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+  - The context defined for an `akhn` feature is:
+    
+    | Backtrack     | Matching sequence           | Lookahead     |
+    |:--------------|:----------------------------|:--------------|
+    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+
+
 > Note: Akhand ligatures are rare in Gurmukhi text. Nevertheless,
 > shaping engines must test for the feature in order to provide the
 > functionality if it is implemented.
@@ -1246,6 +1260,14 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
     the `rphf` substitution.
 	
+
+  - The context defined for a `rphf` feature is:
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+
+
 > Note: "Reph" usage is rare in Gurmukhi text. Nevertheless,
 > shaping engines must test for the feature in order to provide the
 > functionality if it is implemented.

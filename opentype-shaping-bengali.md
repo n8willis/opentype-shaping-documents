@@ -1275,7 +1275,7 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-  - The context defined for a `akhn` feature is:
+  - The context defined for an `akhn` feature is:
     
     | Backtrack     | Matching sequence           | Lookahead     |
     |:--------------|:----------------------------|:--------------|
@@ -1293,7 +1293,14 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
     the `rphf` substitution.
-	
+
+
+  - The context defined for a `rphf` feature is:
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+
 
   - The context defined for a `rphf` feature is:
     
@@ -1404,7 +1411,7 @@ the `blwf` feature.
     
     | Backtrack        | Matching sequence       | Lookahead     |
     |:-----------------|:------------------------|:--------------|
-    | _none_           | `_consonant_`,"Raphala" | _none_        |
+    | _none_           | `_consonant`,"Raphala"  | _none_        |
 
 
 
@@ -1663,11 +1670,11 @@ The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
 headline in-stroke from the left side of the glyph.
 
-  - The context defined for a `init` feature is:
+  - The context defined for an `init` feature is:
     
-    | Backtrack        | Matching sequence          | Lookahead           |
-    |:-----------------|:---------------------------|:--------------------|
-    | `WORD_START`     | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
+    | Backtrack    | Matching sequence        | Lookahead           |
+    |:-------------|:-------------------------|:--------------------|
+    | `WORD_START` | `_matra_`(LEFT_POSITION) | `_consonant_`(full) |
 
 ![Application of the init feature](/images/bengali/bengali-init.png)
 
