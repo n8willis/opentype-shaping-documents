@@ -102,7 +102,7 @@ specific, script-aware behavior.
 |`U+0C39`   | Letter           | CONSONANT         | _null_                     | &#x0C39; Ha                  |
 |`U+0C3A`   | _unassigned_     |                   |                            |                              |
 |`U+0C3B`   | _unassigned_     |                   |                            |                              |
-|`U+0C3C`   | _unassigned_     |                   |                            |                              |
+|`U+0C3C`   | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x0C3C; Nukta               |
 |`U+0C3D`   | Letter           | AVAGRAHA          | _null_                     | &#x0C3D; Avagraha            |
 |`U+0C3E`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0C3E; Sign Aa             |
 |`U+0C3F`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x0C3F; Sign I              |
@@ -137,7 +137,7 @@ specific, script-aware behavior.
 |`U+0C5A`   | Letter           | CONSONANT         | _null_                     | &#x0C5A; Rrra                |
 |`U+0C5B`   | _unassigned_     |                   |                            |                              |
 |`U+0C5C`   | _unassigned_     |                   |                            |                              |
-|`U+0C5D`   | _unassigned_     |                   |                            |                              |
+|`U+0C5D`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0C5D; Nakaara Pollu       |
 |`U+0C5E`   | _unassigned_     |                   |                            |                              |
 |`U+0C5F`   | _unassigned_     |                   |                            |                              |
 | | | | |																		
