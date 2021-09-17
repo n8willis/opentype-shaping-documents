@@ -86,9 +86,10 @@ context alone.
 
 To indicate the correct form, the text run can include a **free
 variation selector** immediately after the letter in
-question. There are three free variation selectors in the Mongolian
-block (FVS1, FVS2, and FVS3), although some letters have alternate
-forms defined only for FVS1 or only for FVS1 and FVS2.
+question. There are four free variation selectors in the Mongolian
+block (FVS1, FVS2, FVS3, and FVS4), although some letters have
+alternate forms defined only for a subset of the free variation
+selectors.
 
 In addition, letters vary as to whether alternate forms exist for the
 isolated, initial, medial, or final position, or for several

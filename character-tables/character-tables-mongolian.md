@@ -61,7 +61,7 @@ treated differently during the mark-reordering stage.
 |`U+180C`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180C; Free Variation Selector Two          |
 |`U+180D`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180D; Free Variation Selector Three        |
 |`U+180E`   | Formatting       | NON_JOINING  | _null_               | _0_        | &#x180E; Mongolian Vowel Separator            |
-|`U+180F`   | _unassigned_     |              |                      |            |                                               |
+|`U+180F`   | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x180f; Free Variation Selector Four         |
 | | | | | |                                                                                  
 |`U+1810`   | Number           | NON_JOINING  | _null_               | _0_        | &#x1810; Digit Zero                           |
 |`U+1811`   | Number           | NON_JOINING  | _null_               | _0_        | &#x1811; Digit One                            |
