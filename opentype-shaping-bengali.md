@@ -1302,13 +1302,6 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
 
-  - The context defined for a `rphf` feature is:
-    
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
-
-
 ![Reph composition](/images/bengali/bengali-rphf.png)
 
 ![Reph composition](/images/bengali/bengali-rphf-as.png)
@@ -1411,7 +1404,7 @@ the `blwf` feature.
     
     | Backtrack        | Matching sequence       | Lookahead     |
     |:-----------------|:------------------------|:--------------|
-    | _none_           | `_consonant`,"Raphala"  | _none_        |
+    | _none_           | `_consonant_`,"Raphala" | _none_        |
 
 
 
@@ -1672,9 +1665,9 @@ headline in-stroke from the left side of the glyph.
 
   - The context defined for an `init` feature is:
     
-    | Backtrack    | Matching sequence        | Lookahead           |
-    |:-------------|:-------------------------|:--------------------|
-    | `WORD_START` | `_matra_`(LEFT_POSITION) | `_consonant_`(full) |
+    | Backtrack    | Matching sequence          | Lookahead           |
+    |:-------------|:---------------------------|:--------------------|
+    | `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
 
 ![Application of the init feature](/images/bengali/bengali-init.png)
 
