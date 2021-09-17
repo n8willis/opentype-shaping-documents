@@ -197,13 +197,14 @@ stage](#1-transient-reordering-of-modifier-combining-marks).
 ### Character tables ###
 
 Separate character tables are provided for the Arabic, Arabic
-Supplement, Arabic Extended-A, and Rumi Numeral Symbols blocks, as
-well as for other miscellaneous characters that are used in `<arab>`
-text runs:
+Supplement, Arabic Extended-A, Abaric Extended-B, and Rumi Numeral
+Symbols blocks, as well as for other miscellaneous characters that are
+used in `<arab>` text runs:
 
   - [Arabic character table](character-tables/character-tables-arabic.md#arabic-character-table)
   - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
   - [Arabic Extended-A character table](character-tables/character-tables-arabic.md#arabic-extended-a-character-table)
+  - [Arabic Extended-B character table](character-tables/character-tables-arabic.md#arabic-extended-b-character-table)
   - [Rumi Numeral Symbols character table](character-tables/character-tables-arabic.md#rumi-numeral-symbols-character-table)
   - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
 

@@ -8,6 +8,7 @@ This document lists the per-character shaping information needed to
   - [Arabic character table](#arabic-character-table)
   - [Arabic Supplement character table](#arabic-supplement-character-table)
   - [Arabic Extended-A character table](#arabic-extended-a-character-table)
+  - [Arabic Extended-B character table](#arabic-extended-b-character-table)
   - [Rumi Numeral Symbols character table](#rumi-numeral-symbols-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 
@@ -78,7 +79,7 @@ treated differently during the mark-reordering stage.
 |`U+061A`   | Mark [Mn]        | TRANSPARENT  | _null_               | 32         | &#x061A; Small Kasra                          |
 |`U+061B`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061B; Semicolon                            |
 |`U+061C`   | Other            | TRANSPARENT  | _null_               | _0_        | &#x061C; Arabic Letter Mark                   |
-|`U+061D`   | _unassigned_     |              |                      |            |                                               |
+|`U+061D`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061D; End Of Text Mark                     |
 |`U+061E`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061E; Triple Dot Punctuation Mark          |
 |`U+061F`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061F; Question Mark                        |
 | | | | | |                                                                                                                       
@@ -406,7 +407,7 @@ treated differently during the mark-reordering stage.
 |`U+08B2`   | Letter           | RIGHT        | REH                  | _0_        | &#x08B2; Reh With Dot And Inverted V Above            |
 |`U+08B3`   | Letter           | DUAL         | AIN                  | _0_        | &#x08B3; Ain With 3 Dots Below                        |
 |`U+08B4`   | Letter           | DUAL         | KAF                  | _0_        | &#x08B4; Kaf With Dot Below                           |
-|`U+08B5`   | _unassigned_     |              |                      |            |                                                       |
+|`U+08B5`   | Letter           | DUAL         | QAF                  | _0_        | &#x08B5; Qaf With Dot Below                           |
 |`U+08B6`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B6; Beh With Meem Above                          |
 |`U+08B7`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B7; Dotless Beh With 3 Dots Below And Meem Above |
 |`U+08B8`   | Letter           | DUAL         | BEH                  | _0_        | &#x08B8; Dotless Beh With Teh Above                   |
@@ -426,18 +427,18 @@ treated differently during the mark-reordering stage.
 |`U+08C5`   | Letter           | DUAL         | HAH                  | _0_        | &#x08C5; Jeem With 3 Dots Above                       |
 |`U+08C6`   | Letter           | DUAL         | HAH                  | _0_        | &#x08C6; Jeem With 3 Dots Below                       |
 |`U+08C7`   | Letter           | DUAL         | LAM                  | _0_        | &#x08C7; Lam With Small Arabic Tah Above              |
-|`U+08C8`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08C9`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CA`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CB`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CC`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CD`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CE`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08CF`   | _unassigned_     |              |                      |            |                                                       |
-| | | | | |                                                                                                                               
-|`U+08D0`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08D1`   | _unassigned_     |              |                      |            |                                                       |
-|`U+08D2`   | _unassigned_     |              |                      |            |                                                       |
+|`U+08C8`   | Letter           | DUAL         | GAF                  | _0_        | &#x08C8; Graf                                         |
+|`U+08C9`   | Letter modifier  | TRANSPARENT  | _null_               | _0_        | &#x08C9; Small Farsi Yeh                              |
+|`U+08CA`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CA; Small High Farsi Yeh                         |
+|`U+08CB`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CB; Small High Yeh Barree With Two Dots Below    |
+|`U+08CC`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CC; Small High Word Sah                          |
+|`U+08CD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CD; Small High Zah                               |
+|`U+08CE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CE; Large Round Dot Above                        |
+|`U+08CF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08CF; Large Round Dot Below                        |
+| | | | | |
+|`U+08D0`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D0; Sukun Below                                  |
+|`U+08D1`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D1; Large Circle Below                           |
+|`U+08D2`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D2; Large Round Dot Inside Circle Below          |
 |`U+08D3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D3; Small Low Waw                                |
 |`U+08D4`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D4; Small High Word Ar-Rub                       |
 |`U+08D5`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D5; Small High Sad                               |
@@ -451,7 +452,7 @@ treated differently during the mark-reordering stage.
 |`U+08DD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08DD; Small High Word Sakta                        |
 |`U+08DE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08DE; Small High Word Qif                          |
 |`U+08DF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08DF; Small High Word Waqfa                        |
-| | | | | |                                                                                                                      
+| | | | | | 
 |`U+08E0`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08E0; Small High Footnote Marker                   |
 |`U+08E1`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08E1; Small High Sign Safha                        |
 |`U+08E2`   | Other            | NON_JOINING  | _null_               | _0_        | &#x08E2; Disputed End Of Ayah                         |
@@ -485,6 +486,64 @@ treated differently during the mark-reordering stage.
 |`U+08FD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FD; Right Arrowhead Above With Dot               |
 |`U+08FE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FE; Damma With Dot                               |
 |`U+08FF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FF; Mark Sideways Noon Ghunna                    |          
+
+
+## Arabic Extended-B character table ##
+
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
+|`U+0870`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0870; Alef With Attached Fatha                     |
+|`U+0871`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0871; Alef With Attached Top Right Fatha           |
+|`U+0872`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0872; Alef With Right Middle Stroke                |
+|`U+0873`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0873; Alef With Left Middle Stroke                 |
+|`U+0874`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0874; Alef With Attached Kasra                     |
+|`U+0875`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0875; Alef With Attached Bottom Right Kasra        |
+|`U+0876`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0876; Alef With Attached Round Dot Above           |
+|`U+0877`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0877; Alef With Attached Right Round Dot           |
+|`U+0878`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0878; Alef With Attached Left Round Dot            |
+|`U+0879`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0879; Alef With Attached Round Dot Below           |
+|`U+087A`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087A; Alef With Dot Above                          |
+|`U+087B`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087B; Alef With Attached Top Right Fatha And Dot Above|
+|`U+087C`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087C; Alef With Right Middle Stroke And Dot Above  |
+|`U+087D`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087D; Alef With Attached Bottom Right Kasra And Dot Above|
+|`U+087E`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087E; Alef With Attached Top Right Fatha And Left Ring|
+|`U+087F`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x087F; Alef With Right Middle Stroke And Left Ring  |
+| | | | | |
+|`U+0880`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0880; Alef With Attached Bottom Right Kasra And Left Ring|
+|`U+0881`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0881; Alef With Attached Right Hamza               |
+|`U+0882`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0882; Alef With Attached Left Hamza                |
+|`U+0883`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x0883; Tatweel With Overstruck Hamza                |
+|`U+0884`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x0884; Tatweel With Overstruck Waw                  |
+|`U+0885`   | Letter modifier  | JOIN_CAUSING | _null_               | _0_        | &#x0885; Tatweel With Two Dots Below                  |
+|`U+0886`   | Letter           | DUAL         | THIN_YEH             | _0_        | &#x0886; Thin Yeh                                     |
+|`U+0887`   | Letter           | NON_JOINING  | _null_               | _0_        | &#x0887; Baseline Round Dot                           |
+|`U+0888`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x0888; Raised Round Dot                             |
+|`U+0889`   | Letter           | DUAL         | NOON                 | _0_        | &#x0889; Noon With Inverted Small V                   |
+|`U+088A`   | Letter           | DUAL         | HAH                  | _0_        | &#x088A; Hah With Inverted Small V Below              |
+|`U+088B`   | Letter           | DUAL         | TAH                  | _0_        | &#x088B; Tah With Dot Below                           |
+|`U+088C`   | Letter           | DUAL         | TAH                  | _0_        | &#x088C; Tah With Three Dots Below                    |
+|`U+088D`   | Letter           | DUAL         | GAF                  | _0_        | &#x088D; Keheh With Two Dots Vertically Below         |
+|`U+088E`   | Letter           | RIGHT        | VERTICAL_TAIL        | _0_        | &#x088E; Vertical Tail                                |
+|`U+088F`   | _unassigned_     |              |                      |            |                                                       |
+| | | | | |
+|`U+0890`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x0890; Pound Mark Above                             |
+|`U+0891`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x0891; Piastre Mark Above                           |
+|`U+0892`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0893`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0894`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0895`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0896`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0897`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0898`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x0898; Small High Word Al-Juz                       |
+|`U+0899`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x0899; Small Low Word Ishmaam                       |
+|`U+089A`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x089A; Small Low Word Imaala                        |
+|`U+089B`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x089B; Small Low Word Tasheel                       |
+|`U+089C`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089C; Madda Waajib                                 |
+|`U+089D`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089D; Superscript Alef Mokhassas                   |
+|`U+089E`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089E; Doubled Madda                                |
+|`U+089F`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089F; Half Madda Over Madda                        |
+| | | | | |
 
 
 ## Rumi Numeral Symbols character table ##
@@ -523,7 +582,7 @@ treated differently during the mark-reordering stage.
 |`U+10E7C`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7C; Fraction One Quarter |
 |`U+10E7D`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7D; Fraction One Third   |
 |`U+10E7E`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7E; Fraction Two Thirds  |
-|`U+10E7F`  | _unasigned_      |              |                      |            |                                |
+|`U+10E7F`  | _unassigned_     |              |                      |            |                                |
 
 
 <!--- 
