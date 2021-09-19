@@ -360,7 +360,8 @@ characteristics include:
      consonant in `<sinh>` text differs from that used by other
      `BASE_POS_LAST` scripts.
 
-  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered after the base consonant or syllable base.
+  - `REPH_POS_AFTER_POST` = "Reph" is ordered after the last post-base
+     consonant form.
 
   - `REPH_MODE_EXPLICIT` = "Reph" is formed by an initial "Ra,Halant,ZWJ" sequence.
 
@@ -1239,9 +1240,9 @@ the base consonant or syllable base, and all half forms.
 #### 4.3: Reph ####
 
 "Reph" must be moved from the beginning of the syllable to its final
-position. Because Sinhala incorporates the `REPH_POS_AFTER_MAIN`
-shaping characteristic, this final position is immediately after the
-syllable base.
+position. Because Sinhala incorporates the `REPH_POS_AFTER_POST`
+shaping characteristic, this final position is defined to be
+immediately after any post-base consonant forms.
 
 The algorithm for finding the final "Reph" position is
 
@@ -1252,10 +1253,10 @@ The algorithm for finding the final "Reph" position is
     2](#2-initial-reordering)). This will be the final "Reph"
     position. 
 	> Note: Because Sinhala incorporates the
-    > `REPH_POS_AFTER_MAIN` shaping characteristic, this means
-    > any positioning tag of `POS_ABOVEBASE_CONSONANT` or later,
+    > `REPH_POS_AFTER_POST` shaping characteristic, this means
+    > any positioning tag of `POS_FINAL_CONSONANT` or later,
     > although a post-base matra, syllable modifier, or Vedic sign
-    > would not typically be tagged with `POS_ABOVEBASE_CONSONANT`.
+    > would not typically be tagged with `POS_FINAL_CONSONANT`.
   - If no other location has been located in the previous step, move
     the "Reph" to the end of the syllable.
 
