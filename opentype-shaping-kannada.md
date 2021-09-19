@@ -1618,7 +1618,7 @@ for post-base consonants.
 > operation for `<knda>` syllables that end in a "Halant"
 > codepoint. For example:
 >
->     `BaseC Halant Post-baseC Halant`
+>     BaseC Halant Post-baseC Halant
 >
 > is _not_ reordered to "BaseC Post-baseC Halant Halant". Further
 > details are provided in the [Uniscribe
