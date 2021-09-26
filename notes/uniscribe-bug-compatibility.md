@@ -17,6 +17,7 @@ regarded as bugs by end users.
       - [Bengali init feature matching](#bengali-init-feature-matching)
       - [Old-model post-base Halant reordering](#old-model-post-base-halant-reordering)
       - [Halants and left matras](#halants-and-left-matras)
+	  - [Explicit half-forms followed by matras](#explicit-half-forms-followed-by-matras)
 
 
 Compatibility notes in the "miscellaneous" category deal with
@@ -195,3 +196,36 @@ This check is required for shaping Sinhala, because the `U+0DDA`
 multi-part matra decomposes into the sequence "`U+0DD9`,Halant". The
 decomposed Halant should remain where it is, serving as the right-side
 matra component.
+
+
+### Explicit half-forms followed by matras ###
+
+As a general rule, Uniscribe and other shapers insert a dotted-circle
+character before a non-spacing mark character (such as a matra in
+Indic2-model scripts) when that non-spacing mark character is not
+matched with a base character in a permitted syllable. In such
+circumstances, the dotted-circle visually serves to communicate to
+readers that a base character has not been found, and also
+functionally serves as a surrogate base on which the mark character
+can be positioned.
+
+However, Uniscribe is known not to insert a dotted-circle before a
+matra character when it is preceded by two sequential
+explicit-half-form sequences (meaning two consecutive occurrences of
+"_Consonant_,Halant,ZWJ") in Indic2 runs.
+
+Therefore, the sequence:
+
+    `_Consonant_,Halant,ZWJ,_matra_`
+
+would be transformed to:
+
+    `_Consonant_,Halant,ZWJ,Dotted-Circle,_matra_`
+
+but the sequence:
+
+    `_Consonant_,Halant,ZWJ,_Consonant_,Halant,ZWJ,_matra_`
+
+would _not_ be transformed with a dotted-circle insertion.
+
+This exception is regarded as a likely bug.
