@@ -317,41 +317,17 @@ JOIN_CAUSING:
 	  - `fina` becomes `medi`
 	  - `init` remains `init`
 	  - `medi` remains `medi`
-  - If the current character's JOINING_TYPE is LEFT or NON_JOINING,
-    tag the current character for `isol`, then update
-    the tag for the preceding character:
-	  - `medi` becomes `fina`
-	  - `init` becomes `isol`
-	  - `fina` remains `fina`
-	  - `isol` remains `isol`
 
-If the preceding character's JOINING_TYPE is RIGHT or NON_JOINING:
-  - Tag the current character for `isol`, then update the tag for the
-    preceding character:
-	  - `medi` becomes `fina`
-	  - `init` becomes `isol`
-	  - `fina` remains `fina`
-	  - `isol` remains `isol`
-	  
-After testing the final character of the word, if the text is in
-`<syrc>` and current (final) character is "Alaph", perform an additional test:
-  - If the preceding character's JOINING_GROUP is DALATH_RISH,
-    tag the current character for `fin3`, then update the tag for the
-    preceding character:
-	  - `medi` becomes `fina`
-	  - `init` becomes `isol`
-	  - `fina` remains `fina`
-	  - `isol` remains `isol`
-  - If the preceding character's JOINING_GROUP is not DALATH_RISH, tag
-    the current character for `fin2`, then update the tag for the
-    preceding character:
-	  - `medi` becomes `fina`
-	  - `fin2` becomes `fina`
-	  - `fin3` becomes `fina`
-	  - `init` becomes `isol`
-	  - `fina` remains `fina`
-	  - `isol` remains `isol`
-	  - `med2` remains `med2`
+Otherwise, tag the current character for `isol`.
+
+After testing the final character of the word, if the text is in `<syrc>` and
+if the last character that is not JOINING_TYPE_TRANSPARENT or
+JOINING_TYPE_NON_JOINING is "Alaph", perform an additional test:
+  - If the preceding character is JOINING_TYPE_LEFT, tag the current character
+    for `fina`
+  - If the preceding character's JOINING_GROUP is DALATH_RISH, tag the current
+    character for `fin3`
+  - Otherwise, tag the current character for `fin2`
 
 
 Once the last character of the word has been processed, proceed to the
@@ -364,7 +340,8 @@ next word.
 > table, or by any other means desirable.
 
 At the end of this process, all letters should be tagged for possible
-substitution by one of the `isol`, `init`, `medi`, or `fina` features.
+substitution by one of the `isol`, `init`, `medi`, `med2`, `fina`, `fin2`, or
+`fin3` features.
 
 ### 4. Applying the `stch` feature ###
 
@@ -423,6 +400,9 @@ all scripts implemented with the Arabic shaping model:
 	rlig
 	rclt
 	calt
+
+> Note: RLIG and CALT need to be appled to the word as a whole before
+> continuing to the next feature.
 	
 See the individual script pages for further detail on each feature and
 for script-specific information.
