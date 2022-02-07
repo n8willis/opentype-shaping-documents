@@ -137,7 +137,7 @@ specific, script-aware behavior.
 |`U+0CDA`   | _unassigned_     |                   |                            |                              |
 |`U+0CDB`   | _unassigned_     |                   |                            |                              |
 |`U+0CDC`   | _unassigned_     |                   |                            |                              |
-|`U+0CDD`   | _unassigned_     |                   |                            |                              |
+|`U+0CDD`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0CDD; Nakaara Pollu       |
 |`U+0CDE`   | Letter           | CONSONANT         | _null_                     | &#x0CDE; Fa                  |
 |`U+0CDF`   | _unassigned_     |                   |                            |                              |
 | | | | |																		

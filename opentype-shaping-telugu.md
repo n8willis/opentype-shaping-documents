@@ -976,10 +976,11 @@ This order is canonical in Unicode and is required so that
 "_consonant_,Nukta" substitution rules from GSUB will be correctly
 matched later in the shaping process.
 
-> Note: The Telugu block does not include a "Nukta" mark. However,
-> there are reports of users using the "Nukta" from other Indic
-> blocks, so shaping engines may encounter a "Nukta" in text runs, and
-> should handle the situation gracefully.
+> Note: Prior to Unicode version 14, the Telugu block did not include
+> a "Nukta" mark. However, there are reports of users using the
+> "Nukta" from other Indic blocks, so shaping engines may encounter a
+> "Nukta" from other scripts in text runs, and should handle the
+> situation gracefully.
 
 #### 2.5: Pre-base consonants ####
 
