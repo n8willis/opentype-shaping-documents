@@ -184,10 +184,12 @@ marks.
 
 The sets are:
   - Below-base (class 220) MCMs: "Hamza below" (`U+0655`), "Small low seen"
-    (`U+06E3`)
+    (`U+06E3`), "Large round dot below" (`U+08CF`), "Small low waw" (`U+08D3`)
   - Above-base (class 230) MCMs: "Hamza above" (`U+0654`), "Mark noon ghunna"
     (`U+0658`), "Small high seen" (`U+06DC`), "Small high yeh" (`U+06E7`), "Small high
-    noon" (`U+06E8`), "Small high waw" (`U+08F3`)
+    noon" (`U+06E8`), "Small high Farsi yeh" (`U+08CA`), "Small high
+    yeh barree with two dots below" (`U+08CB`), "Small high zah"
+    (`U+08CD`), "Large round dot above" (`U+08CE`), "Small high waw" (`U+08F3`)
 
 These classifications are used in the [mark-transient-reordering
 stage](#1-transient-reordering-of-modifier-combining-marks).

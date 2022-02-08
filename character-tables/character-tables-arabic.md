@@ -429,17 +429,17 @@ treated differently during the mark-reordering stage.
 |`U+08C7`   | Letter           | DUAL         | LAM                  | _0_        | &#x08C7; Lam With Small Arabic Tah Above              |
 |`U+08C8`   | Letter           | DUAL         | GAF                  | _0_        | &#x08C8; Graf                                         |
 |`U+08C9`   | Letter modifier  | TRANSPARENT  | _null_               | _0_        | &#x08C9; Small Farsi Yeh                              |
-|`U+08CA`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CA; Small High Farsi Yeh                         |
-|`U+08CB`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CB; Small High Yeh Barree With Two Dots Below    |
+|`U+08CA`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230_MCM    | &#x08CA; Small High Farsi Yeh                         |
+|`U+08CB`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230_MCM    | &#x08CB; Small High Yeh Barree With Two Dots Below    |
 |`U+08CC`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CC; Small High Word Sah                          |
-|`U+08CD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CD; Small High Zah                               |
-|`U+08CE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08CE; Large Round Dot Above                        |
-|`U+08CF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08CF; Large Round Dot Below                        |
+|`U+08CD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230_MCM    | &#x08CD; Small High Zah                               |
+|`U+08CE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230_MCM    | &#x08CE; Large Round Dot Above                        |
+|`U+08CF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220_MCM    | &#x08CF; Large Round Dot Below                        |
 | | | | | |
 |`U+08D0`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D0; Sukun Below                                  |
 |`U+08D1`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D1; Large Circle Below                           |
 |`U+08D2`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D2; Large Round Dot Inside Circle Below          |
-|`U+08D3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08D3; Small Low Waw                                |
+|`U+08D3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220_MCM    | &#x08D3; Small Low Waw                                |
 |`U+08D4`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D4; Small High Word Ar-Rub                       |
 |`U+08D5`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D5; Small High Sad                               |
 |`U+08D6`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08D6; Small High Ain                               |
@@ -473,7 +473,7 @@ treated differently during the mark-reordering stage.
 |`U+08F0`   | Mark [Mn]        | TRANSPARENT  | _null_               | 27         | &#x08F0; Open Fathatan                                |
 |`U+08F1`   | Mark [Mn]        | TRANSPARENT  | _null_               | 28         | &#x08F1; Open Dammatan                                |
 |`U+08F2`   | Mark [Mn]        | TRANSPARENT  | _null_               | 29         | &#x08F2; Open Kasratan                                |
-|`U+08F3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08F3; Small High Waw                               |
+|`U+08F3`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230_MCM    | &#x08F3; Small High Waw                               |
 |`U+08F4`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08F4; Fatha With Ring                              |
 |`U+08F5`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08F5; Fatha With Dot Above                         |
 |`U+08F6`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x08F6; Kasra With Dot Below                         |
