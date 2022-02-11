@@ -625,7 +625,7 @@ table:
 | Oriya      | `REPH_POS_AFTER_MAIN`      |
 | Tamil      | `REPH_POS_AFTER_POST`      |
 | Telugu     | `REPH_POS_AFTER_POST`      |
-| Sinhala    | `REPH_POS_AFTER_MAIN`      |
+| Sinhala    | `REPH_POS_AFTER_POST`      |
 
 
 
