@@ -1185,6 +1185,13 @@ precomposed nukta-variant of the consonant glyph.
 > blocks, so shaping engines may encounter a "Nukta" in text runs, and
 > should handle the situation gracefully.
 
+  - The context defined for a `nukt` feature is:
+    
+    | Backtrack     | Matching sequence             | Lookahead     |
+    |:--------------|:------------------------------|:--------------|
+    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+
+
 #### 3.3: akhn ####
 
 The `akhn` feature replaces specific sequences with required ligatures. 
@@ -1197,6 +1204,13 @@ and fonts may have `cjct` substitution rules designed to match them in
 subsequences. Therefore, this feature must be applied before all other
 many-to-one substitutions. 
 
+  - The context defined for an `akhn` feature is:
+    
+    | Backtrack     | Matching sequence           | Lookahead     |
+    |:--------------|:----------------------------|:--------------|
+    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+
+
 ![KSsa ligation](/images/telugu/telugu-akhn-kssa.png)
 
 
@@ -1205,6 +1219,13 @@ many-to-one substitutions.
 The `rphf` feature replaces initial "Ra,Halant,ZWJ" sequences with the
 "Reph" glyph.
 	
+
+  - The context defined for a `rphf` feature is:
+    
+    | Backtrack        | Matching sequence           | Lookahead     |
+    |:-----------------|:----------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`,"ZWJ" | _none_        |
+
 
 
 #### 3.5: rkrf ####

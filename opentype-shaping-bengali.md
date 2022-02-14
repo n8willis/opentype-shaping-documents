@@ -1234,6 +1234,12 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
+  - The context defined for a `nukt` feature is:
+    
+    | Backtrack     | Matching sequence             | Lookahead     |
+    |:--------------|:------------------------------|:--------------|
+    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+
 
 ![Nukta composition](/images/bengali/bengali-nukt.png)
 
@@ -1269,6 +1275,13 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
+  - The context defined for an `akhn` feature is:
+    
+    | Backtrack     | Matching sequence           | Lookahead     |
+    |:--------------|:----------------------------|:--------------|
+    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+
+
 ![KSsa ligation](/images/bengali/bengali-akhn-kssa.png)
 
 ![JNya ligation](/images/bengali/bengali-akhn-jnya.png)
@@ -1280,7 +1293,14 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
 
   - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
     the `rphf` substitution.
-	
+
+
+  - The context defined for a `rphf` feature is:
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+
 
 ![Reph composition](/images/bengali/bengali-rphf.png)
 
@@ -1379,6 +1399,13 @@ forms.
 "Vattu variants" are formed from glyphs followed by "Raphala"
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
+
+  - The context defined for a `vatu` feature is:
+    
+    | Backtrack        | Matching sequence       | Lookahead     |
+    |:-----------------|:------------------------|:--------------|
+    | _none_           | `_consonant_`,"Raphala" | _none_        |
+
 
 
 ![Vattu variant ligation](/images/bengali/bengali-vatu.png)
@@ -1635,6 +1662,12 @@ in the font.
 The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
 headline in-stroke from the left side of the glyph.
+
+  - The context defined for an `init` feature is:
+    
+    | Backtrack    | Matching sequence          | Lookahead           |
+    |:-------------|:---------------------------|:--------------------|
+    | `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
 
 ![Application of the init feature](/images/bengali/bengali-init.png)
 
