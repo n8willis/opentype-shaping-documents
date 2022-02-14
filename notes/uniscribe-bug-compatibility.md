@@ -16,6 +16,7 @@ regarded as bugs by end users.
   - [Miscellaneous](#miscellaneous)
       - [Bengali init feature matching](#bengali-init-feature-matching)
       - [Old-model post-base Halant reordering](#old-model-post-base-halant-reordering)
+          - [Kannada final double Halants](#kannada-final-double-halants)
       - [Halants and left matras](#halants-and-left-matras)
 
 
@@ -171,9 +172,35 @@ before features are applied.
 In Malayalam, Uniscribe always reorders the first post-base Halant in
 a syllable to the position immediately after the syllable's last consonant.
 
-In Kannada, and possibly in other scripts, Unicode reorders the first
-post-base Halant only when there is not already a Halant after the
-last consonant. 
+#### Kannada final double Halants ####
+
+In old-model Kannada (`<knda>`) runs, Uniscribe is known to reorder
+the first post-base Halant only when there is not already a Halant
+after the last consonant.
+
+For example, the old-model Indic syllable
+
+	Pre-baseC Halant BaseC Halant Post-baseC Halant
+
+would _not_ be reordered. 
+
+This behavior is an exception to the general Indic1 post-base Halant
+reordering operation. It is believed to be script-specific and has
+only been observed for Kannada text runs. However, there may still be
+undiscovered sequences in other Indic1-script text which trigger the
+same behavior; implementers targeting full compatibility should
+exercise caution.
+
+If the standard post-base Halant reordering were performed, then the
+likely result of the GSUB feature-application phase would be a
+sequence of the form "BaseC,belowbaseC,Halant" which, in turn, might
+trigger mark-attachment issues for correctly positioning the final
+Halant.
+
+This Uniscribe behavior is not documented, however; therefore the only
+recommended workaround for maintaining compatibility is to define a
+special-case exception for avoiding the creation of final double
+Halants in `<knda>` text.
 
 
 ### Halants and left matras ###

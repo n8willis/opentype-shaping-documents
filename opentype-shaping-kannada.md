@@ -1614,6 +1614,16 @@ such reordering. The correct sequence to match for GSUB substitutions is
 "_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
 for post-base consonants.
 
+> Note: Uniscribe is known to make an exception to this reordering
+> operation for `<knda>` syllables that end in a "Halant"
+> codepoint. For example:
+>
+>     BaseC Halant Post-baseC Halant
+>
+> is _not_ reordered to "BaseC Post-baseC Halant Halant". Further
+> details are provided in the [Uniscribe
+> compatibility](/notes/uniscribe-bug-compatibility.md#kannada-final-double-halants) document. 
+
 In addition, for some scripts, left-side dependent vowel marks
 (matras) were not repositioned during the final reordering
 stage. For `<knda>` text, the left-side matra was always positioned
