@@ -621,7 +621,7 @@ SYLLABLE_TAIL	= (Z? _syllablemodifier_ _syllablemodifier_? _zwnj_?)? _vedicsign_
 HALANT_GROUP	= Z? _halant_ (_zwj_ _nukta_?)?
 FINAL_HALANT_GROUP	= HALANT_GROUP | (_halant_ _zwnj_)
 MEDIAL_GROUP	= _consonantmedial_?
-HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | ((_halant_ _zwj_)? MATRA_GROUP*)
+HALANT_OR_MATRA_GROUP	= FINAL_HALANT_GROUP | MATRA_GROUP*)
 ```
 
 > Note: Practically speaking, shaping engines are highly unlikely to
