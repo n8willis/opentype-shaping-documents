@@ -380,10 +380,10 @@ characteristics include:
 > also choose to --->
   
   - The below-base forms feature is applied to consonants
-    before or after the base consonant. 
+    after the base consonant. 
 
 > Note: For comparison with the General Indic shaping model, this
-> characteristic would correspond to `BLWF_MODE_PRE_AND_POST`.
+> characteristic would correspond to `BLWF_MODE_POST_ONLY`.
 
   - The ordering position for left-side matras, as with Indic scripts,
     is `POS_PREBASE_MATRA`.
@@ -878,8 +878,8 @@ forms of letters with coeng (or subscript) forms.
 
 <!--- Check below!  --->
 
-The below-base forms feature is applied to glyphs occurring before or after
-the base consonant. 
+The below-base forms feature is applied to glyphs occurring after the
+base consonant.
 
 ![blwf feature application](/images/khmer/khmer-blwf.png)
 
