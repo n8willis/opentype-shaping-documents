@@ -33,7 +33,7 @@ begin at the
   - [Default](opentype-shaping-default.md)
     - All non-complex scripts
   - [Emoji](opentype-shaping-emoji.md)
-    - Emoji sequences do not constitute a traditional shaping model,
+    - Emoji sequences do not constitute a separate shaping model,
       but handling emoji sequences can incorporate many of the same
       Opentype mechanisms and should not be overlooked
   
