@@ -838,7 +838,7 @@ Therefore, shaping engines should make no assumptions about the
 presence or absence of GPOS features for emoji runs, and should apply
 the features if present.
 
-<---
+<!---
 
 FALLBACK ??
 
