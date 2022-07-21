@@ -386,8 +386,8 @@ implement modifier sequences for other emoji codepoints.
 > 
 > However, there are a small number of codepoints that depict groups
 > of human beings in a standalone codepoint and can be modified with a
-> single modifer. They are summarized in the table at the (feature
-> interaction in sequences)[#feature-interaction-in-sequences]
+> single modifer. They are summarized in the table at the [feature
+> interaction in sequences](#feature-interaction-in-sequences)
 > section.
 >
 > Note, also that there are emoji codepoints depicting beings that are
