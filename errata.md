@@ -11,6 +11,9 @@ specification documents.
       - [ZWJ and ZWNJ](#zwj-and-zwnj)
 	      - [Scope of ZWJ and ZWNJ](#scope-of-zwj-and-zwnj)
 	      - [ZWJ in redundant ligature lookups](#zwj-in-redundant-ligature-lookups)
+      - [Emoji](#emoji)
+	      - [Skin-tone permutations](#skin-tone-permutations)
+		  - [Gender permutations](#gender-permutations)
   - [OpenType](#opentype)
       - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
       - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
@@ -72,6 +75,38 @@ duplicates the effects of the existing "f,i" ligature lookup.
 
 Using ZWJ within lookup patterns in the manner suggested by the
 "Implementation Notes" is not common practice. 
+
+### Emoji ###
+
+#### Skin-tone permutations ####
+
+It is unclear whether ZWJ multi-person group emoji sequences are
+expected to include combinations where some emoji in the sequence are
+followed by a Fitzpatrick skin-tone modifier but other emoji in the
+sequence are not followed by a Fitzpatrick skin-tone modifier.
+
+For example, it is unclear whether the sequence
+"Man,ZWJ,Handshake,Man,SkinTone-2" constitues a valid ZWJ "Couple
+holding hands" sequence.
+
+
+#### Gender permutations ####
+
+It is unclear whether ZWJ multi-person group emoji sequences are
+expected to include combinations where some emoji in the sequence are
+are an explicit gender but other emoji in the sequence are not
+explicit gender.
+
+For example, it is unclear whether the sequence
+"Man,ZWJ,Handshake,Person" constitues a valid ZWJ "Couple
+holding hands" sequence.
+
+It is also unclear whether the ZWJ multi-person family sequence must
+have explicit gender-ordering for the adult humans depicted.
+
+For example, it is unclear whether the sequence
+"Man,ZWJ,Woman,ZWJ,Girl" should be rendered identically to the
+sequence "Woman,ZWJ,Man,ZWJ,Girl".
 
 
 ## OpenType ##
