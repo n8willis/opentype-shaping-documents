@@ -505,6 +505,8 @@ A Keycap sequence must match:
 _key_ _presentation_ _cek_
 ```
 
+![Keycap sequence](/images/emoji/keycap-sequence.png)
+
 Keycap sequences only occur in standalone form.
 
 
