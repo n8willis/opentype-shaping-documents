@@ -380,11 +380,20 @@ Fonts are expected to implement modifier sequences for emoji
 codepoints that depict a single human being, and are expected not to
 implement modifier sequences for other emoji codepoints.
 
-> Note: Most emojis that, by default, depict multiple human beings are
+> Note: Most emoji sequences that depict multiple human beings are
 > modified using the ZWJ mechanisms described later, and not via this
 > mechanism.
+> 
+> However, there are a small number of codepoints that depict groups
+> of human beings in a standalone codepoint and can be modified with a
+> single modifer. They are summarized in the table at the (feature
+> interaction in sequences)[#feature-interaction-in-sequences]
+> section.
 >
-> However, there are 
+> Note, also that there are emoji codepoints depicting beings that are
+> ambiguous in regard to their humanity, such as `U+1F9DB`,
+> "Vampire". Shaping engines should not assume that these codepoints
+> are unable to support a modifier.
 
 ![Modifier sequence](/images/emoji/modifier-sequence.png)
 
