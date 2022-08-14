@@ -1,6 +1,10 @@
 # OpenType shaping documents #
 
-> ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
+Sponsored by [YesLogic](https://yeslogic.com/) 
+
+###### _Thanks also to the developers of HarfBuzz and AllSorts, plus many other font engineers and text-encoding experts for their generosity of time and insightful contributions._
+
+## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
 >
 > This repository is an active WORK IN PROGRESS.
 >
