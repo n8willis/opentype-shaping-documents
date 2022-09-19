@@ -7,11 +7,16 @@ idna==3.4
 imagesize==1.4.1
 importlib-metadata==5.0.0
 Jinja2==3.1.2
+markdown-it-py==2.1.0
 MarkupSafe==2.1.1
+mdit-py-plugins==0.3.1
+mdurl==0.1.2
+myst-parser==0.18.1
 packaging==21.3
 Pygments==2.13.0
 pyparsing==3.0.9
 pytz==2022.4
+PyYAML==6.0
 requests==2.28.1
 snowballstemmer==2.2.0
 Sphinx==5.3.0
@@ -21,5 +26,6 @@ sphinxcontrib-htmlhelp==2.0.0
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
 sphinxcontrib-serializinghtml==1.1.5
+typing_extensions==4.4.0
 urllib3==1.26.12
 zipp==3.9.0
