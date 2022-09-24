@@ -20,6 +20,7 @@ source_suffix = {'.md': 'markdown'}
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+myst_heading_anchors = 6
 
 
 # -- Options for HTML output -------------------------------------------------
