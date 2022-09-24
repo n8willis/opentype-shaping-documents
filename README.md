@@ -2,7 +2,7 @@
 
 Sponsored by [YesLogic](https://yeslogic.com/) 
 
-###### _Thanks also to the developers of HarfBuzz and AllSorts, plus many other font engineers and text-encoding experts for their generosity of time and insightful contributions._
+_<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other font engineers and text-encoding experts for their generosity of time and insightful contributions.</aside>_
 
 ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
 >
@@ -42,11 +42,28 @@ begin at the
       Opentype mechanisms and should not be overlooked
   
 shaping documents and are encouraged to submit their feedback
-on the text or images of any of the linked scripts.
+on the text or images of any of the linked scripts. The documents are
+organized by script; where there are multiple shaping models for a
+particular script (including deprecated models), the various models are
+all addressed in the same script-specific document.
+
+Various [notes](notes/README.md) about the document set and the details
+of its scope, limitations, and quirks are also provided.
+
+Some [errata](errata.md) about the "upstream" specifications and
+reference documents are noted separately. 
 
 In its final form, this repository will hold documentation describing
 the shaping behavior used for layout of OpenType text. In particular,
 it will focus on complex scripts.
+
+In addition to the primary, per-script documents, implementers and
+other interesteed readers are encouraged to check the
+[character tables](character-tables/README.md) for correctness and to
+examine the [image-generation logs](/images/README.md) to identify
+issues seen in the inline images.
+
+### Sources
 
 These documents draw from the following existing resources:
 
