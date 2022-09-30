@@ -120,7 +120,7 @@ specific, script-aware behavior.
 |`U+0ECB`   | Mark [Mn]        | TONE_MARKER       | TOP_POSITION            | 122             | _null_ | &#x0ECB; Tone Mai Catawa      |
 |`U+0ECC`   | Mark [Mn]        | _null_            | TOP_POSITION            | _0_             | _null_ | &#x0ECC; Cancellation mark    |
 |`U+0ECD`   | Mark [Mn]        | BINDU             | TOP_POSITION            | _0_             | _null_ | &#x0ECD; Niggahita            |
-|`U+0ECE`   | _unassigned_     |                   |                         |                 |        |                               |
+|`U+0ECE`   | Mark [Mn]        | TONE_MARKER       | TOP_POSITION            | _0_             | _null_ | &#x0ECE; Yamakkan             |
 |`U+0ECF`   | _unassigned_     |                   |                         |                 |        |                               |
 | | | | | | | |        														                    
 |`U+0ED0`   | Number           | NUMBER            | _null_                  | _0_             | _null_ | &#x0ED0; Digit Zero           |
