@@ -29,12 +29,17 @@ myst_heading_anchors = 6
 html_theme = 'alabaster'
 html_static_path = ['_static']
 html_theme_options = {
+    'page_width': '1040px',
     'github_user': 'n8willis',
     'github_repo': 'opentype-shaping-documents',
     'github_button': True,
     'github_type': 'watch',
     'github_count': True,
     'extra_nav_links': {
-        'Scripts': 'README',
+        'Scripts': 'README.html',
+        'Character tables': 'character-tables/character-tables-index.html',
+        'Normalization':'opentype-shaping-normalization.html',
+        'Notes': 'notes/README.html',
+        'Errata': 'errata.html',
         }
 }

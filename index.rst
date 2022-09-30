@@ -8,10 +8,9 @@ Welcome to OpenType Shaping Documents's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
-   :glob:
 
-   *.md
+   README.md
+   notes/README.md
 
 Indices and tables
 ==================
