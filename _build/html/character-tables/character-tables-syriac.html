@@ -1,0 +1,1039 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Syriac character tables &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="syriac-character-tables">
+<h1>Syriac character tables<a class="headerlink" href="#syriac-character-tables" title="Permalink to this heading">¶</a></h1>
+<p>This document lists the per-character shaping information needed to
+<a class="reference internal" href="../opentype-shaping-syriac.html"><span class="doc std std-doc">shape Syriac text</span></a>.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#syriac-character-table"><span class="std std-doc">Syriac character table</span></a></p></li>
+<li><p><a class="reference internal" href="#syriac-supplement-character-table"><span class="std std-doc">Syriac Supplement character table</span></a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous-character-table"><span class="std std-doc">Miscellaneous character table</span></a></p></li>
+</ul>
+<section id="syriac-character-table">
+<h2>Syriac character table<a class="headerlink" href="#syriac-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Syriac glyphs should be classified as in the following
+table. Codepoints in the Syriac block with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>The <em>Joining type</em> column indicates whether each codepoint is defined
+as joining with adjacent characters on the left side, right side, left
+and right sides (“DUAL”), or neither side (“NON_JOINING”). Codepoints
+designated TRANSPARENT in the <em>Joining type</em> column do not join with
+adjacent characters and, in addition, do not affect the joining
+behavior of surrounding characters. Non-spacing marks are of type
+TRANSPARENT. Codepoints designated JOIN_CAUSING force adjacent
+characters to join.</p>
+<p>The <em>Joining group</em> column lists the fundamental letter that the
+listed codepoint behaves like for joining purposes.</p>
+<p>Assigned codepoints with a <em>null</em> in the <em>Joining group</em>
+column evoke no special behavior from the shaping engine during the
+join-computation stage.</p>
+<p>The <em>Mark class</em> column indicates the Canonical Combining Class
+for the codepoint.  Marks are assigned non-zero combining classes so
+that sequences of adjacent marks can be reordered as required by the
+orthography.</p>
+<p>For Syriac, a subset of marks in the 220 and 230 classes are also
+designated <em>Modifier Combining Marks</em> (MCM). These are denoted with
+<em>220_MCM</em> and <em>230_MCM</em> in the <em>Mark class</em> column. The MCM marks are
+treated differently during the mark-reordering stage.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Joining type</p></th>
+<th class="head text-left"><p>Joining group</p></th>
+<th class="head text-left"><p>Mark class</p></th>
+<th class="head"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0700</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܀ End of Paragraph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0701</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܁ Supralinear Full Stop</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0702</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܂ Sublinear Full Stop</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0703</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܃ Supralinear Colon</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0704</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܄ Sublinear Colon</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0705</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܅ Horizontal Colon</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0706</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܆ Colon Skewed Left</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0707</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܇ Colon Skewed Right</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0708</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܈ Supralinear Colon Skewed Left</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0709</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܉ Sublinear Colon Skewed Right</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070A</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܊ Contraction</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070B</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܋ Harklean Obelus</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070C</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܌ Harklean Metobelus</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070D</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܍ Harklean Asteriscus</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+070F</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>܏ Syriac Abbreviation Mark</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0710</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>ALAPH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܐ Alaph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0711</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>36</p></td>
+<td><p>ܑ Superscript Alaph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0712</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>BETH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܒ Beth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0713</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>GAMAL</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܓ Gamal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0714</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>GAMAL</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܔ Gamal Garshuni</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0715</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>DALATH_RISH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܕ Dalath</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0716</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>DALATH_RISH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܖ Dotless Dalath Rish</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0717</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>HE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܗ He</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0718</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>SYRIAC_WAW</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܘ Waw</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0719</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>ZAIN</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܙ Zain</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>HETH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܚ Heth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>TETH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܛ Teth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>TETH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܜ Teth Garshuni</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>YUDH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܝ Yudh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>YUDH_HE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܞ Yudh He</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+071F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>KAPH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܟ Kaph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0720</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>LAMADH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܠ Lamadh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0721</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MIM</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܡ Mim</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0722</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>NUN</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܢ Nun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0723</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>SEMKATH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܣ Semkath</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0724</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>FINAL_SEMKATH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܤ Final Semkath</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0725</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>E</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܥ E</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0727</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>PE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܧ Pe</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0727</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>REVERSED_PE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܧ Reversed Pe</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0728</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>SADHE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܨ Sadhe</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0729</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>QAPH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܩ Qaph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>DALATH_RISH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܪ Rish</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>SHIN</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܫ Shin</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>TAW</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܬ Taw</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>BETH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܭ Persian Bheth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>GAMAL</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܮ Persian Ghamal</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+072F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>DALATH_RISH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ܯ Persian Dhalath</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0730</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܰ Pthaha Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0731</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܱ Pthaha Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0732</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܲ Pthaha Dotted</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0733</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܳ Zqapha Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0734</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܴ Zqapha Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0735</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܵ Zqapha Dotted</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0736</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܶ Rbasa Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0737</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܷ Rbasa Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0738</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܸ Dotted Zlama Horizontal</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0739</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܹ Dotted Zlama Angular</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073A</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܺ Hbasa Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073B</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܻ Hbasa Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073C</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܼ Hbasa-Esasa Dotted</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073D</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܽ Esasa Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073E</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>ܾ Esasa Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+073F</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>ܿ Rwaha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0740</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݀ Feminine Dot</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0741</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݁ Qushshaya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0742</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>݂ Rukkakha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0743</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݃ Two Vertical Dots Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0744</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>݄ Two Vertical Dots Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0745</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݅ Three Dots Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0746</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>݆ Three Dots Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0747</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>220</p></td>
+<td><p>݇ Oblique Line Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0748</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݈ Oblique Line Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0749</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݉ Music</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074A</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TRANSPARENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>230</p></td>
+<td><p>݊ Barrekh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074B</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074C</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>ZHAIN</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ݍ Sogdian Zhain</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>KHAPH</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ݎ Sogdian Khaph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+074F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>FE</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ݏ Sogdian Fe</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="syriac-supplement-character-table">
+<h2>Syriac Supplement character table<a class="headerlink" href="#syriac-supplement-character-table" title="Permalink to this heading">¶</a></h2>
+<p>The Syriac Supplement block includes letters needed to write Suriyani
+Malayalam, also known as Garshuni or Syriac Malayalam.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Joining type</p></th>
+<th class="head text-left"><p>Joining group</p></th>
+<th class="head text-left"><p>Mark class</p></th>
+<th class="head"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0860</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_NGA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡠ Malayalam Nga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0861</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p>MALAYALAM_JA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡡ Malayalam Ja</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0862</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_NYA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡢ Malayalam Nya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0863</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_TTA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡣ Malayalam Tta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0864</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_NNA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡤ Malayalam Nna</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0865</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_NNNA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡥ Malayalam Nnna</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0866</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p>MALAYALAM_BHA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡦ Malayalam Bha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0867</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>MALAYALAM_RA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡧ Malayalam Ra</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0868</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>DUAL</p></td>
+<td class="text-left"><p>MALAYALAM_LLA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡨ Malayalam Lla</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0869</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>MALAYALAM_LLLA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡩ Malayalam Llla</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>RIGHT</p></td>
+<td class="text-left"><p>MALAYALAM_SSA</p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ࡪ Malayalam Ssa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086B</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086C</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+086F</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="miscellaneous-character-table">
+<h2>Miscellaneous character table<a class="headerlink" href="#miscellaneous-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Other important characters that may be encountered when shaping runs
+of Syriac text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>), the
+combining grapheme joiner (<code class="docutils literal notranslate"><span class="pre">U+034F</span></code>), the zero-width joiner (<code class="docutils literal notranslate"><span class="pre">U+200D</span></code>)
+and zero-width non-joiner (<code class="docutils literal notranslate"><span class="pre">U+200C</span></code>), the left-to-right text marker
+(<code class="docutils literal notranslate"><span class="pre">U+200E</span></code>) and right-to-left text marker (<code class="docutils literal notranslate"><span class="pre">U+200F</span></code>), and the no-break
+space (<code class="docutils literal notranslate"><span class="pre">U+00A0</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+combining mark in isolation. Real-world text syllables may also use
+other characters, such as hyphens or dashes, in a similar placeholder
+fashion; shaping engines should cope with this situation gracefully.</p>
+<p>In addition, Syriac text runs may include the “Tatweel” or kashida
+codepoint (<code class="docutils literal notranslate"><span class="pre">U+0640</span></code>) from the Arabic block, because the Syriac block
+does not encode a separate kashida character.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Joining type</p></th>
+<th class="head text-left"><p>Joining group</p></th>
+<th class="head text-left"><p>Mark class</p></th>
+<th class="head"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+00A0</span></code></p></td>
+<td class="text-left"><p>Separator</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>  No-break space</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+034F</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>͏ Combining grapheme joiner</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0640</span></code></p></td>
+<td class="text-left"><p>Letter modifier</p></td>
+<td class="text-left"><p>JOIN_CAUSING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>ـ Arabic Tatweel</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200C</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‌ Zero-width non-joiner</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200D</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>JOIN_CAUSING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‍ Zero-width joiner</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200E</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‎ Left-to-Right marker</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200F</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‏ Right-to-Left marker</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2010</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‐ Hyphen</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2011</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‑ No-break hyphen</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2012</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>‒ Figure dash</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2013</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>– En dash</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2014</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>— Em dash</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+25CC</span></code></p></td>
+<td class="text-left"><p>Symbol</p></td>
+<td class="text-left"><p>NON_JOINING</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td><p>◌ Dotted circle</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>The combining grapheme joiner (CGJ) is primarily used to alter the
+order in which adjacent marks are positioned during the
+mark-reordering stage, in order to adhere to the needs of a
+non-default language orthography.</p>
+<!--- combining grapheme joiner explanation --->
+<p>The zero-width joiner (ZWJ) is primarily used to force the usage of the
+cursive connecting form of a letter even when the context of the
+adjoining letters would not trigger the connecting form.</p>
+<p>For example, to show the initial form of a letter in isolation (such
+as for dislaying it in a table of forms), the sequence “<em>Letter</em>,ZWJ”
+would be used. To show the medial form of a letter in isolation, the
+sequence “ZWJ,<em>Letter</em>,ZWJ” would be used.</p>
+<!--- Zero-Width Non Joiner explanation --->
+<p>The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+the Unicode bidirectionality algorithm (BiDi) to indicate the points
+in a text run at which the writing direction changes.</p>
+<!--- How shaping is affected by the LTR and RTL markers explanation --->
+<p>The no-break space is primarily used to display those codepoints that
+are defined as non-spacing (such as vowel or diacritical marks and “Hamza”) in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/character-tables/character-tables-syriac.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,2657 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Hangul character tables &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="hangul-character-tables">
+<h1>Hangul character tables<a class="headerlink" href="#hangul-character-tables" title="Permalink to this heading">¶</a></h1>
+<p>This document lists the per-character shaping information needed to
+<a class="reference internal" href="../opentype-shaping-hangul.html"><span class="doc std std-doc">shape Hangul text</span></a>.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#hangul-jamo-character-table"><span class="std std-doc">Hangul Jamo character table</span></a></p></li>
+<li><p><a class="reference internal" href="#hangul-jamo-extended-a-character-table"><span class="std std-doc">Hangul Jamo Extended-A character table</span></a></p></li>
+<li><p><a class="reference internal" href="#hangul-jamo-extended-b-character-table"><span class="std std-doc">Hangul Jamo Extended-B character table</span></a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous-character-table"><span class="std std-doc">Miscellaneous character table</span></a></p></li>
+<li><p><a class="reference internal" href="#hangul-syllables-character-table"><span class="std std-doc">Hangul Syllables: summary</span></a></p></li>
+</ul>
+<section id="hangul-jamo-character-table">
+<h2>Hangul Jamo character table<a class="headerlink" href="#hangul-jamo-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Hangul Jamo should be classified as in the following
+table. Codepoints in the Hangul Jamo block with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>The <em>Jamo type</em> column indicates the syllable-component type of the
+jamo. “L” for leading consonants (choseong), “V” for vowels
+(jungseong), and “T” for trailing consonants (jongseong).</p>
+<p>In addition, the filler codepoints <code class="docutils literal notranslate"><span class="pre">U+115F</span></code> (Choseong Filler) and <code class="docutils literal notranslate"><span class="pre">U+1160</span></code>
+(Jungseong Filler) are classified as type “Lf” and “Vf”, respectively.</p>
+<p>The <em>Composing</em> column indicates whether or not the jamo is capable of
+being canonically composed into a syllable included in the Hangul
+Syllables block. Jamo in the modern Korean alphabet are designated
+<code class="docutils literal notranslate"><span class="pre">YES</span></code>, while fillers and archaic jamo from the old Korean alphabet are
+designated <code class="docutils literal notranslate"><span class="pre">NO</span></code>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Jamo type</p></th>
+<th class="head text-left"><p>Composing</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1100</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄀ Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1101</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄁ Ssangkiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1102</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄂ Nieun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1103</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄃ Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1104</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄄ Ssangtikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1105</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄅ Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1106</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄆ Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1107</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄇ Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1108</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄈ Ssangpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1109</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄉ Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄊ Ssangsios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄋ Ieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄌ Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄍ Ssangcieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄎ Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+110F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄏ Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1110</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄐ Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1111</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄑ Phieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1112</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᄒ Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1113</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄓ Nieun-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1114</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄔ Ssangnieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1115</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄕ Nieun-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1116</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄖ Nieun-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1117</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄗ Tikeut-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1118</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄘ Rieul-Nieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1119</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄙ Ssangrieul</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄚ Rieul-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄛ Kapyeounrieul</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄜ Mieum-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄝ Kapyeounmieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄞ Pieup-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+111F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄟ Pieup-Nieun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1120</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄠ Pieup-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1121</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄡ Pieup-Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1122</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄢ Pieup-Sios-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1123</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄣ Pieup-Sios-Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1124</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄤ Pieup-Sios-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1125</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄥ Pieup-Ssangsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1126</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄦ Pieup-Sios-Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1127</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄧ Pieup-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1128</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄨ Pieup-Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1129</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄩ Pieup-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄪ Pieup-Phieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄫ Kapyeounpieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄬ Kapyeounssangpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄭ Sios-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄮ Sios-Nieun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+112F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄯ Sios-Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1130</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄰ Sios-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1131</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄱ Sios-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1132</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄲ Sios-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1133</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄳ Sios-Pieup-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1134</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄴ Sios-Ssangsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1135</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄵ Sios-Ieung</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1136</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄶ Sios-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1137</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄷ Sios-Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1138</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄸ Sios-Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1139</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄹ Sios-Thieuth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄺ Sios-Phieuph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄻ Sios-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄼ Chitueumsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄽ Chitueumssangsios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄾ Ceongchieumsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+113F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᄿ Ceongchieumssangsios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1140</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅀ Pansios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1141</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅁ Ieung-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1142</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅂ Ieung-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1143</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅃ Ieung-Mieum</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1144</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅄ Ieung-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1145</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅅ Ieung-Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1146</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅆ Ieung-Pansios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1147</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅇ Ssangieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1148</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅈ Ieung-Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1149</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅉ Ieung-Chieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅊ Ieung-Thieuth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅋ Ieung-Phieuph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅌ Yesieung</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅍ Cieuc-Ieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅎ Chitueumcieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+114F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅏ Chitueumssangcieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1150</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅐ Ceongchieumcieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1151</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅑ Ceongchieumssangcieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1152</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅒ Chieuch-Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1153</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅓ Chieuch-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1154</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅔ Chitueumchieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1155</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅕ Ceongchieumchieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1156</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅖ Phieuph-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1157</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅗ Kapyeounphieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1158</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅘ Ssanghieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1159</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅙ Yeorinhieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅚ Kiyeok-Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅛ Nieun-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅜ Nieun-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅝ Nieun-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅞ Tikeut-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+115F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>Lf</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅟ Choseong Filler</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1160</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>Vf</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅠ Jungseong Filler</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1161</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅡ A</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1162</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅢ Ae</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1163</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅣ Ya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1164</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅤ Yae</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1165</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅥ Eo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1166</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅦ E</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1167</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅧ Yeo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1168</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅨ Ye</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1169</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅩ O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅪ Wa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅫ Wae</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅬ Oe</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅭ Yo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅮ U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+116F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅯ Weo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1170</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅰ We</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1171</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅱ Wi</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1172</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅲ Yu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1173</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅳ Eu</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1174</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅴ Yi</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1175</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᅵ I</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1176</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅶ A-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1177</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅷ A-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1178</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅸ Ya-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1179</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅹ Ya-Yo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅺ Eo-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅻ Eo-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅼ Eo-Eu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅽ Yeo-O</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅾ Yeo-U</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+117F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᅿ O-Eo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1180</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆀ O-E</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1181</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆁ O-Ye</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1182</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆂ O-O</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1183</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆃ O-U</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1184</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆄ Yo-Ya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1185</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆅ Yo-Yae</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1186</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆆ Yo-Yeo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1187</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆇ Yo-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1188</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆈ Yo-I</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1189</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆉ U-A</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆊ U-Ae</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆋ U-Eo-Eu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆌ U-Ye</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆍ U-U</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆎ Yu-A</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+118F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆏ Yu-Eo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1190</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆐ Yu-E</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1191</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆑ Yu-Yeo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1192</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆒ Yu-Ye</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1193</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆓ Yu-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1194</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆔ Yu-I</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1195</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆕ Eu-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1196</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆖ Eu-Eu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1197</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆗ Yi-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1198</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆘ I-A</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1199</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆙ I-Ya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆚ I-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆛ I-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆜ I-Eu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆝ I-Araea</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆞ Araea</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+119F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆟ Araea-Eo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆠ Araea-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆡ Araea-I</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆢ Ssangaraea</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆣ A-Eu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆤ Ya-U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆥ Yeo-Ya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆦ O-Ya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᆧ O-Yae</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆨ Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11A9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆩ Ssangkiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆪ Kiyeok-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆫ Nieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆬ Nieun-Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆭ Nieun-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆮ Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11AF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆯ Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆰ Rieul-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆱ Rieul-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆲ Rieul-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆳ Rieul-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆴ Rieul-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆵ Rieul-Phieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆶ Rieul-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆷ Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆸ Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11B9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆹ Pieup-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆺ Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆻ Ssangsios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆼ Ieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆽ Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆾ Chieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11BF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᆿ Khieukh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᇀ Thieuth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᇁ Phieuph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>YES</p></td>
+<td class="text-left"><p>ᇂ Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇃ Kiyeok-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇄ Kiyeok-Sios-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇅ Nieun-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇆ Nieun-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇇ Nieun-Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇈ Nieun-Pansios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11C9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇉ Nieun-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇊ Tikeut-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇋ Tikeut-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇌ Rieul-Kiyeok-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇍ Rieul-Nieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇎ Rieul-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11CF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇏ Rieul-Tikeut-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇐ Ssangrieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇑ Rieul-Mieum-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇒ Rieul-Mieum-Sios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇓ Rieul-Pieup-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇔ Rieul-Pieup-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇕ Rieul-Kapyeounpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇖ Rieul-Ssangsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇗ Rieul-Pansios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇘ Rieul-Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11D9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇙ Rieul-Yeorinhieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇚ Mieum-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇛ Mieum-Rieul</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇜ Mieum-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇝ Mieum-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇞ Mieum-Ssangsios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11DF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇟ Mieum-Pansios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇠ Mieum-Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇡ Mieum-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇢ Kapyeounmieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇣ Pieup-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇤ Pieup-Phieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇥ Pieup-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇦ Kapyeounpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇧ Sios-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇨ Sios-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11E9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇩ Sios-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11EA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇪ Sios-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11EB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇫ Pansios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11EC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇬ Ieung-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11ED</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇭ Ieung-Ssangkiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11EE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇮ Ssangieung</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11EF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇯ Ieung-Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇰ Yesieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇱ Yesieung-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇲ Yesieung-Pansios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇳ Phieuph-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇴ Kapyeounphieuph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇵ Hieuh-Nieun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇶ Hieuh-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇷ Hieuh-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇸ Hieuh-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11F9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇹ Yeorinhieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇺ Kiyeok-Nieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇻ Kiyeok-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇼ Kiyeok-Chieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇽ Kiyeok-Khieukh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇾ Kiyeok-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+11FF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ᇿ Ssangnieun</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hangul-jamo-extended-a-character-table">
+<h2>Hangul Jamo Extended-A character table<a class="headerlink" href="#hangul-jamo-extended-a-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Hangul Jamo should be classified as in the following
+table. Codepoints in the Hangul Jamo Extended-A block with no assigned
+meaning are designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>The <em>Jamo type</em> column indicates the syllable-component type of the
+jamo. All assigned codepoints in the Hangul Jamo Extended-A block are
+classified as type “L” for leading consonants (choseong).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Jamo type</p></th>
+<th class="head text-left"><p>Composing</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A960</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥠ Tikeut-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A961</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥡ Tikeut-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A962</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥢ Tikeut-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A963</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥣ Tikeut-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A964</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥤ Rieul-Kiyeok</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A965</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥥ Rieul-Ssangkiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A966</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥦ Rieul-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A967</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥧ Rieul-Ssangtikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A968</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥨ Rieul-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A969</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥩ Rieul-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥪ Rieul-Ssangpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥫ Rieul-Kapyeounpieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥬ Rieul-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥭ Rieul-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥮ Rieul-Khieukh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A96F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥯ Mieum-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A970</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥰ Mieum-Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A971</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥱ Mieum-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A972</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥲ Pieup-Sios-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A973</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥳ Pieup-Khieukh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A974</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥴ Pieup-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A975</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥵ Ssangsios-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A976</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥶ Ieung-Rieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A977</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥷ Ieung-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A978</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥸ Ssangcieuc-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A979</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥹ Ssangthieuth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥺ Phieuph-Hieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥻ Hieuh-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>L</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ꥼ Ssangyeorinhieuh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+A97F</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hangul-jamo-extended-b-character-table">
+<h2>Hangul Jamo Extended-B character table<a class="headerlink" href="#hangul-jamo-extended-b-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Hangul Jamo should be classified as in the following
+table. Codepoints in the Hangul Jamo Extended-B block with no assigned
+meaning are designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>The <em>Jamo type</em> column indicates the syllable-component type of the
+jamo. “V” for vowels (jungseong) and “T” for trailing consonants (jongseong).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Jamo type</p></th>
+<th class="head text-left"><p>Composing</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힰ O-Yeo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힱ O-O-I</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힲ Yo-A</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힳ Yo-Ae</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힴ Yo-Eo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힵ U-Yeo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힶ U-I-I</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힷ Yu-Ae</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힸ Yu-O</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7B9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힹ Eu-A</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힺ Eu-Eo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힻ Eu-E</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힼ Eu-O</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힽ I-Ya-O</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힾ I-Yae</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7BF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ힿ I-Yeo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟀ I-Ye</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟁ I-O-I</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟂ I-Yo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟃ I-Yu</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟄ I-I</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟅ Araea-A</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>V</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟆ Araea-E</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C7</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C8</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7C9</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CA</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟋ Nieun-Rieul</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟌ Nieun-Chieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟍ Ssangtikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟎ Ssangtikeut-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7CF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟏ Tikeut-Pieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟐ Tikeut-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟑ Tikeut-Sios-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟒ Tikeut-Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟓ Tikeut-Chieuch</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟔ Tikeut-Thieuth</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟕ Rieul-Ssangkiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟖ Rieul-Kiyeok-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟗ Ssangrieul-Khieukh</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟘ Rieul-Mieum-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7D9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟙ Rieul-Pieup-Tikeut</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟚ Rieul-Pieup-Phieuph</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟛ Rieul-Yesieung</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟜ Rieul-Yeorinhieuh-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DD</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟝ Kapyeounrieul</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟞ Mieum-Nieun</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7DF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟟ Mieum-Ssangnieun</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟠ Ssangmieum</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟡ Mieum-Pieup-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟢ Mieum-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟣ Pieup-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟤ Pieup-Rieul-Phieuph</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟥ Pieup-Mieum</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟦ Ssangpieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟧ Pieup-Sios-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟨ Pieup-Cieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7E9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟩ Pieup-Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7EA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟪ Sios-Mieum</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7EB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟫ Sios-Kapyeounpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7EC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟬ Ssangsios-Kiyeok</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7ED</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟭ Ssangsios-Tikeut</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7EE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟮ Sios-Pansios</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7EF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟯ Sios-Cieuc</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟰ Sios-Chieuch</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟱ Sios-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟲ Sios-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟳ Pansios-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F4</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟴ Pansios-Kapyeounpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟵ Yesieung-Mieum</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟶ Yesieung-Hieuh</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F7</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟷ Cieuc-Pieup</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F8</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟸ Cieuc-Ssangpieup</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7F9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟹ Ssangcieuc</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟺ Phieuph-Sios</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>T</p></td>
+<td class="text-left"><p>NO</p></td>
+<td class="text-left"><p>ퟻ Phieuph-Thieuth</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FC</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FD</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FE</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D7FF</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="miscellaneous-character-table">
+<h2>Miscellaneous character table<a class="headerlink" href="#miscellaneous-character-table" title="Permalink to this heading">¶</a></h2>
+<p>In addition to general punctuation, runs of Hangul text may use
+punctuation marks from the CJK Symbols And Punctuation block.</p>
+<p>Of particular note are the single-dot tone mark (single-dot bangjeom)
+and double-dot tone mark (double-dot bangjeom), <code class="docutils literal notranslate"><span class="pre">U+302E</span></code> and
+<code class="docutils literal notranslate"><span class="pre">U+302F</span></code>. These non-spacing marks are common in Old Korean.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Jamo type</p></th>
+<th class="head text-left"><p>Composing</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+302E</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>〮 Single Dot Tone Mark</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+302F</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>〯 Double Dot Tone Mark</p></td>
+</tr>
+</tbody>
+</table>
+<p>Other important characters that may be encountered when shaping runs
+of Hangul text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>), the
+zero-width joiner (<code class="docutils literal notranslate"><span class="pre">U+200D</span></code>), and zero-width non-joiner (<code class="docutils literal notranslate"><span class="pre">U+200C</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+mark in isolation. Real-world text may also use other characters, such
+as hyphens or dashes, in a similar placeholder fashion; shaping
+engines should cope with this situation gracefully.</p>
+<p>The zero-width space (<code class="docutils literal notranslate"><span class="pre">U+200B</span></code>) or word joiner (<code class="docutils literal notranslate"><span class="pre">U+2060</span></code>) may be used
+between two jamo to prevent them from being conjoined into a
+syllable. The zero-width space allows a line break to happen between
+the jamo, while the word joiner prevents the jamo from being separated
+by a line break.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Jamo type</p></th>
+<th class="head text-left"><p>Composing</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200B</span></code></p></td>
+<td class="text-left"><p>Separator</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>​ Zero-width space</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200C</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‌ Zero-width non-joiner</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200D</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‍ Zero-width joiner</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2060</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>⁠ Word joiner</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+25CC</span></code></p></td>
+<td class="text-left"><p>Symbol</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>◌ Dotted circle</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="hangul-syllables-character-table">
+<h2>Hangul Syllables character table<a class="headerlink" href="#hangul-syllables-character-table" title="Permalink to this heading">¶</a></h2>
+<p>The Hangul Syllables block is too large to include a full character
+table in this document.</p>
+<p>Each syllable codepoint is classified either as type <code class="docutils literal notranslate"><span class="pre">LV</span></code> or type <code class="docutils literal notranslate"><span class="pre">LVT</span></code>,
+indicating whether or not the syllable includes a trailing consonant
+(jongseong) at the end.</p>
+<p>Syllable codepoints are sorted in Hangul alphabetic order, first by
+leading consonant (choseong), followed by vowel (jungseong), followed
+by trailing consonant (jongseong).</p>
+<p>This enables the algorithmic composition and decomposition of combining
+jamo sequences and syllable codepoints.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Syllable type</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+AC00</span></code></p></td>
+<td class="text-left"><p>Letter [Lo]</p></td>
+<td class="text-left"><p>LV</p></td>
+<td class="text-left"><p>가 G-A</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+D5CC</span></code></p></td>
+<td class="text-left"><p>Letter [Lo]</p></td>
+<td class="text-left"><p>LVT</p></td>
+<td class="text-left"><p>헌 H-A-N</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/character-tables/character-tables-hangul.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Commands used to generate the images in opentype-shaping-syriac.md &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="commands-used-to-generate-the-images-in-opentype-shaping-syriac-md">
+<h1>Commands used to generate the images in <a class="reference internal" href="../../opentype-shaping-syriac.html"><span class="doc std std-doc">opentype-shaping-syriac.md</span></a><a class="headerlink" href="#commands-used-to-generate-the-images-in-opentype-shaping-syriac-md" title="Permalink to this heading">¶</a></h1>
+<section id="arrow-general">
+<h2>Arrow general<a class="headerlink" href="#arrow-general" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –output-file=right-arrow.png –background=FFFFFF00 –margin=0,0,0,0 /usr/share/fonts/opentype/gentiumplus/GentiumPlus-R.ttf –unicodes=2192</p>
+</section>
+<section id="dalath-rish-group">
+<h2>Dalath Rish group<a class="headerlink" href="#dalath-rish-group" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-dalath-rish.png –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf –unicodes=0715,072a,0716</p>
+</section>
+<section id="stch">
+<h2>3. <code class="docutils literal notranslate"><span class="pre">stch</span></code><a class="headerlink" href="#stch" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: Noto seems to implement this in a set of <code class="docutils literal notranslate"><span class="pre">calt</span></code> substitutions,
+for unknown reasons.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-stch-before.png –features=-stch,-calt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf –unicodes=0712,0732,070f,0728,0721,0735,0710</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-stch-after.png –features=+stch –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf –unicodes=0712,0732,070f,0728,0721,0735,0710</p>
+<p>montage syriac-stch-before.png right-arrow.png syriac-stch-after.png -geometry +0+0 -background transparent syriac-stch.png</p>
+</section>
+<section id="locl">
+<h2>4.1 <code class="docutils literal notranslate"><span class="pre">locl</span></code><a class="headerlink" href="#locl" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: None found in Noto fonts.</p>
+</div></blockquote>
+</section>
+<section id="isol">
+<h2>4.2 <code class="docutils literal notranslate"><span class="pre">isol</span></code><a class="headerlink" href="#isol" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: none found in Noto fonts.</p>
+</div></blockquote>
+</section>
+<section id="fina">
+<h2>4.3 <code class="docutils literal notranslate"><span class="pre">fina</span></code><a class="headerlink" href="#fina" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fina-before.png –features=-fina –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0722</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fina-after.png –features=+fina –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0722</p>
+</section>
+<section id="fin2">
+<h2>4.4 <code class="docutils literal notranslate"><span class="pre">fin2</span></code><a class="headerlink" href="#fin2" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fin2-before.png –features=-fin2 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=0717,0710</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fin2-after.png –features=+fin2 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=0717,0710</p>
+<p>montage syriac-fin2-before.png right-arrow.png syriac-fin2-after.png -geometry +0+0 -background transparent syriac-fin2.png</p>
+</section>
+<section id="fin3">
+<h2>4.5 <code class="docutils literal notranslate"><span class="pre">fin3</span></code><a class="headerlink" href="#fin3" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fin3-before.png –features=-fin3 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=072f,0710</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-fin3-after.png –features=+fin3 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=072f,0710</p>
+<p>montage syriac-fin3-before.png right-arrow.png syriac-fin3-after.png -geometry +0+0 -background transparent syriac-fin3.png</p>
+</section>
+<section id="medi">
+<h2>4.6 <code class="docutils literal notranslate"><span class="pre">medi</span></code><a class="headerlink" href="#medi" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-medi-before.png –features=-medi –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0724,25cc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-medi-after.png –features=+medi –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0724,25cc</p>
+<p>montage syriac-medi-before.png right-arrow.png syriac-medi-after.png -geometry +0+0 -background transparent syriac-medi.png</p>
+</section>
+<section id="med2">
+<h2>4.7 <code class="docutils literal notranslate"><span class="pre">med2</span></code><a class="headerlink" href="#med2" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-med2-before.png –features=-med2 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0710,25cc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-med2-after.png –features=+med2 –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=25cc,0710,25cc</p>
+<p>montage syriac-med2-before.png right-arrow.png syriac-med2-after.png -geometry +0+0 -background transparent syriac-med2.png</p>
+</section>
+<section id="init">
+<h2>4.8 <code class="docutils literal notranslate"><span class="pre">init</span></code><a class="headerlink" href="#init" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-init-before.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf –unicodes=0721,25cc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-init-after.png –features=+init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf –unicodes=0721,25cc</p>
+<p>montage syriac-init-before.png right-arrow.png syriac-init-after.png -geometry +0+0 -background transparent syriac-init.png</p>
+</section>
+<section id="rlig">
+<h2>4.9 <code class="docutils literal notranslate"><span class="pre">rlig</span></code><a class="headerlink" href="#rlig" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-rlig-before.png –features=-rlig –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=072a,25cc,0308</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-rlig-after.png –features=+rlig –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=072a,0308</p>
+<p>montage syriac-rlig-before.png right-arrow.png syriac-rlig-after.png -geometry +0+0 -background transparent syriac-rlig.png</p>
+</section>
+<section id="calt">
+<h2>4.11 <code class="docutils literal notranslate"><span class="pre">calt</span></code><a class="headerlink" href="#calt" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-calt-before.png –features=-calt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=0720,071c</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-calt-after.png –features=+calt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf –unicodes=0720,071c</p>
+<p>montage syriac-calt-before.png right-arrow.png syriac-calt-after.png -geometry +0+0 -background transparent syriac-calt.png</p>
+</section>
+<section id="liga">
+<h2>5.1 <code class="docutils literal notranslate"><span class="pre">liga</span></code><a class="headerlink" href="#liga" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: Noto Syriac implements this as a <code class="docutils literal notranslate"><span class="pre">calt</span></code> lookup for unknown reasons.</p>
+<p>This seems to be a known shortcoming. See
+<a class="reference external" href="https://github.com/googlei18n/noto-fonts/issues/665">https://github.com/googlei18n/noto-fonts/issues/665</a>
+for more information.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-liga-before.png –features=-calt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf –unicodes=0720,0710</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-liga-after.png –features=+calt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEstrangela-Regular.ttf –unicodes=0720,0710</p>
+<p>montage syriac-liga-before.png right-arrow.png syriac-liga-after.png -geometry +0+0 -background transparent syriac-liga.png</p>
+</section>
+<section id="dlig">
+<h2>5.2 <code class="docutils literal notranslate"><span class="pre">dlig</span></code><a class="headerlink" href="#dlig" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: none found in Noto Syriac.</p>
+<p>This seems to be a known shortcoming. See
+<a class="reference external" href="https://github.com/googlei18n/noto-fonts/issues/665">https://github.com/googlei18n/noto-fonts/issues/665</a>
+for more information.</p>
+</div></blockquote>
+</section>
+<section id="mark">
+<h2>7.3 <code class="docutils literal notranslate"><span class="pre">mark</span></code><a class="headerlink" href="#mark" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-mark-before.png –features=-mark –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf –unicodes=0712,0733</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=syriac-mark-after.png –features=+mark –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacEastern-Regular.ttf –unicodes=0712,0733</p>
+<p>montage syriac-mark-before.png right-arrow.png syriac-mark-after.png -geometry +0+0 -background transparent syriac-mark.png</p>
+</section>
+<section id="mkmk">
+<h2>7.4 <code class="docutils literal notranslate"><span class="pre">mkmk</span></code><a class="headerlink" href="#mkmk" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: Noto Sans Syriac (all) fonts have a <code class="docutils literal notranslate"><span class="pre">mkmk</span></code> table but it does
+not seem to work.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/images/syriac/syriac-image-generation-log.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,1441 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Gurmukhi character tables &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gurmukhi-character-tables">
+<h1>Gurmukhi character tables<a class="headerlink" href="#gurmukhi-character-tables" title="Permalink to this heading">¶</a></h1>
+<p>This document lists the per-character shaping information needed to
+<a class="reference internal" href="../opentype-shaping-gurmukhi.html"><span class="doc std std-doc">shape Gurmukhi text</span></a>.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#gurmukhi-character-table"><span class="std std-doc">Gurmukhi character table</span></a></p></li>
+<li><p><a class="reference internal" href="#vedic-extensions-character-table"><span class="std std-doc">Vedic Extensions character table</span></a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous-character-table"><span class="std std-doc">Miscellaneous character table</span></a></p></li>
+</ul>
+<section id="gurmukhi-character-table">
+<h2>Gurmukhi character table<a class="headerlink" href="#gurmukhi-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Gurmukhi glyphs should be classified as in the following
+table. Codepoints in the Gurmukhi block with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>Assigned codepoints with a <em>null</em> in the <em>Shaping class</em>
+column evoke no special behavior from the shaping engine. Note that
+this does include some valid codepoints, such as currency marks,
+punctuation, and other symbols.</p>
+<blockquote>
+<div><p>Note: the <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code> and <code class="docutils literal notranslate"><span class="pre">SYMBOL</span></code> <em>Shaping classes</em> are important
+during syllable identification, but generally evoke no further
+special behavior during the rest of the shaping process.</p>
+</div></blockquote>
+<p>The <em>Mark-placement subclass</em> column indicates mark-placement
+positioning for codepoints in the <em>Mark</em> category. Assigned, non-mark
+codepoints have a <em>null</em> in this column and evoke no special
+mark-placement behavior. Marks tagged with [Mn] in the <em>Unicode
+category</em> column are categorized as non-spacing; marks tagged with
+[Mc] are categorized as spacing-combining.</p>
+<p>Some codepoints in the following table use a <em>Shaping class</em> that
+differs from the codepoint’s Unicode <em>General Category</em>. The <em>Shaping
+class</em> takes precedence during OpenType shaping, as it captures more
+specific, script-aware behavior.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A00</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A01</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>BINDU</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ਁ Adak Bindi</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A02</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>BINDU</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ਂ Bindi</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A03</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>VISARGA</p></td>
+<td class="text-left"><p>RIGHT_POSITION</p></td>
+<td class="text-left"><p>ਃ Visarga</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A04</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A05</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਅ A</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A06</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਆ Aa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A07</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਇ I</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A08</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਈ Ii</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A09</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਉ U</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਊ Uu</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0B</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0C</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A0F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਏ Ee</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A10</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਐ Ai</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A11</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A12</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A13</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਓ Oo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A14</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>VOWEL_INDEPENDENT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਔ Au</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A15</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਕ Ka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A16</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਖ Kha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A17</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਗ Ga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A18</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਘ Gha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A19</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਙ Nga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਚ Ca</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਛ Cha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਜ Ja</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਝ Jha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਞ Nya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A1F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਟ Tta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A20</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਠ Ttha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A21</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਡ Dda</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A22</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਢ Ddha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A23</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਣ Nna</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A24</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਤ Ta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A25</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਥ Tha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A26</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਦ Da</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A27</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਧ Dha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A28</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਨ Na</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A29</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਪ Pa</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਫ Pha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਬ Ba</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2D</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਭ Bha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਮ Ma</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A2F</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਯ Ya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A30</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਰ Ra</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A31</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A32</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਲ La</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A33</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਲ਼ Lla</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A34</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A35</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਵ Va</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A36</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਸ਼ Sha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A37</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A38</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਸ Sa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A39</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਹ Ha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3A</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3B</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3C</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>NUKTA</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>਼ Nukta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3E</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>RIGHT_POSITION</p></td>
+<td class="text-left"><p>ਾ Sign Aa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A3F</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>LEFT_POSITION</p></td>
+<td class="text-left"><p>ਿ Sign I</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A40</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>RIGHT_POSITION</p></td>
+<td class="text-left"><p>ੀ Sign Ii</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A41</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>ੁ Sign U</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A42</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>ੂ Sign Uu</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A43</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A44</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A45</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A46</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A47</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੇ Sign Ee</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A48</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੈ Sign Ai</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A49</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4A</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4B</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੋ Sign Oo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4C</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VOWEL_DEPENDENT</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੌ Sign Au</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4D</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>VIRAMA</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>੍ Virama</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A4F</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A50</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A51</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ੑ Udaat</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A52</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A53</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A54</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A55</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A56</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A57</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A58</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A59</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਖ਼ Khha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5A</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਗ਼ Ghha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5B</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਜ਼ Za</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5C</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ੜ Rra</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5E</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ਫ਼ Fa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A5F</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A60</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A61</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A62</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A63</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A64</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A65</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A66</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੦ Digit Zero</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A67</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੧ Digit One</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A68</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੨ Digit Two</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A69</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੩ Digit Three</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6A</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੪ Digit Four</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6B</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੫ Digit Five</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6C</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੬ Digit Six</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6D</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੭ Digit Seven</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6E</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੮ Digit Eight</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A6F</span></code></p></td>
+<td class="text-left"><p>Number</p></td>
+<td class="text-left"><p>NUMBER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੯ Digit Nine</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A70</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>BINDU</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੰ Tippi</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A71</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>GEMINATION_MARK</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ੱ Addak</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A72</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ੲ Iri</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A73</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ੳ Ura</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A74</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ੴ Ek Onkar</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A75</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CONSONANT_MEDIAL</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>ੵ Yakash</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A76</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>੶ Abbreviation Sign</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A77</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A78</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A79</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7A</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7B</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7C</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7D</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7E</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0A7F</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vedic-extensions-character-table">
+<h2>Vedic Extensions character table<a class="headerlink" href="#vedic-extensions-character-table" title="Permalink to this heading">¶</a></h2>
+<p>Sanskrit runs written in the Gurmukhi script may also include
+characters from the Vedic Extensions block. These characters should be
+classified as follows.</p>
+<blockquote>
+<div><p>Note: See the <a class="reference internal" href="../opentype-shaping-vedic-extensions.html"><span class="doc std std-doc">Vedic Extensions</span></a>
+document for additional information.</p>
+</div></blockquote>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD0</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳐ Tone Karshana</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD1</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳑ Tone Shara</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD2</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳒ Tone Prenkha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD3</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳓ Sign Nihshvasa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳔ Tone Midline Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD5</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳕ Tone Aggravated Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD6</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳖ Tone Independent Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD7</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳗ Tone Kathaka Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳘ Tone Candra Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD9</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳙ Tone Kathaka Independent Svarita Schroeder</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDA</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳚ Tone Double Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDB</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳛ Tone Triple Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDC</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳜ Tone Kathaka Anudatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDD</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳝ Tone Dot Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDE</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳞ Tone Two Dots Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDF</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳟ Tone Three Dots Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE0</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳠ Tone Rigvedic Kashmiri Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE1</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>RIGHT_POSITION</p></td>
+<td class="text-left"><p>᳡ Tone Atharavedic Independent Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE2</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳢ Sign Visarga Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE3</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳣ Sign Visarga Udatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳤ Sign Reversed Visarga Udatta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE5</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳥ Sign Visarga Anudatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE6</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳦ Sign Reversed Visarga Anudatta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE7</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳧ Sign Visarga Udatta With Tail</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳨ Sign Visarga Anudatta With Tail</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>SYMBOL</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳩ Sign Anusvara Antargomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳪ Sign Anusvara Bahirgomukha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳫ Sign Anusvara Vamagomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>SYMBOL</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳬ Sign Anusvara Vamagomukha With Tail</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CED</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳭ Sign Tiryak</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>SYMBOL</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳮ Sign Hexiform Long Anusvara</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳯ Sign Long Anusvara</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳰ Sign Rthang Long Anusvara</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_DEAD</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳲ Sign Ardhavisarga</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_DEAD</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳳ Sign Rotated Ardhavisarga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF3</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>VISARGA</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳳ Sign Rotated Ardhavisarga</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳴ Tone Candra Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_WITH_STACKER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳵ Sign Jihvamuliya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_WITH_STACKER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳶ Sign Upadhmaniya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF7</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳷ Sign Atikrama</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳸ Tone Ring Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF9</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳹ Tone Double Ring Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳺ Sign Double Anusvara Antargomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFB</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFC</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFD</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFE</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFF</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="miscellaneous-character-table">
+<h2>Miscellaneous character table<a class="headerlink" href="#miscellaneous-character-table" title="Permalink to this heading">¶</a></h2>
+<p>In addition to general punctuation, runs of Gurmukhi text often use the
+danda (<code class="docutils literal notranslate"><span class="pre">U+0964</span></code>) and double danda (<code class="docutils literal notranslate"><span class="pre">U+0965</span></code>) punctuation marks from
+the Devanagari block. Gurmukhi text can also incorporate the udatta
+(<code class="docutils literal notranslate"><span class="pre">U+0951</span></code>) and anudatta (<code class="docutils literal notranslate"><span class="pre">U+0952</span></code>) signs from the Devanagari block.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0951</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>॑ Udatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0952</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>॒ Anudatta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0964</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>। Danda</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0965</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>॥ Double Danda</p></td>
+</tr>
+</tbody>
+</table>
+<p>Other important characters that may be encountered when shaping runs
+of Gurmukhi text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>), the
+zero-width joiner (<code class="docutils literal notranslate"><span class="pre">U+200D</span></code>) and zero-width non-joiner (<code class="docutils literal notranslate"><span class="pre">U+200C</span></code>), and
+the no-break space (<code class="docutils literal notranslate"><span class="pre">U+00A0</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+dependent vowel (matra) or a combining mark in isolation. Real-world
+text syllables may also use other characters, such as hyphens or dashes,
+in a similar placeholder fashion; shaping engines should cope with
+this situation gracefully.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+00A0</span></code></p></td>
+<td class="text-left"><p>Separator</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>  No-break space</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200C</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>NON_JOINER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‌ Zero-width non-joiner</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+200D</span></code></p></td>
+<td class="text-left"><p>Other</p></td>
+<td class="text-left"><p>JOINER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‍ Zero-width joiner</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2010</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‐ Hyphen</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2011</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‑ No-break hyphen</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2012</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>‒ Figure dash</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2013</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>– En dash</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+2014</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>— Em dash</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+25CC</span></code></p></td>
+<td class="text-left"><p>Symbol</p></td>
+<td class="text-left"><p>DOTTED_CIRCLE</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>◌ Dotted circle</p></td>
+</tr>
+</tbody>
+</table>
+<p>The zero-width joiner (ZWJ) is primarily used to prevent the formation
+of a conjunct from a “<em>Consonant</em>,Halant,<em>Consonant</em>” sequence. The
+sequence “<em>Consonant</em>,Halant,ZWJ,<em>Consonant</em>” blocks the formation of
+a conjunct between the two consonants.</p>
+<p>Note, however, that the “<em>Consonant</em>,Halant” subsequence in the above
+example may still trigger a half-forms feature. To prevent the
+application of the half-forms feature in addition to preventing the
+conjunct, the zero-width non-joiner (ZWNJ) must be used instead. The
+sequence “<em>Consonant</em>,Halant,ZWNJ,<em>Consonant</em>” should produce the
+first consonant in its standard form, followed by an explicit
+“Halant”.</p>
+<p>A secondary usage of the zero-width joiner is to prevent the formation of
+“Reph”. An initial “Ra,Halant,ZWJ” sequence should not produce a “Reph”,
+where an initial “Ra,Halant” sequence without the zero-width joiner
+otherwise would.</p>
+<p>The no-break space (NBSP) is primarily used to display those
+codepoints that are defined as non-spacing (marks, dependent vowels
+(matras), below-base consonant forms, and post-base consonant forms)
+in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match “NBSP,ZWJ,Halant,<em>Consonant</em>”, “NBSP,<em>mark</em>”, or “NBSP,<em>matra</em>”.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/character-tables/character-tables-gurmukhi.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

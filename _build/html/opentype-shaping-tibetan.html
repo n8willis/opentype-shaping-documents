@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Tibetan shaping in OpenType &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="tibetan-shaping-in-opentype">
+<h1>Tibetan shaping in OpenType<a class="headerlink" href="#tibetan-shaping-in-opentype" title="Permalink to this heading">¶</a></h1>
+<p>This document details the shaping procedure needed to display text
+runs in the Tibetan script.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information"><span class="std std-doc">General information</span></a></p></li>
+<li><p><a class="reference internal" href="#terminology"><span class="std std-doc">Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#glyph-classification"><span class="std std-doc">Glyph classification</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#shaping-classes-and-subclasses"><span class="std std-doc">Shaping classes and subclasses</span></a></p></li>
+<li><p><a class="reference internal" href="#tibetan-character-tables"><span class="std std-doc">Tibetan character tables</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-tibt-shaping-model"><span class="std std-doc">The <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code> shaping model</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#applying-the-language-substitution-features-from-gsub"><span class="std std-doc">1: Applying the language substitution features from GSUB</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-all-basic-substitution-features-from-gsub"><span class="std std-doc">2: Applying all basic substitution features from GSUB</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-remaining-positioning-features-from-gpos"><span class="std std-doc">3: Applying remaining positioning features from GPOS</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>The Tibetan script was modeled on seventh-century <a class="reference internal" href="opentype-shaping-indic-general.html"><span class="doc std std-doc">Indic
+scripts</span></a> and incorporates several
+patterns and conventions found in Indic scripts. However, Tibetan
+developed independently and possesses enough major distinctions that
+it is inadvisable to attempt supporting it in a general-purpose
+Indic shaping engine.</p>
+<p>The Tibetan script is used to write multiple languages, most commonly
+Tibetan, Dzongkha, Sikkimese, Ladakhi, and Balti. In addition,
+Sanskrit may be written in Tibetan, but the Tibetan script is not used
+for Vedic texts, therefore Tibetan text runs are not expected to
+include any glyphs from the Vedic Extensions block of Unicode.</p>
+<p>The Tibetan script tag defined in OpenType is <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code>.</p>
+<p>Notably, Tibetan was originally included in version 1.0 of the Unicode
+standard, encoded in a block that closely mirrored the structure of
+the Indic scripts. However, this encoding for Tibetan was removed in
+Unicode 1.1. A new encoding for Tibetan was included in version 2.0 of
+the Unicode standard, more appropriately structured for the writing
+system.</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">¶</a></h2>
+<p>OpenType shaping uses a standard set of terms for Brahmi-derived and
+Indic scripts.  The terms used colloquially in any particular language
+may vary, however, potentially causing confusion.</p>
+<p><strong>Matra</strong> is the standard term for a dependent vowel sign. Syllables
+in Tibetan script can include sequences of multiple vowels and,
+therefore, multiple matras. Each matra is either a <strong>above-base</strong> or
+a <strong>below-base</strong> form.</p>
+<p>Several compound matra codepoints are included in the Tibetan Unicode
+block. However, these are only used when transcribing Sanskrit
+text. Otherwise, Tibetan syllables will include at most one matra.</p>
+<p><strong>Tsheng</strong> or <strong>tsek</strong> is the term for the small, dot-like mark that is placed
+between syllables in a Tibetan word. Sequences of tsek marks are
+occasionally used to justify lines of text within a block. For
+line-breaking purposes, words may be broken after a tsek mark.</p>
+<p><strong>Srog-med</strong> is the term for the “virama” or “halant” sign (<code class="docutils literal notranslate"><span class="pre">U+0F84</span></code>). However,
+the Tibetan script does not natively use the srong-med mark: it is
+used only when transcribing text in a language that requires a “halant”.</p>
+<!--- **Chandrabindu** (or simply **Bindu**) is the standard term for the
+diacritical mark indicating that the preceding vowel should be
+nasalized. Tibetan script does not use a chandrabindu; however, the
+_BINDU_ category is used for other marks during the
+syllable-identification stage in order to maintain compatibility with
+other scripts. --->
+<!--- Tibetan has a bindu, but it seems to be there just for
+      transcription --->
+<p>The term <strong>base consonant</strong> in Tibetan is analogous to its usage in
+Indic and Brahmi-derived scripts. The base consonant of a syllable is
+rendered in its full form; subsequent consonants are generally shown
+in <strong>subjoined</strong> form, stacked below the base consonant.</p>
+<p>The Tibetan Unicode block includes separate codepoints for the base
+and subjoined forms of each consonant. Therefore, shaping engines are
+not required to determine the base consonant of a syllable
+algorithmically.</p>
+<p>Tibetan also employs the term <strong>head consonant</strong>, which refers to the
+consonant in a stack that is in the visually topmost position. Certain
+consonants take on an alternate form when used in stack-initial
+positions (such as “Ra”). When the alternate form is visually the
+topmost consonant in the stack, it is regarded as the head consonant,
+even though the consonant that follows is regarded as the base
+consonant.</p>
+<p>For example, the sequence “Ra,Subjoined Ka” (<code class="docutils literal notranslate"><span class="pre">U+0F62</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F90</span></code>) is
+rendered with the “Ka” in its non-subjoined, base-consonant form and the “Ra”
+positioned above. In this circumstance, the “Ra” would still be
+regarded as the head consonant.</p>
+<p>Where possible, using the standard terminology is preferred, as the
+use of a language-specific term necessitates choosing one language
+over all of the others that share a common script.</p>
+</section>
+<section id="glyph-classification">
+<h2>Glyph classification<a class="headerlink" href="#glyph-classification" title="Permalink to this heading">¶</a></h2>
+<p>Shaping Tibetan text depends on the shaping engine correctly
+classifying each glyph in the run. As with most other scripts, the
+classifications must distinguish between consonants, vowels
+(independent and dependent), numerals, punctuation, and various types
+of diacritical mark.</p>
+<p>For most codepoints, the <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Category</span></code> property defined in the Unicode
+standard is correct, but it is not sufficient to fully capture the
+expected shaping behavior (such as glyph reordering). Therefore,
+Tibetan glyphs must additionally be classified by how they are treated
+when shaping a run of text.</p>
+<section id="shaping-classes-and-subclasses">
+<h3>Shaping classes and subclasses<a class="headerlink" href="#shaping-classes-and-subclasses" title="Permalink to this heading">¶</a></h3>
+<p>The shaping classes listed in the tables that follow are defined so
+that they capture the positioning rules used by Tibetan script.</p>
+<p>For most codepoints, the <em>Shaping class</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Syllabic</span> <span class="pre">Category</span></code> defined in Unicode. However, there are some
+distinctions, where the defined category does not fully capture the
+behavior of the character in the shaping process.</p>
+<p>Several of the diacritic and syllable-modifying marks behave according
+to their own rules and, thus, have a special class. These include
+<code class="docutils literal notranslate"><span class="pre">BINDU</span></code> and <code class="docutils literal notranslate"><span class="pre">VISARGA</span></code>. Some less-common marks behave according to
+rules that are similar to these common marks, and are therefore
+classified with the corresponding common mark.</p>
+<p>Letters generally fall into the classes <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">VOWEL_INDEPENDENT</span></code>, and <code class="docutils literal notranslate"><span class="pre">VOWEL_DEPENDENT</span></code>. These classes help the
+shaping engine parse and identify key positions in a syllable. For
+example, Unicode categorizes dependent vowels as <code class="docutils literal notranslate"><span class="pre">Mark</span> <span class="pre">[Mn]</span></code>, but the
+shaping engine must be able to distinguish between dependent vowels
+and diacritical marks (which are categorized as <code class="docutils literal notranslate"><span class="pre">Mark</span> <span class="pre">[Mn]</span></code>).</p>
+<p>Tibetan uses two subclasses of consonant, <code class="docutils literal notranslate"><span class="pre">CONSONANT_SUBJOINED</span></code> and
+<code class="docutils literal notranslate"><span class="pre">CONSONANT_HEAD</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CONSONANT_SUBJOINED</span></code> subclass is used for consonants immediately
+following the base consonant of a syllable and before the vowel
+sound. Unlike most Indic scripts, Tibetan explicitly encodes the
+subjoined forms of each consonant in a separate codepoint. Therefore,
+the shaping engine is not responsible for identifying the base and
+below-base consonants (or other special forms) and fonts are not
+responsible for implementing substitution features to substitute
+subjoined forms in context.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CONSONANT_HEAD</span></code> subclass is used for special transliteration
+letters that are not found in the Tibetan language. They should pass
+checks for consonants, but do not evoke special shaping behavior.</p>
+<p>Other characters, such as symbols, need no special
+attention from the shaping engine, so they are not assigned a shaping
+class.</p>
+<p>Numbers are classified as <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>, even though they evoke no special
+behavior from the Indic shaping rules, because there are OpenType features that
+might affect how the respective glyphs are drawn, such as <code class="docutils literal notranslate"><span class="pre">tnum</span></code>,
+which specifies the usage of tabular-width numerals, and <code class="docutils literal notranslate"><span class="pre">sups</span></code>, which
+replaces the default glyphs with superscript variants.</p>
+<p>Marks, subjoined consonants, and dependent vowels are further labeled
+with a mark-placement subclass, which indicates where the glyph will
+be placed with respect to the base character to which it is
+attached. The actual position of the glyphs is determined by the
+lookups found in the font’s GPOS table.</p>
+<p>There are two basic <em>mark-placement subclasses</em> for dependent vowel signs
+(matras). Each corresponds to the visual position of the matra with
+respect to the base consonant to which it is attached:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP_POSITION</span></code> matras are positioned above the base consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTTOM_POSITION</span></code> matras are positioned below the base consonant.</p></li>
+</ul>
+<p>Syllable modifiers and other marks may be placed in <code class="docutils literal notranslate"><span class="pre">TOP</span></code> or <code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code>
+position, or:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT_POSITION</span></code> marks are positioned to the left of the base consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT_POSITION</span></code> marks are positioned to the right of the base consonant.</p></li>
+</ul>
+<p>These positions may also be referred to elsewhere in shaping documents as:</p>
+<ul class="simple">
+<li><p><em>Above-base</em></p></li>
+<li><p><em>Below-base</em></p></li>
+<li><p><em>Pre-base</em></p></li>
+<li><p><em>Post-base</em></p></li>
+</ul>
+<p>respectively. The <code class="docutils literal notranslate"><span class="pre">LEFT</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">TOP</span></code>, and <code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code> designations
+corresponds to Unicode’s preferred terminology. The <em>Pre</em>, <em>Post</em>,
+<em>Above</em>, and <em>Below</em> terminology is used in the official descriptions
+of OpenType GSUB and GPOS features. Shaping engines may, internally,
+use whichever terminology is preferred.</p>
+<p>For most mark and dependent-vowel codepoints, the <em>mark-placement
+subclass</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Positional</span> <span class="pre">Category</span></code> defined
+in Unicode. However, there are some distinctions, where the defined
+category does not fully capture the behavior of the character in the
+shaping process.</p>
+</section>
+<section id="tibetan-character-tables">
+<h3>Tibetan character tables<a class="headerlink" href="#tibetan-character-tables" title="Permalink to this heading">¶</a></h3>
+<p>Separate character tables are provided for the Tibetan block as well
+as for other miscellaneous characters that are used in <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code> text
+runs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="character-tables/character-tables-tibetan.html#tibetan-character-table"><span class="std std-doc">Tibetan character table</span></a></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-tibetan.html#miscellaneous-character-table"><span class="std std-doc">Miscellaneous character table</span></a></p></li>
+</ul>
+<p>The tables list each codepoint along with its Unicode general
+category, its shaping class, and its mark-placement subclass. The
+codepoint’s Unicode name and an example glyph are also provided.</p>
+<p>For example:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0F40</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ཀ Ka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0F7E</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>BINDU</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ཾ Sign Rjes Su Nga Ro</p></td>
+</tr>
+</tbody>
+</table>
+<p>Codepoints with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>Assigned codepoints with a <em>null</em> in the <em>Shaping class</em>
+column evoke no special behavior from the shaping engine.</p>
+<p>The <em>Mark-placement subclass</em> column indicates mark-placement
+positioning for codepoints in the <em>Mark</em> category. Assigned, non-mark
+codepoints have a <em>null</em> in this column and evoke no special
+mark-placement behavior. Marks tagged with [Mn] in the <em>Unicode
+category</em> column are categorized as non-spacing; marks tagged with
+[Mc] are categorized as spacing-combining.</p>
+<p>Some codepoints in the tables use a <em>Shaping class</em> that
+differs from the codepoint’s Unicode <em>General Category</em>. The <em>Shaping
+class</em> takes precedence during OpenType shaping, as it captures more
+specific, script-aware behavior.</p>
+<p>Other important characters that may be encountered when shaping runs
+of Tibetan text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>),
+the no-break space (<code class="docutils literal notranslate"><span class="pre">U+00A0</span></code>), and the zero-width space (<code class="docutils literal notranslate"><span class="pre">U+200B</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+dependent vowel (matra) or a combining mark in isolation. Real-world
+text syllables may also use other characters, such as hyphens or dashes,
+in a similar placeholder fashion; shaping engines should cope with
+this situation gracefully.</p>
+<!--- The zero-width joiner is primarily used to prevent the formation of a
+subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoined form for the second consonant. --->
+<!---
+A secondary usage of the zero-width joiner is to prevent the formation of
+"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
+where an initial "Ra,Halant" sequence without the zero-width joiner
+otherwise would.
+--->
+<p>The no-break space is primarily used to insert spaces between
+phrases. Tibetan text does not employ inter-word spaces. Consequently,
+when spaces are inserted into a text run, it is important that they be
+preserved: line-breaking algorithms must not break lines after a
+Tibetan space, so the no-break space character is used instead of the
+traditional space.</p>
+<p>The no-break space may also be used to display those codepoints that
+are defined as non-spacing (marks, dependent vowels (matras),
+below-base consonant forms, and post-base consonant forms) in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder.</p>
+<p>The Wheel of Dharma symbol (<code class="docutils literal notranslate"><span class="pre">U+2638</span></code>) from the Miscellaneous Symbols
+block also occurs in Tibetan texts.</p>
+</section>
+</section>
+<section id="the-tibt-shaping-model">
+<h2>The <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code> shaping model<a class="headerlink" href="#the-tibt-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>Processing a run of <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code> text involves three top-level stages:</p>
+<ol class="arabic simple">
+<li><p>Applying the language substitution features from GSUB</p></li>
+<li><p>Applying all basic substitution features from GSUB</p></li>
+<li><p>Applying all remaining positioning features from GPOS</p></li>
+</ol>
+<p>As with other Brahmi-derived and Indic scripts, the basic substitution
+features must be applied to the run in a specific order. The
+positioning features in the final stage, however, do not have a
+mandatory order.</p>
+<p>Unlike many other Brahmi-derived and Indic scripts, shaping Tibetan
+text does not require a syllable-identification stage nor any
+reordering moves.</p>
+<p>A syllable in Tibetan is usually separated from subsequent syllables
+or words by a “tsheng” mark at the end of the syllable. A word-final
+syllable may also be separated by a punctuation mark or a non-breaking
+space.</p>
+<p>Each syllable contains exactly one vowel sound. Valid syllables may
+begin with either a consonant or an independent vowel.</p>
+<p>The general form of a consonant-based syllable in Tibetan begins with
+an optional pre-base consonant (also called a “prefix”), followed by
+the syllable’s base consonant, zero or more subjoined
+consonants, zero or more dependent-vowel signs (matras), an optional
+post-base consonant (also called a “suffix”) and zero or more syllable
+modifiers or diacritical marks.</p>
+<p><img alt="Tibetan syllable example" src="_images/tibetan-syllable.png" /></p>
+<p>The prefix, suffix, and base consonants will all be from the
+<code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code> shaping class. All subjoined consonants will be from the
+<code class="docutils literal notranslate"><span class="pre">CONSONANT_SUBJOINED</span></code> class.</p>
+<p>The prefix, suffix, and base consonant are all shown in
+their default form and position. Any subjoined consonants are stacked
+below the base consonant. Any dependent vowel signs (matras) are
+rendered as marks positioned either above the base consonant or below
+the consonant stack.</p>
+<blockquote>
+<div><p>Note: A base consonant that is not accompanied by a
+dependent vowel sign (matra) carries the script’s inherent vowel
+sound. This vowel sound is changed by a dependent vowel sign
+following the consonant.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: Prefix and suffix consonants do not carry a vowel sound. This
+does not affect shaping, except in that Tibetan differs from many
+other scripts in not employing a “halant” or vowel-killer sign to
+designate the suppression of these sounds.</p>
+</div></blockquote>
+<p>Certain consonant sequences may take on alternate shapes to provide a
+better visual fit with adjoining characters (such as within a
+consonant stack). However, these alternates are not considered
+orthographically distinct forms.</p>
+<p>Native words in Tibetan do not incorporate more than a single
+dependent-vowel sign (matra) in a syllable. However, multiple
+dependent-vowel signs may be used to represent loanwords from
+Sanskrit, Chinese, and many other languages.</p>
+<p>In addition to valid syllables, standalone sequences may occur, such
+as when an isolated codepoint is shown in example text.</p>
+<blockquote>
+<div><p>Note: Foreign loanwords, when written in the Tibetan script, may
+not adhere to the syllable-formation rules described above.</p>
+</div></blockquote>
+<section id="applying-the-language-substitution-features-from-gsub">
+<h3>1: Applying the language substitution features from GSUB<a class="headerlink" href="#applying-the-language-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>The language-substitution stage applies mandatory substitution features
+using the rules in the font’s GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application
+of GSUB features.</p>
+<p>The order in which these substitutions must be performed is fixed:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>locl
+ccmp
+</pre></div>
+</div>
+<section id="locl">
+<h4>1.1 locl<a class="headerlink" href="#locl" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.</p>
+<blockquote>
+<div><p>Note: Strictly speaking, the use of localized-form substitutions is
+not part of the shaping process, but of the localization process,
+and could take place at an earlier point while handling the text
+run. However, shaping engines are expected to complete the
+application of the <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature before applying the subsequent
+GSUB substitutions in the following steps.</p>
+</div></blockquote>
+</section>
+<section id="ccmp">
+<h4>1.2: ccmp<a class="headerlink" href="#ccmp" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of glyphs.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">&lt;tibt&gt;</span></code> text, this may include decompositions of multi-part
+dependent vowel signs (matras).</p>
+<p>The Tibetan Unicode block includes several multi-part matras, most
+intended for use transcribing Sanskrit. However, usage is discouraged
+for several of these matras, and two of the codepoints have been
+officially deprecated. In their place, text authors are encouraged to
+use the corresponding sequence of single-part matras.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">U+0F77</span></code> is deprecated and should be replaced by “<code class="docutils literal notranslate"><span class="pre">U+0FB2</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F81</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+0F79</span></code> is deprecated and should be replaced by “<code class="docutils literal notranslate"><span class="pre">U+0FB3</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F81</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+0F73</span></code> can be replaced by “<code class="docutils literal notranslate"><span class="pre">U+0F71</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F72</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+0F75</span></code> can be replaced by “<code class="docutils literal notranslate"><span class="pre">U+0F71</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F74</span></code>”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+0F81</span></code> can be replaced by “<code class="docutils literal notranslate"><span class="pre">U+0F71</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0F80</span></code>”</p></li>
+</ul>
+<p>If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>-substituted
+glyphs.</p>
+<p><img alt="Composition-decomposition substitution" src="_images/tibetan-ccmp.png" /></p>
+</section>
+</section>
+<section id="applying-all-basic-substitution-features-from-gsub">
+<h3>2: Applying all basic substitution features from GSUB<a class="headerlink" href="#applying-all-basic-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, the basic substitution features from the GSUB table
+are applied. The order in which these features are applied is not
+canonical; they should be applied in the order in which they appear in
+the GSUB table in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>abvs
+blws
+calt
+liga
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">abvs</span></code> feature replaces above-base-consonant glyphs with special
+presentation forms. This usually includes contextual variants of
+above-base marks or contextually appropriate mark-and-base ligatures.</p>
+<p><img alt="Application of the abvs feature" src="_images/tibetan-abvs.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blws</span></code> feature replaces below-base-consonant glyphs with special
+presentation forms. In Tibetan, this can include contextual ligatures
+involving below-base dependent vowel marks (matras) or subjoined
+consonants.</p>
+<p><img alt="Application of the blws feature" src="_images/tibetan-blws.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">calt</span></code>  feature substitutes glyphs with contextual alternate
+forms. In general, this involves replacing the default form of a
+stacking glyph (such as a subjoined consonant) with an alternate that
+provides a preferable connection to an adjacent glyph in the stack.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">calt</span></code> feature performs substitutions that are not mandatory for
+orthographic correctness. The substitutions made by <code class="docutils literal notranslate"><span class="pre">calt</span></code>
+can be disabled by application-level user interfaces.</p>
+<p><img alt="Application of the calt feature" src="_images/tibetan-calt.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">liga</span></code> feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by <code class="docutils literal notranslate"><span class="pre">liga</span></code> may be disabled by
+application-level user interfaces.</p>
+<p><img alt="Application of the liga feature" src="_images/tibetan-liga.png" /></p>
+</section>
+<section id="applying-remaining-positioning-features-from-gpos">
+<h3>3: Applying remaining positioning features from GPOS<a class="headerlink" href="#applying-remaining-positioning-features-from-gpos" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, mark positioning, kerning, and other GPOS features are
+applied. As with the preceding stage, the order in which these
+features are applied is not canonical; they should be applied in the
+order in which they appear in the GPOS table in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    kern
+	abvm
+    blwm
+	mkmk
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: The <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature is usually applied at this stage, if it is
+present in the font. However, <code class="docutils literal notranslate"><span class="pre">kern</span></code> is not mandatory for shaping
+Tibetan text and may be disabled by user preference.</p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature adjusts the horizontal positioning of
+glyphs.</p>
+<p><img alt="Application of the kern feature" src="_images/tibetan-kern.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">abvm</span></code> feature positions above-base glyphs for attachment to base
+characters. In Tibetan, this includes tone markers, diacritical marks,
+and above-base dependent vowels (matras).</p>
+<p><img alt="Application of the abvm feature" src="_images/tibetan-abvm.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blwm</span></code> feature positions below-base glyphs for attachment to base
+characters. In Tibetan, this includes subjoined consonants as well as
+below-base dependent vowels (matras), and diacritical marks.</p>
+<p><img alt="Application of the blwm feature" src="_images/tibetan-blwm.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mkmk</span></code> feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph. In Tibetan, this also includes attaching marks to
+subjoined consonants or dependent vowels.</p>
+<p><img alt="Application of the mkmk feature" src="_images/tibetan-mkmk.png" /></p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/opentype-shaping-tibetan.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

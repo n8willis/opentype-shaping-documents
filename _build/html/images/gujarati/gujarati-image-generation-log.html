@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Commands used to generate the images in opentype-shaping-bengali.md &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="commands-used-to-generate-the-images-in-opentype-shaping-bengali-md">
+<h1>Commands used to generate the images in <a class="reference internal" href="../../opentype-shaping-bengali.html"><span class="doc std std-doc">opentype-shaping-bengali.md</span></a><a class="headerlink" href="#commands-used-to-generate-the-images-in-opentype-shaping-bengali-md" title="Permalink to this heading">¶</a></h1>
+<section id="arrow-general">
+<h2>Arrow general<a class="headerlink" href="#arrow-general" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –output-file=right-arrow.png –background=FFFFFF00 –margin=0,0,0,0 /usr/share/fonts/opentype/gentiumplus/GentiumPlus-R.ttf –unicodes=2192</p>
+</section>
+<section id="matra-decomposition">
+<h2>2.2 Matra decomposition<a class="headerlink" href="#matra-decomposition" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-matra-decompose-before.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ac9</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-matra-decompose-after.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ac5,25cc,0abe</p>
+<p>montage gujarati-matra-decompose-before.png right-arrow.png gujarati-matra-decompose-after.png -geometry +0+0 -background transparent gujarati-matra-decompose.png</p>
+</section>
+<section id="post-base-consonants">
+<h2>2.7 Post-base consonants<a class="headerlink" href="#post-base-consonants" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>None</p>
+</div></blockquote>
+</section>
+<section id="nukt">
+<h2>3.2 <code class="docutils literal notranslate"><span class="pre">nukt</span></code><a class="headerlink" href="#nukt" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-nukt-before.png –features=-init,-nukt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a97,25cc,0abc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-nukt-after.png –features=-init,+nukt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a97,0abc</p>
+<p>montage gujarati-nukt-before.png right-arrow.png gujarati-nukt-after.png -geometry +0+0 -background transparent gujarati-nukt.png</p>
+</section>
+<section id="akhn">
+<h2>3.3 <code class="docutils literal notranslate"><span class="pre">akhn</span></code><a class="headerlink" href="#akhn" title="Permalink to this heading">¶</a></h2>
+<section id="kssa">
+<h3>KSsa<a class="headerlink" href="#kssa" title="Permalink to this heading">¶</a></h3>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-akhn-kssa-before.png –features=-init,-akhn –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a95,25cc,0acd,0ab7</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-akhn-kssa-after.png –features=-init,+akhn –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a95,0acd,0ab7</p>
+<p>montage gujarati-akhn-kssa-before.png right-arrow.png gujarati-akhn-kssa-after.png -geometry +0+0 -background transparent gujarati-akhn-kssa.png</p>
+</section>
+<section id="jnya">
+<h3>JNya<a class="headerlink" href="#jnya" title="Permalink to this heading">¶</a></h3>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-akhn-jnya-before.png –features=-init,-akhn –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9c,25cc,0acd,0a9e</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-akhn-jnya-after.png –features=-init,+akhn –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9c,0acd,0a9e</p>
+<p>montage gujarati-akhn-jnya-before.png right-arrow.png gujarati-akhn-jnya-after.png -geometry +0+0 -background transparent gujarati-akhn-jnya.png</p>
+</section>
+</section>
+<section id="rphf">
+<h2>3.4 <code class="docutils literal notranslate"><span class="pre">rphf</span></code><a class="headerlink" href="#rphf" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-rphf-before.png –features=-init,-rphf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,25cc,0acd</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-rphf-after.png –features=-init,+rphf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,25cc</p>
+<p>montage gujarati-rphf-before.png right-arrow.png gujarati-rphf-after.png -geometry +0+0 -background transparent gujarati-rphf.png</p>
+</section>
+<section id="rkrf">
+<h2>3.5 <code class="docutils literal notranslate"><span class="pre">rkrf</span></code><a class="headerlink" href="#rkrf" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-rkrf-before.png –features=-init,-rkrf,-blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa6,25cc,0acd,0ab0</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-rkrf-after.png –features=-init,+rkrf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa6,0acd,0ab0</p>
+<p>montage gujarati-rkrf-before.png right-arrow.png gujarati-rkrf-after.png -geometry +0+0 -background transparent gujarati-rkrf.png</p>
+</section>
+<section id="blwf">
+<h2>3.7 <code class="docutils literal notranslate"><span class="pre">blwf</span></code><a class="headerlink" href="#blwf" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blwf-before.png –features=-init,-blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=25cc,0acd,0ab0</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blwf-after.png –features=-init,+blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=25cc,0acd,0ab0</p>
+<p>montage gujarati-blwf-before.png right-arrow.png gujarati-blwf-after.png -geometry +0+0 -background transparent gujarati-blwf.png</p>
+</section>
+<section id="half">
+<h2>3.9 <code class="docutils literal notranslate"><span class="pre">half</span></code><a class="headerlink" href="#half" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-half-before.png –features=-init,-half –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aad,0acd,0ab0,25cc,0acd</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-half-after.png –features=-init,+half –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aad,0acd,0ab0,0acd,25cc</p>
+<p>montage gujarati-half-before.png right-arrow.png gujarati-half-after.png -geometry +0+0 -background transparent gujarati-half.png</p>
+</section>
+<section id="vatu">
+<h2>3.11 <code class="docutils literal notranslate"><span class="pre">vatu</span></code><a class="headerlink" href="#vatu" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-vatu-before.png –features=-init,-vatu –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa4,25cc,0acd,0ab0</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-vatu-after.png –features=-init,+vatu –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa4,0acd,0ab0</p>
+<p>montage gujarati-vatu-before.png right-arrow.png gujarati-vatu-after.png -geometry +0+0 -background transparent gujarati-vatu.png</p>
+</section>
+<section id="cjct">
+<h2>3.12 <code class="docutils literal notranslate"><span class="pre">cjct</span></code><a class="headerlink" href="#cjct" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note that Noto Serif Gujarati implements this in <code class="docutils literal notranslate"><span class="pre">pres</span></code> for unknown
+reasons.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-cjct-before.png –features=-init,-pres,-cjct –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa6,25cc,0acd,0aae</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-cjct-after.png –features=-init,+cjct –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa6,0acd,0aae</p>
+<p>montage gujarati-cjct-before.png right-arrow.png gujarati-cjct-after.png -geometry +0+0 -background transparent gujarati-cjct.png</p>
+</section>
+<section id="pre-base-matras">
+<h2>4.2 Pre-base matras<a class="headerlink" href="#pre-base-matras" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-matra-position-before.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0abf,0a9f,0acd,0a9d,0acd,0ab9,0acd,0aa4</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-matra-position-after.png –features=-init,-pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9f,0acd,0a9d,0acd,0ab9,0acd,0aa4,0abf</p>
+<p>montage gujarati-matra-position-before.png right-arrow.png gujarati-matra-position-after.png -geometry +0+0 -background transparent gujarati-matra-position.png</p>
+</section>
+<section id="reph-position">
+<h2>4.3 Reph position<a class="headerlink" href="#reph-position" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-reph-position-before.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,25cc,0aab,0acd,0aa8,0acd,0a9a,0ac2</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-reph-position-after.png –features=-init –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,0aab,0acd,0aa8,0acd,0a9a,0ac2</p>
+<p>montage gujarati-reph-position-before.png right-arrow.png gujarati-reph-position-after.png -geometry +0+0 -background transparent gujarati-reph-position.png</p>
+</section>
+<section id="pres">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">pres</span></code><a class="headerlink" href="#pres" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-pres-before.png –features=-init,-pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9e,0acd,0a9a,25cc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-pres-after.png –features=-init,+pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9e,0acd,0a9a,25cc</p>
+<p>montage gujarati-pres-before.png right-arrow.png gujarati-pres-after.png -geometry +0+0 -background transparent gujarati-pres.png</p>
+</section>
+<section id="abvs">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">abvs</span></code><a class="headerlink" href="#abvs" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-abvs-before.png –features=-init,-abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,0aa3,0abf</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-abvs-after.png –features=-init,+abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,0aa3,0abf</p>
+<p>montage gujarati-abvs-before.png right-arrow.png gujarati-abvs-after.png -geometry +0+0 -background transparent gujarati-abvs.png</p>
+</section>
+<section id="blws">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">blws</span></code><a class="headerlink" href="#blws" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blws-before.png –features=-init,-blws –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa3,0ac1</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blws-after.png –features=-init,+blws –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0aa3,0ac1</p>
+<p>montage gujarati-blws-before.png right-arrow.png gujarati-blws-after.png -geometry +0+0 -background transparent gujarati-blws.png</p>
+</section>
+<section id="psts">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">psts</span></code><a class="headerlink" href="#psts" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: Noto Serif Gujarati implements this as an <code class="docutils literal notranslate"><span class="pre">abvs</span></code> lookup for
+unknown reasons.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-psts-before.png –features=-init,-abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9c,0acd,0ab0,0abe</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-psts-after.png –features=-init,+abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9c,0acd,0ab0,0abe</p>
+<p>montage gujarati-psts-before.png right-arrow.png gujarati-psts-after.png -geometry +0+0 -background transparent gujarati-psts.png</p>
+</section>
+<section id="haln">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">haln</span></code><a class="headerlink" href="#haln" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Note: Noto Serif Gujarati implements this as a <code class="docutils literal notranslate"><span class="pre">blwm</span></code> lookup.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-haln-after.png –features=-init,+blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a95,0acd,0a95,0abc,0acd</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-haln-before.png –features=-init,-blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a95,0acd,0a95,0abc,0acd</p>
+<p>montage gujarati-haln-before.png right-arrow.png gujarati-haln-after.png -geometry +0+0 -background transparent gujarati-haln.png</p>
+</section>
+<section id="abvm">
+<h2>6 <code class="docutils literal notranslate"><span class="pre">abvm</span></code><a class="headerlink" href="#abvm" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-abvm-before.png –features=-init,-abvm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,0ab9</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-abvm-after.png –features=-init,+abvm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0ab0,0acd,0ab9</p>
+<p>montage gujarati-abvm-before.png right-arrow.png gujarati-abvm-after.png -geometry +0+0 -background transparent gujarati-abvm.png</p>
+</section>
+<section id="blwm">
+<h2>6 <code class="docutils literal notranslate"><span class="pre">blwm</span></code><a class="headerlink" href="#blwm" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blwm-before.png –features=-init,-blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9f,0acd,0aa0,0ac4</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=gujarati-blwm-after.png –features=-init,+blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf –unicodes=0a9f,0acd,0aa0,0ac4</p>
+<p>montage gujarati-blwm-before.png right-arrow.png gujarati-blwm-after.png -geometry +0+0 -background transparent gujarati-blwm.png</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/images/gujarati/gujarati-image-generation-log.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

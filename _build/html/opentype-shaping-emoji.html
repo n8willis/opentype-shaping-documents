@@ -1,0 +1,1171 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Emoji shaping in OpenType &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="emoji-shaping-in-opentype">
+<h1>Emoji shaping in OpenType<a class="headerlink" href="#emoji-shaping-in-opentype" title="Permalink to this heading">¶</a></h1>
+<p>This document details the default shaping procedure needed to shape
+emoji sequences.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information"><span class="std std-doc">General information</span></a></p></li>
+<li><p><a class="reference internal" href="#terminology"><span class="std std-doc">Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#normalization"><span class="std std-doc">Normalization</span></a></p></li>
+<li><p><a class="reference internal" href="#bidirectionality"><span class="std std-doc">Bidirectionality</span></a></p></li>
+<li><p><a class="reference internal" href="#sequence-identification"><span class="std std-doc">Sequence identification</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#presentation-sequences"><span class="std std-doc">Presentation sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#modifier-sequences"><span class="std std-doc">Modifier sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#regional-indicator-flag-sequences"><span class="std std-doc">Regional Indicator flag sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#tag-flag-sequences"><span class="std std-doc">Tag flag sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#keycap-sequences"><span class="std std-doc">Keycap sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-sequences"><span class="std std-doc">Zero-Width Joiner sequences</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#zwj-hair-sequences"><span class="std std-doc">ZWJ hair sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-gendered-person-sequences"><span class="std std-doc">ZWJ gendered person sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-multi-person-group-sequences"><span class="std std-doc">ZWJ multi-person group sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-role-sequences"><span class="std std-doc">ZWJ role sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-color-sequences"><span class="std std-doc">ZWJ color sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-directionality-sequences"><span class="std std-doc">ZWJ directionality sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-additional-sequences"><span class="std std-doc">ZWJ additional sequences</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#other-sequences-and-ligatures"><span class="std std-doc">Other sequences and ligatures</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#feature-interaction-in-sequences"><span class="std std-doc">Feature interaction in sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#emoji-sets"><span class="std std-doc">Emoji sets</span></a></p></li>
+<li><p><a class="reference internal" href="#the-default-shaping-model"><span class="std std-doc">The default shaping model</span></a></p></li>
+</ul>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>The emoji OpenType shaping model is used for correctly displaying
+sequences from the Emoji block in Unicode as well as for numerous
+emoji codepoints found in other blocks.</p>
+<p>Emoji codepoints originated from a variety of pre-Unicode standards,
+including mobile-phone carriers in Japan, from typographic characters
+sets such as Zapf Dingbats and Wingdings, and from various symbols in
+common usage.</p>
+<p>Emoji shaping follows the default OpenType shaping model used for
+scripts that are considered <em>non-complex</em> from the shaper’s
+perspective. However, emoji fonts typically use GSUB tables to
+implement a variety of OpenType smart features, including several
+classes of ligature, contextual alternates, or variant forms to
+support emoji sequences.</p>
+<p>In addition to standalone image glyphs, emoji shaping is also used to
+display flag sequences and “keycap” sequences, both of which involve a
+combination of emoji and non-emoji codepoints in order.</p>
+<p>The default emoji glyph for a given codepoint may be substituted by
+the addition of selectors, modifiers, or joiners after the emoji
+codepoint.</p>
+<p>Many of these emoji sequences carry important semantic meaning,
+such as specifying gender, skin tone, object colors, and
+directions. Shaping engines should therefore make a best effort to
+correctly identify and display these sequences.</p>
+<p>Fallback presentation is possible for some emoji sequences by
+displaying the sequence of default emoji glyphs for the
+codepoints. For other emoji sequences, however, the most appropriate
+fallback approach is less clearly defined and may vary between
+implementations.</p>
+<p>Emoji glyphs may be stored in any of several color formats, or in any
+of the monochrome Bézier formats typically used for standard text
+codepoints. Correctly retrieving and displaying the glyph data for
+the format used by the active font is outside the scope of this
+document.</p>
+<blockquote>
+<div><p>Note: “shortcut codes” for emoji like <code class="docutils literal notranslate"><span class="pre">:smile:</span></code> are text mark-up
+and are <em>not</em> handled by OpenType shaping. The set of shortcut codes
+supported by any particular application is specific to that
+application alone.</p>
+<p>Text-processing stacks typically support a set of shortcut codes
+that includes Unicode’s official <code class="docutils literal notranslate"><span class="pre">Short_Name</span></code> property from the CLDR
+database, plus additional short codes, but the shortcut-code mapping
+is not otherwise linked to Unicode data.</p>
+</div></blockquote>
+<p>Runs of emoji might be tagged with the <code class="docutils literal notranslate"><span class="pre">&lt;Zsye&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;Zsym&gt;</span></code> script
+subtags, or with the <code class="docutils literal notranslate"><span class="pre">-em-emoji</span></code>, <code class="docutils literal notranslate"><span class="pre">-em-text</span></code>, or <code class="docutils literal notranslate"><span class="pre">-em-default</span></code> locale
+extensions. However, these subtags and extensions are primarily
+intended to control which presentation form is preferred by the
+application, and must not be relied on for the purpose of identifying
+emoji.</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">¶</a></h2>
+<p>A codepoint is considered an <strong>emoji</strong> only if it has the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code>
+property in the Unicode Character Database (UCD). Although many
+codepoints that have this property are pictographic in nature, some
+codepoints that are pictographic do not have the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code> property
+(such as most chess, playing-card, and game-piece symbols), and some
+codepoints that do have the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code> property show typographic
+characters rather than pictographic images.</p>
+<p>All emoji codepoints — as well as several non-emoji codepoints — have
+the <code class="docutils literal notranslate"><span class="pre">Extended_Pictographic</span></code> property. When a non-emoji codepoint has
+the <code class="docutils literal notranslate"><span class="pre">Extended_Pictographic</span></code> property, this indicates that future
+revisions of Unicode may incorporate the codepoint in a valid emoji
+sequence, or may (for a currently-unassigned codepoint) assign an
+emoji character to the codepoint.</p>
+<p>The emoji codepoints also include two distinct sets of alphanumeric
+character codepoints that are used to implement specific substitution
+sequences.</p>
+<p>The <strong>regional indicator</strong> set includes the 26 lower-case
+Basic Latin letters (“a” to “z”), which are used to support the
+predefined set of regional flags. The regional indicator set is found
+within the Enclosed Alphanumeric Supplement block of Unicode.</p>
+<p>The <strong>tag character</strong> set includes codepoints that correspond to the
+printable characters in the ASCII set, as well as an “End” control
+tag. The tag characters are used to support a more general mechanism
+for local and sub-national flags that are not covered by the
+predefined regional-indicator flag set. The tag characters set is
+found within the Tags block of Unicode.</p>
+<p><strong>Presentation style</strong> describes whether an emoji codepoint is
+shown in emoji style (for example, with a full-color bitmap or SVG
+glyph) or text style (such as a monochrome, Bézier glyph). Every emoji
+codepoint defaults to either emoji-style or text-style
+presentation.</p>
+<p>An emoji codepoint might be followed by a <strong>presentation selector</strong>.
+This selector requests that either emoji-style or text-style be used
+for the preceding emoji codepoint, potentially overriding that
+codepoint’s default. There are two presentation selectors:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Variation</span> <span class="pre">Selector</span> <span class="pre">15</span></code> (VS15, <code class="docutils literal notranslate"><span class="pre">U+FE0E</span></code>) requests text
+presentation style.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Variation</span> <span class="pre">Selector</span> <span class="pre">16</span></code> (VS16, <code class="docutils literal notranslate"><span class="pre">U+FE0F</span></code>) requests emoji
+presentation style.</p></li>
+</ul>
+<p><img alt="Text presentation-style selector" src="_images/text-presentation.png" /></p>
+<p><img alt="Emoji presentation-style selector" src="_images/emoji-presentation.png" /></p>
+<p>An emoji codepoint might also be followed by an emoji
+<strong>modifier</strong>. This modifier requests an alternate version of the emoji
+glyph. Currently, there are five emoji modifiers defined, all of which
+are assigned to a skin-tone designation from the Fitzpatrick scale:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F3FB</span></code> “Light skin tone”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F3FC</span></code> “Medium-light skin tone”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F3FD</span></code> “Medium skin tone”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F3FE</span></code> “Medium-dark skin tone”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F3FF</span></code> “Dark skin tone”</p></li>
+</ul>
+<p>Emoji <strong>sequences</strong> consist of one or more emoji codepoints,
+optionally followed by presentation selectors, modifiers, or other
+special characters. A font can implement custom ligatures for any
+sequence of emoji. However, Unicode also designates specific sequences
+that should be supported. These sequences can involve three special
+non-printing codepoints in addition to the selectors and modifiers
+mentioned above:</p>
+<ul class="simple">
+<li><p>The Combining Enclosing Keycap (CEK, <code class="docutils literal notranslate"><span class="pre">U+20E3</span></code>) is used to form
+<strong>keycap</strong> sequences corresponding to telephone keypad keys.</p></li>
+<li><p>The Cancel Tag (<code class="docutils literal notranslate"><span class="pre">U+E007F</span></code>) is used to form tag-based flag
+sequences.</p></li>
+<li><p>The Zero-Width Joiner (ZWJ, <code class="docutils literal notranslate"><span class="pre">U+200D</span></code>) is used to form emoji
+sequences for multi-person groups, gendered forms, hair-color
+variants, and directionality.</p></li>
+</ul>
+</section>
+<section id="normalization">
+<h2>Normalization<a class="headerlink" href="#normalization" title="Permalink to this heading">¶</a></h2>
+<p>Emoji sequences are not generally affected by Unicode or OpenType
+normalization. However, Unicode does specify an order to be used when
+representing ZWJ-using emoji sequences.</p>
+<p>The correct order should be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Base emoji codepoint
+Emoji modifier OR Emoji presentation selector
+Hair subsequence
+Color subsequence
+Gender-sign or object subsequence
+Directionality indicator
+</pre></div>
+</div>
+<p>Although this ordering is not designated a Unicode normalization form,
+shaping engine implementers may find it a useful target if attempting
+to correct invalid mis-ordered emoji ZWJ sequences.</p>
+<p>Shaping engines should also note that the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Extended_Pictographic</span></code> properties may require tracking in any Unicode
+normalization routines.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Emoji</span></code> property of a codepoint can be unintentionally lost when
+certain string transformations are performed. For example, the
+upper-case versions of the Circled Latin Letters have the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code>
+property, but the lower-case version of the Circled Latin do
+not. Therefore, a case-transformation rule must take care not to
+unintentionally break the desired output by losing the property.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Extended_Pictographic</span></code> property of a codepoint should be tracked
+because it is set on several non-emoji codepoints that may be updated
+to have the <code class="docutils literal notranslate"><span class="pre">Emoji</span></code> property in a future release of Unicode.</p>
+</section>
+<section id="bidirectionality">
+<h2>Bidirectionality<a class="headerlink" href="#bidirectionality" title="Permalink to this heading">¶</a></h2>
+<p>Most emoji sequences are defined to be neutral for the purpose of
+bidirectionality segmenting and handling.</p>
+<p>However, the Regional Indicator flag sequences are defined to be
+left-to-right only, overriding any levels of bidirectional embedding.</p>
+</section>
+<section id="sequence-identification">
+<h2>Sequence identification<a class="headerlink" href="#sequence-identification" title="Permalink to this heading">¶</a></h2>
+<p>There are six varieties of emoji sequence defined by Unicode:</p>
+<ol class="arabic simple">
+<li><p>Presentation sequences</p></li>
+<li><p>Modifier sequences</p></li>
+<li><p>Regional Indicator flag sequences</p></li>
+<li><p>Tag flag sequences</p></li>
+<li><p>Keycap sequences</p></li>
+<li><p>Zero-width joiner (ZWJ) sequences</p></li>
+</ol>
+<blockquote>
+<div><p>Note: The ZWJ sequence variety incorporates several subsets, but all
+of the ZWJ sequences are implemented using the same mechanism.</p>
+</div></blockquote>
+<p>The set of sequences includes various mechanisms defined at different
+times by either Unicode itself or by legacy encoding standards. In
+some cases, an older mechanism (such as the Regional Indicator
+mechanism used for national flags) has been superseded by a newer,
+more flexible mechanism intended to permit emoji vendors to provide
+support for a large set of new representations or emoji variants
+without requiring Unicode to define new codepoints for every possible
+permutation. Nevertheless, shaping-engine implementers should expect
+to encounter any or all of the defined sequences.</p>
+<p>This set includes the major categories of sequences that shaping
+engines are likely to encounter and that can convey important
+contextual information to users. Note, however, that fonts may
+implement additional sequences via ligature substitution or other
+existing mechanisms.</p>
+<p>Each of the six sequence varieties can also be interpreted as a
+different module of overall “emoji sequence support” for a
+shaping-engine implementation. For example, support for Regional
+Indicator flag sequences is distinct from support for Keycap
+sequences. For convenience, in this document, the sequence varieties
+are listed in an order that roughly approximates their complexity, but
+this ordering is not definitive.</p>
+<p>Sequences should be identified by examining the run and matching
+characters, based on their categorization, using regular expressions.</p>
+<p>The following general-purpose identification classes can be used to
+match emoji sequences in regular expressions.</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emoji_</span>             = <span class="sb">`EMOJI`</span>
+<span class="ge">_modifier_</span>          = &quot;U+1F3FB&quot; | &quot;U+1F3FC&quot; | &quot;U+1F3FD&quot; | &quot;U+1F3FE&quot; | &quot;U+1F3FF&quot;
+<span class="ge">_presentation_</span>      = <span class="sb">`VS15`</span> | <span class="sb">`VS16`</span>
+<span class="ge">_zwj_</span>               = <span class="sb">`ZWJ`</span>
+<span class="ge">_cek_</span>               = <span class="sb">`CEK`</span>
+<span class="ge">_blackflag_</span>         = &quot;U+1F3F4&quot;
+<span class="ge">_key_</span>               = &quot;#&quot; | &quot;*&quot; | [&quot;0&quot;..&quot;9&quot;]
+<span class="ge">_color_</span>             = &quot;U+2B1B&quot; | &quot;U+2B1C&quot; | &quot;U+1F7E5&quot; | &quot;U+1F7E6&quot; | &quot;U+1F7E7&quot; | &quot;U+1F7E8&quot; | &quot;U+1F7E9&quot; | &quot;U+1F7EA&quot; | &quot;U+1F7EB&quot;
+<span class="ge">_multipersongroup_</span> = &quot;U+1F91D&quot; | &quot;U+1F46F&quot; | &quot;U+1F93C&quot; | &quot;U+1F46B&quot; | &quot;U+1F46C&quot; | &quot;U+1F46D&quot; | &quot;U+1F48F&quot; | &quot;U+1F491&quot; | &quot;U+1F46A&quot;
+<span class="ge">_gendersign_</span>        = &quot;U+2640&quot; | &quot;U+2642&quot;
+<span class="ge">_genderperson_</span>      = &quot;U+1F468&quot; | &quot;U+1F469&quot; | &quot;U+1F9D1&quot;
+<span class="ge">_hairstyle_</span>         = &quot;U+1F9B0&quot; | &quot;U+1F9B1&quot; | &quot;U+1F9B2&quot; | &quot;U+1F9B3&quot;
+<span class="ge">_direction_</span>         = &quot;U+2B05&quot; | &quot;U+27A1&quot;
+<span class="ge">_regionalindicator_</span> = [&quot;U+1F1E6&quot;..&quot;U+1F1FF&quot;]
+<span class="ge">_tagchar_</span>           = <span class="sb">`TAG_CHARACTER`</span>
+<span class="ge">_endtag_</span>            = &quot;U+E007F&quot;
+</pre></div>
+</div>
+<!---
+
+_adult_               = `U+1F468` | `U+1F469`
+_child_               = `U+1F466` | `U+1F467`
+_familymember_              = _adult_ | _child_
+
+_family_    = _adult_{1,2} _child_{0,2}
+
+ - this doesn't work; perhaps need to redefine the above as "genderperson" and 
+   the OLD genderperson as something different. Coherent haming is going 
+   to be a challenge on that front.
+--->
+<p>The expressions below use state-machine syntax from the Ragel
+state-machine compiler. The operators represent:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>a* = zero or more copies of a
+b+ = one or more copies of b
+c? = optional instance of c
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
+!e = not e
+^f = character-level not f
+g.h = concatenation of g and h
+i|j = i or j
+( ) = grouping of expression elements
+</pre></div>
+</div>
+<section id="presentation-sequences">
+<h3>Presentation sequences<a class="headerlink" href="#presentation-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A presentation sequence is used to request a specific presentation
+style (“text” or “emoji”), potentially overriding the default
+presentation style defined for the codepoint by Unicode.</p>
+<p><img alt="Requesting emoji presentation style" src="_images/emoji-pres-sequence.png" /></p>
+<p><img alt="Requesting text presentation style" src="_images/text-pres-sequence.png" /></p>
+<p>The active emoji font, however, might not contain a glyph for the
+presentation style requested in the sequence. In particular, it is not
+common for emoji fonts to include text-presentation glyphs for
+codepoints that default to the emoji-presentation style.</p>
+<p>In these instances, the text rendering stack should select a fallback
+font that does contain the glyph requested by the presentation
+sequence. Strategies for identifying appropriate fallback fonts are
+beyond the scope of this document.</p>
+<p>A standalone presentation sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emoji_</span> <span class="ge">_presentation_</span>
+</pre></div>
+</div>
+<p>Although standalone presentation sequences can occur, note that
+presentation sequences also occur within longer emoji sequences.</p>
+</section>
+<section id="modifier-sequences">
+<h3>Modifier sequences<a class="headerlink" href="#modifier-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A modifier sequence is used to request an alternate glyph for an emoji
+codepoint.</p>
+<p>Currently, there are five emoji-modifier codepoints defined by
+Unicode. Each corresponds to a different human skin-tone based on the
+Fitzpatrick scale.</p>
+<p><img alt="Fitzpatrick 2" src="_images/fitzpatrick-2.png" /></p>
+<p><img alt="Fitzpatrick 3" src="_images/fitzpatrick-3.png" /></p>
+<p><img alt="Fitzpatrick 4" src="_images/fitzpatrick-4.png" /></p>
+<p><img alt="Fitzpatrick 5" src="_images/fitzpatrick-5.png" /></p>
+<p><img alt="Fitzpatrick 6" src="_images/fitzpatrick-6.png" /></p>
+<p>A modifier sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emojimodified_</span> = <span class="ge">_emoji_</span> <span class="ge">_modifier_</span>
+</pre></div>
+</div>
+<p>Fonts are expected to implement modifier sequences for emoji
+codepoints that depict a single human being, and are expected not to
+implement modifier sequences for other emoji codepoints.</p>
+<blockquote>
+<div><p>Note: Most emoji sequences that depict multiple human beings are
+modified using the ZWJ mechanisms described later, and not via this
+mechanism.</p>
+<p>However, there are a small number of codepoints that depict groups
+of human beings in a standalone codepoint and can be modified with a
+single modifer. They are summarized in the table at the <a class="reference internal" href="#feature-interaction-in-sequences"><span class="std std-doc">feature
+interaction in sequences</span></a>
+section.</p>
+<p>Note, also that there are emoji codepoints depicting beings that are
+ambiguous in regard to their humanity, such as <code class="docutils literal notranslate"><span class="pre">U+1F9DB</span></code>,
+“Vampire”. Shaping engines should not assume that these codepoints
+are unable to support a modifier.</p>
+</div></blockquote>
+<p><img alt="Modifier sequence" src="_images/modifier-sequence.png" /></p>
+<p>The fallback for a modifier sequence is the generic, unmodified
+emoji followed by an emoji representing the skin-tone requested.</p>
+<p><img alt="Modifier sequence fallback" src="_images/modifier-sequence-fallback.png" /></p>
+<p>Modifier sequences use emoji presentation style by default, and cannot
+include a presentation selector. However, an implementation may choose
+to display text-presentation versions of sequences if emoji
+presentation style is not possible in the environment.</p>
+<p>Although standalone modifier sequences occur, note that modifier
+sequences can also occur within longer emoji sequences.</p>
+</section>
+<section id="regional-indicator-flag-sequences">
+<h3>Regional Indicator flag sequences<a class="headerlink" href="#regional-indicator-flag-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A Regional Indicator flag sequence is used to request a flag
+emoji. All Regional Indicator flag sequences are two codepoints long,
+using codepoints from the <code class="docutils literal notranslate"><span class="pre">REGIONAL_INDICATOR</span></code> alphabetical set.</p>
+<p>A Regional Indicator flag sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_regionalindicator_</span> <span class="ge">_regionalindicator_</span>
+</pre></div>
+</div>
+<p>In addition, the only two-codepoint sequences that are considered
+valid Regional Indicator flag sequences are those that correspond to
+the <code class="docutils literal notranslate"><span class="pre">unicode_region_subtag</span></code> field in the CLDR database.</p>
+<p>The typical emoji implementation of such a sequence in an image of a
+flag for the region. However, emoji fonts may choose to represent the
+region through some other visual means (for example, a regional symbol
+or map image). Similarly, where there is more than one possible flag
+for a region, Unicode does not specify any particular visual
+representation.</p>
+<p>Some historical region subtags have been designated as deprecated (for
+example, “East Germany” and “West Germany”). Emoji fonts are not
+expected to support these deprecated subtags. However, if they
+encountered in a text run and are supported in the active font,
+shaping engines should deal with the situation gracefully, without
+offering guarantees of support.</p>
+<p><img alt="Regional Indicator flag sequence" src="_images/regional-indicator-flag-sequence-un.png" /></p>
+<p>Regional Indicator flag sequences use emoji presentation by default,
+and cannot include a presentation selector.  However, an
+implementation may choose to display text-presentation versions of
+sequences if emoji presentation style is not possible in the
+environment.</p>
+<p><img alt="Regional Indicator flag sequence fallback" src="_images/regional-indicator-flag-sequence-un-fallback.png" /></p>
+<p>Regional Indicator flag sequences only occur in standalone form.</p>
+<blockquote>
+<div><p>Note: The Regional Indicator flag sequences are defined to always be
+interpreted left-to-right (LTR) for the purpose of
+bidirectionality. This behavior differs from that of other emoji
+sequences, which are neutral in regard to bidirectionality.</p>
+<p>For example, a Regional Indicator sequence “RI_U, RI_A” should result
+in a flag for Ukraine (“UA”), even if it occurs within a run of
+right-to-left text. Reversing the sequence to result in a flag for
+Australia (“AU”) is incorrect.</p>
+</div></blockquote>
+</section>
+<section id="tag-flag-sequences">
+<h3>Tag flag sequences<a class="headerlink" href="#tag-flag-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A Tag flag sequence is used to request a flag emoji for any flag not
+defined by the Regional Indicator flag sequence mechanism.</p>
+<p>A Tag flag sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_blackflag_</span> <span class="ge">_tagchar_</span>+ <span class="ge">_endtag_</span>
+</pre></div>
+</div>
+<p>The codepoints in the <code class="docutils literal notranslate"><span class="pre">TAG_CHARACTER</span></code> set come from the “Tags” block
+in Unicode. At present, the set of allowable tags is defined as the
+range <code class="docutils literal notranslate"><span class="pre">[U+E0020..U+E007E]</span></code>, which includes tags for space, upper- and
+lower-case basic Latin alphabetic letters, numerals, and several
+symbols. However, Unicode also notes that the upper-case alphabetic
+tags are not currently used.</p>
+<p>Tag sequences must end with “Cancel Tag” (<code class="docutils literal notranslate"><span class="pre">U+E007F</span></code>).</p>
+<blockquote>
+<div><p>Note: Despite the official name “Cancel Tag”, this codepoint
+terminates valid tag sequences, rather than negating them.</p>
+</div></blockquote>
+<p><img alt="Tag flag sequence" src="_images/tag-flag-sequence-wales.png" /></p>
+<p>Tag flag sequences only occur in standalone form.</p>
+</section>
+<section id="keycap-sequences">
+<h3>Keycap sequences<a class="headerlink" href="#keycap-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A Keycap sequence is used to request an emoji that depicts a
+telephone-keypad button.</p>
+<p>A Keycap sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_key_</span> <span class="ge">_presentation_</span> <span class="ge">_cek_</span>
+</pre></div>
+</div>
+<p><img alt="Keycap sequence" src="_images/keycap-sequence.png" /></p>
+<p>Keycap sequences only occur in standalone form.</p>
+</section>
+<section id="zwj-sequences">
+<h3>ZWJ sequences<a class="headerlink" href="#zwj-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A Zero-Width Joiner (ZWJ) sequence can be used to request specific
+variants of an emoji glyph or to request the combined form of a
+sequence of emoji glyphs.</p>
+<p>Because the ZWJ codepoint itself is invisible, users will expect ZWJ
+sequences to fall back gracefully as sequences of standalone emoji
+glyphs that convey the original meaning. For example, a ZWJ
+multi-person group sequence would be rendered as a single multi-person
+emoji glyph if one is available in the active font, but would fall
+back to a set of individual-person emoji glyphs.</p>
+<section id="zwj-hair-sequences">
+<h4>ZWJ hair sequences<a class="headerlink" href="#zwj-hair-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ hair sequence is used to request a specific hairstyle version of
+an emoji codepoint that depicts a single human being.</p>
+<p><img alt="Hairstyle sequence" src="_images/hairstyle-sequence.png" /></p>
+<p>A ZWJ hair sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_zwj_</span> <span class="ge">_hairstyle_</span>
+</pre></div>
+</div>
+<p>Currently, four hairstyle modifier codepoints are defined:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F9B0</span></code> “Red or ginger hair”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F9B1</span></code> “Curly hair”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F9B2</span></code> “Bald”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F9B3</span></code> “White hair”</p></li>
+</ul>
+<p>The set of hairstyle sequences allowed has been chosen to enable
+depictions of distinct properties not easily represented by the
+defaults of the fallback glyphs. By default, the hairstyle and color
+on fallback emoji is expected to be nondescript and dark.</p>
+<p>Prior to the adoption of the ZWJ-hair-sequence mechanism, a codepoint
+specifying “person with blond hair” (<code class="docutils literal notranslate"><span class="pre">U+1F471</span></code>) already existed;
+therefore “blond” was not included in the set of supported hairstyle
+versions.</p>
+</section>
+<section id="zwj-gendered-person-sequences">
+<h4>ZWJ gendered person sequences<a class="headerlink" href="#zwj-gendered-person-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ gendered person sequence is used to request a specific-gendered
+version of an emoji codepoint that depicts a single human being.</p>
+<p>Each ZWJ gendered person sequence is composed of an emoji that depicts
+a human by default, followed by <code class="docutils literal notranslate"><span class="pre">ZWJ</span></code>, followed by a gender symbol,
+followed by <code class="docutils literal notranslate"><span class="pre">_VS16_</span></code>.</p>
+<p><img alt="Gendered person sequence" src="_images/gendered-person-sequence.png" /></p>
+<p>The fallback for a ZWJ gendered person sequence is a generic “person”
+emoji followed by a gender symbol.</p>
+<p><img alt="Gendered person sequence fallback" src="_images/gendered-person-sequence-fallback.png" /></p>
+<p>A ZWJ gendered person sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_zwj_</span> <span class="ge">_gendersign_</span> <span class="ge">_VS16_</span>
+</pre></div>
+</div>
+<p>A small number of emoji codepoints are defined to show a single human
+being with a fixed gender. These codepoints cannot have their apparent
+gender modified using the ZWJ gendered person mechanism.</p>
+<p>Currently, this list of codepoints includes those in the table below:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Emoji codepoint</p></th>
+<th class="head text-left"><p>Gender</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Girl</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Boy</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Woman</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Man</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Older woman</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Older man</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Mrs Claus</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Santa Claus</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Princess</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Prince</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Woman dancing</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Man dancing</p></td>
+<td class="text-left"><p>Male</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Pregnant woman</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Breastfeeding</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1F467</span></code> Woman with headscarf</p></td>
+<td class="text-left"><p>Female</p></td>
+</tr>
+</tbody>
+</table>
+<p>However, the list may be updated in subsequent revisions of Unicode.</p>
+<p>In addition, emoji codepoints that depict groups of two or more human
+beings are handled by other mechanisms, such as the ZWJ multi-person
+group mechanism, and are documented in the corresponding section.</p>
+<blockquote>
+<div><p>Note: The ZWJ gendered person sequence is not to be confused with
+the ZWJ role sequence.</p>
+<p>In effect, both sequence types can be used to depict a human being
+performing a task or activity, and can be used to request a specific
+gender for the human being depicted.</p>
+<p>However, all of the codepoints covered by the ZWJ gendered person
+sequences are emoji that show a human being by default, whereas the
+codepoints covered by the ZWJ role sequences begin with a generic
+human-being emoji and append a symbol or object emoji.</p>
+</div></blockquote>
+</section>
+<section id="zwj-multi-person-group-sequences">
+<h4>ZWJ multi-person group sequences<a class="headerlink" href="#zwj-multi-person-group-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ multi-person group sequence is used to request a multi-person
+emoji glyph. The fallback for a ZWJ multi-person group sequence is a
+sequence of individual-person emoji glyphs.</p>
+<p>A ZWJ multi-person group sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) (<span class="ge">_zwj_</span> (<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_presentation_</span>? ){1,3}
+</pre></div>
+</div>
+<p>Only a fixed number of such multi-person group sequences is
+defined. Some of the sequences make use of specific codepoints (such
+as “Heavy Black Heart” or “Kiss Mark”).</p>
+<p>The currently supported configurations for multi-person group emoji
+sequences are:</p>
+<ul class="simple">
+<li><p>Couple with heart</p></li>
+<li><p>Couple in kiss</p></li>
+<li><p>Couple holding hands</p></li>
+<li><p>Family</p></li>
+<li><p>Shaking hands</p></li>
+</ul>
+<p>A potential source of confusion for these sequences is that some of
+them appear to duplicate the content of an existing emoji codepoint,
+but the existing emoji codepoint is typically not involved in forming
+the corresponding ZWJ multi-person group sequence.</p>
+<p>Specifically, there are standalone emoji codepoints for “Kiss”
+(<code class="docutils literal notranslate"><span class="pre">U+1F48F</span></code>), two people holding hands (in three permutations:
+<code class="docutils literal notranslate"><span class="pre">U+1F46B</span></code>, <code class="docutils literal notranslate"><span class="pre">U+1F46C</span></code>, and <code class="docutils literal notranslate"><span class="pre">U+1F46D</span></code>), “Family” (<code class="docutils literal notranslate"><span class="pre">U+1F46A</span></code>), and
+“Handshake” (<code class="docutils literal notranslate"><span class="pre">U+1F91D</span></code>). The details of each of these codepoints in
+relation to the corresponding conceptually-similar ZWJ multi-person
+group sequence are noted below.</p>
+<p>Each of the specific ZWJ multi-person group sequences has a precise
+definition.</p>
+<p>The “Couple with heart” sequence is composed of
+“Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Person”, and must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_zwj_</span> <span class="sb">`U+2764`</span> <span class="ge">_VS16_</span> <span class="ge">_zwj_</span> (<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>)
+</pre></div>
+</div>
+<p><img alt="Multi-person heart sequence" src="_images/multi-person-heart-sequence.png" /></p>
+<p><img alt="Multi-person heart skintone sequence" src="_images/multi-person-heart-skintone-sequence.png" /></p>
+<p>The “Couple in kiss” sequence is composed of
+“Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Kiss_Mark,ZWJ,Person”, and must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_zwj_</span> <span class="sb">`U+2764`</span> <span class="ge">_VS16_</span> <span class="ge">_zwj_</span> <span class="sb">`U+1F48B`</span> <span class="ge">_zwj_</span> (<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>)
+</pre></div>
+</div>
+<p><img alt="Multi-person kiss sequence" src="_images/multi-person-kiss-sequence.png" /></p>
+<p><img alt="Multi-person kiss skin-tone sequence" src="_images/multi-person-kiss-skintone-sequence.png" /></p>
+<blockquote>
+<div><p>Note: the kiss ZWJ sequence does not involve the “Kiss” codepoint
+(<code class="docutils literal notranslate"><span class="pre">U+1F48F</span></code>).</p>
+</div></blockquote>
+<p>The “Couple holding hands” sequence is composed of
+“Person,ZWJ,Handshake,ZWJ,Person”, and must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) <span class="ge">_zwj_</span> <span class="sb">`U+1F91D`</span> <span class="ge">_zwj_</span> (<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>)
+</pre></div>
+</div>
+<p><img alt="Multi-person holding-hands sequence" src="_images/multi-person-holding-hands-sequence.png" /></p>
+<p><img alt="Multi-person holding-hands skin-tone sequence" src="_images/multi-person-holding-hands-skintone-sequence.png" /></p>
+<blockquote>
+<div><p>Note: the couple-holding-hands ZWJ sequence does not involve any of
+the “Man and woman holding hands” (<code class="docutils literal notranslate"><span class="pre">U+1F46B</span></code>), “Two men holding
+hands” (<code class="docutils literal notranslate"><span class="pre">U+1F46C</span></code>), or “Two women holding hands” (<code class="docutils literal notranslate"><span class="pre">U+1F46D</span></code>)
+codepoints.</p>
+</div></blockquote>
+<p>The “Family” sequence is composed of two-to-four individual “Person”
+subsequences, each separated by a ZWJ. Furthermore, the “Person”
+subsequences must be sorted so that all adult subsequences precede all
+child subsequences. A “Family” subsequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) (<span class="ge">_zwj_</span> (<span class="ge">_emoji_</span> | <span class="ge">_emojimodified_</span>) ){1,3}
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: The ZWJ “Family” sequence is defined to support modifiers on
+each individual human-codepoint component of the sequence, but these
+modified “Family” sequences are not currently included in the
+Recommended For General Interchange (RGI) emoji set, due to the
+number of permutations that would be added to the RGI set as a result.</p>
+</div></blockquote>
+<p><img alt="Multi-person family man, boy sequence" src="_images/multi-person-family-man-boy-sequence.png" /></p>
+<p><img alt="Multi-person family man, girl, girl sequence" src="_images/multi-person-family-man-girl-girl-sequence.png" /></p>
+<p><img alt="Multi-person family man, woman, girl sequence" src="_images/multi-person-family-man-woman-girl-sequence.png" /></p>
+<p><img alt="Multi-person family woman, woman, girl, boy sequence" src="_images/multi-person-family-woman-woman-girl-boy-sequence.png" /></p>
+<blockquote>
+<div><p>Note: the family ZWJ sequence does not involve the “Family”
+codepoint (<code class="docutils literal notranslate"><span class="pre">U+1F46A</span></code>).</p>
+</div></blockquote>
+<p>The “Shaking hands” sequence is composed of two “Hand” subsequences
+separated by a ZWJ, and must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="sb">`U+1FAF1`</span> <span class="ge">_modifier_</span> <span class="ge">_zwj_</span> <span class="sb">`U+1FAF2`</span> <span class="ge">_modifier_</span>
+</pre></div>
+</div>
+<p><img alt="Multi-person shaking-hands sequence" src="_images/multi-person-shaking-hands-sequence.png" /></p>
+<blockquote>
+<div><p>Note: the ZWJ “Shaking hands” sequence does not involve the “Handshake”
+codepoint (<code class="docutils literal notranslate"><span class="pre">U+1F91D</span></code>), although the “Handshake” codepoint itself can
+be followed by a single <em>modifier</em> codepoint that, for legacy
+reasons, serves to alter the skin tone of both of the hands depicted
+in the handshake.</p>
+<p>However, the “Handshake” codepoint <em>is</em> utilized in the multi-person
+group sequence for “Couple holding hands”.</p>
+</div></blockquote>
+</section>
+<section id="zwj-role-sequences">
+<h4>ZWJ role sequences<a class="headerlink" href="#zwj-role-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ role (or profession) sequence is used to request an emoji
+depicting a human being performing a task or job. Role sequences are
+composed of a codepoint representing a human, followed by <code class="docutils literal notranslate"><span class="pre">ZWJ</span></code>,
+followed by an emoji depicting an object or symbol that references the
+desired profession or role.</p>
+<p><img alt="Role sequence firefighter" src="_images/role-sequence-firefighter.png" /></p>
+<p>Optionally, the sequence can be further updated by requesting a
+skin-tone modifier appended to the <code class="docutils literal notranslate"><span class="pre">_genderperson_</span></code> element.</p>
+<p><img alt="Role sequence firefighter with modifier" src="_images/role-sequence-firefighter-skintone-6.png" /></p>
+<p>In some cases, the object or symbol depicted by the standalone emoji
+will not be shown in the substituted emoji resulting from the
+sequence. For example, the “factory” codepoint (<code class="docutils literal notranslate"><span class="pre">U+1F3ED</span></code>) depicts a
+building in its standalone emoji, but the “factory worker” sequence
+depicts a human being outfitted for factory work, rather than
+depicting a combination of the human being and the factory building.</p>
+<p>In addition, some of the supported “role” codepoints do not use emoji
+presentation by default; for those codepoints, the emoji will be
+followed by a presentation selector.</p>
+<p><img alt="Role sequence pilot" src="_images/role-sequence-pilot.png" /></p>
+<p><img alt="Role sequence pilot with modifier" src="_images/role-sequence-pilot-skintone-2.png" /></p>
+<p>The fallback for a ZWJ role sequence is a generic “person” emoji
+followed by the emoji symbolizing the task or job.</p>
+<p>A ZWJ role sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_genderperson_</span> <span class="ge">_modifier_</span>? <span class="ge">_zwj_</span> <span class="ge">_emoji_</span> <span class="ge">_presentation_</span>?
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: The ZWJ role sequence is not to be confused with the ZWJ
+gendered person sequence.</p>
+<p>In effect, both sequence types can be used to depict a human being
+performing a task or activity, and can be used to request a specific
+gender for the human being depicted.</p>
+<p>However, all of the codepoints covered by the ZWJ gendered person
+sequences are emoji that show a human being by default, whereas the
+codepoints covered by the ZWJ role sequences begin with a generic
+human-being emoji and append a symbol or object emoji.</p>
+</div></blockquote>
+</section>
+<section id="zwj-color-sequences">
+<h4>ZWJ color sequences<a class="headerlink" href="#zwj-color-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ color sequence is used to request a version of an emoji
+codepoint depicting the base object in a specific color.</p>
+<p>A ZWJ color sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emoji_</span> <span class="ge">_zwj_</span> <span class="ge">_color_</span> <span class="ge">_presentation_</span>
+</pre></div>
+</div>
+<p>Currently, nine codepoints are defined, each of which (in isolation)
+depicts a large square filled with the color in question.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">U+2B1B</span></code> - “Black Large Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+2B1C</span></code> - “White Large Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7E5</span></code> - “Large Red Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7E6</span></code> - “Large Blue Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7E7</span></code> - “Large Orange Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7E8</span></code> - “Large Yellow Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7E9</span></code> - “Large Green Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7EA</span></code> - “Large Purple Square”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">U+1F7EB</span> </code> - “Large Brown Square”</p></li>
+</ul>
+<p><img alt="Color sequence" src="_images/color-sequence.png" /></p>
+<p>The fallback for a ZWJ color sequence is the default emoji followed by
+the default emoji for the color codepoint (that is, the color square).</p>
+</section>
+<section id="zwj-directionality-sequences">
+<h4>ZWJ directionality sequences<a class="headerlink" href="#zwj-directionality-sequences" title="Permalink to this heading">¶</a></h4>
+<p>A ZWJ directionality sequence is used to request a version of an emoji
+codepoint facing a specific cardinal direction.</p>
+<p><img alt="ZWJ directionality sequence" src="_images/zwj-directionality-sequence.png" /></p>
+<p>A ZWJ directionality sequence must match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emoji_</span> <span class="ge">_zwj_</span> <span class="ge">_direction_</span> <span class="ge">_presentation_</span>
+</pre></div>
+</div>
+</section>
+<section id="zwj-additional-sequences">
+<h4>ZWJ additional sequences<a class="headerlink" href="#zwj-additional-sequences" title="Permalink to this heading">¶</a></h4>
+<p>In addition to the above ZWJ sequence categories, there are 13
+standalone, but uncategorized, ZWJ sequences defined in Unicode.</p>
+<ul class="simple">
+<li><p>“Heart on fire”</p></li>
+<li><p>“Mending heart”</p></li>
+<li><p>“transgender flag”</p></li>
+<li><p>“Rainbow flag”</p></li>
+<li><p>“Pirate flag”</p></li>
+<li><p>“Service dog”</p></li>
+<li><p>“Polar bear”</p></li>
+<li><p>“Eye in speech bubble”</p></li>
+<li><p>“Face exhaling”</p></li>
+<li><p>“Face with spiral eyes”</p></li>
+<li><p>“Face in clouds”</p></li>
+<li><p>“Mx Claus”</p></li>
+<li><p>“Black cat”</p></li>
+</ul>
+<p><img alt="ZWJ heart-on-fire sequence" src="_images/zwj-sequence-heart-on-fire.png" /></p>
+<p>These sequences currently match:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_emoji_</span> <span class="ge">_presentation_</span>? <span class="ge">_zwj_</span> <span class="ge">_emoji_</span> <span class="ge">_presentation_</span>?
+</pre></div>
+</div>
+<p>Note that the “Black cat” sequence, although it appears on this list
+of additional ZWJ sequences, has subsequently been generalized to the
+<a class="reference internal" href="#zwj-color-sequences"><span class="std std-doc">ZWJ color sequence mechanism</span></a>.</p>
+</section>
+</section>
+<section id="other-sequences-and-ligatures">
+<h3>Other sequences and ligatures<a class="headerlink" href="#other-sequences-and-ligatures" title="Permalink to this heading">¶</a></h3>
+<p>Emoji fonts may include support for additional variants and
+sequences. For example, an emoji font might implement support for
+“keycap”-style emoji for alphabetical characters in addition to the
+numbers and symbols defined above.</p>
+<p>Emoji fonts may also include many-to-one emoji substitutions that do
+not fit into any of the above sequence varieties and, instead, behave
+more like ligatures. For example, the sequence “Ice Cream, Banana”
+might be substituted with a “banana split” emoji.</p>
+<p>Any such substitutions are included by the emoji font vendor at their
+own discretion, with the understanding that fallback behavior is
+unpredictable.</p>
+<p>In all such cases, the shaping engine can make a best-effort attempt
+to support the sequences, but is not obligated to provide any
+guarantees as to their correctness.</p>
+</section>
+</section>
+<section id="feature-interaction-in-sequences">
+<h2>Feature interaction in sequences<a class="headerlink" href="#feature-interaction-in-sequences" title="Permalink to this heading">¶</a></h2>
+<p>As is noted in the descriptions of ZWJ gendered-person sequences and
+ZWJ multi-person group sequences, there is potential for confusion
+wherever standalone emoji codepoints and emoji sequences overlap in
+meaning.</p>
+<p>This potential for confusion is compounded by the fact that the
+skin-tone modifier mechanism and the ZWJ gendered person mechanism
+interact differently with standalone emoji codepoints and with emoji
+sequences.</p>
+<p>In particular, for several of the standalone emoji codepoints, a
+single skin-tone modifier is permitted, which is defined to modify both
+of the human beings depicted in the emoji. For other standalone emoji
+codepoints, only a single gender designator ZWJ gendered-person
+subsequence is allowed to be appended to the codepoint, and the gender
+designator is defined to modify both of the human beings depicted in
+the emoji.</p>
+<p>The permitted combinations are summarized in the following table:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Type</p></th>
+<th class="head text-left"><p>Emoji</p></th>
+<th class="head text-left"><p>Skin-tone-modifier</p></th>
+<th class="head text-left"><p>Gender depicted</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Handshake” <code class="docutils literal notranslate"><span class="pre">U+1F91D</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Woman with bunny ears” <code class="docutils literal notranslate"><span class="pre">U+1F46F</span></code></p></td>
+<td class="text-left"><p>not supported</p></td>
+<td class="text-left"><p>only one supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Wrestlers” <code class="docutils literal notranslate"><span class="pre">U+1F93C</span></code></p></td>
+<td class="text-left"><p>not supported</p></td>
+<td class="text-left"><p>only one supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Man and woman holding hands” <code class="docutils literal notranslate"><span class="pre">U+1F46B</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Two men holding hands” <code class="docutils literal notranslate"><span class="pre">U+1F46C</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Two women holding hands” <code class="docutils literal notranslate"><span class="pre">U+1F46D</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Kiss” <code class="docutils literal notranslate"><span class="pre">U+1F48F</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Couple with heart” <code class="docutils literal notranslate"><span class="pre">U+1F491</span></code></p></td>
+<td class="text-left"><p>only one supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Standalone</p></td>
+<td class="text-left"><p>“Family” <code class="docutils literal notranslate"><span class="pre">U+1F46A</span></code></p></td>
+<td class="text-left"><p>not supported</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sequence</p></td>
+<td class="text-left"><p>“Couple with heart” ZWJ sequence</p></td>
+<td class="text-left"><p>supported</p></td>
+<td class="text-left"><p>supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Sequence</p></td>
+<td class="text-left"><p>“Couple in kiss” ZWJ sequence</p></td>
+<td class="text-left"><p>supported</p></td>
+<td class="text-left"><p>supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sequence</p></td>
+<td class="text-left"><p>“Couple holding hands” ZWJ sequence</p></td>
+<td class="text-left"><p>supported</p></td>
+<td class="text-left"><p>supported</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>Sequence</p></td>
+<td class="text-left"><p>“Family” ZWJ sequence</p></td>
+<td class="text-left"><p>supported</p></td>
+<td class="text-left"><p>supported</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>Sequence</p></td>
+<td class="text-left"><p>“Shaking hands” ZWJ sequence</p></td>
+<td class="text-left"><p>required</p></td>
+<td class="text-left"><p>not supported</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="emoji-sets">
+<h2>Emoji sets<a class="headerlink" href="#emoji-sets" title="Permalink to this heading">¶</a></h2>
+<p>Unicode defines several lists of emoji codepoints and emoji sequences
+that constitute the sequences that are expected in general text.</p>
+<p>The “Basic emoji” set includes all individual codepoints that can be
+rendered with the emoji presentation style (including those codepoints
+that do not default to emoji presentation).</p>
+<p>The “Emoji keycap sequence” set includes all possible valid Keycap
+sequences.</p>
+<p>The “RGI emoji modifier sequence”, “RGI emoji flag sequence”, “RGI
+emoji tag sequence”, and “RGI emoji ZWJ sequence” sets each include
+only a subset of the possible valid sequences for their respective
+variety of sequence. These sets are designated as “Recommended for
+General Interchange” (RGI) to denote that they are in common usage.</p>
+<p>Finally, the “RGI emoji set” includes all of the codepoints and
+sequences included in the preceding sets. Presence in the RGI emoji
+set can be tracked with the <code class="docutils literal notranslate"><span class="pre">RGI_Emoji</span></code> property in the UCD. Fonts are
+not required to implement the entire RGI emoji set, nor any of the
+other sets.</p>
+</section>
+<section id="the-default-shaping-model">
+<h2>The default shaping model<a class="headerlink" href="#the-default-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>Emoji should be shaped using the
+<a class="reference internal" href="opentype-shaping-default.html"><span class="doc std std-doc">default</span></a> shaping model.</p>
+<p>Processing a run of text in the default shaping model involves three
+top-level stages:</p>
+<ol class="arabic simple">
+<li><p>Applying the basic substitution features from GSUB</p></li>
+<li><p>Applying other substitution features from GSUB</p></li>
+<li><p>Applying the positioning features from GPOS</p></li>
+</ol>
+<p>Emoji sequences as described above will generally be implemented in
+the active font as a GSUB lookup feature. However, there are no
+definitively invalid GSUB or GPOS features that must or must <em>not</em> be
+employed for this purpose.</p>
+<p>Consequently, shaping engines should not assume (for example) that
+emoji sequences will be implemented in any specific feature of GSUB.</p>
+<p>A font may also employ contextual features, such as using <code class="docutils literal notranslate"><span class="pre">locl</span></code>, that
+affects the emoji glyph shown, or use GPOS positioning for some emoji
+glyphs.</p>
+<section id="font-substitution-for-presentation-forms">
+<h3>Font substitution for presentation forms<a class="headerlink" href="#font-substitution-for-presentation-forms" title="Permalink to this heading">¶</a></h3>
+<p>Before shaping begins, the rendering engine should analyze the text
+run and identify presentation forms.</p>
+<p>A presentation sequence is used to request a specific presentation
+style (“text” or “emoji”) for a codepoint, potentially overriding the
+default presentation style that is defined in Unicode for that
+codepoint.</p>
+<p>Because it is uncommon for a single font to include both an
+emoji-presentation-style glyph and a text-presentation-style glyph for
+the same codepoint, handling a presentation sequence might
+require font substitution.</p>
+<blockquote>
+<div><p>Note: Strictly speaking, font substitution is not part of the
+shaping process, and the handling of missing presentation forms
+might be most easily performed during segmentation of the text
+stream into runs. However, shaping-engine implementers should be
+aware that such presentation-sequence substitutions are allowable
+and handle them gracefully.</p>
+</div></blockquote>
+</section>
+<section id="applying-the-basic-substitution-features-from-gsub">
+<h3>1. Applying the basic substitution features from GSUB<a class="headerlink" href="#applying-the-basic-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>The basic-substitution stage applies mandatory substitution features
+using the rules in the font’s GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application
+of GSUB features.</p>
+<p>The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>locl
+ccmp
+rlig
+</pre></div>
+</div>
+<p>An emoji font can implement sequence support through any GSUB feature
+lookup.</p>
+<p>Basic substitution features a common choice for emoji fonts and should
+be applied at this stage. In particular, GSUB features that are
+enabled by default and GSUB features that cannot be disabled by
+application-level user interfaces are common choices in which the
+active font may implement emoji substitutions.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.</p>
+<blockquote>
+<div><p>Note: Strictly speaking, the use of localized-form substitutions is
+not part of the shaping process, but of the localization process,
+and could take place at an earlier point while handling the text
+run. However, shaping engines are expected to complete the
+application of the <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature before applying the subsequent
+GSUB substitutions in the following steps.</p>
+</div></blockquote>
+<p>In other, non-emoji text runs, the <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> feature allows a font to
+substitute mark-and-base sequences with a pre-composed glyph including
+the mark and the base, or to substitute a single glyph into an
+equivalent decomposed sequence of glyphs.</p>
+<p>If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>-substituted
+glyphs.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rlig</span></code> feature substitutes glyph sequences with mandatory
+ligatures. Substitutions made by <code class="docutils literal notranslate"><span class="pre">rlig</span></code> cannot be disabled by
+application-level user interfaces.</p>
+<p>The basic substitution features play a relatively more important role
+in shaping non-emoji text runs; therefore the shaping engine may
+apply some of them (such as <code class="docutils literal notranslate"><span class="pre">locl</span></code>) them at an earlier stage in the
+shaping process. Emoji shaping should be unaffected by this decision.</p>
+</section>
+<section id="applying-typographic-substitution-features-from-gsub">
+<h3>2. Applying typographic substitution features from GSUB<a class="headerlink" href="#applying-typographic-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>The typographic-substitution phase applies all remaining substitution
+features using the rules in the font’s GSUB table. In preparation for
+this stage, glyph sequences should be tagged for possible application
+of GSUB features.</p>
+<p>These substitutions include those features designed to provide
+typographic consistency and correctness.</p>
+<p>The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.</p>
+<p>An emoji font can implement sequence support through any GSUB feature
+lookup. This can include any other substitution feature in the GSUB
+feature table.</p>
+<p>Support for RGI emoji sequences or other emoji sequences defined as
+valid in Unicode may be implemented in a feature that are enabled by
+default and cannot be disabled by application-level user interfaces,
+such as the <code class="docutils literal notranslate"><span class="pre">rlig</span></code> feature (for “required ligatures”).</p>
+<p>However, emoji fonts may also include support for emoji sequences in
+GSUB features that can be disabled by application-level user
+interfaces, such as the <code class="docutils literal notranslate"><span class="pre">liga</span></code> feature (for standard ligatures). Emoji
+sequences may also be implemented in features that are disabled by
+default, such as the <code class="docutils literal notranslate"><span class="pre">dlig</span></code> feature (for “discretionary ligatures”).</p>
+<p>An emoji font might also implement support for emoji sequences through
+the use of multiple features. For example, RGI emoji sequences or
+other emoji sequences defined as valid in Unicode may be implemented
+in <code class="docutils literal notranslate"><span class="pre">rlig</span></code>, with custom sequences implemented in <code class="docutils literal notranslate"><span class="pre">liga</span></code>.</p>
+</section>
+<section id="applying-the-positioning-features-from-gpos">
+<h3>3. Applying the positioning features from GPOS<a class="headerlink" href="#applying-the-positioning-features-from-gpos" title="Permalink to this heading">¶</a></h3>
+<p>The positioning stage adjusts the positions of mark and base
+glyphs. In preparation for this stage, glyph sequences should be
+tagged for possible application of GPOS features.</p>
+<p>The order in which these features are applied is not canonical; they
+should be applied in the order in which they appear in the GSUB table
+in the font.</p>
+<p>In general, all emoji glyphs in a given font are expected to be
+approximately equal in height and width, and the usage of GPOS
+positioning for emoji is uncommon.</p>
+<p>However, some emoji glyphs might be narrower or wider than average by
+the nature of the image itself (for example, certain national flags
+are narrower or wider than others), and there may be situations in
+which the active font alters the default position of an emoji glyph to
+achieve a consistent alignment, spacing, or appearance.</p>
+<p>Therefore, shaping engines should make no assumptions about the
+presence or absence of GPOS features for emoji runs, and should apply
+the features if present.</p>
+<!---
+
+FALLBACK ??
+
+modifiers = skintone
+- fallback recommended to shown skintone patch, even though modifier
+  not normally visible codepoint??
+
+emoji sequences 
+- Regional Indicators Symbols: 
+  - might produce flags OR as a 'country code'
+  - limited to predefined list; has some deprecated code (eg, east germany)
+  - HB trickiness:
+    https://github.com/harfbuzz/harfbuzz/commit/2b0ced28b685de4edbd22cf5f59be30075984dfb
+	https://github.com/harfbuzz/harfbuzz/issues/2265
+
+--->
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/opentype-shaping-emoji.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

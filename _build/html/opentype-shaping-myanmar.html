@@ -1,0 +1,1045 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Myanmar shaping in OpenType &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="myanmar-shaping-in-opentype">
+<h1>Myanmar shaping in OpenType<a class="headerlink" href="#myanmar-shaping-in-opentype" title="Permalink to this heading">¶</a></h1>
+<p>This document details the shaping procedure needed to display text
+runs in the Myanmar script.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information"><span class="std std-doc">General information</span></a></p></li>
+<li><p><a class="reference internal" href="#terminology"><span class="std std-doc">Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#glyph-classification"><span class="std std-doc">Glyph classification</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#shaping-classes-and-subclasses"><span class="std std-doc">Shaping classes and subclasses</span></a></p></li>
+<li><p><a class="reference internal" href="#myanmar-character-tables"><span class="std std-doc">Myanmar character tables</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-mym2-shaping-model"><span class="std std-doc">The <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code> shaping model</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#identifying-syllables-and-other-sequences"><span class="std std-doc">1: Identifying syllables and other sequences</span></a></p></li>
+<li><p><a class="reference internal" href="#initial-reordering"><span class="std std-doc">2: Initial reordering</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-the-basic-substitution-features-from-gsub"><span class="std std-doc">3: Applying the basic substitution features from GSUB</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-all-remaining-substitution-features-from-gsub"><span class="std std-doc">4: Applying all remaining substitution features from GSUB</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-remaining-positioning-features-from-gpos"><span class="std std-doc">5: Applying remaining positioning features from GPOS</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-mymr-shaping-model"><span class="std std-doc">The <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> shaping model</span></a></p></li>
+</ul>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>The Myanmar or Burmese script is a descendant of the Brahmi script, and follows
+many of the same general patterns found in <a class="reference internal" href="opentype-shaping-indic-general.html"><span class="doc std std-doc">Indic
+scripts</span></a>. However, Myanmar
+incorporates enough distinctions of its own that it is generally not
+advisable to attempt supporting it in a general-purpose Indic shaping
+engine.</p>
+<p>For example, Myanmar script includes a “Reph”-like feature known as
+“Kinzi” although, unlike “Reph”, a “Kinzi” may be formed by any of
+several initial consonants. Also, notably, real-world texts written in
+Myanmar script often do not use inter-word spaces, which may make the
+process of syllable identification substantially different from
+processing Indic scripts.</p>
+<p>The Myanmar script is used to write multiple languages, most commonly
+Burmese, Mon, Karen, Kayah, Shan, Palaung, and Pali. In addition,
+Sanskrit may be written in Myanmar, so Myanmar script runs may include
+glyphs from the Vedic Extensions block of Unicode.</p>
+<p>There are two extant Myanmar script tags defined in OpenType, <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code>. The older script tag, <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code>, was deprecated in 2005.
+Therefore, new fonts should be engineered to work with the <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code>
+shaping model. However, if a font is encountered that supports only
+<code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code>, the shaping engine should deal with it gracefully.</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">¶</a></h2>
+<p>OpenType shaping uses a standard set of terms for Brahmi-derived and
+Indic scripts.  The terms used colloquially in any particular language
+may vary, however, potentially causing confusion.</p>
+<p><strong>Matra</strong> is the standard term for a dependent vowel sign. Syllables
+in Myanmar script can include sequences of multiple vowels and,
+therefore, multiple matras.</p>
+<p><strong>Halant</strong> and <strong>Virama</strong> are both standard terms for the below-base
+“vowel-killer” mark. Unicode documents use the term “virama” most
+frequently, while OpenType documents use the term “halant” most
+frequently.</p>
+<p><strong>Asat</strong> is the term for the “pure killer” character in Myanmar. An
+asat after a consonant serves a similar function as a halant by
+suppressing the inherent vowel of the consonant, but the asat is
+rendered visually, either as an above-base mark or in a substitution
+form triggered by an adjacent codepoint.</p>
+<p>An asat may be placed following a consonant to denote that the
+consonant is doubled. An asat may also be followed by a halant, a
+sequence that is used to trigger the “Kinzi” special form.</p>
+<p><strong>Chandrabindu</strong> (or simply <strong>Bindu</strong>) is the standard term for the
+diacritical mark indicating that the preceding vowel should be
+nasalized. Myanmar script does not use a chandrabindu; however, the
+<em>BINDU</em> category is used for other marks during the
+syllable-identification stage in order to maintain compatibility with
+other scripts.</p>
+<p><strong>Tone markers</strong> are an important part of languages written in Myanmar
+script. These markers may be either spacing-combining (<code class="docutils literal notranslate"><span class="pre">[Mc]</span></code>) or
+non-spacing (<code class="docutils literal notranslate"><span class="pre">[Mn]</span></code>). Several tone markers may be used within a single
+syllable.</p>
+<p>The term <strong>base consonant</strong> is also critical to Myanmar shaping. The
+base consonant of a syllable is the consonant that carries the
+syllable’s vowel sound, either the inherent vowel (for an unmarked
+base consonant) or a dependent vowel (with the addition of a matra).</p>
+<p>A syllable’s base consonant is generally rendered in its full form
+(although it may form ligatures), while other consonants in the
+syllable frequently take on secondary forms. Different GSUB
+substitutions may apply to a script’s <strong>pre-base</strong> and <strong>post-base</strong>
+consonants. Some of these substitutions create <strong>above-base</strong> or
+<strong>below-base</strong> forms. The <strong>Kinzi</strong> form of certain consonants is an
+example, akin to the “Reph” form of “Ra” in many Indic scripts.</p>
+<p>Many Myanmar letters may be followed by a <strong>Variation Selector</strong>
+codepoint in order to request the <strong>dotted form</strong> of the corresponding
+glyph, which is preferred for some languages written with Myanmar
+script. Fonts are not required to include the dotted-form variants;
+when they are absent from the active font, the default form of the
+corresponding letter will be used instead.</p>
+<p><img alt="Dotted form substitution with variation selector" src="_images/myanmar-dotted.png" /></p>
+<p>Where possible, using the standard terminology is preferred, as the
+use of a language-specific term necessitates choosing one language
+over all of the others that share a common script.</p>
+</section>
+<section id="glyph-classification">
+<h2>Glyph classification<a class="headerlink" href="#glyph-classification" title="Permalink to this heading">¶</a></h2>
+<p>Shaping Myanmar text depends on the shaping engine correctly
+classifying each glyph in the run. As with most other scripts, the
+classifications must distinguish between consonants, vowels
+(independent and dependent), numerals, punctuation, and various types
+of diacritical mark.</p>
+<p>For most codepoints, the <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Category</span></code> property defined in the Unicode
+standard is correct, but it is not sufficient to fully capture the
+expected shaping behavior (such as glyph reordering). Therefore,
+Myanmar glyphs must additionally be classified by how they are treated
+when shaping a run of text.</p>
+<section id="shaping-classes-and-subclasses">
+<h3>Shaping classes and subclasses<a class="headerlink" href="#shaping-classes-and-subclasses" title="Permalink to this heading">¶</a></h3>
+<p>The shaping classes listed in the tables that follow are defined so
+that they capture the positioning rules used by Myanmar script.</p>
+<p>For most codepoints, the <em>Shaping class</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Syllabic</span> <span class="pre">Category</span></code> defined in Unicode. However, there are some
+distinctions, where the defined category does not fully capture the
+behavior of the character in the shaping process.</p>
+<p>Several of the diacritic and syllable-modifying marks behave according
+to their own rules and, thus, have a special class. These include
+<code class="docutils literal notranslate"><span class="pre">BINDU</span></code> and <code class="docutils literal notranslate"><span class="pre">VISARGA</span></code>. Some less-common marks behave according to
+rules that are similar to these common marks, and are therefore
+classified with the corresponding common mark. The Vedic Extensions
+also include a <code class="docutils literal notranslate"><span class="pre">CANTILLATION</span></code> class for tone marks.</p>
+<p>Myanmar’s “halant” codepoint is classified as <code class="docutils literal notranslate"><span class="pre">INVISIBLE_STACKER</span></code>,
+rather than the more common <code class="docutils literal notranslate"><span class="pre">VIRAMA</span></code>. This is to indicate that, unlike
+the “halant”/”virama” characters in several other scripts, the Myanmar
+“halant” is never rendered visually as a glyph.</p>
+<p>Myanmar’s “Asat” codepoint, however, is rendered visually when it
+appears in a syllable. The “Asat” behaves differently than Indic
+“halant”, however. It can be used to kill a consonant’s inherent vowel
+sound, but it is not used between consonants to indicate the formation
+of a conjunct or a subjoined form. The “Asat” is classified as
+<code class="docutils literal notranslate"><span class="pre">PURE_KILLER</span></code>.</p>
+<p>Letters generally fall into the classes <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">VOWEL_INDEPENDENT</span></code>, and <code class="docutils literal notranslate"><span class="pre">VOWEL_DEPENDENT</span></code>. These classes help the
+shaping engine parse and identify key positions in a syllable. For
+example, Unicode categorizes dependent vowels as <code class="docutils literal notranslate"><span class="pre">Mark</span> <span class="pre">[Mn]</span></code>, but the
+shaping engine must be able to distinguish between dependent vowels
+and diacritical marks (which are categorized as <code class="docutils literal notranslate"><span class="pre">Mark</span> <span class="pre">[Mn]</span></code>).</p>
+<p>Myanmar uses one subclass of consonant, <code class="docutils literal notranslate"><span class="pre">CONSONANT_MEDIAL</span></code>. This
+subclass is used for special non-base variants of several consonants that
+serve to modify the syllable’s vowel sound. These medial consonants
+are rendered as non-spacing marks attached to the base consonant.</p>
+<blockquote>
+<div><p>Note: The medial “Ra” is reordered to pre-base-consonant
+position. The other medial consonants do not require reordering.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: The medial consonants are encoded in separate codepoints,
+distinguishing them from the standard (non-medial) variant of the
+corresponding consonant.</p>
+</div></blockquote>
+<p>In addition, the Myanmar and Myanmar Extended Unicode blocks include
+several codepoints classified as <code class="docutils literal notranslate"><span class="pre">CONSONANT_PLACEHOLDER</span></code>. These
+codepoints are used in verbal transcriptions to take tone
+marks. However, these glyphs are not consonants in the true sense and
+are unlikely to occur within normal words.</p>
+<p>Other characters, such as symbols, need no special
+attention from the shaping engine, so they are not assigned a shaping
+class.</p>
+<p>Numbers are classified as <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>, even though they evoke no special
+behavior from the Indic shaping rules, because there are OpenType features that
+might affect how the respective glyphs are drawn, such as <code class="docutils literal notranslate"><span class="pre">tnum</span></code>,
+which specifies the usage of tabular-width numerals, and <code class="docutils literal notranslate"><span class="pre">sups</span></code>, which
+replaces the default glyphs with superscript variants.</p>
+<p>Marks and dependent vowels are further labeled with a mark-placement
+subclass, which indicates where the glyph will be placed with respect
+to the base character to which it is attached. The actual position of
+the glyphs is determined by the lookups found in the font’s GPOS
+table, however, the shaping rules for Indic scripts require that the
+shaping engine be able to identify marks by their general
+position.</p>
+<p>For example, left-side dependent vowels (matras), classified
+with <code class="docutils literal notranslate"><span class="pre">LEFT_POSITION</span></code>, must frequently be reordered. Therefore, the
+<code class="docutils literal notranslate"><span class="pre">LEFT_POSITION</span></code> subclass of the character must be tracked throughout
+the shaping process.</p>
+<p>There are four basic <em>mark-placement subclasses</em> for dependent vowels
+(matras). Each corresponds to the visual position of the matra with
+respect to the base consonant to which it is attached:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT_POSITION</span></code> matras are positioned to the left of the base consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT_POSITION</span></code> matras are positioned to the right of the base consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP_POSITION</span></code> matras are positioned above the base consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTTOM_POSITION</span></code> matras are positioned below base consonant.</p></li>
+</ul>
+<p>These positions may also be referred to elsewhere in shaping documents as:</p>
+<ul class="simple">
+<li><p><em>Pre-base</em> matras</p></li>
+<li><p><em>Post-base</em> matras</p></li>
+<li><p><em>Above-base</em> matras</p></li>
+<li><p><em>Below-base</em> matras</p></li>
+</ul>
+<p>respectively. The <code class="docutils literal notranslate"><span class="pre">LEFT</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">TOP</span></code>, and <code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code> designations
+corresponds to Unicode’s preferred terminology. The <em>Pre</em>, <em>Post</em>,
+<em>Above</em>, and <em>Below</em> terminology is used in the official descriptions
+of OpenType GSUB and GPOS features. Shaping engines may, internally,
+use whichever terminology is preferred.</p>
+<p>For most mark and dependent-vowel codepoints, the <em>mark-placement
+subclass</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Positional</span> <span class="pre">Category</span></code> defined
+in Unicode. However, there are some distinctions, where the defined
+category does not fully capture the behavior of the character in the
+shaping process.</p>
+<p>Many Myanmar letters may be followed by a <code class="docutils literal notranslate"><span class="pre">Variation</span> <span class="pre">Selector</span></code>
+codepoint in order to request the “dotted form” of the
+corresponding glyph. These variations are defined in Unicode’s
+<code class="docutils literal notranslate"><span class="pre">Standardized</span> <span class="pre">Variants</span></code> document; only the codepoints listed in that
+document support substitution via variation selectors. At present,
+only “Variation Selector 1” (<code class="docutils literal notranslate"><span class="pre">U+FE00</span></code>) is used with Myanmar.</p>
+<p>If the active font does not include glyphs representing the requested
+variant of the letter preceding the variation selector, then the
+shaping engine must treat the variation selector codepoint as
+invisible and ignorable and use the default version of the preceding
+letter.</p>
+</section>
+<section id="myanmar-character-tables">
+<h3>Myanmar character tables<a class="headerlink" href="#myanmar-character-tables" title="Permalink to this heading">¶</a></h3>
+<p>Separate character tables are provided for the Myanmar and Vedic
+Extensions blocks as well as for other miscellaneous characters that
+are used in <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code> text runs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="character-tables/character-tables-myanmar.html#myanmar-character-table"><span class="std std-doc">Myanmar character table</span></a></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-myanmar.html#myanmar-extended-a-character-table"><span class="std std-doc">Myanmar Extended-A character table</span></a></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-myanmar.html#myanmar-extended-b-character-table"><span class="std std-doc">Myanmar Extended-B character table</span></a></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-myanmar.html#vedic-extensions-character-table"><span class="std std-doc">Vedic Extensions character table</span></a></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-myanmar.html#miscellaneous-character-table"><span class="std std-doc">Miscellaneous character table</span></a></p></li>
+</ul>
+<p>The tables list each codepoint along with its Unicode general
+category, its shaping class, and its mark-placement subclass. The
+codepoint’s Unicode name and an example glyph are also provided.</p>
+<p>For example:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1000</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>က Ka</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1036</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>BINDU</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>ံ Anusvara</p></td>
+</tr>
+</tbody>
+</table>
+<p>Codepoints with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>Assigned codepoints with a <em>null</em> in the <em>Shaping class</em>
+column evoke no special behavior from the shaping engine.</p>
+<p>The <em>Mark-placement subclass</em> column indicates mark-placement
+positioning for codepoints in the <em>Mark</em> category. Assigned, non-mark
+codepoints have a <em>null</em> in this column and evoke no special
+mark-placement behavior. Marks tagged with [Mn] in the <em>Unicode
+category</em> column are categorized as non-spacing; marks tagged with
+[Mc] are categorized as spacing-combining.</p>
+<p>Some codepoints in the tables use a <em>Shaping class</em> that
+differs from the codepoint’s Unicode <em>General Category</em>. The <em>Shaping
+class</em> takes precedence during OpenType shaping, as it captures more
+specific, script-aware behavior.</p>
+<p>Other important characters that may be encountered when shaping runs
+of Myanmar text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>),
+the no-break space (<code class="docutils literal notranslate"><span class="pre">U+00A0</span></code>), and the zero-width space (<code class="docutils literal notranslate"><span class="pre">U+200B</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+dependent vowel (matra) or a combining mark in isolation. Real-world
+text syllables may also use other characters, such as hyphens or dashes,
+in a similar placeholder fashion; shaping engines should cope with
+this situation gracefully.</p>
+<!--- The zero-width joiner is primarily used to prevent the formation of a
+subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoined form for the second consonant. --->
+<!---
+A secondary usage of the zero-width joiner is to prevent the formation of
+"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
+where an initial "Ra,Halant" sequence without the zero-width joiner
+otherwise would.
+--->
+<p>The no-break space is primarily used to display those codepoints that
+are defined as non-spacing (marks, dependent vowels (matras),
+below-base consonant forms, and post-base consonant forms) in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder. These sequences will match
+“NBSP,ZWJ,Halant,<em>Consonant</em>”, “NBSP,<em>mark</em>”, or “NBSP,<em>matra</em>”.</p>
+<p>The zero-width space may be used between words — even though no visual
+word spacing results — in order to indicate word breaks within a text
+that can be used by line-breaking algorithms in a higher-level
+typesetting environment.</p>
+</section>
+</section>
+<section id="the-mym2-shaping-model">
+<h2>The <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code> shaping model<a class="headerlink" href="#the-mym2-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>Processing a run of <code class="docutils literal notranslate"><span class="pre">&lt;mym2&gt;</span></code> text involves five top-level stages:</p>
+<ol class="arabic simple">
+<li><p>Identifying syllables and other sequences</p></li>
+<li><p>Initial reordering</p></li>
+<li><p>Applying the basic substitution features from GSUB</p></li>
+<li><p>Applying all remaining substitution features from GSUB</p></li>
+<li><p>Applying all remaining positioning features from GPOS</p></li>
+</ol>
+<p>As with other Brahmi-derived and Indic scripts, the initial reordering
+stage and the final reordering stage each involve applying a set of several
+script-specific rules. The basic substitution features must be applied
+to the run in a specific order. The remaining substitution features in
+stage four, however, do not have a mandatory order.</p>
+<p>Myanmar exhibits many of the same shaping patterns found in Indic
+scripts, but it differs in a few critical characteristics. With regard
+to these common variations, Myanmar’s specific shaping
+characteristics include:</p>
+<ul class="simple">
+<li><p>The first consonant of a syllable is always the base consonant,
+excluding a consonant that is part of an initial “Kinzi”-forming
+sequence (if it is present).</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For comparison with the General Indic shaping model, this
+characteristic would correspond to <code class="docutils literal notranslate"><span class="pre">BASE_POS_FIRST</span></code>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>“Kinzi” is always encoded as a syllable-initial sequence, but it
+is reordered. The final position of “Kinzi” is immediately after
+the base consonant.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For comparison with the General Indic shaping model, the Kinzi
+-encoding characteristic would correspond to <code class="docutils literal notranslate"><span class="pre">REPH_MODE_EXPLICIT</span></code>,
+and the reordering characteristic would correspond to <code class="docutils literal notranslate"><span class="pre">POS_AFTER_MAIN</span></code>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The below-base forms feature is applied only to consonants
+after the base consonant.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For comparison with the General Indic shaping model, this
+characteristic would correspond to <code class="docutils literal notranslate"><span class="pre">BLWF_MODE_POST_ONLY</span></code>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Medial Ra is reordered to pre-base position.</p></li>
+<li><p>Pre-base matras are reordered to the beginning of the
+syllable. Multiple pre-base matras can occur; any such sequences
+must be moved together, as a block, at the reordering stage.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For comparison with the General Indic shaping model, this
+characteristic is distinct to Mynanmar script. Indic scripts apply
+different reordering rules to pre-base matras that depend on the
+contents of the syllable.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>The ordering positions for right-side and above-base matras is the
+same. All are reordered to immediately after all subjoined consonants.</p></li>
+<li><p>Below-base matras are reordered to immediately before any
+right-side and above-base matras.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: For comparison with the General Indic shaping model, this
+characteristic would correspond to <code class="docutils literal notranslate"><span class="pre">MATRA_POS_TOP</span></code>,
+<code class="docutils literal notranslate"><span class="pre">MATRA_POS_RIGHT</span></code> taking the ordering position
+<code class="docutils literal notranslate"><span class="pre">POS_AFTER_SUBJOINED</span></code>, and <code class="docutils literal notranslate"><span class="pre">MATRA_POS_BOTTOM</span></code> taking the ordering
+position <code class="docutils literal notranslate"><span class="pre">POS_BELOWBASE_CONSONANT</span></code>.</p>
+</div></blockquote>
+<section id="identifying-syllables-and-other-sequences">
+<h3>1: Identifying syllables and other sequences<a class="headerlink" href="#identifying-syllables-and-other-sequences" title="Permalink to this heading">¶</a></h3>
+<p>A syllable in Myanmar consists of a valid orthographic sequence
+that may be followed by a “tail” of modifier signs.</p>
+<blockquote>
+<div><p>Note: The Myanmar Unicode block enumerates two modifier signs,
+“Anusvara” (<code class="docutils literal notranslate"><span class="pre">U+1036</span></code>) and “Visarga” (<code class="docutils literal notranslate"><span class="pre">U+1038</span></code>). There are also
+twenty-one tone markers in the Myanmar and Myanmar Extended-A
+blocks. In addition, Sanskrit text written in Myanmar may include
+additional signs from Vedic Extensions block.</p>
+</div></blockquote>
+<p>Because texts written in Myanmar script do not generally employ
+inter-word spaces, however, shaping engines must rely on
+syllable-identification algorithms to recognize word-boundary
+patterns — distinguishing numeric sequences, symbols, punctuation, and other
+miscellaneous script characters from syllables within words.</p>
+<p>Each syllable contains exactly one vowel sound. Valid syllables may
+begin with either a consonant or an independent vowel.</p>
+<p>If the syllable begins with a consonant, then the consonant that
+provides the vowel sound is referred to as the “base” consonant. If
+the syllable begins with an independent vowel, that vowel is the
+syllable’s only vowel sound and, by definition, there is no “base”
+consonant.</p>
+<blockquote>
+<div><p>Note: A consonant that is not accompanied by a dependent vowel (matra) sign
+carries the script’s inherent vowel sound. This vowel sound is changed
+by a dependent vowel (matra) sign following the consonant.</p>
+</div></blockquote>
+<p>Generally speaking, the base consonant is the first consonant of the
+syllable and its vowel sound designates the end of the syllable. The
+exception to this rule is consonants that are part of a
+“Kinzi”-triggering sequence.</p>
+<p>Post-base consonants in a valid syllable will be preceded by “Halant”
+marks.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BaseC Halant Post-baseC
+</pre></div>
+</div>
+<p>The algorithm for correctly identifying the base consonant includes a
+test to recognize these sequences and not mis-identify the base
+consonant.</p>
+<p>Medial consonants, if they occur, will not be preceded by a
+“Halant”. This is because medial consonants in Myanmar are used to
+modify the vowel sound of the syllable.</p>
+<blockquote>
+<div><p>Note: in the Myanmar script, all medial consonants have their own
+distinct codepoints. Therefore, they can be identified by codepoint
+alone, and there is no need for a text run to identify them using
+any special sequences.</p>
+</div></blockquote>
+<p>As with other Brahmi-derived and Indic scripts, the consonant “Ra” receives
+special treatment.</p>
+<ul>
+<li><p>A “Medial Ra” (<code class="docutils literal notranslate"><span class="pre">U+103C</span></code>) must be reordered to a position immediately
+before the syllable’s base consonant.</p>
+<p>Note, however, that “Medial Ra” is a separate codepoint from the
+standard “Ra” (<code class="docutils literal notranslate"><span class="pre">U+101B</span></code>).</p>
+</li>
+<li><p>A syllable-initial “Ra” may also be part of a “Kinzi”-triggering
+sequence.</p>
+<p>Notably, however, although “Ra” alone will take on the “Reph” form
+in Indic script sequences, the Myanmar script’s “Kinzi” feature
+can be triggered for three consonants, depending on the language
+in use: “Ra” (<code class="docutils literal notranslate"><span class="pre">U+101B</span></code>), “Nga” (<code class="docutils literal notranslate"><span class="pre">U+1004</span></code>), and “Mon Nga”
+(<code class="docutils literal notranslate"><span class="pre">U+105A</span></code>). In each case, the “Kinzi” form is triggered by an
+explicit sequence: “<em>consonant</em>,Asat,Halant”.</p>
+<p>There are, therefore, exactly three “Kinzi”-forming sequences to
+test for:</p>
+<ul class="simple">
+<li><p>“Ra,Asat,Halant”</p></li>
+<li><p>“Nga,Asat,Halant”</p></li>
+<li><p>“Mon Nga,Asat,Halant”</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="Ra Kinzi" src="_images/myanmar-kinzi-ra.png" />
+<img alt="Nga Kinzi" src="_images/myanmar-kinzi-nga.png" />
+<img alt="Mon Nga Kinzi" src="_images/myanmar-kinzi-monnga.png" /></p>
+<p>In the Myanmar (or Burmese) language, “Nga” is the only “Kinzi”-forming
+consonant. “Mon Nga” can form a “Kinzi” in the Mon language, and “Ra”
+can form a “Kinzi” in Sanskrit written with the Myanmar script.</p>
+<p>In addition to valid syllables, standalone sequences may occur, such
+as when an isolated codepoint is shown in example text.</p>
+<blockquote>
+<div><p>Note: Foreign loanwords, when written in the Myanmar script, may
+not adhere to the syllable-formation rules described above.</p>
+</div></blockquote>
+<p>Syllables should be identified by examining the run and matching
+glyphs, based on their categorization, using regular expressions.</p>
+<p>The following regular expressions can be used to match Myanmar-script
+syllables.</p>
+<p>The regular expressions utilize the shaping classes from the tables
+above. For the purpose of syllable identification, more general
+classes can be used, as defined in the following table. This
+simplifies the resulting expressions.</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="ge">_ra_</span>		= &quot;Ra&quot; | &quot;Nga&quot; | &quot;Mon Nga&quot;
+<span class="ge">_consonant_</span> 	= <span class="sb">`CONSONANT`</span> | <span class="sb">`CONSONANT_PLACEHOLDER`</span> - <span class="ge">_ra_</span>
+<span class="ge">_vowel_</span>		= <span class="sb">`VOWEL_INDEPENDENT`</span>
+<span class="ge">_halant_</span>	= <span class="sb">`INVISIBLE_STACKER`</span>
+<span class="ge">_asat_</span>		= &quot;Asat&quot;
+<span class="ge">_a_</span>		= &quot;Anusvara&quot; | &quot;Sign Ai&quot;
+<span class="ge">_db_</span>		= &quot;Dot Below&quot;
+<span class="ge">_zwj_</span>		= <span class="sb">`JOINER`</span>
+<span class="ge">_zwnj_</span>		= <span class="sb">`NON_JOINER`</span>
+<span class="ge">_mh_</span>		= &quot;Medial Ha&quot; | &quot;Mon Medial La&quot;
+<span class="ge">_mr_</span>		= &quot;Medial Ra&quot;
+<span class="ge">_mw_</span>		= &quot;Medial Wa&quot; | &quot;Shan Medial Wa&quot;
+<span class="ge">_my_</span>		= &quot;Medial Ya&quot; | &quot;Mon Medial Na&quot; | &quot;Mon Medial Ma&quot;
+<span class="ge">_d_</span>		= <span class="sb">`NUMBER`</span>
+<span class="ge">_pt_</span>		= &quot;Tone Sgaw Karen Hathi&quot; | &quot;Tone Sgaw Karen Ke Pho&quot; |
+	          &quot;Western Pwo Karen Tone 1&quot; | &quot;Western Pwo Karen Tone
+	          2&quot; | &quot;Western Pwo Karen Tone 3&quot; | &quot;Western Pwo Karen
+	          Tone 4&quot; | &quot;Western Pwo Karen Tone 5&quot; | &quot;Pao Karen
+	          Tone&quot; 
+<span class="ge">_sm_</span>		= &quot;Visarga&quot; | &quot;Shan Tone 2&quot; | &quot;Shan Tone 3&quot; | &quot;Shan
+	          Tone 5&quot; | &quot;Shan Tone 6&quot; | &quot;Shan Council Tone 2&quot; |
+	          &quot;Shan Council Tone 3&quot; | &quot;Shan Council Emphatic Tone&quot;
+	          | &quot;Rumai Palaung Tone 5&quot; | &quot;Khamti Tone 1&quot; | &quot;Khamti
+	          Tone 3&quot; | &quot;Aiton A&quot; 
+<span class="ge">_punc_</span>		= &quot;Little Section&quot; | &quot;Section&quot;
+<span class="ge">_matrapre_</span>	= <span class="sb">`MATRA`</span> &amp; <span class="sb">`LEFT_POSITION`</span>
+<span class="ge">_matrapost_</span>	= <span class="sb">`MATRA`</span> &amp;<span class="sb">`RIGHT_POSITION`</span>
+<span class="ge">_matraabove_</span>	= <span class="sb">`MATRA`</span> &amp; <span class="sb">`TOP_POSITION`</span> - <span class="ge">_a_</span>
+<span class="ge">_matrabelow_</span>	= <span class="sb">`MATRA`</span> &amp; <span class="sb">`BOTTOM_POSITION`</span>
+<span class="ge">_gb_</span>		= U+002D | U+00A0 | U+00D7 | U+2012 | U+2013 | U+2014 |
+              U+2015 | U+2022 | U+25CC | U+25FB | U+25FC | U+25FD |
+			  U+25FE 
+<span class="ge">_cs_</span>		= <span class="sb">`CONSONANT_WITH_STACKER`</span>
+<span class="ge">_v_</span>		= <span class="sb">`VISARGA`</span>
+<span class="ge">_vs_</span>		= &quot;Variation Selector&quot;
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: the <em>ra</em> identification class is mutually exclusive with
+the <em>consonant</em> class. The union of the <em>consonant</em> and <em>ra</em> classes
+is used in the regular expression elements below in order to
+correctly identify “Ra”, “Nga”, and “Mon Nga” characters that do not
+trigger “Kinzi” forms.</p>
+<p>Note, also, that the <code class="docutils literal notranslate"><span class="pre">CONSONANT_PLACEHOLDER</span></code> class is unioned with
+the <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code> class for the purpose of syllable identification,
+even those these two classes are treated separately in general.</p>
+<p>Note: The <em>mh</em>, <em>mw</em>, and <em>my</em> identification classes include
+several medial letters from the non-Burmese languages; they are
+grouped according to the medial consonants in Burmese that are the
+closest match in terms of shaping behavior.</p>
+<p>Note: “Sign Ai” is classified as <em>a</em>, not as <em>matraabove</em>, in order
+to implement orthographically correct behavior.</p>
+<p>Note: the <em>gb</em> identification class includes several “generic base”
+codepoints that are often used in real-world text runs to act as
+placeholders for missing letters.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: the tone marker codepoints are divided up between two
+identification classes, reflecting the differing orthographic rules
+they follow. The <em>pt</em> identification class constitutes the “Pwo
+tone” markers, while the <em>sm</em> identification class includes the
+remaining tone markers and other syllable modifiers.</p>
+</div></blockquote>
+<p>These identification classes form the bases of the following regular
+expression elements:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>C	= <span class="ge">_consonant_</span> | <span class="ge">_ra_</span>
+Z	= <span class="ge">_zwj_</span> | <span class="ge">_zwnj_</span>
+K	= <span class="ge">_ra_</span> <span class="ge">_asat_</span> <span class="ge">_halant_</span>
+Med	= <span class="ge">_my_</span>? <span class="ge">_mr_</span>? <span class="ge">_mw_</span>? <span class="ge">_mh_</span>? <span class="ge">_asat_</span>?
+Vmain	= <span class="ge">_matrapre_</span>* <span class="ge">_matraabove_</span>* <span class="ge">_matrabelow_</span>* <span class="ge">_a_</span>* (<span class="ge">_db_</span> <span class="ge">_asat_</span>?)?
+Vpost	= <span class="ge">_matrapost_</span> <span class="ge">_mh_</span>? <span class="ge">_asat_</span>* <span class="ge">_matraabove_</span>* <span class="ge">_a_</span>* (<span class="ge">_db_</span> <span class="ge">_asat_</span>?)?
+Pwo	= <span class="ge">_pt_</span> <span class="ge">_a_</span>* <span class="ge">_db_</span>? <span class="ge">_asat_</span>?
+Tcomplex= <span class="ge">_asat_</span>* Med Vmain Vpost* Pwo* <span class="ge">_v_</span>* Z?
+Tail	= <span class="ge">_halant_</span> | Tcomplex
+</pre></div>
+</div>
+<p>Using the above elements, the following regular expressions define the
+possible syllable types:</p>
+<p>A consonant-based syllable will match the expression:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>(K | <span class="ge">_cs_</span>)? (C | <span class="ge">_vowel_</span> | <span class="ge">_d_</span> | <span class="ge">_gb_</span>) <span class="ge">_vs_</span>? (<span class="ge">_halant_</span> (C | <span class="ge">_vowel_</span>) <span class="ge">_vs_</span>?)* Tail
+</pre></div>
+</div>
+<p>The expressions above use state-machine syntax from the Ragel
+state-machine compiler. The operators represent:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span>a* = zero or more copies of a
+b+ = one or more copies of b
+c? = optional instance of c
+d{n} = exactly n copies of d
+d{,n} = zero to n copies of d
+d{n,} = n or more copies of d
+d{n,m} = n to m copies of d
+!e = not e
+^f = character-level not f
+g.h = concatenation of g and h
+i|j = i or j
+( ) = grouping of expression elements
+</pre></div>
+</div>
+<p>A sequence that does not match any of these expressions should be
+regarded as broken. The shaping engine may make a best-effort attempt
+to shape the broken sequence, but making guarantees about the
+correctness or appearance of the final result is out of scope for this
+document.</p>
+<p>After the syllables have been identified, each of the subsequent
+shaping stages occurs on a per-syllable basis.</p>
+</section>
+<section id="initial-reordering">
+<h3>2: Initial reordering<a class="headerlink" href="#initial-reordering" title="Permalink to this heading">¶</a></h3>
+<p>The initial reordering stage is used to relocate glyphs from the
+phonetic order in which they occur in a run of text to the
+orthographic order in which they are presented visually.</p>
+<blockquote>
+<div><p>Note: Primarily, this means moving dependent-vowel (matra) glyphs,
+“Kinzi”-forming sequences, and pre-base-reordering medial consonants.</p>
+<p>These reordering moves are mandatory. The final-reordering stage
+may make additional moves, depending on the text and on the features
+implemented in the active font.</p>
+</div></blockquote>
+<p>The syllable should be processed by tagging each glyph with its
+intended position based on its ordering category. After all glyphs
+have been tagged, the entire syllable should be sorted in stable order,
+so that glyphs of the same ordering category remain in the same
+relative position with respect to each other.</p>
+<p>The final sort order of the ordering categories should be:</p>
+<!---	POS_RA_TO_BECOME_REPH --->
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>POS_PREBASE_MATRA
+
+POS_PREBASE_CONSONANT
+
+POS_BASE_CONSONANT
+POS_AFTER_MAIN
+
+POS_BEFORE_SUBJOINED
+POS_BELOWBASE_CONSONANT
+POS_AFTER_SUBJOINED
+</pre></div>
+</div>
+<!---	POS_BEFORE_POST
+	POS_POSTBASE_CONSONANT
+	POS_AFTER_POST --->
+<!---	POS_FINAL_CONSONANT --->
+<!---	POS_SMVD --->
+<!--- question: does Myanmar shape handle Vedic signs differently? --->
+<!--- or am I looking at an incomplete version of the reordering --->
+<!--- logic? --->
+<!--- Perhaps SMVD is all just tagged as _POS_AFTER_SUBJOINED --->
+<!--- and captures all tone marks, too? --->
+<p>This sort order enumerates all of the possible final positions to
+which a codepoint might be reordered in Myanmar script.</p>
+<p>The position names mimic those used in the General Indic shaping
+model, for ease of implementation. However, shaping engines are free
+to use any naming scheme they choose.</p>
+<p>The basic positions (left to right) are dependent
+vowels (matras) and consonants positioned before the base
+consonant (<code class="docutils literal notranslate"><span class="pre">POS_PREBASE_MATRA</span></code> and <code class="docutils literal notranslate"><span class="pre">POS_PREBASE_CONSONANT</span></code>), the base
+consonant (<code class="docutils literal notranslate"><span class="pre">POS_BASE_CONSONANT</span></code>), below-base consonants
+(<code class="docutils literal notranslate"><span class="pre">POS_BELOWBASE_CONSONANT</span></code>),
+and syllable-modifying or Vedic signs (<code class="docutils literal notranslate"><span class="pre">POS_SMVD</span></code>).</p>
+<p>In addition, several secondary positions are defined to handle various
+reordering rules that deal with relative, rather than absolute,
+positioning. <code class="docutils literal notranslate"><span class="pre">POS_AFTER_MAIN</span></code> means that a character must be
+positioned immediately after the base consonant. <code class="docutils literal notranslate"><span class="pre">POS_BEFORE_SUBJOINED</span></code>
+and <code class="docutils literal notranslate"><span class="pre">POS_AFTER_SUBJOINED</span></code> mean that a character must be positioned
+before or after any below-base consonants, respectively.</p>
+<p>For shaping-engine implementers, the names used for the ordering
+categories matter only in that they are unambiguous.</p>
+<p>For a definition of the “base” consonant, refer to step 2.1, which follows.</p>
+<section id="base-consonant">
+<h4>2.1: Base consonant<a class="headerlink" href="#base-consonant" title="Permalink to this heading">¶</a></h4>
+<p>The first step is to determine the base consonant of the syllable, if
+there is one, and tag it as <code class="docutils literal notranslate"><span class="pre">POS_BASE_CONSONANT</span></code>.</p>
+<p>The base consonant is defined as the consonant in a consonant-based
+syllable that carries the syllable’s vowel sound. That vowel sound
+will either be provided by the script’s inherent vowel (in which case
+it is not written with a separate character) or the sound will be designated
+by the addition of a dependent-vowel (matra) sign.</p>
+<p>Vowel-based syllables, standalone sequences, and broken text runs will
+not have base consonants.</p>
+<p>The algorithm for determining the base consonant is</p>
+<ul class="simple">
+<li><p>Starting from the beginning of the syllable, move forwards until a
+<code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code> is found.</p>
+<ul>
+<li><p>If the consonant is part of a “Kinzi” sequence, move to the
+next consonant.</p></li>
+</ul>
+</li>
+<li><p>The consonant stopped at will be the base consonant.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: The algorithm considers only <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code> class consonants,</p>
+</div></blockquote>
+</section>
+<section id="tag-matras">
+<h4>2.2: Tag matras<a class="headerlink" href="#tag-matras" title="Permalink to this heading">¶</a></h4>
+<p>Second, all left-side dependent-vowel (matra) signs must be tagged to be
+moved to the beginning of the syllable, with <code class="docutils literal notranslate"><span class="pre">POS_PREBASE_MATRA</span></code>.</p>
+<p>All right-side and above-base dependent-vowel (matra)
+signs are tagged <code class="docutils literal notranslate"><span class="pre">POS_AFTER_SUBJOINED</span></code>.</p>
+<p>All below-base dependent-vowel (matra) signs are tagged
+<code class="docutils literal notranslate"><span class="pre">POS_BELOWBASE_CONSONANT</span></code>.</p>
+<p>For simplicity, shaping engines may choose to tag matras
+in an earlier text-processing step, using the information in the
+<em>Mark-placement subclass</em> column of the character tables. It is
+critical at this step, however, that all matras correctly tagged
+before proceeding to the next step.</p>
+</section>
+<section id="anusvara">
+<h4>2.3: Anusvara<a class="headerlink" href="#anusvara" title="Permalink to this heading">¶</a></h4>
+<p>Third, any <code class="docutils literal notranslate"><span class="pre">ANUSVARA</span></code> marks appearing immediately after a below-base
+vowel sign must be tagged with <code class="docutils literal notranslate"><span class="pre">POS_BEFORE_SUBJOINED</span></code>, so that the
+marks are reordered to a position immediately before the below-base
+vowel signs.</p>
+</section>
+<section id="pre-base-reordering-consonants">
+<h4>2.4: Pre-base-reordering consonants<a class="headerlink" href="#pre-base-reordering-consonants" title="Permalink to this heading">¶</a></h4>
+<p>Fourth, all pre-base-reordering consonants must be tagged with
+<code class="docutils literal notranslate"><span class="pre">POS_PREBASE_CONSONANT</span></code>.</p>
+<p>Myanmar has one pre-base-reordering consonant: “Medial Ra”.</p>
+<p><img alt="Pre-base-reordering Medial Ra" src="_images/myanmar-medial-ra.png" /></p>
+</section>
+<section id="kinzi">
+<h4>2.5: Kinzi<a class="headerlink" href="#kinzi" title="Permalink to this heading">¶</a></h4>
+<p>Fifth, initial “Kinzi”-triggering sequences that will become “Kinzi”s
+must be tagged with <code class="docutils literal notranslate"><span class="pre">POS_AFTER_MAIN</span></code>.</p>
+<p>The sequences are:</p>
+<ul class="simple">
+<li><p>“Ra,Asat,Halant”</p></li>
+<li><p>“Nga,Asat,Halant”</p></li>
+<li><p>“Mon Nga,Asat,Halant”</p></li>
+</ul>
+<p>In the Myanmar (or Burmese) language, “Nga” is the only “Kinzi”-forming
+consonant. “Mon Nga” can form a “Kinzi” in the Mon language, and “Ra”
+can form a “Kinzi” in Sanskrit written with the Myanmar script.</p>
+</section>
+<section id="post-base-consonants">
+<h4>2.6: Post-base consonants<a class="headerlink" href="#post-base-consonants" title="Permalink to this heading">¶</a></h4>
+<p>Sixth, any remaining non-base consonants that occur after the base
+consonant must be tagged with <code class="docutils literal notranslate"><span class="pre">POS_AFTER_MAIN</span></code>. Full consonants (of
+class <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code>) will be preceded by a “Halant” glyph. Medial
+consonants (of class <code class="docutils literal notranslate"><span class="pre">CONSONANT_MEDIAL</span></code>) will not be preceded by a
+“Halant” glyph.</p>
+<blockquote>
+<div><p>Note: “Medial Ra” should have been tagged with
+<code class="docutils literal notranslate"><span class="pre">POS_PREBASE_CONSONANT</span></code> in stage 2, step four, and must not be
+re-tagged in this step.</p>
+</div></blockquote>
+</section>
+<section id="mark-tagging">
+<h4>2.7: Mark tagging<a class="headerlink" href="#mark-tagging" title="Permalink to this heading">¶</a></h4>
+<!--- not sure this is done!!! --->
+<p>Seventh, all marks must be tagged with the same positioning tag as the
+closest non-mark character the mark has affinity with, so that they move together
+during the sorting step.</p>
+<p>For all marks preceding the base consonant, the mark must be tagged
+with the same positioning tag as the closest preceding non-mark
+consonant.</p>
+<p>For all marks occurring after the base consonant, the mark must be
+tagged with the same positioning tag as the closest subsequent consonant.</p>
+<blockquote>
+<div><p>Note: In this step, joiner and non-joiner characters must also be
+tagged according to the same rules given for marks, even though
+these characters are not categorized as marks in Unicode.</p>
+</div></blockquote>
+<p>With these steps completed, the syllable can be sorted into the final sort order.</p>
+</section>
+</section>
+<section id="applying-the-basic-substitution-features-from-gsub">
+<h3>3: Applying the basic substitution features from GSUB<a class="headerlink" href="#applying-the-basic-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>The basic-substitution stage applies mandatory substitution features
+using the rules in the font’s GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application
+of GSUB features.</p>
+<p>The order in which these substitutions must be performed is fixed:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>locl
+ccmp
+rphf 
+pref 
+blwf 
+pstf
+</pre></div>
+</div>
+<section id="locl">
+<h4>3.1 locl<a class="headerlink" href="#locl" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.</p>
+<blockquote>
+<div><p>Note: Strictly speaking, the use of localized-form substitutions is
+not part of the shaping process, but of the localization process,
+and could take place at an earlier point while handling the text
+run. However, shaping engines are expected to complete the
+application of the <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature before applying the subsequent
+GSUB substitutions in the following steps.</p>
+</div></blockquote>
+<p><img alt="Local-forms substitution" src="_images/myanmar-locl.png" /></p>
+</section>
+<section id="ccmp">
+<h4>3.2: ccmp<a class="headerlink" href="#ccmp" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of glyphs.</p>
+<p>If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>-substituted
+glyphs.</p>
+<blockquote>
+<div><p>Note: <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> usage is uncommon in Myanmar fonts. Nevertheless,
+shaping engines must apply any <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> substitutions if they are
+present in the active font.</p>
+</div></blockquote>
+</section>
+<section id="rphf">
+<h4>3.3: rphf<a class="headerlink" href="#rphf" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">rphf</span></code> feature replaces initial “Kinzi”-triggering sequences with
+the “Kinzi” glyph. The sequences are:</p>
+<ul class="simple">
+<li><p>“Ra,Asat,Halant”</p></li>
+<li><p>“Nga,Asat,Halant”</p></li>
+<li><p>“Mon Nga,Asat,Halant”</p></li>
+</ul>
+<p>In the Myanmar (or Burmese) language, “Nga” is the only “Kinzi”-forming
+consonant. “Mon Nga” can form a “Kinzi” in the Mon language, and “Ra”
+can form a “Kinzi” in Sanskrit written with the Myanmar script.</p>
+<p><img alt="Kinzi composition" src="_images/myanmar-kinzi-nga.png" /></p>
+</section>
+<section id="pref">
+<h4>3.4 pref<a class="headerlink" href="#pref" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">pref</span></code> feature replaces pre-base-consonant glyphs with
+any special forms. In Myanmar, this can include variant forms for
+“Medial Ra” or for the left-side matras “Sign E” (<code class="docutils literal notranslate"><span class="pre">U+1031</span></code>) or “Shan
+Sign E” (<code class="docutils literal notranslate"><span class="pre">U+1084</span></code>)</p>
+<p><img alt="pref feature application" src="_images/myanmar-pref.png" /></p>
+</section>
+<section id="blwf">
+<h4>3.5: blwf<a class="headerlink" href="#blwf" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">blwf</span></code> feature replaces below-base-consonant glyphs with any
+special forms. In Myanmar, this usually means replacing
+post-base-consonant “Halant,<em>Consonant</em>” sequences with subjoined
+forms of the consonant.</p>
+<p>However, Myanmar includes several other below-base-consonant
+forms, including medial consonants and below-base dependent vowel
+(matra) signs.</p>
+<p>The below-base forms feature is applied only to glyphs occurring after
+the base consonant.</p>
+<p><img alt="blwf feature application" src="_images/myanmar-blwf.png" /></p>
+</section>
+<section id="pstf">
+<h4>3.6: pstf<a class="headerlink" href="#pstf" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">pstf</span></code> feature replaces post-base-consonant glyphs with any
+special forms.</p>
+<blockquote>
+<div><p>Note: <code class="docutils literal notranslate"><span class="pre">pstf</span></code> usage is uncommon in Myanmar fonts, because the script
+does not employ special post-base forms of consonants. Nevertheless,
+shaping engines should apply any <code class="docutils literal notranslate"><span class="pre">pstf</span></code> substitutions if they are
+present in the active font.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="applying-all-remaining-substitution-features-from-gsub">
+<h3>4: Applying all remaining substitution features from GSUB<a class="headerlink" href="#applying-all-remaining-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, the remaining substitution features from the GSUB table
+are applied. The order in which these features are applied is not
+canonical; they should be applied in the order in which they appear in
+the GSUB table in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pres
+abvs
+blws
+psts
+liga
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">pres</span></code> feature replaces pre-base-consonant glyphs with special
+presentations forms. In Myanmar, this can include stylistic variants
+of left-side dependent vowels (matras) or of “Medial Ra”.</p>
+<p><img alt="Application of the pres feature" src="_images/myanmar-pres.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">abvs</span></code> feature replaces above-base-consonant glyphs with special
+presentation forms. This usually includes contextual variants of
+above-base marks or contextually appropriate mark-and-base ligatures.</p>
+<p><img alt="Application of the abvs feature" src="_images/myanmar-abvs.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blws</span></code> feature replaces below-base-consonant glyphs with special
+presentation forms. In Myanmar, this can include contextual ligatures
+involving below-base dependent vowel marks (matras), medial
+consonants, or subjoined consonants.</p>
+<p><img alt="Application of the blws feature" src="_images/myanmar-blws.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">psts</span></code> feature replaces post-base-consonant glyphs with special
+presentation forms. This usually includes replacing right-side
+dependent vowels (matras) with stylistic variants.</p>
+<p><img alt="Application of the psts feature" src="_images/myanmar-psts.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">liga</span></code> feature substitutes standard, optional ligatures that are on
+by default. Substitutions made by <code class="docutils literal notranslate"><span class="pre">liga</span></code> may be disabled by
+application-level user interfaces.</p>
+<p><img alt="Application of the liga feature" src="_images/myanmar-liga.png" /></p>
+</section>
+<section id="applying-remaining-positioning-features-from-gpos">
+<h3>5: Applying remaining positioning features from GPOS<a class="headerlink" href="#applying-remaining-positioning-features-from-gpos" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, mark positioning, kerning, and other GPOS features are
+applied. As with the preceding stage, the order in which these
+features are applied is not canonical; they should be applied in the
+order in which they appear in the GPOS table in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>dist
+abvm
+blwm
+mark
+mkmk
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: The <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature is usually applied at this stage, if it is
+present in the font. However, <code class="docutils literal notranslate"><span class="pre">kern</span></code> is not mandatory for shaping
+Myanmar text and may be disabled by user preference.</p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">dist</span></code> feature adjusts the horizontal positioning of
+glyphs. Unlike <code class="docutils literal notranslate"><span class="pre">kern</span></code>, adjustments made with <code class="docutils literal notranslate"><span class="pre">dist</span></code> do not require the
+application or the user to enable any software <em>kerning</em> features, if
+such features are optional.</p>
+<p>In Myanmar text, <code class="docutils literal notranslate"><span class="pre">dist</span></code> is typically used to adjust the space around a
+pre-base-reordering “Medial Ra”, because the “Medial Ra” codepoint is
+classified as being of zero width, but is orthographically a glyph
+that encloses the adjacent letter.</p>
+<p><img alt="Application of the dist feature" src="_images/myanmar-dist.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">abvm</span></code> feature positions above-base glyphs for attachment to base
+characters. In Myanmar, this includes “Kinzi” and “Asat” in addition
+to tone markers, diacritical marks, above-base dependent vowels
+(matras), and Vedic signs.</p>
+<p><img alt="Application of the abvm feature" src="_images/myanmar-abvm.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">blwm</span></code> feature positions below-base glyphs for attachment to base
+characters. In Myanmar, this includes subjoined consonants as well as
+below-base dependent vowels (matras), medial consonants, tone markers,
+diacritical marks, and Vedic signs.</p>
+<p><img alt="Application of the blwm feature" src="_images/myanmar-blwm.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mark</span></code> feature positions marks with respect to base glyphs.</p>
+<p><img alt="Application of the mark feature" src="_images/myanmar-mark.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mkmk</span></code> feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.</p>
+<p><img alt="Application of the mkmk feature" src="_images/myanmar-mkmk.png" /></p>
+</section>
+</section>
+<section id="the-mymr-shaping-model">
+<h2>The <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> shaping model<a class="headerlink" href="#the-mymr-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>The older Myanmar script tag, <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code>, has been deprecated. However,
+shaping engines may still encounter fonts that were built to work with
+<code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> and some users may still have documents that were written to
+take advantage of <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> shaping.</p>
+<p>Sparse information is available about how the Microsoft Uniscribe
+shaping engine treated <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> text runs. Documentation from the
+HarfBuzz shaping engine suggests that the Uniscribe <code class="docutils literal notranslate"><span class="pre">&lt;mymr&gt;</span></code> shaper
+did not perform a significant amount of reordering or application of
+Indic-like GSUB features.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/opentype-shaping-myanmar.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

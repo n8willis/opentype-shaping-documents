@@ -1,0 +1,1104 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Thai and Lao shaping in OpenType &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="thai-and-lao-shaping-in-opentype">
+<h1>Thai and Lao shaping in OpenType<a class="headerlink" href="#thai-and-lao-shaping-in-opentype" title="Permalink to this heading">¶</a></h1>
+<p>This document details the shaping procedure needed to display text
+runs in the Thai and Lao scripts.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information"><span class="std std-doc">General information</span></a></p></li>
+<li><p><a class="reference internal" href="#terminology"><span class="std std-doc">Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#glyph-classification"><span class="std std-doc">Glyph classification</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#shaping-classes-and-subclasses"><span class="std std-doc">Shaping classes and subclasses</span></a></p></li>
+<li><p><a class="reference internal" href="#mark-combining-classes"><span class="std std-doc">Mark combining classes</span></a></p></li>
+<li><p><a class="reference internal" href="#pua-fallback-classifications"><span class="std std-doc">PUA fallback classifications</span></a></p></li>
+<li><p><a class="reference internal" href="#thai-and-lao-character-tables"><span class="std std-doc">Thai and Lao character tables</span></a></p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">The <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> shaping model</span></p>
+<ul>
+<li><p><a class="reference internal" href="#applying-the-language-substitution-features-from-gsub"><span class="std std-doc">1: Applying the language substitution features from GSUB</span></a></p></li>
+<li><p><a class="reference internal" href="#decomposing-all-am-vowel-signs"><span class="std std-doc">2: Decomposing all Am vowel signs</span></a></p></li>
+<li><p><a class="reference internal" href="#reordering-sequences-of-marks"><span class="std std-doc">3: Reordering sequences of marks</span></a></p></li>
+<li><p><a class="reference internal" href="#applying-all-positioning-features-from-gpos"><span class="std std-doc">4: Applying all positioning features from GPOS</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#the-pua-fallback-shaping-model"><span class="std std-doc">The PUA fallback shaping model</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#contextual-replacement-rules"><span class="std std-doc">Contextual replacement rules</span></a></p></li>
+<li><p><a class="reference internal" href="#id1"><span class="std std-doc">1. Decomposing all Am vowel signs</span></a></p></li>
+<li><p><a class="reference internal" href="#id2"><span class="std std-doc">2. Reordering sequences of marks</span></a></p></li>
+<li><p><a class="reference internal" href="#remapping-codepoints-to-the-appropriate-pua-alternates"><span class="std std-doc">3. Remapping codepoints to the appropriate PUA alternates</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>The Thai and Lao scripts are both descendants of the Brahmi script,
+and follow many of the same general patterns found in <a class="reference internal" href="opentype-shaping-indic-general.html"><span class="doc std std-doc">Indic
+scripts</span></a>. They are distinct enough
+from Indic scripts that they should not be supported by a
+general-purpose Indic shaping engine.</p>
+<p>Thai and Lao use different alphabets but are historically
+related. They share common orthographic conventions and shaping
+characteristics, which enables shaping engines to support both scripts
+in a single implementation.</p>
+<p>The Thai script is used to write multiple languages, most commonly
+Thai, Pak Thai (or Southern Thai), Kuy, Isan, Lanna (or Northern
+Thai), and Kelantan-Pattani Malay. In addition, the Thai script is
+used to write Sanskrit and Pali. However, the Thai script is not used
+for Vedic texts, therefore Thai and Lao text runs are not expected to
+include any glyphs from the Vedic Extensions block of Unicode.</p>
+<p>The Lao script is used to write multiple languages, most commonly
+Lao, Khmu’, Hmong, and Isan.</p>
+<p>The Thai script tag defined in OpenType is <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code>. The Lao script
+tag defined in OpenType is <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code>. Because OpenType script tags must
+be exactly four letters long, the <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> tag includes a trailing
+space.</p>
+<p>A significant number of  older Thai fonts that do not use the OpenType
+shaping model are still in usage; these fonts employ the Unicode
+“Private Use Area” (<code class="docutils literal notranslate"><span class="pre">PUA</span></code>) to store contextual forms of
+characters. Shaping engines may implement this PUA-base shaping model
+as a fallback mechanism when such fonts are encountered.</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">¶</a></h2>
+<p>OpenType shaping uses a standard set of terms for Brahmi-derived and
+Indic scripts.  The terms used colloquially in any particular language
+may vary, however, potentially causing confusion.</p>
+<p>Both Thai and Lao feature inherent vowels for every consonant, and
+employ <strong>dependent vowel</strong> signs to replace the inherent vowel with a
+different vowel sound.</p>
+<p>The Thai term for a dependent vowel sign is <strong>sara</strong>. The Lao term for
+a vowel sign is <strong>sala</strong>. The official names of the Thai vowel signs
+in the Unicode standard includes “sara” (for example, “Sara Am”),
+while the official names of the Lao vowel signs use “sign” (for
+example, “Sign Am”).</p>
+<p>Some of these dependent-vowel signs are encoded as marks that attach
+to the consonant in <strong>above-base</strong> or <strong>below-base</strong> position. Others
+are encoded as full letters that may appear in <strong>pre-base</strong>
+(left-side) or <strong>post-base</strong> (right-side) position.</p>
+<p>Thai and Lao differ from Indic scripts in that these pre-base dependent
+vowels are entered before typing the consonant to which they
+apply. Therefore, pre-base dependent vowels do not need to be
+reordered by the shaping engine.</p>
+<p><strong>Phinthu</strong> is the term used for the Thai equivalent of the “halant”
+or “virama” mark that suppresses the inherent vowel of a consonant. It
+is used only when writing Sanskrit or Pali text in the Thai script.</p>
+<p><strong>Nikhahit</strong> is the term for the Thai equivalent of “anusvara”. It
+is used only when writing Sanskrit or Pali text in the Thai
+script. The equivalent mark in Lao is called <strong>niggahita</strong>.</p>
+<p>Both Thai and Lao include several <strong>tone markers</strong> as combining marks
+that are positioned with respect to the consonant and, possibly, to
+any corresponding dependent-vowel marks.</p>
+<p>Where possible, using the standard terminology is preferred, as the
+use of a language-specific term necessitates choosing one language
+over all of the others that share a common script.</p>
+</section>
+<section id="glyph-classification">
+<h2>Glyph classification<a class="headerlink" href="#glyph-classification" title="Permalink to this heading">¶</a></h2>
+<p>Shaping Thai and Lao text depends on the shaping engine correctly
+classifying each glyph in the run. As with most other scripts, the
+classifications must distinguish between consonants, vowels
+(independent and dependent), numerals, punctuation, and various types
+of diacritical mark.</p>
+<p>For most codepoints, the <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Category</span></code> property defined in the Unicode
+standard is correct, but it is not always sufficient to fully capture the
+expected shaping behavior. Therefore, Thai and Lao glyphs may
+additionally be classified by how they are treated when shaping a run
+of text.</p>
+<section id="shaping-classes-and-subclasses">
+<h3>Shaping classes and subclasses<a class="headerlink" href="#shaping-classes-and-subclasses" title="Permalink to this heading">¶</a></h3>
+<p>The shaping classes listed in the tables that follow are defined so
+that they capture the positioning rules used by Thai and Lao scripts.</p>
+<p>For most codepoints, the <em>Shaping class</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Syllabic</span> <span class="pre">Category</span></code> defined in Unicode. However, there are some
+distinctions, where the defined category does not fully capture the
+behavior of the character in the shaping process.</p>
+<p>Numbers are classified as <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>, even though they evoke no special
+behavior from the Indic shaping rules, because there are OpenType features that
+might affect how the respective glyphs are drawn, such as <code class="docutils literal notranslate"><span class="pre">tnum</span></code>,
+which specifies the usage of tabular-width numerals, and <code class="docutils literal notranslate"><span class="pre">sups</span></code>, which
+replaces the default glyphs with superscript variants.</p>
+<p>Marks, including diacritics, tone markers, and dependent vowels, are further labeled
+with a mark-placement subclass, which indicates where the glyph will
+be placed with respect to the base character to which it is
+attached. The actual position of the glyphs is determined by the
+lookups found in the font’s GPOS table.</p>
+<p>There are three basic <em>mark-placement subclasses</em> for marks
+in Thai and Lao. Each corresponds to the visual position of the mark with
+respect to the consonant to which it is attached:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP_POSITION</span></code> marks are positioned above the consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTTOM_POSITION</span></code> marks are positioned below the consonant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT_POSITION</span></code> marks are positioned to the right of the consonant.</p></li>
+</ul>
+<p>Thai and Lao vowel marks can also appear to the left of the consonant
+to which they are attached. However, in Thai and Lao text runs, these
+vowels exist <em>before</em> the consonant — that is, to the left of the
+consonant in the character sequence. Thus, no reordering of these
+vowels (as is done in several other Brahmi-derived scripts) is
+required for Thai or Lao.</p>
+<p>In order to unambiguously distinguish between this non-reordering
+convention and the reordering conventions of other scripts, the
+left-side vowels are not designated <code class="docutils literal notranslate"><span class="pre">LEFT_POSITION</span></code> in their
+mark-placement subclass. Instead, these vowels are classified as <code class="docutils literal notranslate"><span class="pre">VISUAL_ORDER_LEFT</span></code>.</p>
+<p>These positions may also be referred to elsewhere in shaping documents as:</p>
+<ul class="simple">
+<li><p><em>Above-base</em></p></li>
+<li><p><em>Below-base</em></p></li>
+<li><p><em>Pre-base</em></p></li>
+<li><p><em>Post-base</em></p></li>
+</ul>
+<p>respectively. The <code class="docutils literal notranslate"><span class="pre">VISUAL_ORDER_LEFT</span></code>, <code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>, <code class="docutils literal notranslate"><span class="pre">TOP</span></code>, and <code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code> designations
+corresponds to Unicode’s preferred terminology. The <em>Pre</em>, <em>Post</em>,
+<em>Above</em>, and <em>Below</em> terminology is used in the official descriptions
+of OpenType GSUB and GPOS features. Shaping engines may, internally,
+use whichever terminology is preferred.</p>
+<p>For most mark and dependent-vowel codepoints, the <em>mark-placement
+subclass</em> is synonymous with the <code class="docutils literal notranslate"><span class="pre">Indic</span> <span class="pre">Positional</span> <span class="pre">Category</span></code> defined
+in Unicode. However, there may be some distinctions, where the defined
+category does not fully capture the behavior of the character in the
+shaping process.</p>
+</section>
+<section id="mark-combining-classes">
+<h3>Mark combining classes<a class="headerlink" href="#mark-combining-classes" title="Permalink to this heading">¶</a></h3>
+<p>The Unicode standard defines a <em>canonical combining class</em> for each mark
+codepoint that is used whenever a sequence of marks needs to be sorted
+into canonical order.</p>
+<p>The numeric values of these combining classes are used during Unicode
+normalization.</p>
+<p>All Thai and Lao marks belong to standard combining classes. However,
+for script-shaping purposes, some marks need to be reassigned to a
+modified class in order to ensure that certain sequences of
+consecutive marks are reordered correctly.</p>
+<p>In particular, the Thai “Sara U” (<code class="docutils literal notranslate"><span class="pre">U+0E38</span></code>) and “Sara Uu” (<code class="docutils literal notranslate"><span class="pre">U+0E39</span></code>)
+marks are reassigned from the canonical class 103 to the class 3
+(which is an unused class in Unicode’s set of canonical classes).</p>
+<p>This ensures that “Sara U” or “Sara Uu” codepoints adjacent to
+“Phinthu” (<code class="docutils literal notranslate"><span class="pre">U+0E3A</span></code>) are not reordered to a position after the
+“Phinthu” mark.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Combining class</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E38</span></code></p></td>
+<td class="text-left"><p>3</p></td>
+<td class="text-left"><p>ุ Sara U</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E47</span></code></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td class="text-left"><p>็ Maitaikhu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4A</span></code></p></td>
+<td class="text-left"><p>107</p></td>
+<td class="text-left"><p>๊ Mai Tri</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0EB9</span></code></p></td>
+<td class="text-left"><p>118</p></td>
+<td class="text-left"><p>ູ Sign Uu</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0EBC</span></code></p></td>
+<td class="text-left"><p><em>0</em></p></td>
+<td class="text-left"><p>็ Semivowel Sign Lo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0ECB</span></code></p></td>
+<td class="text-left"><p>122</p></td>
+<td class="text-left"><p>๊ Tone Mai Catawa</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>Note: Reassigning marks to modified classes in this manner should
+not produce any unwanted side effects, because the reassigned class
+is unused. However, any implementations that need to maintain strict
+adherence to Unicode’s canonical combining classes may choose to
+handle the Phinthu-reordering issue in a different manner.</p>
+</div></blockquote>
+</section>
+<section id="pua-fallback-classifications">
+<h3>PUA fallback classifications<a class="headerlink" href="#pua-fallback-classifications" title="Permalink to this heading">¶</a></h3>
+<p>Older Thai fonts that implement the PUA-substitution fallback method
+rather than modern OpenType script shaping rules incorporate
+subclasses for consonants that indicate whether or not the consonant
+includes an ascender, a normal descender, or a removable descender.</p>
+<p>There are four possible values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">NC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ASCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">AC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">DC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REMOVABLE_DESCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">RC</span></code></p></li>
+</ul>
+<p>Furthermore, vowels and marks in these fonts are classified by whether
+they are positioned at the same baseline as consonants, below
+consonants, above consonants, or must be positioned at the top of any
+stacks of marks.</p>
+<p>There are four possible values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONSONANT_BASELINE_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">CV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BELOW_CONSONANT_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">BV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ABOVE_CONSONANT_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">AV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">TV</span></code></p></li>
+</ul>
+</section>
+<section id="thai-and-lao-character-tables">
+<h3>Thai and Lao character tables<a class="headerlink" href="#thai-and-lao-character-tables" title="Permalink to this heading">¶</a></h3>
+<p>Separate character tables are provided for the Thai and Lao blocks as
+well as for other miscellaneous characters that are used in <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> text runs:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="character-tables/character-tables-thai.html#thai-character-table"><span class="std std-doc">Thai character table</span></a></p></li>
+<li><p><span class="xref myst">Miscellaneous character table</span></p></li>
+<li><p><a class="reference internal" href="character-tables/character-tables-lao.html#lao-character-table"><span class="std std-doc">Lao character table</span></a></p></li>
+<li><p><span class="xref myst">Miscellaneous character table</span></p></li>
+</ul>
+<p>The tables list each codepoint along with its Unicode general
+category, its shaping class, its mark-placement subclass, and its
+PUA-fallback category. The codepoint’s Unicode name and an example
+glyph are also provided.</p>
+<p>For example:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>PUA</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E01</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>NC</p></td>
+<td class="text-left"><p>ก Ko Kai</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E48</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TONE_MARKER</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>TV</p></td>
+<td class="text-left"><p>่ Mai Ek</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E81</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ກ Ko</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0EC8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>TONE_MARKER</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>່ Tone Mai Ek</p></td>
+</tr>
+</tbody>
+</table>
+<p>Codepoints with no assigned meaning are
+designated as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>Assigned codepoints with a <em>null</em> in the <em>Shaping class</em>
+column evoke no special behavior from the shaping engine.</p>
+<p>The <em>Mark-placement subclass</em> column indicates mark-placement
+positioning for codepoints in the <em>Mark</em> category. Assigned, non-mark
+codepoints have a <em>null</em> in this column and evoke no special
+mark-placement behavior. Marks tagged with [Mn] in the <em>Unicode
+category</em> column are categorized as non-spacing; marks tagged with
+[Mc] are categorized as spacing-combining.</p>
+<p>The <em>PUA</em> column indicates which, if any, fallback-shaping category
+the codepoint belongs to when found in older fonts using the PUA
+fallback shaping scheme. Note that the PUA method was employed only
+for Thai fonts, so Lao codepoints do not have a PUA fallback-shaping
+category. Thai codepoints with a <em>null</em> in the <em>PUA</em> column were not
+used in the PUA fallback-shaping scheme and evoke no special behavior
+from the shaping engine.</p>
+<p>Some codepoints in the tables use a <em>Shaping class</em> that
+differs from the codepoint’s Unicode <em>General Category</em>. The <em>Shaping
+class</em> takes precedence during OpenType shaping, as it captures more
+specific, script-aware behavior.</p>
+<p>Other important characters that may be encountered when shaping runs
+of Thai and Lao text include the dotted-circle placeholder (<code class="docutils literal notranslate"><span class="pre">U+25CC</span></code>),
+the no-break space (<code class="docutils literal notranslate"><span class="pre">U+00A0</span></code>), and the zero-width space (<code class="docutils literal notranslate"><span class="pre">U+200B</span></code>).</p>
+<p>The dotted-circle placeholder is frequently used when displaying a
+dependent vowel sign or a combining mark in isolation. Real-world
+text syllables may also use other characters, such as hyphens or dashes,
+in a similar placeholder fashion; shaping engines should cope with
+this situation gracefully.</p>
+<!--- The zero-width joiner is primarily used to prevent the formation of a
+subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoined form for the second consonant. --->
+<!---
+A secondary usage of the zero-width joiner is to prevent the formation of
+"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
+where an initial "Ra,Halant" sequence without the zero-width joiner
+otherwise would.
+--->
+<p>The no-break space is primarily used to insert spaces between
+phrases. Thai and Lao texts do not employ inter-word spaces. Consequently,
+when spaces are inserted into a text run, it is important that they be
+preserved: line-breaking algorithms must not break lines after a
+Thai or Lao space, so the no-break space character is used instead of the
+traditional space.</p>
+<p>The no-break space may also be used to display those codepoints that
+are defined as non-spacing (marks, dependent vowels (matras),
+below-base consonant forms, and post-base consonant forms) in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder.</p>
+</section>
+</section>
+<section id="the-thai-lao-shaping-model">
+<h2>The <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code>/<code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> shaping model<a class="headerlink" href="#the-thai-lao-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>Processing a run of <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> text involves four top-level stages:</p>
+<ol class="arabic simple">
+<li><p>Applying the language substitution features from GSUB</p></li>
+<li><p>Decomposing all Am vowel signs</p></li>
+<li><p>Reordering sequences of marks</p></li>
+<li><p>Applying all positioning features from GPOS</p></li>
+</ol>
+<p>As with other Brahmi-derived and Indic scripts, the basic substitution
+features must be applied to the run in a specific order. The
+positioning features in the final stage, however, do not have a
+mandatory order.</p>
+<p>Unlike many other Brahmi-derived and Indic scripts, shaping Thai and Lao
+text does not require a syllable-identification stage.</p>
+<p>Each syllable contains exactly one vowel sound. Valid syllables may
+begin with either a consonant or an independent vowel.</p>
+<p>In addition to valid syllables, standalone sequences may occur, such
+as when an isolated codepoint is shown in example text.</p>
+<section id="applying-the-language-substitution-features-from-gsub">
+<h3>1: Applying the language substitution features from GSUB<a class="headerlink" href="#applying-the-language-substitution-features-from-gsub" title="Permalink to this heading">¶</a></h3>
+<p>The language-substitution stage applies mandatory substitution features
+using the rules in the font’s GSUB table. In preparation for this
+stage, glyph sequences should be tagged for possible application
+of GSUB features.</p>
+<p>The order in which these substitutions must be performed is fixed:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>locl
+ccmp
+</pre></div>
+</div>
+<section id="locl">
+<h4>1.1 locl<a class="headerlink" href="#locl" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature replaces default glyphs with any language-specific
+variants, based on examining the language setting of the text run.</p>
+<blockquote>
+<div><p>Note: Strictly speaking, the use of localized-form substitutions is
+not part of the shaping process, but of the localization process,
+and could take place at an earlier point while handling the text
+run. However, shaping engines are expected to complete the
+application of the <code class="docutils literal notranslate"><span class="pre">locl</span></code> feature before applying the subsequent
+GSUB substitutions in the following steps.</p>
+</div></blockquote>
+</section>
+<section id="ccmp">
+<h4>1.2: ccmp<a class="headerlink" href="#ccmp" title="Permalink to this heading">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">ccmp</span></code> feature allows a font to substitute mark-and-base sequences
+with a pre-composed glyph including the mark and the base, or to
+substitute a single glyph into an equivalent decomposed sequence of glyphs.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> text, this may include a decomposition for
+the “Am” dependent-vowel sign. If such a decomposition is used in the
+active font, the shaping engine must keep track of the fact that the
+resulting components originated as an “Am” sign.</p>
+<p>If there is not an “Am” decomposition in the active font’s <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>
+lookup, the shaping engine will decompose the codepoint in the
+following stage.</p>
+<p>If present, these composition and decomposition substitutions must be
+performed before applying any other GSUB lookups, because
+those lookups may be written to match only the <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>-substituted
+glyphs.</p>
+<p><img alt="Glyph composition" src="_images/thai-ccmp.png" /></p>
+</section>
+</section>
+<section id="decomposing-all-am-vowel-signs">
+<h3>2. Decomposing all Am vowel signs<a class="headerlink" href="#decomposing-all-am-vowel-signs" title="Permalink to this heading">¶</a></h3>
+<p>The Thai and Lao alphabets each include one character that must be
+decomposed for shaping purposes, the vowel sign “Am”. The decomposition is
+canonically defined, resulting in the sequence “<em>Anusvara</em>,Sara Aa” in
+the appropriate script.</p>
+<ul class="simple">
+<li><p>Thai Sara Am (<code class="docutils literal notranslate"><span class="pre">U+0E33</span></code>) decomposes to “Nikhahit,Sara Aa” (<code class="docutils literal notranslate"><span class="pre">U+0E4D</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0E32</span></code>).</p></li>
+<li><p>Lao Sign Am (<code class="docutils literal notranslate"><span class="pre">U+0EB3</span></code>) decomposes to “Niggahita,Sign Aa” (<code class="docutils literal notranslate"><span class="pre">U+0ECD</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0EB2</span></code>).</p></li>
+</ul>
+<blockquote>
+<div><p>Note: if the active font decomposed the “Am” sign via a <code class="docutils literal notranslate"><span class="pre">ccmp</span></code>
+feature lookup during stage one, then no further action is needed
+on the shaping engine’s part during this stage.</p>
+</div></blockquote>
+<p>The shaping engine must keep track of the fact that the “Nikhahit” or
+“Niggahita” marks originated as part of an “Am” sign, because these
+decomposed marks are handled differently during the mark-reordering
+stage.</p>
+<p><img alt="AM decomposition" src="_images/lao-am-decomposition.png" /></p>
+</section>
+<section id="reordering-sequences-of-marks">
+<h3>3. Reordering sequences of marks<a class="headerlink" href="#reordering-sequences-of-marks" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, sequences of consecutive marks may need to be
+reordered.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">&lt;thai&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;lao &gt;</span></code> text runs, two conditions should be checked
+for possible reordering.</p>
+<ul class="simple">
+<li><p>A “Nikhahit” or “Niggahita” mark that originated as part of an
+“Am” sign (which was decomposed in stage two, above) must be
+reordered so that it occurs before any tone markers in the
+sequence of marks.</p></li>
+<li><p>A “Phinthu” mark must be reordered so that it occurs after any
+“Sara U” or “Sara Uu” marks.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: “Nikhahit” or “Niggahita” marks that were not originally part
+of an “Am” sign should not be reordered.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: Shaping engines may alternatively choose to implement the Phinthu
+reordering rule by modifying the combining classes assigned to
+“Phinthu”, “Sara U”, and “Sara Uu” as necessary before processing
+the text run, or by performing a sorting step at this stage.</p>
+</div></blockquote>
+<!--- 
+
+move the
+   * NIKHAHIT backwards over any tone mark (0E48-0E4B).
+   *
+   * <0E14, 0E4B, 0E33> -> <0E14, 0E4D, 0E4B, 0E32>
+   *
+   * This reordering is legit only when the NIKHAHIT comes from a SARA AM, not
+   * when it's there to start with. The string <0E14, 0E4B, 0E4D> is probably
+   * not what a user wanted, but the rendering is nevertheless nikhahit above
+   * chattawa.
+   *
+   * Same for Lao.
+   *
+   * Note:
+   *
+   * Uniscribe also does some below-marks reordering.  Namely, it positions U+0E3A
+   * after U+0E38 and U+0E39.  We do that by modifying the ccc for U+0E3A.
+   * See unicode->modified_combining_class ().  Lao does NOT have a U+0E3A
+   * equivalent.
+
+--->
+</section>
+<section id="applying-all-positioning-features-from-gpos">
+<h3>4: Applying all positioning features from GPOS<a class="headerlink" href="#applying-all-positioning-features-from-gpos" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, mark positioning, kerning, and other GPOS features are
+applied. As with the preceding stage, the order in which these
+features are applied is not canonical; they should be applied in the
+order in which they appear in the GPOS table in the font.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>kern
+mark
+mkmk
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: The <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature is usually applied at this stage, if it is
+present in the font. However, <code class="docutils literal notranslate"><span class="pre">kern</span></code> is not mandatory for shaping
+Thai and Lao text and may be disabled by user preference.</p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature adjusts the horizontal positioning of
+glyphs.</p>
+<p><img alt="Application of the kern feature" src="_images/lao-kern.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mark</span></code> feature positions marks with respect to base glyphs.</p>
+<p><img alt="Application of the mark feature" src="_images/thai-mark.png" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mkmk</span></code> feature positions marks with respect to preceding marks,
+providing proper positioning for sequences of marks that attach to the
+same base glyph.</p>
+<p><img alt="Application of the mkmk feature" src="_images/thai-mkmk.png" /></p>
+</section>
+</section>
+<section id="the-pua-fallback-shaping-model">
+<h2>The PUA fallback shaping model<a class="headerlink" href="#the-pua-fallback-shaping-model" title="Permalink to this heading">¶</a></h2>
+<p>A significant number of  older Thai fonts that do not use the OpenType
+shaping model are still in usage; these fonts employ the Unicode
+“Private Use Area” (<code class="docutils literal notranslate"><span class="pre">PUA</span></code>) to store contextual forms of
+characters.</p>
+<p>The PUA shaping model is described at
+<a class="reference external" href="https://linux.thai.net/~thep/th-otf/shaping.html">linux.thai.net/~thep/th-otf/shaping.html</a>
+. It relies on a set of pre-determined mappings from the codepoints in the
+Unicode Thai block to codepoints in the PUA.</p>
+<p>For consonants, these alternate-glyph mappings depend on whether or
+not the consonant includes an ascender, a normal descender, or a
+removable descender.</p>
+<p>There are four possible values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">NC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ASCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">AC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">DC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REMOVABLE_DESCENDER_CONSONANT</span></code> or <code class="docutils literal notranslate"><span class="pre">RC</span></code></p></li>
+</ul>
+<p>Furthermore, vowels and marks in these fonts are classified by whether
+they are positioned at the same baseline as consonants, below
+consonants, above consonants, or must be positioned at the top of any
+stacks of marks.</p>
+<p>There are four possible values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONSONANT_BASELINE_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">CV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BELOW_CONSONANT_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">BV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ABOVE_CONSONANT_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">AV</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP_LEVEL</span></code> or <code class="docutils literal notranslate"><span class="pre">TV</span></code></p></li>
+</ul>
+<p>The classifications of the consonant, vowel, and mark characters in
+the Thai Block are listed in the <em>PUA</em> column of the <a class="reference internal" href="character-tables/character-tables-thai.html#thai-character-table"><span class="std std-doc">Thai character
+table</span></a>.</p>
+</section>
+<section id="contextual-replacement-rules">
+<h2>Contextual replacement rules<a class="headerlink" href="#contextual-replacement-rules" title="Permalink to this heading">¶</a></h2>
+<p>Codepoints in the Thai Block can be mapped to one of several alternate
+PUA codepoints depending on context:</p>
+<ul class="simple">
+<li><p>A tone marker that does not follow an above-base vowel sign may be
+mapped to an alternate that is positioned lower, closer to the top
+of the consonant. This is a <code class="docutils literal notranslate"><span class="pre">SHIFT_DOWN</span></code> replacement action.</p></li>
+<li><p>A tone marker, above-base diacritic, or above-base vowel sign
+following a consonant with an ascender may be mapped to an
+alternate that is positioned further to the left (thereby
+preventing a collision with the ascender). This is a <code class="docutils literal notranslate"><span class="pre">SHIFT_LEFT</span></code> replacement action.</p></li>
+<li><p>A below-base vowel sign that follows a consonant with a
+non-removable descender may be mapped to an alternate that is
+positioned lower (thereby preventing a collision with the
+descender). This is a <code class="docutils literal notranslate"><span class="pre">SHIFT_DOWN</span></code> replacement action.</p></li>
+<li><p>A consonant with a removable descender may be mapped to a
+descender-less alternate when the consonant is followed by a
+below-base vowel sign. This is a <code class="docutils literal notranslate"><span class="pre">REMOVE_DESCENDER</span></code> replacement action.</p></li>
+</ul>
+<p>The above rules may combine. Specifically, a tone marker that does not
+follow an above-base vowel sign <em>and</em> follows a consonant with an
+ascender must be positioned lower and further to the left.  This is a
+<code class="docutils literal notranslate"><span class="pre">SHIFT_DOWN_AND_LEFT</span></code> replacement action.</p>
+<p>Additionally, below-base vowels are handled separately from above-base
+vowels and tone markers; a consonant that is followed by a below-base
+vowel and a tone marker may have to perform two independent
+replacement actions.</p>
+<p>The following table summarizes the actions taken for each of the
+possible consonant (vertical) and vowel/mark (horizontal) sequences:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p></p></th>
+<th class="head text-left"><p>AV</p></th>
+<th class="head text-left"><p>BV</p></th>
+<th class="head text-left"><p>TV</p></th>
+<th class="head text-left"><p>AV,TV</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>NC</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>AC</strong></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SL</span></code></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SDL</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SL</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>RC</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">RD</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>DC</strong></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>These replacements take the place of both GSUB substitutions and GPOS
+positioning in modern OpenType fonts.</p>
+<p>Shaping engines can replace the original codepoints with the
+appropriate alternates from the PUA block by testing for the above
+conditions.</p>
+<p>With each consonant, vowel, and mark character correctly classified,
+the shaping engine can process the text run.</p>
+<p>There are three top-level stages:</p>
+<ol class="arabic simple">
+<li><p>Decomposing all Am vowel signs</p></li>
+<li><p>Reordering sequences of marks</p></li>
+<li><p>Remapping codepoints to the appropriate PUA alternates</p></li>
+</ol>
+<section id="id1">
+<h3>1. Decomposing all Am vowel signs<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>The Thai alphabet includes one character that must be decomposed for
+shaping purposes, the vowel sign “Am”. The decomposition is
+canonically defined, resulting in the sequence “Nikhahit,Sara Aa”.</p>
+<ul class="simple">
+<li><p>Sara Am (<code class="docutils literal notranslate"><span class="pre">U+0E33</span></code>) decomposes to “Nikhahit,Sara Aa” (<code class="docutils literal notranslate"><span class="pre">U+0E4D</span></code>,<code class="docutils literal notranslate"><span class="pre">U+0E32</span></code>).</p></li>
+</ul>
+<p>The shaping engine must keep track of the fact that the “Nikhahit”
+mark originated as part of an “Am” sign, because these decomposed
+marks are handled differently during the mark-reordering stage.</p>
+<p><img alt="Glyph decomposition" src="_images/thai-am-decomposition.png" /></p>
+</section>
+<section id="id2">
+<h3>2. Reordering sequences of marks<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>In this stage, certain sequences of consecutive marks may need to be
+reordered.</p>
+<p>As is the case in OpenType-font text runs, two conditions should be checked
+for possible reordering.</p>
+<ul class="simple">
+<li><p>A “Nikhahit” mark that originated as part of an “Am” sign (which
+was decomposed in stage one, above) must be reordered so that it
+occurs before any tone markers in the sequence of marks.</p></li>
+<li><p>A “Phinthu” mark must be reordered so that it occurs after any
+“Sara U” or “Sara Uu” marks.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: “Nikhahit” marks that were not originally part of an “Am” sign
+should not be reordered.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note: Shaping engines may choose to implement the Phinthu
+reordering rule by modifying the combining classes assigned to
+“Phinthu”, “Sara U”, and “Sara Uu” as necessary before processing
+the text run, or by performing a sorting step at this stage.</p>
+</div></blockquote>
+</section>
+<section id="remapping-codepoints-to-the-appropriate-pua-alternates">
+<h3>3. Remapping codepoints to the appropriate PUA alternates<a class="headerlink" href="#remapping-codepoints-to-the-appropriate-pua-alternates" title="Permalink to this heading">¶</a></h3>
+<p>The contextual replacement rules described above can be implemented in
+a pair of state machines, one for above-base replacement moves and one
+for below-base replacement moves.</p>
+<p>Each consonant codepoint and subsequent (possibly empty) sequence of
+marks should be processed in turn through both machines. The output
+for each codepoint will be one of the standard replacement actions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SD</span></code>: replace the codepoint with the <code class="docutils literal notranslate"><span class="pre">SHIFT_DOWN</span></code> alternate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SL</span></code>: replace the codepoint with the <code class="docutils literal notranslate"><span class="pre">SHIFT_LEFT</span></code> alternate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SDL</span></code>: replace the codepoint with the <code class="docutils literal notranslate"><span class="pre">SHIFT_DOWN_AND_LEFT</span></code> alternate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RD</span></code>: replace the codepoint with the <code class="docutils literal notranslate"><span class="pre">REMOVE_DESCENDER</span></code> alternate</p></li>
+<li><p><em>null</em>: no replacement should be made</p></li>
+</ul>
+<p>The above-base state machine tracks four possible states, designated
+<code class="docutils literal notranslate"><span class="pre">AS0</span></code> through <code class="docutils literal notranslate"><span class="pre">AS3</span></code>.</p>
+<p>The initial states of the possible codepoints are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>PUA class</p></th>
+<th class="head text-left"><p>initial state</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>NC</p></td>
+<td class="text-left"><p>AS0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>AC</p></td>
+<td class="text-left"><p>AS1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>RC</p></td>
+<td class="text-left"><p>AS0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>DC</p></td>
+<td class="text-left"><p>AS0</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><em>Other</em></p></td>
+<td class="text-left"><p>AS3</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following state machine table lists the replacement action to take
+and the resulting next state for each possible mark type that may
+follow a consonant:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input state</p></th>
+<th class="head text-left"><p>AV</p></th>
+<th class="head text-left"><p>BV</p></th>
+<th class="head text-left"><p>TV</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>AS0</p></td>
+<td class="text-left"><p><em>null</em>,AS3</p></td>
+<td class="text-left"><p><em>null</em>,AS0</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code>,AS3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>AS1</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SL</span></code>,AS2</p></td>
+<td class="text-left"><p><em>null</em>,AS1</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SDL</span></code>,AS2</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>AS2</p></td>
+<td class="text-left"><p><em>null</em>,AS3</p></td>
+<td class="text-left"><p><em>null</em>,AS2</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SL</span></code>,AS3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>AS3</p></td>
+<td class="text-left"><p><em>null</em>,AS3</p></td>
+<td class="text-left"><p><em>null</em>,AS3</p></td>
+<td class="text-left"><p><em>null</em>,AS3</p></td>
+</tr>
+</tbody>
+</table>
+<p>The below-base state machine tracks three possible states, designated
+<code class="docutils literal notranslate"><span class="pre">BS0</span></code> through <code class="docutils literal notranslate"><span class="pre">BS2</span></code>.</p>
+<p>The initial states of the possible codepoints are as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>PUA class</p></th>
+<th class="head text-left"><p>initial state</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>NC</p></td>
+<td class="text-left"><p>BS0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>AC</p></td>
+<td class="text-left"><p>BSO</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>RC</p></td>
+<td class="text-left"><p>BS1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>DC</p></td>
+<td class="text-left"><p>BS2</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><em>Other</em></p></td>
+<td class="text-left"><p>BS2</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following state machine table lists the replacement action to take
+and the resulting next state for each possible mark type that may
+follow a consonant:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input state</p></th>
+<th class="head text-left"><p>AV</p></th>
+<th class="head text-left"><p>BV</p></th>
+<th class="head text-left"><p>TV</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>BS0</p></td>
+<td class="text-left"><p><em>null</em>,BS0</p></td>
+<td class="text-left"><p><em>null</em>,BS2</p></td>
+<td class="text-left"><p><em>null</em>,BS0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>BS1</p></td>
+<td class="text-left"><p><em>null</em>,BS1</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">RD</span></code>,BS2</p></td>
+<td class="text-left"><p><em>null</em>,BS1</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>BS2</p></td>
+<td class="text-left"><p><em>null</em>,BS2</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">SD</span></code>,BS2</p></td>
+<td class="text-left"><p><em>null</em>,BS2</p></td>
+</tr>
+</tbody>
+</table>
+<p>When the necessary replacement action for each codepoint has been
+determined, codepoints can be replaced with the PUA codepoints from
+the following table.</p>
+<p>Note that Windows fonts and MacOS fonts used different mappings.</p>
+<section id="sd-mappings">
+<h4>SD mappings<a class="headerlink" href="#sd-mappings" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input</p></th>
+<th class="head text-left"><p>Windows</p></th>
+<th class="head text-left"><p>MacOS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E48</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88B</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E49</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70B</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88E</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70C</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F891</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4B</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70D</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F894</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4C</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70E</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F897</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E38</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F718</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F89B</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E39</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F719</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F89C</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E3A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F71A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F89D</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sl-mappings">
+<h4>SL mappings<a class="headerlink" href="#sl-mappings" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input</p></th>
+<th class="head text-left"><p>Windows</p></th>
+<th class="head text-left"><p>MacOS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E48</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F713</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88A</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E49</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F714</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88D</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F715</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F890</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4B</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F716</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F893</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4C</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F717</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F896</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E31</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F710</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F884</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E34</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F701</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F885</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E35</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F702</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F886</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E36</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F703</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F887</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E37</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F704</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F888</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E47</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F712</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F889</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4D</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F711</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F899</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sdl-mappings">
+<h4>SDL mappings<a class="headerlink" href="#sdl-mappings" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input</p></th>
+<th class="head text-left"><p>Windows</p></th>
+<th class="head text-left"><p>MacOS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E48</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F705</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88C</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E49</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F706</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F88F</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4A</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F707</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F892</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4B</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F708</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F895</span></code></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E4C</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F709</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F898</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="rd-mappings">
+<h4>RD mappings<a class="headerlink" href="#rd-mappings" title="Permalink to this heading">¶</a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Input</p></th>
+<th class="head text-left"><p>Windows</p></th>
+<th class="head text-left"><p>MacOS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E0D</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F70F</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F89A</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+0E10</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F700</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+F89E</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/opentype-shaping-thai-lao.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

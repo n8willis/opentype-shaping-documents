@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Commands used to generate the images in opentype-shaping-oriya.md &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="commands-used-to-generate-the-images-in-opentype-shaping-oriya-md">
+<h1>Commands used to generate the images in <a class="reference internal" href="../../opentype-shaping-oriya.html"><span class="doc std std-doc">opentype-shaping-oriya.md</span></a><a class="headerlink" href="#commands-used-to-generate-the-images-in-opentype-shaping-oriya-md" title="Permalink to this heading">¶</a></h1>
+<section id="arrow-general">
+<h2>Arrow general<a class="headerlink" href="#arrow-general" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –output-file=right-arrow.png –background=FFFFFF00 –margin=0,0,0,0 /usr/share/fonts/opentype/gentiumplus/GentiumPlus-R.ttf –unicodes=2192</p>
+</section>
+<section id="matra-decomposition">
+<h2>2.2 Matra decomposition<a class="headerlink" href="#matra-decomposition" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-matra-decompose-before.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b48</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-matra-decompose-after.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b47,25cc,0b56</p>
+<p>montage oriya-matra-decompose-before.png right-arrow.png oriya-matra-decompose-after.png -geometry +0+0 -background transparent oriya-matra-decompose.png</p>
+</section>
+<section id="post-base-consonants">
+<h2>2.7 Post-base consonants<a class="headerlink" href="#post-base-consonants" title="Permalink to this heading">¶</a></h2>
+<section id="ya">
+<h3>Ya<a class="headerlink" href="#ya" title="Permalink to this heading">¶</a></h3>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pstf-ya-before.png –features=-pstf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b2f</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pstf-ya-after.png –features=+pstf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b2f</p>
+<p>montage oriya-pstf-ya-before.png right-arrow.png oriya-pstf-ya-after.png -geometry +0+0 -background transparent oriya-pstf-ya.png</p>
+</section>
+<section id="yya">
+<h3>Yya<a class="headerlink" href="#yya" title="Permalink to this heading">¶</a></h3>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pstf-yya-before.png –features=-pstf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b5f</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pstf-yya-after.png –features=+pstf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b5f</p>
+<p>montage oriya-pstf-yya-before.png right-arrow.png oriya-pstf-yya-after.png -geometry +0+0 -background transparent oriya-pstf-yya.png</p>
+</section>
+</section>
+<section id="nukt">
+<h2>3.2 <code class="docutils literal notranslate"><span class="pre">nukt</span></code><a class="headerlink" href="#nukt" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-nukt-before.png –features=-nukt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b16,25cc,0b3c</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-nukt-after.png –features=+nukt –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b16,0b3c</p>
+<p>montage oriya-nukt-before.png right-arrow.png oriya-nukt-after.png -geometry +0+0 -background transparent oriya-nukt.png</p>
+</section>
+<section id="akhn">
+<h2>3.3 <code class="docutils literal notranslate"><span class="pre">akhn</span></code><a class="headerlink" href="#akhn" title="Permalink to this heading">¶</a></h2>
+<section id="kssa">
+<h3>KSsa<a class="headerlink" href="#kssa" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Note: Noto Sans Oriya implements this in a <code class="docutils literal notranslate"><span class="pre">pres</span></code>+<code class="docutils literal notranslate"><span class="pre">blwf</span></code> combination
+for unknown reasons.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-akhn-kssa-before.png –features=-pres,-blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b15,0b4d,0b37</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-akhn-kssa-after.png –features=+pres,+blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b15,0b4d,0b37</p>
+<p>montage oriya-akhn-kssa-before.png right-arrow.png oriya-akhn-kssa-after.png -geometry +0+0 -background transparent oriya-akhn-kssa.png</p>
+</section>
+<section id="jnya">
+<h3>JNya<a class="headerlink" href="#jnya" title="Permalink to this heading">¶</a></h3>
+<blockquote>
+<div><p>Note: Noto Sans Oriya implements this in a <code class="docutils literal notranslate"><span class="pre">blwf</span></code>+<code class="docutils literal notranslate"><span class="pre">cjct</span></code> combination
+for unknown reasons.</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-akhn-jnya-before.png –features=-pres,-cjct,-blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b1c,0b4d,0b1e</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-akhn-jnya-after.png –features=+pres,+blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b1c,0b4d,0b1e</p>
+<p>montage oriya-akhn-jnya-before.png right-arrow.png oriya-akhn-jnya-after.png -geometry +0+0 -background transparent oriya-akhn-jnya.png</p>
+</section>
+</section>
+<section id="rphf">
+<h2>3.4 <code class="docutils literal notranslate"><span class="pre">rphf</span></code><a class="headerlink" href="#rphf" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-rphf-before.png –features=-rphf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b30,0b4d,25cc</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-rphf-after.png –features=+rphf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b30,0b4d,25cc</p>
+<p>montage oriya-rphf-before.png right-arrow.png oriya-rphf-after.png -geometry +0+0 -background transparent oriya-rphf.png</p>
+</section>
+<section id="blwf">
+<h2>3.7 <code class="docutils literal notranslate"><span class="pre">blwf</span></code><a class="headerlink" href="#blwf" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blwf-before.png –features=-blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b25</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blwf-after.png –features=+blwf –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=25cc,0b4d,0b25</p>
+<p>montage oriya-blwf-before.png right-arrow.png oriya-blwf-after.png -geometry +0+0 -background transparent oriya-blwf.png</p>
+</section>
+<section id="half">
+<h2>3.9 <code class="docutils literal notranslate"><span class="pre">half</span></code><a class="headerlink" href="#half" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>No examples found.</p>
+</div></blockquote>
+</section>
+<section id="pstf">
+<h2>3.10 <code class="docutils literal notranslate"><span class="pre">pstf</span></code><a class="headerlink" href="#pstf" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Same as 2.7</p>
+</div></blockquote>
+</section>
+<section id="cjct">
+<h2>3.12 <code class="docutils literal notranslate"><span class="pre">cjct</span></code><a class="headerlink" href="#cjct" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><p>Not a perfect example….</p>
+</div></blockquote>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-cjct-before.png –features=-pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b38,0b4d,25cc,0b4d,0b2a,0b4d,0b5d</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-cjct-after.png –features=+pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b38,0b4d,0b2a,0b4d,0b5d</p>
+<p>montage oriya-cjct-before.png right-arrow.png oriya-cjct-after.png -geometry +0+0 -background transparent oriya-cjct.png</p>
+</section>
+<section id="pre-base-matras">
+<h2>4.2 Pre-base matras<a class="headerlink" href="#pre-base-matras" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-matra-position-before.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b47,0b28,0b4d,200d,0b2d,0b4d,0b27,0b57</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-matra-position-after.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b28,0b4d,200d,0b2d,0b4d,0b27,0b4c</p>
+<p>montage oriya-matra-position-before.png right-arrow.png oriya-matra-position-after.png -geometry +0+0 -background transparent oriya-matra-position.png</p>
+</section>
+<section id="reph-position">
+<h2>4.3 Reph position<a class="headerlink" href="#reph-position" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-reph-position-before.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b30,0b4d,25cc,0b2a,0b4d,0b2a,0b4d,0b26,0b4d,0b2f,0b3e</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-reph-position-after.png –features= –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b30,0b4d,0b2a,0b4d,0b2a,0b4d,0b26,0b4d,0b2f,0b3e</p>
+<p>montage oriya-reph-position-before.png right-arrow.png oriya-reph-position-after.png -geometry +0+0 -background transparent oriya-reph-position.png</p>
+</section>
+<section id="pres">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">pres</span></code><a class="headerlink" href="#pres" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pres-before.png –features=-pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b2e,0b4d,0b2d</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-pres-after.png –features=+pres –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b2e,0b4d,0b2d</p>
+<p>montage oriya-pres-before.png right-arrow.png oriya-pres-after.png -geometry +0+0 -background transparent oriya-pres.png</p>
+</section>
+<section id="abvs">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">abvs</span></code><a class="headerlink" href="#abvs" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-abvs-before.png –features=-abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b13,200d,0b01</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-abvs-after.png –features=+abvs –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b13,200d,0b01</p>
+<p>montage oriya-abvs-before.png right-arrow.png oriya-abvs-after.png -geometry +0+0 -background transparent oriya-abvs.png</p>
+</section>
+<section id="blws">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">blws</span></code><a class="headerlink" href="#blws" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blws-before.png –features=-blws –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b28,0b4d,0b24,0b42</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blws-after.png –features=+blws –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b28,0b4d,0b24,0b42</p>
+<p>montage oriya-blws-before.png right-arrow.png oriya-blws-after.png -geometry +0+0 -background transparent oriya-blws.png</p>
+</section>
+<section id="psts">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">psts</span></code><a class="headerlink" href="#psts" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-psts-before.png –features=-psts –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b23,0b4c,0b01</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-psts-after.png –features=+psts –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b23,0b4c,0b01</p>
+<p>montage oriya-psts-before.png right-arrow.png oriya-psts-after.png -geometry +0+0 -background transparent oriya-psts.png</p>
+</section>
+<section id="haln">
+<h2>5 <code class="docutils literal notranslate"><span class="pre">haln</span></code><a class="headerlink" href="#haln" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-haln-before.png –features=-haln,-blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b1d,0b4d</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-haln-after.png –features=+haln,+blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b1d,0b4d</p>
+<p>montage oriya-haln-before.png right-arrow.png oriya-haln-after.png -geometry +0+0 -background transparent oriya-haln.png</p>
+</section>
+<section id="abvm">
+<h2>6 <code class="docutils literal notranslate"><span class="pre">abvm</span></code><a class="headerlink" href="#abvm" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-abvm-before.png –features=-abvm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b19,0b4d,0b18,0b48</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-abvm-after.png –features=+abvm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b19,0b4d,0b18,0b48</p>
+<p>montage oriya-abvm-before.png right-arrow.png oriya-abvm-after.png -geometry +0+0 -background transparent oriya-abvm.png</p>
+</section>
+<section id="blwm">
+<h2>6 <code class="docutils literal notranslate"><span class="pre">blwm</span></code><a class="headerlink" href="#blwm" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blwm-before.png –features=-blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b2e,0b4d,0b2b,0b44</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=oriya-blwm-after.png –features=+blwm –background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansOriya-Regular.ttf –unicodes=0b2e,0b4d,0b2b,0b44</p>
+<p>montage oriya-blwm-before.png right-arrow.png oriya-blwm-after.png -geometry +0+0 -background transparent oriya-blwm.png</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/images/oriya/oriya-image-generation-log.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

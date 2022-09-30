@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Notes for preserving Uniscribe compatibility &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="notes-for-preserving-uniscribe-compatibility">
+<h1>Notes for preserving Uniscribe compatibility<a class="headerlink" href="#notes-for-preserving-uniscribe-compatibility" title="Permalink to this heading">¶</a></h1>
+<p>This document details behavior that shaping engines may wish to
+implement in order to maintain strict shaping compatibility with
+Microsoft’s Uniscribe OpenType shaper, including behavior that may be
+regarded as bugs by end users.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#indic-standalone-syllable-dotted-circles"><span class="std std-doc">Indic standalone-syllable dotted circles</span></a></p></li>
+<li><p><a class="reference internal" href="#indic-syllable-cluster-merging"><span class="std std-doc">Indic syllable cluster merging</span></a></p></li>
+<li><p><a class="reference internal" href="#indic-fallback-reph-reordering"><span class="std std-doc">Indic fallback Reph reordering</span></a></p></li>
+<li><p><span class="xref myst">Kannada legacy treatment of Ra,Halant,ZWJ</span></p></li>
+<li><p><a class="reference internal" href="#khmer-kerning"><span class="std std-doc">Khmer kerning</span></a></p></li>
+<li><p><a class="reference internal" href="#sinhala-matra-decomposition"><span class="std std-doc">Sinhala matra decomposition</span></a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous"><span class="std std-doc">Miscellaneous</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#bengali-init-feature-matching"><span class="std std-doc">Bengali init feature matching</span></a></p></li>
+<li><p><a class="reference internal" href="#old-model-post-base-halant-reordering"><span class="std std-doc">Old-model post-base Halant reordering</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#kannada-final-double-halants"><span class="std std-doc">Kannada final double Halants</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#halants-and-left-matras"><span class="std std-doc">Halants and left matras</span></a></p></li>
+<li><p><a class="reference internal" href="#explicit-half-forms-followed-by-matras"><span class="std std-doc">Explicit half-forms followed by matras</span></a></p></li>
+</ul>
+</li>
+</ul>
+<p>Compatibility notes in the “miscellaneous” category deal with
+behaviors that are incompletely documented, deal solely with
+deprecated script tags, or do not violate known conventions. Thus, the
+scenarios with which they deal may not be regarded as bugs.</p>
+<section id="indic-standalone-syllable-dotted-circles">
+<h2>Indic standalone-syllable dotted circles<a class="headerlink" href="#indic-standalone-syllable-dotted-circles" title="Permalink to this heading">¶</a></h2>
+<p>In Indic syllables that include a <code class="docutils literal notranslate"><span class="pre">PLACEHOLDER</span></code> or <code class="docutils literal notranslate"><span class="pre">DOTTED_CIRCLE</span></code>
+codepoint, if a dotted-circle glyph is the last consonant of the
+syllable, Uniscribe ignores the glyph when processing the syllable.</p>
+<p>For example, the dotted-circle glyph is not counted as a consonant
+when locating the syllable’s base consonant. Therefore, the sequence
+“Ra,Halant,Dotted_Circle” does not trigger Reph formation (which would
+result in the sequence “Reph,Dotted_Circle”).</p>
+</section>
+<section id="indic-syllable-cluster-merging">
+<h2>Indic syllable cluster merging<a class="headerlink" href="#indic-syllable-cluster-merging" title="Permalink to this heading">¶</a></h2>
+<p>Other shaping engines, such as Harfbuzz, track the indivisible
+components of a syllable in “clusters”. Each individual letter usually
+corresponds to a cluster; when two letters ligate or form a conjunct,
+their clusters are merged. When a codepoint is decomposed, its
+components remain part of the same, original cluster as the
+precomposed version. Uniscribe appears to follow this pattern as well.</p>
+<p>When shaping Indic text in most scripts, after shaping the entire
+syllable, Uniscribe merges all of the clusters of the syllable into a
+single, indivisible cluster.</p>
+<p>The exceptions to this behavior occur when Uniscribe is shaping Tamil
+and Sinhala. In those cases, the full-syllable cluster merge is not
+performed.</p>
+<blockquote>
+<div><p>Note: This full-syllable clustering makes it hard for application
+software to position the cursor within the word. It may also have
+other implications for software above the shaping engine in the
+stack.</p>
+</div></blockquote>
+</section>
+<section id="indic-fallback-reph-reordering">
+<h2>Indic fallback Reph reordering<a class="headerlink" href="#indic-fallback-reph-reordering" title="Permalink to this heading">¶</a></h2>
+<p>When shaping Indic syllables, any one of several Reph-positioning
+strategies may be required by the active script. In the event that no
+correct position can be determined by the shaping engine for a
+syllable, Uniscribe’s ultimate fallback behavior is to reorder the
+Reph to the end of the syllable.</p>
+<p>If the Reph is reordered to the end of the syllable and this final
+position happens to occur immediately after a “Matra,Halant” sequence,
+Uniscribe leaves the Reph in this position.</p>
+<p>Other shaping engines, in this situation, will reorder the Reph to a
+position immediately before the “Matra,Halant” sequence. This allows
+for any GSUB substitutions that match “Reph,Matra” sequences to be
+activated, if any such substitution rules are present in the active
+font.</p>
+</section>
+<section id="kannada-legacy-treatment-of-ra-halant-zwj">
+<h2>Kannada legacy treatment of Ra,Halant,ZWJ<a class="headerlink" href="#kannada-legacy-treatment-of-ra-halant-zwj" title="Permalink to this heading">¶</a></h2>
+<p>In the <code class="docutils literal notranslate"><span class="pre">&lt;knda&gt;</span></code> shaping model (which was deprecated in 2005 in favor
+of <code class="docutils literal notranslate"><span class="pre">&lt;knd2&gt;</span></code>), the sequence “Ra,Halant,ZWJ” was treated as equivalent
+to the sequence “Ra,ZWJ,Halant”.</p>
+</section>
+<section id="khmer-kerning">
+<h2>Khmer kerning<a class="headerlink" href="#khmer-kerning" title="Permalink to this heading">¶</a></h2>
+<p>Uniscribe does not apply the <code class="docutils literal notranslate"><span class="pre">kern</span></code> feature to Khmer text, even if the
+active font includes kerning tables for Khmer codepoints.</p>
+</section>
+<section id="sinhala-matra-decomposition">
+<h2>Sinhala matra decomposition<a class="headerlink" href="#sinhala-matra-decomposition" title="Permalink to this heading">¶</a></h2>
+<p>Sinhala text in OpenType presents two possible methods for
+decomposing multi-part matras.</p>
+<p>One is the canonical Unicode decompositions for the matra codepoints,
+as is used in most other Indic scripts. This decomposition is usually
+performed early in the shaping process.</p>
+<p>The second is the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> feature of GSUB, which is defined differently
+for Sinhala. In Sinhala, the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> feature replaces multi-part
+dependent vowels (matras) with the right-side matra component of the
+canonical decomposition. This substitution generally occurs late in
+the shaping process.</p>
+<p>Uniscribe supports the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> behavior by handling the decomposition
+of multi-part dependent vowels differently for Sinhala – in a sense,
+decomposing each matra into its left-side component followed by a
+duplicate of the original matra, then substituting the duplicated
+matra with the right-side matra component when the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> feature is
+applied.</p>
+<p>Shaping engines may opt to decompose multi-part dependent
+vowels into their canonical Unicode decompositions, as is done in
+other scripts, and substitute the decomposed right-side matra
+components at that point.</p>
+<p>Doing so will negate the need to apply the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> substitution.
+However, fonts that were engineered to support the
+Uniscribe-supported behavior might not include GPOS positioning
+rules for the right-side matra components, relying instead on the
+<code class="docutils literal notranslate"><span class="pre">pstf</span></code> substitution to provide a suitable replacement.</p>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading">¶</a></h2>
+<section id="bengali-init-feature-matching">
+<h3>Bengali init feature matching<a class="headerlink" href="#bengali-init-feature-matching" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">init</span></code> feature in Bengali is defined in the OpenType specification
+as applying to word-initial left-side dependent vowels (matras).
+However, Uniscribe specifically applies the feature whenever
+the matra is preceded by any character that falls within the following
+range in the Unicode <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Category</span></code> property:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_FORMAT</span></code> [Cf]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_UNASSIGNED</span></code> [Cn]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_PRIVATE_USE</span></code> [Co]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_SURROGATE</span></code> [Cs]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_LOWERCASE_LETTER</span></code> [Ll]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_MODIFIER_LETTER</span></code> [Lm]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_OTHER_LETTER</span></code> [Lo]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_TITLECASE_LETTER</span></code> [Lt]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_UPPERCASE_LETTER</span></code> [Lu]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_SPACING_MARK</span></code> [Mc]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_ENCLOSING_MARK</span></code> [Me]</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL_CATEGORY_NON_SPACING_MARK</span></code> [Mn]</p></li>
+</ul>
+</section>
+<section id="old-model-post-base-halant-reordering">
+<h3>Old-model post-base Halant reordering<a class="headerlink" href="#old-model-post-base-halant-reordering" title="Permalink to this heading">¶</a></h3>
+<p>In old-model (Indic1) script tags, Uniscribe treats some
+scripts differently when reordering the first post-base Halant. This
+Halant-reordering is done in Indic1 scripts in order to prepare the
+syllable for Indic1’s different post-base GSUB substitution rules.</p>
+<p>For example, the old-model Indic syllable</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pre-baseC Halant BaseC Halant Post-baseC
+</pre></div>
+</div>
+<p>would be reordered to</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pre-baseC Halant BaseC Post-baseC Halant
+</pre></div>
+</div>
+<p>before features are applied.</p>
+<p>In Malayalam, Uniscribe always reorders the first post-base Halant in
+a syllable to the position immediately after the syllable’s last consonant.</p>
+<section id="kannada-final-double-halants">
+<h4>Kannada final double Halants<a class="headerlink" href="#kannada-final-double-halants" title="Permalink to this heading">¶</a></h4>
+<p>In old-model Kannada (<code class="docutils literal notranslate"><span class="pre">&lt;knda&gt;</span></code>) runs, Uniscribe is known to reorder
+the first post-base Halant only when there is not already a Halant
+after the last consonant.</p>
+<p>For example, the old-model Indic syllable</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Pre-baseC Halant BaseC Halant Post-baseC Halant
+</pre></div>
+</div>
+<p>would <em>not</em> be reordered.</p>
+<p>This behavior is an exception to the general Indic1 post-base Halant
+reordering operation. It is believed to be script-specific and has
+only been observed for Kannada text runs. However, there may still be
+undiscovered sequences in other Indic1-script text which trigger the
+same behavior; implementers targeting full compatibility should
+exercise caution.</p>
+<p>If the standard post-base Halant reordering were performed, then the
+likely result of the GSUB feature-application phase would be a
+sequence of the form “BaseC,belowbaseC,Halant” which, in turn, might
+trigger mark-attachment issues for correctly positioning the final
+Halant.</p>
+<p>This Uniscribe behavior is not documented, however; therefore the only
+recommended workaround for maintaining compatibility is to define a
+special-case exception for avoiding the creation of final double
+Halants in <code class="docutils literal notranslate"><span class="pre">&lt;knda&gt;</span></code> text.</p>
+</section>
+</section>
+<section id="halants-and-left-matras">
+<h3>Halants and left matras<a class="headerlink" href="#halants-and-left-matras" title="Permalink to this heading">¶</a></h3>
+<p>When reordering left-side matras, when a Halant occurs immediately
+after a left-side matra, Uniscribe does not move the Halant with the matra.</p>
+<p>Generally, marks (including “Halant”) are tagged for reordering with
+the same positioning tag as the closest non-mark character that the
+mark has affinity with.</p>
+<p>In post-base position, where a yet-to-be-reordered left-side matra
+would be found, the closest non-mark character with affinity for the
+mark might be a post-base consonant. Uniscribe appears to make a check
+ensuring that the Halant after a left-side matra is not tagged for
+reordering with the matra.</p>
+<p>This check is required for shaping Sinhala, because the <code class="docutils literal notranslate"><span class="pre">U+0DDA</span></code>
+multi-part matra decomposes into the sequence “<code class="docutils literal notranslate"><span class="pre">U+0DD9</span></code>,Halant”. The
+decomposed Halant should remain where it is, serving as the right-side
+matra component.</p>
+</section>
+<section id="explicit-half-forms-followed-by-matras">
+<h3>Explicit half-forms followed by matras<a class="headerlink" href="#explicit-half-forms-followed-by-matras" title="Permalink to this heading">¶</a></h3>
+<p>As a general rule, Uniscribe and other shapers insert a dotted-circle
+character before a non-spacing mark character (such as a matra in
+Indic2-model scripts) when that non-spacing mark character is not
+matched with a base character in a permitted syllable. In such
+circumstances, the dotted-circle visually serves to communicate to
+readers that a base character has not been found, and also
+functionally serves as a surrogate base on which the mark character
+can be positioned.</p>
+<p>However, Uniscribe is known not to insert a dotted-circle before a
+matra character when it is preceded by two sequential
+explicit-half-form sequences (meaning two consecutive occurrences of
+“<em>Consonant</em>,Halant,ZWJ”) in Indic2 runs.</p>
+<p>Therefore, the sequence:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`_Consonant_,Halant,ZWJ,_matra_`
+</pre></div>
+</div>
+<p>would be transformed to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`_Consonant_,Halant,ZWJ,Dotted-Circle,_matra_`
+</pre></div>
+</div>
+<p>but the sequence:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`_Consonant_,Halant,ZWJ,_Consonant_,Halant,ZWJ,_matra_`
+</pre></div>
+</div>
+<p>would <em>not</em> be transformed with a dotted-circle insertion.</p>
+<p>This exception is regarded as a likely bug.</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/notes/uniscribe-bug-compatibility.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

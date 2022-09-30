@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Commands used to generate the images in opentype-shaping-hangul.md &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="commands-used-to-generate-the-images-in-opentype-shaping-hangul-md">
+<h1>Commands used to generate the images in <a class="reference internal" href="../../opentype-shaping-hangul.html"><span class="doc std std-doc">opentype-shaping-hangul.md</span></a><a class="headerlink" href="#commands-used-to-generate-the-images-in-opentype-shaping-hangul-md" title="Permalink to this heading">¶</a></h1>
+<section id="arrow-general">
+<h2>Arrow general<a class="headerlink" href="#arrow-general" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –output-file=right-arrow.png –background=FFFFFF00 –margin=0,0,0,0 /usr/share/fonts/opentype/gentiumplus/GentiumPlus-R.ttf –unicodes=2192</p>
+<blockquote>
+<div><p>Note: always use <code class="docutils literal notranslate"><span class="pre">--features=-ljmo,-vjmo,-tjmo</span></code> in examples where
+the jamo features are not being explained. This may not be
+neccessary in all fonts.</p>
+</div></blockquote>
+</section>
+<section id="lv-example">
+<h2>LV example<a class="headerlink" href="#lv-example" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-lv-syllable.png –features=+ljmo,+vjmo,+tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110e,1166</p>
+</section>
+<section id="lvt-example">
+<h2>LVT example<a class="headerlink" href="#lvt-example" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-lvt-syllable.png –features=+ljmo,+vjmo,+tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110e,1166,11a</p>
+</section>
+<section id="compose-the-syllable">
+<h2>3. Compose the syllable<a class="headerlink" href="#compose-the-syllable" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-compose-before.png –features=-ljmo,-vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1108,200b,1171,200b,11b8</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-compose-after.png –features=+ljmo,+vjmo,+tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1108,1171,11b8</p>
+<p>montage hangul-compose-before.png right-arrow.png hangul-compose-after.png -geometry +0+0 -background transparent hangul-compose.png</p>
+</section>
+<section id="decompose-the-syllable">
+<h2>4. Decompose the syllable<a class="headerlink" href="#decompose-the-syllable" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-decompose-before.png –features=+ljmo,+vjmo,+tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1106,1172,11af</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-decompose-after.png –features=-ljmo,-vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1106,200d,1172,200d,11af</p>
+<p>montage hangul-decompose-before.png right-arrow.png hangul-decompose-after.png -geometry +0+0 -background transparent hangul-decompose.png</p>
+</section>
+<section id="ljmo">
+<h2>5.2 <code class="docutils literal notranslate"><span class="pre">ljmo</span></code><a class="headerlink" href="#ljmo" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-ljmo-before.png –features=-ljmo,-vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d9</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-ljmo-after.png –features=+ljmo,-vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d9</p>
+<p>montage hangul-ljmo-before.png right-arrow.png hangul-ljmo-after.png -geometry +0+0 -background transparent hangul-ljmo.png</p>
+</section>
+<section id="vjmo">
+<h2>5.3 <code class="docutils literal notranslate"><span class="pre">vjmo</span></code><a class="headerlink" href="#vjmo" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-vjmo-before.png –features=+ljmo,-vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d9</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-vjmo-after.png –features=+ljmo,+vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d</p>
+<p>montage hangul-vjmo-before.png right-arrow.png hangul-vjmo-after.png -geometry +0+0 -background transparent hangul-vjmo.png</p>
+</section>
+<section id="tjmo">
+<h2>5.4 <code class="docutils literal notranslate"><span class="pre">tjmo</span></code><a class="headerlink" href="#tjmo" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-tjmo-before.png –features=+ljmo,+vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-tjmo-after.png –features=+ljmo,+vjmo,+tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=110f,200b,1169,200b,d7d9</p>
+<p>montage hangul-tjmo-before.png right-arrow.png hangul-tjmo-after.png -geometry +0+0 -background transparent hangul-tjmo.png</p>
+</section>
+<section id="tone-marks">
+<h2>6. Tone marks<a class="headerlink" href="#tone-marks" title="Permalink to this heading">¶</a></h2>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-tone-before.png –features=+ljmo,+vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1111,116b,11a8,200c,302f</p>
+<p>hb-view –font-size=110 –margin=2,16,2,16 –output-file=hangul-tone-after.png –features=+ljmo,+vjmo,-tjmo –background=FFFFFF00 /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc –unicodes=1111,116b,11a8,302f</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/images/hangul/hangul-image-generation-log.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

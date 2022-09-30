@@ -1,0 +1,539 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Vedic Extensions in OpenType &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="vedic-extensions-in-opentype">
+<h1>Vedic Extensions in OpenType<a class="headerlink" href="#vedic-extensions-in-opentype" title="Permalink to this heading">¶</a></h1>
+<p>This document outlines the shaping information needed to display
+characters from the Unicode Vedic Extensions block, which may be used
+within text runs in many Indic scripts.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#general-information"><span class="std std-doc">General information</span></a></p></li>
+<li><p><a class="reference internal" href="#terminology"><span class="std std-doc">Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#glyph-classification"><span class="std std-doc">Glyph classification</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#vedic-extensions-character-table"><span class="std std-doc">Vedic Extensions character table</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#shaping-information"><span class="std std-doc">Shaping information</span></a></p></li>
+</ul>
+<section id="general-information">
+<h2>General information<a class="headerlink" href="#general-information" title="Permalink to this heading">¶</a></h2>
+<p>The Vedic Extensions block encodes letters and marks that are used in
+a large body of ancient literature written in the Vedic Sanskrit
+language.</p>
+<p>Primarily an oral language in the time period when the key literature
+originated, Vedic Sanskrit has no native script. Therefore, texts may
+be typeset in any one of the Indic scripts, using the Vedic Extensions
+to supplement the main script’s character set.</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">¶</a></h2>
+<p>Individual Vedic Extension characters may be named by a combination of
+the Vedic text in which the mark is used, the regional or manuscript
+tradition involved, or a simple visual or phonetic description of the
+character. Some commonly used general categories are worth noting.</p>
+<p><strong>Udatta</strong> is the term for a high tone on a vowel.</p>
+<p><strong>Anudatta</strong> is the term for a low tone on a vowel.</p>
+<p><strong>Svarita</strong> is the term for a falling or mixed tone on a vowel.</p>
+<p><strong>Anusvara</strong> is the term for a nasalization sound that precedes a consonant.</p>
+<p><strong>Visarga</strong> is the term for a soft breathing sound that precedes a vowel.</p>
+<blockquote>
+<div><p>Note: In modern Indic languages, the terms <em>anusvara</em> and <em>visarga</em>
+often refer to diacritical marks that have the above effects on
+pronunciation. In the Vedic Sanskrit language, however, they are
+generally considered independent letters.</p>
+</div></blockquote>
+</section>
+<section id="glyph-classification">
+<h2>Glyph classification<a class="headerlink" href="#glyph-classification" title="Permalink to this heading">¶</a></h2>
+<p>For most codepoints, the <code class="docutils literal notranslate"><span class="pre">General</span> <span class="pre">Category</span></code> property defined in the Unicode
+standard is correct, but it is not sufficient to fully capture the
+expected shaping behavior (such as how the character is treated during
+glyph reordering). Therefore, they must additionally be classified by
+how they are treated when shaping a run of text.</p>
+<section id="vedic-extensions-character-table">
+<h3>Vedic Extensions character table<a class="headerlink" href="#vedic-extensions-character-table" title="Permalink to this heading">¶</a></h3>
+<p>Vedic Extension glyphs should be classified as in the following
+table. Codepoints with no assigned meaning are
+marked as <em>unassigned</em> in the <em>Unicode category</em> column.</p>
+<p>Assigned codepoints marked with a <em>null</em> in the <em>Shaping class</em>
+column evoke no special behavior from the shaping engine.</p>
+<p>The <em>Mark-placement subclass</em> column indicates mark-placement
+positioning. Assigned codepoints marked with a
+<em>null</em> in this column evoke no special mark-placement behavior. Marks
+tagged with [Mn] in the <em>Unicode category</em> column are categorized as
+non-spacing; marks tagged with [Mc] are categorized as
+spacing-combining.</p>
+<p>Some codepoints in the following table use a <em>Shaping class</em> that
+differs from the codepoint’s Unicode <em>General Category</em>. The <em>Shaping
+class</em> takes precedence during OpenType shaping, as it captures more
+specific behavior.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Codepoint</p></th>
+<th class="head text-left"><p>Unicode category</p></th>
+<th class="head text-left"><p>Shaping class</p></th>
+<th class="head text-left"><p>Mark-placement subclass</p></th>
+<th class="head text-left"><p>Glyph</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD0</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳐ Tone Karshana</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD1</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳑ Tone Shara</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD2</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳒ Tone Prenkha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD3</span></code></p></td>
+<td class="text-left"><p>Punctuation</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳓ Sign Nihshvasa</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳔ Tone Midline Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD5</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳕ Tone Aggravated Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD6</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳖ Tone Independent Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD7</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳗ Tone Kathaka Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳘ Tone Candra Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CD9</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳙ Tone Kathaka Independent Svarita Schroeder</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDA</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳚ Tone Double Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDB</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳛ Tone Triple Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDC</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳜ Tone Kathaka Anudatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDD</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳝ Tone Dot Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDE</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳞ Tone Two Dots Below</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CDF</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳟ Tone Three Dots Below</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE0</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳠ Tone Rigvedic Kashmiri Independent Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE1</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>RIGHT_POSITION</p></td>
+<td class="text-left"><p>᳡ Tone Atharavedic Independent Svarita</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE2</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳢ Sign Visarga Svarita</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE3</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳣ Sign Visarga Udatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳤ Sign Reversed Visarga Udatta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE5</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳥ Sign Visarga Anudatta</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE6</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳦ Sign Reversed Visarga Anudatta</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE7</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳧ Sign Visarga Udatta With Tail</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>OVERSTRUCK</p></td>
+<td class="text-left"><p>᳨ Sign Visarga Anudatta With Tail</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CE9</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳩ Sign Anusvara Antargomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳪ Sign Anusvara Bahirgomukha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEB</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳫ Sign Anusvara Vamagomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEC</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳬ Sign Anusvara Vamagomukha With Tail</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CED</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p>BOTTOM_POSITION</p></td>
+<td class="text-left"><p>᳭ Sign Tiryak</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEE</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳮ Sign Hexiform Long Anusvara</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CEF</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳯ Sign Long Anusvara</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF0</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳰ Sign Rthang Long Anusvara</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF1</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>AVAGRAHA</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳱ Sign Anusvara Ubhayato Mukha</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF2</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_DEAD</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳲ Sign Ardhavisarga</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF3</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_DEAD</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳳ Sign Rotated Ardhavisarga</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF4</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p>TOP_POSITION</p></td>
+<td class="text-left"><p>᳴ Tone Candra Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF5</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_WITH_STACKER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳵ Sign Jihvamuliya</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF6</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>CONSONANT_WITH_STACKER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳶ Sign Upadhmaniya</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF7</span></code></p></td>
+<td class="text-left"><p>Mark [Mc]</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳷ Sign Atikrama</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF8</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳸ Tone Ring Above</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CF9</span></code></p></td>
+<td class="text-left"><p>Mark [Mn]</p></td>
+<td class="text-left"><p>CANTILLATION</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>᳹ Tone Double Ring Above</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFA</span></code></p></td>
+<td class="text-left"><p>Letter</p></td>
+<td class="text-left"><p>PLACEHOLDER</p></td>
+<td class="text-left"><p><em>null</em></p></td>
+<td class="text-left"><p>ᳺ Sign Double Anusvara Antargomukha</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFB</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFC</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFD</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFE</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">U+1CFF</span></code></p></td>
+<td class="text-left"><p><em>unassigned</em></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="shaping-information">
+<h2>Shaping information<a class="headerlink" href="#shaping-information" title="Permalink to this heading">¶</a></h2>
+<p>31 of the characters in the block are categorized as marks. 27 of
+these marks are subcategorized as non-spacing; the remaining four are
+spacing-combining.</p>
+<p>Of the non-spacing marks, 20 are classified as <code class="docutils literal notranslate"><span class="pre">CANTILLATION</span></code> (or tone-marker)
+indicators, which modify the pitch of vowels. Most of these marks are
+generally positioned above or below the main character, using GPOS
+mark attachment, in a position that does not interact or interfere
+with the main character. In Unicode, the <code class="docutils literal notranslate"><span class="pre">CANTILLATION</span></code> classification
+is separate from the <code class="docutils literal notranslate"><span class="pre">TONE_MARKER</span></code> classification used in some scripts
+for semantic reasons; the two classifications are identical for
+shaping purposes.</p>
+<p>Some of the marks (cantillation and non-cantillation) are classified
+as <code class="docutils literal notranslate"><span class="pre">OVERSTRUCK</span></code> in the <em>Mark-placement subclass</em> column.
+This indicates that the mark is intended to be rendered on top of the
+preceding character. During reordering, <code class="docutils literal notranslate"><span class="pre">OVERSTRUCK</span></code> marks are tagged
+for the ordering position <code class="docutils literal notranslate"><span class="pre">POS_AFTER_MAIN</span></code>.</p>
+<p>Some marks are classified, for shaping purposes, as <code class="docutils literal notranslate"><span class="pre">AVAGRAHA</span></code> or
+<code class="docutils literal notranslate"><span class="pre">VISARGA</span></code>. This indicates that the mark behaves more like the Avagraha
+or Visarga character than like a diacritic.</p>
+<p>Characters that are categorized in Unicode as letters vary with
+respect to whether or not they trigger special behavior in the shaping
+process. These include letters that are classified as <code class="docutils literal notranslate"><span class="pre">CONSONANT</span></code> and
+letters that are classified as <code class="docutils literal notranslate"><span class="pre">AVAGRAHA</span></code>.</p>
+<!--- 1cf5 and 1cf6 get reclassified as CONSONANT
+
+1ce2 and 1ce8 get treated like tone marks, but SHOULD be allowed only after Visarga.
+
+1ced gets treated like tone mark, but SHOULD be allowed only after U+1CE9..U+1CF1
+
+1ce9 1cec 1cee 1cf1 all take marks in standalone clusters, similar to Avagraha.
+--->
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/opentype-shaping-vedic-extensions.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>OpenType shaping errata &#8212; OpenType Shaping Documents  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="opentype-shaping-errata">
+<h1>OpenType shaping errata<a class="headerlink" href="#opentype-shaping-errata" title="Permalink to this heading">¶</a></h1>
+<p>This document details errata that shaping engines may encounter, such
+as ambiguities or omissions in the existing OpenType or Unicode
+specification documents.</p>
+<p><strong>Table of Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#unicode"><span class="std std-doc">Unicode</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#zwj-and-zwnj"><span class="std std-doc">ZWJ and ZWNJ</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#scope-of-zwj-and-zwnj"><span class="std std-doc">Scope of ZWJ and ZWNJ</span></a></p></li>
+<li><p><a class="reference internal" href="#zwj-in-redundant-ligature-lookups"><span class="std std-doc">ZWJ in redundant ligature lookups</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#emoji"><span class="std std-doc">Emoji</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#skin-tone-permutations"><span class="std std-doc">Skin-tone permutations</span></a></p></li>
+<li><p><a class="reference internal" href="#gender-permutations"><span class="std std-doc">Gender permutations</span></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#opentype"><span class="std std-doc">OpenType</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#null-offsets-in-gsub-and-gpos"><span class="std std-doc">Null offsets in GSUB and GPOS</span></a></p></li>
+<li><p><a class="reference internal" href="#sorting-of-gsub-and-gpos-lookups"><span class="std std-doc">Sorting of GSUB and GPOS lookups</span></a></p></li>
+<li><p><a class="reference internal" href="#per-script-applicability-of-feature-tags"><span class="std std-doc">Per-script applicability of feature tags</span></a></p></li>
+<li><p><a class="reference internal" href="#ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination"><span class="std std-doc">Ordering of post-base and below-base consonants in Indic2 base-consonant determination</span></a></p></li>
+<li><p><a class="reference internal" href="#lookup-behavior"><span class="std std-doc">Lookup behavior</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-multiplesub-for-glyph-deletion"><span class="std std-doc">Using MultipleSub for glyph deletion</span></a></p></li>
+<li><p><a class="reference internal" href="#processing-nested-contextual-lookups"><span class="std std-doc">Processing nested contextual lookups</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#adjacent-mark-reordering-ambiguities"><span class="std std-doc">Adjacent-mark reordering ambiguities</span></a></p></li>
+<li><p><a class="reference internal" href="#merging-of-glyph-properties"><span class="std std-doc">Merging of glyph properties</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#see-also"><span class="std std-doc">See also</span></a></p></li>
+</ul>
+<section id="unicode">
+<h2>Unicode<a class="headerlink" href="#unicode" title="Permalink to this heading">¶</a></h2>
+<p>This section lists errata pertaining to the Unicode Standard.</p>
+<section id="zwj-and-zwnj">
+<h3>ZWJ and ZWNJ<a class="headerlink" href="#zwj-and-zwnj" title="Permalink to this heading">¶</a></h3>
+<section id="scope-of-zwj-and-zwnj">
+<h4>Scope of ZWJ and ZWNJ<a class="headerlink" href="#scope-of-zwj-and-zwnj" title="Permalink to this heading">¶</a></h4>
+<p>Unicode provides the Zero Width Joiner (ZWJ) and Zero Width Non-Joiner
+(ZWNJ) control characters so that a text sequence can “request a
+rendering system to have more or less of a connection between
+characters than they would otherwise have.”</p>
+<p>The generic examples used in the standard show how ZWJ and ZWNJ
+characters can affect the cursive-joining behavior between two
+characters or the ligature-forming behavior between two
+characters. However, the standard does not explicitly say whether or
+not the presence of a ZWJ or ZWNJ should influence the shaping
+behavior of characters for characters not adjacent to the ZWJ or ZWNJ.</p>
+<p>For example, in the sequence “a,b,ZWNJ,c,d” the ZWNJ should prevent
+the application of a ligature between “b” and “c” (if such a ligature
+lookup exists in the active font).</p>
+<p>However, if the active font contains a contextual ligature lookup for
+“c,d” when preceded by “b”, it is not clear whether or not the ZWNJ
+in the same “a,b,ZWNJ,c,d” sequence should inhibit the application of
+the ligature between “c” and “d”.</p>
+</section>
+<section id="zwj-in-redundant-ligature-lookups">
+<h4>ZWJ in redundant ligature lookups<a class="headerlink" href="#zwj-in-redundant-ligature-lookups" title="Permalink to this heading">¶</a></h4>
+<p>An “Implementation Notes” section in chapter 23.2 of the Unicode
+Standard says that font vendors should add ZWJ sequences to ligature
+lookups. For example, if the sequence “f,i” triggers the “fi”
+ligature, then the font should also include a lookup that triggers the
+“fi” ligature for “f,ZWJ,i”.</p>
+<p>However, the text of chapter 23.2 prior to the “Implementation Notes”
+says that ZWJ and ZWNJ “are not to be used in all cases where
+ligatures or cursive connections are desired; instead, they are meant
+only for over-riding the normal behavior of the text.” That logic
+makes the suggested “f,ZWJ,i” ligature lookup superfluous, because it
+duplicates the effects of the existing “f,i” ligature lookup.</p>
+<p>Using ZWJ within lookup patterns in the manner suggested by the
+“Implementation Notes” is not common practice.</p>
+</section>
+</section>
+<section id="emoji">
+<h3>Emoji<a class="headerlink" href="#emoji" title="Permalink to this heading">¶</a></h3>
+<section id="skin-tone-permutations">
+<h4>Skin-tone permutations<a class="headerlink" href="#skin-tone-permutations" title="Permalink to this heading">¶</a></h4>
+<p>It is unclear whether ZWJ multi-person group emoji sequences are
+expected to include combinations where some emoji in the sequence are
+followed by a Fitzpatrick skin-tone modifier but other emoji in the
+sequence are not followed by a Fitzpatrick skin-tone modifier.</p>
+<p>For example, it is unclear whether the sequence
+“Man,ZWJ,Handshake,Man,SkinTone-2” constitues a valid ZWJ “Couple
+holding hands” sequence.</p>
+</section>
+<section id="gender-permutations">
+<h4>Gender permutations<a class="headerlink" href="#gender-permutations" title="Permalink to this heading">¶</a></h4>
+<p>It is unclear whether ZWJ multi-person group emoji sequences are
+expected to include combinations where some emoji in the sequence are
+are an explicit gender but other emoji in the sequence are not
+explicit gender.</p>
+<p>For example, it is unclear whether the sequence
+“Man,ZWJ,Handshake,Person” constitues a valid ZWJ “Couple
+holding hands” sequence.</p>
+<p>It is also unclear whether the ZWJ multi-person family sequence must
+have explicit gender-ordering for the adult humans depicted.</p>
+<p>For example, it is unclear whether the sequence
+“Man,ZWJ,Woman,ZWJ,Girl” should be rendered identically to the
+sequence “Woman,ZWJ,Man,ZWJ,Girl”.</p>
+</section>
+</section>
+</section>
+<section id="opentype">
+<h2>OpenType<a class="headerlink" href="#opentype" title="Permalink to this heading">¶</a></h2>
+<p>This section lists errata pertaining to the OpenType specification.</p>
+<section id="null-offsets-in-gsub-and-gpos">
+<h3>Null offsets in GSUB and GPOS<a class="headerlink" href="#null-offsets-in-gsub-and-gpos" title="Permalink to this heading">¶</a></h3>
+<p>The headers of the GSUB and GPOS tables include fields that contain
+the offsets at which other structures within the font binary are
+found. For example, the value of the <code class="docutils literal notranslate"><span class="pre">featureVariationsOffset</span></code> field
+indicates the byte value at which the featureVariations structure is
+located.</p>
+<p>The OpenType specification notes that <code class="docutils literal notranslate"><span class="pre">featureVariationsOffset</span></code> can be
+<code class="docutils literal notranslate"><span class="pre">NULL</span></code>, but the specification does not indicate whether or any other
+offset values can also be <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (nor, conversely, does it indicate
+whether <code class="docutils literal notranslate"><span class="pre">NULL</span></code> should be considered invalid).</p>
+<p>In practice, other fields – such as <code class="docutils literal notranslate"><span class="pre">scriptListOffset</span></code>,
+<code class="docutils literal notranslate"><span class="pre">featureListOffset</span></code>, and <code class="docutils literal notranslate"><span class="pre">lookupListOffset</span></code> – may have <code class="docutils literal notranslate"><span class="pre">NULL</span></code> values.
+In such situations, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is usually intrepreted as meaning that the
+structure nominally pointed to by the offset is empty.</p>
+<p>Furthermore, font-validation functions may overwrite a <code class="docutils literal notranslate"><span class="pre">NULL</span></code> into an
+offset field if the original value encountered was invalid.</p>
+</section>
+<section id="sorting-of-gsub-and-gpos-lookups">
+<h3>Sorting of GSUB and GPOS lookups<a class="headerlink" href="#sorting-of-gsub-and-gpos-lookups" title="Permalink to this heading">¶</a></h3>
+<p>The OpenType specification requires that lookups in the GSUB table
+must be sorted into numeric order before they are applied.</p>
+<p>Lookups in the GPOS table, however, are not expected to be sorted
+first, because GPOS lookups are applied in a specified order.</p>
+</section>
+<section id="per-script-applicability-of-feature-tags">
+<h3>Per-script applicability of feature tags<a class="headerlink" href="#per-script-applicability-of-feature-tags" title="Permalink to this heading">¶</a></h3>
+<p>Some OpenType feature tags are defined only to apply to text runs in
+specific scripts. Other feature tags are defined to apply to text in
+any script.</p>
+<p>However, the definitions of some feature tags list a limited number of
+example scripts to which the feature should apply, but do not specify
+every supported script.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">pstf</span></code> (post-base forms) tag is
+<a class="reference external" href="https://docs.microsoft.com/en-us/typography/opentype/spec/features_pt#tag-pstf">described</a>
+as required for “scripts of south and southeast Asia that have
+post-base forms for consonants eg: Gurmukhi, Malayalam, Khmer.”</p>
+</section>
+<section id="ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination">
+<h3>Ordering of post-base and below-base consonants in Indic2 base-consonant determination<a class="headerlink" href="#ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination" title="Permalink to this heading">¶</a></h3>
+<p>The Microsoft script-development specification for all Indic2-model
+scripts
+<a class="reference external" href="https://docs.microsoft.com/en-us/typography/script-development/bengali#reorder-characters">states</a>
+parenthetically that “post-base forms have to follow below-base forms”.</p>
+<p>If this statement is taken to be a rule, it would affect the
+base-consonant search algorithm.</p>
+<p>For example, in the Bengali sequence “Ka,Halant,Ba,Halant,Ya”
+(<code class="docutils literal notranslate"><span class="pre">U+0995</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09CD</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09AC</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09CD</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09AF</span></code>), “Ka” would be
+identified as the syllable base, with “Ba” designated a below-base
+form and “Ya” designated a post-base form. However, in the similar
+sequence “Ka,Halant,Ya,Halant,Ba”
+(<code class="docutils literal notranslate"><span class="pre">U+0995</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09CD</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09AF</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09CD</span></code>,<code class="docutils literal notranslate"><span class="pre">U+09AC</span></code>), “Ya” would be
+identified as the base consonant.</p>
+<p>Real-world Bengali texts provide counterexamples that contradict the
+assumption that “post-base forms follow below-base forms” is a
+requirement.</p>
+<p>In other scripts, such as Telugu, the “post-base forms have to follow
+below-base forms” statement is, perhaps, statistically likely, but is
+certainly not an orthographic rule.</p>
+<p>Consequently, it is unclear if the statement should be enforced as a
+rule or if it should be regarded as a suggestion, and it is unclear to
+what degree that answer varies between the Indic2-model scripts.</p>
+</section>
+<section id="lookup-behavior">
+<h3>Lookup behavior<a class="headerlink" href="#lookup-behavior" title="Permalink to this heading">¶</a></h3>
+<section id="using-multiplesub-for-glyph-deletion">
+<h4>Using MultipleSub for glyph deletion<a class="headerlink" href="#using-multiplesub-for-glyph-deletion" title="Permalink to this heading">¶</a></h4>
+<p>The GSUB specification says that a <code class="docutils literal notranslate"><span class="pre">MultipleSubst</span></code> substitution cannot
+be used to delete a glyph: it always substitutes at least one
+replacement glyph. However, some implementations allow the
+replacement-glyph array to be zero-length.</p>
+</section>
+<section id="processing-nested-contextual-lookups">
+<h4>Processing nested contextual lookups<a class="headerlink" href="#processing-nested-contextual-lookups" title="Permalink to this heading">¶</a></h4>
+<p>The GSUB specification allows contextual substitutions to invoke other
+contextual substitutions. It is unclear how implementations ought to
+handle certain cases of these nested lookups.</p>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>context: &#39;a&#39;
+subst index 0:
+  context: &#39;ab&#39;
+  subst index 1: &#39;b&#39; → &#39;ab&#39;
+</pre></div>
+</div>
+<p>This nested set of substitutions could cause an infinite loop on
+certain input strings, if it is interpreted in a naive manner:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&#39;[]ab&#39; // begin at start of glyph sequence
+&#39;[a]b&#39; // context matches
+&#39;[ab]&#39; // nested context matches at index 0
+&#39;[aab]&#39; // subst applies at index 1
+&#39;[a]ab&#39; // return to parent context, uh oh!
+&#39;a[]ab&#39; // move on to next glyph
+&#39;a[a]b&#39; // context matches, infinite loop!
+</pre></div>
+</div>
+<p>In short, if a nested contextual substitution can insert glyphs ahead
+of its parent contextual substitution’s context, then it creates a
+“stack” that allows Turing-complete computation.</p>
+</section>
+</section>
+<section id="adjacent-mark-reordering-ambiguities">
+<h3>Adjacent-mark reordering ambiguities<a class="headerlink" href="#adjacent-mark-reordering-ambiguities" title="Permalink to this heading">¶</a></h3>
+<p>The Microsoft script-development specifications
+<a class="reference external" href="https://docs.microsoft.com/en-us/typography/script-development/devanagari#reorder-characters">say</a>
+that marks should be reordered “to canonical order” (step 3 in the
+linked Devanagari document) in the reordering phase. However, the same
+step also describes this step as “Adjacent nukta and halant or nukta
+and vedic sign are always repositioned if necessary, so that the nukta
+is first.”</p>
+<p>Together, it is somewhat ambiguous as to whether only “Halant,Nukta”
+and “<em>vedicsign</em>,Nukta” sequences should be reordered by moving the
+“Nukta” to the beginning, or all sequences of marks require reordering
+into Unicode canonical combining class order, with “Nukta” moving to
+the initial position as a special case.</p>
+</section>
+<section id="merging-of-glyph-properties">
+<h3>Merging of glyph properties<a class="headerlink" href="#merging-of-glyph-properties" title="Permalink to this heading">¶</a></h3>
+<p>When the application of a shaping operation merges two or more
+adjacent glyphs (for example, when two adjacent glyphs are substituted
+with a single ligature glyph), the OpenType specification does not
+dictate how shaping engines should combine (for example, merge,
+replace, or drop) the properties of the input glyphs to determine the
+properties of the output glyph.</p>
+<p>This may result in ambiguities when a sequence of glyphs has several
+substitutions applied in series.</p>
+<p>For example, when shaping Indic scripts, glyphs may be tagged for the
+possible application of multiple features, such as <code class="docutils literal notranslate"><span class="pre">half</span></code> and <code class="docutils literal notranslate"><span class="pre">rkrf</span></code>,
+which are applied serially.</p>
+<p>HarfBuzz and Uniscribe both take the approach of retaining the
+properties of the first input glyph in a sequence, propagating those
+properties to the merged output glyph.</p>
+</section>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<p>Shaping engines may also want to offer explicit compatibility with
+Microsoft Uniscribe, for the purpose of ensuring that users’ existing
+documents do not break. Therefore, implementors may wish to consult
+the <a class="reference internal" href="notes/uniscribe-bug-compatibility.html"><span class="doc std std-doc">Uniscribe compatibility notes</span></a>.</p>
+<p>These compatibilty notes record test-driven observations about
+Uniscribe’s behavior, and they include any behavior that is a known
+bug or a known deviation from specifications. Consequently, the issues
+raised by offering Uniscribe compatiblity cannot be considered errata
+in the sense that it is described above.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OpenType Shaping Documents</a></h1>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=n8willis&repo=opentype-shaping-documents&type=watch&count=True&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="README.html">Scripts</a></li>
+    
+    <li class="toctree-l1"><a href="character-tables/character-tables-index.html">Character tables</a></li>
+    
+    <li class="toctree-l1"><a href="opentype-shaping-normalization.html">Normalization</a></li>
+    
+    <li class="toctree-l1"><a href="notes/README.html">Notes</a></li>
+    
+    <li class="toctree-l1"><a href="errata.html">Errata</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sponsored by YesLogic.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/errata.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
