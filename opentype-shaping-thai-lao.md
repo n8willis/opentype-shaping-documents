@@ -13,7 +13,7 @@ runs in the Thai and Lao scripts.
       - [Mark combining classes](#mark-combining-classes)
       - [PUA fallback classifications](#pua-fallback-classifications)
       - [Thai and Lao character tables](#thai-and-lao-character-tables)
-  - [The `<thai>`/`<lao >` shaping model](#the-thai-lao-shaping-model)
+  - [The `<thai>`/`<lao >` shaping model](#the-thailao-shaping-model)
       - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
       - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
       - [3: Reordering sequences of marks](#3-reordering-sequences-of-marks)

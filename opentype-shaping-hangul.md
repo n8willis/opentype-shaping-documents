@@ -13,7 +13,7 @@ implementations share.
       - [Jamo type](#jamo-type)
 	  - [Composing behavior](#composing-behavior)
 	  - [Character tables](#character-tables)
-  - [The `<hang>` shaping model](#the-arab-shaping-model)
+  - [The `<hang>` shaping model](#the-hang-shaping-model)
       - [1. Identifying syllables](#1-identifying-syllables)
       - [2. Determining if the syllable can be composed into a Hangul Syllables codepoint](#2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint)
       - [3. Composing the syllable (if composition is possible)](#3-composing-the-syllable-if-composition-is-possible)

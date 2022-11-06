@@ -12,7 +12,7 @@ implementations share.
   - [Glyph classification](#glyph-classification)
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
-  - [The `<hebr>` shaping model](#the-arab-shaping-model)
+  - [The `<hebr>` shaping model](#the-hebr-shaping-model)
       - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
       - [2. Composing any Alphabetic Presentation forms](#2-composing-any-alphabetic-presentation-forms)
       - [3. Applying the language-form substitution features from GSUB](#3-applying-the-language-form-substitution-features-from-gsub)

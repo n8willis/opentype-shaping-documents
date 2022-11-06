@@ -13,7 +13,7 @@ implementations share.
       - [Joining properties](#joining-properties)
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
-  - [The `<syrc>` shaping model](#the-arab-shaping-model)
+  - [The `<syrc>` shaping model](#the-syrc-shaping-model)
       - [1. Transient reordering of modifier combining marks](#1-transient-reordering-of-modifier-combining-marks)
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)

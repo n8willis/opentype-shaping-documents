@@ -13,7 +13,7 @@ implementations share.
       - [Joining properties](#joining-properties)
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
-  - [The `<nko >` shaping model](#the-arab-shaping-model)
+  - [The `<nko >` shaping model](#the-nko-shaping-model)
       - [1. Transient reordering of modifier combining marks](#1-transient-reordering-of-modifier-combining-marks)
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)
@@ -337,7 +337,7 @@ The algorithm for reordering a sequence of marks is:
 > modifier combining marks in conjunction with their Unicode
 > normalization functionality for increased efficiency.
 
-### 1. Compound character composition and decomposition ###
+### 2. Compound character composition and decomposition ###
 
 The `ccmp` feature allows a font to substitute
 
