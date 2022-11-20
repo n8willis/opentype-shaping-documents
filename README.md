@@ -47,6 +47,11 @@ organized by script; where there are multiple shaping models for a
 particular script (including deprecated models), the various models are
 all addressed in the same script-specific document.
 
+The documents also include a description of
+[normalization](opentype-shaping-normalization.md) in the OpenType
+shaping context, which differs from Unicode normalization in several
+respects.
+
 Various [notes](notes/README.md) about the document set and the details
 of its scope, limitations, and quirks are also provided.
 
