@@ -137,7 +137,7 @@ specific, script-aware behavior.
 |`U+0CDA`   | _unassigned_     |                   |                            |                              |
 |`U+0CDB`   | _unassigned_     |                   |                            |                              |
 |`U+0CDC`   | _unassigned_     |                   |                            |                              |
-|`U+0CDD`   | Letter           | CONSONANT_DEAD    | _null_                     | &#x0CDD; Nakaara Pollu       |
+|`U+0CDD`   | _unassigned_     |                   |                            |                              |
 |`U+0CDE`   | Letter           | CONSONANT         | _null_                     | &#x0CDE; Fa                  |
 |`U+0CDF`   | _unassigned_     |                   |                            |                              |
 | | | | |																		
@@ -161,7 +161,7 @@ specific, script-aware behavior.
 |`U+0CF0`   | _unassigned_     |                   |                            |                              |
 |`U+0CF1`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x0CF1; Jihvamuliya         |
 |`U+0CF2`   | Letter           | CONSONANT_WITH_STACKER | _null_                | &#x0CF2; Upadhmaniya         |
-|`U+0CF3`   | _unassigned_     |                   |                            |                              |
+|`U+0CF3`   | Mark [Mc]        | BINDU             | RIGHT_POSITION             | &#x0CF3; Combining Anusvara Above Right|
 |`U+0CF4`   | _unassigned_     |                   |                            |                              |
 |`U+0CF5`   | _unassigned_     |                   |                            |                              |
 |`U+0CF6`   | _unassigned_     |                   |                            |                              |
@@ -281,28 +281,27 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner (ZWJ) is primarily used to prevent the formation
-of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. The
-sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of
-a conjunct between the two consonants. 
+The zero-width joiner is primarily used to prevent the formation of a conjunct
+from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
+"_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of a
+conjunct between the two consonants. 
 
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner (ZWNJ) must be used instead. The
-sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the
-first consonant in its standard form, followed by an explicit
-"Halant".
+conjunct, the zero-width non-joiner must be used instead. The sequence
+"_Consonant_,Halant,ZWNJ,_Consonant_" should produce the first
+consonant in its standard form, followed by an explicit "Halant".
 
 A secondary usage of the zero-width joiner is to prevent the formation of
 "Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 
-The no-break space (NBSP) is primarily used to display those
-codepoints that are defined as non-spacing (marks, dependent vowels
-(matras), below-base consonant forms, and post-base consonant forms)
-in an isolated context, as an alternative to displaying them
-superimposed on the dotted-circle placeholder. These sequences will
-match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space is primarily used to display those codepoints that
+are defined as non-spacing (marks, dependent vowels (matras),
+below-base consonant forms, and post-base consonant forms) in an
+isolated context, as an alternative to displaying them superimposed on
+the dotted-circle placeholder. These sequences will match
+"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
 

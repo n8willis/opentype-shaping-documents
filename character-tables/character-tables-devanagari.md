@@ -220,6 +220,118 @@ specific, script-aware behavior.
 |`U+A8FD`   | Letter           | _null_            | _null_                     | &#xA8FD; Jain Om             |
 |`U+A8FE`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#xA8FE; Ay                  |
 |`U+A8FF`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#xA8FF; Sign Ay             |
+| | | | |
+
+
+
+## Devanagari Extended-A character table ##
+
+| Codepoint | Unicode category | Shaping class | Mark-placement subclass | Glyph                                   |
+|:----------|:-----------------|:--------------|:------------------------|:----------------------------------------|
+| `U+11B00` | Punctuation      | _null_        | _null_                  | &#x11B00; Head Mark                     |
+| `U+11B01` | Punctuation      | _null_        | _null_                  | &#x11B01; Head Mark With Headstroke     |
+| `U+11B02` | Punctuation      | _null_        | _null_                  | &#x11B02; Sign Bhale                    |
+| `U+11B03` | Punctuation      | _null_        | _null_                  | &#x11B03; Sign Bhale With Hook          |
+| `U+11B04` | Punctuation      | _null_        | _null_                  | &#x11B04; Sign Extended Bhale           |
+| `U+11B05` | Punctuation      | _null_        | _null_                  | &#x11B05; Sign Extended Bhale With Hook |
+| `U+11B06` | Punctuation      | _null_        | _null_                  | &#x11B06; Sign Western Five-like Bhale  |
+| `U+11B07` | Punctuation      | _null_        | _null_                  | &#x11B07; Sign Western Nine-like Bhale  |
+| `U+11B08` | Punctuation      | _null_        | _null_                  | &#x11B08; Sign Reversed Nine-like Bhale |
+| `U+11B09` | Punctuation      | _null_        | _null_                  | &#x11B09; Sign Mindu                    |
+| `U+11B0A` | _unassigned_     |               |                         |                                         |
+| `U+11B0B` | _unassigned_     |               |                         |                                         |
+| `U+11B0C` | _unassigned_     |               |                         |                                         |
+| `U+11B0D` | _unassigned_     |               |                         |                                         |
+| `U+11B0E` | _unassigned_     |               |                         |                                         |
+| `U+11B0F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+| `U+11B10` | _unassigned_     |               |                         |                                         |
+| `U+11B11` | _unassigned_     |               |                         |                                         |
+| `U+11B12` | _unassigned_     |               |                         |                                         |
+| `U+11B13` | _unassigned_     |               |                         |                                         |
+| `U+11B14` | _unassigned_     |               |                         |                                         |
+| `U+11B15` | _unassigned_     |               |                         |                                         |
+| `U+11B16` | _unassigned_     |               |                         |                                         |
+| `U+11B17` | _unassigned_     |               |                         |                                         |
+| `U+11B18` | _unassigned_     |               |                         |                                         |
+| `U+11B19` | _unassigned_     |               |                         |                                         |
+| `U+11B1A` | _unassigned_     |               |                         |                                         |
+| `U+11B1B` | _unassigned_     |               |                         |                                         |
+| `U+11B1C` | _unassigned_     |               |                         |                                         |
+| `U+11B1D` | _unassigned_     |               |                         |                                         |
+| `U+11B1E` | _unassigned_     |               |                         |                                         |
+| `U+11B1F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+| `U+11B20` | _unassigned_     |               |                         |                                         |
+| `U+11B21` | _unassigned_     |               |                         |                                         |
+| `U+11B22` | _unassigned_     |               |                         |                                         |
+| `U+11B23` | _unassigned_     |               |                         |                                         |
+| `U+11B24` | _unassigned_     |               |                         |                                         |
+| `U+11B25` | _unassigned_     |               |                         |                                         |
+| `U+11B26` | _unassigned_     |               |                         |                                         |
+| `U+11B27` | _unassigned_     |               |                         |                                         |
+| `U+11B28` | _unassigned_     |               |                         |                                         |
+| `U+11B29` | _unassigned_     |               |                         |                                         |
+| `U+11B2A` | _unassigned_     |               |                         |                                         |
+| `U+11B2B` | _unassigned_     |               |                         |                                         |
+| `U+11B2C` | _unassigned_     |               |                         |                                         |
+| `U+11B2D` | _unassigned_     |               |                         |                                         |
+| `U+11B2E` | _unassigned_     |               |                         |                                         |
+| `U+11B2F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+| `U+11B30` | _unassigned_     |               |                         |                                         |
+| `U+11B31` | _unassigned_     |               |                         |                                         |
+| `U+11B32` | _unassigned_     |               |                         |                                         |
+| `U+11B33` | _unassigned_     |               |                         |                                         |
+| `U+11B34` | _unassigned_     |               |                         |                                         |
+| `U+11B35` | _unassigned_     |               |                         |                                         |
+| `U+11B36` | _unassigned_     |               |                         |                                         |
+| `U+11B37` | _unassigned_     |               |                         |                                         |
+| `U+11B38` | _unassigned_     |               |                         |                                         |
+| `U+11B39` | _unassigned_     |               |                         |                                         |
+| `U+11B3A` | _unassigned_     |               |                         |                                         |
+| `U+11B3B` | _unassigned_     |               |                         |                                         |
+| `U+11B3C` | _unassigned_     |               |                         |                                         |
+| `U+11B3D` | _unassigned_     |               |                         |                                         |
+| `U+11B3E` | _unassigned_     |               |                         |                                         |
+| `U+11B3F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+| `U+11B40` | _unassigned_     |               |                         |                                         |
+| `U+11B41` | _unassigned_     |               |                         |                                         |
+| `U+11B42` | _unassigned_     |               |                         |                                         |
+| `U+11B43` | _unassigned_     |               |                         |                                         |
+| `U+11B44` | _unassigned_     |               |                         |                                         |
+| `U+11B45` | _unassigned_     |               |                         |                                         |
+| `U+11B46` | _unassigned_     |               |                         |                                         |
+| `U+11B47` | _unassigned_     |               |                         |                                         |
+| `U+11B48` | _unassigned_     |               |                         |                                         |
+| `U+11B49` | _unassigned_     |               |                         |                                         |
+| `U+11B4A` | _unassigned_     |               |                         |                                         |
+| `U+11B4B` | _unassigned_     |               |                         |                                         |
+| `U+11B4C` | _unassigned_     |               |                         |                                         |
+| `U+11B4D` | _unassigned_     |               |                         |                                         |
+| `U+11B4E` | _unassigned_     |               |                         |                                         |
+| `U+11B4F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+| `U+11B50` | _unassigned_     |               |                         |                                         |
+| `U+11B51` | _unassigned_     |               |                         |                                         |
+| `U+11B52` | _unassigned_     |               |                         |                                         |
+| `U+11B53` | _unassigned_     |               |                         |                                         |
+| `U+11B54` | _unassigned_     |               |                         |                                         |
+| `U+11B55` | _unassigned_     |               |                         |                                         |
+| `U+11B56` | _unassigned_     |               |                         |                                         |
+| `U+11B57` | _unassigned_     |               |                         |                                         |
+| `U+11B58` | _unassigned_     |               |                         |                                         |
+| `U+11B59` | _unassigned_     |               |                         |                                         |
+| `U+11B5A` | _unassigned_     |               |                         |                                         |
+| `U+11B5B` | _unassigned_     |               |                         |                                         |
+| `U+11B5C` | _unassigned_     |               |                         |                                         |
+| `U+11B5D` | _unassigned_     |               |                         |                                         |
+| `U+11B5E` | _unassigned_     |               |                         |                                         |
+| `U+11B5F` | _unassigned_     |               |                         |                                         |
+|           |                  |               |                         |                                         |
+
+
 
 
 
