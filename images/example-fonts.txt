@@ -1,0 +1,246 @@
+#############################################################
+#                                                           #
+# All uncommented lines in this file are URLs which should  #
+# be downloadable via wget, cURL, or scripts.               #
+#                                                           #
+# SHA checksums are for the exact file downloaded at the    #
+# URL (including archive files), not for the .ttf/.otf/.ttc #
+# within.                                                   #
+#                                                           #
+# If any CDN links change or URLs break, please open an     #
+# issue in this project's bug tracker, not the font's.      #
+#                                                           #
+#############################################################
+
+##########################
+# General
+#
+
+# GentiumPlus-R.ttf
+# sha256:
+https://software.sil.org/downloads/r/gentium/GentiumPlus-6.101.zip
+
+
+##########################
+# Arabic-like
+#
+
+# Arabic
+
+# NotoNaskhArabic-Regular.ttf
+# sha256:
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoNaskhArabic/unhinted/ttf/NotoNaskhArabic-Regular.ttf
+
+# NotoNastaliqUrdu-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoNastaliqUrdu/hinted/ttf/NotoNastaliqUrdu-Regular.ttf
+
+# NotoKufiArabic-Regular.ttf
+# sha256:
+https://fonts.google.com/download?family=Noto%20Kufi%20Arabic
+
+
+# Mongolian
+
+# NotoSansMongolian-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansMongolian/unhinted/ttf/NotoSansMongolian-Regular.ttf
+
+# N'Ko
+
+# NotoSansNKo-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansNKo/full/ttf/NotoSansNKo-Regular.ttf
+
+# Syriac
+
+# NotoSansSyriacEastern-Regular.ttf
+# sha256:
+https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSyriacEastern-unhinted.zip
+
+# NotoSansSyriacWestern-Regular.ttf
+# sha256:
+https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSyriacWestern-unhinted.zip
+
+# NotoSansSyriacEstrangela-Regular.ttf
+# sha256: 
+https://noto-website-2.storage.googleapis.com/pkgs/NotoSansSyriacEstrangela-unhinted.zip
+
+
+##########################
+# Indic
+#
+
+# Bengali
+
+# NotoSerifBengali-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifBengali/full/ttf/NotoSerifBengali-Regular.ttf
+
+# Devanagari
+
+# NotoSerifDevanagari-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifDevanagari/full/ttf/NotoSerifDevanagari-Regular.ttf
+
+# Gujarati
+
+# NotoSerifGujarati-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifGujarati/full/ttf/NotoSerifGujarati-Regular.ttf
+
+# Gurmukhi
+
+# NotoSansGurmukhi-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifGurmukhi/full/ttf/NotoSerifGurmukhi-Regular.ttf
+
+# Kannada
+
+# NotoSerifKannada-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifKannada/full/ttf/NotoSerifKannada-Regular.ttf
+
+# Malayalam
+
+# NotoSerifMalayalam-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifMalayalam/full/ttf/NotoSerifMalayalam-Regular.ttf
+
+# NotoSansMalayalam-Regular.ttf 
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansMalayalam/full/ttf/NotoSansMalayalam-Regular.ttf
+
+# Rachana-Regular.ttf
+# sha256: 
+https://gitlab.com/rit-fonts/RIT-Rachana/-/jobs/artifacts/1.2/download?job=build-tag
+
+# Oriya
+
+# NotoSansOriya-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansOriya/full/ttf/NotoSansOriya-Regular.ttf
+
+# Sinhala
+
+# NotoSerifSinhala-Regular.ttf 
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifSinhala/full/ttf/NotoSerifSinhala-Regular.ttf
+
+# Tamil
+
+# NotoSerifTamil-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifTamil/full/ttf/NotoSerifTamil-Regular.ttf
+
+# NotoSansTamil-Regular.ttf
+# sha256:
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansTamil/full/ttf/NotoSansTamil-Regular.ttf
+
+# Telugu
+
+# NotoSerifTelugu-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifTelugu/full/ttf/NotoSerifTelugu-Regular.ttf
+
+# NotoSansTelugu-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansTelugu/full/ttf/NotoSansTelugu-Regular.ttf
+
+
+##########################
+# Brahmi-derived
+#
+
+# Khmer
+
+# NotoSerifKhmer-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifKhmer/full/ttf/NotoSerifKhmer-Regular.ttf
+
+# Myanmar
+
+# NotoSansMyanmar-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansMyanmar/full/ttf/NotoSansMyanmar-Regular.ttf
+
+# PadaukBook-Regular.ttf
+# sha256: 
+https://software.sil.org/downloads/r/padauk/padauk-3.003.zip
+
+# Thai and Lao
+
+# NotoSerifThai-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifThai/full/ttf/NotoSerifThai-Regular.ttf
+
+# NotoSerifLao-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifLao/full/ttf/NotoSerifLao-Regular.ttf
+
+# Tibetan
+
+# NotoSerifTibetan-Regular.ttf -- RENAMED FROM NotoSansTibetan-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerifTibetan/full/ttf/NotoSerifTibetan-Regular.ttf
+
+
+##########################
+# Hangul
+#
+
+# NotoSansCJK-Regular.ttc
+# sha256: 
+https://github.com/googlefonts/noto-cjk/archive/refs/tags/NotoSansV2.001.zip
+
+
+##########################
+# Hebrew
+#
+
+# NotoSansHebrew-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansHebrew/full/ttf/NotoSansHebrew-Regular.ttf
+
+
+
+##########################
+# Emoji
+#
+
+# NotoColorEmoji.ttf
+# sha256: 
+https://fonts.google.com/download?family=Noto%20Color%20Emoji
+
+# NotoEmoji-Regular.ttf
+# sha256: 
+https://github.com/googlefonts/noto-emoji/raw/v2020-04-08-unicode12_1/fonts/NotoEmoji-Regular.ttf
+
+# Symbola_hint.ttf
+# sha256: 
+https://fontlibrary.org/assets/downloads/symbola/cf81aeb303c13ce765877d31571dc5c7/symbola.zip
+
+# LastResort-Regular.ttf
+# sha256: 
+https://github.com/unicode-org/last-resort-font/releases/download/15.000/LastResort-Regular.ttf
+
+# DejaVuSans.ttf
+# sha256: 
+http://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
+
+# NotoSansSymbols-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSansSymbols/full/ttf/NotoSansSymbols-Regular.ttf
+
+# NotoSerif-Regular.ttf
+# sha256: 
+https://cdn.jsdelivr.net/gh/notofonts/notofonts.github.io/fonts/NotoSerif/hinted/ttf/NotoSerif-Regular.ttf
+
+# Blobmoji.ttf
+# sha256: 
+https://github.com/C1710/blobmoji/releases/download/v14.0.1/Blobmoji.ttf
+
+# SourceEmoji-BnW.otf 
+# sha256: 
+https://github.com/adobe-fonts/source-emoji/releases/download/1.017/SourceEmoji-BnW.otf
+

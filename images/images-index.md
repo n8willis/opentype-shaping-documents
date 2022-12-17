@@ -15,6 +15,10 @@ operating systems.
 The font files used must be publicly and freely available, open-source
 fonts. By default, the Noto fonts from Google are the starting point.
 
+A list of the fonts used to generate the latest version of the images
+is provided in the [example-fonts.txt](example-fonts.txt) file, with
+URLs and SHA checksums for each file.
+
 The image file names follow a simple, but important, pattern:
 
     _script_-_featureillustrated_.png
@@ -54,3 +58,5 @@ each script are appreciated, in order to keep the log up-to-date.
       - [Hangul](hangul/hangul-image-generation-log.md)
   - Hebrew
       - [Hebrew](hebrew/hebrew-image-generation-log.md)
+  - Emoji
+      - [Emoji](emoji/emoji-image-generation-log.md)
