@@ -9,7 +9,6 @@ model for unrecognized scripts.
 
   - [General information](#general-information)
   - [Terminology](#terminology)
-  - [Glyph classification](#glyph-classification)
   - [Normalization](#normalization)
   - [The default shaping model](#the-default-shaping-model)
       - [1: Applying the basic substitution features from GSUB](#1-applying-the-basic-substitution-features-from-gsub)
