@@ -191,7 +191,7 @@ replaces the default glyphs with superscript variants.
 Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's GPOS
+the glyphs is determined by the lookups found in the font's <abbr>GPOS</abbr>
 table, however, the shaping rules for Indic scripts require that the
 shaping engine be able to identify marks by their general
 position. 
@@ -220,7 +220,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -330,7 +330,7 @@ Processing a run of `<mym2>` text involves five top-level stages:
 2. Initial reordering
 3. Applying the basic substitution features from <abbr>GSUB</abbr>
 4. Applying all remaining substitution features from <abbr>GSUB</abbr>
-5. Applying all remaining positioning features from GPOS
+5. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the initial reordering
@@ -965,10 +965,10 @@ application-level user interfaces.
 
 ### 5: Applying remaining positioning features from GPOS ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
 	dist
 	abvm

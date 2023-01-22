@@ -136,7 +136,7 @@ replaces the default glyphs with superscript variants.
 Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's GPOS
+the glyphs is determined by the lookups found in the font's <abbr>GPOS</abbr>
 table, however, the shaping rules for Indic scripts require that the
 shaping engine be able to identify marks by their general
 position. 
@@ -167,7 +167,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 In addition, dependent-vowel codepoints that are composed of multiple
@@ -250,7 +250,7 @@ this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. GPOS positioning lookups should attach mark glyphs to dotted
+normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
 dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
@@ -268,7 +268,7 @@ This requirement covers:
     other codepoints (such as "Reph")
 
 
-The zero-width joiner (ZWJ) is primarily used to prevent the formation
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation
 of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. 
 
   - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
@@ -277,7 +277,7 @@ of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence.
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner (ZWNJ) must be used instead.
+conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead.
 
   - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
     the first consonant in its standard form, followed by an explicit
@@ -290,7 +290,7 @@ A secondary usage of the zero-width joiner is to prevent the formation of
     even where an initial "Ra,Halant" sequence without the zero-width
     joiner would otherwise produce a "Reph".
 
-The ZWJ and ZWNJ characters are, by definition, non-printing control
+The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -298,19 +298,19 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a ZWJ or ZWNJ be rendered
+> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the ZWJ and ZWNJ are non-printing control characters, they can
+Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the ZWJ and ZWNJ are designed
+involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore ZWJ and ZWNJ.
+will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
 
-Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
+Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's <abbr>GSUB</abbr> or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 
 For example:
 
@@ -338,7 +338,7 @@ Processing a run of `<dev2>` text involves six top-level stages:
 3. Applying the basic substitution features from <abbr>GSUB</abbr>
 4. Final reordering
 5. Applying all remaining substitution features from <abbr>GSUB</abbr>
-6. Applying all remaining positioning features from GPOS
+6. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Indic scripts, the initial reordering stage and the
@@ -660,7 +660,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 The primary problem involved in shaping broken syllables is the lack
 of a syllable base (either a base consonant or an independent
 vowel). Without a syllable base, the shaping engine cannot perform
-GPOS positioning and other contextual operations that are required
+<abbr>GPOS</abbr> positioning and other contextual operations that are required
 later in the shaping process.
 
 To make up for this limitation, shaping engines should insert a
@@ -675,7 +675,7 @@ Shaping engines can perform this dotted-circle insertion at any point
 after the broken syllable has been recognized and before <abbr>GSUB</abbr> features
 are applied. However, the best results will likely be attained by
 performing the insertion immediately, before proceeding to
-stage 2. This will enable the maximum number of <abbr>GSUB</abbr> and GPOS features
+stage 2. This will enable the maximum number of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features
 in the active font to be correctly applied to the text run by ensuring
 that all reordering, tagging, and sorting algorithms are executed as
 usual.
@@ -830,7 +830,7 @@ by the addition of a dependent-vowel (matra) sign.
 > because independent vowels do not take on special forms or require
 > reordering, many of the steps that follow will involve no
 > work for a vowel-based syllable. However, vowel-based syllables must
-> still be sorted and their marks handled correctly, and <abbr>GSUB</abbr> and GPOS
+> still be sorted and their marks handled correctly, and <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 > lookups must be applied. These steps of the shaping process follow
 > the same rules that are employed for consonant-based syllables.
 --->
@@ -1075,7 +1075,7 @@ relative position with respect to each other.
 #### 2.10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
-may have <abbr>GSUB</abbr> or GPOS features applied in stages 3, 5, and 6 should be
+may have <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
 This flagging is preliminary; the set of potential features varies
@@ -1094,7 +1094,7 @@ the flags -- although shaping engines may do so if desired.
 
 The sequences to flag are summarized in the list below; a full
 description of each feature's function and interpretation is provided
-in <abbr>GSUB</abbr> and GPOS application stages that follow.
+in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
   - `nukt` should match "_Consonant_,Nukta" sequences
   - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
@@ -1359,7 +1359,7 @@ A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
 > test in stage 1 as the end of a syllable, even without being
 > followed by a base consonant or syllable base. By definition,
 > however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
-> cannot also include a "_Consonant_" after the ZWJ.
+> cannot also include a "_Consonant_" after the <abbr>ZWJ</abbr>.
 
 The font's <abbr>GSUB</abbr> rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
@@ -1432,8 +1432,8 @@ the base consonant or syllable base, and all half forms.
 ![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.png)
 
 > Note: OpenType and Unicode both state that if the syllable includes
-> a ZWJ immediately after the last "Halant", then the final matra
-> position should be after the ZWJ.
+> a <abbr>ZWJ</abbr> immediately after the last "Halant", then the final matra
+> position should be after the <abbr>ZWJ</abbr>.
 >
 > However, there are several test sequences indicating that
 > Microsoft's Uniscribe shaping engine did not follow this rule (in,
@@ -1471,9 +1471,9 @@ The algorithm for finding the final "Reph" position is
   - Find the first explicit "Halant" between the first post-Reph
     consonant and the last main consonant. Move the "Reph to the
     position immediately after this "Halant".
-	- If a zero-width joiner (ZWJ) or a zero-width non-joiner (ZWNJ)
+	- If a zero-width joiner (<abbr>ZWJ</abbr>) or a zero-width non-joiner (<abbr>ZWNJ</abbr>)
       follows this "Halant", move the "Reph" to the position
-      immediately after the ZWJ or ZWNJ.
+      immediately after the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>.
 --->
 
   - Starting at the first post-"Reph" consonant, search forward looking
@@ -1481,11 +1481,11 @@ The algorithm for finding the final "Reph" position is
     consonant is encountered. If such an explicit "Halant" is found,
     move the "Reph" to the position immediately after this
     "Halant".
-	  * If a zero-width joiner (ZWJ) or a zero-width non-joiner (ZWNJ)
+	  * If a zero-width joiner (<abbr>ZWJ</abbr>) or a zero-width non-joiner (<abbr>ZWNJ</abbr>)
         follows this "Halant", move the "Reph" to the position
-        immediately after the ZWJ or ZWNJ. This will be the final
+        immediately after the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>. This will be the final
         "Reph" position. 
-	  * If no ZWJ or ZWNJ follows this "Halant", leave the "Reph" in
+	  * If no <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> follows this "Halant", leave the "Reph" in
         its position immediately after the "Halant". This will be the
         final "Reph" position. 
   - If no such explicit "Halant" is found in the previous step, find
@@ -1596,12 +1596,12 @@ typographically problematic.
 
 ### 6: Applying remaining positioning features from GPOS ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.
 
 As with the preceding stage, the order in which these features are
 applied is not canonical; they should be applied in the order in which
-they appear in the GPOS table in the font.
+they appear in the <abbr>GPOS</abbr> table in the font.
 
         dist
         abvm
@@ -1710,4 +1710,4 @@ known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
 to the `<deva>` ordering scheme; however, doing so might interfere
-with matching <abbr>GSUB</abbr> or GPOS features.
+with matching <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features.

@@ -309,7 +309,7 @@ fashion; shaping engines should cope with this situation gracefully.
 | | | | | | |
 
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 

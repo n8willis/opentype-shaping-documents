@@ -27,7 +27,7 @@ context-dependent forms for linguistic or orthographic correctness.
 
 Text runs in non-complex scripts may, however, involve ligature
 substitution, Unicode normalization, mark positioning, kerning, and
-the application of other features from the active font's <abbr>GSUB</abbr> and GPOS
+the application of other features from the active font's <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 tables.
 
 The non-complex scripts covered by this model include Latin, Cyrillic,
@@ -47,10 +47,10 @@ the correct normalized form, so that the best glyphs from the active
 font can be selected from among the available precomposed and
 combining alternatives.
 
-Fonts for non-complex scripts might not include a <abbr>GSUB</abbr> or GPOS table
+Fonts for non-complex scripts might not include a <abbr>GSUB</abbr> or <abbr>GPOS</abbr> table
 at all. 
 
-However, <abbr>GSUB</abbr> and GPOS may also be used to implement a variety of
+However, <abbr>GSUB</abbr> and <abbr>GPOS</abbr> may also be used to implement a variety of
 OpenType smart features, including several classes of ligature,
 contextual alternate, or contextual positioning rules. Because these
 features are not required in order to render the text run
@@ -102,9 +102,9 @@ top-level stages:
 
 1. Applying the basic substitution features from <abbr>GSUB</abbr>
 2. Applying typographic substitution features from <abbr>GSUB</abbr>
-3. Applying the positioning features from GPOS
+3. Applying the positioning features from <abbr>GPOS</abbr>
 
-Together, these stages cover the application of all <abbr>GSUB</abbr> and GPOS
+Together, these stages cover the application of all <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 features that are required or that have been defined by OpenType as
 being on by default.
 
@@ -217,7 +217,7 @@ application-level user interfaces.
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be
-tagged for possible application of GPOS features.
+tagged for possible application of <abbr>GPOS</abbr> features.
 
 The order in which these features are applied is not canonical; they
 should be applied in the order in which they appear in the <abbr>GSUB</abbr> table

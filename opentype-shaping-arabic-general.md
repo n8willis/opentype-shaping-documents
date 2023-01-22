@@ -28,7 +28,7 @@ Syriac, and Mongolian.
 Several scripts can be supported by the general OpenType shaping model
 used for Arabic. These writing systems observe similar rules and
 conventions, even if they are not historically related to
-Arabic. Therefore, OpenType defines many of the same <abbr>GSUB</abbr> and GPOS
+Arabic. Therefore, OpenType defines many of the same <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 features as supported for the corresponding script tags. These scripts include:
 
   - [Arabic](opentype-shaping-arabic.md)
@@ -194,7 +194,7 @@ the general Arabic shaping model involves seven top-level stages:
 4. Applying the `stch` feature
 5. Applying the language-form substitution features from <abbr>GSUB</abbr>
 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
-7. Applying the positioning features from GPOS
+7. Applying the positioning features from <abbr>GPOS</abbr>
 
 
 ### 1. Transient reordering of modifier combining marks ###
@@ -206,7 +206,7 @@ the general Arabic shaping model involves seven top-level stages:
 
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
-positioning features from GPOS can be correctly applied.
+positioning features from <abbr>GPOS</abbr> can be correctly applied.
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
@@ -261,7 +261,7 @@ The `ccmp` feature allows a font to substitute
     to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 

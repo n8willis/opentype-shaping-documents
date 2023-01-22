@@ -13,7 +13,7 @@ characterize Emoji font behavior.
 
 Similarly, Emoji font vendors have employed a variety of
 different OpenType features to implement support for standard
-sequences, modifier-based sequences, ZWJ-based sequences and
+sequences, modifier-based sequences, <abbr>ZWJ</abbr>-based sequences and
 permutations.
 
 See the [Emoji shaping document](../opentype-shaping-emoji.md)
@@ -21,8 +21,8 @@ for more details on the sequences and definitions involved.
 
 ## Format, features, and control-codepoint visiblity table ##
 
-This table lists the image format, the GSUB feature(s) used for
-basic Emoji sequence support and ZWJ-based sequence support, and
+This table lists the image format, the <abbr>GSUB</abbr> feature(s) used for
+basic Emoji sequence support and <abbr>ZWJ</abbr>-based sequence support, and
 whether or not the font includes a visible glyph for the
 presentation selector codepoints (VS15, `U+FE0E`; VS16, `U+FE0F`)
 and modifier codepoints (`U+1F3FB`..`U+1F3FF`).
@@ -68,7 +68,7 @@ Options available include:
      would likely mean unknown behavior; comments on such cases are welcome.
    - Users can run the script `layout-features.py somefontfilename.ttf` script
      from FontTools/Snippets/ and it will print out an indented list of the
-     GSUB and GPOS features used. All that matters for the table above is
+     <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features used. All that matters for the table above is
      what the script reports on the `Feature: ` line. For a typical emoji
      font there's probably only one feature -- but, if there are several,
      listing them is useful.
@@ -79,14 +79,14 @@ Options available include:
      other metadata; the tables are the first output. Same interpretation
      as above.
    - At the moment it sounds like there isn't a single-command option in
-     allsorts to list GSUB/GPOS features. Corrections are welcome.
+     allsorts to list <abbr>GSUB</abbr>/<abbr>GPOS</abbr> features. Corrections are welcome.
 
 3. **GUI font editors**
    - Users can also open up the font file in a font editor and look at what
      it presents. 
    - FontForge:
      - In FontForge, go to Element -> Font Info in the menu to open the
-       font-info dialog box. It will show the GSUB/GPOS lookups in the
+       font-info dialog box. It will show the <abbr>GSUB</abbr>/<abbr>GPOS</abbr> lookups in the
        "Lookups" tab (left-hand side).
      - FontForge does _not_ just show a convenient list of all the tables.
        However, when users open the font file, the "Warnings" dialog box will

@@ -172,7 +172,7 @@ mentioned above:
   - The Cancel Tag (`U+E007F`) is used to form tag-based flag
     sequences.
 
-  - The Zero-Width Joiner (ZWJ, `U+200D`) is used to form emoji
+  - The Zero-Width Joiner (<abbr>ZWJ</abbr>, `U+200D`) is used to form emoji
     sequences for multi-person groups, gendered forms, hair-color
     variants, and directionality.
 
@@ -182,7 +182,7 @@ mentioned above:
 
 Emoji sequences are not generally affected by Unicode or OpenType
 normalization. However, Unicode does specify an order to be used when
-representing ZWJ-using emoji sequences.
+representing <abbr>ZWJ</abbr>-using emoji sequences.
 
 The correct order should be:
 
@@ -196,7 +196,7 @@ The correct order should be:
 
 Although this ordering is not designated a Unicode normalization form,
 shaping engine implementers may find it a useful target if attempting
-to correct invalid mis-ordered emoji ZWJ sequences.
+to correct invalid mis-ordered emoji <abbr>ZWJ</abbr> sequences.
 
 Shaping engines should also note that the `Emoji` and
 `Extended_Pictographic` properties may require tracking in any Unicode
@@ -234,10 +234,10 @@ There are six varieties of emoji sequence defined by Unicode:
 3. Regional Indicator flag sequences
 4. Tag flag sequences
 5. Keycap sequences
-6. Zero-width joiner (ZWJ) sequences
+6. Zero-width joiner (<abbr>ZWJ</abbr>) sequences
 
-> Note: The ZWJ sequence variety incorporates several subsets, but all
-> of the ZWJ sequences are implemented using the same mechanism.
+> Note: The <abbr>ZWJ</abbr> sequence variety incorporates several subsets, but all
+> of the <abbr>ZWJ</abbr> sequences are implemented using the same mechanism.
 
 The set of sequences includes various mechanisms defined at different
 times by either Unicode itself or by legacy encoding standards. In
@@ -381,7 +381,7 @@ codepoints that depict a single human being, and are expected not to
 implement modifier sequences for other emoji codepoints.
 
 > Note: Most emoji sequences that depict multiple human beings are
-> modified using the ZWJ mechanisms described later, and not via this
+> modified using the <abbr>ZWJ</abbr> mechanisms described later, and not via this
 > mechanism.
 > 
 > However, there are a small number of codepoints that depict groups
@@ -513,13 +513,13 @@ Keycap sequences only occur in standalone form.
 
 ### ZWJ sequences ###
 
-A Zero-Width Joiner (ZWJ) sequence can be used to request specific
+A Zero-Width Joiner (<abbr>ZWJ</abbr>) sequence can be used to request specific
 variants of an emoji glyph or to request the combined form of a
 sequence of emoji glyphs.
 
-Because the ZWJ codepoint itself is invisible, users will expect ZWJ
+Because the <abbr>ZWJ</abbr> codepoint itself is invisible, users will expect <abbr>ZWJ</abbr>
 sequences to fall back gracefully as sequences of standalone emoji
-glyphs that convey the original meaning. For example, a ZWJ
+glyphs that convey the original meaning. For example, a <abbr>ZWJ</abbr>
 multi-person group sequence would be rendered as a single multi-person
 emoji glyph if one is available in the active font, but would fall
 back to a set of individual-person emoji glyphs.
@@ -529,12 +529,12 @@ back to a set of individual-person emoji glyphs.
 
 #### ZWJ hair sequences ####
 
-A ZWJ hair sequence is used to request a specific hairstyle version of
+A <abbr>ZWJ</abbr> hair sequence is used to request a specific hairstyle version of
 an emoji codepoint that depicts a single human being.
 
 ![Hairstyle sequence](/images/emoji/hairstyle-sequence.png)
 
-A ZWJ hair sequence must match:
+A <abbr>ZWJ</abbr> hair sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ _hairstyle_
@@ -552,7 +552,7 @@ depictions of distinct properties not easily represented by the
 defaults of the fallback glyphs. By default, the hairstyle and color
 on fallback emoji is expected to be nondescript and dark.
 
-Prior to the adoption of the ZWJ-hair-sequence mechanism, a codepoint
+Prior to the adoption of the <abbr>ZWJ</abbr>-hair-sequence mechanism, a codepoint
 specifying "person with blond hair" (`U+1F471`) already existed;
 therefore "blond" was not included in the set of supported hairstyle
 versions.
@@ -560,21 +560,21 @@ versions.
 
 #### ZWJ gendered person sequences ####
 
-A ZWJ gendered person sequence is used to request a specific-gendered
+A <abbr>ZWJ</abbr> gendered person sequence is used to request a specific-gendered
 version of an emoji codepoint that depicts a single human being.
 
-Each ZWJ gendered person sequence is composed of an emoji that depicts
+Each <abbr>ZWJ</abbr> gendered person sequence is composed of an emoji that depicts
 a human by default, followed by `ZWJ`, followed by a gender symbol,
 followed by `_VS16_`.
 
 ![Gendered person sequence](/images/emoji/gendered-person-sequence.png)
 
-The fallback for a ZWJ gendered person sequence is a generic "person"
+The fallback for a <abbr>ZWJ</abbr> gendered person sequence is a generic "person"
 emoji followed by a gender symbol.
 
 ![Gendered person sequence fallback](/images/emoji/gendered-person-sequence-fallback.png)
 
-A ZWJ gendered person sequence must match:
+A <abbr>ZWJ</abbr> gendered person sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ _gendersign_ _VS16_
@@ -582,7 +582,7 @@ A ZWJ gendered person sequence must match:
 
 A small number of emoji codepoints are defined to show a single human
 being with a fixed gender. These codepoints cannot have their apparent
-gender modified using the ZWJ gendered person mechanism.
+gender modified using the <abbr>ZWJ</abbr> gendered person mechanism.
 
 Currently, this list of codepoints includes those in the table below:
 
@@ -607,19 +607,19 @@ Currently, this list of codepoints includes those in the table below:
 However, the list may be updated in subsequent revisions of Unicode.
 
 In addition, emoji codepoints that depict groups of two or more human
-beings are handled by other mechanisms, such as the ZWJ multi-person
+beings are handled by other mechanisms, such as the <abbr>ZWJ</abbr> multi-person
 group mechanism, and are documented in the corresponding section.
 
-> Note: The ZWJ gendered person sequence is not to be confused with
-> the ZWJ role sequence.
+> Note: The <abbr>ZWJ</abbr> gendered person sequence is not to be confused with
+> the <abbr>ZWJ</abbr> role sequence.
 >
 > In effect, both sequence types can be used to depict a human being
 > performing a task or activity, and can be used to request a specific
 > gender for the human being depicted.
 >
-> However, all of the codepoints covered by the ZWJ gendered person
+> However, all of the codepoints covered by the <abbr>ZWJ</abbr> gendered person
 > sequences are emoji that show a human being by default, whereas the
-> codepoints covered by the ZWJ role sequences begin with a generic
+> codepoints covered by the <abbr>ZWJ</abbr> role sequences begin with a generic
 > human-being emoji and append a symbol or object emoji.
 
 
@@ -627,11 +627,11 @@ group mechanism, and are documented in the corresponding section.
 
 #### ZWJ multi-person group sequences ####
 
-A ZWJ multi-person group sequence is used to request a multi-person
-emoji glyph. The fallback for a ZWJ multi-person group sequence is a
+A <abbr>ZWJ</abbr> multi-person group sequence is used to request a multi-person
+emoji glyph. The fallback for a <abbr>ZWJ</abbr> multi-person group sequence is a
 sequence of individual-person emoji glyphs.
 
-A ZWJ multi-person group sequence must match:
+A <abbr>ZWJ</abbr> multi-person group sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) (_zwj_ (_emoji_ | _emojimodified_) _presentation_? ){1,3}
@@ -654,16 +654,16 @@ sequences are:
 A potential source of confusion for these sequences is that some of
 them appear to duplicate the content of an existing emoji codepoint,
 but the existing emoji codepoint is typically not involved in forming
-the corresponding ZWJ multi-person group sequence.
+the corresponding <abbr>ZWJ</abbr> multi-person group sequence.
 
 Specifically, there are standalone emoji codepoints for "Kiss"
 (`U+1F48F`), two people holding hands (in three permutations:
 `U+1F46B`, `U+1F46C`, and `U+1F46D`), "Family" (`U+1F46A`), and
 "Handshake" (`U+1F91D`). The details of each of these codepoints in
-relation to the corresponding conceptually-similar ZWJ multi-person
+relation to the corresponding conceptually-similar <abbr>ZWJ</abbr> multi-person
 group sequence are noted below.
 
-Each of the specific ZWJ multi-person group sequences has a precise
+Each of the specific <abbr>ZWJ</abbr> multi-person group sequences has a precise
 definition.
 
 The "Couple with heart" sequence is composed of
@@ -687,7 +687,7 @@ The "Couple in kiss" sequence is composed of
 
 ![Multi-person kiss skin-tone sequence](/images/emoji/multi-person-kiss-skintone-sequence.png)
 
-> Note: the kiss ZWJ sequence does not involve the "Kiss" codepoint
+> Note: the kiss <abbr>ZWJ</abbr> sequence does not involve the "Kiss" codepoint
 > (`U+1F48F`). 
 
 
@@ -701,21 +701,21 @@ The "Couple holding hands" sequence is composed of
 
 ![Multi-person holding-hands skin-tone sequence](/images/emoji/multi-person-holding-hands-skintone-sequence.png)
 
-> Note: the couple-holding-hands ZWJ sequence does not involve any of
+> Note: the couple-holding-hands <abbr>ZWJ</abbr> sequence does not involve any of
 > the "Man and woman holding hands" (`U+1F46B`), "Two men holding
 > hands" (`U+1F46C`), or "Two women holding hands" (`U+1F46D`)
 > codepoints. 
 
 
 The "Family" sequence is composed of two-to-four individual "Person"
-subsequences, each separated by a ZWJ. Furthermore, the "Person"
+subsequences, each separated by a <abbr>ZWJ</abbr>. Furthermore, the "Person"
 subsequences must be sorted so that all adult subsequences precede all
 child subsequences. A "Family" subsequence must match:
 ```markdown
 (_emoji_ | _emojimodified_) (_zwj_ (_emoji_ | _emojimodified_) ){1,3}
 ```
 
-> Note: The ZWJ "Family" sequence is defined to support modifiers on
+> Note: The <abbr>ZWJ</abbr> "Family" sequence is defined to support modifiers on
 > each individual human-codepoint component of the sequence, but these
 > modified "Family" sequences are not currently included in the
 > Recommended For General Interchange (RGI) emoji set, due to the
@@ -729,18 +729,18 @@ child subsequences. A "Family" subsequence must match:
 
 ![Multi-person family woman, woman, girl, boy sequence](/images/emoji/multi-person-family-woman-woman-girl-boy-sequence.png)
 
-> Note: the family ZWJ sequence does not involve the "Family"
+> Note: the family <abbr>ZWJ</abbr> sequence does not involve the "Family"
 > codepoint (`U+1F46A`).
 
 The "Shaking hands" sequence is composed of two "Hand" subsequences
-separated by a ZWJ, and must match:
+separated by a <abbr>ZWJ</abbr>, and must match:
 ```markdown
 `U+1FAF1` _modifier_ _zwj_ `U+1FAF2` _modifier_
 ```
 
 ![Multi-person shaking-hands sequence](/images/emoji/multi-person-shaking-hands-sequence.png)
 
-> Note: the ZWJ "Shaking hands" sequence does not involve the "Handshake"
+> Note: the <abbr>ZWJ</abbr> "Shaking hands" sequence does not involve the "Handshake"
 > codepoint (`U+1F91D`), although the "Handshake" codepoint itself can
 > be followed by a single _modifier_ codepoint that, for legacy
 > reasons, serves to alter the skin tone of both of the hands depicted
@@ -752,7 +752,7 @@ separated by a ZWJ, and must match:
 
 #### ZWJ role sequences ####
 
-A ZWJ role (or profession) sequence is used to request an emoji
+A <abbr>ZWJ</abbr> role (or profession) sequence is used to request an emoji
 depicting a human being performing a task or job. Role sequences are
 composed of a codepoint representing a human, followed by `ZWJ`,
 followed by an emoji depicting an object or symbol that references the
@@ -781,35 +781,35 @@ followed by a presentation selector.
 ![Role sequence pilot with modifier](/images/emoji/role-sequence-pilot-skintone-2.png)
 
 
-The fallback for a ZWJ role sequence is a generic "person" emoji
+The fallback for a <abbr>ZWJ</abbr> role sequence is a generic "person" emoji
 followed by the emoji symbolizing the task or job.
 
-A ZWJ role sequence must match:
+A <abbr>ZWJ</abbr> role sequence must match:
 
 ```markdown
 _genderperson_ _modifier_? _zwj_ _emoji_ _presentation_?
 ```
 
-> Note: The ZWJ role sequence is not to be confused with the ZWJ
+> Note: The <abbr>ZWJ</abbr> role sequence is not to be confused with the <abbr>ZWJ</abbr>
 > gendered person sequence.
 >
 > In effect, both sequence types can be used to depict a human being
 > performing a task or activity, and can be used to request a specific
 > gender for the human being depicted.
 >
-> However, all of the codepoints covered by the ZWJ gendered person
+> However, all of the codepoints covered by the <abbr>ZWJ</abbr> gendered person
 > sequences are emoji that show a human being by default, whereas the
-> codepoints covered by the ZWJ role sequences begin with a generic
+> codepoints covered by the <abbr>ZWJ</abbr> role sequences begin with a generic
 > human-being emoji and append a symbol or object emoji.
 
 
 
 #### ZWJ color sequences ####
 
-A ZWJ color sequence is used to request a version of an emoji
+A <abbr>ZWJ</abbr> color sequence is used to request a version of an emoji
 codepoint depicting the base object in a specific color.
 
-A ZWJ color sequence must match:
+A <abbr>ZWJ</abbr> color sequence must match:
 
 ```markdown
 _emoji_ _zwj_ _color_ _presentation_
@@ -831,20 +831,20 @@ depicts a large square filled with the color in question.
 
 ![Color sequence](/images/emoji/color-sequence.png)
 
-The fallback for a ZWJ color sequence is the default emoji followed by
+The fallback for a <abbr>ZWJ</abbr> color sequence is the default emoji followed by
 the default emoji for the color codepoint (that is, the color square).
 
 
 
 #### ZWJ directionality sequences ####
 
-A ZWJ directionality sequence is used to request a version of an emoji
+A <abbr>ZWJ</abbr> directionality sequence is used to request a version of an emoji
 codepoint facing a specific cardinal direction.
 
 
 ![ZWJ directionality sequence](/images/emoji/zwj-directionality-sequence.png)
 
-A ZWJ directionality sequence must match:
+A <abbr>ZWJ</abbr> directionality sequence must match:
 
 ```markdown
 _emoji_ _zwj_ _direction_ _presentation_
@@ -852,8 +852,8 @@ _emoji_ _zwj_ _direction_ _presentation_
 
 #### ZWJ additional sequences ####
 
-In addition to the above ZWJ sequence categories, there are 13
-standalone, but uncategorized, ZWJ sequences defined in Unicode.
+In addition to the above <abbr>ZWJ</abbr> sequence categories, there are 13
+standalone, but uncategorized, <abbr>ZWJ</abbr> sequences defined in Unicode.
 
   - "Heart on fire"
   - "Mending heart"
@@ -879,7 +879,7 @@ _emoji_ _presentation_? _zwj_ _emoji_ _presentation_?
 ```
 
 Note that the "Black cat" sequence, although it appears on this list
-of additional ZWJ sequences, has subsequently been generalized to the
+of additional <abbr>ZWJ</abbr> sequences, has subsequently been generalized to the
 [ZWJ color sequence mechanism](#zwj-color-sequences).
 
 
@@ -906,20 +906,20 @@ guarantees as to their correctness.
 
 ## Feature interaction in sequences ##
 
-As is noted in the descriptions of ZWJ gendered-person sequences and
-ZWJ multi-person group sequences, there is potential for confusion
+As is noted in the descriptions of <abbr>ZWJ</abbr> gendered-person sequences and
+<abbr>ZWJ</abbr> multi-person group sequences, there is potential for confusion
 wherever standalone emoji codepoints and emoji sequences overlap in
 meaning.
 
 This potential for confusion is compounded by the fact that the
-skin-tone modifier mechanism and the ZWJ gendered person mechanism
+skin-tone modifier mechanism and the <abbr>ZWJ</abbr> gendered person mechanism
 interact differently with standalone emoji codepoints and with emoji
 sequences.
 
 In particular, for several of the standalone emoji codepoints, a
 single skin-tone modifier is permitted, which is defined to modify both
 of the human beings depicted in the emoji. For other standalone emoji
-codepoints, only a single gender designator ZWJ gendered-person
+codepoints, only a single gender designator <abbr>ZWJ</abbr> gendered-person
 subsequence is allowed to be appended to the codepoint, and the gender
 designator is defined to modify both of the human beings depicted in
 the emoji.
@@ -961,7 +961,7 @@ The "Emoji keycap sequence" set includes all possible valid Keycap
 sequences.
 
 The "RGI emoji modifier sequence", "RGI emoji flag sequence", "RGI
-emoji tag sequence", and "RGI emoji ZWJ sequence" sets each include
+emoji tag sequence", and "RGI emoji <abbr>ZWJ</abbr> sequence" sets each include
 only a subset of the possible valid sequences for their respective
 variety of sequence. These sets are designated as "Recommended for
 General Interchange" (RGI) to denote that they are in common usage.
@@ -984,18 +984,18 @@ top-level stages:
 
 1. Applying the basic substitution features from <abbr>GSUB</abbr>
 2. Applying other substitution features from <abbr>GSUB</abbr>
-3. Applying the positioning features from GPOS
+3. Applying the positioning features from <abbr>GPOS</abbr>
 
 Emoji sequences as described above will generally be implemented in
 the active font as a <abbr>GSUB</abbr> lookup feature. However, there are no
-definitively invalid <abbr>GSUB</abbr> or GPOS features that must or must _not_ be
+definitively invalid <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features that must or must _not_ be
 employed for this purpose.
 
 Consequently, shaping engines should not assume (for example) that
 emoji sequences will be implemented in any specific feature of <abbr>GSUB</abbr>.
 
 A font may also employ contextual features, such as using `locl`, that
-affects the emoji glyph shown, or use GPOS positioning for some emoji
+affects the emoji glyph shown, or use <abbr>GPOS</abbr> positioning for some emoji
 glyphs. 
 
 
@@ -1118,14 +1118,14 @@ in `rlig`, with custom sequences implemented in `liga`.
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be
-tagged for possible application of GPOS features.
+tagged for possible application of <abbr>GPOS</abbr> features.
 
 The order in which these features are applied is not canonical; they
 should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 In general, all emoji glyphs in a given font are expected to be
-approximately equal in height and width, and the usage of GPOS
+approximately equal in height and width, and the usage of <abbr>GPOS</abbr>
 positioning for emoji is uncommon.
 
 However, some emoji glyphs might be narrower or wider than average by
@@ -1135,7 +1135,7 @@ which the active font alters the default position of an emoji glyph to
 achieve a consistent alignment, spacing, or appearance.
 
 Therefore, shaping engines should make no assumptions about the
-presence or absence of GPOS features for emoji runs, and should apply
+presence or absence of <abbr>GPOS</abbr> features for emoji runs, and should apply
 the features if present.
 
 <!---

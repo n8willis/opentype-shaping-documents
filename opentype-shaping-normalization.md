@@ -251,7 +251,7 @@ The preferred form may also be specific to a language, such as when a
 minority language employs different diacritic ordering than the
 ordering encoded in Unicode's `Ccc` data. In this case, a font
 targetting the minority language may be expected to handle
-language-specific mark-to-mark positioning in GPOS; as a result, the
+language-specific mark-to-mark positioning in <abbr>GPOS</abbr>; as a result, the
 shaping engine should allow for the positioning lookups by designating
 a preference for decomposed forms.
 
@@ -411,11 +411,11 @@ sequences in the same active font and script/language context.
 
 > Note: the features discussed below are applied after the completion
 > of the decomposition, mark-reordering, and recomposition
-> stages. Furthermore, they are applied before any other <abbr>GSUB</abbr> and GPOS
+> stages. Furthermore, they are applied before any other <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 > features.
 > 
 > As a result, shaping engine implementors may choose to
-> defer application of these features to the start of <abbr>GSUB</abbr> and GPOS
+> defer application of these features to the start of <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 > processing for the sake of convenience.
 
 The `ccmp` and `locl` features can involve normalization, as described
@@ -514,7 +514,7 @@ language- or script-specific.
 Reordering and composition are defined as shaping operations in
 several script-specific shaping models. In some cases, a reordering
 operation or composition may be designated by a particular <abbr>GSUB</abbr> or
-GPOS feature tag.
+<abbr>GPOS</abbr> feature tag.
 
 Shaping-engine implementors should take care to note where completing
 normalization early in the shaping process may reduce the need for

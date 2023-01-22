@@ -313,7 +313,7 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner (ZWJ) is primarily used to prevent the formation
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation
 of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. The
 sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the formation of
 a conjunct between the two consonants. 
@@ -321,7 +321,7 @@ a conjunct between the two consonants.
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner (ZWNJ) must be used instead. The
+conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead. The
 sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the
 first consonant in its standard form, followed by an explicit
 "Halant".

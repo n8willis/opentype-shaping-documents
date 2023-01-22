@@ -36,24 +36,24 @@ This section lists errata pertaining to the Unicode Standard.
 
 #### Scope of ZWJ and ZWNJ ####
 
-Unicode provides the Zero Width Joiner (ZWJ) and Zero Width Non-Joiner
-(ZWNJ) control characters so that a text sequence can "request a
+Unicode provides the Zero Width Joiner (<abbr>ZWJ</abbr>) and Zero Width Non-Joiner
+(<abbr>ZWNJ</abbr>) control characters so that a text sequence can "request a
 rendering system to have more or less of a connection between
 characters than they would otherwise have."
 
-The generic examples used in the standard show how ZWJ and ZWNJ
+The generic examples used in the standard show how <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>
 characters can affect the cursive-joining behavior between two
 characters or the ligature-forming behavior between two
 characters. However, the standard does not explicitly say whether or
-not the presence of a ZWJ or ZWNJ should influence the shaping
-behavior of characters for characters not adjacent to the ZWJ or ZWNJ.
+not the presence of a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> should influence the shaping
+behavior of characters for characters not adjacent to the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>.
 
-For example, in the sequence "a,b,ZWNJ,c,d" the ZWNJ should prevent
+For example, in the sequence "a,b,ZWNJ,c,d" the <abbr>ZWNJ</abbr> should prevent
 the application of a ligature between "b" and "c" (if such a ligature
 lookup exists in the active font).
 
 However, if the active font contains a contextual ligature lookup for
-"c,d" when preceded by "b", it is not clear whether or not the ZWNJ
+"c,d" when preceded by "b", it is not clear whether or not the <abbr>ZWNJ</abbr>
 in the same "a,b,ZWNJ,c,d" sequence should inhibit the application of
 the ligature between "c" and "d".
 
@@ -61,47 +61,47 @@ the ligature between "c" and "d".
 #### ZWJ in redundant ligature lookups ####
 
 An "Implementation Notes" section in chapter 23.2 of the Unicode
-Standard says that font vendors should add ZWJ sequences to ligature
+Standard says that font vendors should add <abbr>ZWJ</abbr> sequences to ligature
 lookups. For example, if the sequence "f,i" triggers the "fi"
 ligature, then the font should also include a lookup that triggers the
 "fi" ligature for "f,ZWJ,i". 
 
 However, the text of chapter 23.2 prior to the "Implementation Notes"
-says that ZWJ and ZWNJ "are not to be used in all cases where
+says that <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> "are not to be used in all cases where
 ligatures or cursive connections are desired; instead, they are meant
 only for over-riding the normal behavior of the text." That logic
 makes the suggested "f,ZWJ,i" ligature lookup superfluous, because it
 duplicates the effects of the existing "f,i" ligature lookup.
 
-Using ZWJ within lookup patterns in the manner suggested by the
+Using <abbr>ZWJ</abbr> within lookup patterns in the manner suggested by the
 "Implementation Notes" is not common practice. 
 
 ### Emoji ###
 
 #### Skin-tone permutations ####
 
-It is unclear whether ZWJ multi-person group emoji sequences are
+It is unclear whether <abbr>ZWJ</abbr> multi-person group emoji sequences are
 expected to include combinations where some emoji in the sequence are
 followed by a Fitzpatrick skin-tone modifier but other emoji in the
 sequence are not followed by a Fitzpatrick skin-tone modifier.
 
 For example, it is unclear whether the sequence
-"Man,ZWJ,Handshake,Man,SkinTone-2" constitues a valid ZWJ "Couple
+"Man,ZWJ,Handshake,Man,SkinTone-2" constitues a valid <abbr>ZWJ</abbr> "Couple
 holding hands" sequence.
 
 
 #### Gender permutations ####
 
-It is unclear whether ZWJ multi-person group emoji sequences are
+It is unclear whether <abbr>ZWJ</abbr> multi-person group emoji sequences are
 expected to include combinations where some emoji in the sequence are
 are an explicit gender but other emoji in the sequence are not
 explicit gender.
 
 For example, it is unclear whether the sequence
-"Man,ZWJ,Handshake,Person" constitues a valid ZWJ "Couple
+"Man,ZWJ,Handshake,Person" constitues a valid <abbr>ZWJ</abbr> "Couple
 holding hands" sequence.
 
-It is also unclear whether the ZWJ multi-person family sequence must
+It is also unclear whether the <abbr>ZWJ</abbr> multi-person family sequence must
 have explicit gender-ordering for the adult humans depicted.
 
 For example, it is unclear whether the sequence
@@ -115,7 +115,7 @@ This section lists errata pertaining to the OpenType specification.
 
 ### Null offsets in GSUB and GPOS ###
 
-The headers of the GSUB and GPOS tables include fields that contain
+The headers of the <abbr>GSUB</abbr> and <abbr>GPOS</abbr> tables include fields that contain
 the offsets at which other structures within the font binary are
 found. For example, the value of the `featureVariationsOffset` field
 indicates the byte value at which the featureVariations structure is
@@ -137,11 +137,11 @@ offset field if the original value encountered was invalid.
 
 ### Sorting of GSUB and GPOS lookups ###
 
-The OpenType specification requires that lookups in the GSUB table
+The OpenType specification requires that lookups in the <abbr>GSUB</abbr> table
 must be sorted into numeric order before they are applied.
 
-Lookups in the GPOS table, however, are not expected to be sorted
-first, because GPOS lookups are applied in a specified order.
+Lookups in the <abbr>GPOS</abbr> table, however, are not expected to be sorted
+first, because <abbr>GPOS</abbr> lookups are applied in a specified order.
 
 ### Per-script applicability of feature tags ###
 
@@ -194,14 +194,14 @@ what degree that answer varies between the Indic2-model scripts.
 
 #### Using MultipleSub for glyph deletion ####
 
-The GSUB specification says that a `MultipleSubst` substitution cannot
+The <abbr>GSUB</abbr> specification says that a `MultipleSubst` substitution cannot
 be used to delete a glyph: it always substitutes at least one
 replacement glyph. However, some implementations allow the
 replacement-glyph array to be zero-length. 
 
 #### Processing nested contextual lookups ####
 
-The GSUB specification allows contextual substitutions to invoke other
+The <abbr>GSUB</abbr> specification allows contextual substitutions to invoke other
 contextual substitutions. It is unclear how implementations ought to
 handle certain cases of these nested lookups.
 

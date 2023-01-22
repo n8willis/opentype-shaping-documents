@@ -134,7 +134,7 @@ combinations of base characters and marks and the "Alef Lamed"
 ligature, any of which may occur in `<hebr>` text runs. Glyphs for
 these presentation forms may be provided by fonts that do not
 implement the corresponding mark-to-base and ligature features in
-OpenType <abbr>GSUB</abbr> and GPOS tables.
+OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> tables.
 
 The Alphabetic Presentation Forms block also includes a set of eight
 "wide" variants of standard Hebrew characters (`U+FB21` through
@@ -192,8 +192,8 @@ also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
-The combining grapheme joiner (CGJ), zero-width joiner (ZWJ), and
-zero-width non-joiner (ZWNJ) may be used to alter the
+The combining grapheme joiner (CGJ), zero-width joiner (<abbr>ZWJ</abbr>), and
+zero-width non-joiner (<abbr>ZWNJ</abbr>) may be used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
@@ -225,12 +225,12 @@ Processing a run of `<hebr>` text involves seven top-level stages:
 2. Composing any Alphabetic Presentation forms
 3. Applying the language-form substitution features from <abbr>GSUB</abbr>
 4. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
-5. Applying the positioning features from GPOS
+5. Applying the positioning features from <abbr>GPOS</abbr>
 
 
 ### 1. Compound character composition and decomposition ###
 
-In this stage, the `ccmp` feature from GPOS is applied and the
+In this stage, the `ccmp` feature from <abbr>GPOS</abbr> is applied and the
 resulting sequence of codepoints should be checked for correct mark
 order. 
 
@@ -252,7 +252,7 @@ The `ccmp` feature allows a font to substitute
    decomposed glyphs
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -263,7 +263,7 @@ glyphs.
 
 Sequences of adjacent marks must be reordered so that they appear in
 canonical order before the mark-to-base and mark-to-mark positioning
-features from GPOS can be correctly applied.
+features from <abbr>GPOS</abbr> can be correctly applied.
 
 For `<hebr>` text runs, normalizing the sequence of marks using the
 Unicode _canonical combining class_ of each mark should be sufficient.
@@ -274,7 +274,7 @@ Unicode _canonical combining class_ of each mark should be sufficient.
 If the active font includes glyphs for precomposed mark-and-base
 codepoints from the Alphabetic Presentation Forms block, these
 precomposed glyphs should be preferred over sequences of individual
-base glyphs and marks positioned with GPOS.
+base glyphs and marks positioned with <abbr>GPOS</abbr>.
 
 The codepoints in question are not included in the canonical Unicode
 compositions, so the shaping engine should substitute them at this

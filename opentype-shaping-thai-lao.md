@@ -139,7 +139,7 @@ Marks, including diacritics, tone markers, and dependent vowels, are further lab
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's GPOS table.
+lookups found in the font's <abbr>GPOS</abbr> table.
 
 There are three basic _mark-placement subclasses_ for marks
 in Thai and Lao. Each corresponds to the visual position of the mark with
@@ -171,7 +171,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `VISUAL_ORDER_LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -347,7 +347,7 @@ Processing a run of `<thai>` or `<lao >` text involves four top-level stages:
 1. Applying the language substitution features from <abbr>GSUB</abbr>
 2. Decomposing all Am vowel signs
 3. Reordering sequences of marks
-4. Applying all positioning features from GPOS
+4. Applying all positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the basic substitution
@@ -486,10 +486,10 @@ move the
 
 ### 4: Applying all positioning features from GPOS ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
 	kern
 	mark
@@ -599,7 +599,7 @@ possible consonant (vertical) and vowel/mark (horizontal) sequences:
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
 
-These replacements take the place of both <abbr>GSUB</abbr> substitutions and GPOS
+These replacements take the place of both <abbr>GSUB</abbr> substitutions and <abbr>GPOS</abbr>
 positioning in modern OpenType fonts.
 
 Shaping engines can replace the original codepoints with the

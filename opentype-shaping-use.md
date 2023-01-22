@@ -263,7 +263,7 @@ shaped. Subsequently, stages 3, 4, and 5 are each conducted in order on a
 per-cluster basis, until every cluster in the run has been processed.
 
 The substitution features from <abbr>GSUB</abbr> and the positioning features from
-GPOS are applied to the text run in predefined features groups. Which
+<abbr>GPOS</abbr> are applied to the text run in predefined features groups. Which
 features are applied at each step in the process are described below.
 
 
@@ -591,7 +591,7 @@ Pre-base `VOWEL_MOD_PRE` vowel-modifier glyphs are reordered to
 
 The final stage involves applying topographic joining features for
 connected scripts, applying typographic-presentation features from
-<abbr>GSUB</abbr>, and applying positioning features from GPOS.
+<abbr>GSUB</abbr>, and applying positioning features from <abbr>GPOS</abbr>.
 
 
 #### 5.1: Applying the final topographic features from GSUB ####
