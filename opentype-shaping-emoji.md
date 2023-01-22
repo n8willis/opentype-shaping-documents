@@ -80,7 +80,7 @@ document.
 > application alone.
 >
 > Text-processing stacks typically support a set of shortcut codes
-> that includes Unicode's official `Short_Name` property from the CLDR
+> that includes Unicode's official `Short_Name` property from the <abbr>CLDR</abbr>
 > database, plus additional short codes, but the shortcut-code mapping
 > is not otherwise linked to Unicode data.
 
@@ -166,7 +166,7 @@ that should be supported. These sequences can involve three special
 non-printing codepoints in addition to the selectors and modifiers
 mentioned above:
 
-  - The Combining Enclosing Keycap (CEK, `U+20E3`) is used to form
+  - The Combining Enclosing Keycap (<abbr>CEK</abbr>, `U+20E3`) is used to form
     **keycap** sequences corresponding to telephone keypad keys.
 
   - The Cancel Tag (`U+E007F`) is used to form tag-based flag
@@ -426,7 +426,7 @@ _regionalindicator_ _regionalindicator_
 
 In addition, the only two-codepoint sequences that are considered
 valid Regional Indicator flag sequences are those that correspond to
-the `unicode_region_subtag` field in the CLDR database.
+the `unicode_region_subtag` field in the <abbr>CLDR</abbr> database.
 
 The typical emoji implementation of such a sequence in an image of a
 flag for the region. However, emoji fonts may choose to represent the
@@ -718,8 +718,8 @@ child subsequences. A "Family" subsequence must match:
 > Note: The <abbr>ZWJ</abbr> "Family" sequence is defined to support modifiers on
 > each individual human-codepoint component of the sequence, but these
 > modified "Family" sequences are not currently included in the
-> Recommended For General Interchange (RGI) emoji set, due to the
-> number of permutations that would be added to the RGI set as a result.
+> Recommended For General Interchange (<abbr>RGI</abbr>) emoji set, due to the
+> number of permutations that would be added to the <abbr>RGI</abbr> set as a result.
 
 ![Multi-person family man, boy sequence](/images/emoji/multi-person-family-man-boy-sequence.png)
 
@@ -960,16 +960,16 @@ that do not default to emoji presentation).
 The "Emoji keycap sequence" set includes all possible valid Keycap
 sequences.
 
-The "RGI emoji modifier sequence", "RGI emoji flag sequence", "RGI
-emoji tag sequence", and "RGI emoji <abbr>ZWJ</abbr> sequence" sets each include
+The "<abbr>RGI</abbr> emoji modifier sequence", "<abbr>RGI</abbr> emoji flag sequence", "<abbr>RGI</abbr>
+emoji tag sequence", and "<abbr>RGI</abbr> emoji <abbr>ZWJ</abbr> sequence" sets each include
 only a subset of the possible valid sequences for their respective
 variety of sequence. These sets are designated as "Recommended for
-General Interchange" (RGI) to denote that they are in common usage.
+General Interchange" (<abbr>RGI</abbr>) to denote that they are in common usage.
 
-Finally, the "RGI emoji set" includes all of the codepoints and
-sequences included in the preceding sets. Presence in the RGI emoji
+Finally, the "<abbr>RGI</abbr> emoji set" includes all of the codepoints and
+sequences included in the preceding sets. Presence in the <abbr>RGI</abbr> emoji
 set can be tracked with the `RGI_Emoji` property in the UCD. Fonts are
-not required to implement the entire RGI emoji set, nor any of the
+not required to implement the entire <abbr>RGI</abbr> emoji set, nor any of the
 other sets.
 
 
@@ -1096,7 +1096,7 @@ An emoji font can implement sequence support through any <abbr>GSUB</abbr> featu
 lookup. This can include any other substitution feature in the <abbr>GSUB</abbr>
 feature table.
 
-Support for RGI emoji sequences or other emoji sequences defined as
+Support for <abbr>RGI</abbr> emoji sequences or other emoji sequences defined as
 valid in Unicode may be implemented in a feature that are enabled by
 default and cannot be disabled by application-level user interfaces,
 such as the `rlig` feature (for "required ligatures").
@@ -1108,7 +1108,7 @@ sequences may also be implemented in features that are disabled by
 default, such as the `dlig` feature (for "discretionary ligatures").
 
 An emoji font might also implement support for emoji sequences through
-the use of multiple features. For example, RGI emoji sequences or
+the use of multiple features. For example, <abbr>RGI</abbr> emoji sequences or
 other emoji sequences defined as valid in Unicode may be implemented
 in `rlig`, with custom sequences implemented in `liga`.
 

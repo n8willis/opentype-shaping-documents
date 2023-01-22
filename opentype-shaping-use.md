@@ -1,7 +1,7 @@
 # Universal Shaping Engine script shaping in OpenType #
 
 This document details the default shaping procedure needed to display
-text runs in scripts supported by the Universal Shaping Engine (USE)
+text runs in scripts supported by the Universal Shaping Engine (<abbr>USE</abbr>)
 model. 
 
 
@@ -29,7 +29,7 @@ model.
   
 ## General information ##
 
-The Universal Shaping Engine (USE) model is used for complex scripts
+The Universal Shaping Engine (<abbr>USE</abbr>) model is used for complex scripts
 that are not already supported by a dedicated OpenType shaping
 model. 
 
@@ -42,12 +42,12 @@ The scripts covered by this model include Javanese, Balinese,
 Buginese, Batak, Chakma, Lepcha, Modi, Phags-pa, Tagalog, Siddham,
 Sundanese, Tai Le, Tai Tham, Tai Viet, and many others.
 
-In many ways, the USE model is a generalization of the
+In many ways, the <abbr>USE</abbr> model is a generalization of the
 [Indic2](opentype-shaping-indic-general.md) OpenType 
 shaping model, with adjustments made to correct shortfalls encountered
 when using the Indic2 shaping model, as well as additional changes
 designed to broaden the number of scripts that can be supported. For
-example, the USE model includes a step applying contextual
+example, the <abbr>USE</abbr> model includes a step applying contextual
 joining-behavior features as is performed in the Arabic-like shaping
 model. 
 
@@ -58,22 +58,22 @@ model.
 >
 > This terminology either indicates that a shaping engine has
 > implemented support for one or more of the Indic2 scripts within the
-> USE model or it is merely a conversational convention to discuss
-> support for the Indic2-model scripts in USE.
+> <abbr>USE</abbr> model or it is merely a conversational convention to discuss
+> support for the Indic2-model scripts in <abbr>USE</abbr>.
 >
 > At the present time, there is no formal definition for an Indic3
 > model, and there are not registered OpenType script tags for
 > `<dev3>` or any other third generation of the scripts handled by the
 > Indic2 model.
 
-USE was introduced after the release of version 8.0 of the Unicode
-specification. The intent is for USE to support complex scripts added
+<abbr>USE</abbr> was introduced after the release of version 8.0 of the Unicode
+specification. The intent is for <abbr>USE</abbr> to support complex scripts added
 to future Unicode releases in addition to those already supported.
 
 
 ## Terminology ##
 
-The USE shaping model uses a standard set of terms for the features of
+The <abbr>USE</abbr> shaping model uses a standard set of terms for the features of
 supported scripts. These terms are similar to the standard terms used
 for Indic scripts, but with several key distinctions.
 
@@ -84,7 +84,7 @@ cluster, but any particular cluster might involve multiple syllables
 or a sequence that does not match the syllable-formation rules of the
 script.
 
-A **base** character in the USE model may be a consonant, an
+A **base** character in the <abbr>USE</abbr> model may be a consonant, an
 independent vowel, a number, or any of several additional character
 classes.
 
@@ -96,7 +96,7 @@ consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-A **vowel** character in the USE model is a dependent vowel or any of
+A **vowel** character in the <abbr>USE</abbr> model is a dependent vowel or any of
 several additional marks with similar behavior. This class is similar
 to the "matra" class used in Indic shaping.
 
@@ -105,28 +105,28 @@ to the "matra" class used in Indic shaping.
 
 ## Glyph classification ##
 
-The USE shaping model classifies characters based on a specific set of
+The <abbr>USE</abbr> shaping model classifies characters based on a specific set of
 properties defined for each codepoint in the Unicode Character
-Database (UCD), augmented with a small set of pre-defined property
+Database (<abbr>UCD</abbr>), augmented with a small set of pre-defined property
 overrides.
 
-The UCD properties used for USE character classification are:
+The <abbr>UCD</abbr> properties used for <abbr>USE</abbr> character classification are:
 
 	Unicode General Category (UGC)
 	Unicode Indic Syllabic Category (UISC)
 	Unicode Indic Positional Category (UIPC)
 
-In addition, the Unicode Character Decomposition Mapping (UCDM) is used for
+In addition, the Unicode Character Decomposition Mapping (<abbr>UCDM</abbr>) is used for
 all split vowels.
 
 
 ### USE overrides ###
 
-Although, in general, the USE shaping model relies on the UGC, UISC,
-and UIPC properties, the USE model makes a small set of standardized
+Although, in general, the <abbr>USE</abbr> shaping model relies on the <abbr>UGC</abbr>, <abbr>UISC</abbr>,
+and <abbr>UIPC</abbr> properties, the <abbr>USE</abbr> model makes a small set of standardized
 overrides to the properties of certain specific characters.
 
-The following table lists the complete set of USE overrides. Shaping
+The following table lists the complete set of <abbr>USE</abbr> overrides. Shaping
 engines should implement the override properties in order to guarantee
 correct results.
 
@@ -161,9 +161,9 @@ correct results.
 
 ### USE classification table ###
 
-The following table lists the classes utilized in the USE shaping
+The following table lists the classes utilized in the <abbr>USE</abbr> shaping
 model, along with a definition for each class. The class definitions
-refer to the UGC, UISC, and UIPC categories in the Unicode standard,
+refer to the <abbr>UGC</abbr>, <abbr>UISC</abbr>, and <abbr>UIPC</abbr> categories in the Unicode standard,
 or to specific Unicode codepoints.
 
 The symbols given in the "Symbol" column for each class may be used to
@@ -206,7 +206,7 @@ Vowels and modifiers may be further subclassified as described in the
 
 Vowels and modifiers may be further subclassified based on their
 position relative to base characters. The subclasses incorporated in
-the USE shaping model are defined in the table below.
+the <abbr>USE</abbr> shaping model are defined in the table below.
 
 Split-vowel subclasses are not assigned a symbol because each split
 vowel must be decomposed into its components.
@@ -246,7 +246,7 @@ vowel must be decomposed into its components.
 
 ## The USE shaping model ##
 
-The USE shaping model consists of five top-level stages.
+The <abbr>USE</abbr> shaping model consists of five top-level stages.
 
 1. Decomposition of split vowels
 2. Identifying clusters
@@ -254,7 +254,7 @@ The USE shaping model consists of five top-level stages.
 4. Glyph reordering
 5. Applying final features
 
-All scripts supported by the USE model will be processed in this same
+All scripts supported by the <abbr>USE</abbr> model will be processed in this same
 pattern. However, not every script requires that actions be taken in
 every operation.
 
@@ -270,7 +270,7 @@ features are applied at each step in the process are described below.
 ### 1: Split vowel decomposition ###
 
 Most split vowels have a canonical decomposition defined in the
-Unicode specification. The USE shaping model requires that all such
+Unicode specification. The <abbr>USE</abbr> shaping model requires that all such
 split vowels be decomposed into their components before any further
 processing is performed. 
 
@@ -290,7 +290,7 @@ decomposition into account.
 
 ### 2. Cluster identification ###
 
-A cluster in the USE model is defined according to a generalized,
+A cluster in the <abbr>USE</abbr> model is defined according to a generalized,
 visual pattern that is common to all supported scripts. Consequently,
 the cluster-identification expressions used do not enforce linguistic
 or orthographic correctness.
@@ -430,7 +430,7 @@ step. However, the actual reordering of the glyphs does not take place
 until stage 4, step 1.
 
 The order in which these substitutions must be performed is fixed for
-all USE scripts:
+all <abbr>USE</abbr> scripts:
 
 	rphf
 	pref
@@ -514,7 +514,7 @@ reordering moves were performed in stage 3, step 2. Therefore, this
 step only requires moving glyphs to their final positions.
 
 The order in which these substitutions must be performed is fixed for
-all USE scripts:
+all <abbr>USE</abbr> scripts:
 
 	rphf
 	pref
@@ -557,7 +557,7 @@ position of the pre-base-reordering consonant is:
 
 #### 4.2 Performing property-based reordering moves ####
 
-In this step, any characters that match one of the USE reordering
+In this step, any characters that match one of the <abbr>USE</abbr> reordering
 classifications should be reordered into their final position. 
 
 > Note: this classification-based reordering step ensures that
@@ -601,10 +601,10 @@ the correct topographic form for each glyph, based on its position in
 the syllable.
 
 Whether or not each codepoint joins on the left or the right side is
-determined by the `Unicode Joining Type` (UJT) property defined in UCD
+determined by the `Unicode Joining Type` (<abbr>UJT</abbr>) property defined in <abbr>UCD</abbr>
 for each codepoint.
 
-> Note: USE does not support positional typographic features for any
+> Note: <abbr>USE</abbr> does not support positional typographic features for any
 > non-connected scripts.
 	
 	isol
