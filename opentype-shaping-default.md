@@ -27,7 +27,7 @@ context-dependent forms for linguistic or orthographic correctness.
 
 Text runs in non-complex scripts may, however, involve ligature
 substitution, Unicode normalization, mark positioning, kerning, and
-the application of other features from the active font's GSUB and GPOS
+the application of other features from the active font's <abbr>GSUB</abbr> and GPOS
 tables.
 
 The non-complex scripts covered by this model include Latin, Cyrillic,
@@ -47,10 +47,10 @@ the correct normalized form, so that the best glyphs from the active
 font can be selected from among the available precomposed and
 combining alternatives.
 
-Fonts for non-complex scripts might not include a GSUB or GPOS table
+Fonts for non-complex scripts might not include a <abbr>GSUB</abbr> or GPOS table
 at all. 
 
-However, GSUB and GPOS may also be used to implement a variety of
+However, <abbr>GSUB</abbr> and GPOS may also be used to implement a variety of
 OpenType smart features, including several classes of ligature,
 contextual alternate, or contextual positioning rules. Because these
 features are not required in order to render the text run
@@ -90,7 +90,7 @@ For convenience, shaping engines may choose to implement a single
 normalization routine for all scripts, default and complex. If
 normalization is done before the shaping-model–specific processing is
 done, then there may be no work required in certain shaping steps
-(such as the processing of `ccmp` substitutions from GSUB). However,
+(such as the processing of `ccmp` substitutions from <abbr>GSUB</abbr>). However,
 these steps will always be described in the relevant script's shaping
 document. 
 
@@ -100,11 +100,11 @@ document.
 Processing a run of text in the default shaping model involves three
 top-level stages:
 
-1. Applying the basic substitution features from GSUB
-2. Applying typographic substitution features from GSUB
+1. Applying the basic substitution features from <abbr>GSUB</abbr>
+2. Applying typographic substitution features from <abbr>GSUB</abbr>
 3. Applying the positioning features from GPOS
 
-Together, these stages cover the application of all GSUB and GPOS
+Together, these stages cover the application of all <abbr>GSUB</abbr> and GPOS
 features that are required or that have been defined by OpenType as
 being on by default.
 
@@ -126,15 +126,15 @@ make segmentation decisions.
 ### 1: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 These substitutions include those features designed to provide
 linguistic and orthographic correctness.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	locl
@@ -149,7 +149,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
@@ -157,7 +157,7 @@ substitute a single glyph into an equivalent decomposed sequence of
 glyphs. 
 
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs.
 
@@ -173,15 +173,15 @@ application-level user interfaces.
 ### 2: Applying typographic substitution features from GSUB ###
 
 The typographic-substitution phase applies all remaining substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 These substitutions include those features designed to provide
 typographic consistency and correctness.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 
@@ -220,7 +220,7 @@ glyphs. In preparation for this stage, glyph sequences should be
 tagged for possible application of GPOS features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 

@@ -222,7 +222,7 @@ offer the following features useful for shaping engines:
    Unicode are supported, including the decomposition of multi-part
    dependent vowels (matras) in several Indic and Brahmic-derived
    scripts as well as arbitrary decompositions and compositions
-   implemented in `ccmp` and `locl` GSUB lookups
+   implemented in `ccmp` and `locl` <abbr>GSUB</abbr> lookups
 
 
 ### Shaping model preferences ###
@@ -308,7 +308,7 @@ mappings is applied:
     For example, a shaper that supports text using the Arabic
     Presentation Forms block should remap the Arabic Presentation
     Forms codepoints to the corresponding Arabic-block default
-    codepoints and GSUB positional features.
+    codepoints and <abbr>GSUB</abbr> positional features.
 	
 	These substitutions are defined in a set of Unicode compatibility
     decomposition mappings.
@@ -317,7 +317,7 @@ mappings is applied:
     remapping "non-breaking hyphen" codepoints to "hyphen".
   
 Some of these additional decompositions and mappings may also be
-implemented in and active font's GSUB lookups, but that is not
+implemented in and active font's <abbr>GSUB</abbr> lookups, but that is not
 guaranteed. Consequently, a normalization function must implement them
 in order to fulfill the goal of providing stable output.
 
@@ -401,7 +401,7 @@ HARFBUZZ logic here: https://github.com/harfbuzz/harfbuzz/src/hb-ot-shape-normal
 
 After the decomposition, mark-reordering, and selective
 recomposition stages, OpenType shaping normalization also takes
-certain GSUB lookups and complex-script shaping operations into
+certain <abbr>GSUB</abbr> lookups and complex-script shaping operations into
 consideration.
 
 These additional operations may produce final output that differs
@@ -411,17 +411,17 @@ sequences in the same active font and script/language context.
 
 > Note: the features discussed below are applied after the completion
 > of the decomposition, mark-reordering, and recomposition
-> stages. Furthermore, they are applied before any other GSUB and GPOS
+> stages. Furthermore, they are applied before any other <abbr>GSUB</abbr> and GPOS
 > features.
 > 
 > As a result, shaping engine implementors may choose to
-> defer application of these features to the start of GSUB and GPOS
+> defer application of these features to the start of <abbr>GSUB</abbr> and GPOS
 > processing for the sake of convenience.
 
 The `ccmp` and `locl` features can involve normalization, as described
 below. If they are present in the active font and match the text run,
 all `ccmp` and `locl` features should be applied, and should be
-applied in the order in which they are listed in the GSUB table.
+applied in the order in which they are listed in the <abbr>GSUB</abbr> table.
 
 
 ##### 4.1 `ccmp` features #####
@@ -430,7 +430,7 @@ The `ccmp` feature is applied to all text runs. `ccmp` lookups are not
 meant be to be disabled by end users in application code.
 
 `ccmp` lookups can specify arbitrary decomposition mappings and
-composition mappings, via one-to-many or many-to-one GSUB
+composition mappings, via one-to-many or many-to-one <abbr>GSUB</abbr>
 substitutions.
 
 These lookups should be applied regardless of whether
@@ -486,7 +486,7 @@ Or, for example, in a particular script and language pairing, readers
 might expect or prefer certain sequences of diacritics to stack in a
 different order than the order their Unicode `Ccc` values dictate. A
 `locl` lookup could be used to implement the preferred reordering in a
-many-to-one GSUB substitution.
+many-to-one <abbr>GSUB</abbr> substitution.
 
 
 
@@ -495,7 +495,7 @@ many-to-one GSUB substitution.
 Unicode defines _standardized_variation_sequences_ as sequences of two
 codepoints where the first codepoint is any base character or mark,
 and the second character is a Variation Selector. Mapping a
-standardized variation sequence to a glyph is not done via GSUB,
+standardized variation sequence to a glyph is not done via <abbr>GSUB</abbr>,
 however, but in the `cmap` table of a font.
 
 Unicode normalization does not consider Variation Selector
@@ -513,7 +513,7 @@ language- or script-specific.
 
 Reordering and composition are defined as shaping operations in
 several script-specific shaping models. In some cases, a reordering
-operation or composition may be designated by a particular GSUB or
+operation or composition may be designated by a particular <abbr>GSUB</abbr> or
 GPOS feature tag.
 
 Shaping-engine implementors should take care to note where completing
@@ -544,9 +544,9 @@ example:
 
   - In the Arabic shaping model, stage 1, and in the Syriac shaping
     model, stage 1, certain marks are reordered after normalization
-    and after GSUB feature application.
+    and after <abbr>GSUB</abbr> feature application.
 
-  - In Bengali, "Ya, Nukta" is composed into "Yya" before GSUB feature
+  - In Bengali, "Ya, Nukta" is composed into "Yya" before <abbr>GSUB</abbr> feature
     application, to avoid potential ambiguities during the application
     of later features.
 
@@ -559,10 +559,10 @@ have Unicode compatibility `Decomposition_Mapping`s that a shaping
 engine can use to map codepoints from Arabic Presentation Forms to
 codepoints in the Arabic block. Each Arabic Presentation Form
 `Decomposition_Mapping` is tagged with a positional tag corresponding
-to a positional GSUB feature: `<final>`, `<initial>`,`<isolated>`, or
+to a positional <abbr>GSUB</abbr> feature: `<final>`, `<initial>`,`<isolated>`, or
 `<medial>`.
 
-This tag information can be used to construct a set of synthetic GSUB
+This tag information can be used to construct a set of synthetic <abbr>GSUB</abbr>
 lookups corresponding to `fina`, `init`, `isol`, and `medi`. However,
 shaping engines should take care not to offer guarantees about the
 expect output, unless explicit support for older files known to be

@@ -90,7 +90,7 @@ classes.
 
 A cluster's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-cluster frequently take on secondary forms. Different GSUB
+cluster frequently take on secondary forms. Different <abbr>GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -262,7 +262,7 @@ The first two stages take place for the entire text run being
 shaped. Subsequently, stages 3, 4, and 5 are each conducted in order on a
 per-cluster basis, until every cluster in the run has been processed.
 
-The substitution features from GSUB and the positioning features from
+The substitution features from <abbr>GSUB</abbr> and the positioning features from
 GPOS are applied to the text run in predefined features groups. Which
 features are applied at each step in the process are described below.
 
@@ -281,10 +281,10 @@ earlier, such as during an initial Unicode-normalization stage.
 
 For any split vowels that do not have a canonical decomposition, the
 active font should provide a decomposition via the `ccmp` substitution
-feature in GSUB. 
+feature in <abbr>GSUB</abbr>. 
 
 The cluster-identification rules detailed in stage two are based on
-the canonical decompositions, and do not take non-canonical GSUB
+the canonical decompositions, and do not take non-canonical <abbr>GSUB</abbr>
 decomposition into account.
 
 
@@ -371,12 +371,12 @@ substitutions necessary for script and language correctness.
 #### 3.1: Applying the basic pre-processing features from GSUB ####
 
 The basic pre-processing step applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this 
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this 
 stage, glyph sequences should be tagged for possible application 
-of GSUB features. 
+of <abbr>GSUB</abbr> features. 
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	locl
@@ -392,7 +392,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
@@ -400,7 +400,7 @@ substitute a single glyph into an equivalent decomposed sequence of
 glyphs. 
 
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs.
 
@@ -423,7 +423,7 @@ feature must be applied before all other many-to-one substitutions.
 #### 3.2: Applying the basic reordering features from GSUB ####
 
 The basic reordering step applies mandatory substitution features from
-GSUB that affect reordering elements.
+<abbr>GSUB</abbr> that affect reordering elements.
 
 For these features, the glyph substitutions themselves are applied at this
 step. However, the actual reordering of the glyphs does not take place
@@ -457,11 +457,11 @@ forms.
 #### 3.3: Applying the basic orthographic features from GSUB ####
 
 The basic orthographic step applies substitution features using the
-rules in the font's GSUB table. In preparation for this stage, glyph
-sequences should be tagged for possible application of GSUB features. 
+rules in the font's <abbr>GSUB</abbr> table. In preparation for this stage, glyph
+sequences should be tagged for possible application of <abbr>GSUB</abbr> features. 
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	rkrf
@@ -500,14 +500,14 @@ The glyph-reordering stage moves dependent vowels, diacritics, and
 other mark glyphs in relation to the base consonant. All reordering is
 performed in this stage, which is broken into two distinct steps:
 
-1. Applying the reordering features from GSUB
+1. Applying the reordering features from <abbr>GSUB</abbr>
 2. Performing property-based reordering moves
 
 
 #### 4.1 Applying the reordering features from GSUB ####
 
 In this step, the reordering moves corresponding to the
-glyph-reordering features in GSUB are performed.
+glyph-reordering features in <abbr>GSUB</abbr> are performed.
 
 Any glyph substitutions that apply to characters involved in these
 reordering moves were performed in stage 3, step 2. Therefore, this
@@ -561,7 +561,7 @@ In this step, any characters that match one of the USE reordering
 classifications should be reordered into their final position. 
 
 > Note: this classification-based reordering step ensures that
-> reordering characters not addressed by the active font's GSUB
+> reordering characters not addressed by the active font's <abbr>GSUB</abbr>
 > features are ordered correctly.
 
 The character classes reordered in this step are:
@@ -591,7 +591,7 @@ Pre-base `VOWEL_MOD_PRE` vowel-modifier glyphs are reordered to
 
 The final stage involves applying topographic joining features for
 connected scripts, applying typographic-presentation features from
-GSUB, and applying positioning features from GPOS.
+<abbr>GSUB</abbr>, and applying positioning features from GPOS.
 
 
 #### 5.1: Applying the final topographic features from GSUB ####
@@ -615,12 +615,12 @@ for each codepoint.
 #### 5.2: Applying the final typographic-presentation features from GSUB ####
 
 The final typographic-presentation step applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for this
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	abvs

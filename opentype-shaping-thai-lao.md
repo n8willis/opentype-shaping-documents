@@ -171,7 +171,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `VISUAL_ORDER_LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and GPOS features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -344,7 +344,7 @@ the dotted-circle placeholder.
 Processing a run of `<thai>` or `<lao >` text involves four top-level stages:
 
 
-1. Applying the language substitution features from GSUB
+1. Applying the language substitution features from <abbr>GSUB</abbr>
 2. Decomposing all Am vowel signs
 3. Reordering sequences of marks
 4. Applying all positioning features from GPOS
@@ -368,9 +368,9 @@ as when an isolated codepoint is shown in example text.
 ### 1: Applying the language substitution features from GSUB ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -388,7 +388,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
 #### 1.2: ccmp ####
@@ -407,7 +407,7 @@ lookup, the shaping engine will decompose the codepoint in the
 following stage.
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -599,7 +599,7 @@ possible consonant (vertical) and vowel/mark (horizontal) sequences:
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
 
-These replacements take the place of both GSUB substitutions and GPOS
+These replacements take the place of both <abbr>GSUB</abbr> substitutions and GPOS
 positioning in modern OpenType fonts.
 
 Shaping engines can replace the original codepoints with the

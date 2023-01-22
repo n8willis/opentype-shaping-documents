@@ -89,7 +89,7 @@ includes several digraphs that are used only when writing the Yiddish
 languages. 
 
 Because these word-final forms and digraphs are separately encoded,
-fonts do not implement GSUB substitutions to provide access to them.
+fonts do not implement <abbr>GSUB</abbr> substitutions to provide access to them.
 
 
 ### Mark classification ###
@@ -134,7 +134,7 @@ combinations of base characters and marks and the "Alef Lamed"
 ligature, any of which may occur in `<hebr>` text runs. Glyphs for
 these presentation forms may be provided by fonts that do not
 implement the corresponding mark-to-base and ligature features in
-OpenType GSUB and GPOS tables.
+OpenType <abbr>GSUB</abbr> and GPOS tables.
 
 The Alphabetic Presentation Forms block also includes a set of eight
 "wide" variants of standard Hebrew characters (`U+FB21` through
@@ -223,8 +223,8 @@ Processing a run of `<hebr>` text involves seven top-level stages:
 
 1. Compound character composition and decomposition
 2. Composing any Alphabetic Presentation forms
-3. Applying the language-form substitution features from GSUB
-4. Applying the typographic-form substitution features from GSUB
+3. Applying the language-form substitution features from <abbr>GSUB</abbr>
+4. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
 5. Applying the positioning features from GPOS
 
 
@@ -252,7 +252,7 @@ The `ccmp` feature allows a font to substitute
    decomposed glyphs
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or GPOS lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -300,7 +300,7 @@ multiple possible composing sequences. All of the other precomposed
 glyphs in the block have a single composing sequence.
 
 > Note: the active font may implement these compositions in a `ccmp`
-> lookup in GSUB, in which case this stage will involve no additional work.
+> lookup in <abbr>GSUB</abbr>, in which case this stage will involve no additional work.
 
 ![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png)
 
@@ -308,9 +308,9 @@ glyphs in the block have a single composing sequence.
 ### 3. Applying the language-form substitution features from GSUB ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Hebrew shaping model:
@@ -328,14 +328,14 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
 
 ### 4. Applying the typographic-form substitution features from GSUB ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's GSUB table.
+features using the rules in the font's <abbr>GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Hebrew shaping model:

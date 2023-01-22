@@ -28,7 +28,7 @@ Syriac, and Mongolian.
 Several scripts can be supported by the general OpenType shaping model
 used for Arabic. These writing systems observe similar rules and
 conventions, even if they are not historically related to
-Arabic. Therefore, OpenType defines many of the same GSUB and GPOS
+Arabic. Therefore, OpenType defines many of the same <abbr>GSUB</abbr> and GPOS
 features as supported for the corresponding script tags. These scripts include:
 
   - [Arabic](opentype-shaping-arabic.md)
@@ -192,8 +192,8 @@ the general Arabic shaping model involves seven top-level stages:
 2. Compound character composition and decomposition
 3. Computing letter joining states
 4. Applying the `stch` feature
-5. Applying the language-form substitution features from GSUB
-6. Applying the typographic-form substitution features from GSUB
+5. Applying the language-form substitution features from <abbr>GSUB</abbr>
+6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
 7. Applying the positioning features from GPOS
 
 
@@ -261,7 +261,7 @@ The `ccmp` feature allows a font to substitute
     to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or GPOS lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -269,7 +269,7 @@ glyphs.
 ### 3. Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from GSUB during stage 6, the shaping engine must
+substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 > Note: not all of the rules detailed below apply to every script that
@@ -382,9 +382,9 @@ Finally, the decomposed mark must be reordered as follows:
 ### 5. Applying the language-form substitution features from GSUB ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented with the Arabic shaping model:
@@ -413,13 +413,13 @@ for script-specific information.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
 ### 6. Applying the typographic-form substitution features from GSUB ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's GSUB table.
+features using the rules in the font's <abbr>GSUB</abbr> table.
 
 The order in which these substitution must be performed is fixed for
 all scripts implemented in the Arabic shaping model:

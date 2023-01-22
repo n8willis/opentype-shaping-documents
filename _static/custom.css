@@ -27,3 +27,23 @@ div.bodywrapper {
 
 tr:nth-child(even) {background: #F0F0F4}
 tr:nth-child(odd) {background: #FFF}
+
+/* Try to target the captions in the toctree sidebar */
+p.caption[role="heading"] span.caption-text {
+    font-size: 120%
+}
+
+/* Try to target the list beneath the captions in the toctree sidebar */ 
+p.caption[role="heading"] + ul {
+  text-indent: 0.6em;
+}
+
+/* Make <abbr> acronyms small-caps, but not interactive tooltips */
+/* The font-size adjustment here may be temproary; it depends on */
+/* the smallcap height of the font eventually specified.         */
+abbr {
+  font-variant: all-small-caps;
+  font-size: larger;
+  cursor: default;
+  border-bottom: none;
+}

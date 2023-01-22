@@ -55,7 +55,7 @@ base consonant) or a dependent vowel (with the addition of a matra).
 
 A syllable's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-syllable frequently take on secondary forms. Different GSUB
+syllable frequently take on secondary forms. Different <abbr>GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -154,7 +154,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and GPOS features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 In addition, dependent-vowel codepoints that are composed of multiple
@@ -239,7 +239,7 @@ Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
 normally. GPOS positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in GSUB substitutions.
+dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -293,7 +293,7 @@ will typically ignore ZWJ and ZWNJ.
 
 Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's GSUB or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or GPOS lookups.
 
 For example:
 
@@ -318,9 +318,9 @@ Processing a run of `<sinh>` text involves six top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
-3. Applying the basic substitution features from GSUB
+3. Applying the basic substitution features from <abbr>GSUB</abbr>
 4. Final reordering
-5. Applying all remaining substitution features from GSUB
+5. Applying all remaining substitution features from <abbr>GSUB</abbr>
 6. Applying all remaining positioning features from GPOS
 
 
@@ -414,7 +414,7 @@ processing than consonant-based syllables.
 
 In some languages and orthographies, vowel-based syllables are
 not permitted to include additional consonants or matras, and certain
-GSUB substitution features do not occur. However, there are often
+<abbr>GSUB</abbr> substitution features do not occur. However, there are often
 known exceptions, and real-world text makes no such guarantees. 
 
 > Note: Shaping engines may choose to treat independent-vowel bases 
@@ -635,10 +635,10 @@ about the orthographic correctness or preferred appearance of the
 final result is out of scope for this document.
 
 Shaping engines can perform this dotted-circle insertion at any point
-after the broken syllable has been recognized and before GSUB features
+after the broken syllable has been recognized and before <abbr>GSUB</abbr> features
 are applied. However, the best results will likely be attained by
 performing the insertion immediately, before proceeding to
-stage 2. This will enable the maximum number of GSUB and GPOS features
+stage 2. This will enable the maximum number of <abbr>GSUB</abbr> and GPOS features
 in the active font to be correctly applied to the text run by ensuring
 that all reordering, tagging, and sorting algorithms are executed as
 usual.
@@ -838,7 +838,7 @@ completed before the shaping engine begins step three, below.
 > "`U+0DD9`,`U+0DCF`". Shaping engines must take care not to miss this
 > second decomposition.
 
-> Note: For Sinhala, the `pstf` substitution feature of GSUB is
+> Note: For Sinhala, the `pstf` substitution feature of <abbr>GSUB</abbr> is
 > defined as replacing the entire multi-part matra with its right-side
 > component. 
 >
@@ -882,7 +882,7 @@ character in the subsequence. No other marks in the subsequence
 should be reordered.
 
 This order is canonical in Unicode and is required so that
-"_consonant_,Nukta" substitution rules from GSUB will be correctly
+"_consonant_,Nukta" substitution rules from <abbr>GSUB</abbr> will be correctly
 matched later in the shaping process.
 
 > Note: Nukta usage in Sinhala is rare.
@@ -980,7 +980,7 @@ relative position with respect to each other.
 #### 2.10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
-may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
+may have <abbr>GSUB</abbr> or GPOS features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
 This flagging is preliminary; the set of potential features varies
@@ -999,7 +999,7 @@ the flags -- although shaping engines may do so if desired.
 
 The sequences to flag are summarized in the list below; a full
 description of each feature's function and interpretation is provided
-in GSUB and GPOS application stages that follow.
+in <abbr>GSUB</abbr> and GPOS application stages that follow.
 
   - `akhn` should match "_Consonant_,Halant,ZWJ,_Consonant_" and
            "_Consonant_,ZWJ,Halant,_Consonant_" sequences
@@ -1013,9 +1013,9 @@ in GSUB and GPOS application stages that follow.
 ### 3: Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be flagged for possible application 
-of GSUB features in stage 2, step 10.
+of <abbr>GSUB</abbr> features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1044,7 +1044,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 #### 3.2: nukt ####
 
@@ -1185,7 +1185,7 @@ repeat the base-consonant search algorithm used in stage 2, step 1.
 
 The codepoint of the underlying base consonant or syllable base will
 not change between the search performed in stage 2, step 1, and the
-search repeated here. However, the application of GSUB shaping
+search repeated here. However, the application of <abbr>GSUB</abbr> shaping
 features in stage 3 means that several ligation and many-to-one
 substitutions may have taken place. The final glyph produced by that
 process may, therefore, be a conjunct or ligature form — in most
@@ -1260,7 +1260,7 @@ The algorithm for finding the final "Reph" position is
 Finally, if the final position of "Reph" or "Repha" occurs after a
 "_matra_,Halant" subsequence, then "Reph"/"Repha" must be repositioned to the
 left of "Halant", to allow for potential matching with `abvs` or
-`psts` substitutions from GSUB.
+`psts` substitutions from <abbr>GSUB</abbr>.
 
 
 ![Reph positioning](/images/sinhala/sinhala-reph-position.png)
@@ -1279,7 +1279,7 @@ to maintain compatibility with the other Indic scripts.
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be flagged for potential substitution by the `init` feature
-of GSUB.
+of <abbr>GSUB</abbr>.
 
 Sinhala does not use the `init` feature, so this step will
 involve no work when processing `<sinh>` text. It is included here in
@@ -1288,13 +1288,13 @@ order to maintain compatibility with the other Indic scripts.
    
 ### 5: Applying all remaining substitution features from GSUB ###
 
-In this stage, the remaining substitution features from the GSUB table
+In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
-flagged for possible application of GSUB features in stage 2,
+flagged for possible application of <abbr>GSUB</abbr> features in stage 2,
 step 10.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	init (not used in Sinhala)

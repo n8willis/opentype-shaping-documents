@@ -44,7 +44,7 @@ common usage.
 
 Emoji shaping follows the default OpenType shaping model used for
 scripts that are considered _non-complex_ from the shaper's
-perspective. However, emoji fonts typically use GSUB tables to
+perspective. However, emoji fonts typically use <abbr>GSUB</abbr> tables to
 implement a variety of OpenType smart features, including several
 classes of ligature, contextual alternates, or variant forms to
 support emoji sequences.
@@ -982,17 +982,17 @@ Emoji should be shaped using the
 Processing a run of text in the default shaping model involves three
 top-level stages:
 
-1. Applying the basic substitution features from GSUB
-2. Applying other substitution features from GSUB
+1. Applying the basic substitution features from <abbr>GSUB</abbr>
+2. Applying other substitution features from <abbr>GSUB</abbr>
 3. Applying the positioning features from GPOS
 
 Emoji sequences as described above will generally be implemented in
-the active font as a GSUB lookup feature. However, there are no
-definitively invalid GSUB or GPOS features that must or must _not_ be
+the active font as a <abbr>GSUB</abbr> lookup feature. However, there are no
+definitively invalid <abbr>GSUB</abbr> or GPOS features that must or must _not_ be
 employed for this purpose.
 
 Consequently, shaping engines should not assume (for example) that
-emoji sequences will be implemented in any specific feature of GSUB.
+emoji sequences will be implemented in any specific feature of <abbr>GSUB</abbr>.
 
 A font may also employ contextual features, such as using `locl`, that
 affects the emoji glyph shown, or use GPOS positioning for some emoji
@@ -1025,12 +1025,12 @@ require font substitution.
 ### 1. Applying the basic substitution features from GSUB ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	locl
@@ -1038,12 +1038,12 @@ in the font.
 	rlig
 	
 
-An emoji font can implement sequence support through any GSUB feature
+An emoji font can implement sequence support through any <abbr>GSUB</abbr> feature
 lookup.
 
 Basic substitution features a common choice for emoji fonts and should
-be applied at this stage. In particular, GSUB features that are
-enabled by default and GSUB features that cannot be disabled by
+be applied at this stage. In particular, <abbr>GSUB</abbr> features that are
+enabled by default and <abbr>GSUB</abbr> features that cannot be disabled by
 application-level user interfaces are common choices in which the
 active font may implement emoji substitutions.
 
@@ -1055,7 +1055,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 In other, non-emoji text runs, the `ccmp` feature allows a font to
 substitute mark-and-base sequences with a pre-composed glyph including
@@ -1063,7 +1063,7 @@ the mark and the base, or to substitute a single glyph into an
 equivalent decomposed sequence of glyphs. 
 
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs.
 
@@ -1081,19 +1081,19 @@ shaping process. Emoji shaping should be unaffected by this decision.
 ### 2. Applying typographic substitution features from GSUB ###
 
 The typographic-substitution phase applies all remaining substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 These substitutions include those features designed to provide
 typographic consistency and correctness.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
-An emoji font can implement sequence support through any GSUB feature
-lookup. This can include any other substitution feature in the GSUB
+An emoji font can implement sequence support through any <abbr>GSUB</abbr> feature
+lookup. This can include any other substitution feature in the <abbr>GSUB</abbr>
 feature table.
 
 Support for RGI emoji sequences or other emoji sequences defined as
@@ -1102,7 +1102,7 @@ default and cannot be disabled by application-level user interfaces,
 such as the `rlig` feature (for "required ligatures").
 
 However, emoji fonts may also include support for emoji sequences in
-GSUB features that can be disabled by application-level user
+<abbr>GSUB</abbr> features that can be disabled by application-level user
 interfaces, such as the `liga` feature (for standard ligatures). Emoji
 sequences may also be implemented in features that are disabled by
 default, such as the `dlig` feature (for "discretionary ligatures").
@@ -1121,7 +1121,7 @@ glyphs. In preparation for this stage, glyph sequences should be
 tagged for possible application of GPOS features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 In general, all emoji glyphs in a given font are expected to be

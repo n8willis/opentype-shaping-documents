@@ -268,7 +268,7 @@ Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
 normally. GPOS positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in GSUB substitutions.
+dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -331,7 +331,7 @@ will typically ignore ZWJ and ZWNJ.
 
 Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's GSUB or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or GPOS lookups.
 
 
 The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
@@ -353,8 +353,8 @@ Processing a run of `<arab>` text involves seven top-level stages:
 2. Compound character composition and decomposition
 3. Computing letter joining states
 4. Applying the `stch` feature
-5. Applying the language-form substitution features from GSUB
-6. Applying the typographic-form substitution features from GSUB
+5. Applying the language-form substitution features from <abbr>GSUB</abbr>
+6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
 7. Applying the positioning features from GPOS
 
 
@@ -419,7 +419,7 @@ The `ccmp` feature allows a font to substitute
     to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or GPOS lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -427,7 +427,7 @@ glyphs.
 ### 3. Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from GSUB during stage 6, the shaping engine must
+substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 > Note: The following algorithm includes rules for processing `<syrc>`
@@ -542,9 +542,9 @@ Finally, the decomposed mark must be reordered as follows:
 ### 5. Applying the language-form substitution features from GSUB ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -574,7 +574,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 ![Localized form substitution](/images/arabic/arabic-locl.png)
 
@@ -669,7 +669,7 @@ can be disabled by application-level user interfaces.
 ### 6. Applying the typographic-form substitution features from GSUB ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's GSUB table.
+features using the rules in the font's <abbr>GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
