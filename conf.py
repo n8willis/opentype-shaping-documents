@@ -20,8 +20,11 @@ source_suffix = {'.md': 'markdown'}
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+root_doc = 'sphinx_root_doc'
+
 myst_heading_anchors = 6
 
+myst_enable_extensions = ['smartquotes',]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
@@ -36,10 +39,7 @@ html_theme_options = {
     'github_type': 'watch',
     'github_count': True,
     'extra_nav_links': {
-        'Scripts': 'README.html',
-        'Character tables': 'character-tables/character-tables-index.html',
-        'Normalization':'opentype-shaping-normalization.html',
-        'Notes': 'notes/README.html',
-        'Errata': 'errata.html',
+        'GitHub issues': 'https://github.com/n8willis/opentype-shaping-documents/issues',
+        'Build process': 'https://github.com/n8willis/opentype-shaping-documents/blob/sphinx/BUILD.md', # Fix the directory path after PR merge; Add contributor-guide link
         }
 }

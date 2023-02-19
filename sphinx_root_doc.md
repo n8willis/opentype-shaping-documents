@@ -12,6 +12,8 @@ Overview <README>
 
 ```{toctree}
 ---
+numbered: True
+titlesonly: True
 hidden: True
 caption: Script shaping
 maxdepth: 1
@@ -37,6 +39,31 @@ maxdepth: 1
 ---
 Notes <notes/README>
 Normalization <opentype-shaping-normalization>
+
+```
+
+```{toctree}
+---
+hidden: True
+maxdepth: 1
+---
 Character tables <character-tables/character-tables-index>
+
+```
+
+```{toctree}
+---
+hidden: True
+maxdepth: 0
+titlesonly: True
+---
+character-tables/_toc
+```
+
+```{toctree}
+---
+hidden: True
+maxdepth: 0
+---
 Errata <errata>
 ```
