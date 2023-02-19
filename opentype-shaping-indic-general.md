@@ -1736,3 +1736,27 @@ known that the font in use supports an applicable substitution lookup.
 Shaping engines may also choose to position left-side matras according
 to the old-model Indic ordering scheme; however, doing so might interfere
 with matching <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features.
+
+
+<!---
+
+% Add hidden TOCtree directive for Sphinx:
+
+```{toctree}
+---
+hidden: True
+maxdepth: 1
+---
+Devanagari <opentype-shaping-devanagari>
+Bengali <opentype-shaping-bengali>
+Gujarati <opentype-shaping-gujarati>
+Gurmukhi <opentype-shaping-gurmukhi>
+Kannada <opentype-shaping-kannada>
+Malayalam <opentype-shaping-malayalam>
+Oriya <opentype-shaping-oriya>
+Tamil <opentype-shaping-tamil>
+Telugu <opentype-shaping-telugu>
+Sinhala <opentype-shaping-sinhala>
+```
+
+--->

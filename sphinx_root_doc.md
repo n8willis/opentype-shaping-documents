@@ -16,7 +16,7 @@ numbered: True
 titlesonly: True
 hidden: True
 caption: Script shaping
-maxdepth: 1
+maxdepth: 2
 ---
 Indic General <opentype-shaping-indic-general>
 Arabic General <opentype-shaping-arabic-general>
@@ -45,19 +45,10 @@ Normalization <opentype-shaping-normalization>
 ```{toctree}
 ---
 hidden: True
-maxdepth: 1
+maxdepth: 2
 ---
 Character tables <character-tables/character-tables-index>
 
-```
-
-```{toctree}
----
-hidden: True
-maxdepth: 0
-titlesonly: True
----
-character-tables/_toc
 ```
 
 ```{toctree}

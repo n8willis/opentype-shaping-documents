@@ -31,6 +31,13 @@ myst_enable_extensions = ['smartquotes',]
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'searchbox.html',
+        ]
+    }
 html_theme_options = {
     'page_width': '1040px',
     'github_user': 'n8willis',
