@@ -16,7 +16,7 @@ numbered: True
 titlesonly: True
 hidden: True
 caption: Script shaping
-maxdepth: 2
+maxdepth: 1
 ---
 Indic General <opentype-shaping-indic-general>
 Arabic General <opentype-shaping-arabic-general>
