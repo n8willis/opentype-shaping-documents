@@ -13,7 +13,7 @@ author = 'Sponsored by YesLogic'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser']
+extensions = ['myst_parser', 'sphinx_external_toc']
 
 source_suffix = {'.md': 'markdown'}
 
@@ -25,6 +25,8 @@ root_doc = 'sphinx_root_doc' # Will need to be renamed, eventually....
 myst_heading_anchors = 6
 
 myst_enable_extensions = ['smartquotes',]
+
+external_toc_path = "_toc.yml"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
