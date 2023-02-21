@@ -20,7 +20,7 @@ source_suffix = {'.md': 'markdown'}
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-root_doc = 'sphinx_root_doc' # Will need to be renamed, eventually....
+root_doc = 'README' # Will need to be renamed, eventually....
 
 myst_heading_anchors = 6
 

@@ -47,3 +47,12 @@ abbr {
   cursor: default;
   border-bottom: none;
 }
+
+/* De-emphasize Sphinx's section numbering, so as to be less */
+/* distracting.                                              */
+/*                                                           */
+/* TODO: shift numbers into margin.                          */
+.section-number {
+    font-size: 70%;
+    color: #888;
+}
