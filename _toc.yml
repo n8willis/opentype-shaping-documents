@@ -2,6 +2,10 @@ root: README
 options:
   maxdepth: 2
 subtrees:
+- maxdepth: 1
+  entries:
+  - file: index
+    title: Overview
 - caption: Script shaping
   numbered: 3
   maxdepth: 2
