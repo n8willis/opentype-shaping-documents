@@ -18,9 +18,9 @@ implementations share.
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)
       - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
+      - [5. Applying the language-form substitution features from <abbr>GSUB</abbr>](#5-applying-the-language-form-substitution-features-from-gsub)
+      - [6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [7. Applying the positioning features from <abbr>GPOS</abbr>](#7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -178,14 +178,14 @@ normalization.
 
 A subset of the Arabic marks require special handling when shaping
 Arabic text, during the mark-reordering stage. These include two sets
-of _Modifier Combining Marks_ (MCM) that may need to be repositioned
+of _Modifier Combining Marks_ (<abbr>MCM</abbr>) that may need to be repositioned
 closer to the base character, when they occur in sequences of multiple
 marks. 
 
 The sets are:
-  - Below-base (class 220) MCMs: "Hamza below" (`U+0655`), "Small low seen"
+  - Below-base (class 220) <abbr>MCM</abbr>s: "Hamza below" (`U+0655`), "Small low seen"
     (`U+06E3`), "Large round dot below" (`U+08CF`), "Small low waw" (`U+08D3`)
-  - Above-base (class 230) MCMs: "Hamza above" (`U+0654`), "Mark noon ghunna"
+  - Above-base (class 230) <abbr>MCM</abbr>s: "Hamza above" (`U+0654`), "Mark noon ghunna"
     (`U+0658`), "Small high seen" (`U+06DC`), "Small high yeh" (`U+06E7`), "Small high
     noon" (`U+06E8`), "Small high Farsi yeh" (`U+08CA`), "Small high
     yeh barree with two dots below" (`U+08CB`), "Small high zah"
@@ -286,17 +286,17 @@ This requirement covers:
 
 
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 
 By default, OpenType shaping reorders sequences of adjacent marks by
 sorting the sequence on the marks' Canonical_Combining_Class (Ccc)
-values. The presence of a CGJ character within a sequence of marks has
+values. The presence of a <abbr>CGJ</abbr> character within a sequence of marks has
 the effect of splitting the sequence into two sequences of marks and,
 therefore, halting any mark-reordering that would have occurred
-between the marks on either side of the CGJ.
+between the marks on either side of the <abbr>CGJ</abbr>.
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
@@ -334,10 +334,10 @@ when matching sequences of codepoints against the backtrack and
 lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes. Generally
-speaking RLM and LRM codepoints do not interact with shaping.
+speaking <abbr>RLM</abbr> and <abbr>LRM</abbr> codepoints do not interact with shaping.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
@@ -374,7 +374,7 @@ cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
 on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
-_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+_Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
 
 The algorithm for reordering a sequence of marks is:
@@ -393,11 +393,11 @@ The algorithm for reordering a sequence of marks is:
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
 > Ccc-based mark reordering.
 >
-> Specifically, AMTRA is designated as an operation performed during
+> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -539,7 +539,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### 5. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -666,7 +666,7 @@ can be disabled by application-level user interfaces.
 
 
 
-### 6. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -719,7 +719,7 @@ of bases and marks with precomposed base-and-mark glyphs.
 > Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
 
-### 7. Applying the positioning features from GPOS ###
+### 7. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

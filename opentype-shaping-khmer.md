@@ -14,9 +14,9 @@ runs in the Khmer script.
   - [The `<khmr>` shaping model](#the-khmr-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Applying all remaining substitution features from GSUB](#4-applying-all-remaining-substitution-features-from-gsub)
-      - [5: Applying remaining positioning features from GPOS](#5-applying-remaining-positioning-features-from-gpos)
+      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
+      - [4: Applying all remaining substitution features from <abbr>GSUB</abbr>](#4-applying-all-remaining-substitution-features-from-gsub)
+      - [5: Applying remaining positioning features from <abbr>GPOS</abbr>](#5-applying-remaining-positioning-features-from-gpos)
 
 
 ## General information ##
@@ -308,12 +308,13 @@ where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 --->
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Sign_Coeng,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display
+those codepoints that are defined as non-spacing (marks, dependent
+vowels (matras), below-base consonant forms, and post-base consonant
+forms) in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Sign_Coeng,_Consonant_", "NBSP,_mark_", or
+"NBSP,_matra_".
 
 The zero-width space may be used between words — even though no visual
 word spacing results — in order to indicate word breaks within a text
@@ -808,7 +809,7 @@ any consonants after the base consonant, the base consonant should
 With these steps completed, the syllable can be sorted into the final sort order.
 
 
-### 3: Applying the basic substitution features from GSUB ###
+### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -918,7 +919,7 @@ pre-base-reordering "Ro".
 <!--- ### 4: Final reordering ### --->
 <!--- Is there any? --->
 
-### 4. Applying all remaining substitution features from GSUB ###
+### 4. Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
 In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. The order in which these features are applied is not
@@ -984,7 +985,7 @@ application-level user interfaces.
 
 
 
-### 5: Applying remaining positioning features from GPOS ###
+### 5: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these

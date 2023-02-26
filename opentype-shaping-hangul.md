@@ -18,7 +18,7 @@ implementations share.
       - [2. Determining if the syllable can be composed into a Hangul Syllables codepoint](#2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint)
       - [3. Composing the syllable (if composition is possible)](#3-composing-the-syllable-if-composition-is-possible)
       - [4. Fully decomposing the syllable (if composition is not possible)](#4-fully-decomposing-the-syllable-if-composition-is-not-possible)
-      - [5. Shaping the fully decomposed syllable with GSUB features](#5-shaping-the-fully-decomposed-syllable-with-gsub-features)
+      - [5. Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features](#5-shaping-the-fully-decomposed-syllable-with-gsub-features)
       - [6. Reordering tone marks](#6-reordering-tone-marks)
  
 
@@ -475,7 +475,7 @@ five with the `L`, `V`, and (if used) `T` jamo.
 
 
 
-### 5. Shaping the fully decomposed syllable with GSUB features ###
+### 5. Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features ###
 
 With the syllable fully decomposed into a sequence of jamo, the next
 stage applies mandatory substitution features using rules in the

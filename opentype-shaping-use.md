@@ -10,20 +10,20 @@ model.
   - [General information](#general-information)
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
-  - [The USE shaping model](#the-use-shaping-model)
+  - [The <abbr>USE</abbr> shaping model](#the-use-shaping-model)
       - [1: Split vowel decomposition](#1-split-vowel-decomposition)
       - [2: Cluster identification](#2-cluster-identification)
       - [3: Basic cluster formation](#3-basic-cluster-formation)
-	      - [3.1: Applying the basic pre-processing features from GSUB](#31-applying-the-basic-pre-processing-features-from-gsub)
-          - [3.2: Applying the basic reordering features from GSUB](#32-applying-the-basic-reordering-features-from-gsub)
-          - [3.3: Applying the basic orthographic features from GSUB](#33-applying-the-basic-orthographic-features-from-gsub)
+	      - [3.1: Applying the basic pre-processing features from <abbr>GSUB</abbr>](#31-applying-the-basic-pre-processing-features-from-gsub)
+          - [3.2: Applying the basic reordering features from <abbr>GSUB</abbr>](#32-applying-the-basic-reordering-features-from-gsub)
+          - [3.3: Applying the basic orthographic features from <abbr>GSUB</abbr>](#33-applying-the-basic-orthographic-features-from-gsub)
 	  - [4: Glyph reordering](#4-glyph-reordering)
-	      - [4.1: Applying the reordering features from GSUB](#41-applying-the-reordering-features-from-gsub)
+	      - [4.1: Applying the reordering features from <abbr>GSUB</abbr>](#41-applying-the-reordering-features-from-gsub)
 	      - [4.2: Performing property-based reordering moves](#42-performing-property-based-reordering-moves)
 	  - [5: Final feature application](#5-final-feature-application)
-	      - [5.1: Applying the final topographic features from GSUB](#51-applying-the-final-topographic-features-from-gsub)
-	      - [5.2: Applying the final typographic-presentation features from GSUB](#52-applying-the-final-typographic-presentation-features-from-gsub)
-	      - [5.3: Applying the final positioning features from GPOS](#53-applying-the-final-positioning-features-from-gpos)
+	      - [5.1: Applying the final topographic features from <abbr>GSUB</abbr>](#51-applying-the-final-topographic-features-from-gsub)
+	      - [5.2: Applying the final typographic-presentation features from <abbr>GSUB</abbr>](#52-applying-the-final-typographic-presentation-features-from-gsub)
+	      - [5.3: Applying the final positioning features from <abbr>GPOS</abbr>](#53-applying-the-final-positioning-features-from-gpos)
   
   
   
@@ -120,7 +120,7 @@ In addition, the Unicode Character Decomposition Mapping (<abbr>UCDM</abbr>) is 
 all split vowels.
 
 
-### USE overrides ###
+### <abbr>USE</abbr> overrides ###
 
 Although, in general, the <abbr>USE</abbr> shaping model relies on the <abbr>UGC</abbr>, <abbr>UISC</abbr>,
 and <abbr>UIPC</abbr> properties, the <abbr>USE</abbr> model makes a small set of standardized
@@ -159,7 +159,7 @@ correct results.
 | | | | | | |
 
 
-### USE classification table ###
+### <abbr>USE</abbr> classification table ###
 
 The following table lists the classes utilized in the <abbr>USE</abbr> shaping
 model, along with a definition for each class. The class definitions
@@ -170,7 +170,7 @@ The symbols given in the "Symbol" column for each class may be used to
 express cluster-matching rules or other algorithms.
 
 Vowels and modifiers may be further subclassified as described in the
-[USE subclasses table](#use-subclasses-table) below.
+[<abbr>USE</abbr> subclasses table](#use-subclasses-table) below.
 
 
 | USE classification        | Symbol | Definition                                                                                                    |
@@ -202,7 +202,7 @@ Vowels and modifiers may be further subclassified as described in the
 | | | |
 
 
-### USE subclasses table ###
+### <abbr>USE</abbr> subclasses table ###
 
 Vowels and modifiers may be further subclassified based on their
 position relative to base characters. The subclasses incorporated in
@@ -244,7 +244,7 @@ vowel must be decomposed into its components.
 
 
 
-## The USE shaping model ##
+## The <abbr>USE</abbr> shaping model ##
 
 The <abbr>USE</abbr> shaping model consists of five top-level stages.
 
@@ -368,7 +368,7 @@ shaping stages occurs on a per-cluster basis.
 The basic cluster formation stage is used to apply fundamental
 substitutions necessary for script and language correctness.
 
-#### 3.1: Applying the basic pre-processing features from GSUB ####
+#### 3.1: Applying the basic pre-processing features from <abbr>GSUB</abbr> ####
 
 The basic pre-processing step applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this 
@@ -420,7 +420,7 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 
-#### 3.2: Applying the basic reordering features from GSUB ####
+#### 3.2: Applying the basic reordering features from <abbr>GSUB</abbr> ####
 
 The basic reordering step applies mandatory substitution features from
 <abbr>GSUB</abbr> that affect reordering elements.
@@ -454,7 +454,7 @@ forms.
 > stage. 
 
 
-#### 3.3: Applying the basic orthographic features from GSUB ####
+#### 3.3: Applying the basic orthographic features from <abbr>GSUB</abbr> ####
 
 The basic orthographic step applies substitution features using the
 rules in the font's <abbr>GSUB</abbr> table. In preparation for this stage, glyph
@@ -504,7 +504,7 @@ performed in this stage, which is broken into two distinct steps:
 2. Performing property-based reordering moves
 
 
-#### 4.1 Applying the reordering features from GSUB ####
+#### 4.1 Applying the reordering features from <abbr>GSUB</abbr> ####
 
 In this step, the reordering moves corresponding to the
 glyph-reordering features in <abbr>GSUB</abbr> are performed.
@@ -594,7 +594,7 @@ connected scripts, applying typographic-presentation features from
 <abbr>GSUB</abbr>, and applying positioning features from <abbr>GPOS</abbr>.
 
 
-#### 5.1: Applying the final topographic features from GSUB ####
+#### 5.1: Applying the final topographic features from <abbr>GSUB</abbr> ####
 
 For connected scripts, this step applies the substitutions to select
 the correct topographic form for each glyph, based on its position in
@@ -612,7 +612,7 @@ for each codepoint.
 	medi
 	fina
 
-#### 5.2: Applying the final typographic-presentation features from GSUB ####
+#### 5.2: Applying the final typographic-presentation features from <abbr>GSUB</abbr> ####
 
 The final typographic-presentation step applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -687,7 +687,7 @@ application-level user interfaces.
 
 
 
-#### 5.3: Applying the final positioning features from GPOS ####
+#### 5.3: Applying the final positioning features from <abbr>GPOS</abbr> ####
 
 	curs
 	dist

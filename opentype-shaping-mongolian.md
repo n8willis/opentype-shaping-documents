@@ -18,9 +18,9 @@ implementations share.
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)
       - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
+      - [5. Applying the language-form substitution features from <abbr>GSUB</abbr>](#5-applying-the-language-form-substitution-features-from-gsub)
+      - [6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [7. Applying the positioning features from <abbr>GPOS</abbr>](#7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -337,7 +337,7 @@ Processing a run of `<mong>` text involves seven top-level stages:
 
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 > Note: because Mongolian does not feature the "Shadda" mark or any
-> marks that belong to _Modifier Combining Marks_ (MCM) classes, this
+> marks that belong to _Modifier Combining Marks_ (<abbr>MCM</abbr>) classes, this
 > stage should not involve any additional work when processing
 > `<mong>` text runs. It is included here to maintain consistency with
 > other scripts that utilize the general Arabic-based shaping model.
@@ -354,7 +354,7 @@ cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
 on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
-_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+_Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
 
 The algorithm for reordering a sequence of marks is:
@@ -373,11 +373,11 @@ The algorithm for reordering a sequence of marks is:
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
 > Ccc-based mark reordering.
 >
-> Specifically, AMTRA is designated as an operation performed during
+> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -519,7 +519,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### 5. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -672,7 +672,7 @@ can be disabled by application-level user interfaces.
 
 
 
-### 6. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -727,7 +727,7 @@ of bases and marks with precomposed base-and-mark glyphs.
 > Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
 
-### 7. Applying the positioning features from GPOS ###
+### 7. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

@@ -17,9 +17,9 @@ Syriac, and Mongolian.
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)
       - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
+      - [5. Applying the language-form substitution features from <abbr>GSUB</abbr>](#5-applying-the-language-form-substitution-features-from-gsub)
+      - [6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [7. Applying the positioning features from <abbr>GPOS</abbr>](#7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -157,18 +157,18 @@ reordering the sequence into increasing numerical order.
 
 In addition, some Arabic and Syriac marks require special handling
 when shaping Arabic text, during the mark-reordering stage. These
-marks fall into two classes of _Modifier Combining Marks_ (MCM) that
+marks fall into two classes of _Modifier Combining Marks_ (<abbr>MCM</abbr>) that
 may need to be repositioned closer to the base character, when they
 occur in sequences of multiple marks. 
 
 The sets are:
-  - Below-base (class 220) MCMs
-  - Above-base (class 230) MCMs
+  - Below-base (class 220) <abbr>MCM</abbr>s
+  - Above-base (class 230) <abbr>MCM</abbr>s
   
 These classifications are used in the [mark-transient-reordering
 stage](#1-transient-reordering-of-modifier-combining-marks).
 
-Lists of the marks that belong to each MCM classes are included in the
+Lists of the marks that belong to each <abbr>MCM</abbr> classes are included in the
 script-specific shaping documents for Arabic and Syriac.
 			
 			
@@ -202,7 +202,7 @@ the general Arabic shaping model involves seven top-level stages:
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 > Note: the transient reordering of modifier combining marks is
 > necessary only for scripts that can feature the "Shadda" mark or
-> marks that belong to _Modifier Combining Marks_ (MCM) classes.
+> marks that belong to _Modifier Combining Marks_ (<abbr>MCM</abbr>) classes.
 
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
@@ -216,7 +216,7 @@ cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
 on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
-_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+_Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
 
 The algorithm for reordering a sequence of marks is:
@@ -235,11 +235,11 @@ The algorithm for reordering a sequence of marks is:
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
 > Ccc-based mark reordering.
 >
-> Specifically, AMTRA is designated as an operation performed during
+> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -379,7 +379,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### 5. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -416,7 +416,7 @@ for script-specific information.
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
 
-### 6. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -433,7 +433,7 @@ See the individual script pages for further detail on each feature and
 for script-specific information.
 
 
-### 7. Applying the positioning features from GPOS ###
+### 7. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

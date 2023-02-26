@@ -14,10 +14,10 @@ runs in the Tamil script.
   - [The `<tml2>` shaping model](#the-tml2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
+      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
       - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+      - [5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#5-applying-all-remaining-substitution-features-from-gsub)
+      - [6: Applying remaining positioning features from <abbr>GPOS</abbr>](#6-applying-remaining-positioning-features-from-gpos)
   - [The `<taml>` shaping model](#the-taml-shaping-model)
       - [Distinctions from `<tml2>`](#distinctions-from-tml2)
       - [Advice for handling fonts with `<taml>` features only](#advice-for-handling-fonts-with-taml-features-only)
@@ -331,7 +331,7 @@ For example:
     should still be applied if the dependent-vowel codepoint is preceded
     by "Ka,Halant,ZWJ,Tta" in the text run.
 
-The no-break space (NBSP) is primarily used to display those
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them
@@ -1115,7 +1115,7 @@ in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
 
 
-### 3: Applying the basic substitution features from GSUB ###
+### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -1503,7 +1503,7 @@ involve no work when processing `<tml2>` text. It is included here in
 order to maintain compatibility with the other Indic scripts.
 
 
-### 5: Applying all remaining substitution features from GSUB ###
+### 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
 In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
@@ -1562,7 +1562,7 @@ typographically problematic.
 > point. However, `calt` is not mandatory for correct Tamil shaping
 > and may be disabled in the application by user preference.
 
-### 6: Applying remaining positioning features from GPOS ###
+### 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.

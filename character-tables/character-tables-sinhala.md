@@ -323,7 +323,7 @@ Sinhala text. The <abbr>ZWNJ</abbr> is referenced below in various regular
 expressions and shaping rules, however, because it is used by other
 Indic scripts.
 
-The no-break space (NBSP) is primarily used to display those
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them

@@ -397,7 +397,7 @@ HARFBUZZ logic here: https://github.com/harfbuzz/harfbuzz/src/hb-ot-shape-normal
 
 
 
-#### 4. Normalization-related GSUB features and other font-specific considerations ####
+#### 4. Normalization-related <abbr>GSUB</abbr> features and other font-specific considerations ####
 
 After the decomposition, mark-reordering, and selective
 recomposition stages, OpenType shaping normalization also takes

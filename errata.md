@@ -8,15 +8,15 @@ specification documents.
 **Table of Contents**
 
   - [Unicode](#unicode)
-      - [ZWJ and ZWNJ](#zwj-and-zwnj)
-	      - [Scope of ZWJ and ZWNJ](#scope-of-zwj-and-zwnj)
-	      - [ZWJ in redundant ligature lookups](#zwj-in-redundant-ligature-lookups)
+      - [<abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>](#zwj-and-zwnj)
+	      - [Scope of <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>](#scope-of-zwj-and-zwnj)
+	      - [<abbr>ZWJ</abbr> in redundant ligature lookups](#zwj-in-redundant-ligature-lookups)
       - [Emoji](#emoji)
 	      - [Skin-tone permutations](#skin-tone-permutations)
 		  - [Gender permutations](#gender-permutations)
   - [OpenType](#opentype)
-      - [Null offsets in GSUB and GPOS](#null-offsets-in-gsub-and-gpos)
-      - [Sorting of GSUB and GPOS lookups](#sorting-of-gsub-and-gpos-lookups)
+      - [Null offsets in <abbr>GSUB</abbr> and <abbr>GPOS</abbr>](#null-offsets-in-gsub-and-gpos)
+      - [Sorting of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> lookups](#sorting-of-gsub-and-gpos-lookups)
 	  - [Per-script applicability of feature tags](#per-script-applicability-of-feature-tags)
       - [Ordering of post-base and below-base consonants in Indic2 base-consonant determination](#ordering-of-post-base-and-below-base-consonants-in-indic2-base-consonant-determination)
       - [Lookup behavior](#lookup-behavior)
@@ -32,9 +32,9 @@ specification documents.
 
 This section lists errata pertaining to the Unicode Standard.
 
-### ZWJ and ZWNJ ###
+### <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> ###
 
-#### Scope of ZWJ and ZWNJ ####
+#### Scope of <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> ####
 
 Unicode provides the Zero Width Joiner (<abbr>ZWJ</abbr>) and Zero Width Non-Joiner
 (<abbr>ZWNJ</abbr>) control characters so that a text sequence can "request a
@@ -58,7 +58,7 @@ in the same "a,b,ZWNJ,c,d" sequence should inhibit the application of
 the ligature between "c" and "d".
 
 
-#### ZWJ in redundant ligature lookups ####
+#### <abbr>ZWJ</abbr> in redundant ligature lookups ####
 
 An "Implementation Notes" section in chapter 23.2 of the Unicode
 Standard says that font vendors should add <abbr>ZWJ</abbr> sequences to ligature
@@ -113,7 +113,7 @@ sequence "Woman,ZWJ,Man,ZWJ,Girl".
 
 This section lists errata pertaining to the OpenType specification.
 
-### Null offsets in GSUB and GPOS ###
+### Null offsets in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> ###
 
 The headers of the <abbr>GSUB</abbr> and <abbr>GPOS</abbr> tables include fields that contain
 the offsets at which other structures within the font binary are
@@ -135,7 +135,7 @@ Furthermore, font-validation functions may overwrite a `NULL` into an
 offset field if the original value encountered was invalid.
 
 
-### Sorting of GSUB and GPOS lookups ###
+### Sorting of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> lookups ###
 
 The OpenType specification requires that lookups in the <abbr>GSUB</abbr> table
 must be sorted into numeric order before they are applied.

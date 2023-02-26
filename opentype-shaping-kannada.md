@@ -14,10 +14,10 @@ runs in the Kannada script.
   - [The `<knd2>` shaping model](#the-knd2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
+      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
       - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+      - [5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#5-applying-all-remaining-substitution-features-from-gsub)
+      - [6: Applying remaining positioning features from <abbr>GPOS</abbr>](#6-applying-remaining-positioning-features-from-gpos)
   - [The `<knda>` shaping model](#the-knda-shaping-model)
       - [Distinctions from `<knd2>`](#distinctions-from-knd2)
       - [Advice for handling fonts with `<knda>` features only](#advice-for-handling-fonts-with-knda-features-only)
@@ -333,7 +333,7 @@ For example:
     should still be applied if the dependent-vowel codepoint is preceded
     by "Ka,Halant,ZWJ,Tta" in the text run.
 
-The no-break space (NBSP) is primarily used to display those
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them
@@ -1147,7 +1147,7 @@ in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
 
 
-### 3: Applying the basic substitution features from GSUB ###
+### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -1565,7 +1565,7 @@ typographically problematic.
 > point. However, `calt` is not mandatory for correct Kannada shaping
 > and may be disabled in the application by user preference.
 
-### 6: Applying remaining positioning features from GPOS ###
+### 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.

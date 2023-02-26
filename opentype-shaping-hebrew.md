@@ -15,9 +15,9 @@ implementations share.
   - [The `<hebr>` shaping model](#the-hebr-shaping-model)
       - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
       - [2. Composing any Alphabetic Presentation forms](#2-composing-any-alphabetic-presentation-forms)
-      - [3. Applying the language-form substitution features from GSUB](#3-applying-the-language-form-substitution-features-from-gsub)
-      - [4. Applying the typographic-form substitution features from GSUB](#4-applying-the-typographic-form-substitution-features-from-gsub)
-      - [5. Applying the positioning features from GPOS](#5-applying-the-positioning-features-from-gpos)
+      - [3. Applying the language-form substitution features from <abbr>GSUB</abbr>](#3-applying-the-language-form-substitution-features-from-gsub)
+      - [4. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#4-applying-the-typographic-form-substitution-features-from-gsub)
+      - [5. Applying the positioning features from <abbr>GPOS</abbr>](#5-applying-the-positioning-features-from-gpos)
   
 
 
@@ -192,7 +192,7 @@ also use other characters, such as hyphens or dashes, in a similar
 placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
-The combining grapheme joiner (CGJ), zero-width joiner (<abbr>ZWJ</abbr>), and
+The combining grapheme joiner (<abbr>CGJ</abbr>), zero-width joiner (<abbr>ZWJ</abbr>), and
 zero-width non-joiner (<abbr>ZWNJ</abbr>) may be used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
@@ -203,12 +203,12 @@ non-default language orthography.
 
 <!--- Zero-Width Non Joiner explanation --->
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the LTR and RTL markers explanation --->
+<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
 
 
 The no-break space may be used to display those codepoints that
@@ -305,7 +305,7 @@ glyphs in the block have a single composing sequence.
 ![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png)
 
 
-### 3. Applying the language-form substitution features from GSUB ###
+### 3. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -332,7 +332,7 @@ variants, based on examining the language setting of the text run.
 
 
 
-### 4. Applying the typographic-form substitution features from GSUB ###
+### 4. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -364,7 +364,7 @@ application-level user interfaces.
 
 
 
-### 5. Applying the positioning features from GPOS ###
+### 5. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

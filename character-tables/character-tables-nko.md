@@ -144,7 +144,7 @@ fashion; shaping engines should cope with this situation gracefully.
 
 
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
@@ -162,12 +162,12 @@ sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 <!--- Zero-Width Non Joiner explanation --->
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the LTR and RTL markers explanation --->
+<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
 
 
 The no-break space is primarily used to display those codepoints that

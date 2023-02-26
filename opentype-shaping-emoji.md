@@ -17,13 +17,13 @@ emoji sequences.
     - [Tag flag sequences](#tag-flag-sequences)
     - [Keycap sequences](#keycap-sequences)
     - [Zero-Width Joiner sequences](#zwj-sequences)
-      - [ZWJ hair sequences](#zwj-hair-sequences)
-      - [ZWJ gendered person sequences](#zwj-gendered-person-sequences)
-      - [ZWJ multi-person group sequences](#zwj-multi-person-group-sequences)
-      - [ZWJ role sequences](#zwj-role-sequences)
-      - [ZWJ color sequences](#zwj-color-sequences)
-      - [ZWJ directionality sequences](#zwj-directionality-sequences)
-      - [ZWJ additional sequences](#zwj-additional-sequences)
+      - [<abbr>ZWJ</abbr> hair sequences](#zwj-hair-sequences)
+      - [<abbr>ZWJ</abbr> gendered person sequences](#zwj-gendered-person-sequences)
+      - [<abbr>ZWJ</abbr> multi-person group sequences](#zwj-multi-person-group-sequences)
+      - [<abbr>ZWJ</abbr> role sequences](#zwj-role-sequences)
+      - [<abbr>ZWJ</abbr> color sequences](#zwj-color-sequences)
+      - [<abbr>ZWJ</abbr> directionality sequences](#zwj-directionality-sequences)
+      - [<abbr>ZWJ</abbr> additional sequences](#zwj-additional-sequences)
     - [Other sequences and ligatures](#other-sequences-and-ligatures)
   - [Feature interaction in sequences](#feature-interaction-in-sequences)
   - [Emoji sets](#emoji-sets)
@@ -96,7 +96,7 @@ emoji.
 ## Terminology ##
 
 A codepoint is considered an **emoji** only if it has the `Emoji`
-property in the Unicode Character Database (UCD). Although many
+property in the Unicode Character Database (<abbr>UCD</abbr>). Although many
 codepoints that have this property are pictographic in nature, some
 codepoints that are pictographic do not have the `Emoji` property
 (such as most chess, playing-card, and game-piece symbols), and some
@@ -455,7 +455,7 @@ environment.
 Regional Indicator flag sequences only occur in standalone form.
 
 > Note: The Regional Indicator flag sequences are defined to always be
-> interpreted left-to-right (LTR) for the purpose of
+> interpreted left-to-right (<abbr>LTR</abbr>) for the purpose of
 > bidirectionality. This behavior differs from that of other emoji
 > sequences, which are neutral in regard to bidirectionality.
 >
@@ -511,7 +511,7 @@ Keycap sequences only occur in standalone form.
 
 
 
-### ZWJ sequences ###
+### <abbr>ZWJ</abbr> sequences ###
 
 A Zero-Width Joiner (<abbr>ZWJ</abbr>) sequence can be used to request specific
 variants of an emoji glyph or to request the combined form of a
@@ -527,7 +527,7 @@ back to a set of individual-person emoji glyphs.
 
 
 
-#### ZWJ hair sequences ####
+#### <abbr>ZWJ</abbr> hair sequences ####
 
 A <abbr>ZWJ</abbr> hair sequence is used to request a specific hairstyle version of
 an emoji codepoint that depicts a single human being.
@@ -558,7 +558,7 @@ therefore "blond" was not included in the set of supported hairstyle
 versions.
 
 
-#### ZWJ gendered person sequences ####
+#### <abbr>ZWJ</abbr> gendered person sequences ####
 
 A <abbr>ZWJ</abbr> gendered person sequence is used to request a specific-gendered
 version of an emoji codepoint that depicts a single human being.
@@ -625,7 +625,7 @@ group mechanism, and are documented in the corresponding section.
 
 
 
-#### ZWJ multi-person group sequences ####
+#### <abbr>ZWJ</abbr> multi-person group sequences ####
 
 A <abbr>ZWJ</abbr> multi-person group sequence is used to request a multi-person
 emoji glyph. The fallback for a <abbr>ZWJ</abbr> multi-person group sequence is a
@@ -750,7 +750,7 @@ separated by a <abbr>ZWJ</abbr>, and must match:
 > group sequence for "Couple holding hands".
 
 
-#### ZWJ role sequences ####
+#### <abbr>ZWJ</abbr> role sequences ####
 
 A <abbr>ZWJ</abbr> role (or profession) sequence is used to request an emoji
 depicting a human being performing a task or job. Role sequences are
@@ -804,7 +804,7 @@ _genderperson_ _modifier_? _zwj_ _emoji_ _presentation_?
 
 
 
-#### ZWJ color sequences ####
+#### <abbr>ZWJ</abbr> color sequences ####
 
 A <abbr>ZWJ</abbr> color sequence is used to request a version of an emoji
 codepoint depicting the base object in a specific color.
@@ -836,7 +836,7 @@ the default emoji for the color codepoint (that is, the color square).
 
 
 
-#### ZWJ directionality sequences ####
+#### <abbr>ZWJ</abbr> directionality sequences ####
 
 A <abbr>ZWJ</abbr> directionality sequence is used to request a version of an emoji
 codepoint facing a specific cardinal direction.
@@ -850,7 +850,7 @@ A <abbr>ZWJ</abbr> directionality sequence must match:
 _emoji_ _zwj_ _direction_ _presentation_
 ```
 
-#### ZWJ additional sequences ####
+#### <abbr>ZWJ</abbr> additional sequences ####
 
 In addition to the above <abbr>ZWJ</abbr> sequence categories, there are 13
 standalone, but uncategorized, <abbr>ZWJ</abbr> sequences defined in Unicode.
@@ -968,7 +968,7 @@ General Interchange" (<abbr>RGI</abbr>) to denote that they are in common usage.
 
 Finally, the "<abbr>RGI</abbr> emoji set" includes all of the codepoints and
 sequences included in the preceding sets. Presence in the <abbr>RGI</abbr> emoji
-set can be tracked with the `RGI_Emoji` property in the UCD. Fonts are
+set can be tracked with the `RGI_Emoji` property in the <abbr>UCD</abbr>. Fonts are
 not required to implement the entire <abbr>RGI</abbr> emoji set, nor any of the
 other sets.
 
@@ -1022,7 +1022,7 @@ require font substitution.
 > and handle them gracefully.
 
 
-### 1. Applying the basic substitution features from GSUB ###
+### 1. Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -1078,7 +1078,7 @@ shaping process. Emoji shaping should be unaffected by this decision.
 
 
 
-### 2. Applying typographic substitution features from GSUB ###
+### 2. Applying typographic substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies all remaining substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -1114,7 +1114,7 @@ in `rlig`, with custom sequences implemented in `liga`.
 
 
 
-### 3. Applying the positioning features from GPOS ###
+### 3. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be

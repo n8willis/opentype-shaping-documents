@@ -12,9 +12,9 @@ runs in the Tibetan script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Tibetan character tables](#tibetan-character-tables)
   - [The `<tibt>` shaping model](#the-tibt-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
-      - [2: Applying all basic substitution features from GSUB](#2-applying-all-basic-substitution-features-from-gsub)
-      - [3: Applying remaining positioning features from GPOS](#3-applying-remaining-positioning-features-from-gpos)
+      - [1: Applying the language substitution features from <abbr>GSUB</abbr>](#1-applying-the-language-substitution-features-from-gsub)
+      - [2: Applying all basic substitution features from <abbr>GSUB</abbr>](#2-applying-all-basic-substitution-features-from-gsub)
+      - [3: Applying remaining positioning features from <abbr>GPOS</abbr>](#3-applying-remaining-positioning-features-from-gpos)
 
 
 ## General information ##
@@ -360,7 +360,7 @@ as when an isolated codepoint is shown in example text.
 
 
 
-### 1: Applying the language substitution features from GSUB ###
+### 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -417,7 +417,7 @@ glyphs.
 
 
 
-### 2: Applying all basic substitution features from GSUB ###
+### 2: Applying all basic substitution features from <abbr>GSUB</abbr> ###
 
 In this stage, the basic substitution features from the <abbr>GSUB</abbr> table
 are applied. The order in which these features are applied is not
@@ -466,7 +466,7 @@ application-level user interfaces.
 
 
 
-### 3: Applying remaining positioning features from GPOS ###
+### 3: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these

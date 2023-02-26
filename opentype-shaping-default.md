@@ -11,9 +11,9 @@ model for unrecognized scripts.
   - [Terminology](#terminology)
   - [Normalization](#normalization)
   - [The default shaping model](#the-default-shaping-model)
-      - [1: Applying the basic substitution features from GSUB](#1-applying-the-basic-substitution-features-from-gsub)
-	  - [2: Applying typographic substitution features from GSUB](#2-applying-typographic-substitution-features-from-gsub)
-	  - [3: Applying the positioning features from GPOS](#3-applying-the-positioning-features-from-gpos)
+      - [1: Applying the basic substitution features from <abbr>GSUB</abbr>](#1-applying-the-basic-substitution-features-from-gsub)
+	  - [2: Applying typographic substitution features from <abbr>GSUB</abbr>](#2-applying-typographic-substitution-features-from-gsub)
+	  - [3: Applying the positioning features from <abbr>GPOS</abbr>](#3-applying-the-positioning-features-from-gpos)
   
   
   
@@ -123,7 +123,7 @@ for processing, or may choose to reply on higher-level applications to
 make segmentation decisions.
 
 
-### 1: Applying the basic substitution features from GSUB ###
+### 1: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -170,7 +170,7 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 
-### 2: Applying typographic substitution features from GSUB ###
+### 2: Applying typographic substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies all remaining substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -213,7 +213,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 
-### 3: Applying the positioning features from GPOS ###
+### 3: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be

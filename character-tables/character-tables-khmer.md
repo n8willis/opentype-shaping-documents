@@ -262,12 +262,13 @@ A secondary usage of the zero-width joiner is to prevent the formation of
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (<abbr>NBSP<.abbr>) is primarily used to display
+those codepoints that are defined as non-spacing (marks, dependent
+vowels (matras), below-base consonant forms, and post-base consonant
+forms) in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or
+"NBSP,_matra_".
 
 In addition to general punctuation, runs of Khmer text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
