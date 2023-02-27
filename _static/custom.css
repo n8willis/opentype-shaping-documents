@@ -48,6 +48,15 @@ abbr {
   border-bottom: none;
 }
 
+/* Style 'samp' elements used to indicate explicit sequences and */
+/* input/output character references that must be exact.         */
+samp {
+    font-family: 'Source Sans 3';
+  font-size-adjust: 0.51; /* match to x-height of serif body text */
+  font-weight: 500; /* slightly heavier only */
+  color: #558;
+}
+
 /* De-emphasize Sphinx's section numbering, so as to be less */
 /* distracting.                                              */
 /*                                                           */
