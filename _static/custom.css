@@ -56,3 +56,13 @@ abbr {
     font-size: 70%;
     color: #888;
 }
+
+/* Style rules for using Source family fonts */
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    font-weight: 500;
+}
