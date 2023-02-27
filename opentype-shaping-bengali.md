@@ -992,7 +992,7 @@ first.
 
 This means that the subsequence <samp>"Halant,Nukta"</samp> is reordered to
 <samp>"Nukta,Halant"</samp> and that the subsequence <samp>"_Vedic_sign_,Nukta"</samp> is
-reordered to <samp>"Nukta,_Vedic_sign"</samp>.
+reordered to <samp>"Nukta,_Vedic_sign_"</samp>.
 
 For subsequences of affected marks that are longer than two, the
 reordering operation must be repeated until the <samp>"Nukta"</samp> is the first
@@ -1012,7 +1012,7 @@ matched later in the shaping process.
 > Consequently, shaping engines that encounter a <samp>"Ya,Nukta"</samp>
 > sequence may wish to recompose that sequence to <samp>"Yya"</samp> earlier than
 > other nukta-variant substitutions, as a safeguard
-> against the decomposed "Ya" unintentionally triggering a <samp>"Yaphala"</samp>
+> against the decomposed <samp>"Ya"</samp> unintentionally triggering a <samp>"Yaphala"</samp>
 > substitution during <abbr>GSUB</abbr> feature application (if the sequence in
 > question happens to match the <samp>"Yaphala"</samp> substitution rule as well as
 > the <samp>"Yya"</samp> substitution rule).
