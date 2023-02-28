@@ -43,6 +43,7 @@ html_sidebars = {
     }
 html_theme_options = {
     'page_width': '1040px',
+    'sidebar_width': '260px',
     'github_user': 'n8willis',
     'github_repo': 'opentype-shaping-documents',
     'font_family': 'Source\ Serif\ 4',
