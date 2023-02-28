@@ -25,8 +25,16 @@ div.bodywrapper {
   margin: 0 0 0 240px;
 }
 
+/* Tables                 */
+/* alternating background colors like GitHub inline styling uses */
 tr:nth-child(even) {background: #F0F0F4}
 tr:nth-child(odd) {background: #FFF}
+/* Less obtrusive headers */
+th {
+    font-family: 'Source Sans 3';
+    font-weight: 600;
+    background: #F0F0F4;
+}
 
 /* Try to target the captions in the toctree sidebar */
 p.caption[role="heading"] span.caption-text {
@@ -76,9 +84,18 @@ div.body h6 {
     font-weight: 500;
 }
 
+/* Make the site-title in the sidebar bolder and different since */
+/* there is no project logo.                                     */
 h1.logo {
     font-family: 'Source Sans 3';
     font-weight: 700;
     font-size: 32px;
     border-bottom: none;
 }
+
+/* Fix the Alabaster theme's default font-scaling since we are */
+/* using a complete superfamily with consistent sizing.        */
+pre, tt, code {
+    font-size: 0.95em;
+}
+
