@@ -12,12 +12,12 @@ runs in the Bengali script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Bengali character tables](#bengali-character-tables)
   - [The `<bng2>` shaping model](#the-bng2-shaping-model)
-      - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
-      - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from <abbr>GPOS</abbr>](#6-applying-remaining-positioning-features-from-gpos)
+      - [Stage 1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
+      - [Stage 2: Initial reordering](#2-initial-reordering)
+      - [Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
+      - [Stage 4: Final reordering](#4-final-reordering)
+      - [Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#5-applying-all-remaining-substitution-features-from-gsub)
+      - [Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr>](#6-applying-remaining-positioning-features-from-gpos)
   - [The `<beng>` shaping model](#the-beng-shaping-model)
       - [Distinctions from `<bng2>`](#distinctions-from-bng2)
       - [Advice for handling fonts with `<beng>` features only](#advice-for-handling-fonts-with-beng-features-only)
@@ -411,7 +411,7 @@ should be encoded within a run of text.
 > Note: Unlike most other Indic scripts, Bengali does not use
 > above-base matras. Therefore `MATRA_POS_TOP` can be set to _null_.
 
-### 1: Identifying syllables and other sequences ###
+### Stage 1: Identifying syllables and other sequences ###
 
 A syllable in Bengali consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
@@ -750,7 +750,7 @@ i|j = i or j
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
 
-### 2: Initial reordering ###
+### Stage 2: Initial reordering ###
 
 The initial reordering stage is used to relocate glyphs from the
 phonetic order in which they occur in a run of text to the
@@ -826,7 +826,7 @@ categories matter only in that they are unambiguous.
 For a definition of the "base" consonant, refer to step 2.1, which
 follows.
 
-#### 2.1: Base consonant ####
+#### Stage 2, step 1: Base consonant ####
 
 The first step is to determine the base consonant of the syllable, if
 there is one, and tag it as `POS_SYLLABLE_BASE`.
@@ -948,7 +948,7 @@ Bengali includes two below-base consonant forms:
 > also be tagged correctly.
 
 
-#### 2.2: Matra decomposition ####
+#### Stage 2, step 2: Matra decomposition ####
 
 Second, any two-part dependent vowels (matras) must be decomposed
 into their left-side and right-side components. Bengali has two
@@ -966,7 +966,7 @@ completed before the shaping engine begins step three, below.
 
 ![Two-part matra decomposition](/images/bengali/bengali-matra-decompose.png)
 
-#### 2.3: Tag matras ####
+#### Stage 2, step 3: Tag matras ####
 
 Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
@@ -984,7 +984,7 @@ _Mark-placement subclass_ column of the character tables. It is
 critical at this step, however, that all decomposed matras are also
 correctly tagged before proceeding to the next step.
 
-#### 2.4: Adjacent marks ####
+#### Stage 2, step 4: Adjacent marks ####
 
 Fourth, any subsequences of marks that include a <samp>"Nukta"</samp> and a
 <samp>"Halant"</samp> or Vedic sign must be reordered so that the <samp>"Nukta"</samp> appears
@@ -1023,7 +1023,7 @@ matched later in the shaping process.
 > in this regard.
 
 
-#### 2.5: Pre-base consonants ####
+#### Stage 2, step 5: Pre-base consonants ####
 
 Fifth, consonants that occur before the syllable base must be
 tagged. Excluding initial <samp>"Ra,Halant"</samp> sequences that will become <samp>"Reph"</samp>s:
@@ -1069,7 +1069,7 @@ Bengali includes two below-base consonant forms:
 > base for these below-base forms will also be tagged correctly.
 
 
-#### 2.6: Reph ####
+#### Stage 2, step 6: Reph ####
 
 Sixth, initial <samp>"Ra,Halant"</samp> sequences that will become <samp>"Reph"</samp>s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
@@ -1077,7 +1077,7 @@ Sixth, initial <samp>"Ra,Halant"</samp> sequences that will become <samp>"Reph"<
 > Note: an initial <samp>"Ra,Halant"</samp> sequence will always become a <samp>"Reph"</samp>
 > unless the <samp>"Ra"</samp> is the only consonant in the syllable.
 
-#### 2.7: Final consonants ####
+#### Stage 2, step 7: Final consonants ####
 
 Seventh, all final consonants must be tagged. Consonants that occur
 after the syllable base _and_ after a dependent vowel (matra) sign
@@ -1091,7 +1091,7 @@ must be tagged with  `POS_FINAL_CONSONANT`.
 
 <!---  Not sure about Yya.... --->
 	
-#### 2.8: Mark tagging ####
+#### Stage 2, step 8: Mark tagging ####
 
 Eighth, all marks must be tagged. 
 
@@ -1140,7 +1140,7 @@ made for <samp>"Halant"</samp> marks that follow a left-side (pre-base) matra.
 
 
 
-#### 2.9: Sort syllable ####
+#### Stage 2, step 9: Sort syllable ####
 
 With these steps completed, the syllable can be sorted into the final
 sort order as listed at the beginning of stage 2.
@@ -1150,7 +1150,7 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
-#### 2.10: Flag sequences for possible feature applications ####
+#### Stage 2, step 10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
 may have <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features applied in stages 3, 5, and 6 should be
@@ -1193,7 +1193,7 @@ in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
 
 
-### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
+### Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -1217,7 +1217,7 @@ all Indic scripts:
 	cjct
 	cfar (not used in Bengali)
 
-#### 3.1 locl ####
+#### Stage 3, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -1229,7 +1229,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
-#### 3.2: nukt ####
+#### Stage 3, step 2: nukt ####
 
 The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
@@ -1262,7 +1262,7 @@ precomposed nukta-variant of the consonant glyph.
 > in this regard.
 
 
-#### 3.3: akhn ####
+#### Stage 3, step 3: akhn ####
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 
@@ -1286,7 +1286,7 @@ feature must be applied before all other many-to-one substitutions.
 
 ![JNya ligation](/images/bengali/bengali-akhn-jnya.png)
 
-#### 3.4: rphf ####
+#### Stage 3, step 4: rphf ####
 
 The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 <samp>"Reph"</samp> glyph.
@@ -1306,18 +1306,18 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 ![Reph composition](/images/bengali/bengali-rphf-as.png)
 
-#### 3.5: rkrf ####
+#### Stage 3, step 5: rkrf ####
 
 > This feature is not used in Bengali.
 
-#### 3.6 pref ####
+#### Stage 3, step 6: pref ####
 
 > This feature is not used in Bengali.
 
 <!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
 <!--any special forms. --->
 
-#### 3.7: blwf ####
+#### Stage 3, step 7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Bengali includes two below-base consonant
@@ -1340,11 +1340,11 @@ characteristic.
 
 ![Baphala composition](/images/bengali/bengali-baphala.png)
 
-#### 3.8: abvf ####
+#### Stage 3, step 8: abvf ####
 
 > This feature is not used in Bengali.
 
-#### 3.9: half ####
+#### Stage 3, step 9: half ####
 
 The `half` feature replaces <samp>"_Consonant_,Halant"</samp> sequences before the
 base consonant or syllable base with "half forms" of the consonant
@@ -1384,14 +1384,14 @@ the shaping engine must test:
 
 ![Half-form formation](/images/bengali/bengali-half-ka.png)
 
-#### 3.10: pstf ####
+#### Stage 3, step 10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 ![Yaphala composition](/images/bengali/bengali-yaphala.png)
 
-#### 3.11: vatu ####
+#### Stage 3, step 11: vatu ####
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
@@ -1410,7 +1410,7 @@ the `blwf` feature.
 
 ![Vattu variant ligation](/images/bengali/bengali-vatu.png)
 
-#### 3.12: cjct ####
+#### Stage 3, step 12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
 conjunct ligatures. These sequences must match <samp>"_Consonant_,Halant,_Consonant_"</samp>.
@@ -1454,12 +1454,12 @@ must be applied after the `half` feature.
 
 ![Conjunct ligation](/images/bengali/bengali-cjct.png)
 
-#### 3.13: cfar ####
+#### Stage 3, step 13: cfar ####
 
 > This feature is not used in Bengali.
 
 
-### 4: Final reordering ###
+### Stage 4: Final reordering ###
 
 The final reordering stage repositions marks, dependent-vowel (matra)
 signs, and <samp>"Reph"</samp> glyphs to the appropriate location with respect to
@@ -1477,7 +1477,7 @@ substitution was performed, restore the classification to VIRAMA
 because it was almost certainly lost in the preceding <abbr>GSUB</abbr> stage.
 --->
 
-#### 4.1: Base consonant ####
+#### Stage 4, step 1: Base consonant ####
 
 The final reordering stage, like the initial reordering stage, begins
 with determining the syllable base of each syllable, following the
@@ -1499,7 +1499,7 @@ substitutions may have taken place. The final glyph produced by that
 process may, therefore, be a conjunct or ligature form — in most
 cases, such a glyph will not have an assigned Unicode codepoint.
    
-#### 4.2: Pre-base matras ####
+#### Stage 4, step 2: Pre-base matras ####
 
 Pre-base dependent vowels (matras) that were reordered during the
 initial reordering stage must be moved to their final position. This
@@ -1542,7 +1542,7 @@ the base consonant or syllable base, and all half forms.
 > pre-base dependent vowel.
 
 
-#### 4.3: Reph ####
+#### Stage 4, step 3: Reph ####
 
 <samp>"Reph"</samp> must be moved from the beginning of the syllable to its final
 position. Because Bengali incorporates the `REPH_POS_AFTER_SUBJOINED`
@@ -1605,7 +1605,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 
 ![Reph final reordering](/images/bengali/bengali-reph-position.png)
 
-#### 4.4: Pre-base-reordering consonants ####
+#### Stage 4, step 4: Pre-base-reordering consonants ####
 
 Any pre-base-reordering consonants must be moved to immediately before
 the base consonant or syllable base.
@@ -1615,7 +1615,7 @@ involve no work when processing `<bng2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
 
 
-#### 4.5: Initial matras ####
+#### Stage 4, step 5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be flagged for potential substitution by the `init` feature
@@ -1641,7 +1641,7 @@ of <abbr>GSUB</abbr>.
 > note](/notes/uniscribe-bug-compatibility.md). 
 
 
-### 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
+### Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
 In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
@@ -1716,7 +1716,7 @@ typographically problematic.
 > point. However, `calt` is not mandatory for correct Bengali shaping
 > and may be disabled in the application by user preference.
 
-### 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
+### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.
