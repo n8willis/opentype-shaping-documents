@@ -25,6 +25,57 @@ div.bodywrapper {
   margin: 0 0 0 240px;
 }
 
+
+
+/* Locally served fonts, to support more smartfont features */
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: italic, oblique;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: italic, oblique;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: italic, oblique;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+/* Use oldstyle numerals in body text */
+body {
+    font-feature-settings: "onum";
+}
+
+
 /* Tables                 */
 /* alternating background colors like GitHub inline styling uses */
 tr:nth-child(even) {background: #F0F0F4}
@@ -88,14 +139,16 @@ div.body h6 {
 /* there is no project logo.                                     */
 h1.logo {
     font-family: 'Source Sans 3';
-    font-weight: 700;
+    font-weight: 800;
     font-size: 32px;
     border-bottom: none;
+    text-decoration: none;
 }
 
 /* Fix the Alabaster theme's default font-scaling since we are */
 /* using a complete superfamily with consistent sizing.        */
 pre, tt, code {
-    font-size: 0.95em;
+    font-size: 0.93em;
+    font-feature-settings: "tnum", "lnum";
 }
 
