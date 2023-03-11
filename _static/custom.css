@@ -31,7 +31,7 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Serif 4';
     src: url('./fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
-    font-style: italic, oblique;
+    font-style: italic;
     font-weight: 1 999;
 }
 
@@ -45,13 +45,15 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Sans 3';
     src: url('./fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
-    font-style: italic, oblique;
+    font-size-adjust: 0.47;
+    font-style: italic;
     font-weight: 1 999;
 }
 
 @font-face {
     font-family: 'Source Sans 3';
     src: url('./fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.47;
     font-style: normal;
     font-weight: 1 999;
 }
@@ -59,13 +61,15 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Code Pro';
     src: url('./fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf') format('truetype-variations');
-    font-style: italic, oblique;
+    font-size-adjust: 0.46;
+    font-style: italic;
     font-weight: 1 999;
 }
 
 @font-face {
     font-family: 'Source Code Pro';
     src: url('./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.46;
     font-style: normal;
     font-weight: 1 999;
 }
@@ -103,6 +107,7 @@ p.caption[role="heading"] + ul {
 abbr {
   font-variant: all-small-caps;
   font-size: larger;
+  font-weight: 375;
   cursor: default;
   border-bottom: none;
 }
@@ -111,9 +116,8 @@ abbr {
 /* input/output character references that must be exact.         */
 samp {
     font-family: 'Source Sans 3';
-  font-size-adjust: 0.51; /* match to x-height of serif body text */
-  font-weight: 500; /* slightly heavier only */
-  color: #558;
+    font-weight: 500; /* slightly heavier only */
+    color: #558;
 }
 
 /* De-emphasize Sphinx's section numbering, so as to be less */
@@ -148,7 +152,7 @@ h1.logo {
 /* Fix the Alabaster theme's default font-scaling since we are */
 /* using a complete superfamily with consistent sizing.        */
 pre, tt, code {
-    font-size: 0.93em;
+    font-size: 0.93em; /* Best balance for the 3 element types considering Alabaster's other style rules */
     font-feature-settings: "tnum", "lnum";
 }
 
