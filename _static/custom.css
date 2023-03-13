@@ -87,8 +87,14 @@ tr:nth-child(odd) {background: #FFF}
 /* Less obtrusive headers */
 th {
     font-family: 'Source Sans 3';
+    font-size-adjust: 0.48;
     font-weight: 600;
     background: #F0F0F4;
+    font-feature-settings: "tnum", "lnum";
+}
+
+tr {
+    font-feature-settings: "tnum", "lnum";
 }
 
 /* Try to target the captions in the toctree sidebar */
@@ -116,6 +122,7 @@ abbr {
 /* input/output character references that must be exact.         */
 samp {
     font-family: 'Source Sans 3';
+    font-size-adjust: 0.48;
     font-weight: 500; /* slightly heavier only */
     color: #558;
 }
@@ -152,7 +159,9 @@ h1.logo {
 /* Fix the Alabaster theme's default font-scaling since we are */
 /* using a complete superfamily with consistent sizing.        */
 pre, tt, code {
-    font-size: 0.93em; /* Best balance for the 3 element types considering Alabaster's other style rules */
+    font-size: 1.0em; /* Undo Alabaster setting, best balance for the 3 element types considering Alabaster's other style rules */
+    font-weight: 450;
+    font-size-adjust: 0.46;
     font-feature-settings: "tnum", "lnum";
 }
 
