@@ -24,7 +24,7 @@ root_doc = 'README' # Will need to be renamed, eventually....
 
 myst_heading_anchors = 6
 
-myst_enable_extensions = ['smartquotes',]
+myst_enable_extensions = ['smartquotes', 'colon_fence']
 
 external_toc_path = "_toc.yml"
 

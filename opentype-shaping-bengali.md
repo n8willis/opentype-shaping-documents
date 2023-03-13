@@ -129,10 +129,10 @@ and diacritical marks (which are categorized as `Mark [Mn]`).
 Bengali uses one subclass of consonant, `CONSONANT_DEAD`. This
 subclass is used only for the Bengali "Khanda Ta" (`U+09CE`). It indicates that
 <samp>"Khanda Ta"</samp> should match tests for consonants, such as when [identifying
-syllables](#1-identifying-syllables-and-other-sequences), but that, unlike
+syllables](#stage-1-identifying-syllables-and-other-sequences), but that, unlike
 standard consonants, it carries no inherent vowel. The lack of an
 inherent vowel is important during the [initial
-reordering](#2-initial-reordering) stage.
+reordering](#stage-2-initial-reordering) stage.
 
 Other characters, such as symbols and miscellaneous letters (for
 example, letter-like symbols that only occur as standalone entities
@@ -920,7 +920,11 @@ Bengali includes one post-base consonant.
     pronunciation of the preceding vowel, despite the fact that it is
     formed from a consonant.
 
-![Yaphala composition](/images/bengali/bengali-yaphala.png)
+:::{figure-md}
+![Yaphala composition](/images/bengali/bengali-yaphala.png "Yaphala composition")
+
+Yaphala composition
+:::
 
 > Note: some fonts may also implement the <samp>"Yaphala"</samp> post-base form for
 > <samp>"Halant,Yya"</samp> (`U+09CD`,`U+09DF`).
@@ -1587,7 +1591,7 @@ The algorithm for finding the final <samp>"Reph"</samp> position is
     the first post-base matra, syllable modifier, or Vedic sign that
     has a positioning tag after the script's <samp>"Reph"</samp> position in the
     syllable sort order (as listed in [stage
-    2](#2-initial-reordering)). This will be the final <samp>"Reph"</samp>
+    2](#stage-2-initial-reordering)). This will be the final <samp>"Reph"</samp>
     position. 
 	> Note: Because Bengali incorporates the
     > `REPH_POS_AFTER_SUBJOINED` shaping characteristic, this means
