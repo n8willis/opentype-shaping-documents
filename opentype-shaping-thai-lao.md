@@ -11,18 +11,18 @@ runs in the Thai and Lao scripts.
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Mark combining classes](#mark-combining-classes)
-      - [PUA fallback classifications](#pua-fallback-classifications)
+      - [<abbr>PUA</abbr> fallback classifications](#pua-fallback-classifications)
       - [Thai and Lao character tables](#thai-and-lao-character-tables)
-  - [The `<thai>`/`<lao >` shaping model](#the-thai-lao-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
+  - [The `<thai>`/`<lao >` shaping model](#the-thailao-shaping-model)
+      - [1: Applying the language substitution features from <abbr>GSUB</abbr>](#1-applying-the-language-substitution-features-from-gsub)
       - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
       - [3: Reordering sequences of marks](#3-reordering-sequences-of-marks)
-      - [4: Applying all positioning features from GPOS](#4-applying-all-positioning-features-from-gpos)
-  - [The PUA fallback shaping model](#the-pua-fallback-shaping-model)
+      - [4: Applying all positioning features from <abbr>GPOS</abbr>](#4-applying-all-positioning-features-from-gpos)
+  - [The <abbr>PUA</abbr> fallback shaping model](#the-pua-fallback-shaping-model)
       - [Contextual replacement rules](#contextual-replacement-rules)
 	  - [1. Decomposing all Am vowel signs](#1-decomposing-all-am-vowel-signs)
       - [2. Reordering sequences of marks](#2-reordering-sequences-of-marks)
-      - [3. Remapping codepoints to the appropriate PUA alternates](#3-remapping-codepoints-to-the-appropriate-pua-alternates)
+      - [3. Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates](#3-remapping-codepoints-to-the-appropriate-pua-alternates)
 
 
 
@@ -56,8 +56,8 @@ space.
 
 A significant number of  older Thai fonts that do not use the OpenType
 shaping model are still in usage; these fonts employ the Unicode
-"Private Use Area" (`PUA`) to store contextual forms of
-characters. Shaping engines may implement this PUA-base shaping model
+"Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
+characters. Shaping engines may implement this <abbr>PUA</abbr>-base shaping model
 as a fallback mechanism when such fonts are encountered.
 
 
@@ -139,7 +139,7 @@ Marks, including diacritics, tone markers, and dependent vowels, are further lab
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's GPOS table.
+lookups found in the font's <abbr>GPOS</abbr> table.
 
 There are three basic _mark-placement subclasses_ for marks
 in Thai and Lao. Each corresponds to the visual position of the mark with
@@ -171,7 +171,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `VISUAL_ORDER_LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -220,9 +220,9 @@ This ensures that "Sara U" or "Sara Uu" codepoints adjacent to
 > handle the Phinthu-reordering issue in a different manner.
 
 
-### PUA fallback classifications ###
+### <abbr>PUA</abbr> fallback classifications ###
 
-Older Thai fonts that implement the PUA-substitution fallback method
+Older Thai fonts that implement the <abbr>PUA</abbr>-substitution fallback method
 rather than modern OpenType script shaping rules incorporate
 subclasses for consonants that indicate whether or not the consonant
 includes an ascender, a normal descender, or a removable descender.
@@ -261,7 +261,7 @@ and `<lao >` text runs:
 
 The tables list each codepoint along with its Unicode general
 category, its shaping class, its mark-placement subclass, and its
-PUA-fallback category. The codepoint's Unicode name and an example
+<abbr>PUA</abbr>-fallback category. The codepoint's Unicode name and an example
 glyph are also provided.
 
 For example:
@@ -292,11 +292,11 @@ category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
 
 The _PUA_ column indicates which, if any, fallback-shaping category
-the codepoint belongs to when found in older fonts using the PUA
-fallback shaping scheme. Note that the PUA method was employed only
-for Thai fonts, so Lao codepoints do not have a PUA fallback-shaping
+the codepoint belongs to when found in older fonts using the <abbr>PUA</abbr>
+fallback shaping scheme. Note that the <abbr>PUA</abbr> method was employed only
+for Thai fonts, so Lao codepoints do not have a <abbr>PUA</abbr> fallback-shaping
 category. Thai codepoints with a _null_ in the _PUA_ column were not
-used in the PUA fallback-shaping scheme and evoke no special behavior
+used in the <abbr>PUA</abbr> fallback-shaping scheme and evoke no special behavior
 from the shaping engine.
 
 Some codepoints in the tables use a _Shaping class_ that
@@ -344,10 +344,10 @@ the dotted-circle placeholder.
 Processing a run of `<thai>` or `<lao >` text involves four top-level stages:
 
 
-1. Applying the language substitution features from GSUB
+1. Applying the language substitution features from <abbr>GSUB</abbr>
 2. Decomposing all Am vowel signs
 3. Reordering sequences of marks
-4. Applying all positioning features from GPOS
+4. Applying all positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the basic substitution
@@ -365,12 +365,12 @@ In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 
-### 1: Applying the language substitution features from GSUB ###
+### 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -388,7 +388,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
 #### 1.2: ccmp ####
@@ -407,7 +407,7 @@ lookup, the shaping engine will decompose the codepoint in the
 following stage.
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -484,12 +484,12 @@ move the
 --->
 
 
-### 4: Applying all positioning features from GPOS ###
+### 4: Applying all positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
 	kern
 	mark
@@ -518,17 +518,17 @@ same base glyph.
 
 
 
-## The PUA fallback shaping model ##
+## The <abbr>PUA</abbr> fallback shaping model ##
 
 A significant number of  older Thai fonts that do not use the OpenType
 shaping model are still in usage; these fonts employ the Unicode
-"Private Use Area" (`PUA`) to store contextual forms of
+"Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
 characters.
 
-The PUA shaping model is described at
+The <abbr>PUA</abbr> shaping model is described at
 [linux.thai.net/~thep/th-otf/shaping.html](https://linux.thai.net/~thep/th-otf/shaping.html)
 . It relies on a set of pre-determined mappings from the codepoints in the
-Unicode Thai block to codepoints in the PUA.
+Unicode Thai block to codepoints in the <abbr>PUA</abbr>.
 
 For consonants, these alternate-glyph mappings depend on whether or
 not the consonant includes an ascender, a normal descender, or a
@@ -562,7 +562,7 @@ table](character-tables/character-tables-thai.md#thai-character-table).
 ## Contextual replacement rules ##
 
 Codepoints in the Thai Block can be mapped to one of several alternate
-PUA codepoints depending on context:
+<abbr>PUA</abbr> codepoints depending on context:
 
   - A tone marker that does not follow an above-base vowel sign may be
     mapped to an alternate that is positioned lower, closer to the top
@@ -599,11 +599,11 @@ possible consonant (vertical) and vowel/mark (horizontal) sequences:
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
 
-These replacements take the place of both GSUB substitutions and GPOS
+These replacements take the place of both <abbr>GSUB</abbr> substitutions and <abbr>GPOS</abbr>
 positioning in modern OpenType fonts.
 
 Shaping engines can replace the original codepoints with the
-appropriate alternates from the PUA block by testing for the above
+appropriate alternates from the <abbr>PUA</abbr> block by testing for the above
 conditions. 
 
 With each consonant, vowel, and mark character correctly classified,
@@ -613,7 +613,7 @@ There are three top-level stages:
 
 1. Decomposing all Am vowel signs
 2. Reordering sequences of marks
-3. Remapping codepoints to the appropriate PUA alternates
+3. Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates
 
 
 ### 1. Decomposing all Am vowel signs ###
@@ -654,7 +654,7 @@ for possible reordering.
 > the text run, or by performing a sorting step at this stage.
 
 
-### 3. Remapping codepoints to the appropriate PUA alternates ###
+### 3. Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates ###
 
 The contextual replacement rules described above can be implemented in
 a pair of state machines, one for above-base replacement moves and one
@@ -722,7 +722,7 @@ follow a consonant:
 
 
 When the necessary replacement action for each codepoint has been
-determined, codepoints can be replaced with the PUA codepoints from
+determined, codepoints can be replaced with the <abbr>PUA</abbr> codepoints from
 the following table.
 
 Note that Windows fonts and MacOS fonts used different mappings.

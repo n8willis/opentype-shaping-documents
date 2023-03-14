@@ -310,7 +310,7 @@ this situation gracefully.
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 
 
-The zero-width joiner (ZWJ) is used to request the subjoined form
+The zero-width joiner (<abbr>ZWJ</abbr>) is used to request the subjoined form
 of a consonant. The sequence "Consonant_1,Halant,ZWJ,Consonant_2" is
 used to specify the subjoined form of "Consonant_2".
 
@@ -318,12 +318,12 @@ A secondary usage of the zero-width joiner is to explicitly request
 the formation of "Reph". An initial "Ra,Halant,ZWJ" sequence should
 produce a "Reph".
 
-The zero-width non-joiner (ZWNJ) is not used in shaping runs of
-Sinhala text. The ZWNJ is referenced below in various regular
+The zero-width non-joiner (<abbr>ZWNJ</abbr>) is not used in shaping runs of
+Sinhala text. The <abbr>ZWNJ</abbr> is referenced below in various regular
 expressions and shaping rules, however, because it is used by other
 Indic scripts.
 
-The no-break space (NBSP) is primarily used to display those
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them

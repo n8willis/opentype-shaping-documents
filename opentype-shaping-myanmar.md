@@ -14,9 +14,9 @@ runs in the Myanmar script.
   - [The `<mym2>` shaping model](#the-mym2-shaping-model)
       - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
       - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Applying all remaining substitution features from GSUB](#4-applying-all-remaining-substitution-features-from-gsub)
-      - [5: Applying remaining positioning features from GPOS](#5-applying-remaining-positioning-features-from-gpos)
+      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
+      - [4: Applying all remaining substitution features from <abbr>GSUB</abbr>](#4-applying-all-remaining-substitution-features-from-gsub)
+      - [5: Applying remaining positioning features from <abbr>GPOS</abbr>](#5-applying-remaining-positioning-features-from-gpos)
   - [The `<mymr>` shaping model](#the-mymr-shaping-model)
 
 
@@ -91,7 +91,7 @@ base consonant) or a dependent vowel (with the addition of a matra).
 
 A syllable's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-syllable frequently take on secondary forms. Different GSUB
+syllable frequently take on secondary forms. Different <abbr>GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Kinzi** form of certain consonants is an
@@ -191,7 +191,7 @@ replaces the default glyphs with superscript variants.
 Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's GPOS
+the glyphs is determined by the lookups found in the font's <abbr>GPOS</abbr>
 table, however, the shaping rules for Indic scripts require that the
 shaping engine be able to identify marks by their general
 position. 
@@ -220,7 +220,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -308,12 +308,13 @@ where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 --->
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display
+those codepoints that are defined as non-spacing (marks, dependent
+vowels (matras), below-base consonant forms, and post-base consonant
+forms) in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or
+"NBSP,_matra_".
 
 The zero-width space may be used between words — even though no visual
 word spacing results — in order to indicate word breaks within a text
@@ -328,9 +329,9 @@ Processing a run of `<mym2>` text involves five top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
-3. Applying the basic substitution features from GSUB
-4. Applying all remaining substitution features from GSUB
-5. Applying all remaining positioning features from GPOS
+3. Applying the basic substitution features from <abbr>GSUB</abbr>
+4. Applying all remaining substitution features from <abbr>GSUB</abbr>
+5. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the initial reordering
@@ -806,12 +807,12 @@ tagged with the same positioning tag as the closest subsequent consonant.
 With these steps completed, the syllable can be sorted into the final sort order.
 
 
-### 3: Applying the basic substitution features from GSUB ###
+### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -833,7 +834,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 ![Local-forms substitution](images/myanmar/myanmar-locl.png)
 
@@ -845,7 +846,7 @@ with a pre-composed glyph including the mark and the base, or to
 substitute a single glyph into an equivalent decomposed sequence of glyphs. 
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -911,12 +912,12 @@ special forms.
 
 
 
-### 4: Applying all remaining substitution features from GSUB ###
+### 4: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the remaining substitution features from the GSUB table
+In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+the <abbr>GSUB</abbr> table in the font. 
 
 	pres
 	abvs
@@ -963,12 +964,12 @@ application-level user interfaces.
 
 
 
-### 5: Applying remaining positioning features from GPOS ###
+### 5: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
 	dist
 	abvm
@@ -1033,4 +1034,4 @@ Sparse information is available about how the Microsoft Uniscribe
 shaping engine treated `<mymr>` text runs. Documentation from the
 HarfBuzz shaping engine suggests that the Uniscribe `<mymr>` shaper
 did not perform a significant amount of reordering or application of
-Indic-like GSUB features.
+Indic-like <abbr>GSUB</abbr> features.

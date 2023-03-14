@@ -1,7 +1,7 @@
 # Lao character tables #
 
 This document lists the per-character shaping information needed to
-[shape Lao text](../opentype-shaping-thai-lao.md#the-thai-lao-shaping-model).
+[shape Lao text](../opentype-shaping-thai-lao.md#the-thailao-shaping-model).
 
 **Table of Contents**
 
@@ -173,3 +173,40 @@ specific, script-aware behavior.
 |`U+0EFD`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0EFE`   | _unassigned_     |                   |                         |                 |        |                               |
 |`U+0EFF`   | _unassigned_     |                   |                         |                 |        |                               |
+
+
+
+## Miscellaneous character table ##
+
+In addition to general punctuation, runs of Lao text text typically do not
+insert spaces between words. Consequently, the Zero-Width Space (`U+200B`)
+character is often used to insert invisible break points that may be
+converted to line breaks.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
+|:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
+|`U+200B`   | Separator        | PLACEHOLDER       | _null_                     | &#x200B; Zero-width space      |
+
+
+Other important characters that may be encountered when shaping runs
+of Lao text include the dotted-circle placeholder (`U+25CC`), the
+zero-width joiner (`U+200D`) and zero-width non-joiner (`U+200C`), and
+the no-break space (`U+00A0`).
+
+The dotted-circle placeholder is frequently used when displaying a
+dependent vowel or a combining mark in isolation. Real-world
+text syllables may also use other characters, such as hyphens or dashes,
+in a similar placeholder fashion; shaping engines should cope with
+this situation gracefully.
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
+|:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
+|`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
+|`U+200C`   | Other            | NON_JOINER        | _null_                     | &#x200C; Zero-width non-joiner |
+|`U+200D`   | Other            | JOINER            | _null_                     | &#x200D; Zero-width joiner     |
+|`U+2010`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2010; Hyphen                |
+|`U+2011`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2011; No-break hyphen       |
+|`U+2012`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2012; Figure dash           |
+|`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
+|`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
+|`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |

@@ -18,9 +18,9 @@ implementations share.
       - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
       - [3. Computing letter joining states](#3-computing-letter-joining-states)
       - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
+      - [5. Applying the language-form substitution features from <abbr>GSUB</abbr>](#5-applying-the-language-form-substitution-features-from-gsub)
+      - [6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [7. Applying the positioning features from <abbr>GPOS</abbr>](#7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -178,14 +178,14 @@ normalization.
 
 A subset of the Arabic marks require special handling when shaping
 Arabic text, during the mark-reordering stage. These include two sets
-of _Modifier Combining Marks_ (MCM) that may need to be repositioned
+of _Modifier Combining Marks_ (<abbr>MCM</abbr>) that may need to be repositioned
 closer to the base character, when they occur in sequences of multiple
 marks. 
 
 The sets are:
-  - Below-base (class 220) MCMs: "Hamza below" (`U+0655`), "Small low seen"
+  - Below-base (class 220) <abbr>MCM</abbr>s: "Hamza below" (`U+0655`), "Small low seen"
     (`U+06E3`), "Large round dot below" (`U+08CF`), "Small low waw" (`U+08D3`)
-  - Above-base (class 230) MCMs: "Hamza above" (`U+0654`), "Mark noon ghunna"
+  - Above-base (class 230) <abbr>MCM</abbr>s: "Hamza above" (`U+0654`), "Mark noon ghunna"
     (`U+0658`), "Small high seen" (`U+06DC`), "Small high yeh" (`U+06E7`), "Small high
     noon" (`U+06E8`), "Small high Farsi yeh" (`U+08CA`), "Small high
     yeh barree with two dots below" (`U+08CB`), "Small high zah"
@@ -266,9 +266,9 @@ fashion; shaping engines should cope with this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. GPOS positioning lookups should attach mark glyphs to dotted
+normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in GSUB substitutions.
+dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -286,19 +286,19 @@ This requirement covers:
 
 
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 
 By default, OpenType shaping reorders sequences of adjacent marks by
 sorting the sequence on the marks' Canonical_Combining_Class (Ccc)
-values. The presence of a CGJ character within a sequence of marks has
+values. The presence of a <abbr>CGJ</abbr> character within a sequence of marks has
 the effect of splitting the sequence into two sequences of marks and,
 therefore, halting any mark-reordering that would have occurred
-between the marks on either side of the CGJ.
+between the marks on either side of the <abbr>CGJ</abbr>.
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
@@ -307,11 +307,11 @@ as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
 would be used. To show the medial form of a letter in isolation, the
 sequence "ZWJ,_Letter_,ZWJ" would be used.
 
-The zero-width non-joiner (ZWNJ) is primarily used to prevent a
+The zero-width non-joiner (<abbr>ZWNJ</abbr>) is primarily used to prevent a
 cursive connection between two adjacent characters that would, under
 normal circumstances, form a join. 
 
-The ZWJ and ZWNJ characters are, by definition, non-printing control
+The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -319,25 +319,25 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a ZWJ or ZWNJ be rendered
+> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the ZWJ and ZWNJ are non-printing control characters, they can
+Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the ZWJ and ZWNJ are designed
+involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore ZWJ and ZWNJ.
+will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
 
-Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
+Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's GSUB or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes. Generally
-speaking RLM and LRM codepoints do not interact with shaping.
+speaking <abbr>RLM</abbr> and <abbr>LRM</abbr> codepoints do not interact with shaping.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel or diacritical marks and "Hamza") in an
@@ -353,9 +353,9 @@ Processing a run of `<arab>` text involves seven top-level stages:
 2. Compound character composition and decomposition
 3. Computing letter joining states
 4. Applying the `stch` feature
-5. Applying the language-form substitution features from GSUB
-6. Applying the typographic-form substitution features from GSUB
-7. Applying the positioning features from GPOS
+5. Applying the language-form substitution features from <abbr>GSUB</abbr>
+6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
+7. Applying the positioning features from <abbr>GPOS</abbr>
 
 
 ### 1. Transient reordering of modifier combining marks ###
@@ -364,7 +364,7 @@ Processing a run of `<arab>` text involves seven top-level stages:
 
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
-positioning features from GPOS can be correctly applied.
+positioning features from <abbr>GPOS</abbr> can be correctly applied.
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
@@ -374,7 +374,7 @@ cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
 on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
-_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+_Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
 
 The algorithm for reordering a sequence of marks is:
@@ -393,11 +393,11 @@ The algorithm for reordering a sequence of marks is:
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
 > Ccc-based mark reordering.
 >
-> Specifically, AMTRA is designated as an operation performed during
+> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -419,7 +419,7 @@ The `ccmp` feature allows a font to substitute
     to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -427,7 +427,7 @@ glyphs.
 ### 3. Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from GSUB during stage 6, the shaping engine must
+substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 > Note: The following algorithm includes rules for processing `<syrc>`
@@ -539,12 +539,12 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### 5. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -574,7 +574,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 ![Localized form substitution](/images/arabic/arabic-locl.png)
 
@@ -666,10 +666,10 @@ can be disabled by application-level user interfaces.
 
 
 
-### 6. Applying the typographic-form substitution features from GSUB ###
+### 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's GSUB table.
+features using the rules in the font's <abbr>GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -710,7 +710,7 @@ below the baseline.
 The `mset` feature performs mark positioning by substituting sequences
 of bases and marks with precomposed base-and-mark glyphs.
 
-> Note: Positioning marks with the `mark` and `mkmk` features of GPOS is
+> Note: Positioning marks with the `mark` and `mkmk` features of <abbr>GPOS</abbr> is
 > preferred, because `mset` can interfere with the OpenType shaping
 > process. For example, substitution rules contained in `mset` may not be able to
 > account for necessary mark-reordering adjustments conducted in the
@@ -719,7 +719,7 @@ of bases and marks with precomposed base-and-mark glyphs.
 > Nevertheless, when the active font uses `mset` substitutions, the
 > shaping engine must deal with the situation gracefully.
 
-### 7. Applying the positioning features from GPOS ###
+### 7. Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

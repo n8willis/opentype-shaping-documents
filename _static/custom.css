@@ -5,25 +5,163 @@ div.body {
   /* min-width: 360px; */
   /* max-width: 800px; */
   min-width: 460px;
-  max-width: 900px;
+  /* max-width: 900px; */
 }
 
 /* alabaster.css | file:///home/nate/code/opentype-shaping-documents/_build/html/_static/alabaster.css */
 
-div.document {
+/*div.document {
   /* width: 940px; */
-  width: 1040px;
-}
+/*  width: 1040px;
+} */
 
-div.sphinxsidebar {
+/* div.sphinxsidebar {
   /* width: 220px; */
-  width: 240px;
-}
+/*  width: 240px;
+} */
 
 div.bodywrapper {
   /* margin: 0 0 0 220px; */
   margin: 0 0 0 240px;
 }
 
+
+
+/* Locally served fonts, to support more smartfont features */
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.47;
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.47;
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.46;
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf') format('truetype-variations');
+    font-size-adjust: 0.46;
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+/* Use oldstyle numerals in body text */
+body {
+    font-feature-settings: "onum";
+}
+
+
+/* Tables                 */
+/* alternating background colors like GitHub inline styling uses */
 tr:nth-child(even) {background: #F0F0F4}
 tr:nth-child(odd) {background: #FFF}
+/* Less obtrusive headers */
+th {
+    font-family: 'Source Sans 3';
+    font-size-adjust: 0.48;
+    font-weight: 600;
+    background: #F0F0F4;
+    font-feature-settings: "tnum", "lnum";
+}
+
+tr {
+    font-feature-settings: "tnum", "lnum";
+}
+
+/* Try to target the captions in the toctree sidebar */
+p.caption[role="heading"] span.caption-text {
+    font-size: 120%
+}
+
+/* Try to target the list beneath the captions in the toctree sidebar */ 
+p.caption[role="heading"] + ul {
+  text-indent: 0.6em;
+}
+
+/* Make <abbr> acronyms small-caps, but not interactive tooltips */
+/* The font-size adjustment here may be temproary; it depends on */
+/* the smallcap height of the font eventually specified.         */
+abbr {
+  font-variant: all-small-caps;
+  font-size: larger;
+  font-weight: 375;
+  cursor: default;
+  border-bottom: none;
+}
+
+/* Style 'samp' elements used to indicate explicit sequences and */
+/* input/output character references that must be exact.         */
+samp {
+    font-family: 'Source Sans 3';
+    font-size-adjust: 0.48;
+    font-weight: 500; /* slightly heavier only */
+    color: #558;
+}
+
+/* De-emphasize Sphinx's section numbering, so as to be less */
+/* distracting.                                              */
+/*                                                           */
+/* TODO: shift numbers into margin.                          */
+.section-number {
+    font-size: 70%;
+    color: #888;
+}
+
+/* Style rules for using Source family fonts */
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    font-weight: 500;
+}
+
+/* Make the site-title in the sidebar bolder and different since */
+/* there is no project logo.                                     */
+h1.logo {
+    font-family: 'Source Sans 3';
+    font-weight: 800;
+    font-size: 32px;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+/* Fix the Alabaster theme's default font-scaling since we are */
+/* using a complete superfamily with consistent sizing.        */
+pre, tt, code {
+    font-size: 1.0em; /* Undo Alabaster setting, best balance for the 3 element types considering Alabaster's other style rules */
+    font-weight: 450;
+    font-size-adjust: 0.46;
+    font-feature-settings: "tnum", "lnum";
+}
+

@@ -34,11 +34,22 @@ which enables Sphinx to process Markdown files. Using the
 virtual-environment installation method, you can keep both of these
 packages contained for this project.
 
-At the moment there are no other dependencies involved, but a
-`build-requirements.txt` file is included in the repository that lists
-the packages in the author's virtual environment. You shouldn't _need_
-to utilize it, since just installing Sphinx and MyST-Parser ought to
-suffice, but it is there if required.
+At the moment there are two other dependencies involved, both of which
+are Sphinx-extension packages:
+
+1. [sphinx-multitoc-numbering](https://sphinx-multitoc-numbering.readthedocs.io/),
+   which is required to make Sphinx use a continuous numbering scheme
+   across the files
+
+2. [sphinx_external_toc](https://sphinx-external-toc.readthedocs.io/),
+   which is required to define the navigation sidebar declaratively
+   (see the [TOCtrees](#toctrees) subsection below for more info)
+
+but a full `build-requirements.txt` file is included in the repository
+that lists the packages in the author's virtual environment. You
+shouldn't _need_ to utilize it, since just installing Sphinx,
+MyST-Parser, and the extensions ought to suffice, but it is there if
+required.
 
 
 ## Building HTML documents ##
@@ -69,3 +80,23 @@ in the `_static/` subdirectory (just be sure you edit the one in
 `_static/` itself; whenever the docs are rebuilt with `make`, that
 file also gets copied into `_build/html/_static/`, so don't edit that
 copy of the file since it gets overwritten).
+
+
+### TOCtrees ###
+
+Sphinx, by default, is hardcoded in a way that requires all documents
+to be referenced in a separate, Sphinx-specific `toctree` structure,
+after which the navigation sidebars (and other elements) are generated
+on-the-fly at build-time by Sphinx itself.
+
+The current documents are using a third-party extension that defines
+the "TOCtree" in a declarative YAML file instead, to work around some
+undesirable outputs -- mainly in the GitHub repository views -- that
+Sphinx triggers with its on-the-fly `toctree` process.
+
+But this approach isn't (yet?) perfect. Some files (namely this one,
+`BUILD.md`, and the image-generation-log files) are manually excluded
+from the build process so that they do not generate a flurry of
+warning messages. That's deliberate, because the build instructions
+and log files are metadata and aren't part of the final documentation
+set itself.

@@ -301,7 +301,7 @@ this situation gracefully.
 |`U+2638`   | Symbol           | SYMBOL            | _null_                     | &#x2638; Wheel of Dharma       |
 
 
-The zero-width joiner is primarily used to prevent the formation of a conjunct
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation of a conjunct
 from a "_consonant_,Halant,_consonant_" sequence. The sequence
 "_consonant_,Halant,ZWJ,_consonant_" blocks the formation of a
 conjunct between the two consonants.
@@ -309,7 +309,7 @@ conjunct between the two consonants.
 Note, however, that the "_consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner must be used instead. The sequence
+conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead. The sequence
 "_consonant_,Halant,ZWNJ,_consonant_" should produce the first
 consonant in its standard form, followed by an explicit "Halant".
 
@@ -318,9 +318,9 @@ A secondary usage of the zero-width joiner is to prevent the formation of
 where an initial "Ra,Halant" sequence without the zero-width joiner
 otherwise would.
 
-The no-break space is primarily used to display those codepoints that
-are defined as non-spacing (marks, dependent vowels (matras),
-below-base consonant forms, and post-base consonant forms) in an
-isolated context, as an alternative to displaying them superimposed on
-the dotted-circle placeholder. These sequences will match
-"NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display
+those codepoints that are defined as non-spacing (marks, dependent
+vowels (matras), below-base consonant forms, and post-base consonant
+forms) in an isolated context, as an alternative to displaying them
+superimposed on the dotted-circle placeholder. These sequences will
+match "NBSP,ZWJ,Halant,_consonant_", "NBSP,_mark_", or "NBSP,_matra_".

@@ -17,7 +17,7 @@ _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other 
 
 At present, we are seeking comments and bugfixes on the Indic-script,
 Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, Myanmar,
-default, and USE documents. Interested readers and contributors can
+default, and <abbr>USE</abbr> documents. Interested readers and contributors can
 begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 
@@ -31,7 +31,7 @@ begin at the
   - [Thai and Lao](opentype-shaping-thai-lao.md)
   - [Tibetan](opentype-shaping-tibetan.md)
   - [Myanmar](opentype-shaping-myanmar.md)
-  - [Universal Shaping Engine (USE)](opentype-shaping-use.md)
+  - [Universal Shaping Engine (<abbr>USE</abbr>)](opentype-shaping-use.md)
     - All complex scripts that are not handled by a dedicated
       script-specific shaping model
   - [Default](opentype-shaping-default.md)

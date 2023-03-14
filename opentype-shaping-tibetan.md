@@ -12,9 +12,9 @@ runs in the Tibetan script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Tibetan character tables](#tibetan-character-tables)
   - [The `<tibt>` shaping model](#the-tibt-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
-      - [2: Applying all basic substitution features from GSUB](#2-applying-all-basic-substitution-features-from-gsub)
-      - [3: Applying remaining positioning features from GPOS](#3-applying-remaining-positioning-features-from-gpos)
+      - [1: Applying the language substitution features from <abbr>GSUB</abbr>](#1-applying-the-language-substitution-features-from-gsub)
+      - [2: Applying all basic substitution features from <abbr>GSUB</abbr>](#2-applying-all-basic-substitution-features-from-gsub)
+      - [3: Applying remaining positioning features from <abbr>GPOS</abbr>](#3-applying-remaining-positioning-features-from-gpos)
 
 
 ## General information ##
@@ -171,7 +171,7 @@ Marks, subjoined consonants, and dependent vowels are further labeled
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's GPOS table.
+lookups found in the font's <abbr>GPOS</abbr> table.
 
 There are two basic _mark-placement subclasses_ for dependent vowel signs
 (matras). Each corresponds to the visual position of the matra with
@@ -196,7 +196,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -290,9 +290,9 @@ block also occurs in Tibetan texts.
 
 Processing a run of `<tibt>` text involves three top-level stages:
 
-1. Applying the language substitution features from GSUB
-2. Applying all basic substitution features from GSUB
-3. Applying all remaining positioning features from GPOS
+1. Applying the language substitution features from <abbr>GSUB</abbr>
+2. Applying all basic substitution features from <abbr>GSUB</abbr>
+3. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the basic substitution
@@ -360,12 +360,12 @@ as when an isolated codepoint is shown in example text.
 
 
 
-### 1: Applying the language substitution features from GSUB ###
+### 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -383,7 +383,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
 #### 1.2: ccmp ####
@@ -408,7 +408,7 @@ use the corresponding sequence of single-part matras.
   - `U+0F81` can be replaced by "`U+0F71`,`U+0F80`"
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -417,12 +417,12 @@ glyphs.
 
 
 
-### 2: Applying all basic substitution features from GSUB ###
+### 2: Applying all basic substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the basic substitution features from the GSUB table
+In this stage, the basic substitution features from the <abbr>GSUB</abbr> table
 are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+the <abbr>GSUB</abbr> table in the font. 
 
 	abvs
 	blws
@@ -466,12 +466,12 @@ application-level user interfaces.
 
 
 
-### 3: Applying remaining positioning features from GPOS ###
+### 3: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
         kern
 		abvm

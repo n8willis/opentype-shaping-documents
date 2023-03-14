@@ -38,8 +38,8 @@ that sequences of adjacent marks can be reordered as required by the
 orthography. 
 
 For Mongolian, a subset of marks in the 220 and 230 classes are also
-designated _Modifier Combining Marks_ (MCM). These are denoted with
-_220_MCM_ and _230_MCM_ in the _Mark class_ column. The MCM marks are
+designated _Modifier Combining Marks_ (<abbr>MCM</abbr>). These are denoted with
+_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr>MCM</abbr> marks are
 treated differently during the mark-reordering stage.
 
 
@@ -309,7 +309,7 @@ fashion; shaping engines should cope with this situation gracefully.
 | | | | | | |
 
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 

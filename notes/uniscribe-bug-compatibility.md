@@ -77,7 +77,7 @@ Uniscribe leaves the Reph in this position.
 
 Other shaping engines, in this situation, will reorder the Reph to a
 position immediately before the "Matra,Halant" sequence. This allows
-for any GSUB substitutions that match "Reph,Matra" sequences to be
+for any <abbr>GSUB</abbr> substitutions that match "Reph,Matra" sequences to be
 activated, if any such substitution rules are present in the active
 font. 
 
@@ -102,7 +102,7 @@ One is the canonical Unicode decompositions for the matra codepoints,
 as is used in most other Indic scripts. This decomposition is usually
 performed early in the shaping process.
 
-The second is the `pstf` feature of GSUB, which is defined differently
+The second is the `pstf` feature of <abbr>GSUB</abbr>, which is defined differently
 for Sinhala. In Sinhala, the `pstf` feature replaces multi-part
 dependent vowels (matras) with the right-side matra component of the
 canonical decomposition. This substitution generally occurs late in
@@ -122,7 +122,7 @@ components at that point.
  
 Doing so will negate the need to apply the `pstf` substitution.
 However, fonts that were engineered to support the
-Uniscribe-supported behavior might not include GPOS positioning
+Uniscribe-supported behavior might not include <abbr>GPOS</abbr> positioning
 rules for the right-side matra components, relying instead on the
 `pstf` substitution to provide a suitable replacement.
 
@@ -158,7 +158,7 @@ range in the Unicode `General Category` property:
 In old-model (Indic1) script tags, Uniscribe treats some
 scripts differently when reordering the first post-base Halant. This
 Halant-reordering is done in Indic1 scripts in order to prepare the
-syllable for Indic1's different post-base GSUB substitution rules.
+syllable for Indic1's different post-base <abbr>GSUB</abbr> substitution rules.
 
 For example, the old-model Indic syllable
 
@@ -193,7 +193,7 @@ same behavior; implementers targeting full compatibility should
 exercise caution.
 
 If the standard post-base Halant reordering were performed, then the
-likely result of the GSUB feature-application phase would be a
+likely result of the <abbr>GSUB</abbr> feature-application phase would be a
 sequence of the form "BaseC,belowbaseC,Halant" which, in turn, might
 trigger mark-attachment issues for correctly positioning the final
 Halant.
