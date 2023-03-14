@@ -937,9 +937,17 @@ Bengali includes two below-base consonant forms:
     syllable base) take on the <samp>"Baphala"</samp> form.
 	
 
-![Raphala composition](/images/bengali/bengali-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
 
-![Baphala composition](/images/bengali/bengali-baphala.png)
+Raphala composition
+:::
+
+:::{figure-md}
+![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+
+Baphala composition
+:::
 
 > Note: Because Bengali employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
@@ -968,7 +976,13 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/bengali/bengali-matra-decompose.png)
+:::{figure-md}
+![Two-part matra
+decomposition](/images/bengali/bengali-matra-decompose.png "Two-part
+matra decomposition")
+
+Two-part matra decomposition
+:::
 
 #### Stage 2, step 3: Tag matras ####
 
@@ -1057,9 +1071,17 @@ Bengali includes two below-base consonant forms:
     syllable base) take on the <samp>"Baphala"</samp> form.
 	
 
-![Raphala composition](/images/bengali/bengali-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
 
-![Baphala composition](/images/bengali/bengali-baphala.png)
+Raphala composition
+:::
+
+:::{figure-md}
+![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+
+Baphala composition
+:::
 
 
 > Note: Because Bengali employs the `BLWF_MODE_PRE_AND_POST` shaping
@@ -1245,7 +1267,11 @@ precomposed nukta-variant of the consonant glyph.
     | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 
 
-![Nukta composition](/images/bengali/bengali-nukt.png)
+:::{figure-md}
+![Nukta composition](/images/bengali/bengali-nukt.png "Nukta composition")
+
+Nukta composition
+:::
 
 > Note: Bengali includes the consonant "Yya" (`U+09DF`), which is
 > canonically equivalent to the sequence <samp>"Ya,Nukta"</samp>
@@ -1286,9 +1312,17 @@ feature must be applied before all other many-to-one substitutions.
     | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
 
 
-![KSsa ligation](/images/bengali/bengali-akhn-kssa.png)
+:::{figure-md}
+![KSsa ligation](/images/bengali/bengali-akhn-kssa.png "KSsa ligation")
 
-![JNya ligation](/images/bengali/bengali-akhn-jnya.png)
+KSsa ligation
+:::
+
+:::{figure-md}
+![JNya ligation](/images/bengali/bengali-akhn-jnya.png "JNya ligation")
+
+JNya ligation
+:::
 
 #### Stage 3, step 4: rphf ####
 
@@ -1306,9 +1340,19 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
     | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
 
-![Reph composition](/images/bengali/bengali-rphf.png)
+:::{figure-md}
+![Reph composition](/images/bengali/bengali-rphf.png "Reph composition
+with common Ra")
 
-![Reph composition](/images/bengali/bengali-rphf-as.png)
+Reph composition with common "Ra"
+:::
+
+:::{figure-md}
+![Reph composition](/images/bengali/bengali-rphf-as.png "Reph
+composition with Assamese Ra")
+
+Reph composition with Assamese "Ra"
+:::
 
 #### Stage 3, step 5: rkrf ####
 
@@ -1340,9 +1384,17 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 
-![Raphala composition](/images/bengali/bengali-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
 
-![Baphala composition](/images/bengali/bengali-baphala.png)
+Raphala composition
+:::
+
+:::{figure-md}
+![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+
+Baphala composition
+:::
 
 #### Stage 3, step 8: abvf ####
 
@@ -1386,14 +1438,22 @@ the shaping engine must test:
   - A sequence matching <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> must not be
     flagged for potential `half` substitutions.
 
-![Half-form formation](/images/bengali/bengali-half-ka.png)
+:::{figure-md}
+![Half-form formation](/images/bengali/bengali-half-ka.png "Half-form formation")
+
+Half-form formation
+:::
 
 #### Stage 3, step 10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
-![Yaphala composition](/images/bengali/bengali-yaphala.png)
+:::{figure-md}
+![Yaphala composition](/images/bengali/bengali-yaphala.png "Yaphala formation")
+
+Yaphala composition
+:::
 
 #### Stage 3, step 11: vatu ####
 
@@ -1412,7 +1472,12 @@ the `blwf` feature.
 
 
 
-![Vattu variant ligation](/images/bengali/bengali-vatu.png)
+:::{figure-md}
+![Vattu variant ligation](/images/bengali/bengali-vatu.png "Vattu
+variant ligation")
+
+Vattu variant ligation
+:::
 
 #### Stage 3, step 12: cjct ####
 
@@ -1456,7 +1521,11 @@ substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
 
-![Conjunct ligation](/images/bengali/bengali-cjct.png)
+:::{figure-md}
+![Conjunct ligation](/images/bengali/bengali-cjct.png "Conjunct ligation")
+
+Conjunct ligation
+:::
 
 #### Stage 3, step 13: cfar ####
 
@@ -1520,7 +1589,13 @@ This means that the matra will move to the right of all explicit
 consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
-![Pre-base matra reordering](/images/bengali/bengali-matra-position.png)
+:::{figure-md}
+![Pre-base matra
+reordering](/images/bengali/bengali-matra-position.png "Pre-base matra
+reordering")
+
+Pre-base matra reordering
+:::
 
 > Note: OpenType and Unicode both state that if the syllable includes
 > a <abbr>ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
@@ -1607,7 +1682,11 @@ Finally, if the final position of <samp>"Reph"</samp> occurs after a
 left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
+:::{figure-md}
 ![Reph final reordering](/images/bengali/bengali-reph-position.png)
+
+Reph final reordering
+:::
 
 #### Stage 4, step 4: Pre-base-reordering consonants ####
 
@@ -1673,7 +1752,11 @@ headline in-stroke from the left side of the glyph.
     |:-------------|:---------------------------|:--------------------|
     | `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
 
-![Application of the init feature](/images/bengali/bengali-init.png)
+:::{figure-md}
+![Application of the init feature](/images/bengali/bengali-init.png "Application of the init feature")
+
+Application of the `init` feature
+:::
 
 
 The `pres` feature replaces pre-base-consonant glyphs with special
@@ -1681,14 +1764,22 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
-![Application of the pres feature](/images/bengali/bengali-pres.png)
+:::{figure-md}
+![Application of the pres feature](/images/bengali/bengali-pres.png "Application of the pres feature")
+
+Application of the `pres` feature
+:::
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
-![Application of the abvs feature](/images/bengali/bengali-abvs.png)
+:::{figure-md}
+![Application of the abvs feature](/images/bengali/bengali-abvs.png "Application of the abvs feature")
+
+Application of the `abvs` feature
+:::
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
@@ -1696,7 +1787,11 @@ presentation forms. This usually includes replacing base consonants that
 are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> or
 <samp>"Baphala"</samp> with contextual ligatures.
 
-![Application of the blws feature](/images/bengali/bengali-blws.png)
+:::{figure-md}
+![Application of the blws feature](/images/bengali/bengali-blws.png "Application of the blws feature")
+
+Application of the `blws` feature
+:::
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1704,7 +1799,11 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures.
 
-![Application of the psts feature](/images/bengali/bengali-psts.png)
+:::{figure-md}
+![Application of the psts feature](/images/bengali/bengali-psts.png "Application of the psts feature")
+
+Application of the `psts` feature
+:::
 
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
@@ -1712,7 +1811,11 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic.
 
-![Application of the haln feature](/images/bengali/bengali-haln.png)
+:::{figure-md}
+![Application of the haln feature](/images/bengali/bengali-haln.png "Application of the haln feature")
+
+Application of the `haln` feature
+:::
 
 
 > Note: The `calt` feature, which allows for generalized application
@@ -1746,14 +1849,22 @@ The `abvm` feature positions above-base marks for attachment to base
 characters. In Bengali, this includes <samp>"Reph"</samp> in addition to the
 diacritical marks and Vedic signs. 
 
-![Application of the abvm feature](/images/bengali/bengali-abvm.png)
+:::{figure-md}
+![Application of the abvm feature](/images/bengali/bengali-abvm.png "Application of the abvm feature")
+
+Application of the `abvm` feature
+:::
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Bengali, this includes below-base dependent vowels
 (matras) as well as the below-base consonant forms <samp>"Raphala"</samp> and
 <samp>"Baphala"</samp>.
 
-![Application of the blwm feature](/images/bengali/bengali-blwm.png)
+:::{figure-md}
+![Application of the blwm feature](/images/bengali/bengali-blwm.png "Application of the blwm feature")
+
+Application of the `blwm` feature
+:::
 
 
 ## The `<beng>` shaping model ##
