@@ -18,7 +18,7 @@ extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering']
 source_suffix = {'.md': 'markdown'}
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'BUILD.md', '**-image-generation-log.md']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'BUILD.md', '**-image-generation-log.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
 
 root_doc = 'README' # Will need to be renamed, eventually....
 
