@@ -68,21 +68,23 @@ other interesteed readers are encouraged to check the
 examine the [image-generation logs](/images/README.md) to identify
 issues seen in the inline images.
 
-### Sources
+### References
 
-These documents draw from the following existing resources:
+These documents cite from the following informative references:
 
 1. The Microsoft [Script development
    specifications](https://docs.microsoft.com/en-us/typography/script-development/standard),
    which document the behaviors expected for OpenType Layout fonts and
-   provide guidance &amp; examples for type designers.
-2. Related portions of the OpenType specification, such as the
+   provide guidance &amp; examples for type designers. OpenType is a
+   registered trademark of Microsoft Corporation. 
+2. Related portions of the Microsoft OpenType specification, such as the
    [OpenType Layout tag
    registry](https://docs.microsoft.com/en-us/typography/opentype/spec/ttoreg)
    and [OpenType Layout common table
    formats](https://docs.microsoft.com/en-us/typography/opentype/spec/chapter2),
    which list and define feature tags, script &amp; language tags, and
-   other internals of compliant OpenType font binaries.
+   other internals of compliant OpenType font binaries. OpenType is a
+   registered trademark of Microsoft Corporation. 
 3. The [HarfBuzz](https://github.com/harfbuzz/harfbuzz) project, which
    includes a free-software/open-source implementation of OpenType
    Layout shaping with full source code and documentation. 
@@ -94,7 +96,8 @@ These documents draw from the following existing resources:
    related Unicode Consortium projects such as the [Unicode Character
    Database](http://www.unicode.org/reports/tr44/), which defines
    Unicode code points and formal character properties used in
-   shaping.
+   shaping. Unicode and the Unicode Logo are registered trademarks of
+   Unicode, Inc. in the United States and other countries.
 6. The YesLogic [text corpus](https://github.com/yeslogic/corpus),
    which includes real-world text data for several Indic scripts,
    scraped from Wikipedia, Reddit, and multiple online news
