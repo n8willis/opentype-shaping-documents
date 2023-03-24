@@ -70,7 +70,7 @@ issues seen in the inline images.
 
 ### References
 
-These documents cite from the following informative references:
+These documents cite the following informative references:
 
 1. The Microsoft [Script development
    specifications](https://docs.microsoft.com/en-us/typography/script-development/standard),
