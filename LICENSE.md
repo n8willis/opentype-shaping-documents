@@ -44,15 +44,15 @@ technical specification is expressly prohibited.
   
 ## Implementation
 
-Implementing the behavior and logic described in this work is not
-considered copying the work.
+Implementing the behavior and logic described in these documents is
+not considered copying the work.
 
 Publishing or otherwise distributing an implementation of the behavior
-and logic described in this work is not considered distributing or
-creating a derivative of the work.
+and logic described in these documents is not considered distributing
+or creating a derivative of the work.
 
-Implementations of the behavior and logic described in this work are
-not required to be distributed under the terms of this license.
+Implementations of the behavior and logic described in these documents
+are not required to be distributed under the terms of this license.
 
 
 ### Code components and symbol names
@@ -74,7 +74,7 @@ fee or royalty, in modified or unmodified form.
 
 To facilitate implementation of the specification set forth in this
 work, permission is granted to prepare and distribute partial
-quotations of this document in software, in supporting materials that
+quotations of these documents in software, in supporting materials that
 accompany software, and in documentation of software, provided that:
 
 1. The software source, materials, or documentation including such a
