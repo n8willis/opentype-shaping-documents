@@ -48,8 +48,8 @@ Implementing the behavior and logic described in this work is not
 considered copying the work.
 
 Publishing or otherwise distributing an implementation of the behavior
-and logic described in this work is not considered creating or
-distributing the work.
+and logic described in this work is not considered distributing or
+creating a derivative of the work.
 
 Implementations of the behavior and logic described in this work are
 not required to be distributed under the terms of this license.
