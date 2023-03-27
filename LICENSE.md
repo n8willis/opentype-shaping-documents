@@ -9,7 +9,7 @@ Copyright 2023, Shaping Documents project members
 ## Copying and redistributing the documents
 
 Permission is hereby granted to use, copy, and distribute this work in
-unmodified form, for any purpose, without fee or royalty, provided
+UNMODIFIED form, for any purpose, without fee or royalty, provided
 that you include the following on all copies of the document that you
 use:
 
@@ -18,13 +18,13 @@ use:
 2. A link or URL to the original document.
 
 
-## Modifying
+### Modifying
 
 No right to create modifications or derivatives of these documents is
 granted pursuant to this license, except as follows:
 
 1. References and quotations to facilitate implementation are
-   permitted as described above. 
+   permitted as described below. 
 
 2. Translations of the full work into other languages are permitted,
    provided that such translations retain this full license, including
@@ -36,9 +36,10 @@ granted pursuant to this license, except as follows:
 3. Proposing and discussing patches, changes, and other updates is
    permitted, and is not considered creating a modified or derivative
    version of this work provided that such proposals or discussions
-   preserve the attributions and direct links to the original. The
-   publication of derivative works of this document for use as a
-   technical specification is expressly prohibited.
+   preserve the attributions and direct links to the original.
+   
+The publication of derivative works of this document for use as a
+technical specification is expressly prohibited.
   
   
 ## Implementation
@@ -54,19 +55,22 @@ Implementations of the behavior and logic described in this work are
 not required to be distributed under the terms of this license.
 
 
+### Code components and symbol names
 
-## Code snippets and symbol names
+Code components, formulas, and symbols or tokens (including the names
+used for constants, variables, and functions), clearly distinguished
+by formatting as code elements in the work, are provided as
+examples.
 
-Code snippets, formulas, and symbols or tokens, including the names
-used for constants, variables, and functions, in the work are not, by
-themselves, considered copies of the work.
+Usages of these examples in an implementation of the behavior and
+logic described in this work are not considered copies of the work.
 
 Permission is hereby granted to use, copy, and distribute these code
-snippets, formulas, and symbols or tokens, for any purpose, without
+components, formulas, and symbols or tokens, for any purpose, without
 fee or royalty, in modified or unmodified form.
 
 
-## References and quotations
+### References and quotations
 
 To facilitate implementation of the specification set forth in this
 work, permission is granted to prepare and distribute partial
@@ -83,6 +87,8 @@ accompany software, and in documentation of software, provided that:
    
 3. Such quotations retain any chapter and section numbering as
    included in the original quoted segment.
+   
+4. Such quotations do not exceed 20% of the length of this work.
 
 
 ## Disclaimers
