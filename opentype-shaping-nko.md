@@ -497,7 +497,7 @@ all scripts implemented in the N'Ko shaping model:
 	rclt (not used in N'Ko)
 	calt
 	
-> Note: RLIG and CALT need to be appled to the word as a whole before
+> Note: `rlig` and `calt` need to be appled to the word as a whole before
 > continuing to the next feature.
 
 #### 5.1 locl ####

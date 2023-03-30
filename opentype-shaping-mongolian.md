@@ -87,7 +87,7 @@ context alone.
 To indicate the correct form, the text run can include a **free
 variation selector** immediately after the letter in
 question. There are four free variation selectors in the Mongolian
-block (FVS1, FVS2, FVS3, and FVS4), although some letters have
+block ("FVS1", "FVS2", "FVS3", and "FVS4"), although some letters have
 alternate forms defined only for a subset of the free variation
 selectors.
 
@@ -541,7 +541,7 @@ all scripts implemented in the Arabic shaping model:
 	rclt
 	calt
 	
-> Note: RLIG and CALT need to be appled to the word as a whole before
+> Note: `rlig` and `calt` need to be appled to the word as a whole before
 > continuing to the next feature.
 
 #### 5.1 locl ####

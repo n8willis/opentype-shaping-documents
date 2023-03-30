@@ -564,8 +564,8 @@ A <abbr>ZWJ</abbr> gendered person sequence is used to request a specific-gender
 version of an emoji codepoint that depicts a single human being.
 
 Each <abbr>ZWJ</abbr> gendered person sequence is composed of an emoji that depicts
-a human by default, followed by `ZWJ`, followed by a gender symbol,
-followed by `_VS16_`.
+a human by default, followed by "ZWJ", followed by a gender symbol,
+followed by "VS16".
 
 ![Gendered person sequence](/images/emoji/gendered-person-sequence.png)
 
@@ -754,7 +754,7 @@ separated by a <abbr>ZWJ</abbr>, and must match:
 
 A <abbr>ZWJ</abbr> role (or profession) sequence is used to request an emoji
 depicting a human being performing a task or job. Role sequences are
-composed of a codepoint representing a human, followed by `ZWJ`,
+composed of a codepoint representing a human, followed by "ZWJ",
 followed by an emoji depicting an object or symbol that references the
 desired profession or role.
 

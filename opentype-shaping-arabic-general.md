@@ -401,7 +401,7 @@ all scripts implemented with the Arabic shaping model:
 	rclt
 	calt
 
-> Note: RLIG and CALT need to be appled to the word as a whole before
+> Note: `rlig` and `calt` need to be appled to the word as a whole before
 > continuing to the next feature.
 	
 See the individual script pages for further detail on each feature and
