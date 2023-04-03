@@ -48,30 +48,30 @@ characters. However, the standard does not explicitly say whether or
 not the presence of a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> should influence the shaping
 behavior of characters for characters not adjacent to the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>.
 
-For example, in the sequence "a,b,ZWNJ,c,d" the <abbr>ZWNJ</abbr> should prevent
-the application of a ligature between "b" and "c" (if such a ligature
+For example, in the sequence <samp>"a,b,ZWNJ,c,d"</samp> the <abbr>ZWNJ</abbr> should prevent
+the application of a ligature between <samp>"b"</samp> and <samp>"c"</samp> (if such a ligature
 lookup exists in the active font).
 
 However, if the active font contains a contextual ligature lookup for
-"c,d" when preceded by "b", it is not clear whether or not the <abbr>ZWNJ</abbr>
-in the same "a,b,ZWNJ,c,d" sequence should inhibit the application of
-the ligature between "c" and "d".
+<samp>"c,d"</samp> when preceded by <samp>"b"</samp>, it is not clear whether or not the <abbr>ZWNJ</abbr>
+in the same <samp>"a,b,ZWNJ,c,d"</samp> sequence should inhibit the application of
+the ligature between <samp>"c"</samp> and <samp>"d"</samp>.
 
 
 #### <abbr>ZWJ</abbr> in redundant ligature lookups ####
 
 An "Implementation Notes" section in chapter 23.2 of the Unicode
 Standard says that font vendors should add <abbr>ZWJ</abbr> sequences to ligature
-lookups. For example, if the sequence "f,i" triggers the "fi"
+lookups. For example, if the sequence <samp>"f,i"</samp> triggers the <samp>"fi"</samp>
 ligature, then the font should also include a lookup that triggers the
-"fi" ligature for "f,ZWJ,i". 
+<samp>"fi"</samp> ligature for <samp>"f,ZWJ,i"</samp>. 
 
 However, the text of chapter 23.2 prior to the "Implementation Notes"
 says that <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> "are not to be used in all cases where
 ligatures or cursive connections are desired; instead, they are meant
 only for over-riding the normal behavior of the text." That logic
-makes the suggested "f,ZWJ,i" ligature lookup superfluous, because it
-duplicates the effects of the existing "f,i" ligature lookup.
+makes the suggested <samp>"f,ZWJ,i"</samp> ligature lookup superfluous, because it
+duplicates the effects of the existing <samp>"f,i"</samp> ligature lookup.
 
 Using <abbr>ZWJ</abbr> within lookup patterns in the manner suggested by the
 "Implementation Notes" is not common practice. 
@@ -86,8 +86,8 @@ followed by a Fitzpatrick skin-tone modifier but other emoji in the
 sequence are not followed by a Fitzpatrick skin-tone modifier.
 
 For example, it is unclear whether the sequence
-"Man,ZWJ,Handshake,Man,SkinTone-2" constitues a valid <abbr>ZWJ</abbr> "Couple
-holding hands" sequence.
+<samp>"Man,ZWJ,Handshake,Man,SkinTone-2"</samp> constitues a valid
+<abbr>ZWJ</abbr> "Couple holding hands" sequence.
 
 
 #### Gender permutations ####
@@ -98,15 +98,15 @@ are an explicit gender but other emoji in the sequence are not
 explicit gender.
 
 For example, it is unclear whether the sequence
-"Man,ZWJ,Handshake,Person" constitues a valid <abbr>ZWJ</abbr> "Couple
-holding hands" sequence.
+<samp>"Man,ZWJ,Handshake,Person"</samp> constitues a valid
+<abbr>ZWJ</abbr> "Couple holding hands" sequence.
 
 It is also unclear whether the <abbr>ZWJ</abbr> multi-person family sequence must
 have explicit gender-ordering for the adult humans depicted.
 
 For example, it is unclear whether the sequence
-"Man,ZWJ,Woman,ZWJ,Girl" should be rendered identically to the
-sequence "Woman,ZWJ,Man,ZWJ,Girl".
+<samp>"Man,ZWJ,Woman,ZWJ,Girl"</samp> should be rendered identically to the
+sequence <samp>"Woman,ZWJ,Man,ZWJ,Girl"</samp>.
 
 
 ## OpenType ##
@@ -169,12 +169,12 @@ parenthetically that "post-base forms have to follow below-base forms".
 If this statement is taken to be a rule, it would affect the
 base-consonant search algorithm.
 
-For example, in the Bengali sequence "Ka,Halant,Ba,Halant,Ya"
-(`U+0995`,`U+09CD`,`U+09AC`,`U+09CD`,`U+09AF`), "Ka" would be
-identified as the syllable base, with "Ba" designated a below-base
-form and "Ya" designated a post-base form. However, in the similar
-sequence "Ka,Halant,Ya,Halant,Ba"
-(`U+0995`,`U+09CD`,`U+09AF`,`U+09CD`,`U+09AC`), "Ya" would be
+For example, in the Bengali sequence <samp>"Ka,Halant,Ba,Halant,Ya"</samp>
+(`U+0995`,`U+09CD`,`U+09AC`,`U+09CD`,`U+09AF`), <samp>"Ka"</samp> would be
+identified as the syllable base, with <samp>"Ba"</samp> designated a below-base
+form and <samp>"Ya"</samp> designated a post-base form. However, in the similar
+sequence <samp>"Ka,Halant,Ya,Halant,Ba"</samp>
+(`U+0995`,`U+09CD`,`U+09AF`,`U+09CD`,`U+09AC`), <samp>"Ya"</samp> would be
 identified as the base consonant.
 
 Real-world Bengali texts provide counterexamples that contradict the
@@ -238,13 +238,13 @@ The Microsoft script-development specifications
 that marks should be reordered "to canonical order" (step 3 in the
 linked Devanagari document) in the reordering phase. However, the same
 step also describes this step as "Adjacent nukta and halant or nukta
-and vedic sign are always repositioned if necessary, so that the nukta
+and Vedic sign are always repositioned if necessary, so that the nukta
 is first."
 
-Together, it is somewhat ambiguous as to whether only "Halant,Nukta"
-and "_vedicsign_,Nukta" sequences should be reordered by moving the
-"Nukta" to the beginning, or all sequences of marks require reordering
-into Unicode canonical combining class order, with "Nukta" moving to
+Together, it is somewhat ambiguous as to whether only <samp>"Halant,Nukta"</samp>
+and <samp>"_Vedic_sign_,Nukta"</samp> sequences should be reordered by moving the
+<samp>"Nukta"</samp> to the beginning, or all sequences of marks require reordering
+into Unicode canonical combining class order, with <samp>"Nukta"</samp> moving to
 the initial position as a special case.
 
 

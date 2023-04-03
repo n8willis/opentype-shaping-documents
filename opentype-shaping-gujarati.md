@@ -12,12 +12,12 @@ runs in the Gujarati script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Gujarati character tables](#gujarati-character-tables)
   - [The `<gjr2>` shaping model](#the-gjr2-shaping-model)
-      - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
-      - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from <abbr>GSUB</abbr>](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from <abbr>GPOS</abbr>](#6-applying-remaining-positioning-features-from-gpos)
+      - [Stage 1: Identifying syllables and other sequences](#stage-1-identifying-syllables-and-other-sequences)
+      - [Stage 2: Initial reordering](#stage-2-initial-reordering)
+      - [Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr>](#stage-3-applying-the-basic-substitution-features-from-gsub)
+      - [Stage 4: Final reordering](#stage-4-final-reordering)
+      - [Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#stage-5-applying-all-remaining-substitution-features-from-gsub)
+      - [Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr>](#stage-6-applying-remaining-positioning-features-from-gpos)
   - [The `<gujr>` shaping model](#the-gujr-shaping-model)
       - [Distinctions from `<gjr2>`](#distinctions-from-gjr2)
       - [Advice for handling fonts with `<gujr>` features only](#advice-for-handling-fonts-with-gujr-features-only)
@@ -260,30 +260,30 @@ This requirement covers:
     codepoints (such as most dependent-vowel marks or matras)
   
   - Dependent signs that are formed only by specific sequences of
-    other codepoints (such as "Reph")
+    other codepoints (such as <samp>"Reph"</samp>)
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation
-of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence.
+of a conjunct from a <samp>"_Consonant_,Halant,_Consonant_"</samp> sequence.
 
-  - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
+  - The sequence <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> blocks the
     formation of a conjunct between the two consonants. 
 
-Note, however, that the "_Consonant_,Halant" subsequence in the above
+Note, however, that the <samp>"_Consonant_,Halant"</samp> subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
 conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead.
 
-  - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
+  - The sequence <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> should produce
     the first consonant in its standard form, followed by an explicit
-    "Halant".
+    <samp>"Halant"</samp>.
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph".
+<samp>"Reph"</samp>.
 
-  - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-    even where an initial "Ra,Halant" sequence without the zero-width
-    joiner would otherwise produce a "Reph".
+  - An initial <samp>"Ra,Halant,ZWJ"</samp> sequence should not produce a <samp>"Reph"</samp>,
+    even where an initial <samp>"Ra,Halant"</samp> sequence without the zero-width
+    joiner would otherwise produce a <samp>"Reph"</samp>.
 
 The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
@@ -310,16 +310,16 @@ lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 For example:
 
   - A lookup that substitutes an alternate version of a
-    dependent-vowel (matra) glyph when it is preceded by "Ka,Halant,Tta"
+    dependent-vowel (matra) glyph when it is preceded by <samp>"Ka,Halant,Tta"</samp>
     should still be applied if the dependent-vowel codepoint is preceded
-    by "Ka,Halant,ZWJ,Tta" in the text run.
+    by <samp>"Ka,Halant,ZWJ,Tta"</samp> in the text run.
 
 The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them
 superimposed on the dotted-circle placeholder. These sequences will
-match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+match <samp>"NBSP,ZWJ,Halant,_Consonant_"</samp>, <samp>"NBSP,_mark_"</samp>, or <samp>"NBSP,_matra_"</samp>.
 
 
 
@@ -348,9 +348,9 @@ track. These include:
 
   - The position of the base consonant in a syllable.
   
-  - The final position of "Reph".
+  - The final position of <samp>"Reph"</samp>.
   
-  - Whether "Reph" must be requested explicitly or if it is formed by
+  - Whether <samp>"Reph"</samp> must be requested explicitly or if it is formed by
     a specific, implicit sequence.
 	
   - Whether the below-base forms feature is applied only to consonants
@@ -369,9 +369,9 @@ characteristics include:
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_BEFORE_POST` = "Reph" is ordered before all post-base consonant forms.
+  - `REPH_POS_BEFORE_POST` = <samp>"Reph"</samp> is ordered before all post-base consonant forms.
 
-  - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
+  - `REPH_MODE_IMPLICIT` = <samp>"Reph"</samp> is formed by an initial <samp>"Ra,Halant"</samp> sequence.
 
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
@@ -386,10 +386,10 @@ characteristics include:
      ordered after all post-base consonant forms.
 
 These characteristics determine how the shaping engine must reorder
-certain glyphs, how base consonants are determined, and how "Reph"
+certain glyphs, how base consonants are determined, and how <samp>"Reph"</samp>
 should be encoded within a run of text.
 
-### 1: Identifying syllables and other sequences ###
+### Stage 1: Identifying syllables and other sequences ###
 
 A syllable in Gujarati consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
@@ -446,25 +446,25 @@ earlier.
 
 Valid consonant-based syllables may include one or more additional 
 consonants that precede the base consonant or syllable base. Each of these
-other, pre-base consonants will be followed by the "Halant" mark, which
+other, pre-base consonants will be followed by the <samp>"Halant"</samp> mark, which
 indicates that they carry no vowel. They affect pronunciation by
 combining with the base consonant (e.g., "_str_", "_pl_") but they
 do not add a vowel sound.
 
-As with other Indic scripts, the consonant "Ra" receives special
+As with other Indic scripts, the consonant <samp>"Ra"</samp> receives special
 treatment; in many circumstances it is replaced by one of two combining
 mark-like forms. 
 
-  - A "Ra,Halant" sequence at the beginning of a syllable
-    is replaced with an above-base mark called "Reph" (unless the "Ra"
+  - A <samp>"Ra,Halant"</samp> sequence at the beginning of a syllable
+    is replaced with an above-base mark called <samp>"Reph"</samp> (unless the <samp>"Ra"</samp>
     is the only consonant in the syllable). 
     This rule is synonymous with the `REPH_MODE_IMPLICIT`
     characteristic mentioned earlier.
 
-  - "Halant,Ra" sequences that occur elsewhere in the syllable may take on the
-    below-base form "Rakaar." 
+  - <samp>"Halant,Ra"</samp> sequences that occur elsewhere in the syllable may take on the
+    below-base form <samp>"Rakaar".</samp> 
 	
-"Reph" and "Rakaar" characters must be reordered after the
+<samp>"Reph"</samp> and <samp>"Rakaar"</samp> characters must be reordered after the
 syllable-identification stage is complete. 
 
 > Note: Generally speaking, OpenType fonts will implement support for
@@ -531,8 +531,8 @@ _other_		= `OTHER` | `MODIFYING_LETTER`
 > Note: the _ra_ identification class is mutually exclusive with 
 > the _consonant_ class. The union of the _consonant_ and _ra_ classes
 > is used in the regular expression elements below in order to
-> correctly identify "Ra" characters that do not trigger "Reph" or
-> "Rakaar" shaping behavior.
+> correctly identify <samp>"Ra"</samp> characters that do not trigger <samp>"Reph"</samp> or
+> <samp>"Rakaar"</samp> shaping behavior.
 >
 > Note, also, that the cantillation mark "combining Ra" in the
 > Devanagari Extended block does _not_ belong to the _ra_
@@ -703,15 +703,15 @@ i|j = i or j
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
 
-### 2: Initial reordering ###
+### Stage 2: Initial reordering ###
 
 The initial reordering stage is used to relocate glyphs from the
 phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
-> "Ra,Halant" glyph sequences, and other consonants that take special
-> treatment in some circumstances. "Ra" may take on one of two special
+> <samp>"Ra,Halant"</samp> glyph sequences, and other consonants that take special
+> treatment in some circumstances. <samp>"Ra"</samp> may take on one of two special
 > forms, depending on its position in the syllable. 
 >
 > These reordering moves are mandatory. The final-reordering stage
@@ -753,7 +753,7 @@ which a codepoint might be reordered, across all of the Indic
 scripts. It includes some ordering categories not utilized in
 Gujarati. 
 
-The basic positions (left to right) are "Reph"
+The basic positions (left to right) are <samp>"Reph"</samp>
 (`POS_RA_TO_BECOME_REPH`), dependent vowels (matras) and consonants
 positioned before the base consonant or syllable base
 (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base consonant
@@ -776,10 +776,10 @@ positioned before or after any post-base consonants, respectively.
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
 
-For a definition of the "base" consonant, refer to step 2.1, which
+For a definition of the "base" consonant, refer to stage 2, step 1, which
 follows.
 
-#### 2.1: Base consonant ####
+#### Stage 2, step 1: Base consonant ####
 
 The first step is to determine the base consonant of the syllable, if
 there is one, and tag it as `POS_SYLLABLE_BASE`.
@@ -830,7 +830,7 @@ consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
 
-Any pre-base-reordering consonant (such as a pre-base-reordering "Ra")
+Any pre-base-reordering consonant (such as a pre-base-reordering <samp>"Ra"</samp>)
 encountered during the base-consonant search must be tagged
 `POS_POSTBASE_CONSONANT`. 
  
@@ -850,42 +850,42 @@ encountered during the base-consonant search must be tagged
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
-    more than one consonant, exclude the starting "Ra" from the list of
+  - If the syllable starts with <samp>"Ra,Halant"</samp> and the syllable contains
+    more than one consonant, exclude the starting <samp>"Ra"</samp> from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
-      * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
+      * If the consonant is preceded by the sequence <samp>"Halant,ZWJ"</samp>, stop.
       * If the consonant has a below-base form, tag it as
         `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
       * If the consonant has a post-base form, tag it as
         `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
-      * If the consonant is a pre-base-reordering "Ra", tag it as
+      * If the consonant is a pre-base-reordering <samp>"Ra"</samp>, tag it as
         `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
       * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
 
 > Note: The algorithm is designed to work for all Indic
-> scripts. However, Gujarati does not utilize pre-base-reordering "Ra".
+> scripts. However, Gujarati does not utilize pre-base-reordering <samp>"Ra"</samp>.
 
 Gujarati includes one below-base consonant form.
 
-  - "Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
+  - <samp>"Halant,Ra"</samp> (occurring after the syllable base) and <samp>"Ra,Halant"</samp>
     (before the syllable base, but in a non-syllable-initial
-    position) will take on the "Rakaar" form. 
+    position) will take on the <samp>"Rakaar"</samp> form. 
 	
 > Note: Because Gujarati employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
 > before or after the syllable base. 
 > 
-> During the base-consonant search, only the "Halant,_consonant_" 
+> During the base-consonant search, only the <samp>"Halant,_consonant_"</samp> 
 > pattern following the syllable base for these below-base forms will
-> be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
+> be encountered. Stage 2, step 5 below ensures that the <samp>"_consonant_,Halant"</samp>
 > pattern preceding the syllable base for these below-base forms will
 > also be tagged correctly.
 
 
-#### 2.2: Matra decomposition ####
+#### Stage 2, step 2: Matra decomposition ####
 
 Second, any multi-part dependent vowels (matras) must be decomposed
 into their components. Gujarati has one multi-part dependent vowel,
@@ -913,9 +913,14 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/gujarati/gujarati-matra-decompose.png)
+:::{figure-md}
+![Two-part matra decomposition](/images/gujarati/gujarati-matra-decompose.png "Two-part matra decomposition")
 
-#### 2.3: Tag matras ####
+Two-part matra decomposition
+:::
+
+
+#### Stage 2, step 3: Tag matras ####
 
 Third, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
@@ -926,30 +931,30 @@ Right-side dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
 
 Below-base dependent-vowel (matra) signs must be tagged with `POS_AFTER_POST`.
 
-#### 2.4: Adjacent marks ####
+#### Stage 2, step 4: Adjacent marks ####
 
-Fourth, any subsequences of marks that include a "Nukta" and a
-"Halant" or Vedic sign must be reordered so that the "Nukta" appears
+Fourth, any subsequences of marks that include a <samp>"Nukta"</samp> and a
+<samp>"Halant"</samp> or Vedic sign must be reordered so that the <samp>"Nukta"</samp> appears
 first.
 
-This means that the subsequence "Halant,Nukta" is reordered to
-"Nukta,Halant" and that the subsequence "_Vedic_sign_,Nukta" is
-reordered to "Nukta,_Vedic_sign".
+This means that the subsequence <samp>"Halant,Nukta"</samp> is reordered to
+<samp>"Nukta,Halant"</samp> and that the subsequence <samp>"_Vedic_sign_,Nukta"</samp> is
+reordered to <samp>"Nukta,_Vedic_sign"</samp>.
 
 For subsequences of affected marks that are longer than two, the
-reordering operation must be repeated until the "Nukta" is the first
+reordering operation must be repeated until the <samp>"Nukta"</samp> is the first
 character in the subsequence. No other marks in the subsequence
 should be reordered.
 
 This order is canonical in Unicode and is required so that
-"_consonant_,Nukta" substitution rules from <abbr>GSUB</abbr> will be correctly
+<samp>"_consonant_,Nukta"</samp> substitution rules from <abbr>GSUB</abbr> will be correctly
 matched later in the shaping process.
 
-#### 2.5: Pre-base consonants ####
+#### Stage 2, step 5: Pre-base consonants ####
 
 Fifth, consonants that occur before the syllable base must be tagged
-with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
-that will become "Reph"s: 
+with `POS_PREBASE_CONSONANT`. Excluding initial <samp>"Ra,Halant"</samp> sequences
+that will become <samp>"Reph"</samp>s: 
 
   - If the consonant has a below-base form, tag it as
           `POS_BELOWBASE_CONSONANT`. 
@@ -970,30 +975,30 @@ that will become "Reph"s:
 
 Gujarati includes one below-base consonant form.
 
-  - "Halant,Ra" (occurring after the syllable base) and "Ra,Halant"
+  - <samp>"Halant,Ra"</samp> (occurring after the syllable base) and <samp>"Ra,Halant"</samp>
     (before the syllable base, but in a non-syllable-initial
-    position) will take on the "Rakaar" form. 
+    position) will take on the <samp>"Rakaar"</samp> form. 
 	
 > Note: Because Gujarati employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
 > before or after the syllable base. 
 > 
-> During the base-consonant search in 2.1, any instances of the
-> "Halant,_consonant_"  pattern following the syllable base for these
+> During the base-consonant search in stage 2, step 1, any instances of the
+> <samp>"Halant,_consonant_"</samp>  pattern following the syllable base for these
 > below-base forms will be encountered. The tagging in this step
-> ensures that the "_consonant_,Halant" pattern preceding the syllable
+> ensures that the <samp>"_consonant_,Halant"</samp> pattern preceding the syllable
 > base for these below-base forms will also be tagged correctly.
 
 
-#### 2.6: Reph ####
+#### Stage 2, step 6: Reph ####
 
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
+Sixth, initial <samp>"Ra,Halant"</samp> sequences that will become <samp>"Reph"</samp>s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+> Note: an initial <samp>"Ra,Halant"</samp> sequence will always become a <samp>"Reph"</samp>
+> unless the <samp>"Ra"</samp> is the only consonant in the syllable.
 
-#### 2.7: Final consonants ####
+#### Stage 2, step 7: Final consonants ####
 
 Seventh, all final consonants must be tagged. Consonants that occur
 after the base consonant or syllable base _and_ after a dependent vowel (matra) sign
@@ -1003,7 +1008,7 @@ must be tagged with  `POS_FINAL_CONSONANT`.
 > expected in `<gjr2>` text runs. This step is included here to
 > maintain compatibility across Indic scripts.
 
-#### 2.8: Mark tagging ####
+#### Stage 2, step 8: Mark tagging ####
 
 Eighth, all marks must be tagged. 
 
@@ -1015,17 +1020,17 @@ Marks in the `BINDU`, `VISARGA`, `AVAGRAHA`, `CANTILLATION`,
 `SYLLABLE_MODIFIER`, `GEMINATION_MARK`, and `SYMBOL` categories should
 be tagged with `POS_SMVD`. 
 
-All "Nukta"s must be tagged with the same positioning tag as the
+All <samp>"Nukta"</samp>s must be tagged with the same positioning tag as the
 preceding consonant, independent vowel, placeholder, or dotted circle.
 
-All remaining marks (not in the `POS_SMVD` category and not "Nukta"s)
+All remaining marks (not in the `POS_SMVD` category and not <samp>"Nukta"</samp>s)
 must be tagged with the same positioning tag as the closest non-mark
 character the mark has affinity with, so that they move together 
 during the sorting step.
 
 There are two possible cases: those marks before the syllable base
 and those marks after the syllable base. In addition, an exception is
-made for "Halant" marks that follow a left-side (pre-base) matra.
+made for <samp>"Halant"</samp> marks that follow a left-side (pre-base) matra.
 
   1. Initially, all remaining marks should be tagged with the same
 	 positioning tag as the closest preceding consonant.
@@ -1042,11 +1047,11 @@ made for "Halant" marks that follow a left-side (pre-base) matra.
 	 any consonants after the syllable base, the syllable base should
 	 "own" all the marks that follow it.
   
-  3. Finally, "Halant" marks that follow a left-side dependent vowel
+  3. Finally, <samp>"Halant"</samp> marks that follow a left-side dependent vowel
      (matra) should _not_ be tagged with the left-side matra's
-     positioning tag. Instead, the "Halant" should be tagged with the
+     positioning tag. Instead, the <samp>"Halant"</samp> should be tagged with the
      positioning tag of the non-mark character preceding the left-side
-     matra. This prevents the "Halant" mark from being moved with the
+     matra. This prevents the <samp>"Halant"</samp> mark from being moved with the
      left-side matra when the syllable is sorted.
 
 
@@ -1055,7 +1060,7 @@ made for "Halant" marks that follow a left-side (pre-base) matra.
 <!--post-base consonant. --->
 
 
-#### 2.9: Sort syllable ####
+#### Stage 2, step 9: Sort syllable ####
 
 With these steps completed, the syllable can be sorted into the final
 sort order as listed at the beginning of stage 2.
@@ -1065,7 +1070,7 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
-#### 2.10: Flag sequences for possible feature applications ####
+#### Stage 2, step 10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
 may have <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features applied in stages 3, 5, and 6 should be
@@ -1089,25 +1094,25 @@ The sequences to flag are summarized in the list below; a full
 description of each feature's function and interpretation is provided
 in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
-  - `nukt` should match "_Consonant_,Nukta" sequences
-  - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
-  - `rphf` should match initial "Ra,Halant" sequences but _not_ match
-            initial "Ra,Halant,ZWJ" sequences
-  - `rkrf` should match "_Consonant_,Halant,Ra" sequences
-  - `blwf` should match "Halant,Ra" in post-base positions and
-           "Ra,Halant" in non-initial pre-base positions 
-  - `half` should match "_Consonant_,Halant" in pre-base position but
-           _not_ match "Ra,Halant" sequences flagged for `rphf` and
-           _not_ match "_Consonant_,Halant,ZWNJ,_Consonant_" sequences
-  - `vatu` should match "_Consonant_,Halant,Ra" sequences
-  - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
-            match "_Consonant_,Halant,ZWJ,_Consonant_" or
-            "_Consonant_,Halant,ZWNJ,_Consonant_"
+  - `nukt` should match <samp>"_Consonant_,Nukta"</samp> sequences
+  - `akhn` should match <samp>"Ka,Halant,Ssa"</samp> and <samp>"Ja,Halant,Nya"</samp>
+  - `rphf` should match initial <samp>"Ra,Halant"</samp> sequences but _not_ match
+            initial <samp>"Ra,Halant,ZWJ"</samp> sequences
+  - `rkrf` should match <samp>"_Consonant_,Halant,Ra"</samp> sequences
+  - `blwf` should match <samp>"Halant,Ra"</samp> in post-base positions and
+           <samp>"Ra,Halant"</samp> in non-initial pre-base positions 
+  - `half` should match <samp>"_Consonant_,Halant"</samp> in pre-base position but
+           _not_ match <samp>"Ra,Halant"</samp> sequences flagged for `rphf` and
+           _not_ match <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> sequences
+  - `vatu` should match <samp>"_Consonant_,Halant,Ra"</samp> sequences
+  - `cjct` should match <samp>"_Consonant_,Halant,_Consonant_"</samp> but _not_
+            match <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> or
+            <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp>
 
 
 
 
-### 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
+### Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -1131,7 +1136,7 @@ all Indic scripts:
 	cjct
 	cfar (not used in Gujarati)
 
-#### 3.1 locl ####
+#### Stage 3, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -1143,9 +1148,9 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
-#### 3.2: nukt ####
+#### Stage 3, step 2: nukt ####
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
+The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph.
 
   - The context defined for a `nukt` feature is:
@@ -1155,18 +1160,23 @@ precomposed nukta-variant of the consonant glyph.
     | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 
 
-![nukt feature application](/images/gujarati/gujarati-nukt.png)
+:::{figure-md}
+![nukt feature application](/images/gujarati/gujarati-nukt.png "nukt feature application")
+
+nukt feature application
+:::
 
 
-#### 3.3: akhn ####
+
+#### Stage 3, step 3: akhn ####
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 
-  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
+  - <samp>"Ka,Halant,Ssa"</samp> is substituted with the <samp>"KSsa"</samp> ligature. 
+  - <samp>"Ja,Halant,Nya"</samp> is substituted with the <samp>"JNya"</samp> ligature. 
   
-These sequences can occur anywhere in a syllable. The "KSsa" and
-"JNya" characters have orthographic status equivalent to full
+These sequences can occur anywhere in a syllable. The <samp>"KSsa"</samp> and
+<samp>"JNya"</samp> characters have orthographic status equivalent to full
 consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
@@ -1178,16 +1188,26 @@ feature must be applied before all other many-to-one substitutions.
     | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
 
 
-![akhn KSsa formation](/images/gujarati/gujarati-akhn-kssa.png)
+:::{figure-md}
+![akhn KSsa formation](/images/gujarati/gujarati-akhn-kssa.png "akhn KSsa formation")
 
-![akhn JNya formation](/images/gujarati/gujarati-akhn-jnya.png)
+akhn KSsa formation
+:::
 
-#### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
-"Reph" glyph.
+:::{figure-md}
+![akhn JNya formation](/images/gujarati/gujarati-akhn-jnya.png "akhn JNya formation")
 
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
+akhn JNya formation
+:::
+
+
+#### Stage 3, step 4: rphf ####
+
+The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
+<samp>"Reph"</samp> glyph.
+
+  - An initial <samp>"Ra,Halant,ZWJ"</samp> sequence, however, must not be flagged for
     the `rphf` substitution.
 	
 
@@ -1198,12 +1218,17 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
 
-![Reph formation](/images/gujarati/gujarati-rphf.png)
-	
-#### 3.5 rkrf ####
+:::{figure-md}
+![Reph formation](/images/gujarati/gujarati-rphf.png "Reph formation")
 
-The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
-"Rakaar"-ligature form of the consonant glyph.
+Reph formation
+:::
+
+	
+#### Stage 3, step 5: rkrf ####
+
+The `rkrf` feature replaces <samp>"_Consonant_,Halant,Ra"</samp> sequences with the
+<samp>"Rakaar"</samp>-ligature form of the consonant glyph.
 
   - The context defined for a `rkrf` feature is:
     
@@ -1212,29 +1237,34 @@ The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
     | `_consonant_`(full) | `_halant_`,"Ra"(full) | _none_        |
 
 
-![Rakaar ligation](/images/gujarati/gujarati-rkrf.png)
+:::{figure-md}
+![Rakaar ligation](/images/gujarati/gujarati-rkrf.png "Rakaar ligation")
 
-#### 3.6 pref ####
+Rakaar ligation
+:::
+
+
+#### Stage 3, step 6: pref ####
 
 > This feature is not used in Gujarati.
 
 <!--- 3.5: The `pref` feature replaces pre-base-consonant glyphs with -->
 <!--any special forms. --->
 
-#### 3.7: blwf ####
+#### Stage 3, step 7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Gujarati includes one below-base consonant
 form:
 
-  - "Halant,Ra" (occurring after the syllable base) or "Ra,Halant"
+  - <samp>"Halant,Ra"</samp> (occurring after the syllable base) or <samp>"Ra,Halant"</samp>
     (before the syllable base, but in a non-syllable-initial position) will
-    take on the "Rakaar" form.
+    take on the <samp>"Rakaar"</samp> form.
 	
 If the active font contains ligatures for the consonant adjacent to
-the "Halant" (i.e., "_Consonant_,Halant,Ra"), then that ligature is
-normally applied with the `rkrf` feature in step 3.5. The `blwf`
-feature allows the "Ra" to be substituted with a standalone "Rakaar"
+the <samp>"Halant"</samp> (i.e., <samp>"_Consonant_,Halant,Ra"</samp>), then that ligature is
+normally applied with the `rkrf` feature in stage 3, step 5. The `blwf`
+feature allows the <samp>"Ra"</samp> to be substituted with a standalone <samp>"Rakaar"</samp>
 mark, to work with all consonants that do not have a `rkrf` ligature
 in the font.
 
@@ -1245,32 +1275,37 @@ be flagged for comparison. Note that this is not necessarily the case in other
 Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
-![blwf feature application](/images/gujarati/gujarati-blwf.png)
+:::{figure-md}
+![blwf feature application](/images/gujarati/gujarati-blwf.png "blwf feature application")
 
-#### 3.8: abvf ####
+blwf feature application
+:::
+
+
+#### Stage 3, step 8: abvf ####
 
 > This feature is not used in Gujarati.
 
-#### 3.9: half ####
+#### Stage 3, step 9: half ####
 
-The `half` feature replaces "_Consonant_,Halant" sequences before the
+The `half` feature replaces <samp>"_Consonant_,Halant"</samp> sequences before the
 base consonant or syllable base with "half forms" of the consonant
 glyphs.
 
 In the most common case, this substitution applies to
-"_Consonant_,Halant" sequences that are followed by another
-_Consonant_.
+<samp>"_Consonant_,Halant"</samp> sequences that are followed by another
+<samp>"_Consonant_"</samp>.
 
-In addition, a sequence matching "_Consonant_,Halant,ZWJ" must also be
+In addition, a sequence matching <samp>"_Consonant_,Halant,ZWJ"</samp> must also be
 flagged for potential `half` substitutions.
 
-> Note: The presence of the "ZWJ" at the end of the sequence means
+> Note: The presence of the <samp>"ZWJ"</samp> at the end of the sequence means
 > that the sequence may match the regular-expression test in stage 1
 > as the end of a syllable, even without being followed by a base
 > consonant or syllable base.
 >
 > The fact that the regular-expression tests identify a syllable break
-> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
+> after the <samp>"_Consonant_,Halant,ZWJ"</samp> is a byproduct of OpenType
 > shaping and Unicode encoding, however, and might not have any
 > significance with regard to the definition of syllables used in the
 > language or orthography of the text.
@@ -1278,31 +1313,36 @@ flagged for potential `half` substitutions.
 There are three exceptions to the default behavior, for which
 the shaping engine must test:
 
-  - Initial "Ra,Halant" sequences, which should have been flagged for
+  - Initial <samp>"Ra,Halant"</samp> sequences, which should have been flagged for
     the `rphf` feature earlier, must not be flagged for potential
     `half` substitutions.
 
-  - Non-initial "Ra,Halant" sequences, which should have been flagged
+  - Non-initial <samp>"Ra,Halant"</samp> sequences, which should have been flagged
     for the `rkrf` or `blwf` features earlier, must not be flagged for
     potential `half` substitutions.
 
-  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
+  - A sequence matching <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> must not be
     flagged for potential `half` substitutions.
 
-![half-form feature application](/images/gujarati/gujarati-half.png)
+:::{figure-md}
+![half-form feature application](/images/gujarati/gujarati-half.png "half-form feature application")
 
-#### 3.10: pstf ####
+half-form feature application
+:::
+
+
+#### Stage 3, step 10: pstf ####
 
 > This feature is not used in Gujarati.
 
 
-#### 3.11: vatu ####
+#### Stage 3, step 11: vatu ####
 
 The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
 
-"Vattu variants" are formed from glyphs followed by "Rakaar"
-(the below-base form of "Ra"); therefore, this feature must be applied after
+"Vattu variants" are formed from glyphs followed by <samp>"Rakaar"</samp>
+(the below-base form of <samp>"Ra"</samp>); therefore, this feature must be applied after
 the `blwf` feature.
 
 > Note: for Gujarati, the `vatu` feature performs the same set of
@@ -1311,60 +1351,70 @@ the `blwf` feature.
 > necessarily have to implement `vatu`. Nevertheless, shaping engines
 > must support and process both features.
 
-![vatu feature application](/images/gujarati/gujarati-vatu.png)
+:::{figure-md}
+![vatu feature application](/images/gujarati/gujarati-vatu.png "vatu feature application")
 
-#### 3.12: cjct ####
+vatu feature application
+:::
+
+
+#### Stage 3, step 12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
+conjunct ligatures. These sequences must match <samp>"_Consonant_,Halant,_Consonant_"</samp>.
 
-A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
-"_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
+A sequence matching <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> or
+<samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> must not be flagged to form a conjunct.
 
-> Note: The presence of the "ZWJ" in a
-> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
+> Note: The presence of the <samp>"ZWJ"</samp> in a
+> <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> sequence should automatically
 > inhibit any `cjct` feature rules from matching the sequence as valid
 > input, and thus prevent the `cjct` substitution from being applied.
 
-> Note: The presence of the "ZWNJ" in a
-> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence means that the
-> "_Consonant_,Halant,ZWNJ" subsequence will match the
+> Note: The presence of the <samp>"ZWNJ"</samp> in a
+> <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> sequence means that the
+> <samp>"_Consonant_,Halant,ZWNJ"</samp> subsequence will match the
 > regular-expression test in stage 1 as the end of a syllable.
 > 
 > Because OpenType shaping features in `<gjr2>` are defined as
 > applying only within an individual syllable, this means that the
-> presence of the "ZWNJ" will automatically prevent the application of
+> presence of the <samp>"ZWNJ"</samp> will automatically prevent the application of
 > a `cjct` feature by triggering the identification of a syllable
 > break between the two consonants.
 >
 > The fact that the regular-expression tests identify a syllable break
-> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> after the <samp>"_Consonant_,Halant,ZWNJ"</samp> is a byproduct of OpenType
 > shaping and Unicode encoding, however, and might not have any
 > significance with regard to the definition of syllables used in the
 > language or orthography of the text.
 >
-> Note, also: The presence of the "ZWJ" means that a
-> "_Consonant_,Halant,ZWJ" sequence may match the regular-expression
+> Note, also: The presence of the <samp>"ZWJ"</samp> means that a
+> <samp>"_Consonant_,Halant,ZWJ"</samp> sequence may match the regular-expression
 > test in stage 1 as the end of a syllable, even without being
 > followed by a base consonant or syllable base. By definition,
-> however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
-> cannot also include a "_Consonant_" after the <abbr>ZWJ</abbr>.
+> however, a <samp>"_Consonant_,Halant,ZWJ"</samp> syllable identified in stage 1
+> cannot also include a <samp>"_Consonant_"</samp> after the <abbr>ZWJ</abbr>.
 
 The font's <abbr>GSUB</abbr> rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
-![cjct feature application](/images/gujarati/gujarati-cjct.png)
+:::{figure-md}
+![cjct feature application](/images/gujarati/gujarati-cjct.png "cjct feature application")
 
-#### 3.13: cfar ####
+cjct feature application
+:::
+
+
+#### Stage 3, step 13: cfar ####
 
 > This feature is not used in Gujarati.
 
 
-### 4: Final reordering ###
+### Stage 4: Final reordering ###
 
 The final reordering stage repositions marks, dependent-vowel (matra)
-signs, and "Reph" glyphs to the appropriate location with respect to
+signs, and <samp>"Reph"</samp> glyphs to the appropriate location with respect to
 the base consonant or syllable base. Because multiple substitutions
 may have occurred during the application of the basic-shaping features
 in the preceding stage, these repositioning moves could not be
@@ -1379,7 +1429,7 @@ substitution was performed, restore the classification to VIRAMA
 because it was almost certainly lost in the preceding <abbr>GSUB</abbr> stage.
 --->
 
-#### 4.1: Base consonant ####
+#### Stage 4, step 1: Base consonant ####
 
 The final reordering stage, like the initial reordering stage, begins
 with determining the syllable base of each syllable, following the
@@ -1401,34 +1451,39 @@ substitutions may have taken place. The final glyph produced by that
 process may, therefore, be a conjunct or ligature form — in most
 cases, such a glyph will not have an assigned Unicode codepoint.
    
-#### 4.2: Pre-base matras ####
+#### Stage 4, step 2: Pre-base matras ####
 
 Pre-base dependent vowels (matras) that were reordered during the
 initial reordering stage must be moved to their final position. This
 position is defined as:
    
-   - after the last standalone "Halant" glyph that comes after the
+   - after the last standalone <samp>"Halant"</samp> glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
-   - If a zero-width joiner follows this last standalone "Halant", the
+   - If a zero-width joiner follows this last standalone <samp>"Halant"</samp>, the
      final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
-"consonant,Halant" subsequences, but will stop to the left of the base
+<samp>"consonant,Halant"</samp> subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
-![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.png)
+:::{figure-md}
+![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.png "Pre-base matra positioning")
+
+Pre-base matra positioning
+:::
+
 
 > Note: OpenType and Unicode both state that if the syllable includes
-> a <abbr>ZWJ</abbr> immediately after the last "Halant", then the final matra
+> a <abbr>ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
 > position should be after the <abbr>ZWJ</abbr>.
 >
 > However, there are several test sequences indicating that
 > Microsoft's Uniscribe shaping engine did not follow this rule (in,
 > at least, Devanagari and Bengali text), and in these circumstances
 > Uniscribe instead makes the final matra position before the final
-> "Consonant,Halant,ZWJ".
+> <samp>"Consonant,Halant,ZWJ"</samp>.
 >
 > Subsequently, the HarfBuzz shaping engine has also followed the same
 > pattern. If other shaping engine implementations prefer to maintain
@@ -1437,57 +1492,57 @@ the base consonant or syllable base, and all half forms.
 
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
-> standalone "Halant", the final matra position is moved to after the
+> standalone <samp>"Halant"</samp>, the final matra position is moved to after the
 > non-joiner. However, it is unnecessary to test for this condition,
-> because a "Halant,ZWNJ" subsequence is, by definition, the end of a
-> syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
+> because a <samp>"Halant,ZWNJ"</samp> subsequence is, by definition, the end of a
+> syllable. Consequently, a <samp>"Halant,ZWNJ"</samp> cannot be followed by a
 > pre-base dependent vowel.
 
 
-#### 4.3: Reph ####
+#### Stage 4, step 3: Reph ####
 
-"Reph" must be moved from the beginning of the syllable to its final
+<samp>"Reph"</samp> must be moved from the beginning of the syllable to its final
 position. Because Gujarati incorporates the `REPH_POS_BEFORE_POST`
 shaping characteristic, this final position is immediately before any
 independent post-base consonant forms (meaning the first post-base
 consonant that has not formed a ligature with the syllable base).
 
-The algorithm for finding the final "Reph" position is
+The algorithm for finding the final <samp>"Reph"</samp> position is
 
 <!---
 
-  - Find the first explicit "Halant" between the first post-Reph
-    consonant and the last main consonant. Move the "Reph to the
-    position immediately after this "Halant".
+  - Find the first explicit <samp>"Halant"</samp> between the first post-Reph
+    consonant and the last main consonant. Move the <samp>"Reph to the
+    position immediately after this <samp>"Halant"</samp>.
 	- If a zero-width joiner (<abbr>ZWJ</abbr>) or a zero-width non-joiner (<abbr>ZWNJ</abbr>)
-      follows this "Halant", move the "Reph" to the position
+      follows this <samp>"Halant"</samp>, move the <samp>"Reph"</samp> to the position
       immediately after the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>.
 --->
 
-  - Starting at the first post-"Reph" consonant, search forward looking
-    for the first explicit "Halant", ending the search when the base
-    consonant is encountered. If such an explicit "Halant" is found,
-    move the "Reph" to the position immediately after this
-    "Halant".
+  - Starting at the first post-<samp>"Reph"</samp> consonant, search forward looking
+    for the first explicit <samp>"Halant"</samp>, ending the search when the base
+    consonant is encountered. If such an explicit <samp>"Halant"</samp> is found,
+    move the <samp>"Reph"</samp> to the position immediately after this
+    <samp>"Halant"</samp>.
 	  * If a zero-width joiner (<abbr>ZWJ</abbr>) or a zero-width non-joiner (<abbr>ZWNJ</abbr>)
-        follows this "Halant", move the "Reph" to the position
+        follows this <samp>"Halant"</samp>, move the <samp>"Reph"</samp> to the position
         immediately after the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>. This will be the final
-        "Reph" position. 
-	  * If no <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> follows this "Halant", leave the "Reph" in
-        its position immediately after the "Halant". This will be the
-        final "Reph" position. 
-  - If no such explicit "Halant" is found in the previous step, find
+        <samp>"Reph"</samp> position. 
+	  * If no <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> follows this <samp>"Halant"</samp>, leave the <samp>"Reph"</samp> in
+        its position immediately after the <samp>"Halant"</samp>. This will be the
+        final <samp>"Reph"</samp> position. 
+  - If no such explicit <samp>"Halant"</samp> is found in the previous step, find
     the first post-base consonant that has not formed a ligature with
     the base consonant. If such a non-ligated post-base consonant is
-    found, move the "Reph" to the position immediately before the
-    non-ligated post-base consonant. This will be the final "Reph"
+    found, move the <samp>"Reph"</samp> to the position immediately before the
+    non-ligated post-base consonant. This will be the final <samp>"Reph"</samp>
     position.
   - If no such non-ligated post-base consonant is found in the
-    previous step, move the "Reph" to the position immediately before
+    previous step, move the <samp>"Reph"</samp> to the position immediately before
     the first post-base matra, syllable modifier, or Vedic sign that
-    has a positioning tag after the script's "Reph" position in the
+    has a positioning tag after the script's <samp>"Reph"</samp> position in the
     syllable sort order (as listed in [stage
-    2](#2-initial-reordering)). This will be the final "Reph"
+    2](#stage-2-initial-reordering)). This will be the final <samp>"Reph"</samp>
     position. 
 	> Note: Because Gujarati incorporates the
     > `REPH_POS_BEFORE_POST` shaping characteristic, this means
@@ -1495,20 +1550,25 @@ The algorithm for finding the final "Reph" position is
     > although a post-base matra, syllable modifier, or Vedic sign
     > would not typically be tagged with `POS_POSTBASE_CONSONANT`.
   - If no other location has been located in the previous steps, move
-    the "Reph" to the end of the syllable.
+    the <samp>"Reph"</samp> to the end of the syllable.
 
 
-Finally, if the final position of "Reph" occurs after a
-"_matra_,Halant" subsequence, then "Reph" must be repositioned to the
-left of "Halant", to allow for potential matching with `abvs` or
+Finally, if the final position of <samp>"Reph"</samp> occurs after a
+<samp>"_matra_,Halant"</samp> subsequence, then <samp>"Reph"</samp> must be repositioned to the
+left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
 
 
 
-![Reph positioning](/images/gujarati/gujarati-reph-position.png)
+:::{figure-md}
+![Reph positioning](/images/gujarati/gujarati-reph-position.png "Reph positioning")
 
-#### 4.4: Pre-base-reordering consonants ####
+Reph positioning
+:::
+
+
+#### Stage 4, step 4: Pre-base-reordering consonants ####
 
 Any pre-base-reordering consonants must be moved to immediately before
 the base consonant or syllable base.
@@ -1517,7 +1577,7 @@ Gujarati does not use pre-base-reordering consonants, so this step will
 involve no work when processing `<gjr2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
   
-#### 4.5: Initial matras ####
+#### Stage 4, step 5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be flagged for potential substitution by the `init` feature
@@ -1528,7 +1588,7 @@ involve no work when processing `<gjr2>` text. It is included here in
 order to maintain compatibility with the other Indic scripts.
 
    
-### 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
+### Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
 In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
@@ -1553,42 +1613,67 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
-![pres feature application](/images/gujarati/gujarati-pres.png)
+:::{figure-md}
+![pres feature application](/images/gujarati/gujarati-pres.png "pres feature application")
+
+pres feature application
+:::
+
 
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
-![abvs feature application](/images/gujarati/gujarati-abvs.png)
+:::{figure-md}
+![abvs feature application](/images/gujarati/gujarati-abvs.png "abvs feature application")
+
+abvs feature application
+:::
+
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants or
 syllable bases that
-are adjacent to the below-base-consonant form "Rakaar" with contextual
+are adjacent to the below-base-consonant form <samp>"Rakaar"</samp> with contextual
 ligatures.
 
-![blws feature application](/images/gujarati/gujarati-blws.png)
+:::{figure-md}
+![blws feature application](/images/gujarati/gujarati-blws.png "blws feature application")
+
+blws feature application
+:::
+
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-![psts feature application](/images/gujarati/gujarati-psts.png)
+:::{figure-md}
+![psts feature application](/images/gujarati/gujarati-psts.png "psts feature application")
 
-The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
+psts feature application
+:::
+
+
+The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
 special presentation forms. This can include stylistic variants of the
-consonant where placing the "Halant" mark on its own is
+consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
-![haln feature application](/images/gujarati/gujarati-haln.png)
+:::{figure-md}
+![haln feature application](/images/gujarati/gujarati-haln.png "haln feature application")
+
+haln feature application
+:::
+
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Gujarati shaping
 > and may be disabled in the application by user preference.
 
-### 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
+### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
 In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.
@@ -1611,16 +1696,26 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Gujarati, this includes "Reph" in addition to
+characters. In Gujarati, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
-![abvm feature application](/images/gujarati/gujarati-abvm.png)
+:::{figure-md}
+![Above-base mark positioning](/images/gujarati/gujarati-abvm.png "Above-base mark positioning")
+
+Above-base mark positioning
+:::
+
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Gujarati, this includes below-base dependent vowels
-(matras) and diacritical marks as well as the below-base consonant form "Rakaar".
+(matras) and diacritical marks as well as the below-base consonant form <samp>"Rakaar"</samp>.
 
-![blwm feature application](/images/gujarati/gujarati-blwm.png)
+:::{figure-md}
+![Below-base mark positioning](/images/gujarati/gujarati-blwm.png "Below-base mark positioning")
+
+Below-base mark positioning
+:::
+
 
 
 ## The `<gujr>` shaping model ##
@@ -1633,15 +1728,15 @@ take advantage of `<gujr>` shaping.
 ### Distinctions from `<gjr2>` ###
 
 The most significant distinction between the shaping models is that the
-sequence of "Halant" and consonant glyphs used to trigger shaping
+sequence of <samp>"Halant"</samp> and consonant glyphs used to trigger shaping
 features) was altered when migrating from `<gujr>` to
 `<gjr2>`.
 
 Specifically, shaping engines were expected to reorder post-base
-"Halant,_Consonant_" sequences to "_Consonant_,Halant".
+<samp>"Halant,_Consonant_"</samp> sequences to <samp>"_Consonant_,Halant"</samp>.
 
 As a result, a font's <abbr>GSUB</abbr> substitutions would be written to match
-"_Consonant_,Halant" sequences in all pre-base and post-base positions.
+<samp>"_Consonant_,Halant"</samp> sequences in all pre-base and post-base positions.
 
 
 The `<gujr>` syllable
@@ -1656,7 +1751,7 @@ before features are applied.
 
 In `<gjr2>` text, as described above in this document, there is no
 such reordering. The correct sequence to match for <abbr>GSUB</abbr> substitutions is
-"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
+<samp>"_Consonant_,Halant"</samp> for pre-base consonants, but <samp>"Halant,_Consonant_"</samp>
 for post-base consonants.
 
 The old Indic shaping model also did not recognize the
@@ -1674,15 +1769,15 @@ at the beginning of the syllable.
 
 ### Advice for handling fonts with `<gujr>` features only ###
 
-Shaping engines may choose to match post-base "_Consonant_,Halant"
+Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
 sequences in order to apply <abbr>GSUB</abbr> substitutions when it is known that
 the font in use supports only the `<gujr>` shaping model.
 
 ### Advice for handling text runs composed in `<gujr>` format ###
 
-Shaping engines may choose to match post-base "_Consonant_,Halant"
+Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
 sequences for <abbr>GSUB</abbr> substitutions or to reorder them to
-"Halant,_Consonant_" when processing text runs that are tagged with
+<samp>"Halant,_Consonant_"</samp> when processing text runs that are tagged with
 the `<gujr>` script tag and it is known that the font in use supports
 only the `<gjr2>` shaping model.
 

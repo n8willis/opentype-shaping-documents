@@ -13,13 +13,13 @@ Syriac, and Mongolian.
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The general Arabic-based shaping model](#the-general-arabic-based-shaping-model)
-      - [1. Transient reordering of modifier combining marks](#1-transient-reordering-of-modifier-combining-marks)
-      - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
-      - [3. Computing letter joining states](#3-computing-letter-joining-states)
-      - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from <abbr>GSUB</abbr>](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from <abbr>GPOS</abbr>](#7-applying-the-positioning-features-from-gpos)
+      - [Stage 1: Transient reordering of modifier combining marks](#stage-1-transient-reordering-of-modifier-combining-marks)
+      - [Stage 2: Compound character composition and decomposition](#stage-2-compound-character-composition-and-decomposition)
+      - [Stage 3: Computing letter joining states](#stage-3-computing-letter-joining-states)
+      - [Stage 4: Applying the `stch` feature](#stage-4-applying-the-stch-feature)
+      - [Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr>](#stage-5-applying-the-language-form-substitution-features-from-gsub)
+      - [Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#stage-6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [Stage 7: Applying the positioning features from <abbr>GPOS</abbr>](#stage-7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -166,7 +166,7 @@ The sets are:
   - Above-base (class 230) <abbr>MCM</abbr>s
   
 These classifications are used in the [mark-transient-reordering
-stage](#1-transient-reordering-of-modifier-combining-marks).
+stage](#stage-1-transient-reordering-of-modifier-combining-marks).
 
 Lists of the marks that belong to each <abbr>MCM</abbr> classes are included in the
 script-specific shaping documents for Arabic and Syriac.
@@ -197,11 +197,11 @@ the general Arabic shaping model involves seven top-level stages:
 7. Applying the positioning features from <abbr>GPOS</abbr>
 
 
-### 1. Transient reordering of modifier combining marks ###
+### Stage 1: Transient reordering of modifier combining marks ###
 
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 > Note: the transient reordering of modifier combining marks is
-> necessary only for scripts that can feature the "Shadda" mark or
+> necessary only for scripts that can feature the <samp>"Shadda"</samp> mark or
 > marks that belong to _Modifier Combining Marks_ (<abbr>MCM</abbr>) classes.
 
 Sequences of adjacent marks must be reordered so that they appear in
@@ -221,17 +221,17 @@ character tables.
 
 The algorithm for reordering a sequence of marks is:
 
-  - First, move any "Shadda" (combining class `33`) characters to the
+  - First, move any <samp>"Shadda"</samp> (combining class `33`) characters to the
     beginning of the mark sequence.
 	
   -	Second, move any subsequence of combining-class-`230` characters that begins
        with a `230_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters. The subsequence must be moved
+       before all <samp>"Shadda"</samp> characters. The subsequence must be moved
        as a group.
 
   - Finally, move any subsequence of combining-class-`220` characters that begins
        with a `220_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters and before all class-`230`
+       before all <samp>"Shadda"</samp> characters and before all class-`230`
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
@@ -248,7 +248,7 @@ The algorithm for reordering a sequence of marks is:
 > modifier combining marks in conjunction with their Unicode
 > normalization functionality for increased efficiency.
 
-### 2. Compound character composition and decomposition ###
+### Stage 2: Compound character composition and decomposition ###
 
 The `ccmp` feature allows a font to substitute
 
@@ -266,7 +266,7 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-### 3. Computing letter joining states ###
+### Stage 3: Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
 substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
@@ -303,7 +303,7 @@ character but preserve the currently-tracked JOINING_TYPE at its previous state.
 
 If the preceding character's JOINING_TYPE is LEFT, DUAL, or
 JOIN_CAUSING:
-  - In `<syrc>` text, if the current character is "Alaph", tag the
+  - In `<syrc>` text, if the current character is <samp>"Alaph"</samp>, tag the
     current character for `med2`, then update the tag for the
     preceding character:
 	  - `isol` becomes `init`
@@ -322,7 +322,7 @@ Otherwise, tag the current character for `isol`.
 
 After testing the final character of the word, if the text is in `<syrc>` and
 if the last character that is not JOINING_TYPE_TRANSPARENT or
-JOINING_TYPE_NON_JOINING is "Alaph", perform an additional test:
+JOINING_TYPE_NON_JOINING is <samp>"Alaph"</samp>, perform an additional test:
   - If the preceding character is JOINING_TYPE_LEFT, tag the current character
     for `fina`
   - If the preceding character's JOINING_GROUP is DALATH_RISH, tag the current
@@ -343,12 +343,12 @@ At the end of this process, all letters should be tagged for possible
 substitution by one of the `isol`, `init`, `medi`, `med2`, `fina`, `fin2`, or
 `fin3` features.
 
-### 4. Applying the `stch` feature ###
+### Stage 4: Applying the `stch` feature ###
 
 The `stch` feature decomposes and stretches special marks that are
 meant to extend to the full width of words to which they are
-attached. It was defined for use in `<syrc>` text runs for the "Syriac
-Abbreviation Mark" (`U+070F`) but it can be used with similar marks in
+attached. It was defined for use in `<syrc>` text runs for the <samp>"Syriac
+Abbreviation Mark"</samp> (`U+070F`) but it can be used with similar marks in
 other scripts.
 
 To apply the `stch` feature, the shaping engine should first decompose the
@@ -379,7 +379,7 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
+### Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -416,7 +416,7 @@ for script-specific information.
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
 
-### 6. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
+### Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -433,7 +433,7 @@ See the individual script pages for further detail on each feature and
 for script-specific information.
 
 
-### 7. Applying the positioning features from <abbr>GPOS</abbr> ###
+### Stage 7: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.

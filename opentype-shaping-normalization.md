@@ -12,7 +12,7 @@ For example, a base letter with an attached mark might exist in
 Unicode as a single codepoint, but an input sequence might consist of
 the base letter codepoint followed by the combining mark
 codepoint. Unicode normalization can be used to determine that the
-"Letter, Mark" sequence is equivalent to the single codepoint. This
+<samp>"Letter, Mark"</samp> sequence is equivalent to the single codepoint. This
 simplifies sorting, searching, string comparison, and many other common
 tasks.
 
@@ -46,9 +46,9 @@ codepoints.
 > two output codepoints.
 
 For shaping purposes, canonical equivalence is generally of greatest
-concern. Canonical equivalence defines that sequences such as "Letter,
-Mark" (a standalone base character followed by a combining-mark
-character) are to be treated the same as "Letter-with-mark" (a
+concern. Canonical equivalence defines that sequences such as
+<samp>"Letter,Mark"</samp> (a standalone base character followed by a
+combining-mark character) are to be treated the same as <samp>"Letter-with-mark"</samp> (a
 codepoint that includes both the base and the mark).
 
 The canonical `Decomposition_Mapping`s are required for Unicode
@@ -149,11 +149,11 @@ Hangul syllables. It involves three stages:
     recomposition
    
 Canonical recomposition segments the text run into chunks that begin
-with "Starter" codepoints (which have `Ccc` = `0`) and progressively
+with <samp>"Starter"</samp> codepoints (which have `Ccc` = `0`) and progressively
 tests the subsequent codepoints in the chunk, recombining them, in
 order, with the starter whenever all of the following is true:
-  - there is a canonical `Decomposition_Mapping` for the "Starter,
-    Subsequent_codepoint" pair
+  - there is a canonical `Decomposition_Mapping` for the
+    <samp>"Starter,Subsequent_codepoint"</samp> pair
   - the codepoint of the canonical `Decomposition_Mapping` does not
     have the `Composition_Exclusion` or `Full_Composition_Exclusion`
     properties
@@ -169,11 +169,12 @@ several decomposition mappings in a sequence where one base is
 followed by several combining marks that attach at different
 positions.
 
-For example, in the fully decomposed and reordered sequence "Letter,
-Mark_1, Mark_2", if "Letter, Mark_1" is not part of a canonical
-`Decomposition_Mapping` but "Letter, Mark_2" is part of a canonical
-`Decomposition_Mapping`, then "Letter, Mark_2" will recombine into
-"Letter-and-Mark_2", followed by "Mark_1".
+For example, in the fully decomposed and reordered sequence
+<samp>"Letter,Mark_1,Mark_2"</samp>, if <samp>"Letter,Mark_1"</samp>
+is not part of a canonical 
+`Decomposition_Mapping` but <samp>"Letter,Mark_2"</samp> is part of a canonical
+`Decomposition_Mapping`, then <samp>"Letter,Mark_2"</samp> will recombine into
+<samp>"Letter-and-Mark_2"</samp>, followed by <samp>"Mark_1"</samp>.
 
 
 ### Unicode normalization for Hangul syllables
@@ -191,7 +192,7 @@ syllable.
 The algorithm used to normalize Hangul syllables is not related to the
 Unicode normalization algorithm used for other scripts. The Hangul
 algorithm is described in stage 2 of the [Hangul
-shaping](/opentype-shaping-hangul.md#2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint) document.
+shaping](opentype-shaping-hangul.md#stage-2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint) document.
 
 
 
@@ -280,16 +281,16 @@ Distinctions from Unicode normalization at each stage are described
 below.
 
 
-#### 1. Decomposition ####
+#### Stage 1: Full decomposition ####
 
 In the first stage, full `NFD` decomposition is performed, as in
 Unicode normalization, except for a small set of exceptions required
 by specific shapers:
 
   - recursively apply canonical decomposition mappings, except for:
-      - Devanagari "Rra"
-	  - Bengali "Rra" and "Rha"
-	  - Tamil "Au"
+      - Devanagari <samp>"Rra"</samp>
+	  - Bengali <samp>"Rra"</samp> and <samp>"Rha"</samp>
+	  - Tamil <samp>"Au"</samp>
 
 After this decomposition, a second set of non-canonical and non-Unicode
 mappings is applied:
@@ -322,7 +323,7 @@ guaranteed. Consequently, a normalization function must implement them
 in order to fulfill the goal of providing stable output.
 
 
-#### 2. Canonical reordering ####
+#### Stage 2: Canonical reordering ####
 
 In the second stage, mark sequences are reordered into canonical
 order:
@@ -333,9 +334,9 @@ order:
 Several script-specific shapers require additional reordering to
 compensate for limitations in the Unicode `Ccc` mark-reordering
 model. For example, several Arabic mark sequences are reordered in
-[stage 1](/opentype-shaping-arabic.md#1-transient-reordering-of-modifier-combining-marks) of the Arabic
-shaping model and [stage 1](/opentype-shaping-syriac.md#1-transient-reordering-of-modifier-combining-marks)
-of the Syriac shaping model. 
+[stage 1](opentype-shaping-arabic.md#stage-1-transient-reordering-of-modifier-combining-marks) of the Arabic
+shaping model and [stage 1](opentype-shaping-syriac.md#stage-1-transient-reordering-of-modifier-combining-marks)
+of the Syriac shaping model.
 
 These are listed briefly in stage 4, step 4, below, but full
 discussion of each case can be found in each script's shaping
@@ -343,30 +344,30 @@ document.
 
 
 
-#### 3. Selective recomposition ####
+#### Stage 3: Selective recomposition ####
 
 The recomposition stage is selective and depends on the form requested
 by the shaping model in use:
 
   - If the shaping model prefers composed forms, then proceed with
-    recomposition as described in step 3.1
+    recomposition as described in stage 3, step 1
 
   - If the shaping model prefers decomposed forms, then proceed with
-    the recomposition as described in step 3.2
+    the recomposition as described in stage 3, step 2
 	
 
-##### 3.1 Recomposition for composed-form preference #####
+##### Stage 3, step 1: Recomposition for composed-form preference #####
 
 If composed forms have been requested, then proceed as in the Unicode
 canonical recomposition algorithm: segment the text run into chunks
-that begin with "Starter" codepoints (which have `Ccc` = `0`) and
+that begin with <samp>"Starter"</samp> codepoints (which have `Ccc` = `0`) and
 progressively tests the subsequent codepoints in the chunk,
 recombining them, in order, with the starter whenever all of the
 test conditions are met.
 
 The following test conditions must be true:
-  - there is a canonical `Decomposition_Mapping` for the "Starter,
-    Subsequent_codepoint" pair
+  - there is a canonical `Decomposition_Mapping` for the
+    <samp>"Starter,Subsequent_codepoint"</samp> pair 
   - the codepoint of the canonical `Decomposition_Mapping` does not
     have the `Composition_Exclusion` or `Full_Composition_Exclusion`
     properties
@@ -376,19 +377,21 @@ The following test conditions must be true:
   - the glyph that results from applying the recomposition exists in
     the active font
 
-##### 3.2 Recomposition for decomposed-form preference #####
+
+##### Stage 3, step 2: Recomposition for decomposed-form preference #####
 
 If decomposed forms have been requested, then a simple check is
 performed to cope with any decomposed forms that are absent in the
 active font.
 
-Segment the text run into chunks that begin with "Starter" codepoints
+Segment the text run into chunks that begin with <samp>"Starter"</samp> codepoints
 (which have `Ccc` = `0`) and progressively tests the subsequent
 codepoints in the chunk. 
 
 - If there is no standalone glyph for the subsequent codepoint, but
-  there is a `Decomposition_Mapping` for the "Starter, subsequent
-  codepoint" pair and a glyph exists for the recomposed codepoint,
+  there is a `Decomposition_Mapping` for the
+  <samp>"Starter,subsequent_codepoint"</samp> pair and a glyph exists for the
+  recomposed codepoint, 
   then recombine the starter and the subsequent codepoint
 
 <!---
@@ -397,7 +400,7 @@ HARFBUZZ logic here: https://github.com/harfbuzz/harfbuzz/src/hb-ot-shape-normal
 
 
 
-#### 4. Normalization-related <abbr>GSUB</abbr> features and other font-specific considerations ####
+#### Stage 4: Normalization-related <abbr>GSUB</abbr> features and other font-specific considerations ####
 
 After the decomposition, mark-reordering, and selective
 recomposition stages, OpenType shaping normalization also takes
@@ -424,7 +427,7 @@ all `ccmp` and `locl` features should be applied, and should be
 applied in the order in which they are listed in the <abbr>GSUB</abbr> table.
 
 
-##### 4.1 `ccmp` features #####
+##### Stage 4, step 1: ccmp features #####
 
 The `ccmp` feature is applied to all text runs. `ccmp` lookups are not
 meant be to be disabled by end users in application code.
@@ -458,7 +461,7 @@ which typically has better mark positioning."
 --->
 
 
-##### 4.2 `locl` features #####
+##### Stage 4, step 2: locl features #####
 
 The `locl` feature is applied to text runs based on matching script
 and language tags.
@@ -490,7 +493,7 @@ many-to-one <abbr>GSUB</abbr> substitution.
 
 
 
-##### 4.3 Variation Selectors #####
+##### Stage 4, step 3: Variation Selectors #####
 
 Unicode defines _standardized_variation_sequences_ as sequences of two
 codepoints where the first codepoint is any base character or mark,
@@ -502,14 +505,14 @@ Unicode normalization does not consider Variation Selector
 codepoints.
 
 When performing OpenType shaping normalization, however, if the
-"letter, Variation Selector" is not mapped to a glyph in the active
+<samp>"_letter_,Variation Selector"</samp> is not mapped to a glyph in the active
 font, a shaping engine may prefer to drop the Variation Selector
 codepoint and render the default form of the character or to replace
 the sequence with a `.notdef` glyph. Which option is preferred may be
 language- or script-specific.
 
 
-#### 4.4 Interaction with script-specific shaping models ####
+#### Stage 4, step 4: Interaction with script-specific shaping models ####
 
 Reordering and composition are defined as shaping operations in
 several script-specific shaping models. In some cases, a reordering
@@ -528,9 +531,9 @@ will not need to perform any reordering at that step — assuming that
 the Indic2 shaping model is configured to prefer decomposed forms.
 
 Similarly, in stage 3, step 2 of the Indic2 shaping model, the `nukt`
-feature composes "Base, Nukta" sequences into "Base-and-Nukta"
+feature composes <samp>"Base,Nukta"</samp> sequences into <samp>"Base-and-Nukta"</samp>
 glyphs. A shaping engine that designates the Indic2 shaping model as
-preferring composed forms could, therefore, have such "Base, Nukta"
+preferring composed forms could, therefore, have such <samp>"Base,Nukta"</samp>
 sequences recomposed during Unicode normalization. However, such a
 recomposition preference would likely cause other problems, such as
 the unwanted recomposition of multi-part dependent vowels (matras).
@@ -546,7 +549,7 @@ example:
     model, stage 1, certain marks are reordered after normalization
     and after <abbr>GSUB</abbr> feature application.
 
-  - In Bengali, "Ya, Nukta" is composed into "Yya" before <abbr>GSUB</abbr> feature
+  - In Bengali, <samp>"Ya,Nukta"</samp> is composed into <samp>"Yya"</samp> before <abbr>GSUB</abbr> feature
     application, to avoid potential ambiguities during the application
     of later features.
 

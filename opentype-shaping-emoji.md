@@ -115,12 +115,12 @@ character codepoints that are used to implement specific substitution
 sequences.
 
 The **regional indicator** set includes the 26 lower-case
-Basic Latin letters ("a" to "z"), which are used to support the
+Basic Latin letters (<samp>"a"</samp> to <samp>"z"</samp>), which are used to support the
 predefined set of regional flags. The regional indicator set is found
 within the Enclosed Alphanumeric Supplement block of Unicode.
 
 The **tag character** set includes codepoints that correspond to the
-printable characters in the ASCII set, as well as an "End" control
+printable characters in the ASCII set, as well as an <samp>"End"</samp> control
 tag. The tag characters are used to support a more general mechanism
 for local and sub-national flags that are not covered by the
 predefined regional-indicator flag set. The tag characters set is
@@ -142,9 +142,19 @@ codepoint's default. There are two presentation selectors:
   - `Variation Selector 16` (VS16, `U+FE0F`) requests emoji
     presentation style.
 
-![Text presentation-style selector](/images/emoji/text-presentation.png)
+:::{figure-md}
+![Text presentation-style selector](/images/emoji/text-presentation.png "Text presentation-style selector")
 
-![Emoji presentation-style selector](/images/emoji/emoji-presentation.png)
+Text presentation-style selector
+:::
+
+
+:::{figure-md}
+![Emoji presentation-style selector](/images/emoji/emoji-presentation.png "Emoji presentation-style selector")
+
+Emoji presentation-style selector
+:::
+
 
 An emoji codepoint might also be followed by an emoji
 **modifier**. This modifier requests an alternate version of the emoji
@@ -326,9 +336,19 @@ A presentation sequence is used to request a specific presentation
 style ("text" or "emoji"), potentially overriding the default
 presentation style defined for the codepoint by Unicode.
 
-![Requesting emoji presentation style](/images/emoji/emoji-pres-sequence.png)
+:::{figure-md}
+![Requesting emoji presentation style](/images/emoji/emoji-pres-sequence.png "Requesting emoji presentation style")
 
-![Requesting text presentation style](/images/emoji/text-pres-sequence.png)
+Requesting emoji presentation style
+:::
+
+
+:::{figure-md}
+![Requesting text presentation style](/images/emoji/text-pres-sequence.png "Requesting text presentation style")
+
+Requesting text presentation style
+:::
+
 
 The active emoji font, however, might not contain a glyph for the
 presentation style requested in the sequence. In particular, it is not
@@ -360,15 +380,36 @@ Currently, there are five emoji-modifier codepoints defined by
 Unicode. Each corresponds to a different human skin-tone based on the
 Fitzpatrick scale.
 
-![Fitzpatrick 2](/images/emoji/fitzpatrick-2.png)
+:::{figure-md}
+![Fitzpatrick 2](/images/emoji/fitzpatrick-2.png "Fitzpatrick 2")
 
-![Fitzpatrick 3](/images/emoji/fitzpatrick-3.png)
+Modifier for Fitzpatrick scale skin-tone 2
+:::
 
-![Fitzpatrick 4](/images/emoji/fitzpatrick-4.png)
+:::{figure-md}
+![Fitzpatrick 3](/images/emoji/fitzpatrick-3.png "Fitzpatrick 3")
 
-![Fitzpatrick 5](/images/emoji/fitzpatrick-5.png)
+Modifier for Fitzpatrick scale skin-tone 3
+:::
 
-![Fitzpatrick 6](/images/emoji/fitzpatrick-6.png)
+:::{figure-md}
+![Fitzpatrick 4](/images/emoji/fitzpatrick-4.png "Fitzpatrick 4")
+
+Modifier for Fitzpatrick scale skin-tone 4
+:::
+
+:::{figure-md}
+![Fitzpatrick 5](/images/emoji/fitzpatrick-5.png "Fitzpatrick 5")
+
+Modifier for Fitzpatrick scale skin-tone 5
+:::
+
+:::{figure-md}
+![Fitzpatrick 6](/images/emoji/fitzpatrick-6.png "Fitzpatrick 6")
+
+Modifier for Fitzpatrick scale skin-tone 6
+:::
+
 
 A modifier sequence must match:
 
@@ -395,12 +436,22 @@ implement modifier sequences for other emoji codepoints.
 > "Vampire". Shaping engines should not assume that these codepoints
 > are unable to support a modifier.
 
-![Modifier sequence](/images/emoji/modifier-sequence.png)
+:::{figure-md}
+![Modifier sequence](/images/emoji/modifier-sequence.png "Modifier sequence")
+
+Modifier sequence
+:::
+
 
 The fallback for a modifier sequence is the generic, unmodified
 emoji followed by an emoji representing the skin-tone requested.
 
-![Modifier sequence fallback](/images/emoji/modifier-sequence-fallback.png)
+:::{figure-md}
+![Modifier sequence fallback](/images/emoji/modifier-sequence-fallback.png "Modifier sequence fallback")
+
+Modifier sequence fallback
+:::
+
 
 Modifier sequences use emoji presentation style by default, and cannot
 include a presentation selector. However, an implementation may choose
@@ -436,13 +487,18 @@ for a region, Unicode does not specify any particular visual
 representation.
 
 Some historical region subtags have been designated as deprecated (for
-example, "East Germany" and "West Germany"). Emoji fonts are not
+example, <samp>"East Germany"</samp> and <samp>"West Germany"</samp>). Emoji fonts are not
 expected to support these deprecated subtags. However, if they
 encountered in a text run and are supported in the active font,
 shaping engines should deal with the situation gracefully, without
 offering guarantees of support.
 
-![Regional Indicator flag sequence](/images/emoji/regional-indicator-flag-sequence-un.png)
+:::{figure-md}
+![Regional Indicator flag sequence](/images/emoji/regional-indicator-flag-sequence-un.png "Regional Indicator flag sequence")
+
+Regional Indicator flag sequence
+:::
+
 
 Regional Indicator flag sequences use emoji presentation by default,
 and cannot include a presentation selector.  However, an
@@ -450,7 +506,12 @@ implementation may choose to display text-presentation versions of
 sequences if emoji presentation style is not possible in the
 environment.
 
-![Regional Indicator flag sequence fallback](/images/emoji/regional-indicator-flag-sequence-un-fallback.png)
+:::{figure-md}
+![Regional Indicator flag sequence fallback](/images/emoji/regional-indicator-flag-sequence-un-fallback.png "Regional Indicator flag sequence fallback")
+
+Regional Indicator flag sequence fallback
+:::
+
 
 Regional Indicator flag sequences only occur in standalone form.
 
@@ -459,10 +520,10 @@ Regional Indicator flag sequences only occur in standalone form.
 > bidirectionality. This behavior differs from that of other emoji
 > sequences, which are neutral in regard to bidirectionality.
 >
-> For example, a Regional Indicator sequence "RI_U, RI_A" should result
-> in a flag for Ukraine ("UA"), even if it occurs within a run of
+> For example, a Regional Indicator sequence <samp>"RI_U, RI_A"</samp> should result
+> in a flag for Ukraine (<samp>"UA"</samp>), even if it occurs within a run of
 > right-to-left text. Reversing the sequence to result in a flag for
-> Australia ("AU") is incorrect.
+> Australia (<samp>"AU"</samp>) is incorrect.
 
 
 
@@ -484,12 +545,17 @@ lower-case basic Latin alphabetic letters, numerals, and several
 symbols. However, Unicode also notes that the upper-case alphabetic
 tags are not currently used.
 
-Tag sequences must end with "Cancel Tag" (`U+E007F`).
+Tag sequences must end with <samp>"Cancel Tag"</samp> (`U+E007F`).
 
 > Note: Despite the official name "Cancel Tag", this codepoint
 > terminates valid tag sequences, rather than negating them.
 
-![Tag flag sequence](/images/emoji/tag-flag-sequence-wales.png)
+:::{figure-md}
+![Tag flag sequence](/images/emoji/tag-flag-sequence-wales.png "Tag flag sequence")
+
+Tag flag sequence
+:::
+
 
 Tag flag sequences only occur in standalone form.
 
@@ -505,7 +571,12 @@ A Keycap sequence must match:
 _key_ _presentation_ _cek_
 ```
 
-![Keycap sequence](/images/emoji/keycap-sequence.png)
+:::{figure-md}
+![Keycap sequence](/images/emoji/keycap-sequence.png "Keycap sequence")
+
+Keycap sequence
+:::
+
 
 Keycap sequences only occur in standalone form.
 
@@ -532,7 +603,12 @@ back to a set of individual-person emoji glyphs.
 A <abbr>ZWJ</abbr> hair sequence is used to request a specific hairstyle version of
 an emoji codepoint that depicts a single human being.
 
-![Hairstyle sequence](/images/emoji/hairstyle-sequence.png)
+:::{figure-md}
+![ZWJ hairstyle sequence](/images/emoji/hairstyle-sequence.png "ZWJ hairstyle sequence")
+
+ZWJ hairstyle sequence
+:::
+
 
 A <abbr>ZWJ</abbr> hair sequence must match:
 
@@ -564,15 +640,25 @@ A <abbr>ZWJ</abbr> gendered person sequence is used to request a specific-gender
 version of an emoji codepoint that depicts a single human being.
 
 Each <abbr>ZWJ</abbr> gendered person sequence is composed of an emoji that depicts
-a human by default, followed by "ZWJ", followed by a gender symbol,
-followed by "VS16".
+a human by default, followed by <samp>"ZWJ"</samp>, followed by a gender symbol,
+followed by <samp>"VS16"</samp>.
 
-![Gendered person sequence](/images/emoji/gendered-person-sequence.png)
+:::{figure-md}
+![ZWJ gendered person sequence](/images/emoji/gendered-person-sequence.png "ZWJ gendered person sequence")
+
+ZWJ gendered person sequence
+:::
+
 
 The fallback for a <abbr>ZWJ</abbr> gendered person sequence is a generic "person"
 emoji followed by a gender symbol.
 
-![Gendered person sequence fallback](/images/emoji/gendered-person-sequence-fallback.png)
+:::{figure-md}
+![ZWJ gendered person sequence fallback](/images/emoji/gendered-person-sequence-fallback.png "ZWJ gendered person sequence fallback")
+
+ZWJ gendered person sequence fallback
+:::
+
 
 A <abbr>ZWJ</abbr> gendered person sequence must match:
 
@@ -639,7 +725,7 @@ A <abbr>ZWJ</abbr> multi-person group sequence must match:
 
 Only a fixed number of such multi-person group sequences is
 defined. Some of the sequences make use of specific codepoints (such
-as "Heavy Black Heart" or "Kiss Mark").
+as <samp>"Heavy Black Heart"</samp> or <samp>"Kiss Mark"</samp>).
 
 The currently supported configurations for multi-person group emoji
 sequences are:
@@ -667,39 +753,69 @@ Each of the specific <abbr>ZWJ</abbr> multi-person group sequences has a precise
 definition.
 
 The "Couple with heart" sequence is composed of
-"Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Person", and must match:
+<samp>"Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Person"</samp>, and must match:
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ `U+2764` _VS16_ _zwj_ (_emoji_ | _emojimodified_)
 ```
 
-![Multi-person heart sequence](/images/emoji/multi-person-heart-sequence.png)
+:::{figure-md}
+![ZWJ multi-person heart sequence](/images/emoji/multi-person-heart-sequence.png "ZWJ multi-person heart sequence")
 
-![Multi-person heart skintone sequence](/images/emoji/multi-person-heart-skintone-sequence.png)
+ZWJ multi-person heart sequence
+:::
+
+
+:::{figure-md}
+![ZWJ multi-person heart sequence with modifier](/images/emoji/multi-person-heart-skintone-sequence.png "ZWJ multi-person heart sequence with modifier")
+
+ZWJ multi-person heart sequence with modifier
+:::
+
 
 
 The "Couple in kiss" sequence is composed of
-"Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Kiss_Mark,ZWJ,Person", and must match:
+<samp>"Person,ZWJ,Heavy_Black_Heart,VS16,ZWJ,Kiss_Mark,ZWJ,Person"</samp>, and must match:
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ `U+2764` _VS16_ _zwj_ `U+1F48B` _zwj_ (_emoji_ | _emojimodified_)
 ```
 
-![Multi-person kiss sequence](/images/emoji/multi-person-kiss-sequence.png)
+:::{figure-md}
+![ZWJ multi-person kiss sequence](/images/emoji/multi-person-kiss-sequence.png "ZWJ multi-person kiss sequence")
 
-![Multi-person kiss skin-tone sequence](/images/emoji/multi-person-kiss-skintone-sequence.png)
+ZWJ multi-person kiss sequence
+:::
+
+
+:::{figure-md}
+![ZWJ multi-person kiss sequence with modifier](/images/emoji/multi-person-kiss-skintone-sequence.png "ZWJ multi-person kiss sequence with modifier")
+
+ZWJ multi-person kiss sequence with modifier
+:::
+
 
 > Note: the kiss <abbr>ZWJ</abbr> sequence does not involve the "Kiss" codepoint
 > (`U+1F48F`). 
 
 
 The "Couple holding hands" sequence is composed of
-"Person,ZWJ,Handshake,ZWJ,Person", and must match:
+<samp>"Person,ZWJ,Handshake,ZWJ,Person"</samp>, and must match:
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ `U+1F91D` _zwj_ (_emoji_ | _emojimodified_)
 ```
 
-![Multi-person holding-hands sequence](/images/emoji/multi-person-holding-hands-sequence.png)
+:::{figure-md}
+![ZWJ multi-person holding-hands sequence](/images/emoji/multi-person-holding-hands-sequence.png "ZWJ multi-person holding-hands sequence")
 
-![Multi-person holding-hands skin-tone sequence](/images/emoji/multi-person-holding-hands-skintone-sequence.png)
+ZWJ multi-person holding-hands sequence
+:::
+
+
+:::{figure-md}
+![ZWJ multi-person holding-hands sequence with modifier](/images/emoji/multi-person-holding-hands-skintone-sequence.png "ZWJ multi-person holding-hands sequence with modifier")
+
+ZWJ multi-person holding-hands sequence with modifier
+:::
+
 
 > Note: the couple-holding-hands <abbr>ZWJ</abbr> sequence does not involve any of
 > the "Man and woman holding hands" (`U+1F46B`), "Two men holding
@@ -707,10 +823,10 @@ The "Couple holding hands" sequence is composed of
 > codepoints. 
 
 
-The "Family" sequence is composed of two-to-four individual "Person"
-subsequences, each separated by a <abbr>ZWJ</abbr>. Furthermore, the "Person"
+The "Family" sequence is composed of two-to-four individual <samp>"Person"</samp>
+subsequences, each separated by a <abbr>ZWJ</abbr>. Furthermore, the <samp>"Person"</samp>
 subsequences must be sorted so that all adult subsequences precede all
-child subsequences. A "Family" subsequence must match:
+child subsequences. A <samp>"Family"</samp> subsequence must match:
 ```markdown
 (_emoji_ | _emojimodified_) (_zwj_ (_emoji_ | _emojimodified_) ){1,3}
 ```
@@ -721,24 +837,46 @@ child subsequences. A "Family" subsequence must match:
 > Recommended For General Interchange (<abbr>RGI</abbr>) emoji set, due to the
 > number of permutations that would be added to the <abbr>RGI</abbr> set as a result.
 
-![Multi-person family man, boy sequence](/images/emoji/multi-person-family-man-boy-sequence.png)
+:::{figure-md}
+![ZWJ multi-person family man, boy sequence](/images/emoji/multi-person-family-man-boy-sequence.png "ZWJ multi-person family man, boy sequence")
 
-![Multi-person family man, girl, girl sequence](/images/emoji/multi-person-family-man-girl-girl-sequence.png)
+ZWJ multi-person family sequence "man, boy"
+:::
 
-![Multi-person family man, woman, girl sequence](/images/emoji/multi-person-family-man-woman-girl-sequence.png)
+:::{figure-md}
+![ZWJ multi-person family man, girl, girl sequence](/images/emoji/multi-person-family-man-girl-girl-sequence.png "ZWJ multi-person family man, girl, girl sequence")
 
-![Multi-person family woman, woman, girl, boy sequence](/images/emoji/multi-person-family-woman-woman-girl-boy-sequence.png)
+ZWJ multi-person family sequence "man, girl, girl"
+:::
+
+:::{figure-md}
+![ZWJ multi-person family man, woman, girl sequence](/images/emoji/multi-person-family-man-woman-girl-sequence.png "ZWJ multi-person family man, woman, girl sequence")
+
+ZWJ multi-person family sequence "man, woman, girl"
+:::
+
+:::{figure-md}
+![ZWJ multi-person family woman, woman, girl, boy sequence](/images/emoji/multi-person-family-woman-woman-girl-boy-sequence.png "ZWJ multi-person family woman, woman, girl, boy sequence")
+
+ZWJ multi-person family sequence "woman, woman, girl, boy"
+:::
+
 
 > Note: the family <abbr>ZWJ</abbr> sequence does not involve the "Family"
 > codepoint (`U+1F46A`).
 
-The "Shaking hands" sequence is composed of two "Hand" subsequences
+The "Shaking hands" sequence is composed of two <samp>"Hand"</samp> subsequences
 separated by a <abbr>ZWJ</abbr>, and must match:
 ```markdown
 `U+1FAF1` _modifier_ _zwj_ `U+1FAF2` _modifier_
 ```
 
-![Multi-person shaking-hands sequence](/images/emoji/multi-person-shaking-hands-sequence.png)
+:::{figure-md}
+![ZWJ multi-person shaking-hands sequence](/images/emoji/multi-person-shaking-hands-sequence.png "ZWJ multi-person shaking-hands sequence")
+
+ZWJ multi-person shaking-hands sequence
+:::
+
 
 > Note: the <abbr>ZWJ</abbr> "Shaking hands" sequence does not involve the "Handshake"
 > codepoint (`U+1F91D`), although the "Handshake" codepoint itself can
@@ -754,16 +892,26 @@ separated by a <abbr>ZWJ</abbr>, and must match:
 
 A <abbr>ZWJ</abbr> role (or profession) sequence is used to request an emoji
 depicting a human being performing a task or job. Role sequences are
-composed of a codepoint representing a human, followed by "ZWJ",
+composed of a codepoint representing a human, followed by <samp>"ZWJ"</samp>,
 followed by an emoji depicting an object or symbol that references the
 desired profession or role.
 
-![Role sequence firefighter](/images/emoji/role-sequence-firefighter.png)
+:::{figure-md}
+![ZWJ role sequence firefighter](/images/emoji/role-sequence-firefighter.png "ZWJ role sequence 'firefighter'")
+
+ZWJ role sequence 'firefighter'
+:::
+
 
 Optionally, the sequence can be further updated by requesting a
 skin-tone modifier appended to the `_genderperson_` element.
 
-![Role sequence firefighter with modifier](/images/emoji/role-sequence-firefighter-skintone-6.png)
+:::{figure-md}
+![ZWJ role sequence firefighter with modifier](/images/emoji/role-sequence-firefighter-skintone-6.png "ZWJ role sequence 'firefighter' with modifier")
+
+ZWJ role sequence 'firefighter' with modifier
+:::
+
 
 In some cases, the object or symbol depicted by the standalone emoji
 will not be shown in the substituted emoji resulting from the
@@ -776,9 +924,19 @@ In addition, some of the supported "role" codepoints do not use emoji
 presentation by default; for those codepoints, the emoji will be
 followed by a presentation selector.
 
-![Role sequence pilot](/images/emoji/role-sequence-pilot.png)
+:::{figure-md}
+![ZWJ role sequence pilot](/images/emoji/role-sequence-pilot.png "ZWJ role sequence 'pilot'")
 
-![Role sequence pilot with modifier](/images/emoji/role-sequence-pilot-skintone-2.png)
+ZWJ role sequence 'pilot'
+:::
+
+
+:::{figure-md}
+![ZWJ role sequence pilot with modifier](/images/emoji/role-sequence-pilot-skintone-2.png "ZWJ role sequence 'pilot' with modifier")
+
+ZWJ role sequence 'pilot' with modifier
+:::
+
 
 
 The fallback for a <abbr>ZWJ</abbr> role sequence is a generic "person" emoji
@@ -829,7 +987,12 @@ depicts a large square filled with the color in question.
   - `U+1F7EB ` - "Large Brown Square"
 
 
-![Color sequence](/images/emoji/color-sequence.png)
+:::{figure-md}
+![ZWJ color sequence](/images/emoji/color-sequence.png "ZWJ color sequence")
+
+ZWJ color sequence
+:::
+
 
 The fallback for a <abbr>ZWJ</abbr> color sequence is the default emoji followed by
 the default emoji for the color codepoint (that is, the color square).
@@ -842,7 +1005,12 @@ A <abbr>ZWJ</abbr> directionality sequence is used to request a version of an em
 codepoint facing a specific cardinal direction.
 
 
-![ZWJ directionality sequence](/images/emoji/zwj-directionality-sequence.png)
+:::{figure-md}
+![ZWJ directionality sequence](/images/emoji/zwj-directionality-sequence.png "ZWJ directionality sequence")
+
+ZWJ directionality sequence
+:::
+
 
 A <abbr>ZWJ</abbr> directionality sequence must match:
 
@@ -870,7 +1038,12 @@ standalone, but uncategorized, <abbr>ZWJ</abbr> sequences defined in Unicode.
   - "Black cat"
 
 
-![ZWJ heart-on-fire sequence](/images/emoji/zwj-sequence-heart-on-fire.png)
+:::{figure-md}
+![ZWJ heart-on-fire sequence](/images/emoji/zwj-sequence-heart-on-fire.png "ZWJ heart-on-fire sequence")
+
+ZWJ heart-on-fire sequence
+:::
+
 
 These sequences currently match:
 
@@ -892,7 +1065,7 @@ numbers and symbols defined above.
 
 Emoji fonts may also include many-to-one emoji substitutions that do
 not fit into any of the above sequence varieties and, instead, behave
-more like ligatures. For example, the sequence "Ice Cream, Banana"
+more like ligatures. For example, the sequence <samp>"Ice Cream, Banana"</samp>
 might be substituted with a "banana split" emoji.
 
 Any such substitutions are included by the emoji font vendor at their

@@ -13,11 +13,11 @@ implementations share.
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The `<hebr>` shaping model](#the-hebr-shaping-model)
-      - [1. Compound character composition and decomposition](#1-compound-character-composition-and-decomposition)
-      - [2. Composing any Alphabetic Presentation forms](#2-composing-any-alphabetic-presentation-forms)
-      - [3. Applying the language-form substitution features from <abbr>GSUB</abbr>](#3-applying-the-language-form-substitution-features-from-gsub)
-      - [4. Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#4-applying-the-typographic-form-substitution-features-from-gsub)
-      - [5. Applying the positioning features from <abbr>GPOS</abbr>](#5-applying-the-positioning-features-from-gpos)
+      - [Stage 1: Compound character composition and decomposition](#stage-1-compound-character-composition-and-decomposition)
+      - [Stage 2: Composing any Alphabetic Presentation forms](#stage-2-composing-any-alphabetic-presentation-forms)
+      - [Stage 3: Applying the language-form substitution features from <abbr>GSUB</abbr>](#stage-3-applying-the-language-form-substitution-features-from-gsub)
+      - [Stage 4: Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#stage-4-applying-the-typographic-form-substitution-features-from-gsub)
+      - [Stage 5: Applying the positioning features from <abbr>GPOS</abbr>](#stage-5-applying-the-positioning-features-from-gpos)
   
 
 
@@ -228,7 +228,7 @@ Processing a run of `<hebr>` text involves seven top-level stages:
 5. Applying the positioning features from <abbr>GPOS</abbr>
 
 
-### 1. Compound character composition and decomposition ###
+### Stage 1: Compound character composition and decomposition ###
 
 In this stage, the `ccmp` feature from <abbr>GPOS</abbr> is applied and the
 resulting sequence of codepoints should be checked for correct mark
@@ -242,7 +242,7 @@ order.
 > are not handled by Unicode normalization.
 
 
-#### 1.1 `ccmp`
+#### Stage 1, step 1: ccmp
 
 The `ccmp` feature allows a font to substitute
 
@@ -256,10 +256,15 @@ performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> looku
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-![ccmp composition](/images/hebrew/hebrew-ccmp.png)
+:::{figure-md}
+![ccmp composition](/images/hebrew/hebrew-ccmp.png "ccmp composition")
+
+ccmp composition
+:::
 
 
-#### 1.2 Mark reordering
+
+#### Stage 1, step 2: Mark reordering
 
 Sequences of adjacent marks must be reordered so that they appear in
 canonical order before the mark-to-base and mark-to-mark positioning
@@ -269,7 +274,7 @@ For `<hebr>` text runs, normalizing the sequence of marks using the
 Unicode _canonical combining class_ of each mark should be sufficient.
 
 
-### 2. Composing any Alphabetic Presentation forms ###
+### Stage 2: Composing any Alphabetic Presentation forms ###
 
 If the active font includes glyphs for precomposed mark-and-base
 codepoints from the Alphabetic Presentation Forms block, these
@@ -302,10 +307,15 @@ glyphs in the block have a single composing sequence.
 > Note: the active font may implement these compositions in a `ccmp`
 > lookup in <abbr>GSUB</abbr>, in which case this stage will involve no additional work.
 
-![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png)
+:::{figure-md}
+![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png "Alphabetic Presentation forms composition")
+
+Alphabetic Presentation forms composition
+:::
 
 
-### 3. Applying the language-form substitution features from <abbr>GSUB</abbr> ###
+
+### Stage 3: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -318,7 +328,7 @@ all scripts implemented in the Hebrew shaping model:
 	locl
 	
 
-#### 3.1 locl ####
+#### Stage 3, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -332,7 +342,7 @@ variants, based on examining the language setting of the text run.
 
 
 
-### 4. Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
+### Stage 4: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
 features using the rules in the font's <abbr>GSUB</abbr> table.
@@ -344,27 +354,35 @@ all scripts implemented in the Hebrew shaping model:
 	dlig
 	
 
-#### 4.1 liga ####
+#### Stage 4, step 1: liga ####
 
 The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Standard ligature substitution](/images/hebrew/hebrew-liga.png)
+:::{figure-md}
+![Standard ligature substitution](/images/hebrew/hebrew-liga.png "Standard ligature substitution")
+
+Standard ligature substitution
+:::
 
 
 
-#### 4.2 dlig ####
+#### Stage 4, step 2: dlig ####
 
 The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
-![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.png)
+:::{figure-md}
+![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.png "Discretionary ligature substitution")
+
+Discretionary ligature substitution
+:::
 
 
 
-### 5. Applying the positioning features from <abbr>GPOS</abbr> ###
+### Stage 5: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.
@@ -376,16 +394,17 @@ the Hebrew shaping model:
 	mark
 
 
-#### 5.1 `kern` ####
+#### Stage 5, step 1: `kern` ####
 
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 
-#### 5.2 `mark` ####
+#### Stage 5, step 2: `mark` ####
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Mark positioning](/images/hebrew/hebrew-mark.png)
+:::{figure-md}
+![Mark positioning](/images/hebrew/hebrew-mark.png "Mark positioning")
 
-
-
+Mark positioning
+:::

@@ -11,9 +11,9 @@ model for unrecognized scripts.
   - [Terminology](#terminology)
   - [Normalization](#normalization)
   - [The default shaping model](#the-default-shaping-model)
-      - [1: Applying the basic substitution features from <abbr>GSUB</abbr>](#1-applying-the-basic-substitution-features-from-gsub)
-	  - [2: Applying typographic substitution features from <abbr>GSUB</abbr>](#2-applying-typographic-substitution-features-from-gsub)
-	  - [3: Applying the positioning features from <abbr>GPOS</abbr>](#3-applying-the-positioning-features-from-gpos)
+      - [Stage 1: Applying the basic substitution features from <abbr>GSUB</abbr>](#stage-1-applying-the-basic-substitution-features-from-gsub)
+	  - [Stage 2: Applying typographic substitution features from <abbr>GSUB</abbr>](#stage-2-applying-typographic-substitution-features-from-gsub)
+	  - [Stage 3: Applying the positioning features from <abbr>GPOS</abbr>](#stage-3-applying-the-positioning-features-from-gpos)
   
   
   
@@ -71,7 +71,7 @@ For example, a base letter with an attached mark might exist in
 Unicode as a single codepoint, but an input sequence might consist of
 the base letter codepoint followed by the combining mark
 codepoint. Unicode normalization can be used to determine that the
-"letter, mark" sequence is equivalent to the single codepoint. This
+<samp>"letter, mark"</samp> sequence is equivalent to the single codepoint. This
 simplifies sorting, searching, string comparison, and many other common
 tasks.
 
@@ -119,11 +119,11 @@ is beyond the scope of this document.
 The default shaping model does not involve syllable-identification,
 word-identification, or other preprocessing of the input
 sequence. Shaping engines may choose how to segment longer text runs
-for processing, or may choose to reply on higher-level applications to
+for processing, or may choose to rely on higher-level applications to
 make segmentation decisions.
 
 
-### 1: Applying the basic substitution features from <abbr>GSUB</abbr> ###
+### Stage 1: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -170,7 +170,7 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 
-### 2: Applying typographic substitution features from <abbr>GSUB</abbr> ###
+### Stage 2: Applying typographic substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies all remaining substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
@@ -213,7 +213,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 
-### 3: Applying the positioning features from <abbr>GPOS</abbr> ###
+### Stage 3: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be

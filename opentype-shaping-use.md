@@ -11,19 +11,19 @@ model.
   - [Terminology](#terminology)
   - [Glyph classification](#glyph-classification)
   - [The <abbr>USE</abbr> shaping model](#the-use-shaping-model)
-      - [1: Split vowel decomposition](#1-split-vowel-decomposition)
-      - [2: Cluster identification](#2-cluster-identification)
-      - [3: Basic cluster formation](#3-basic-cluster-formation)
-	      - [3.1: Applying the basic pre-processing features from <abbr>GSUB</abbr>](#31-applying-the-basic-pre-processing-features-from-gsub)
-          - [3.2: Applying the basic reordering features from <abbr>GSUB</abbr>](#32-applying-the-basic-reordering-features-from-gsub)
-          - [3.3: Applying the basic orthographic features from <abbr>GSUB</abbr>](#33-applying-the-basic-orthographic-features-from-gsub)
-	  - [4: Glyph reordering](#4-glyph-reordering)
-	      - [4.1: Applying the reordering features from <abbr>GSUB</abbr>](#41-applying-the-reordering-features-from-gsub)
-	      - [4.2: Performing property-based reordering moves](#42-performing-property-based-reordering-moves)
-	  - [5: Final feature application](#5-final-feature-application)
-	      - [5.1: Applying the final topographic features from <abbr>GSUB</abbr>](#51-applying-the-final-topographic-features-from-gsub)
-	      - [5.2: Applying the final typographic-presentation features from <abbr>GSUB</abbr>](#52-applying-the-final-typographic-presentation-features-from-gsub)
-	      - [5.3: Applying the final positioning features from <abbr>GPOS</abbr>](#53-applying-the-final-positioning-features-from-gpos)
+      - [Stage 1: Split vowel decomposition](#stage-1-split-vowel-decomposition)
+      - [Stage 2: Cluster identification](#stage-2-cluster-identification)
+      - [Stage 3: Basic cluster formation](#stage-3-basic-cluster-formation)
+	      - [Stage 3, step 1: Applying the basic pre-processing features from <abbr>GSUB</abbr>](#stage-3-step-1-applying-the-basic-pre-processing-features-from-gsub)
+          - [Stage 3, step 2: Applying the basic reordering features from <abbr>GSUB</abbr>](#stage-3-step-2-applying-the-basic-reordering-features-from-gsub)
+          - [Stage 3, step 3: Applying the basic orthographic features from <abbr>GSUB</abbr>](#stage-3-step-3-applying-the-basic-orthographic-features-from-gsub)
+	  - [Stage 4: Glyph reordering](#stage-4-glyph-reordering)
+	      - [Stage 4, step 1: Applying the reordering features from <abbr>GSUB</abbr>](#stage-4-step-1-applying-the-reordering-features-from-gsub)
+	      - [Stage 4, step 2: Performing property-based reordering moves](#stage-4-step-2-performing-property-based-reordering-moves)
+	  - [Stage 5: Final feature application](#stage-5-final-feature-application)
+	      - [Stage 5, step 1: Applying the final topographic features from <abbr>GSUB</abbr>](#stage-5-step-1-applying-the-final-topographic-features-from-gsub)
+	      - [Stage 5, step 2: Applying the final typographic-presentation features from <abbr>GSUB</abbr>](#stage-5-step-2-applying-the-final-typographic-presentation-features-from-gsub)
+	      - [Stage 5, step 3: Applying the final positioning features from <abbr>GPOS</abbr>](#stage-5-step-3-applying-the-final-positioning-features-from-gpos)
   
   
   
@@ -267,7 +267,7 @@ The substitution features from <abbr>GSUB</abbr> and the positioning features fr
 features are applied at each step in the process are described below.
 
 
-### 1: Split vowel decomposition ###
+### Stage 1: Split vowel decomposition ###
 
 Most split vowels have a canonical decomposition defined in the
 Unicode specification. The <abbr>USE</abbr> shaping model requires that all such
@@ -288,7 +288,7 @@ the canonical decompositions, and do not take non-canonical <abbr>GSUB</abbr>
 decomposition into account.
 
 
-### 2. Cluster identification ###
+### Stage 2. Cluster identification ###
 
 A cluster in the <abbr>USE</abbr> model is defined according to a generalized,
 visual pattern that is common to all supported scripts. Consequently,
@@ -363,12 +363,12 @@ After the clusters have been identified, each of the subsequent
 shaping stages occurs on a per-cluster basis.
 
 
-### 3: Basic cluster formation ###
+### Stage 3: Basic cluster formation ###
 
 The basic cluster formation stage is used to apply fundamental
 substitutions necessary for script and language correctness.
 
-#### 3.1: Applying the basic pre-processing features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 1: Applying the basic pre-processing features from <abbr>GSUB</abbr> ####
 
 The basic pre-processing step applies mandatory substitution features
 using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this 
@@ -409,7 +409,7 @@ glyphs.
 > vowels that do have a canonical decomposition were decomposed in
 > stage one.
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
+The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
 The `akhn` feature replaces specific sequences with required
@@ -420,7 +420,7 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 
-#### 3.2: Applying the basic reordering features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 2: Applying the basic reordering features from <abbr>GSUB</abbr> ####
 
 The basic reordering step applies mandatory substitution features from
 <abbr>GSUB</abbr> that affect reordering elements.
@@ -435,16 +435,16 @@ all <abbr>USE</abbr> scripts:
 	rphf
 	pref
 
-##### 3.2.1 `rphf` #####
+##### Stage 3, step 2.1: rphf #####
 
-The `rphf` feature replaces cluster-initial "Ra,Halant" sequences with
-the "Reph" glyph.
+The `rphf` feature replaces cluster-initial <samp>"Ra,Halant"</samp> sequences with
+the <samp>"Reph"</samp> glyph.
 
 > Note: although the glyph substitution is performed in this step, the
 > corresponding glyph reordering move is not performed until a later
 > stage. 
 
-##### 3.2.2 `pref` #####
+##### Stage 3, step 2.2: pref #####
 
 The `pref` feature replaces pre-base-consonant glyphs with any special
 forms. 
@@ -454,7 +454,7 @@ forms.
 > stage. 
 
 
-#### 3.3: Applying the basic orthographic features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 3: Applying the basic orthographic features from <abbr>GSUB</abbr> ####
 
 The basic orthographic step applies substitution features using the
 rules in the font's <abbr>GSUB</abbr> table. In preparation for this stage, glyph
@@ -472,7 +472,7 @@ in the font.
 	vatu
 	cjct
 
-The `rkrf` feature replaces "_Consonant_,Halant,Ra" sequences with the
+The `rkrf` feature replaces <samp>"_Consonant_,Halant,Ra"</samp> sequences with the
 "Rakaar"-ligature form of the consonant glyph.
 
 The `abvf` feature replaces above-base-consonant glyphs with any
@@ -481,7 +481,7 @@ special forms.
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms.
 
-The `half` feature replaces "_Consonant_,Halant" sequences before the
+The `half` feature replaces <samp>"_Consonant_,Halant"</samp> sequences before the
 base consonant with "half forms" of the consonant glyphs.
 
 The `pstf` feature replaces post-base-consonant glyphs with any
@@ -491,10 +491,10 @@ The `vatu` feature replaces certain sequences with "Vattu variant"
 forms. 
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
+conjunct ligatures. These sequences must match <samp>"_Consonant_,Halant,_Consonant_"</samp>.
 
 
-### 4: Glyph reordering ###
+### Stage 4: Glyph reordering ###
 
 The glyph-reordering stage moves dependent vowels, diacritics, and
 other mark glyphs in relation to the base consonant. All reordering is
@@ -504,7 +504,7 @@ performed in this stage, which is broken into two distinct steps:
 2. Performing property-based reordering moves
 
 
-#### 4.1 Applying the reordering features from <abbr>GSUB</abbr> ####
+#### Stage 4, step 1: Applying the reordering features from <abbr>GSUB</abbr> ####
 
 In this step, the reordering moves corresponding to the
 glyph-reordering features in <abbr>GSUB</abbr> are performed.
@@ -519,21 +519,21 @@ all <abbr>USE</abbr> scripts:
 	rphf
 	pref
 
-##### 4.1.1 `rphf` #####
+##### Stage 4, step 1.1: rphf #####
 
 In stage 3, step 2, the `rphf` feature replaced cluster-initial
-"Ra,Halant" sequences with the "Reph" glyph. The "Reph" glyph is now
+<samp>"Ra,Halant"</samp> sequences with the <samp>"Reph"</samp> glyph. The <samp>"Reph"</samp> glyph is now
 reordered to its final position. The algorithm to determine the final
-position of the "Reph" glyph is:
+position of the <samp>"Reph"</samp> glyph is:
 
-  - Move the "Reph" right one position at a time.
+  - Move the <samp>"Reph"</samp> right one position at a time.
     - If the character immediately following the new position is an
-      explicit "Halant", stop.
+      explicit <samp>"Halant"</samp>, stop.
     - If the character immediately before the new position is a full
       base (`B`) character, stop.
     - If the end of the cluster is reached, stop.
 
-##### 4.1.2 `pref` #####
+##### Stage 4, step 1.2: pref #####
 
 In stage 3, step 2, the `pref` feature replaced pre-base-consonant
 glyphs with special forms. The pre-base-consonant glyph is now
@@ -543,7 +543,7 @@ position of the pre-base-reordering consonant is:
   - Move the pre-base-reordering consonant left one position at a
     time.
     - If the pre-base reordering consonant is to the left of the
-	  first spacing glyph after an explicit "Halant", stop.
+	  first spacing glyph after an explicit <samp>"Halant"</samp>, stop.
     - When the pre-base reordering consonant is to the left of the
 	  first spacing glyph in the cluster, stop. 
 	- If the beginning of the cluster is reached, stop.
@@ -555,7 +555,7 @@ position of the pre-base-reordering consonant is:
 > of the `pref` feature reordering.
 
 
-#### 4.2 Performing property-based reordering moves ####
+#### Stage 4, step 2: Performing property-based reordering moves ####
 
 In this step, any characters that match one of the <abbr>USE</abbr> reordering
 classifications should be reordered into their final position. 
@@ -573,8 +573,8 @@ The character classes reordered in this step are:
 ```
 
 Pre-base `REPHA` glyphs that occur before a full base are reordered
-using the "Reph" reordering algorithm described in step [4.1.1](#411-rphf), just as if
-the `rphf` feature had been applied to the glyph.
+using the <samp>"Reph"</samp> reordering algorithm described in [Stage 4, step 1.1](#stage-4-step-11-rphf),
+just as if the `rphf` feature had been applied to the glyph.
 
 Pre-base `VOWEL_PRE` vowel glyphs, including both stand-alone `VOWEL_PRE` vowels
 and `VOWEL_PRE` components of split vowels, are reordered to
@@ -587,14 +587,14 @@ Pre-base `VOWEL_MOD_PRE` vowel-modifier glyphs are reordered to
    - before any other pre-base glyphs that were reordered in earlier steps
 
 
-### 5: Final feature application ###
+### Stage 5: Final feature application ###
 
 The final stage involves applying topographic joining features for
 connected scripts, applying typographic-presentation features from
 <abbr>GSUB</abbr>, and applying positioning features from <abbr>GPOS</abbr>.
 
 
-#### 5.1: Applying the final topographic features from <abbr>GSUB</abbr> ####
+#### Stage 5, step 1: Applying the final topographic features from <abbr>GSUB</abbr> ####
 
 For connected scripts, this step applies the substitutions to select
 the correct topographic form for each glyph, based on its position in
@@ -612,7 +612,7 @@ for each codepoint.
 	medi
 	fina
 
-#### 5.2: Applying the final typographic-presentation features from <abbr>GSUB</abbr> ####
+#### Stage 5, step 2: Applying the final typographic-presentation features from <abbr>GSUB</abbr> ####
 
 The final typographic-presentation step applies mandatory substitution
 features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
@@ -656,9 +656,9 @@ default, but which are activated only in certain
 contexts. Substitutions made by clig may be disabled by
 application-level user interfaces. 
 
-The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
+The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
 special presentation forms. This can include stylistic variants of the
-consonant where placing the "Halant" mark on its own is
+consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 The `liga` feature substitutes standard, optional ligatures that are on
@@ -687,7 +687,7 @@ application-level user interfaces.
 
 
 
-#### 5.3: Applying the final positioning features from <abbr>GPOS</abbr> ####
+#### Stage 5, step 3: Applying the final positioning features from <abbr>GPOS</abbr> ####
 
 	curs
 	dist
