@@ -9,6 +9,7 @@ This document lists the per-character shaping information needed to
   - [Arabic Supplement character table](#arabic-supplement-character-table)
   - [Arabic Extended-A character table](#arabic-extended-a-character-table)
   - [Arabic Extended-B character table](#arabic-extended-b-character-table)
+  - [Arabic Extended-C character table](#arabic-extended-c-character-table)
   - [Rumi Numeral Symbols character table](#rumi-numeral-symbols-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)
 
@@ -543,6 +544,81 @@ treated differently during the mark-reordering stage.
 |`U+089D`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089D; Superscript Alef Mokhassas                   |
 |`U+089E`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089E; Doubled Madda                                |
 |`U+089F`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089F; Half Madda Over Madda                        |
+| | | | | |
+
+
+## Arabic Extended-C character table ##
+
+
+| Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
+|:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
+|`U+10EC0`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC1`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC2`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC3`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC4`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC5`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC6`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC7`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC8`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC9`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECA`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECB`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECC`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECD`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECE`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ECF`  | _unassigned_     |              |                      |            |                                                       |
+| | | | | |
+|`U+10ED0`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED1`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED2`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED3`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED4`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED5`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED6`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED7`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED8`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10ED9`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDA`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDB`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDC`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDD`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDE`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EDF`  | _unassigned_     |              |                      |            |                                                       |
+| | | | | |
+|`U+10EE0`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE1`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE2`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE3`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE4`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE5`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE6`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE7`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE8`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EE9`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EEA`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EEB`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EEC`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EED`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EEE`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EEF`  | _unassigned_     |              |                      |            |                                                       |
+| | | | | |
+|`U+10EF0`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF1`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF2`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF3`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF4`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF5`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF6`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF7`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF8`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EF9`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EFA`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EFB`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EFC`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EFD`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFD; Small Low Word Sakta                        |
+|`U+10EFE`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFE; Small Low Word Qasr                         |
+|`U+10EFF`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFF; Small Low Word Madda                        |
 | | | | | |
 
 

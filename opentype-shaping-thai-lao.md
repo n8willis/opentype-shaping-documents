@@ -20,7 +20,7 @@ runs in the Thai and Lao scripts.
       - [Stage 4: Applying all positioning features from <abbr>GPOS</abbr>](#stage-4-applying-all-positioning-features-from-gpos)
   - [The <abbr>PUA</abbr> fallback shaping model](#the-pua-fallback-shaping-model)
       - [Contextual replacement rules](#contextual-replacement-rules)
-	  - [Stage 1: Decomposing all Am vowel signs](#stage-1-decomposing-all-am-vowel-signs)
+	    - [Stage 1: Decomposing all Am vowel signs](#stage-1-decomposing-all-am-vowel-signs)
       - [Stage 2: Reordering sequences of marks](#stage-2-reordering-sequences-of-marks)
       - [Stage 3: Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates](#stage-3-remapping-codepoints-to-the-appropriate-pua-alternates)
 

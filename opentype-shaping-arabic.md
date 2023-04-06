@@ -207,6 +207,7 @@ used in `<arab>` text runs:
   - [Arabic Supplement character table](character-tables/character-tables-arabic.md#arabic-supplement-character-table)
   - [Arabic Extended-A character table](character-tables/character-tables-arabic.md#arabic-extended-a-character-table)
   - [Arabic Extended-B character table](character-tables/character-tables-arabic.md#arabic-extended-b-character-table)
+  - [Arabic Extended-C character table](character-tables/character-tables-arabic.md#arabic-extended-c-character-table)
   - [Rumi Numeral Symbols character table](character-tables/character-tables-arabic.md#rumi-numeral-symbols-character-table)
   - [Miscellaneous character table](character-tables/character-tables-arabic.md#miscellaneous-character-table)
 
