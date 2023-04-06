@@ -10,7 +10,7 @@ regarded as bugs by end users.
   - [Indic standalone-syllable dotted circles](#indic-standalone-syllable-dotted-circles)
   - [Indic syllable cluster merging](#indic-syllable-cluster-merging)
   - [Indic fallback Reph reordering](#indic-fallback-reph-reordering)
-  - [Kannada legacy treatment of Ra,Halant,ZWJ](#kannada-legacy-treatment-of-ra-halant-zwj)
+  - [Kannada legacy treatment of "Ra,Halant,ZWJ"](#kannada-legacy-treatment-of-ra-halant-zwj)
   - [Khmer kerning](#khmer-kerning)
   - [Sinhala matra decomposition](#sinhala-matra-decomposition)
   - [Miscellaneous](#miscellaneous)
@@ -36,8 +36,8 @@ syllable, Uniscribe ignores the glyph when processing the syllable.
 
 For example, the dotted-circle glyph is not counted as a consonant
 when locating the syllable's base consonant. Therefore, the sequence
-"Ra,Halant,Dotted_Circle" does not trigger Reph formation (which would
-result in the sequence "Reph,Dotted_Circle").
+<samp>"Ra,Halant,Dotted_Circle"</samp> does not trigger Reph formation (which would
+result in the sequence <samp>"Reph,Dotted_Circle"</samp>).
 
 
 ## Indic syllable cluster merging ##
@@ -72,20 +72,20 @@ syllable, Uniscribe's ultimate fallback behavior is to reorder the
 Reph to the end of the syllable.
 
 If the Reph is reordered to the end of the syllable and this final
-position happens to occur immediately after a "Matra,Halant" sequence,
+position happens to occur immediately after a <samp>"Matra,Halant"</samp> sequence,
 Uniscribe leaves the Reph in this position.
 
 Other shaping engines, in this situation, will reorder the Reph to a
-position immediately before the "Matra,Halant" sequence. This allows
-for any GSUB substitutions that match "Reph,Matra" sequences to be
+position immediately before the <samp>"Matra,Halant"</samp> sequence. This allows
+for any <abbr>GSUB</abbr> substitutions that match <samp>"Reph,Matra"</samp> sequences to be
 activated, if any such substitution rules are present in the active
 font. 
 
-## Kannada legacy treatment of Ra,Halant,ZWJ ##
+## Kannada legacy treatment of "Ra,Halant,ZWJ" ##
 
 In the `<knda>` shaping model (which was deprecated in 2005 in favor
-of `<knd2>`), the sequence "Ra,Halant,ZWJ" was treated as equivalent
-to the sequence "Ra,ZWJ,Halant".
+of `<knd2>`), the sequence <samp>"Ra,Halant,ZWJ"</samp> was treated as equivalent
+to the sequence <samp>"Ra,ZWJ,Halant"</samp>.
 
 ## Khmer kerning ##
 
@@ -102,7 +102,7 @@ One is the canonical Unicode decompositions for the matra codepoints,
 as is used in most other Indic scripts. This decomposition is usually
 performed early in the shaping process.
 
-The second is the `pstf` feature of GSUB, which is defined differently
+The second is the `pstf` feature of <abbr>GSUB</abbr>, which is defined differently
 for Sinhala. In Sinhala, the `pstf` feature replaces multi-part
 dependent vowels (matras) with the right-side matra component of the
 canonical decomposition. This substitution generally occurs late in
@@ -122,7 +122,7 @@ components at that point.
  
 Doing so will negate the need to apply the `pstf` substitution.
 However, fonts that were engineered to support the
-Uniscribe-supported behavior might not include GPOS positioning
+Uniscribe-supported behavior might not include <abbr>GPOS</abbr> positioning
 rules for the right-side matra components, relying instead on the
 `pstf` substitution to provide a suitable replacement.
 
@@ -131,7 +131,7 @@ rules for the right-side matra components, relying instead on the
 ## Miscellaneous ##
 
 
-### Bengali init feature matching ###
+### Bengali `init` feature matching ###
 
 The `init` feature in Bengali is defined in the OpenType specification
 as applying to word-initial left-side dependent vowels (matras).
@@ -156,9 +156,9 @@ range in the Unicode `General Category` property:
 ### Old-model post-base Halant reordering ###
 
 In old-model (Indic1) script tags, Uniscribe treats some
-scripts differently when reordering the first post-base Halant. This
+scripts differently when reordering the first post-base <samp>"Halant"</samp>. This
 Halant-reordering is done in Indic1 scripts in order to prepare the
-syllable for Indic1's different post-base GSUB substitution rules.
+syllable for Indic1's different post-base <abbr>GSUB</abbr> substitution rules.
 
 For example, the old-model Indic syllable
 
@@ -170,13 +170,13 @@ would be reordered to
 
 before features are applied.
 
-In Malayalam, Uniscribe always reorders the first post-base Halant in
+In Malayalam, Uniscribe always reorders the first post-base <samp>"Halant"</samp> in
 a syllable to the position immediately after the syllable's last consonant.
 
 #### Kannada final double Halants ####
 
 In old-model Kannada (`<knda>`) runs, Uniscribe is known to reorder
-the first post-base Halant only when there is not already a Halant
+the first post-base <samp>"Halant"</samp> only when there is not already a <samp>"Halant"</samp>
 after the last consonant.
 
 For example, the old-model Indic syllable
@@ -185,43 +185,43 @@ For example, the old-model Indic syllable
 
 would _not_ be reordered. 
 
-This behavior is an exception to the general Indic1 post-base Halant
+This behavior is an exception to the general Indic1 post-base <samp>"Halant"</samp>
 reordering operation. It is believed to be script-specific and has
 only been observed for Kannada text runs. However, there may still be
 undiscovered sequences in other Indic1-script text which trigger the
 same behavior; implementers targeting full compatibility should
 exercise caution.
 
-If the standard post-base Halant reordering were performed, then the
-likely result of the GSUB feature-application phase would be a
-sequence of the form "BaseC,belowbaseC,Halant" which, in turn, might
+If the standard post-base <samp>"Halant"</samp> reordering were performed, then the
+likely result of the <abbr>GSUB</abbr> feature-application phase would be a
+sequence of the form <samp>"BaseC,belowbaseC,Halant"</samp> which, in turn, might
 trigger mark-attachment issues for correctly positioning the final
-Halant.
+<samp>"Halant"</samp>.
 
 This Uniscribe behavior is not documented, however; therefore the only
 recommended workaround for maintaining compatibility is to define a
 special-case exception for avoiding the creation of final double
-Halants in `<knda>` text.
+<samp>"Halant"</samp>s in `<knda>` text.
 
 
 ### Halants and left matras ###
 
-When reordering left-side matras, when a Halant occurs immediately
-after a left-side matra, Uniscribe does not move the Halant with the matra.
+When reordering left-side matras, when a <samp>"Halant"</samp> occurs immediately
+after a left-side matra, Uniscribe does not move the <samp>"Halant"</samp> with the matra.
 
-Generally, marks (including "Halant") are tagged for reordering with
+Generally, marks (including <samp>"Halant"</samp>) are tagged for reordering with
 the same positioning tag as the closest non-mark character that the
 mark has affinity with. 
 
 In post-base position, where a yet-to-be-reordered left-side matra
 would be found, the closest non-mark character with affinity for the
 mark might be a post-base consonant. Uniscribe appears to make a check
-ensuring that the Halant after a left-side matra is not tagged for
+ensuring that the <samp>"Halant"</samp> after a left-side matra is not tagged for
 reordering with the matra.
 
 This check is required for shaping Sinhala, because the `U+0DDA`
-multi-part matra decomposes into the sequence "`U+0DD9`,Halant". The
-decomposed Halant should remain where it is, serving as the right-side
+multi-part matra decomposes into the sequence <samp>"`U+0DD9`,Halant"</samp>. The
+decomposed <samp>"Halant"</samp> should remain where it is, serving as the right-side
 matra component.
 
 
@@ -239,7 +239,7 @@ can be positioned.
 However, Uniscribe is known not to insert a dotted-circle before a
 matra character when it is preceded by two sequential
 explicit-half-form sequences (meaning two consecutive occurrences of
-"_Consonant_,Halant,ZWJ") in Indic2 runs.
+<samp>"_Consonant_,Halant,ZWJ"</samp>) in Indic2 runs.
 
 Therefore, the sequence:
 

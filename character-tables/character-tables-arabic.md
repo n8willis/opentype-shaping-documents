@@ -42,8 +42,8 @@ that sequences of adjacent marks can be reordered as required by the
 orthography. 
 
 For Arabic, a subset of marks in the 220 and 230 classes are also
-designated _Modifier Combining Marks_ (MCM). These are denoted with
-_220_MCM_ and _230_MCM_ in the _Mark class_ column. The MCM marks are
+designated _Modifier Combining Marks_ (<abbr>MCM</abbr>). These are denoted with
+_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr>MCM</abbr> marks are
 treated differently during the mark-reordering stage.
 
 
@@ -719,13 +719,13 @@ fashion; shaping engines should cope with this situation gracefully.
 
 
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 <!--- combining grapheme joiner explanation --->
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
@@ -737,12 +737,12 @@ sequence "ZWJ,_Letter_,ZWJ" would be used.
 
 <!--- Zero-Width Non Joiner explanation --->
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the LTR and RTL markers explanation --->
+<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
 
 
 The no-break space is primarily used to display those codepoints that

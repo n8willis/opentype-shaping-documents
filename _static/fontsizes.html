@@ -1,0 +1,146 @@
+<html>
+  <head>
+    <title>Testing relative font sizes</title>
+
+<style>
+  @font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-Italic-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('./fonts/Source_Serif_4/SourceSerif4-VariableFont_opsz,wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Sans 3';
+    src: url('./fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: italic;
+    font-weight: 1 999;
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf') format('truetype-variations');
+    font-style: normal;
+    font-weight: 1 999;
+}
+</style>
+
+<style>
+  span.adj-serif {
+      font-size-adjust: none; 
+      font-weight: 400; 
+  }
+  span.adj-sans {
+      font-size-adjust: 0.47; 
+      font-weight: 400; 
+  }
+  span.adj-mono {
+      font-size-adjust: 0.46; 
+      font-weight: 400; 
+  }
+  span.adj-serif-i {
+      font-size-adjust: none; 
+      font-weight: 400; 
+  }
+  span.adj-sans-i {
+      font-size-adjust: 0.47; 
+      font-weight: 400;
+  }
+  span.adj-mono-i {
+      font-size-adjust: 0.46; 
+      font-weight: 400; 
+  }
+</style>
+
+
+  </head>
+  <body>
+
+    <h1>Samples for comparing font-size-adjust and variable-axis
+    tweaks on the Source Superfamily</h1>
+    
+    <h2>Unadjusted</h2>
+    <h3>72 pt</h3>
+    <p>
+      Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span style="font-family:'Source Sans 3'; font-size:72pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span style="font-family:'Source Code Pro'; font-size:72pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:72pt; font-style: italic">Hn</span><span style="font-family:'Source Sans 3'; font-size:72pt; font-style: italic">Hn</span><span style="font-family:'Source Serif 4'; font-size:72pt; font-style: italic">Hn</span><span style="font-family:'Source Code Pro'; font-size:72pt; font-style: italic">Hn</span>
+      </p>
+
+    <h3>28 pt</h3>
+    <p>
+      Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span style="font-family:'Source Sans 3'; font-size:28pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span style="font-family:'Source Code Pro'; font-size:28pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:28pt; font-style: italic">Hn</span><span style="font-family:'Source Sans 3'; font-size:28pt; font-style: italic">Hn</span><span style="font-family:'Source Serif 4'; font-size:28pt; font-style: italic">Hn</span><span style="font-family:'Source Code Pro'; font-size:28pt; font-style: italic">Hn</span>
+      </p>
+
+    <h3>16 pt</h3>
+    <p>
+      Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span style="font-family:'Source Sans 3'; font-size:16pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span style="font-family:'Source Code Pro'; font-size:16pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:16pt; font-style: italic">Hn</span><span style="font-family:'Source Sans 3'; font-size:16pt; font-style: italic">Hn</span><span style="font-family:'Source Serif 4'; font-size:16pt; font-style: italic">Hn</span><span style="font-family:'Source Code Pro'; font-size:16pt; font-style: italic">Hn</span>
+      </p>
+      
+    <h3>10 pt</h3>
+    <p>
+      Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span style="font-family:'Source Sans 3'; font-size:10pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span style="font-family:'Source Code Pro'; font-size:10pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span style="font-family:'Source Serif 4'; font-size:10pt; font-style: italic">Hn</span><span style="font-family:'Source Sans 3'; font-size:10pt; font-style: italic">Hn</span><span style="font-family:'Source Serif 4'; font-size:10pt; font-style: italic">Hn</span><span style="font-family:'Source Code Pro'; font-size:10pt; font-style: italic">Hn</span>
+      </p>
+
+
+      <hr>
+      
+    <h2>Adjusted</h2>
+    <h3>72 pt</h3>
+    <p>
+      control + Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:72pt">Hn</span> <span class="adj-serif" style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span class="adj-sans" style="font-family:'Source Sans 3'; font-size:72pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span class="adj-mono" style="font-family:'Source Code Pro'; font-size:72pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:72pt">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:72pt; font-style: italic">Hn</span><span class="adj-sans-i" style="font-family:'Source Sans 3'; font-size:72pt; font-style: italic">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:72pt; font-style: italic">Hn</span><span class="adj-mono-i" style="font-family:'Source Code Pro'; font-size:72pt; font-style: italic">Hn</span>
+      </p>
+
+    <h3>28 pt</h3>
+    <p>
+      control + Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:28pt">Hn</span> <span class="adj-serif" style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span class="adj-sans" style="font-family:'Source Sans 3'; font-size:28pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span class="adj-mono" style="font-family:'Source Code Pro'; font-size:28pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:28pt">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:28pt; font-style: italic">Hn</span><span class="adj-sans-i" style="font-family:'Source Sans 3'; font-size:28pt; font-style: italic">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:28pt; font-style: italic">Hn</span><span class="adj-mono-i" style="font-family:'Source Code Pro'; font-size:28pt; font-style: italic">Hn</span>
+      </p>
+
+    <h3>16 pt</h3>
+    <p>
+      control + Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:16pt">Hn</span> <span class="adj-serif" style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span class="adj-sans" style="font-family:'Source Sans 3'; font-size:16pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span class="adj-mono" style="font-family:'Source Code Pro'; font-size:16pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:16pt">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:16pt; font-style: italic">Hn</span><span class="adj-sans-i" style="font-family:'Source Sans 3'; font-size:16pt; font-style: italic">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:16pt; font-style: italic">Hn</span><span class="adj-mono-i" style="font-family:'Source Code Pro'; font-size:16pt; font-style: italic">Hn</span>
+      </p>
+      
+    <h3>10 pt</h3>
+    <p>
+      control + Source Serif 4 | Source Sans 3 | Source Serif 4 | Source Code Pro | Source Serif 4 | ...italics
+      <p>
+	<span style="font-family:'Source Serif 4'; font-size:10pt">Hn</span> <span class="adj-serif" style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span class="adj-sans" style="font-family:'Source Sans 3'; font-size:10pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span class="adj-mono" style="font-family:'Source Code Pro'; font-size:10pt">Hn</span><span class="adj-serif" style="font-family:'Source Serif 4'; font-size:10pt">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:10pt; font-style: italic">Hn</span><span class="adj-sans-i" style="font-family:'Source Sans 3'; font-size:10pt; font-style: italic">Hn</span><span class="adj-serif-i" style="font-family:'Source Serif 4'; font-size:10pt; font-style: italic">Hn</span><span class="adj-mono-i" style="font-family:'Source Code Pro'; font-size:10pt; font-style: italic">Hn</span>
+      </p>
+
+      
+  </body>
+</html>

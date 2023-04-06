@@ -14,13 +14,13 @@ implementations share.
 	  - [Mark classification](#mark-classification)
 	  - [Character tables](#character-tables)
   - [The `<syrc>` shaping model](#the-syrc-shaping-model)
-      - [1. Transient reordering of modifier combining marks](#1-transient-reordering-of-modifier-combining-marks)
-      - [2. Compound character composition and decomposition](#2-compound-character-composition-and-decomposition)
-      - [3. Computing letter joining states](#3-computing-letter-joining-states)
-      - [4. Applying the `stch` feature](#4-applying-the-stch-feature)
-      - [5. Applying the language-form substitution features from GSUB](#5-applying-the-language-form-substitution-features-from-gsub)
-      - [6. Applying the typographic-form substitution features from GSUB](#6-applying-the-typographic-form-substitution-features-from-gsub)
-      - [7. Applying the positioning features from GPOS](#7-applying-the-positioning-features-from-gpos)
+      - [Stage 1: Transient reordering of modifier combining marks](#stage-1-transient-reordering-of-modifier-combining-marks)
+      - [Stage 2: Compound character composition and decomposition](#stage-2-compound-character-composition-and-decomposition)
+      - [Stage 3: Computing letter joining states](#stage-3-computing-letter-joining-states)
+      - [Stage 4: Applying the `stch` feature](#stage-4-applying-the-stch-feature)
+      - [Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr>](#stage-5-applying-the-language-form-substitution-features-from-gsub)
+      - [Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr>](#stage-6-applying-the-typographic-form-substitution-features-from-gsub)
+      - [Stage 7: Applying the positioning features from <abbr>GPOS</abbr>](#stage-7-applying-the-positioning-features-from-gpos)
   
 
 
@@ -148,7 +148,7 @@ In addition to the standard joining types, `<syrc>` text features two
 `JOINING_GROUP`s that trigger special behavior: `ALAPH` and
 `DALATH_RISH`.
 
-The `fin2`, `fin3`, and `med2` GSUB features implement Syriac-specific
+The `fin2`, `fin3`, and `med2` <abbr>GSUB</abbr> features implement Syriac-specific
 shaping rules that affect glyphs in the `ALAPH` joining group, based
 on the preceding glyph.
 
@@ -167,7 +167,12 @@ letters featured a dot, and may also be used in transcribing
 historical documents where it is impossible to distinguish whether the
 letter in the source text is "Dalath" or "Rish".
 
-![](/images/syriac/syriac-dalath-rish.png)
+:::{figure-md}
+![Dalath, Rish, Dotless Dalath-Rish](/images/syriac/syriac-dalath-rish.png "Dalath, Rish, Dotless Dalath-Rish")
+
+Dalath, Rish, Dotless Dalath-Rish
+:::
+
 
 Shaping engines may choose to define pseudo-`JOINING_TYPE`s
 corresponding to the `ALAPH` and `DALATH_RISH` joining groups, or may
@@ -196,7 +201,7 @@ normalization.
 
 
 These classifications are used in the [mark-transient-reordering
-stage](#1-transient-reordering-of-modifier-combining-marks).
+stage](#stage-1-transient-reordering-of-modifier-combining-marks).
 
 			
 ### Character tables ###
@@ -251,9 +256,9 @@ fashion; shaping engines should cope with this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. GPOS positioning lookups should attach mark glyphs to dotted
+normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in GSUB substitutions.
+dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -279,32 +284,32 @@ Modern texts may also make use of Arabic punctuation marks, and texts
 using Syriac to write Arabic (called "Garshuni") may also employ
 Arabic ḥarakah (vowel) marks.
 
-The combining grapheme joiner (CGJ) is primarily used to alter the
+The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 
 By default, OpenType shaping reorders sequences of adjacent marks by
 sorting the sequence on the marks' Canonical_Combining_Class (Ccc)
-values. The presence of a CGJ character within a sequence of marks has
+values. The presence of a <abbr>CGJ</abbr> character within a sequence of marks has
 the effect of splitting the sequence into two sequences of marks and,
 therefore, halting any mark-reordering that would have occurred
-between the marks on either side of the CGJ.
+between the marks on either side of the <abbr>CGJ</abbr>.
 
-The zero-width joiner (ZWJ) is primarily used to force the usage of the
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
 For example, to show the initial form of a letter in isolation (such
-as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
+as for displaying it in a table of forms), the sequence <samp>"_Letter_,ZWJ"</samp>
 would be used. To show the medial form of a letter in isolation, the
-sequence "ZWJ,_Letter_,ZWJ" would be used.
+sequence <samp>"ZWJ,_Letter_,ZWJ"</samp> would be used.
 
-The zero-width non-joiner (ZWNJ) is primarily used to prevent a
+The zero-width non-joiner (<abbr>ZWNJ</abbr>) is primarily used to prevent a
 cursive connection between two adjacent characters that would, under
 normal circumstances, form a join. 
 
-The ZWJ and ZWNJ characters are, by definition, non-printing control
+The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -312,25 +317,25 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a ZWJ or ZWNJ be rendered
+> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the ZWJ and ZWNJ are non-printing control characters, they can
+Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the ZWJ and ZWNJ are designed
+involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore ZWJ and ZWNJ.
+will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
 
-Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
+Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's GSUB or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 
 
-The right-to-left mark (RLM) and left-to-right mark (LRM) are used by
+The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes. Generally
-speaking RLM and LRM codepoints do not interact with shaping.
+speaking <abbr>RLM</abbr> and <abbr>LRM</abbr> codepoints do not interact with shaping.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel points or diacritical marks) in an
@@ -347,12 +352,12 @@ Processing a run of `<syrc>` text involves seven top-level stages:
 2. Compound character composition and decomposition
 3. Computing letter joining states
 4. Applying the `stch` feature
-5. Applying the language-form substitution features from GSUB
-6. Applying the typographic-form substitution features from GSUB
-7. Applying the positioning features from GPOS
+5. Applying the language-form substitution features from <abbr>GSUB</abbr>
+6. Applying the typographic-form substitution features from <abbr>GSUB</abbr>
+7. Applying the positioning features from <abbr>GPOS</abbr>
 
 
-### 1. Transient reordering of modifier combining marks ###
+### Stage 1: Transient reordering of modifier combining marks ###
 
 <!--- http://www.unicode.org/reports/tr53/tr53-1.pdf --->
 
@@ -363,7 +368,7 @@ Processing a run of `<syrc>` text involves seven top-level stages:
 
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
-positioning features from GPOS can be correctly applied.
+positioning features from <abbr>GPOS</abbr> can be correctly applied.
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
@@ -373,30 +378,30 @@ cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
 on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
-_Modifier_Combining_Mark_ (`MCM`) subclasses specified in the
+_Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
 
 The algorithm for reordering a sequence of marks is:
 
-  - First, move any "Shadda" (combining class `33`) characters to the
+  - First, move any <samp>"Shadda"</samp> (combining class `33`) characters to the
     beginning of the mark sequence.
 	
   -	Second, move any subsequence of combining-class-`230` characters that begins
        with a `230_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters. The subsequence must be moved
+       before all <samp>"Shadda"</samp> characters. The subsequence must be moved
        as a group.
 
   - Finally, move any subsequence of combining-class-`220` characters that begins
        with a `220_MCM` character to the beginning of the sequence,
-       before all "Shadda" characters and before all class-`230`
+       before all <samp>"Shadda"</samp> characters and before all class-`230`
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (AMTRA), in Technical Report 53,
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
 > Ccc-based mark reordering.
 >
-> Specifically, AMTRA is designated as an operation performed during
+> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -405,7 +410,7 @@ The algorithm for reordering a sequence of marks is:
 > modifier combining marks in conjunction with their Unicode
 > normalization functionality for increased efficiency.
 
-### 2. Compound character composition and decomposition ###
+### Stage 2: Compound character composition and decomposition ###
 
 The `ccmp` feature allows a font to substitute
 
@@ -418,15 +423,15 @@ The `ccmp` feature allows a font to substitute
     mark-only glyph, to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB or GPOS lookups, because
+performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-### 3. Computing letter joining states ###
+### Stage 3: Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from GSUB during stage 6, the shaping engine must
+substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 To determine which feature is appropriate, the shaping engine must
@@ -457,7 +462,7 @@ character but preserve the currently-tracked JOINING_TYPE at its previous state.
 
 If the preceding character's JOINING_TYPE is LEFT, DUAL, or
 JOIN_CAUSING:
-  - In `<syrc>` text, if the current character is "Alaph", tag the
+  - In `<syrc>` text, if the current character is <samp>"Alaph"</samp>, tag the
     current character for `med2`, then update the tag for the
     preceding character:
 	  - `isol` becomes `init`
@@ -476,7 +481,7 @@ Otherwise, tag the current character for `isol`.
 
 After testing the final character of the word, if the text is in `<syrc>` and
 if the last character that is not JOINING_TYPE_TRANSPARENT or
-JOINING_TYPE_NON_JOINING is "Alaph", perform an additional test:
+JOINING_TYPE_NON_JOINING is <samp>"Alaph"</samp>, perform an additional test:
   - If the preceding character is JOINING_TYPE_LEFT, tag the current character
     for `fina`
   - If the preceding character's JOINING_GROUP is DALATH_RISH, tag the current
@@ -497,12 +502,12 @@ At the end of this process, all letters should be tagged for possible
 substitution by one of the `isol`, `init`, `medi`, `med2`, `fina`, `fin2`, or
 `fin3` features.
 
-### 4. Applying the `stch` feature ###
+### Stage 4: Applying the `stch` feature ###
 
 The `stch` feature decomposes and stretches special marks that are
 meant to extend to the full width of words to which they are
-attached. It was defined for use in `<syrc>` text runs for the "Syriac
-Abbreviation Mark" (`U+070F`) but it can be used with similar marks in
+attached. It was defined for use in `<syrc>` text runs for the <samp>"Syriac
+Abbreviation Mark"</samp> (`U+070F`) but it can be used with similar marks in
 other scripts.
 
 To apply the `stch` feature, the shaping engine should first decompose the
@@ -533,12 +538,12 @@ Finally, the decomposed mark must be reordered as follows:
     the word.
 	
 
-### 5. Applying the language-form substitution features from GSUB ###
+### Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's GSUB table. In preparation for
+features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -556,7 +561,7 @@ all scripts implemented in the Arabic shaping model:
 	calt
 	
 
-#### 5.1 locl ####
+#### Stage 5, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -566,12 +571,12 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 <!--- ![Localized form substitution](/images/syriac/syriac-locl.png) --->
 
 
-#### 5.2 isol ####
+#### Stage 5, step 2: isol ####
 
 The `isol` feature substitutes the default glyph for a codepoint with
 the isolated form of the letter.
@@ -585,72 +590,100 @@ the isolated form of the letter.
 <!--- ![Isolated form substitution](/images/syriac/syriac-isol.png) --->
 
 
-#### 5.3 fina ####
+#### Stage 5, step 3: fina ####
 
 The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
-![Final form substitution](/images/syriac/syriac-fina.png)
+:::{figure-md}
+![Final form substitution](/images/syriac/syriac-fina.png "Final form substitution")
+
+Final form substitution
+:::
 
 
-#### 5.4 fin2 ####
+#### Stage 5, step 4: fin2 ####
 
 The `fin2` feature replaces word-final Alaph glyph that are not
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
-![Final form-2 substitution](/images/syriac/syriac-fin2.png)
+:::{figure-md}
+![Final form-2 substitution](/images/syriac/syriac-fin2.png "Final form-2 substitution")
+
+Final form-2 substitution
+:::
 
 
-#### 5.5 fin3 ####
+#### Stage 5, step 5: fin3 ####
 
 The `fin3` feature replaces word-final Alaph glyph that are 
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
-![Final form-3 substitution](/images/syriac/syriac-fin3.png)
+:::{figure-md}
+![Final form-3 substitution](/images/syriac/syriac-fin3.png "Final form-3 substitution")
+
+Final form-3 substitution
+:::
 
 
-#### 5.6 medi ####
+#### Stage 5, step 6: medi ####
 
 The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
-![Medial form substitution](/images/syriac/syriac-medi.png)
+:::{figure-md}
+![Medial form substitution](/images/syriac/syriac-medi.png "Medial form substitution")
+
+Medial form substitution
+:::
 
 
-#### 5.7 med2 ####
+#### Stage 5, step 7: med2 ####
 
 The `med2` feature replaces Alaph glyphs in the middle of a
 word that are preceded by a base character that cannot be joined to
 with a special medial form.
 
-![Medial form-2 substitution](/images/syriac/syriac-med2.png)
+:::{figure-md}
+![Medial form-2 substitution](/images/syriac/syriac-med2.png "Medial form-2 substitution")
+
+Medial form-2 substitution
+:::
 
 
-#### 5.8 init ####
+#### Stage 5, step 8: init ####
 
 The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
-![Initial form substitution](/images/syriac/syriac-init.png)
+:::{figure-md}
+![Initial form substitution](/images/syriac/syriac-init.png "Initial form substitution")
+
+Initial form substitution
+:::
 
 
-#### 5.9 rlig ####
+#### Stage 5, step 9: rlig ####
 
 The `rlig` feature substitutes glyph sequences with mandatory
 ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
-![Required ligature substitution](/images/syriac/syriac-rlig.png)
+:::{figure-md}
+![Required ligature substitution](/images/syriac/syriac-rlig.png "Required ligature substitution")
+
+Required ligature substitution
+:::
 
 
-#### 5.10 rclt ####
+#### Stage 5, step 10: rclt ####
 
 This feature is not used in `<syrc>` text.
 
 
-#### 5.11 calt ####
+#### Stage 5, step 11: calt ####
 
 The `calt` feature substitutes glyphs with contextual alternate
 forms. In general, this involves replacing the default form of a
@@ -660,14 +693,17 @@ connection to an adjacent glyph.
 The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-![Contextual alternate substitution](/images/syriac/syriac-calt.png)
+:::{figure-md}
+![Contextual alternate substitution](/images/syriac/syriac-calt.png "Contextual alternate substitution")
+
+Contextual alternate substitution
+:::
 
 
-
-### 6. Applying the typographic-form substitution features from GSUB ###
+### Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's GSUB table.
+features using the rules in the font's <abbr>GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -678,34 +714,37 @@ all scripts implemented in the Arabic shaping model:
 	mset (not used in Syriac)
 	
 
-#### 6.1 liga ####
+#### Stage 6, step 1: liga ####
 
 The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Standard ligature substitution](/images/syriac/syriac-liga.png)
+:::{figure-md}
+![Standard ligature substitution](/images/syriac/syriac-liga.png "Standard ligature substitution")
+
+Standard ligature substitution
+:::
 
 
-
-#### 6.2 dlig ####
+#### Stage 6, step 2: dlig ####
 
 The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 
-#### 6.3 cswh ####
+#### Stage 6, step 3: cswh ####
 
 This feature is not used in `<syrc>` text.
 
 
-#### 6.4 mset ####
+#### Stage 6, step 4: mset ####
 
 This feature is not used in `<syrc>` text.
 
 
-### 7. Applying the positioning features from GPOS ###
+### Stage 7: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs.
@@ -718,24 +757,29 @@ all scripts implemented in the Arabic shaping model:
 	mark
 	mkmk
 
-#### 7.1 `curs` ####
+#### Stage 7, step 1: curs ####
 
 This feature is not used in `<syrc>` text.
 
 
-#### 7.2 `kern` ####
+#### Stage 7, step 2: kern ####
 
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 
-#### 7.3 `mark` ####
+#### Stage 7, step 3: mark ####
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Mark positioning](/images/syriac/syriac-mark.png)
+:::{figure-md}
+![Mark positioning](/images/syriac/syriac-mark.png "Mark positioning")
+
+Mark positioning
+:::
 
 
-#### 7.4 `mkmk` ####
+
+#### Stage 7, step 4: mkmk ####
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the

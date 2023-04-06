@@ -14,12 +14,12 @@ implementations share.
 	  - [Composing behavior](#composing-behavior)
 	  - [Character tables](#character-tables)
   - [The `<hang>` shaping model](#the-hang-shaping-model)
-      - [1. Identifying syllables](#1-identifying-syllables)
-      - [2. Determining if the syllable can be composed into a Hangul Syllables codepoint](#2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint)
-      - [3. Composing the syllable (if composition is possible)](#3-composing-the-syllable-if-composition-is-possible)
-      - [4. Fully decomposing the syllable (if composition is not possible)](#4-fully-decomposing-the-syllable-if-composition-is-not-possible)
-      - [5. Shaping the fully decomposed syllable with GSUB features](#5-shaping-the-fully-decomposed-syllable-with-gsub-features)
-      - [6. Reordering tone marks](#6-reordering-tone-marks)
+      - [Stage 1: Identifying syllables](#stage-1-identifying-syllables)
+      - [Stage 2: Determining if the syllable can be composed into a Hangul Syllables codepoint](#stage-2-determining-if-the-syllable-can-be-composed-into-a-hangul-syllables-codepoint)
+      - [Stage 3: Composing the syllable (if composition is possible)](#stage-3-composing-the-syllable-if-composition-is-possible)
+      - [Stage 4: Fully decomposing the syllable (if composition is not possible)](#stage-4-fully-decomposing-the-syllable-if-composition-is-not-possible)
+      - [Stage 5: Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features](#stage-5-shaping-the-fully-decomposed-syllable-with-gsub-features)
+      - [Stage 6: Reordering tone marks](#stage-6-reordering-tone-marks)
  
 
 
@@ -79,11 +79,18 @@ Valid syllables must be either of the form "**`L`**,**`V`**" or of the form
 consonant, must include one vowel in the second position, and may or may
 not end with one trailing consonant. 
 
-![LV syllable](images/hangul/hangul-lv-syllable.png)
+:::{figure-md}
+![LV syllable](images/hangul/hangul-lv-syllable.png "LVT syllable")
+
+LV syllable
+:::
 
 
-![LVT syllable](images/hangul/hangul-lvt-syllable.png)
+:::{figure-md}
+![LVT syllable](images/hangul/hangul-lvt-syllable.png "LVT syllable")
 
+LVT syllable
+:::
 
 
 All possible syllables for Modern Korean are defined in the Hangul
@@ -111,7 +118,7 @@ syllable glyph — and when they cannot.
 Those jamo sequences that cannot be composed into a syllable codepoint
 (or that compose into a syllable codepoint that is missing in the
 active font) are then rendered by shaping and positioning each
-individual jamo using GSUB substitution rules. 
+individual jamo using <abbr>GSUB</abbr> substitution rules. 
 
 
 
@@ -141,8 +148,8 @@ used as leading consonants, therefore they are not encoded in leading
 (choseong) forms.
 
 > Note: compound consonant jamo are not written as sequences of basic
-> jamo. That is, "Kiyeok,Kiyeok" (&#x1100;&#x1100;) is not equivalent
-> to "Ssangkiyeok" (&#x1101;). 
+> jamo. That is, <samp>"Kiyeok,Kiyeok"</samp> (&#x1100;&#x1100;) is not equivalent
+> to <samp>"Ssangkiyeok"</samp> (&#x1101;). 
 
 The Hangul Jamo block also includes two "filler" codepoints. "Choseong
 Filler" (`U+115F`) can take the place of a missing choseong (`L`
@@ -166,8 +173,8 @@ that contain solely Modern jamo. Consequently, each jamo is assigned a
 `COMPOSING_BEHAVIOR` property to indicate whether it can be composed
 into a Hangul Syllable codepoint. 
 
-An "`L`,`V`,`T`" sequence with the `COMPOSING_BEHAVIOR`s
-"`YES`,`YES`,`YES`" or an "`L`,`V`" sequence with the
+An <samp>"`L`,`V`,`T`"</samp> sequence with the `COMPOSING_BEHAVIOR`s
+"`YES`,`YES`,`YES`" or an <samp>"`L`,`V`"</samp> sequence with the
 `COMPOSING_BEHAVIOR`s "`YES`,`YES`" will compose to a codepoint in the Hangul
 Syllables block. A sequence containing any `NO`s will not compose to a
 codepoint in the Hangul Syllables block.
@@ -177,8 +184,6 @@ codepoint in the Hangul Syllables block.
 
 
 <!--- ### Identification by Unicode range ### --->
-
-
 
 
 ### Character tables ###
@@ -264,18 +269,18 @@ Processing a run of `<hang>` text involves six top-level stages:
 2. Determining if the syllable can be composed into a Hangul Syllables codepoint
 3. Composing the syllable (if composition is possible)
 4. Fully decomposing the syllable (if composition is not possible)
-5. Shaping the fully decomposed syllable with GSUB features
+5. Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features
 6. Reordering tone marks
 
 
-### 1. Identifying syllables ###
+### Stage 1: Identifying syllables ###
 
 The precomposed syllable codepoints in the Hangul Syllable block come in
 two forms: `LV` syllables (which represent an `L` jamo and a `V` jamo)
 and `LVT` syllables (which represent an `L` jamo, a `V` jamo, and a `T` jamo).
 
 A syllable consisting of a string of jamo must match either the
-sequence "`L`,`V`" or the sequence "`L`,`V`,`T`".
+sequence <samp>"`L`,`V`"</samp> or the sequence <samp>"`L`,`V`,`T`"</samp>.
 
 The `L`, `V`, and `T` components must be a single jamo each. In Modern
 Korean, all of the jamo must have a `COMPOSING_BEHAVIOR` of `YES`. In
@@ -321,10 +326,10 @@ After the syllables have been identified, each of the subsequent
 shaping stages occurs on a per-syllable basis.
 
 
-### 2. Determining if the syllable can be composed into a Hangul Syllables codepoint ###
+### Stage 2: Determining if the syllable can be composed into a Hangul Syllables codepoint ###
 
 
-#### 2.1 Fully precomposed syllables ####
+#### Stage 2, step 1: Fully precomposed syllables ####
 
 A precomposed `Slvt` or `Slv` syllable requires no shaping if the active
 font includes a glyph for the corresponding Hangul Syllables
@@ -337,20 +342,20 @@ examined to determine if it composes into a codepoint in the Hangul
 Syllables block.
 
 
-#### 2.2 Partially precomposed syllables ####
+#### Stage 2, step 2: Partially precomposed syllables ####
 
-For "`Slv`,`T`" syllables, the `Slv` codepoint must first be
+For <samp>"`Slv`,`T`"</samp> syllables, the `Slv` codepoint must first be
 decomposed into its constituent jamo. Then, the resulting
-"`L`,`V`,`T`" syllable must be examined in the [next
-step](#23-fully-jamo-syllables). 
+<samp>"`L`,`V`,`T`"</samp> syllable must be examined in the [next
+step](#stage-2-step-3-fully-jamo-syllables). 
 
 The decomposition of the `Slv` syllable is canonical, and uses the
-algorithm defined in [stage four](#4-fully-decomposing-the-syllable-if-composition-is-not-possible).
+algorithm defined in [stage four](#stage-4-fully-decomposing-the-syllable-if-composition-is-not-possible).
 
 
-#### 2.3 Fully jamo syllables ####
+#### Stage 2, step 3: Fully jamo syllables ####
 
-For "`L`,`V`" and "`L`,`V`,`T`" syllables, the `COMPOSING_BEHAVIOR` of
+For <samp>"`L`,`V`"</samp> and <samp>"`L`,`V`,`T`"</samp> syllables, the `COMPOSING_BEHAVIOR` of
 each jamo must be examined. 
 
 If all jamo in the syllable have `COMPOSING_BEHAVIOR` of `YES`, then
@@ -359,10 +364,10 @@ compose the jamo into the corresponding Hangul Syllables codepoint.
 
 If any of the jamo in the syllable have `COMPOSING_BEHAVIOR` of `NO`,
 then the shaping engine should proceed to stage five and shape the
-syllable using GSUB features.
+syllable using <abbr>GSUB</abbr> features.
 
 
-### 3. Composing the syllable (if composition is possible) ###
+### Stage 3: Composing the syllable (if composition is possible) ###
 
 Unicode defines a canonical algorithm for composing jamo into Hangul
 Syllables codepoints. The algorithm leverages the strict jamo-ordering
@@ -384,7 +389,7 @@ The algorithm defines the following consonants:
 	SCount = (LCount * NCount) = 11172
 ```
 	
-For a jamo sequence "`L`,`V`", where both `L` and `V` are of
+For a jamo sequence <samp>"`L`,`V`"</samp>, where both `L` and `V` are of
 `COMPOSING_BEHAVIOR` `YES`, the composed syllable codepoint is found
 by computing:
 
@@ -395,7 +400,7 @@ by computing:
 	Slv = SBase + LVIndex
 ```
 
-Similarly, for a jamo sequence "`L`,`V`,`T`", where `L`, `V`, and `T`
+Similarly, for a jamo sequence <samp>"`L`,`V`,`T`"</samp>, where `L`, `V`, and `T`
 are all of `COMPOSING_BEHAVIOR` `YES`, the composed syllable codepoint
 is found by computing:
 
@@ -417,13 +422,17 @@ If the needed codepoint is missing, the shaping engine should perform
 no substitution and must proceed to stage five with the original `L`,
 `V`, and (if used) `T` jamo. 
 
-![Syllable composition](images/hangul/hangul-compose.png)
+:::{figure-md}
+![Syllable composition](images/hangul/hangul-compose.png "Syllable composition")
+
+Syllable composition
+:::
 
 
 
-### 4. Fully decomposing the syllable (if composition is not possible) ###
+### Stage 4: Fully decomposing the syllable (if composition is not possible) ###
 
-An "`Slv`,`T`" syllable that does not compose into a Hangul Syllables
+An <samp>"`Slv`,`T`"</samp> syllable that does not compose into a Hangul Syllables
 codepoint or that composes into a Hangul Syllables codepoint which is
 missing in the active font must be fully decomposed into jamo.
 
@@ -471,29 +480,32 @@ trailing-consonant (jongseong) position.
 With the syllable decomposed, the shaping engine can proceed to stage
 five with the `L`, `V`, and (if used) `T` jamo. 
 
-![Syllable decomposition](images/hangul/hangul-decompose.png)
+:::{figure-md}
+![Syllable decomposition](images/hangul/hangul-decompose.png "Syllable decomposition")
+
+Syllable decomposition
+:::
 
 
-
-### 5. Shaping the fully decomposed syllable with GSUB features ###
+### Stage 5: Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features ###
 
 With the syllable fully decomposed into a sequence of jamo, the next
 stage applies mandatory substitution features using rules in the
-font's GSUB table. 
+font's <abbr>GSUB</abbr> table. 
 
 
-#### 5.1 `ccmp` ####
+#### Stage 5, step 1: `ccmp` ####
 
 The `ccmp` feature allows a font to substitute basic-jamo sequences
 with a pre-composed glyph including compound jamo. 
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-#### 5.2 `ljmo` ####
+#### Stage 5, step 2: `ljmo` ####
 
 This feature replaces the default (i.e., standalone) forms of leading
 consonant (choseong) glyphs in a syllable cell with alternate forms
@@ -508,10 +520,15 @@ then shorter forms of both the leading consonant (choseong) and vowel
 (jungseong) glyphs will be used in order to provide sufficient
 vertical space. 
 
-![L Jamo feature application](images/hangul/hangul-ljmo.png)
+:::{figure-md}
+![L Jamo feature application](images/hangul/hangul-ljmo.png "L Jamo feature application")
+
+L Jamo feature application
+:::
 
 
-#### 5.3 `vjmo` ####
+
+#### Stage 5, step 3: `vjmo` ####
 
 This feature replaces the default (i.e., standalone) forms of vowel
 (jungseong) glyphs in a syllable cell with alternate forms that fit into
@@ -524,10 +541,15 @@ If the syllable ends in a trailing consonant (jongseong), then shorter
 forms of both the leading consonant (choseong) and vowel (jungseong)
 glyphs will be used in order to provide sufficient vertical space.
 
-![V Jamo feature application](images/hangul/hangul-vjmo.png)
+:::{figure-md}
+![V Jamo feature application](images/hangul/hangul-vjmo.png "V Jamo feature application")
+
+V Jamo feature application
+:::
 
 
-#### 5.4 `tjmo` ####
+
+#### Stage 5, step 4: `tjmo` ####
 
 This feature replaces the default (i.e., standalone) forms of trailing
 consonant (jongseong) glyphs in a syllable cell with alternate forms
@@ -538,10 +560,15 @@ jungseong jamo, there is less variation in shape that the alternate
 forms can take on. A given font may, however, include several
 context-dependent alternates for stylistic or typographic variation.
 
-![T Jamo feature application](images/hangul/hangul-tjmo.png)
+:::{figure-md}
+![T Jamo feature application](images/hangul/hangul-tjmo.png "T Jamo feature application")
+
+T Jamo feature application
+:::
 
 
-### 6. Reordering tone marks ###
+
+### Stage 6. Reordering tone marks ###
 
 Any tone marks should now be reordered. In the text run, marks occur immediately after
 the syllable to which they apply. After reordering, each mark should
@@ -549,13 +576,12 @@ be placed immediately to the left of the syllable.
 
 This reordering move is the same regardless of whether the syllable in
 question is a precomposed syllable codepoint from the Hangul Syllables
-block or a jamo-based syllable composed via the application of GSUB
+block or a jamo-based syllable composed via the application of <abbr>GSUB</abbr>
 features. Therefore, the reordering must take place at the end of the
 shaping process.
 
-![Tone-mark reordering](images/hangul/hangul-tone.png)
+:::{figure-md}
+![Tone-mark reordering](images/hangul/hangul-tone.png "Tone-mark reordering")
 
-
-
-   
-   
+Tone-mark reordering
+:::

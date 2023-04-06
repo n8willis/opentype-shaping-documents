@@ -12,12 +12,12 @@ runs in the Oriya script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Oriya character tables](#oriya-character-tables)
   - [The `<ory2>` shaping model](#the-ory2-shaping-model)
-      - [1: Identifying syllables and other sequences](#1-identifying-syllables-and-other-sequences)
-      - [2: Initial reordering](#2-initial-reordering)
-      - [3: Applying the basic substitution features from GSUB](#3-applying-the-basic-substitution-features-from-gsub)
-      - [4: Final reordering](#4-final-reordering)
-      - [5: Applying all remaining substitution features from GSUB](#5-applying-all-remaining-substitution-features-from-gsub)
-      - [6: Applying remaining positioning features from GPOS](#6-applying-remaining-positioning-features-from-gpos)
+      - [Stage 1: Identifying syllables and other sequences](#stage-1-identifying-syllables-and-other-sequences)
+      - [Stage 2: Initial reordering](#stage-2-initial-reordering)
+      - [Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr>](#stage-3-applying-the-basic-substitution-features-from-gsub)
+      - [Stage 4: Final reordering](#stage-4-final-reordering)
+      - [Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr>](#stage-5-applying-all-remaining-substitution-features-from-gsub)
+      - [Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr>](#stage-6-applying-remaining-positioning-features-from-gpos)
   - [The `<orya>` shaping model](#the-orya-shaping-model)
       - [Distinctions from `<ory2>`](#distinctions-from-ory2)
       - [Advice for handling fonts with `<orya>` features only](#advice-for-handling-fonts-with-orya-features-only)
@@ -64,7 +64,7 @@ base consonant of a syllable is the consonant that carries the
 syllable's vowel sound, either the inherent vowel (for an unmarked
 base consonant) or a dependent vowel (with the addition of a matra).
 
-Different GSUB
+Different <abbr>GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -132,7 +132,7 @@ replaces the default glyphs with superscript variants.
 Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's GPOS
+the glyphs is determined by the lookups found in the font's <abbr>GPOS</abbr>
 table, however, the shaping rules for Indic scripts require that the
 shaping engine be able to identify marks by their general
 position. 
@@ -163,7 +163,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 In addition, dependent-vowel codepoints that are composed of multiple
@@ -243,9 +243,9 @@ this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. GPOS positioning lookups should attach mark glyphs to dotted
+normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in GSUB substitutions.
+dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -258,32 +258,32 @@ This requirement covers:
     codepoints (such as most dependent-vowel marks or matras)
   
   - Dependent signs that are formed only by specific sequences of
-    other codepoints (such as "Reph")
+    other codepoints (such as <samp>"Reph"</samp>)
 
 
-The zero-width joiner (ZWJ) is primarily used to prevent the formation
-of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence.
+The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation
+of a conjunct from a <samp>"_Consonant_,Halant,_Consonant_"</samp> sequence.
 
-  - The sequence "_Consonant_,Halant,ZWJ,_Consonant_" blocks the
+  - The sequence <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> blocks the
     formation of a conjunct between the two consonants. 
 
-Note, however, that the "_Consonant_,Halant" subsequence in the above
+Note, however, that the <samp>"_Consonant_,Halant"</samp> subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner (ZWNJ) must be used instead.
+conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead.
 
-  - The sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce
+  - The sequence <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> should produce
     the first consonant in its standard form, followed by an explicit
-    "Halant". 
+    <samp>"Halant"</samp>. 
 
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph".
+<samp>"Reph"</samp>.
 
-  - An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-    even where an initial "Ra,Halant" sequence without the zero-width
-    joiner would otherwise produce a "Reph".
+  - An initial <samp>"Ra,Halant,ZWJ"</samp> sequence should not produce a <samp>"Reph"</samp>,
+    even where an initial <samp>"Ra,Halant"</samp> sequence without the zero-width
+    joiner would otherwise produce a <samp>"Reph"</samp>.
 
-The ZWJ and ZWNJ characters are, by definition, non-printing control
+The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -291,33 +291,33 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a ZWJ or ZWNJ be rendered
+> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the ZWJ and ZWNJ are non-printing control characters, they can
+Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the ZWJ and ZWNJ are designed
+involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore ZWJ and ZWNJ.
+will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
 
-Similarly, the ZWJ and ZWNJ should be ignored by the shaping engine
+Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's GSUB or GPOS lookups.
+lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
 
 For example:
 
   - A lookup that substitutes an alternate version of a
-    dependent-vowel (matra) glyph when it is preceded by "Ka,Halant,Tta"
+    dependent-vowel (matra) glyph when it is preceded by <samp>"Ka,Halant,Tta"</samp>
     should still be applied if the dependent-vowel codepoint is preceded
-    by "Ka,Halant,ZWJ,Tta" in the text run.
+    by <samp>"Ka,Halant,ZWJ,Tta"</samp> in the text run.
 
-The no-break space (NBSP) is primarily used to display those
+The no-break space (<abbr>NBSP</abbr>) is primarily used to display those
 codepoints that are defined as non-spacing (marks, dependent vowels
 (matras), below-base consonant forms, and post-base consonant forms)
 in an isolated context, as an alternative to displaying them
 superimposed on the dotted-circle placeholder. These sequences will
-match "NBSP,ZWJ,Halant,_Consonant_", "NBSP,_mark_", or "NBSP,_matra_".
+match <samp>"NBSP,ZWJ,Halant,_Consonant_"</samp>, <samp>"NBSP,_mark_"</samp>, or <samp>"NBSP,_matra_"</samp>.
 
 In addition to general punctuation, runs of Oriya text often use the
 danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
@@ -331,10 +331,10 @@ Processing a run of `<ory2>` text involves six top-level stages:
 
 1. Identifying syllables and other sequences
 2. Initial reordering
-3. Applying the basic substitution features from GSUB
+3. Applying the basic substitution features from <abbr>GSUB</abbr>
 4. Final reordering
-5. Applying all remaining substitution features from GSUB
-6. Applying all remaining positioning features from GPOS
+5. Applying all remaining substitution features from <abbr>GSUB</abbr>
+6. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Indic scripts, the initial reordering stage and the
@@ -349,9 +349,9 @@ track. These include:
 
   - The position of the base consonant in a syllable.
   
-  - The final position of "Reph".
+  - The final position of <samp>"Reph"</samp>.
   
-  - Whether "Reph" must be requested explicitly or if it is formed by
+  - Whether <samp>"Reph"</samp> must be requested explicitly or if it is formed by
     a specific, implicit sequence.
 	
   - Whether the below-base forms feature is applied only to consonants
@@ -370,10 +370,10 @@ characteristics include:
   - `BASE_POS_LAST` = The base consonant of a syllable is the last
      consonant, not counting any special final-consonant forms.
 
-  - `REPH_POS_AFTER_MAIN` = "Reph" is ordered immediately after the
+  - `REPH_POS_AFTER_MAIN` = <samp>"Reph"</samp> is ordered immediately after the
      base consonant or syllable base.
 
-  - `REPH_MODE_IMPLICIT` = "Reph" is formed by an initial "Ra,Halant" sequence.
+  - `REPH_MODE_IMPLICIT` = <samp>"Reph"</samp> is formed by an initial <samp>"Ra,Halant"</samp> sequence.
 
   - `BLWF_MODE_PRE_AND_POST` = The below-forms feature is applied both to
      pre-base consonants and to post-base consonants.
@@ -388,11 +388,11 @@ characteristics include:
      ordered after all subjoined (i.e., below-base) consonant forms.
 
 These characteristics determine how the shaping engine must reorder
-certain glyphs, how base consonants are determined, and how "Reph"
+certain glyphs, how base consonants are determined, and how <samp>"Reph"</samp>
 should be encoded within a run of text.
 
 
-### 1: Identifying syllables and other sequences ###
+### Stage 1: Identifying syllables and other sequences ###
 
 A syllable in Oriya consists of a valid orthographic sequence
 that may be followed by a "tail" of modifier signs. 
@@ -427,7 +427,7 @@ processing than consonant-based syllables.
 
 In some languages and orthographies, vowel-based syllables are
 not permitted to include additional consonants or matras, and certain
-GSUB substitution features do not occur. However, there are often
+<abbr>GSUB</abbr> substitution features do not occur. However, there are often
 known exceptions, and real-world text makes no such guarantees. 
 
 > Note: Shaping engines may choose to treat independent-vowel bases 
@@ -445,9 +445,9 @@ syllable and its vowel sound designates the end of the syllable. This
 rule is synonymous with the `BASE_POS_LAST` characteristic mentioned
 earlier. 
 
-Non-base consonants in a valid syllable will be separated by "Halant"
-marks. Pre-base consonants will be followed by "Halant", while
-post-base consonants will be preceded by "Halant".
+Non-base consonants in a valid syllable will be separated by <samp>"Halant"</samp>
+marks. Pre-base consonants will be followed by <samp>"Halant"</samp>, while
+post-base consonants will be preceded by <samp>"Halant"</samp>.
 
 	Pre-baseC Halant BaseC Halant Post-baseC
 	
@@ -456,12 +456,12 @@ test to recognize these sequences and not mis-identify the base
 consonant.
 
 All consonants in Oriya can potentially occur in pre-base
-position. The "Halant" marks on pre-base consonants indicate that they
+position. The <samp>"Halant"</samp> marks on pre-base consonants indicate that they
 carry no vowel. Instead, they affect syllable pronunciation by
 combining with the base consonant (e.g., "_thr_" or "_spl_").
 
 Two consonants in Oriya are allowed to occur in post-base
-position: "Ya" and "Yya".
+position: <samp>"Ya"</samp> and <samp>"Yya"</samp>.
 
 Oriya consonants take on a variety of different forms in
 consonant conjuncts. In some cases, the base consonant takes a
@@ -510,30 +510,30 @@ https://web.archive.org/web/20150304085123/http://www.ciil-lisindia.net:80/Oriya
 --->
 
 
-As with other Indic scripts, the consonant "Ra" receives special
+As with other Indic scripts, the consonant <samp>"Ra"</samp> receives special
 treatment; in many circumstances it is replaced by a combining
 mark-like form. 
 
-  - A "Ra,Halant" sequence at the beginning of a syllable is replaced
-    with an above-base mark called "Reph" (unless the "Ra" is the only
+  - A <samp>"Ra,Halant"</samp> sequence at the beginning of a syllable is replaced
+    with an above-base mark called <samp>"Reph"</samp> (unless the <samp>"Ra"</samp> is the only
     consonant in the syllable). This rule is synonymous with the
     `REPH_MODE_IMPLICIT` characteristic mentioned earlier.
-  - A non-initial "Halant,Ra" sequence is replaced with a
-    below-base mark called "Raphala".
+  - A non-initial <samp>"Halant,Ra"</samp> sequence is replaced with a
+    below-base mark called <samp>"Raphala"</samp>.
   
-"Reph" and "Raphala" characters must be reordered after the
+<samp>"Reph"</samp> and <samp>"Raphala"</samp> characters must be reordered after the
 syllable-identification stage is complete. 
 
 > Note: Generally speaking, OpenType fonts will implement support for
 > any below-base, post-base, and pre-base-reordering consonant forms
 > by including the necessary substitution rules in their `blwf`,
-> `pstf`, and `pref` lookups in GSUB.
+> `pstf`, and `pref` lookups in <abbr>GSUB</abbr>.
 >
 > Consequently, whenever shaping engines need to determine whether or 
 > not a given consonant can take on such a special form, the most
 > appropriate test is to check if the consonant is included in the
-> relevant GSUB lookup. Other implementations are possible, such as
-> maintaining static tables of consonants, but checking for GSUB
+> relevant <abbr>GSUB</abbr> lookup. Other implementations are possible, such as
+> maintaining static tables of consonants, but checking for <abbr>GSUB</abbr>
 > support ensures that the expected behavior is implemented in the
 > active font, and is therefore the most reliable approach.
 
@@ -588,8 +588,8 @@ _other_		= `OTHER` | `MODIFYING_LETTER`
 > Note: the _ra_ identification class is mutually exclusive with 
 > the _consonant_ class. The union of the _consonant_ and _ra_ classes
 > is used in the regular expression elements below in order to
-> correctly identify "Ra" characters that do not trigger "Reph" or
-> "Rakaar" shaping behavior.
+> correctly identify <samp>"Ra"</samp> characters that do not trigger <samp>"Reph"</samp> or
+> <samp>"Rakaar"</samp> shaping behavior.
 >
 > Note, also, that the cantillation mark "combining Ra" in the
 > Devanagari Extended block does _not_ belong to the _ra_
@@ -678,7 +678,7 @@ A standalone syllable will match the expression:
 > choose to limit occurrences by limiting the above expressions to a
 > finite length, such as `(HALANT_GROUP CN){0,4}` .
 
-> Note: Although they are labeled as "standalone syllables" here,
+> Note: Although they are labeled as "standalone syllables"</samp> here,
 > many sequences that match the standalone regular expression above
 > are instances where a document needs to display a matra, combining
 > mark, or special form in isolation. Such sequences might not have
@@ -705,7 +705,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 The primary problem involved in shaping broken syllables is the lack
 of a syllable base (either a base consonant or an independent
 vowel). Without a syllable base, the shaping engine cannot perform
-GPOS positioning and other contextual operations that are required
+<abbr>GPOS</abbr> positioning and other contextual operations that are required
 later in the shaping process.
 
 To make up for this limitation, shaping engines should insert a
@@ -717,10 +717,10 @@ about the orthographic correctness or preferred appearance of the
 final result is out of scope for this document.
 
 Shaping engines can perform this dotted-circle insertion at any point
-after the broken syllable has been recognized and before GSUB features
+after the broken syllable has been recognized and before <abbr>GSUB</abbr> features
 are applied. However, the best results will likely be attained by
 performing the insertion immediately, before proceeding to
-stage 2. This will enable the maximum number of GSUB and GPOS features
+stage 2. This will enable the maximum number of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features
 in the active font to be correctly applied to the text run by ensuring
 that all reordering, tagging, and sorting algorithms are executed as
 usual.
@@ -761,14 +761,14 @@ i|j = i or j
 After the syllables have been identified, each of the subsequent 
 shaping stages occurs on a per-syllable basis.
 
-### 2: Initial reordering ###
+### Stage 2: Initial reordering ###
 
 The initial reordering stage is used to relocate glyphs from the
 phonetic order in which they occur in a run of text to the
 orthographic order in which they are presented visually.
 
 > Note: Primarily, this means moving dependent-vowel (matra) glyphs, 
-> "Ra,Halant" glyph sequences, and other consonants that take special
+> <samp>"Ra,Halant"</samp> glyph sequences, and other consonants that take special
 > treatment in some circumstances. 
 >
 > These reordering moves are mandatory. The final-reordering stage
@@ -810,7 +810,7 @@ which a codepoint might be reordered, across all of the Indic
 scripts. It includes some ordering categories not utilized in
 Oriya. 
 
-The basic positions (left to right) are "Reph"
+The basic positions (left to right) are <samp>"Reph"</samp>
 (`POS_RA_TO_BECOME_REPH`), dependent vowels (matras) and consonants
 positioned before the base consonant or syllable base
 (`POS_PREBASE_MATRA` and `POS_PREBASE_CONSONANT`), the base consonant
@@ -833,10 +833,10 @@ positioned before or after any post-base consonants, respectively.
 For shaping-engine implementers, the names used for the ordering
 categories matter only in that they are unambiguous. 
 
-For a definition of the "base" consonant, refer to step 2.1, which
+For a definition of the "base" consonant, refer to stage 2, step 1, which
 follows.
 
-#### 2.1: Base consonant ####
+#### Stage 2, step 1: Base consonant ####
 
 The first step is to determine the base consonant of the syllable, if
 there is one, and tag it as `POS_SYLLABLE_BASE`.
@@ -874,7 +874,7 @@ by the addition of a dependent-vowel (matra) sign.
 > because independent vowels do not take on special forms or require
 > reordering, many of the steps that follow will involve no
 > work for a vowel-based syllable. However, vowel-based syllables must
-> still be sorted and their marks handled correctly, and GSUB and GPOS
+> still be sorted and their marks handled correctly, and <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
 > lookups must be applied. These steps of the shaping process follow
 > the same rules that are employed for consonant-based syllables.
 --->
@@ -885,7 +885,7 @@ consonants and post-base consonants. Each of these special-form
 consonants must also be tagged (`POS_BELOWBASE_CONSONANT`,
 `POS_POSTBASE_CONSONANT`, respectively). 
 
-Any pre-base-reordering consonant (such as a pre-base-reordering "Ra")
+Any pre-base-reordering consonant (such as a pre-base-reordering <samp>"Ra"</samp>)
 encountered during the base-consonant search must be tagged
 `POS_POSTBASE_CONSONANT`. 
  
@@ -895,47 +895,62 @@ encountered during the base-consonant search must be tagged
 > choose to maintain a static table of special-form consonants to
 > compare against the text run. Another implementation might examine
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
-> lookup in the GSUB table that affects the consonants encountered in
+> lookup in the <abbr>GSUB</abbr> table that affects the consonants encountered in
 > the syllable.
 >
-> However, checking for GSUB support ensures that the expected
+> However, checking for <abbr>GSUB</abbr> support ensures that the expected
 > behavior is implemented in the active font, and is therefore the
 > most reliable approach.
 
 
 The algorithm for determining the base consonant is
 
-  - If the syllable starts with "Ra,Halant" and the syllable contains
-    more than one consonant, exclude the starting "Ra" from the list of
+  - If the syllable starts with <samp>"Ra,Halant"</samp> and the syllable contains
+    more than one consonant, exclude the starting <samp>"Ra"</samp> from the list of
     consonants to be considered. 
   - Starting from the end of the syllable, move backwards until a consonant is found.
       * If the consonant is the first consonant, stop.
-      * If the consonant is preceded by the sequence "Halant,ZWJ", stop.
+      * If the consonant is preceded by the sequence <samp>"Halant,ZWJ"</samp>, stop.
       * If the consonant has a below-base form, tag it as
         `POS_BELOWBASE_CONSONANT`, then move to the previous consonant. 
       * If the consonant has a post-base form, tag it as
         `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
-      * If the consonant is a pre-base-reordering "Ra", tag it as
+      * If the consonant is a pre-base-reordering <samp>"Ra"</samp>, tag it as
         `POS_POSTBASE_CONSONANT`, then move to the previous consonant. 
       * If none of the above conditions is true, stop.
   - The consonant stopped at will be the base consonant.
 
 > Note: The algorithm is designed to work for all Indic
-> scripts. However, Oriya does not utilize pre-base-reordering "Ra".
+> scripts. However, Oriya does not utilize pre-base-reordering <samp>"Ra"</samp>.
 
 Oriya includes two consonants that can take on post-base forms, `Ya` and `Yya`.
 
-![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.png)
+:::{figure-md}
+![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.png "Post-base consonant Ya")
+
+Post-base consonant Ya
+:::
 
 
-![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.png)
+
+:::{figure-md}
+![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.png "Post-base consonant Yya")
+
+Post-base consonant Yya
+:::
+
 
 Oriya includes one consonant that can take on a special below-base form:
 
-  - "Halant,Ra" (in a syllable-final position) take on the "Raphala"
+  - <samp>"Halant,Ra"</samp> (in a syllable-final position) take on the <samp>"Raphala"</samp>
     form. 
 
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+
+Raphala composition
+:::
+
 
 <!---In addition, all consonants in Oriya can take on subjoined forms.--->
 
@@ -943,15 +958,15 @@ Oriya includes one consonant that can take on a special below-base form:
 > characteristic, consonants with below-base special forms may occur
 > before or after the syllable base. 
 > 
-> During the base-consonant search, only the "Halant,_consonant_" 
+> During the base-consonant search, only the <samp>"Halant,_consonant_"</samp> 
 > pattern following the syllable base for these below-base forms will
-> be encountered. Step 2.5 below ensures that the "_consonant_,Halant"
+> be encountered. Stage 2, step 5 below ensures that the <samp>"_consonant_,Halant"</samp>
 > pattern preceding the syllable base for these below-base forms will
 > also be tagged correctly.
 
 
 
-#### 2.2: Matra decomposition ####
+#### Stage 2, step 2: Matra decomposition ####
 
 Second, any multi-part dependent vowels (matras) must be decomposed
 into their individual components. Oriya has three
@@ -985,9 +1000,14 @@ engine may choose to perform it earlier, such as during an initial
 Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
-![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.png)
+:::{figure-md}
+![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.png "Two-part matra decomposition")
 
-#### 2.3: Tag matras ####
+Two-part matra decomposition
+:::
+
+
+#### Stage 2, step 3: Tag matras ####
 
 Third, all left-side dependent-vowel (matra) signs, including those that
 resulted from the preceding decomposition step, must be tagged to be
@@ -1007,30 +1027,30 @@ _Mark-placement subclass_ column of the character tables. It is
 critical at this step, however, that all decomposed matras are also
 correctly tagged before proceeding to the next step.
 
-#### 2.4: Adjacent marks ####
+#### Stage 2, step 4: Adjacent marks ####
 
-Fourth, any subsequences of marks that include a "Nukta" and a
-"Halant" or Vedic sign must be reordered so that the "Nukta" appears
+Fourth, any subsequences of marks that include a <samp>"Nukta"</samp> and a
+<samp>"Halant"</samp> or Vedic sign must be reordered so that the <samp>"Nukta"</samp> appears
 first.
 
-This means that the subsequence "Halant,Nukta" is reordered to
-"Nukta,Halant" and that the subsequence "_Vedic_sign_,Nukta" is
-reordered to "Nukta,_Vedic_sign".
+This means that the subsequence <samp>"Halant,Nukta"</samp> is reordered to
+<samp>"Nukta,Halant"</samp> and that the subsequence <samp>"_Vedic_sign_,Nukta"</samp> is
+reordered to <samp>"Nukta,_Vedic_sign"</samp>.
 
 For subsequences of affected marks that are longer than two, the
-reordering operation must be repeated until the "Nukta" is the first
+reordering operation must be repeated until the <samp>"Nukta"</samp> is the first
 character in the subsequence. No other marks in the subsequence
 should be reordered.
 
 This order is canonical in Unicode and is required so that
-"_consonant_,Nukta" substitution rules from GSUB will be correctly
+<samp>"_consonant_,Nukta"</samp> substitution rules from <abbr>GSUB</abbr> will be correctly
 matched later in the shaping process.
 
-#### 2.5: Pre-base consonants ####
+#### Stage 2, step 5: Pre-base consonants ####
 
 Fifth, consonants that occur before the syllable base must be tagged
-with `POS_PREBASE_CONSONANT`. Excluding initial "Ra,Halant" sequences
-that will become "Reph"s: 
+with `POS_PREBASE_CONSONANT`. Excluding initial <samp>"Ra,Halant"</samp> sequences
+that will become <samp>"Reph"</samp>s: 
 
   - If the consonant has a below-base form, tag it as
           `POS_BELOWBASE_CONSONANT`. 
@@ -1042,40 +1062,45 @@ that will become "Reph"s:
 > choose to maintain a static table of special-form consonants to
 > compare against the text run. Another implementation might examine
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
-> lookup in the GSUB table that affects the consonants encountered in
+> lookup in the <abbr>GSUB</abbr> table that affects the consonants encountered in
 > the syllable.
 >
-> However, checking for GSUB support ensures that the expected
+> However, checking for <abbr>GSUB</abbr> support ensures that the expected
 > behavior is implemented in the active font, and is therefore the
 > most reliable approach.
 
 Oriya includes one consonant that can take on a special below-base form:
 
-  - "Halant,Ra" (in a non-initial position) takes on the "Raphala"
+  - <samp>"Halant,Ra"</samp> (in a non-initial position) takes on the <samp>"Raphala"</samp>
     form. 
 
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+
+Raphala composition
+:::
+
 
 > Note: Because Oriya employs the `BLWF_MODE_PRE_AND_POST` shaping
 > characteristic, consonants with below-base special forms may occur
 > before or after the syllable base. 
 > 
-> During the base-consonant search in 2.1, any instances of the
-> "Halant,_consonant_"  pattern following the syllable base for these
+> During the base-consonant search in stage 2, step 1, any instances of the
+> <samp>"Halant,_consonant_"</samp>  pattern following the syllable base for these
 > below-base forms will be encountered. The tagging in this step
-> ensures that the "_consonant_,Halant" pattern preceding the syllable
+> ensures that the <samp>"_consonant_,Halant"</samp> pattern preceding the syllable
 > base for these below-base forms will also be tagged correctly.
 
 
-#### 2.6: Reph ####
+#### Stage 2, step 6: Reph ####
 
-Sixth, initial "Ra,Halant" sequences that will become "Reph"s must be tagged with
+Sixth, initial <samp>"Ra,Halant"</samp> sequences that will become <samp>"Reph"</samp>s must be tagged with
 `POS_RA_TO_BECOME_REPH`.
 
-> Note: an initial "Ra,Halant" sequence will always become a "Reph"
-> unless the "Ra" is the only consonant in the syllable.
+> Note: an initial <samp>"Ra,Halant"</samp> sequence will always become a <samp>"Reph"</samp>
+> unless the <samp>"Ra"</samp> is the only consonant in the syllable.
 
-#### 2.7: Final consonants ####
+#### Stage 2, step 7: Final consonants ####
 
 Seventh, all final consonants must be tagged. Consonants that occur
 after the syllable base _and_ after a dependent vowel (matra) sign
@@ -1086,7 +1111,7 @@ must be tagged with  `POS_FINAL_CONSONANT`.
 > maintain compatibility across Indic scripts.
 
 
-#### 2.8: Mark tagging ####
+#### Stage 2, step 8: Mark tagging ####
 
 Eighth, all marks must be tagged. 
 
@@ -1099,19 +1124,19 @@ Marks in the `BINDU`, `VISARGA`, `AVAGRAHA`, `CANTILLATION`,
 be tagged with `POS_SMVD`. 
 
 Oriya includes one exception to the above general rule. The
-"Candrabindu" (`U+0B01`) must be tagged with `POS_BEFORE_SUBJOINED`.
+<samp>"Candrabindu"</samp> (`U+0B01`) must be tagged with `POS_BEFORE_SUBJOINED`.
 
-All "Nukta"s must be tagged with the same positioning tag as the
+All <samp>"Nukta"</samp>s must be tagged with the same positioning tag as the
 preceding consonant, independent vowel, placeholder, or dotted circle.
 
-All remaining marks (not in the `POS_SMVD` category and not "Nukta"s)
+All remaining marks (not in the `POS_SMVD` category and not <samp>"Nukta"</samp>s)
 must be tagged with the same positioning tag as the closest non-mark
 character the mark has affinity with, so that they move together 
 during the sorting step.
 
 There are two possible cases: those marks before the syllable base
 and those marks after the syllable base. In addition, an exception is
-made for "Halant" marks that follow a left-side (pre-base) matra.
+made for <samp>"Halant"</samp> marks that follow a left-side (pre-base) matra.
 
   1. Initially, all remaining marks should be tagged with the same
 	 positioning tag as the closest preceding consonant.
@@ -1128,11 +1153,11 @@ made for "Halant" marks that follow a left-side (pre-base) matra.
 	 any consonants after the syllable base, the syllable base should
 	 "own" all the marks that follow it.
   
-  3. Finally, "Halant" marks that follow a left-side dependent vowel
+  3. Finally, <samp>"Halant"</samp> marks that follow a left-side dependent vowel
      (matra) should _not_ be tagged with the left-side matra's
-     positioning tag. Instead, the "Halant" should be tagged with the
+     positioning tag. Instead, the <samp>"Halant"</samp> should be tagged with the
      positioning tag of the non-mark character preceding the left-side
-     matra. This prevents the "Halant" mark from being moved with the
+     matra. This prevents the <samp>"Halant"</samp> mark from being moved with the
      left-side matra when the syllable is sorted.
 
 
@@ -1141,7 +1166,7 @@ made for "Halant" marks that follow a left-side (pre-base) matra.
 <!--post-base consonant. --->
 
 
-#### 2.9: Sort syllable ####
+#### Stage 2, step 9: Sort syllable ####
 
 With these steps completed, the syllable can be sorted into the final
 sort order as listed at the beginning of stage 2.
@@ -1151,10 +1176,10 @@ so that glyphs of the same ordering category remain in the same
 relative position with respect to each other.
 
 
-#### 2.10: Flag sequences for possible feature applications ####
+#### Stage 2, step 10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
-may have GSUB or GPOS features applied in stages 3, 5, and 6 should be
+may have <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
 This flagging is preliminary; the set of potential features varies
@@ -1173,31 +1198,31 @@ the flags -- although shaping engines may do so if desired.
 
 The sequences to flag are summarized in the list below; a full
 description of each feature's function and interpretation is provided
-in GSUB and GPOS application stages that follow.
+in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 
-  - `nukt` should match "_Consonant_,Nukta" sequences
-  - `akhn` should match "Ka,Halant,Ssa" and "Ja,Halant,Nya"
-  - `rphf` should match initial "Ra,Halant" sequences but _not_ match
-            initial "Ra,Halant,ZWJ" sequences
-  - `blwf` should match "Halant,_Consonant_" in post-base positions and
-            "Ra,Halant" in non-initial pre-base positions
-  - `half` should match "_Consonant_,Halant" in pre-base position but
-           _not_ match "Ra,Halant" sequences flagged for `rphf` and
-           _not_ match "_Consonant_,Halant,ZWNJ,_Consonant_" sequences
-  - `pstf` should match "Halant,Ya" and "Halant,Yya" in post-base position
-  - `cjct` should match "_Consonant_,Halant,_Consonant_" but _not_
-            match "_Consonant_,Halant,ZWJ,_Consonant_" or
-            "_Consonant_,Halant,ZWNJ,_Consonant_"
-
-
+  - `nukt` should match <samp>"_Consonant_,Nukta"</samp> sequences
+  - `akhn` should match <samp>"Ka,Halant,Ssa"</samp> and <samp>"Ja,Halant,Nya"</samp>
+  - `rphf` should match initial <samp>"Ra,Halant"</samp> sequences but _not_ match
+            initial <samp>"Ra,Halant,ZWJ"</samp> sequences
+  - `blwf` should match <samp>"Halant,_Consonant_"</samp> in post-base positions and
+            <samp>"Ra,Halant"</samp> in non-initial pre-base positions
+  - `half` should match <samp>"_Consonant_,Halant"</samp> in pre-base position but
+           _not_ match <samp>"Ra,Halant"</samp> sequences flagged for `rphf` and
+           _not_ match <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> sequences
+  - `pstf` should match <samp>"Halant,Ya"</samp> and <samp>"Halant,Yya"</samp> in post-base position
+  - `cjct` should match <samp>"_Consonant_,Halant,_Consonant_"</samp> but _not_
+            match <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> or
+            <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp>
 
 
-### 3: Applying the basic substitution features from GSUB ###
+
+
+### Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be flagged for possible application 
-of GSUB features in stage 2, step 10.
+of <abbr>GSUB</abbr> features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1216,7 +1241,7 @@ all Indic scripts:
 	cjct
 	cfar (not used in Oriya)
 
-#### 3.1 locl ####
+#### Stage 3, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -1226,11 +1251,11 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
-#### 3.2: nukt ####
+#### Stage 3, step 2: nukt ####
 
-The `nukt` feature replaces "_Consonant_,Nukta" sequences with a
+The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
   - The context defined for a `nukt` feature is:
@@ -1240,17 +1265,22 @@ precomposed nukta-variant of the consonant glyph.
     | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 
 
-![Nukta composition](/images/oriya/oriya-nukt.png)
+:::{figure-md}
+![Nukta composition](/images/oriya/oriya-nukt.png "Nukta composition")
 
-#### 3.3: akhn ####
+Nukta composition
+:::
+
+
+#### Stage 3, step 3: akhn ####
 
 The `akhn` feature replaces two specific sequences with required ligatures. 
 
-  - "Ka,Halant,Ssa" is substituted with the "KSsa" ligature. 
-  - "Ja,Halant,Nya" is substituted with the "JNya" ligature. 
+  - <samp>"Ka,Halant,Ssa"</samp> is substituted with the <samp>"KSsa"</samp> ligature. 
+  - <samp>"Ja,Halant,Nya"</samp> is substituted with the <samp>"JNya"</samp> ligature. 
   
-These sequences can occur anywhere in a syllable. The "KSsa" and
-"JNya" characters have orthographic status equivalent to full
+These sequences can occur anywhere in a syllable. The <samp>"KSsa"</samp> and
+<samp>"JNya"</samp> characters have orthographic status equivalent to full
 consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
@@ -1262,16 +1292,26 @@ feature must be applied before all other many-to-one substitutions.
     | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
 
 
-![KSsa ligation](/images/oriya/oriya-akhn-kssa.png)
+:::{figure-md}
+![KSsa ligation](/images/oriya/oriya-akhn-kssa.png "KSsa ligation")
 
-![JNya ligation](/images/oriya/oriya-akhn-jnya.png)
+KSsa ligation
+:::
 
-#### 3.4: rphf ####
 
-The `rphf` feature replaces initial "Ra,Halant" sequences with the
-"Reph" glyph.
+:::{figure-md}
+![JNya ligation](/images/oriya/oriya-akhn-jnya.png "JNya ligation")
 
-  - An initial "Ra,Halant,ZWJ" sequence, however, must not be flagged for
+JNya ligation
+:::
+
+
+#### Stage 3, step 4: rphf ####
+
+The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
+<samp>"Reph"</samp> glyph.
+
+  - An initial <samp>"Ra,Halant,ZWJ"</samp> sequence, however, must not be flagged for
     the `rphf` substitution.
 	
 
@@ -1282,26 +1322,36 @@ The `rphf` feature replaces initial "Ra,Halant" sequences with the
     | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
 
-![Reph composition](/images/oriya/oriya-rphf.png)
+:::{figure-md}
+![Reph composition](/images/oriya/oriya-rphf.png "Reph composition")
 
-#### 3.5: rkrf ####
+Reph composition
+:::
+
+
+#### Stage 3, step 5: rkrf ####
 
 > This feature is not used in Oriya.
 
-#### 3.6 pref ####
+#### Stage 3, step 6: pref ####
 
 > This feature is not used in Oriya.
 
-#### 3.7: blwf ####
+#### Stage 3, step 7: blwf ####
 
 The `blwf` feature replaces below-base-consonant glyphs with any
 special forms. Oriya includes one special below-base consonant
 form:
 
-  - "Halant,Ra" (in a non-initial position) takes on the "Raphala"
+  - <samp>"Halant,Ra"</samp> (in a non-initial position) takes on the <samp>"Raphala"</samp>
     form. 
 
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png)
+:::{figure-md}
+![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+
+Raphala composition
+:::
+
 
 <!---In addition, all consonants in Oriya can take on subjoined forms.--->
 
@@ -1320,32 +1370,37 @@ characteristic.
 
 
 
-![Below-base consonant composition](/images/oriya/oriya-blwf.png)
+:::{figure-md}
+![Below-base consonant composition](/images/oriya/oriya-blwf.png "Below-base consonant composition")
 
-#### 3.8: abvf ####
+Below-base consonant composition
+:::
+
+
+#### Stage 3, step 8: abvf ####
 
 > This feature is not used in Oriya.
 
-#### 3.9: half ####
+#### Stage 3, step 9: half ####
 
-The `half` feature replaces "_Consonant_,Halant" sequences before the
+The `half` feature replaces <samp>"_Consonant_,Halant"</samp> sequences before the
 base consonant or syllable base with "half forms" of the consonant
 glyphs.
 
 In the most common case, this substitution applies to
-"_Consonant_,Halant" sequences that are followed by another
+<samp>"_Consonant_,Halant"</samp> sequences that are followed by another
 _Consonant_.
 
-In addition, a sequence matching "_Consonant_,Halant,ZWJ" must also be
+In addition, a sequence matching <samp>"_Consonant_,Halant,ZWJ"</samp> must also be
 flagged for potential `half` substitutions.
 
-> Note: The presence of the "ZWJ" at the end of the sequence means
+> Note: The presence of the <samp>"ZWJ"</samp> at the end of the sequence means
 > that the sequence may match the regular-expression test in stage 1
 > as the end of a syllable, even without being followed by a base
 > consonant or syllable base.
 >
 > The fact that the regular-expression tests identify a syllable break
-> after the "_Consonant_,Halant,ZWJ" is a byproduct of OpenType
+> after the <samp>"_Consonant_,Halant,ZWJ"</samp> is a byproduct of OpenType
 > shaping and Unicode encoding, however, and might not have any
 > significance with regard to the definition of syllables used in the
 > language or orthography of the text.
@@ -1353,81 +1408,96 @@ flagged for potential `half` substitutions.
 There are two exceptions to the default behavior, for which the
 shaping engine must test:
 
-  - Initial "Ra,Halant" sequences, which should have been flagged for
+  - Initial <samp>"Ra,Halant"</samp> sequences, which should have been flagged for
     the `rphf` feature earlier, must not be flagged for potential
     `half` substitutions.
 
-  - A sequence matching "_Consonant_,Halant,ZWNJ,_Consonant_" must not be
+  - A sequence matching <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> must not be
     flagged for potential `half` substitutions.
 
 
-#### 3.10: pstf ####
+#### Stage 3, step 10: pstf ####
 
 The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
-![Post-base form Ya composition](/images/oriya/oriya-pstf-ya.png)
+:::{figure-md}
+![Post-base form Ya composition](/images/oriya/oriya-pstf-ya.png "Post-base form Ya composition")
 
-![Post-base form Yya composition](/images/oriya/oriya-pstf-yya.png)
+Post-base form Ya composition
+:::
 
-#### 3.11: vatu ####
+
+:::{figure-md}
+![Post-base form Yya composition](/images/oriya/oriya-pstf-yya.png "Post-base form Yya composition")
+
+Post-base form Yya composition
+:::
+
+
+#### Stage 3, step 11: vatu ####
 
 > This feature is not used in Oriya.
 
 
-#### 3.12: cjct ####
+#### Stage 3, step 12: cjct ####
 
 The `cjct` feature replaces sequences of adjacent consonants with
-conjunct ligatures. These sequences must match "_Consonant_,Halant,_Consonant_".
+conjunct ligatures. These sequences must match <samp>"_Consonant_,Halant,_Consonant_"</samp>.
 
-A sequence matching "_Consonant_,Halant,ZWJ,_Consonant_" or
-"_Consonant_,Halant,ZWNJ,_Consonant_" must not be flagged to form a conjunct.
+A sequence matching <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> or
+<samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> must not be flagged to form a conjunct.
 
-> Note: The presence of the "ZWJ" in a
-> "_Consonant_,Halant,ZWJ,_Consonant_" sequence should automatically
+> Note: The presence of the <samp>"ZWJ"</samp> in a
+> <samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> sequence should automatically
 > inhibit any `cjct` feature rules from matching the sequence as valid
 > input, and thus prevent the `cjct` substitution from being applied.
 
-> Note: The presence of the "ZWNJ" in a
-> "_Consonant_,Halant,ZWNJ,_Consonant_" sequence means that the
-> "_Consonant_,Halant,ZWNJ" subsequence will match the
+> Note: The presence of the <samp>"ZWNJ"</samp> in a
+> <samp>"_Consonant_,Halant,ZWNJ,_Consonant_"</samp> sequence means that the
+> <samp>"_Consonant_,Halant,ZWNJ"</samp> subsequence will match the
 > regular-expression test in stage 1 as the end of a syllable.
 > 
 > Because OpenType shaping features in `<ory2>` are defined as
 > applying only within an individual syllable, this means that the
-> presence of the "ZWNJ" will automatically prevent the application of
+> presence of the <samp>"ZWNJ"</samp> will automatically prevent the application of
 > a `cjct` feature by triggering the identification of a syllable
 > break between the two consonants.
 >
 > The fact that the regular-expression tests identify a syllable break
-> after the "_Consonant_,Halant,ZWNJ" is a byproduct of OpenType
+> after the <samp>"_Consonant_,Halant,ZWNJ"</samp> is a byproduct of OpenType
 > shaping and Unicode encoding, however, and might not have any
 > significance with regard to the definition of syllables used in the
 > language or orthography of the text.
 >
-> Note, also: The presence of the "ZWJ" means that a
-> "_Consonant_,Halant,ZWJ" sequence may match the regular-expression
+> Note, also: The presence of the <samp>"ZWJ"</samp> means that a
+> <samp>"_Consonant_,Halant,ZWJ"</samp> sequence may match the regular-expression
 > test in stage 1 as the end of a syllable, even without being
 > followed by a base consonant or syllable base. By definition,
-> however, a "_Consonant_,Halant,ZWJ" syllable identified in stage 1
-> cannot also include a "_Consonant_" after the ZWJ.
+> however, a <samp>"_Consonant_,Halant,ZWJ"</samp> syllable identified in stage 1
+> cannot also include a <samp>"_Consonant_"</samp> after the <abbr>ZWJ</abbr>.
 
-The font's GSUB rules might be implemented so that `cjct`
+The font's <abbr>GSUB</abbr> rules might be implemented so that `cjct`
 substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
 
-![Conjunct ligation](/images/oriya/oriya-cjct.png)
+:::{figure-md}
+![Conjunct ligation](/images/oriya/oriya-cjct.png "Conjunct ligation")
 
-#### 3.13: cfar ####
+Conjunct ligation
+:::
+
+
+#### Stage 3, step 13: cfar ####
 
 > This feature is not used in Oriya.
 
 
-### 4: Final reordering ###
+### Stage 4: Final reordering ###
 
 The final reordering stage repositions marks, dependent-vowel (matra)
-signs, and "Reph" glyphs to the appropriate location with respect to
+signs, and <samp>"Reph"</samp> glyphs to the appropriate location with respect to
 the base consonant or syllable base. Because multiple substitutions
 may have occurred during the application of the basic-shaping features
 in the preceding stage, these repositioning moves could not be
@@ -1439,10 +1509,10 @@ occur on a per-syllable basis.
 <!--- Check that classifications have not been mangled. If the -->
 <!--character is a Halant AND a ligature was formed AND a multiple
 substitution was performed, restore the classification to VIRAMA
-because it was almost certainly lost in the preceding GSUB stage.
+because it was almost certainly lost in the preceding <abbr>GSUB</abbr> stage.
 --->
 
-#### 4.1: Base consonant ####
+#### Stage 4, step 1: Base consonant ####
 
 The final reordering stage, like the initial reordering stage, begins
 with determining the syllable base of each syllable, following the
@@ -1458,40 +1528,45 @@ repeat the base-consonant search algorithm used in stage 2, step 1.
 
 The codepoint of the underlying base consonant or syllable base will
 not change between the search performed in stage 2, step 1, and the
-search repeated here. However, the application of GSUB shaping
+search repeated here. However, the application of <abbr>GSUB</abbr> shaping
 features in stage 3 means that several ligation and many-to-one
 substitutions may have taken place. The final glyph produced by that
 process may, therefore, be a conjunct or ligature form — in most
 cases, such a glyph will not have an assigned Unicode codepoint.
    
-#### 4.2: Pre-base matras ####
+#### Stage 4, step 2: Pre-base matras ####
 
 Pre-base dependent vowels (matras) that were reordered during the
 initial reordering stage must be moved to their final position. This
 position is defined as:
    
-   - after the last standalone "Halant" glyph that comes after the
+   - after the last standalone <samp>"Halant"</samp> glyph that comes after the
      matra's starting position and also comes before the main
      consonant.
-   - If a zero-width joiner follows this last standalone "Halant", the
+   - If a zero-width joiner follows this last standalone <samp>"Halant"</samp>, the
      final matra position is moved to after the joiner.
 
 This means that the matra will move to the right of all explicit
-"consonant,Halant" subsequences, but will stop to the left of the base
+<samp>"consonant,Halant"</samp> subsequences, but will stop to the left of the base
 consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
-![Pre-base matra position](/images/oriya/oriya-matra-position.png)
+:::{figure-md}
+![Pre-base matra position](/images/oriya/oriya-matra-position.png "Pre-base matra position")
+
+Pre-base matra position
+:::
+
 
 > Note: OpenType and Unicode both state that if the syllable includes
-> a ZWJ immediately after the last "Halant", then the final matra
-> position should be after the ZWJ.
+> a <abbr>ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
+> position should be after the <abbr>ZWJ</abbr>.
 >
 > However, there are several test sequences indicating that
 > Microsoft's Uniscribe shaping engine did not follow this rule (in,
 > at least, Devanagari and Bengali text), and in these circumstances
 > Uniscribe instead makes the final matra position before the final
-> "Consonant,Halant,ZWJ".
+> <samp>"Consonant,Halant,ZWJ"</samp>.
 >
 > Subsequently, the HarfBuzz shaping engine has also followed the same
 > pattern. If other shaping engine implementations prefer to maintain
@@ -1500,28 +1575,28 @@ the base consonant or syllable base, and all half forms.
 
 > Note: The Microsoft script-development specifications for OpenType
 > shaping also state that if a zero-width non-joiner follows the last
-> standalone "Halant", the final matra position is moved to after the
+> standalone <samp>"Halant"</samp>, the final matra position is moved to after the
 > non-joiner. However, it is unnecessary to test for this condition,
-> because a "Halant,ZWNJ" subsequence is, by definition, the end of a
-> syllable. Consequently, a "Halant,ZWNJ" cannot be followed by a
+> because a <samp>"Halant,ZWNJ"</samp> subsequence is, by definition, the end of a
+> syllable. Consequently, a <samp>"Halant,ZWNJ"</samp> cannot be followed by a
 > pre-base dependent vowel.
 
 
 
-#### 4.3: Reph ####
+#### Stage 4, step 3: Reph ####
 
-"Reph" must be moved from the beginning of the syllable to its final
+<samp>"Reph"</samp> must be moved from the beginning of the syllable to its final
 position. Because Oriya incorporates the `REPH_POS_AFTER_MAIN`
 shaping characteristic, this final position is immediately after the
 syllable base.
 
-The algorithm for finding the final "Reph" position is
+The algorithm for finding the final <samp>"Reph"</samp> position is
 
-  - Move the "Reph" to the position immediately before
+  - Move the <samp>"Reph"</samp> to the position immediately before
     the first post-base matra, syllable modifier, or Vedic sign that
-    has a positioning tag after the script's "Reph" position in the
+    has a positioning tag after the script's <samp>"Reph"</samp> position in the
     syllable sort order (as listed in [stage
-    2](#2-initial-reordering)). This will be the final "Reph"
+    2](#stage-2-initial-reordering)). This will be the final <samp>"Reph"</samp>
     position. 
 	> Note: Because Oriya incorporates the
     > `REPH_POS_AFTER_MAIN` shaping characteristic, this means
@@ -1529,17 +1604,22 @@ The algorithm for finding the final "Reph" position is
     > although a post-base matra, syllable modifier, or Vedic sign
     > would not typically be tagged with `POS_ABOVEBASE_CONSONANT`.
   - If no other location has been located in the previous step, move
-    the "Reph" to the end of the syllable.
+    the <samp>"Reph"</samp> to the end of the syllable.
 
-Finally, if the final position of "Reph" or "Repha" occurs after a
-"_matra_,Halant" subsequence, then "Reph"/"Repha" must be repositioned to the
-left of "Halant", to allow for potential matching with `abvs` or
-`psts` substitutions from GSUB.
+Finally, if the final position of <samp>"Reph"</samp> or <samp>"Repha"</samp> occurs after a
+<samp>"_matra_,Halant"</samp> subsequence, then <samp>"Reph"</samp>/<samp>"Repha"</samp> must be repositioned to the
+left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
+`psts` substitutions from <abbr>GSUB</abbr>.
 
-![Reph position](/images/oriya/oriya-reph-position.png)
+:::{figure-md}
+![Reph position](/images/oriya/oriya-reph-position.png "Reph position")
+
+Reph position
+:::
 
 
-#### 4.4: Pre-base-reordering consonants ####
+
+#### Stage 4, step 4: Pre-base-reordering consonants ####
 
 Any pre-base-reordering consonants must be moved to immediately before
 the base consonant or syllable base.
@@ -1549,26 +1629,26 @@ involve no work when processing `<ory2>` text. It is included here in order
 to maintain compatibility with the other Indic scripts.
 
 
-#### 4.5: Initial matras ####
+#### Stage 4, step 5: Initial matras ####
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be flagged for potential substitution by the `init` feature
-of GSUB.
+of <abbr>GSUB</abbr>.
 
 Oriya does not use the `init` feature, so this step will
 involve no work when processing `<ory2>` text. It is included here in
 order to maintain compatibility with the other Indic scripts.
 
 
-### 5: Applying all remaining substitution features from GSUB ###
+### Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the remaining substitution features from the GSUB table
+In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
-flagged for possible application of GSUB features in stage 2,
+flagged for possible application of <abbr>GSUB</abbr> features in stage 2,
 step 10.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the GSUB table
+should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
 in the font.
 
 	init (not used in Oriya)
@@ -1585,23 +1665,37 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
-![Pre-base form substitution](/images/oriya/oriya-pres.png)
+:::{figure-md}
+![Pre-base form substitution](/images/oriya/oriya-pres.png "Pre-base form substitution")
+
+Pre-base form substitution
+:::
+
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
-![Above-base form substitution](/images/oriya/oriya-abvs.png)
+:::{figure-md}
+![Above-base form substitution](/images/oriya/oriya-abvs.png "Above-base form substitution")
+
+Above-base form substitution
+:::
+
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants or
 syllable bases that
-are adjacent to below-base-consonant forms like "Raphala" with
+are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> with
 contextual ligatures.
 
-![Below-base form substitution](/images/oriya/oriya-blws.png)
+:::{figure-md}
+![Below-base form substitution](/images/oriya/oriya-blws.png "Below-base form substitution")
+
+Below-base form substitution
+:::
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1609,12 +1703,16 @@ presentation forms. This usually includes replacing right-side
 dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
-![Post-base form substitution](/images/oriya/oriya-psts.png)
+:::{figure-md}
+![Post-base form substitution](/images/oriya/oriya-psts.png "Post-base form substitution")
+
+Post-base form substitution
+:::
 
 
-The `haln` feature replaces syllable-final "_Consonant_,Halant" pairs with
+The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
 special presentation forms. This can include stylistic variants of the
-consonant where placing the "Halant" mark on its own is
+consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 > Note: The `calt` feature, which allows for generalized application
@@ -1622,17 +1720,21 @@ typographically problematic.
 > point. However, `calt` is not mandatory for correct Oriya shaping
 > and may be disabled in the application by user preference.
 
-![Halant form substitution](/images/oriya/oriya-haln.png)
+:::{figure-md}
+![Halant form substitution](/images/oriya/oriya-haln.png "Halant form substitution")
+
+Halant form substitution
+:::
 
 
-### 6: Applying remaining positioning features from GPOS ###
+### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied.
 
 As with the preceding stage, the order in which these features are
 applied is not canonical; they should be applied in the order in which
-they appear in the GPOS table in the font.
+they appear in the <abbr>GPOS</abbr> table in the font.
 
         dist
         abvm
@@ -1648,17 +1750,25 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 The `abvm` feature positions above-base marks for attachment to base
-characters. In Oriya, this includes "Reph" in addition to the
+characters. In Oriya, this includes <samp>"Reph"</samp> in addition to the
 above-base dependent vowels (matras), diacritical marks and Vedic signs. 
 
-![Above-base mark position](/images/oriya/oriya-abvm.png)
+:::{figure-md}
+![Above-base mark position](/images/oriya/oriya-abvm.png "Above-base mark position")
+
+Above-base mark position
+:::
 
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Oriya, this includes below-base dependent vowels
-(matras) as well as the below-base consonant form "Raphala".
+(matras) as well as the below-base consonant form <samp>"Raphala"</samp>.
 
-![Below-base mark position](/images/oriya/oriya-blwm.png)
+:::{figure-md}
+![Below-base mark position](/images/oriya/oriya-blwm.png "Below-base mark position")
+
+Below-base mark position
+:::
 
 
 ## The `<orya>` shaping model ##
@@ -1671,15 +1781,15 @@ take advantage of `<orya>` shaping.
 ### Distinctions from `<ory2>` ###
 
 The most significant distinction between the shaping models is that the
-sequence of "Halant" and consonant glyphs used to trigger shaping
+sequence of <samp>"Halant"</samp> and consonant glyphs used to trigger shaping
 features was altered when migrating from `<orya>` to
 `<ory2>`. 
 
 Specifically, shaping engines were expected to reorder post-base
-"Halant,_Consonant_" sequences to "_Consonant_,Halant".
+<samp>"Halant,_Consonant_"</samp> sequences to <samp>"_Consonant_,Halant"</samp>.
 
-As a result, a font's GSUB substitutions would be written to match
-"_Consonant_,Halant" sequences in all pre-base and post-base positions.
+As a result, a font's <abbr>GSUB</abbr> substitutions would be written to match
+<samp>"_Consonant_,Halant"</samp> sequences in all pre-base and post-base positions.
 
 
 The `<orya>` syllable
@@ -1693,8 +1803,8 @@ would be reordered to
 before features are applied.
 
 In `<ory2>` text, as described above in this document, there is no
-such reordering. The correct sequence to match for GSUB substitutions is
-"_Consonant_,Halant" for pre-base consonants, but "Halant,_Consonant_"
+such reordering. The correct sequence to match for <abbr>GSUB</abbr> substitutions is
+<samp>"_Consonant_,Halant"</samp> for pre-base consonants, but <samp>"Halant,_Consonant_"</samp>
 for post-base consonants.
 
 The old Indic shaping model also did not recognize the
@@ -1711,15 +1821,15 @@ at the beginning of the syllable.
 
 ### Advice for handling fonts with `<orya>` features only ###
 
-Shaping engines may choose to match post-base "_Consonant_,Halant"
-sequences in order to apply GSUB substitutions when it is known that
+Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
+sequences in order to apply <abbr>GSUB</abbr> substitutions when it is known that
 the font in use supports only the `<orya>` shaping model.
 
 ### Advice for handling text runs composed in `<orya>` format ###
 
-Shaping engines may choose to match post-base "_Consonant_,Halant"
-sequences for GSUB substitutions or to reorder them to
-"Halant,_Consonant_" when processing text runs that are tagged with
+Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
+sequences for <abbr>GSUB</abbr> substitutions or to reorder them to
+<samp>"Halant,_Consonant_"</samp> when processing text runs that are tagged with
 the `<orya>` script tag and it is known that the font in use supports
 only the `<ory2>` shaping model.
 
@@ -1729,4 +1839,4 @@ known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
 to the `<orya>` ordering scheme; however, doing so might interfere
-with matching GSUB or GPOS features.
+with matching <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features.

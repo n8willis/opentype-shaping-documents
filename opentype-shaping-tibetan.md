@@ -12,9 +12,9 @@ runs in the Tibetan script.
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Tibetan character tables](#tibetan-character-tables)
   - [The `<tibt>` shaping model](#the-tibt-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
-      - [2: Applying all basic substitution features from GSUB](#2-applying-all-basic-substitution-features-from-gsub)
-      - [3: Applying remaining positioning features from GPOS](#3-applying-remaining-positioning-features-from-gpos)
+      - [Stage 1: Applying the language substitution features from <abbr>GSUB</abbr>](#stage-1-applying-the-language-substitution-features-from-gsub)
+      - [Stage 2: Applying all basic substitution features from <abbr>GSUB</abbr>](#stage-2-applying-all-basic-substitution-features-from-gsub)
+      - [Stage 3: Applying remaining positioning features from <abbr>GPOS</abbr>](#stage-3-applying-remaining-positioning-features-from-gpos)
 
 
 ## General information ##
@@ -88,14 +88,14 @@ algorithmically.
 Tibetan also employs the term **head consonant**, which refers to the
 consonant in a stack that is in the visually topmost position. Certain
 consonants take on an alternate form when used in stack-initial
-positions (such as "Ra"). When the alternate form is visually the
+positions (such as <samp>"Ra"</samp>). When the alternate form is visually the
 topmost consonant in the stack, it is regarded as the head consonant,
 even though the consonant that follows is regarded as the base
 consonant.
 
-For example, the sequence "Ra,Subjoined Ka" (`U+0F62`,`U+0F90`) is
-rendered with the "Ka" in its non-subjoined, base-consonant form and the "Ra"
-positioned above. In this circumstance, the "Ra" would still be
+For example, the sequence <samp>"Ra,Subjoined Ka"</samp> (`U+0F62`,`U+0F90`) is
+rendered with the <samp>"Ka"</samp> in its non-subjoined, base-consonant form and the <samp>"Ra"</samp>
+positioned above. In this circumstance, the <samp>"Ra"</samp> would still be
 regarded as the head consonant.
 
 
@@ -171,7 +171,7 @@ Marks, subjoined consonants, and dependent vowels are further labeled
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's GPOS table.
+lookups found in the font's <abbr>GPOS</abbr> table.
 
 There are two basic _mark-placement subclasses_ for dependent vowel signs
 (matras). Each corresponds to the visual position of the matra with
@@ -196,7 +196,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -258,14 +258,14 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 <!--- The zero-width joiner is primarily used to prevent the formation of a
-subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoining form from a <samp>"_Consonant_,Halant,_Consonant_"</samp> sequence. The sequence
+<samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> blocks the substitution of a
 subjoined form for the second consonant. --->
 
 <!---
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
+<samp>"Reph"</samp>. An initial <samp>"Ra,Halant,ZWJ"</samp> sequence should not produce a <samp>"Reph"</samp>,
+where an initial <samp>"Ra,Halant"</samp> sequence without the zero-width joiner
 otherwise would.
 --->
 
@@ -290,9 +290,9 @@ block also occurs in Tibetan texts.
 
 Processing a run of `<tibt>` text involves three top-level stages:
 
-1. Applying the language substitution features from GSUB
-2. Applying all basic substitution features from GSUB
-3. Applying all remaining positioning features from GPOS
+1. Applying the language substitution features from <abbr>GSUB</abbr>
+2. Applying all basic substitution features from <abbr>GSUB</abbr>
+3. Applying all remaining positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the basic substitution
@@ -319,7 +319,11 @@ consonants, zero or more dependent-vowel signs (matras), an optional
 post-base consonant (also called a "suffix") and zero or more syllable
 modifiers or diacritical marks.
 
-![Tibetan syllable example](/images/tibetan/tibetan-syllable.png)
+:::{figure-md}
+![Tibetan syllable example](/images/tibetan/tibetan-syllable.png "Tibetan syllable example")
+
+Tibetan syllable example
+:::
 
 The prefix, suffix, and base consonants will all be from the
 `CONSONANT` shaping class. All subjoined consonants will be from the
@@ -360,12 +364,12 @@ as when an isolated codepoint is shown in example text.
 
 
 
-### 1: Applying the language substitution features from GSUB ###
+### Stage 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -373,7 +377,7 @@ The order in which these substitutions must be performed is fixed:
 	ccmp
 
 
-#### 1.1 locl ####
+#### Stage 1, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -383,10 +387,10 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
-#### 1.2: ccmp ####
+#### Stage 1, step 2: ccmp ####
 
 The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
@@ -401,28 +405,31 @@ for several of these matras, and two of the codepoints have been
 officially deprecated. In their place, text authors are encouraged to
 use the corresponding sequence of single-part matras.
 
-  - `U+0F77` is deprecated and should be replaced by "`U+0FB2`,`U+0F81`"
-  - `U+0F79` is deprecated and should be replaced by "`U+0FB3`,`U+0F81`"
-  - `U+0F73` can be replaced by "`U+0F71`,`U+0F72`"
-  - `U+0F75` can be replaced by "`U+0F71`,`U+0F74`"
-  - `U+0F81` can be replaced by "`U+0F71`,`U+0F80`"
+  - `U+0F77` is deprecated and should be replaced by <samp>"`U+0FB2`,`U+0F81`"</samp>
+  - `U+0F79` is deprecated and should be replaced by <samp>"`U+0FB3`,`U+0F81`"</samp>
+  - `U+0F73` can be replaced by <samp>"`U+0F71`,`U+0F72`"</samp>
+  - `U+0F75` can be replaced by <samp>"`U+0F71`,`U+0F74`"</samp>
+  - `U+0F81` can be replaced by <samp>"`U+0F71`,`U+0F80`"</samp>
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 
-![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.png)
+:::{figure-md}
+![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.png "Composition-decomposition substitution")
+
+Composition-decomposition substitution
+:::
 
 
+### Stage 2: Applying all basic substitution features from <abbr>GSUB</abbr> ###
 
-### 2: Applying all basic substitution features from GSUB ###
-
-In this stage, the basic substitution features from the GSUB table
+In this stage, the basic substitution features from the <abbr>GSUB</abbr> table
 are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
-the GSUB table in the font. 
+the <abbr>GSUB</abbr> table in the font. 
 
 	abvs
 	blws
@@ -434,16 +441,22 @@ The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
-![Application of the abvs feature](/images/tibetan/tibetan-abvs.png)
+:::{figure-md}
+![Application of the abvs feature](/images/tibetan/tibetan-abvs.png "Application of the abvs feature")
 
+Application of the abvs feature
+:::
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. In Tibetan, this can include contextual ligatures
 involving below-base dependent vowel marks (matras) or subjoined
 consonants.
 
-![Application of the blws feature](/images/tibetan/tibetan-blws.png)
+:::{figure-md}
+![Application of the blws feature](/images/tibetan/tibetan-blws.png "Application of the blws feature")
 
+Application of the blws feature
+:::
 
 The `calt`  feature substitutes glyphs with contextual alternate
 forms. In general, this involves replacing the default form of a
@@ -454,24 +467,30 @@ The `calt` feature performs substitutions that are not mandatory for
 orthographic correctness. The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-![Application of the calt feature](/images/tibetan/tibetan-calt.png)
+:::{figure-md}
+![Application of the calt feature](/images/tibetan/tibetan-calt.png "Application of the calt feature")
 
+Application of the calt feature
+:::
 
 
 The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-![Application of the liga feature](/images/tibetan/tibetan-liga.png)
+:::{figure-md}
+![Application of the liga feature](/images/tibetan/tibetan-liga.png "Application of the liga feature")
+
+Application of the liga feature
+:::
 
 
+### Stage 3: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-### 3: Applying remaining positioning features from GPOS ###
-
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
         kern
 		abvm
@@ -485,26 +504,39 @@ order in which they appear in the GPOS table in the font.
 The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
-![Application of the kern feature](/images/tibetan/tibetan-kern.png)
+:::{figure-md}
+![Application of the kern feature](/images/tibetan/tibetan-kern.png "Application of the kern feature")
 
+Application of the kern feature
+:::
 
 The `abvm` feature positions above-base glyphs for attachment to base
 characters. In Tibetan, this includes tone markers, diacritical marks,
 and above-base dependent vowels (matras).
 
-![Application of the abvm feature](/images/tibetan/tibetan-abvm.png)
+:::{figure-md}
+![Application of the abvm feature](/images/tibetan/tibetan-abvm.png "Application of the abvm feature")
+
+Application of the abvm feature
+:::
 
 The `blwm` feature positions below-base glyphs for attachment to base
 characters. In Tibetan, this includes subjoined consonants as well as
 below-base dependent vowels (matras), and diacritical marks.
 
-![Application of the blwm feature](/images/tibetan/tibetan-blwm.png)
+:::{figure-md}
+![Application of the blwm feature](/images/tibetan/tibetan-blwm.png "Application of the blwm feature")
 
+Application of the blwm feature
+:::
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph. In Tibetan, this also includes attaching marks to
 subjoined consonants or dependent vowels.
 
-![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.png)
+:::{figure-md}
+![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.png "Application of the mkmk feature")
 
+Application of the mkmk feature
+:::

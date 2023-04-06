@@ -11,18 +11,18 @@ runs in the Thai and Lao scripts.
   - [Glyph classification](#glyph-classification)
       - [Shaping classes and subclasses](#shaping-classes-and-subclasses)
       - [Mark combining classes](#mark-combining-classes)
-      - [PUA fallback classifications](#pua-fallback-classifications)
+      - [<abbr>PUA</abbr> fallback classifications](#pua-fallback-classifications)
       - [Thai and Lao character tables](#thai-and-lao-character-tables)
   - [The `<thai>`/`<lao >` shaping model](#the-thailao-shaping-model)
-      - [1: Applying the language substitution features from GSUB](#1-applying-the-language-substitution-features-from-gsub)
-      - [2: Decomposing all Am vowel signs](#2-decomposing-all-am-vowel-signs)
-      - [3: Reordering sequences of marks](#3-reordering-sequences-of-marks)
-      - [4: Applying all positioning features from GPOS](#4-applying-all-positioning-features-from-gpos)
-  - [The PUA fallback shaping model](#the-pua-fallback-shaping-model)
+      - [Stage 1: Applying the language substitution features from <abbr>GSUB</abbr>](#stage-1-applying-the-language-substitution-features-from-gsub)
+      - [Stage 2: Decomposing all Am vowel signs](#stage-2-decomposing-all-am-vowel-signs)
+      - [Stage 3: Reordering sequences of marks](#stage-3-reordering-sequences-of-marks)
+      - [Stage 4: Applying all positioning features from <abbr>GPOS</abbr>](#stage-4-applying-all-positioning-features-from-gpos)
+  - [The <abbr>PUA</abbr> fallback shaping model](#the-pua-fallback-shaping-model)
       - [Contextual replacement rules](#contextual-replacement-rules)
-	  - [1. Decomposing all Am vowel signs](#1-decomposing-all-am-vowel-signs)
-      - [2. Reordering sequences of marks](#2-reordering-sequences-of-marks)
-      - [3. Remapping codepoints to the appropriate PUA alternates](#3-remapping-codepoints-to-the-appropriate-pua-alternates)
+	    - [Stage 1: Decomposing all Am vowel signs](#stage-1-decomposing-all-am-vowel-signs)
+      - [Stage 2: Reordering sequences of marks](#stage-2-reordering-sequences-of-marks)
+      - [Stage 3: Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates](#stage-3-remapping-codepoints-to-the-appropriate-pua-alternates)
 
 
 
@@ -56,8 +56,8 @@ space.
 
 A significant number of  older Thai fonts that do not use the OpenType
 shaping model are still in usage; these fonts employ the Unicode
-"Private Use Area" (`PUA`) to store contextual forms of
-characters. Shaping engines may implement this PUA-base shaping model
+"Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
+characters. Shaping engines may implement this <abbr>PUA</abbr>-base shaping model
 as a fallback mechanism when such fonts are encountered.
 
 
@@ -73,9 +73,9 @@ different vowel sound.
 
 The Thai term for a dependent vowel sign is **sara**. The Lao term for
 a vowel sign is **sala**. The official names of the Thai vowel signs
-in the Unicode standard includes "sara" (for example, "Sara Am"),
+in the Unicode standard includes "sara" (for example, <samp>"Sara Am"</samp>),
 while the official names of the Lao vowel signs use "sign" (for
-example, "Sign Am").
+example, <samp>"Sign Am"</samp>).
 
 Some of these dependent-vowel signs are encoded as marks that attach
 to the consonant in **above-base** or **below-base** position. Others
@@ -139,7 +139,7 @@ Marks, including diacritics, tone markers, and dependent vowels, are further lab
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's GPOS table.
+lookups found in the font's <abbr>GPOS</abbr> table.
 
 There are three basic _mark-placement subclasses_ for marks
 in Thai and Lao. Each corresponds to the visual position of the mark with
@@ -171,7 +171,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `VISUAL_ORDER_LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType GSUB and GPOS features. Shaping engines may, internally,
+of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -195,13 +195,13 @@ for script-shaping purposes, some marks need to be reassigned to a
 modified class in order to ensure that certain sequences of
 consecutive marks are reordered correctly.
 
-In particular, the Thai "Sara U" (`U+0E38`) and "Sara Uu" (`U+0E39`)
+In particular, the Thai <samp>"Sara U"</samp> (`U+0E38`) and <samp>"Sara Uu"</samp> (`U+0E39`)
 marks are reassigned from the canonical class 103 to the class 3
 (which is an unused class in Unicode's set of canonical classes).
 
-This ensures that "Sara U" or "Sara Uu" codepoints adjacent to
-"Phinthu" (`U+0E3A`) are not reordered to a position after the
-"Phinthu" mark.
+This ensures that <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> codepoints adjacent to
+<samp>"Phinthu"</samp> (`U+0E3A`) are not reordered to a position after the
+<samp>"Phinthu"</samp> mark.
 
 
 | Codepoint | Combining class | Glyph                              |
@@ -220,9 +220,9 @@ This ensures that "Sara U" or "Sara Uu" codepoints adjacent to
 > handle the Phinthu-reordering issue in a different manner.
 
 
-### PUA fallback classifications ###
+### <abbr>PUA</abbr> fallback classifications ###
 
-Older Thai fonts that implement the PUA-substitution fallback method
+Older Thai fonts that implement the <abbr>PUA</abbr>-substitution fallback method
 rather than modern OpenType script shaping rules incorporate
 subclasses for consonants that indicate whether or not the consonant
 includes an ascender, a normal descender, or a removable descender.
@@ -261,7 +261,7 @@ and `<lao >` text runs:
 
 The tables list each codepoint along with its Unicode general
 category, its shaping class, its mark-placement subclass, and its
-PUA-fallback category. The codepoint's Unicode name and an example
+<abbr>PUA</abbr>-fallback category. The codepoint's Unicode name and an example
 glyph are also provided.
 
 For example:
@@ -292,11 +292,11 @@ category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
 
 The _PUA_ column indicates which, if any, fallback-shaping category
-the codepoint belongs to when found in older fonts using the PUA
-fallback shaping scheme. Note that the PUA method was employed only
-for Thai fonts, so Lao codepoints do not have a PUA fallback-shaping
+the codepoint belongs to when found in older fonts using the <abbr>PUA</abbr>
+fallback shaping scheme. Note that the <abbr>PUA</abbr> method was employed only
+for Thai fonts, so Lao codepoints do not have a <abbr>PUA</abbr> fallback-shaping
 category. Thai codepoints with a _null_ in the _PUA_ column were not
-used in the PUA fallback-shaping scheme and evoke no special behavior
+used in the <abbr>PUA</abbr> fallback-shaping scheme and evoke no special behavior
 from the shaping engine.
 
 Some codepoints in the tables use a _Shaping class_ that
@@ -315,14 +315,14 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 <!--- The zero-width joiner is primarily used to prevent the formation of a
-subjoining form from a "_Consonant_,Halant,_Consonant_" sequence. The sequence
-"_Consonant_,Halant,ZWJ,_Consonant_" blocks the substitution of a
+subjoining form from a <samp>"_Consonant_,Halant,_Consonant_"</samp> sequence. The sequence
+<samp>"_Consonant_,Halant,ZWJ,_Consonant_"</samp> blocks the substitution of a
 subjoined form for the second consonant. --->
 
 <!---
 A secondary usage of the zero-width joiner is to prevent the formation of
-"Reph". An initial "Ra,Halant,ZWJ" sequence should not produce a "Reph",
-where an initial "Ra,Halant" sequence without the zero-width joiner
+<samp>"Reph"</samp>. An initial <samp>"Ra,Halant,ZWJ"</samp> sequence should not produce a <samp>"Reph"</samp>,
+where an initial <samp>"Ra,Halant"</samp> sequence without the zero-width joiner
 otherwise would.
 --->
 
@@ -344,10 +344,10 @@ the dotted-circle placeholder.
 Processing a run of `<thai>` or `<lao >` text involves four top-level stages:
 
 
-1. Applying the language substitution features from GSUB
+1. Applying the language substitution features from <abbr>GSUB</abbr>
 2. Decomposing all Am vowel signs
 3. Reordering sequences of marks
-4. Applying all positioning features from GPOS
+4. Applying all positioning features from <abbr>GPOS</abbr>
 
 
 As with other Brahmi-derived and Indic scripts, the basic substitution
@@ -365,12 +365,12 @@ In addition to valid syllables, standalone sequences may occur, such
 as when an isolated codepoint is shown in example text.
 
 
-### 1: Applying the language substitution features from GSUB ###
+### Stage 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's GSUB table. In preparation for this
+using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of GSUB features.
+of <abbr>GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -378,7 +378,7 @@ The order in which these substitutions must be performed is fixed:
 	ccmp
 
 
-#### 1.1 locl ####
+#### Stage 1, step 1: locl ####
 
 The `locl` feature replaces default glyphs with any language-specific
 variants, based on examining the language setting of the text run.
@@ -388,55 +388,61 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> GSUB substitutions in the following steps.
+> <abbr>GSUB</abbr> substitutions in the following steps.
 
 
-#### 1.2: ccmp ####
+#### Stage 1, step 2: ccmp ####
 
 The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
 substitute a single glyph into an equivalent decomposed sequence of glyphs. 
  
 In `<thai>` and `<lao >` text, this may include a decomposition for
-the "Am" dependent-vowel sign. If such a decomposition is used in the
+the <samp>"Am"</samp> dependent-vowel sign. If such a decomposition is used in the
 active font, the shaping engine must keep track of the fact that the
-resulting components originated as an "Am" sign. 
+resulting components originated as an <samp>"Am"</samp> sign. 
 
-If there is not an "Am" decomposition in the active font's `ccmp`
+If there is not an <samp>"Am"</samp> decomposition in the active font's `ccmp`
 lookup, the shaping engine will decompose the codepoint in the
 following stage.
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other GSUB lookups, because
+performed before applying any other <abbr>GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
-![Glyph composition](images/thai-lao/thai-ccmp.png)
+:::{figure-md}
+![Glyph composition](images/thai-lao/thai-ccmp.png "Glyph composition")
 
+Glyph composition
+:::
 
-### 2. Decomposing all Am vowel signs ###
+### Stage 2: Decomposing all Am vowel signs ###
 
 The Thai and Lao alphabets each include one character that must be
-decomposed for shaping purposes, the vowel sign "Am". The decomposition is
-canonically defined, resulting in the sequence "_Anusvara_,Sara Aa" in
+decomposed for shaping purposes, the vowel sign <samp>"Am"</samp>. The decomposition is
+canonically defined, resulting in the sequence <samp>"_Anusvara_,Sara Aa"</samp> in
 the appropriate script. 
 
-  - Thai Sara Am (`U+0E33`) decomposes to "Nikhahit,Sara Aa" (`U+0E4D`,`U+0E32`).
-  - Lao Sign Am (`U+0EB3`) decomposes to "Niggahita,Sign Aa" (`U+0ECD`,`U+0EB2`).
+  - Thai Sara Am (`U+0E33`) decomposes to <samp>"Nikhahit,Sara Aa"</samp> (`U+0E4D`,`U+0E32`).
+  - Lao Sign Am (`U+0EB3`) decomposes to <samp>"Niggahita,Sign Aa"</samp> (`U+0ECD`,`U+0EB2`).
 
-> Note: if the active font decomposed the "Am" sign via a `ccmp`
+> Note: if the active font decomposed the <samp>"Am"</samp> sign via a `ccmp`
 > feature lookup during stage one, then no further action is needed
 > on the shaping engine's part during this stage.
 
-The shaping engine must keep track of the fact that the "Nikhahit" or
-"Niggahita" marks originated as part of an "Am" sign, because these
+The shaping engine must keep track of the fact that the <samp>"Nikhahit"</samp> or
+<samp>"Niggahita"</samp> marks originated as part of an <samp>"Am"</samp> sign, because these
 decomposed marks are handled differently during the mark-reordering
 stage.
 
-![AM decomposition](images/thai-lao/lao-am-decomposition.png)
+:::{figure-md}
+![Am decomposition](images/thai-lao/lao-am-decomposition.png "Am decomposition")
 
+Am decomposition
+:::
   
-### 3. Reordering sequences of marks ###
+### Stage 3: Reordering sequences of marks ###
 
 In this stage, sequences of consecutive marks may need to be
 reordered.
@@ -444,19 +450,19 @@ reordered.
 In `<thai>` and `<lao >` text runs, two conditions should be checked
 for possible reordering.
 
-  - A "Nikhahit" or "Niggahita" mark that originated as part of an
-    "Am" sign (which was decomposed in stage two, above) must be
+  - A <samp>"Nikhahit"</samp> or <samp>"Niggahita"</samp> mark that originated as part of an
+    <samp>"Am"</samp> sign (which was decomposed in stage two, above) must be
     reordered so that it occurs before any tone markers in the
     sequence of marks.
-  - A "Phinthu" mark must be reordered so that it occurs after any
-    "Sara U" or "Sara Uu" marks.
+  - A <samp>"Phinthu"</samp> mark must be reordered so that it occurs after any
+    <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> marks.
 	
-> Note: "Nikhahit" or "Niggahita" marks that were not originally part
-> of an "Am" sign should not be reordered.
+> Note: <samp>"Nikhahit"</samp> or <samp>"Niggahita"</samp> marks that were not originally part
+> of an <samp>"Am"</samp> sign should not be reordered.
 
 > Note: Shaping engines may alternatively choose to implement the Phinthu
 > reordering rule by modifying the combining classes assigned to
-> "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
+> <samp>"Phinthu"</samp>, <samp>"Sara U"</samp>, and <samp>"Sara Uu"</samp> as necessary before processing
 > the text run, or by performing a sorting step at this stage.
 
 
@@ -484,12 +490,12 @@ move the
 --->
 
 
-### 4: Applying all positioning features from GPOS ###
+### Stage 4: Applying all positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other GPOS features are
+In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the GPOS table in the font.
+order in which they appear in the <abbr>GPOS</abbr> table in the font.
 
 	kern
 	mark
@@ -502,33 +508,42 @@ order in which they appear in the GPOS table in the font.
 The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
-![Application of the kern feature](/images/thai-lao/lao-kern.png)
+:::{figure-md}
+![Application of the kern feature](/images/thai-lao/lao-kern.png "Application of the kern feature")
 
+Application of the kern feature
+:::
 
 The `mark` feature positions marks with respect to base glyphs.
 
-![Application of the mark feature](/images/thai-lao/thai-mark.png)
+:::{figure-md}
+![Application of the mark feature](/images/thai-lao/thai-mark.png "Application of the mark feature")
 
+Application of the mark feature
+:::
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
-![Application of the mkmk feature](/images/thai-lao/thai-mkmk.png)
+:::{figure-md}
+![Application of the mkmk feature](/images/thai-lao/thai-mkmk.png "Application of the mkmk feature")
+
+Application of the mkmk feature
+:::
 
 
-
-## The PUA fallback shaping model ##
+## The <abbr>PUA</abbr> fallback shaping model ##
 
 A significant number of  older Thai fonts that do not use the OpenType
 shaping model are still in usage; these fonts employ the Unicode
-"Private Use Area" (`PUA`) to store contextual forms of
+"Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
 characters.
 
-The PUA shaping model is described at
+The <abbr>PUA</abbr> shaping model is described at
 [linux.thai.net/~thep/th-otf/shaping.html](https://linux.thai.net/~thep/th-otf/shaping.html)
 . It relies on a set of pre-determined mappings from the codepoints in the
-Unicode Thai block to codepoints in the PUA.
+Unicode Thai block to codepoints in the <abbr>PUA</abbr>.
 
 For consonants, these alternate-glyph mappings depend on whether or
 not the consonant includes an ascender, a normal descender, or a
@@ -562,7 +577,7 @@ table](character-tables/character-tables-thai.md#thai-character-table).
 ## Contextual replacement rules ##
 
 Codepoints in the Thai Block can be mapped to one of several alternate
-PUA codepoints depending on context:
+<abbr>PUA</abbr> codepoints depending on context:
 
   - A tone marker that does not follow an above-base vowel sign may be
     mapped to an alternate that is positioned lower, closer to the top
@@ -599,11 +614,11 @@ possible consonant (vertical) and vowel/mark (horizontal) sequences:
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
 
-These replacements take the place of both GSUB substitutions and GPOS
+These replacements take the place of both <abbr>GSUB</abbr> substitutions and <abbr>GPOS</abbr>
 positioning in modern OpenType fonts.
 
 Shaping engines can replace the original codepoints with the
-appropriate alternates from the PUA block by testing for the above
+appropriate alternates from the <abbr>PUA</abbr> block by testing for the above
 conditions. 
 
 With each consonant, vowel, and mark character correctly classified,
@@ -613,25 +628,28 @@ There are three top-level stages:
 
 1. Decomposing all Am vowel signs
 2. Reordering sequences of marks
-3. Remapping codepoints to the appropriate PUA alternates
+3. Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates
 
 
-### 1. Decomposing all Am vowel signs ###
+### Stage 1: Decomposing all Am vowel signs ###
 
 The Thai alphabet includes one character that must be decomposed for
-shaping purposes, the vowel sign "Am". The decomposition is
-canonically defined, resulting in the sequence "Nikhahit,Sara Aa".
+shaping purposes, the vowel sign <samp>"Am"</samp>. The decomposition is
+canonically defined, resulting in the sequence <samp>"Nikhahit,Sara Aa"</samp>.
 
-  - Sara Am (`U+0E33`) decomposes to "Nikhahit,Sara Aa" (`U+0E4D`,`U+0E32`).
+  - Sara Am (`U+0E33`) decomposes to <samp>"Nikhahit,Sara Aa"</samp> (`U+0E4D`,`U+0E32`).
 
-The shaping engine must keep track of the fact that the "Nikhahit"
-mark originated as part of an "Am" sign, because these decomposed
+The shaping engine must keep track of the fact that the <samp>"Nikhahit"</samp>
+mark originated as part of an <samp>"Am"</samp> sign, because these decomposed
 marks are handled differently during the mark-reordering stage.
 
-![Glyph decomposition](images/thai-lao/thai-am-decomposition.png)
+:::{figure-md}
+![Glyph decomposition](images/thai-lao/thai-am-decomposition.png "Glyph decomposition")
 
+Glyph decomposition
+:::
 
-### 2. Reordering sequences of marks ###
+### Stage 2: Reordering sequences of marks ###
 
 In this stage, certain sequences of consecutive marks may need to be
 reordered.
@@ -639,22 +657,22 @@ reordered.
 As is the case in OpenType-font text runs, two conditions should be checked
 for possible reordering.
 
-  - A "Nikhahit" mark that originated as part of an "Am" sign (which
+  - A <samp>"Nikhahit"</samp> mark that originated as part of an <samp>"Am"</samp> sign (which
     was decomposed in stage one, above) must be reordered so that it
     occurs before any tone markers in the sequence of marks.
-  - A "Phinthu" mark must be reordered so that it occurs after any
-    "Sara U" or "Sara Uu" marks.
+  - A <samp>"Phinthu"</samp> mark must be reordered so that it occurs after any
+    <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> marks.
 	
-> Note: "Nikhahit" marks that were not originally part of an "Am" sign
+> Note: <samp>"Nikhahit"</samp> marks that were not originally part of an <samp>"Am"</samp> sign
 > should not be reordered.
 
 > Note: Shaping engines may choose to implement the Phinthu
 > reordering rule by modifying the combining classes assigned to
-> "Phinthu", "Sara U", and "Sara Uu" as necessary before processing
+> <samp>"Phinthu"</samp>, <samp>"Sara U"</samp>, and <samp>"Sara Uu"</samp> as necessary before processing
 > the text run, or by performing a sorting step at this stage.
 
 
-### 3. Remapping codepoints to the appropriate PUA alternates ###
+### Stage 3: Remapping codepoints to the appropriate <abbr>PUA</abbr> alternates ###
 
 The contextual replacement rules described above can be implemented in
 a pair of state machines, one for above-base replacement moves and one
@@ -722,7 +740,7 @@ follow a consonant:
 
 
 When the necessary replacement action for each codepoint has been
-determined, codepoints can be replaced with the PUA codepoints from
+determined, codepoints can be replaced with the <abbr>PUA</abbr> codepoints from
 the following table.
 
 Note that Windows fonts and MacOS fonts used different mappings.

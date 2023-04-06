@@ -17,7 +17,7 @@ _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other 
 
 At present, we are seeking comments and bugfixes on the Indic-script,
 Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, Myanmar,
-default, and USE documents. Interested readers and contributors can
+default, and <abbr>USE</abbr> documents. Interested readers and contributors can
 begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 
@@ -31,7 +31,7 @@ begin at the
   - [Thai and Lao](opentype-shaping-thai-lao.md)
   - [Tibetan](opentype-shaping-tibetan.md)
   - [Myanmar](opentype-shaping-myanmar.md)
-  - [Universal Shaping Engine (USE)](opentype-shaping-use.md)
+  - [Universal Shaping Engine (<abbr>USE</abbr>)](opentype-shaping-use.md)
     - All complex scripts that are not handled by a dedicated
       script-specific shaping model
   - [Default](opentype-shaping-default.md)
@@ -42,7 +42,7 @@ begin at the
       Opentype mechanisms and should not be overlooked
   
 shaping documents and are encouraged to submit their feedback
-on the text or images of any of the linked scripts.  The documents are
+on the text or images of any of the linked scripts. The documents are
 organized by script; where there are multiple shaping models for a
 particular script (including deprecated models), the various models are
 all addressed in the same script-specific document.
@@ -56,7 +56,7 @@ Various [notes](notes/README.md) about the document set and the details
 of its scope, limitations, and quirks are also provided.
 
 Some [errata](errata.md) about the "upstream" specifications and
-reference documents are noted separately.
+reference documents are noted separately. 
 
 In its final form, this repository will hold documentation describing
 the shaping behavior used for layout of OpenType text. In particular,
