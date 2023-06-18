@@ -15,7 +15,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-matra-decompose
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-matra-decompose-after.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf --unicodes=09c7,200c,25cc,09d7
 
-montage bengali-matra-decompose-before.svg right-arrow.svg bengali-matra-decompose-after.svg > bengali-matra-decompose.svg
+svg_stack.py --direction=h bengali-matra-decompose-before.svg right-arrow.svg bengali-matra-decompose-after.svg > bengali-matra-decompose.svg
 
 
 ## 2.7 Post-base consonants
@@ -24,7 +24,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-yaphala-before.
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-yaphala-after.svg --features=-init,+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf --unicodes=25cc,09cd,09af
 
-montage bengali-yaphala-before.svg right-arrow.svg bengali-yaphala-after.svg > bengali-yaphala.svg
+svg_stack.py --direction=h bengali-yaphala-before.svg right-arrow.svg bengali-yaphala-after.svg > bengali-yaphala.svg
 
 
 ## 3.2 `nukt`
