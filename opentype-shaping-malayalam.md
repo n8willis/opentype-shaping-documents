@@ -929,7 +929,7 @@ Malayalam includes two consonants that can take on
 post-base form: <samp>"Ya"</samp> and <samp>"Va"</samp>.
 
 :::{figure-md}
-![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png "Post-base Ya formation")
+![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.svg "Post-base Ya formation")
 
 Post-base Ya formation
 :::
@@ -937,7 +937,7 @@ Post-base Ya formation
 
 
 :::{figure-md}
-![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png "Post-base Va formation")
+![Post-base Va formation](/images/malayalam/malayalam-pstf-va.svg "Post-base Va formation")
 
 Post-base Va formation
 :::
@@ -949,7 +949,7 @@ Malayalam includes one consonant that can take on a below-base form:
     a below-base form.
 
 :::{figure-md}
-![Below-base La formation](/images/malayalam/malayalam-blwf-la.png "Below-base La formation")
+![Below-base La formation](/images/malayalam/malayalam-blwf-la.svg "Below-base La formation")
 
 Below-base La formation
 :::
@@ -987,7 +987,7 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/malayalam/malayalam-matra-decompose.png "Two-part matra decomposition")
+![Two-part matra decomposition](/images/malayalam/malayalam-matra-decompose.svg "Two-part matra decomposition")
 
 Two-part matra decomposition
 :::
@@ -1248,7 +1248,7 @@ precomposed nukta-variant of the consonant glyph.
     | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 
 :::{figure-md}
-![Nukta composition](/images/malayalam/malayalam-nukt.png "Nukta composition")
+![Nukta composition](/images/malayalam/malayalam-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1272,14 +1272,14 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![Akhand KSsa ligation](/images/malayalam/malayalam-akhn-kssa.png "Akhand KSsa ligation")
+![Akhand KSsa ligation](/images/malayalam/malayalam-akhn-kssa.svg "Akhand KSsa ligation")
 
 Akhand KSsa ligation
 :::
 
 
 :::{figure-md}
-![Akhand NnTta ligation](/images/malayalam/malayalam-akhn-nntta.png "Akhand NnTta ligation")
+![Akhand NnTta ligation](/images/malayalam/malayalam-akhn-nntta.svg "Akhand NnTta ligation")
 
 Akhand NnTta ligation
 :::
@@ -1292,7 +1292,7 @@ Akhand NnTta ligation
 > is applied, so the font may omit the `rphf` feature entirely.
 
 :::{figure-md}
-![Akhand Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.png "Akhand Chillu R ligation")
+![Akhand Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.svg "Akhand Chillu R ligation")
 
 Akhand Chillu R ligation
 :::
@@ -1310,7 +1310,7 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 > in old-orthography Malayalam writing.
 
 :::{figure-md}
-![Dot Reph composition](/images/malayalam/malayalam-dot-reph.png "Dot Reph composition")
+![Dot Reph composition](/images/malayalam/malayalam-dot-reph.svg "Dot Reph composition")
 
 Dot Reph composition
 :::
@@ -1330,7 +1330,7 @@ Dot Reph composition
 > is applied, so the font may omit the `rphf` feature entirely.
 
 :::{figure-md}
-![Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.png "Chillu R ligation")
+![Chillu R ligation](/images/malayalam/malayalam-akhn-chillu-r.svg "Chillu R ligation")
 
 Chillu R ligation
 :::
@@ -1351,7 +1351,7 @@ at this stage. However, the actual reordering move is performed later,
 in stage 4, step 4.
 
 :::{figure-md}
-![Pre-base Ra formation](/images/malayalam/malayalam-pstf-ra.png "Pre-base Ra formation")
+![Pre-base Ra formation](/images/malayalam/malayalam-pstf-ra.svg "Pre-base Ra formation")
 
 Pre-base Ra formation
 :::
@@ -1378,7 +1378,7 @@ characteristic.
 
 
 :::{figure-md}
-![Below-base La formation](/images/malayalam/malayalam-blwf.png "Below-base La formation")
+![Below-base La formation](/images/malayalam/malayalam-blwf.svg "Below-base La formation")
 
 Below-base La formation
 :::
@@ -1431,7 +1431,7 @@ shaping engine must test:
 
 
 :::{figure-md}
-![Half-form formation](/images/malayalam/malayalam-half.png "Half-form formation")
+![Half-form formation](/images/malayalam/malayalam-half.svg "Half-form formation")
 
 Half-form formation
 :::
@@ -1451,13 +1451,13 @@ post-base form: <samp>"Ya"</samp> and <samp>"Va"</samp>.
 
 
 :::{figure-md}
-![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.png "Post-base Ya formation")
+![Post-base Ya formation](/images/malayalam/malayalam-pstf-ya.svg "Post-base Ya formation")
 
 Post-base Ya formation
 :::
 
 :::{figure-md}
-![Post-base Va formation](/images/malayalam/malayalam-pstf-va.png "Post-base Va formation")
+![Post-base Va formation](/images/malayalam/malayalam-pstf-va.svg "Post-base Va formation")
 
 Post-base Va formation
 :::
@@ -1513,7 +1513,7 @@ must be applied after the `half` feature.
 > desired typographic variation.
 
 :::{figure-md}
-![Conjunct ligation](/images/malayalam/malayalam-cjct.png "Conjunct ligation")
+![Conjunct ligation](/images/malayalam/malayalam-cjct.svg "Conjunct ligation")
 
 Conjunct ligation
 :::
@@ -1585,7 +1585,7 @@ to the left of the base consonant or syllable base, and all conjuncts
 or ligatures that contain the base consonant or syllable base.
 
 :::{figure-md}
-![Matra positioning](/images/malayalam/malayalam-matra-position.png "Matra positioning")
+![Matra positioning](/images/malayalam/malayalam-matra-position.svg "Matra positioning")
 
 Matra positioning
 :::
@@ -1644,7 +1644,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
 :::{figure-md}
-![Repha positioning](/images/malayalam/malayalam-repha-position.png "Repha positioning")
+![Repha positioning](/images/malayalam/malayalam-repha-position.svg "Repha positioning")
 
 Repha positioning
 :::
@@ -1668,7 +1668,7 @@ The algorithm for reordering <samp>"Ra"</samp> in this circumstance is:
     position, place the <samp>"Ra"</samp> immediately before the base consonant or syllable base.
 
 :::{figure-md}
-![Pre-base-reordering consonant positioning](/images/malayalam/malayalam-pref-position.png "Pre-base-reordering consonant positioning")
+![Pre-base-reordering consonant positioning](/images/malayalam/malayalam-pref-position.svg "Pre-base-reordering consonant positioning")
 
 Pre-base-reordering consonant positioning
 :::
@@ -1726,7 +1726,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form substitution](/images/malayalam/malayalam-psts.png "Post-base form substitution")
+![Post-base form substitution](/images/malayalam/malayalam-psts.svg "Post-base form substitution")
 
 Post-base form substitution
 :::
@@ -1741,7 +1741,7 @@ typographically problematic.
 > Chillu substitutions, as in the example below
 
 :::{figure-md}
-![Halant-form formation](/images/malayalam/malayalam-haln.png "Halant-form formation")
+![Halant-form formation](/images/malayalam/malayalam-haln.svg "Halant-form formation")
 
 Halant-form formation
 :::
@@ -1780,7 +1780,7 @@ characters. In Malayalam, this includes <samp>"Dot Reph"</samp> in addition to t
 diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/malayalam/malayalam-abvm.png "Above-base mark positioning")
+![Above-base mark positioning](/images/malayalam/malayalam-abvm.svg "Above-base mark positioning")
 
 Above-base mark positioning
 :::
@@ -1791,7 +1791,7 @@ characters. In Malayalam, this includes below-base marks as well as
 the below-base consonant form of <samp>"La"</samp>.
 
 :::{figure-md}
-![Below-base mark positioning](/images/malayalam/malayalam-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/malayalam/malayalam-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::
