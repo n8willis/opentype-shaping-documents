@@ -929,7 +929,7 @@ Gurmukhi includes one post-base form:
   - <samp>"Halant,Ya"</samp> takes on a post-base form.
   
 :::{figure-md}
-![Post-base consonants](/images/gurmukhi/gurmukhi-pstf.png "Post-base consonants")
+![Post-base consonants](/images/gurmukhi/gurmukhi-pstf.svg "Post-base consonants")
 
 Post-base consonants
 :::
@@ -1230,7 +1230,7 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/gurmukhi/gurmukhi-nukt.png "Nukta composition")
+![Nukta composition](/images/gurmukhi/gurmukhi-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1315,21 +1315,21 @@ characteristic.
 
 
 :::{figure-md}
-![Below-base Ra composition](/images/gurmukhi/gurmukhi-blwf-ra.png "Below-base Ra composition")
+![Below-base Ra composition](/images/gurmukhi/gurmukhi-blwf-ra.svg "Below-base Ra composition")
 
 Below-base Ra composition
 :::
 
 
 :::{figure-md}
-![Below-base Va composition](/images/gurmukhi/gurmukhi-blwf-va.png "Below-base Va composition")
+![Below-base Va composition](/images/gurmukhi/gurmukhi-blwf-va.svg "Below-base Va composition")
 
 Below-base Va composition
 :::
 
 
 :::{figure-md}
-![Below-base Ha composition](/images/gurmukhi/gurmukhi-blwf-ha.png "Below-base Ha composition")
+![Below-base Ha composition](/images/gurmukhi/gurmukhi-blwf-ha.svg "Below-base Ha composition")
 
 Below-base Ha composition
 :::
@@ -1382,7 +1382,7 @@ the shaping engine must test:
 > glyphs, as illustrated here.
 
 :::{figure-md}
-![Half-form composition](/images/gurmukhi/gurmukhi-half.png "Half-form composition")
+![Half-form composition](/images/gurmukhi/gurmukhi-half.svg "Half-form composition")
 
 Half-form composition
 :::
@@ -1397,7 +1397,7 @@ Gurmukhi includes one post-base form:
   - <samp>"Halant,Ya"</samp> takes on a post-base form.
 
 :::{figure-md}
-![Post-base Ya composition](/images/gurmukhi/gurmukhi-pstf.png "Post-base Ya composition")
+![Post-base Ya composition](/images/gurmukhi/gurmukhi-pstf.svg "Post-base Ya composition")
 
 Post-base Ya composition
 :::
@@ -1524,7 +1524,7 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.png "Pre-base matra positioning")
+![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.svg "Pre-base matra positioning")
 
 Pre-base matra positioning
 :::
@@ -1673,7 +1673,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base substitutions](/images/gurmukhi/gurmukhi-abvs.png "Above-base substitutions")
+![Above-base substitutions](/images/gurmukhi/gurmukhi-abvs.svg "Above-base substitutions")
 
 Above-base substitutions
 :::
@@ -1686,7 +1686,7 @@ are followed by below-base-consonant forms (like those of <samp>"Ra"</samp>, <sa
 <samp>"Va"</samp>, or <samp>"Yakash"</samp>) with contextual ligatures.
 
 :::{figure-md}
-![Below-base substitutions](/images/gurmukhi/gurmukhi-blws.png "Below-base substitutions")
+![Below-base substitutions](/images/gurmukhi/gurmukhi-blws.svg "Below-base substitutions")
 
 Below-base substitutions
 :::
@@ -1704,7 +1704,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![Halant form substitutions](/images/gurmukhi/gurmukhi-haln.png "Halant form substitutions")
+![Halant form substitutions](/images/gurmukhi/gurmukhi-haln.svg "Halant form substitutions")
 
 Halant form substitutions
 :::
@@ -1742,7 +1742,7 @@ characters. In Gurmukhi, this includes <samp>"Reph"</samp> in addition to the
 diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/gurmukhi/gurmukhi-abvm.png "Above-base mark positioning")
+![Above-base mark positioning](/images/gurmukhi/gurmukhi-abvm.svg "Above-base mark positioning")
 
 Above-base mark positioning
 :::
@@ -1754,7 +1754,7 @@ characters. In Gurmukhi, this includes below-base dependent vowels
 <samp>"Va"</samp>.
 
 :::{figure-md}
-![Below-base mark positioning](/images/gurmukhi/gurmukhi-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/gurmukhi/gurmukhi-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::
