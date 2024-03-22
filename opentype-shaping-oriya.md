@@ -926,7 +926,7 @@ The algorithm for determining the base consonant is
 Oriya includes two consonants that can take on post-base forms, `Ya` and `Yya`.
 
 :::{figure-md}
-![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.png "Post-base consonant Ya")
+![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.svg "Post-base consonant Ya")
 
 Post-base consonant Ya
 :::
@@ -934,7 +934,7 @@ Post-base consonant Ya
 
 
 :::{figure-md}
-![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.png "Post-base consonant Yya")
+![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.svg "Post-base consonant Yya")
 
 Post-base consonant Yya
 :::
@@ -946,7 +946,7 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
@@ -1001,7 +1001,7 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.png "Two-part matra decomposition")
+![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.svg "Two-part matra decomposition")
 
 Two-part matra decomposition
 :::
@@ -1075,7 +1075,7 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
@@ -1266,7 +1266,7 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/oriya/oriya-nukt.png "Nukta composition")
+![Nukta composition](/images/oriya/oriya-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1293,14 +1293,14 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/oriya/oriya-akhn-kssa.png "KSsa ligation")
+![KSsa ligation](/images/oriya/oriya-akhn-kssa.svg "KSsa ligation")
 
 KSsa ligation
 :::
 
 
 :::{figure-md}
-![JNya ligation](/images/oriya/oriya-akhn-jnya.png "JNya ligation")
+![JNya ligation](/images/oriya/oriya-akhn-jnya.svg "JNya ligation")
 
 JNya ligation
 :::
@@ -1323,7 +1323,7 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph composition](/images/oriya/oriya-rphf.png "Reph composition")
+![Reph composition](/images/oriya/oriya-rphf.svg "Reph composition")
 
 Reph composition
 :::
@@ -1347,7 +1347,7 @@ form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.png "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
@@ -1371,7 +1371,7 @@ characteristic.
 
 
 :::{figure-md}
-![Below-base consonant composition](/images/oriya/oriya-blwf.png "Below-base consonant composition")
+![Below-base consonant composition](/images/oriya/oriya-blwf.svg "Below-base consonant composition")
 
 Below-base consonant composition
 :::
@@ -1422,14 +1422,14 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 :::{figure-md}
-![Post-base form Ya composition](/images/oriya/oriya-pstf-ya.png "Post-base form Ya composition")
+![Post-base form Ya composition](/images/oriya/oriya-pstf-ya.svg "Post-base form Ya composition")
 
 Post-base form Ya composition
 :::
 
 
 :::{figure-md}
-![Post-base form Yya composition](/images/oriya/oriya-pstf-yya.png "Post-base form Yya composition")
+![Post-base form Yya composition](/images/oriya/oriya-pstf-yya.svg "Post-base form Yya composition")
 
 Post-base form Yya composition
 :::
@@ -1483,7 +1483,7 @@ must be applied after the `half` feature.
 
 
 :::{figure-md}
-![Conjunct ligation](/images/oriya/oriya-cjct.png "Conjunct ligation")
+![Conjunct ligation](/images/oriya/oriya-cjct.svg "Conjunct ligation")
 
 Conjunct ligation
 :::
@@ -1552,7 +1552,7 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra position](/images/oriya/oriya-matra-position.png "Pre-base matra position")
+![Pre-base matra position](/images/oriya/oriya-matra-position.svg "Pre-base matra position")
 
 Pre-base matra position
 :::
@@ -1612,7 +1612,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
 :::{figure-md}
-![Reph position](/images/oriya/oriya-reph-position.png "Reph position")
+![Reph position](/images/oriya/oriya-reph-position.svg "Reph position")
 
 Reph position
 :::
@@ -1666,7 +1666,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base form substitution](/images/oriya/oriya-pres.png "Pre-base form substitution")
+![Pre-base form substitution](/images/oriya/oriya-pres.svg "Pre-base form substitution")
 
 Pre-base form substitution
 :::
@@ -1678,7 +1678,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form substitution](/images/oriya/oriya-abvs.png "Above-base form substitution")
+![Above-base form substitution](/images/oriya/oriya-abvs.svg "Above-base form substitution")
 
 Above-base form substitution
 :::
@@ -1692,7 +1692,7 @@ are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> with
 contextual ligatures.
 
 :::{figure-md}
-![Below-base form substitution](/images/oriya/oriya-blws.png "Below-base form substitution")
+![Below-base form substitution](/images/oriya/oriya-blws.svg "Below-base form substitution")
 
 Below-base form substitution
 :::
@@ -1704,7 +1704,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form substitution](/images/oriya/oriya-psts.png "Post-base form substitution")
+![Post-base form substitution](/images/oriya/oriya-psts.svg "Post-base form substitution")
 
 Post-base form substitution
 :::
@@ -1721,7 +1721,7 @@ typographically problematic.
 > and may be disabled in the application by user preference.
 
 :::{figure-md}
-![Halant form substitution](/images/oriya/oriya-haln.png "Halant form substitution")
+![Halant form substitution](/images/oriya/oriya-haln.svg "Halant form substitution")
 
 Halant form substitution
 :::
@@ -1754,7 +1754,7 @@ characters. In Oriya, this includes <samp>"Reph"</samp> in addition to the
 above-base dependent vowels (matras), diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark position](/images/oriya/oriya-abvm.png "Above-base mark position")
+![Above-base mark position](/images/oriya/oriya-abvm.svg "Above-base mark position")
 
 Above-base mark position
 :::
@@ -1765,7 +1765,7 @@ characters. In Oriya, this includes below-base dependent vowels
 (matras) as well as the below-base consonant form <samp>"Raphala"</samp>.
 
 :::{figure-md}
-![Below-base mark position](/images/oriya/oriya-blwm.png "Below-base mark position")
+![Below-base mark position](/images/oriya/oriya-blwm.svg "Below-base mark position")
 
 Below-base mark position
 :::
