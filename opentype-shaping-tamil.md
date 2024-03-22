@@ -910,7 +910,7 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/tamil/tamil-matra-decompose.png "Two-part matra decomposition")
+![Two-part matra decomposition](/images/tamil/tamil-matra-decompose.svg "Two-part matra decomposition")
 
 Two-part matra decomposition
 :::
@@ -1197,7 +1197,7 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.png "akhn KSsa formation")
+![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.svg "akhn KSsa formation")
 
 akhn KSsa formation
 :::
@@ -1303,7 +1303,7 @@ shaping engine must test:
 > ligature of the <samp>"_Consonant_"</samp> and <samp>"Halant"</samp> glyphs.
 
 :::{figure-md}
-![half-form feature application](/images/tamil/tamil-half.png "half-form feature application")
+![half-form feature application](/images/tamil/tamil-half.svg "half-form feature application")
 
 half-form feature application
 :::
@@ -1436,7 +1436,7 @@ to the left of the base consonant or syllable base, and all conjuncts
 or ligatures that contain the base consonant or syllable base.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/tamil/tamil-matra-position.png "Pre-base matra positioning")
+![Pre-base matra positioning](/images/tamil/tamil-matra-position.svg "Pre-base matra positioning")
 
 Pre-base matra positioning
 :::
@@ -1546,7 +1546,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![pres feature application](/images/tamil/tamil-pres.png "pres feature application")
+![pres feature application](/images/tamil/tamil-pres.svg "pres feature application")
 
 pres feature application
 :::
@@ -1556,7 +1556,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![abvs feature application](/images/tamil/tamil-abvs.png "abvs feature application")
+![abvs feature application](/images/tamil/tamil-abvs.svg "abvs feature application")
 
 abvs feature application
 :::
@@ -1574,7 +1574,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![psts feature application](/images/tamil/tamil-psts.png "psts feature application")
+![psts feature application](/images/tamil/tamil-psts.svg "psts feature application")
 
 psts feature application
 :::
@@ -1585,7 +1585,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![haln feature application](/images/tamil/tamil-haln.png "haln feature application")
+![haln feature application](/images/tamil/tamil-haln.svg "haln feature application")
 
 haln feature application
 :::
@@ -1622,7 +1622,7 @@ characters. In Tamil, this includes above-base dependent vowels
 (matras), diacritical marks, and Vedic signs.
 
 :::{figure-md}
-![abvm feature application](/images/tamil/tamil-abvm.png "abvm feature application")
+![abvm feature application](/images/tamil/tamil-abvm.svg "abvm feature application")
 
 abvm feature application
 :::
