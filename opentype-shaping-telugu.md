@@ -927,7 +927,7 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/telugu/telugu-matra-decompose.png "Two-part matra decomposition")
+![Two-part matra decomposition](/images/telugu/telugu-matra-decompose.svg "Two-part matra decomposition")
 
 Two-part matra decomposition
 :::
@@ -1213,7 +1213,7 @@ many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/telugu/telugu-akhn-kssa.png "KSsa ligation")
+![KSsa ligation](/images/telugu/telugu-akhn-kssa.svg "KSsa ligation")
 
 KSsa ligation
 :::
@@ -1254,7 +1254,7 @@ special forms. All consonants in Telugu can take on a below-base consonant
 form.
 
 :::{figure-md}
-![Below-base form composition](/images/telugu/telugu-blwf.png "Below-base form composition")
+![Below-base form composition](/images/telugu/telugu-blwf.svg "Below-base form composition")
 
 Below-base form composition
 :::
@@ -1303,7 +1303,7 @@ shaping engine must test:
 > desired typographic variation.
 
 :::{figure-md}
-![Half form composition](/images/telugu/telugu-half.png "Half form composition")
+![Half form composition](/images/telugu/telugu-half.svg "Half form composition")
 
 Half form composition
 :::
@@ -1536,7 +1536,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base form ligation](/images/telugu/telugu-pres.png "Pre-base form ligation")
+![Pre-base form ligation](/images/telugu/telugu-pres.svg "Pre-base form ligation")
 
 Pre-base form ligation
 :::
@@ -1546,7 +1546,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form ligation](/images/telugu/telugu-abvs.png "Above-base form ligation")
+![Above-base form ligation](/images/telugu/telugu-abvs.svg "Above-base form ligation")
 
 Above-base form ligation
 :::
@@ -1557,7 +1557,7 @@ below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
 :::{figure-md}
-![Below-base form ligation](/images/telugu/telugu-blws.png "Below-base form ligation")
+![Below-base form ligation](/images/telugu/telugu-blws.svg "Below-base form ligation")
 
 Below-base form ligation
 :::
@@ -1568,7 +1568,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form ligation](/images/telugu/telugu-psts.png "Post-base form ligation")
+![Post-base form ligation](/images/telugu/telugu-psts.svg "Post-base form ligation")
 
 Post-base form ligation
 :::
@@ -1584,7 +1584,7 @@ typographically problematic.
 > and may be disabled in the application by user preference.
 
 :::{figure-md}
-![Halant form ligation](/images/telugu/telugu-haln.png "Halant form ligation")
+![Halant form ligation](/images/telugu/telugu-haln.svg "Halant form ligation")
 
 Halant form ligation
 :::
@@ -1621,7 +1621,7 @@ characters. In Telugu, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/telugu/telugu-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/telugu/telugu-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::
