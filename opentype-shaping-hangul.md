@@ -80,14 +80,14 @@ consonant, must include one vowel in the second position, and may or may
 not end with one trailing consonant. 
 
 :::{figure-md}
-![LV syllable](images/hangul/hangul-lv-syllable.png "LVT syllable")
+![LV syllable](images/hangul/hangul-lv-syllable.svg "LVT syllable")
 
 LV syllable
 :::
 
 
 :::{figure-md}
-![LVT syllable](images/hangul/hangul-lvt-syllable.png "LVT syllable")
+![LVT syllable](images/hangul/hangul-lvt-syllable.svg "LVT syllable")
 
 LVT syllable
 :::
@@ -423,7 +423,7 @@ no substitution and must proceed to stage five with the original `L`,
 `V`, and (if used) `T` jamo. 
 
 :::{figure-md}
-![Syllable composition](images/hangul/hangul-compose.png "Syllable composition")
+![Syllable composition](images/hangul/hangul-compose.svg "Syllable composition")
 
 Syllable composition
 :::
@@ -481,7 +481,7 @@ With the syllable decomposed, the shaping engine can proceed to stage
 five with the `L`, `V`, and (if used) `T` jamo. 
 
 :::{figure-md}
-![Syllable decomposition](images/hangul/hangul-decompose.png "Syllable decomposition")
+![Syllable decomposition](images/hangul/hangul-decompose.svg "Syllable decomposition")
 
 Syllable decomposition
 :::
@@ -521,7 +521,7 @@ then shorter forms of both the leading consonant (choseong) and vowel
 vertical space. 
 
 :::{figure-md}
-![L Jamo feature application](images/hangul/hangul-ljmo.png "L Jamo feature application")
+![L Jamo feature application](images/hangul/hangul-ljmo.svg "L Jamo feature application")
 
 L Jamo feature application
 :::
@@ -542,7 +542,7 @@ forms of both the leading consonant (choseong) and vowel (jungseong)
 glyphs will be used in order to provide sufficient vertical space.
 
 :::{figure-md}
-![V Jamo feature application](images/hangul/hangul-vjmo.png "V Jamo feature application")
+![V Jamo feature application](images/hangul/hangul-vjmo.svg "V Jamo feature application")
 
 V Jamo feature application
 :::
@@ -561,7 +561,7 @@ forms can take on. A given font may, however, include several
 context-dependent alternates for stylistic or typographic variation.
 
 :::{figure-md}
-![T Jamo feature application](images/hangul/hangul-tjmo.png "T Jamo feature application")
+![T Jamo feature application](images/hangul/hangul-tjmo.svg "T Jamo feature application")
 
 T Jamo feature application
 :::
@@ -581,7 +581,7 @@ features. Therefore, the reordering must take place at the end of the
 shaping process.
 
 :::{figure-md}
-![Tone-mark reordering](images/hangul/hangul-tone.png "Tone-mark reordering")
+![Tone-mark reordering](images/hangul/hangul-tone.svg "Tone-mark reordering")
 
 Tone-mark reordering
 :::
