@@ -100,25 +100,25 @@ For example, the letter "Manchu I" (`U+1873`) has three alternate
 forms defined for the medial position:
 
 :::{figure-md}
-![Non FVS form substitution](/images/mongolian/mongolian-fvs-none.png "Non FVS form substitution")
+![Non FVS form substitution](/images/mongolian/mongolian-fvs-none.svg "Non FVS form substitution")
 
 Non-FVS substitution
 :::
 
 :::{figure-md}
-![FVS1 form substitution](/images/mongolian/mongolian-fvs-fvs1.png "FVS1 form substitution")
+![FVS1 form substitution](/images/mongolian/mongolian-fvs-fvs1.svg "FVS1 form substitution")
 
 FVS1 form substitution
 :::
 
 :::{figure-md}
-![FVS2 form substitution](/images/mongolian/mongolian-fvs-fvs2.png "FVS2 form substitution")
+![FVS2 form substitution](/images/mongolian/mongolian-fvs-fvs2.svg "FVS2 form substitution")
 
 FVS2 form substitution
 :::
 
 :::{figure-md}
-![FVS3 form substitution](/images/mongolian/mongolian-fvs-fvs3.png "FVS3 form substitution")
+![FVS3 form substitution](/images/mongolian/mongolian-fvs-fvs3.svg "FVS3 form substitution")
 
 FVS3 form substitution
 :::
@@ -586,7 +586,7 @@ the isolated form of the letter.
 > codepoints.
 
 :::{figure-md}
-![Isolated form substitution](/images/mongolian/mongolian-isol.png "Isolated form substitution")
+![Isolated form substitution](/images/mongolian/mongolian-isol.svg "Isolated form substitution")
 
 Isolated form substitution
 :::
@@ -598,7 +598,7 @@ with `isol` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.png "Isolated FVS1 form substitution")
+![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.svg "Isolated FVS1 form substitution")
 
 Isolated FVS1 form substitution
 :::
@@ -611,7 +611,7 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/mongolian/mongolian-fina.png "Final form substitution")
+![Final form substitution](/images/mongolian/mongolian-fina.svg "Final form substitution")
 
 Final form substitution
 :::
@@ -623,7 +623,7 @@ with `fina` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.png "Final FVS2 form substitution")
+![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.svg "Final FVS2 form substitution")
 
 Final FVS2 form substitution
 :::
@@ -644,7 +644,7 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/mongolian/mongolian-medi.png "Medial form substitution")
+![Medial form substitution](/images/mongolian/mongolian-medi.svg "Medial form substitution")
 
 Medial form substitution
 :::
@@ -656,7 +656,7 @@ with `medi` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.png "Medial FVS1 form substitution")
+![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.svg "Medial FVS1 form substitution")
 
 Medial FVS1 form substitution
 :::
@@ -673,7 +673,7 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/mongolian/mongolian-init.png "Initial form substitution")
+![Initial form substitution](/images/mongolian/mongolian-init.svg "Initial form substitution")
 
 Initial form substitution
 :::
@@ -685,7 +685,7 @@ with `init` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.png "Initial FVS1 form substitution")
+![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.svg "Initial FVS1 form substitution")
 
 Initial FVS1 form substitution
 :::
@@ -699,7 +699,7 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Required ligature substitution](/images/mongolian/mongolian-rlig.png "Required ligature substitution")
+![Required ligature substitution](/images/mongolian/mongolian-rlig.svg "Required ligature substitution")
 
 Required ligature substitution
 :::
@@ -730,7 +730,7 @@ substitutions that are not mandatory for orthographic
 correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-<!--- ![Contextual alternate substitution](/images/mongolian/mongolian-calt.png) --->
+<!--- ![Contextual alternate substitution](/images/mongolian/mongolian-calt.svg) --->
 
 
 
@@ -754,7 +754,7 @@ The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-<!--- ![Standard ligature substitution](/images/mongolian/mongolian-liga.png) --->
+<!--- ![Standard ligature substitution](/images/mongolian/mongolian-liga.svg) --->
 
 
 
@@ -809,7 +809,7 @@ entry point and exit point; the `curs` feature positions glyphs so
 that the entry point of the current glyph meets the exit point of the
 preceding glyph.
 
-<!--- ![Cursive positioning](/images/mongolian/mongolian-curs.png) --->
+<!--- ![Cursive positioning](/images/mongolian/mongolian-curs.svg) --->
 
 
 #### Stage 7, step 2: kern ####
@@ -821,7 +821,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 The `mark` feature positions marks with respect to base glyphs.
 
-<!--- ![Mark positioning](/images/mongolian/mongolian-mark.png) --->
+<!--- ![Mark positioning](/images/mongolian/mongolian-mark.svg) --->
 
 
 #### Stage 7, step 4: mkmk ####
