@@ -168,7 +168,7 @@ historical documents where it is impossible to distinguish whether the
 letter in the source text is "Dalath" or "Rish".
 
 :::{figure-md}
-![Dalath, Rish, Dotless Dalath-Rish](/images/syriac/syriac-dalath-rish.png "Dalath, Rish, Dotless Dalath-Rish")
+![Dalath, Rish, Dotless Dalath-Rish](/images/syriac/syriac-dalath-rish.svg "Dalath, Rish, Dotless Dalath-Rish")
 
 Dalath, Rish, Dotless Dalath-Rish
 :::
@@ -573,7 +573,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
-<!--- ![Localized form substitution](/images/syriac/syriac-locl.png) --->
+<!--- ![Localized form substitution](/images/syriac/syriac-locl.svg) --->
 
 
 #### Stage 5, step 2: isol ####
@@ -587,7 +587,7 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-<!--- ![Isolated form substitution](/images/syriac/syriac-isol.png) --->
+<!--- ![Isolated form substitution](/images/syriac/syriac-isol.svg) --->
 
 
 #### Stage 5, step 3: fina ####
@@ -596,7 +596,7 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/syriac/syriac-fina.png "Final form substitution")
+![Final form substitution](/images/syriac/syriac-fina.svg "Final form substitution")
 
 Final form substitution
 :::
@@ -609,7 +609,7 @@ preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
 :::{figure-md}
-![Final form-2 substitution](/images/syriac/syriac-fin2.png "Final form-2 substitution")
+![Final form-2 substitution](/images/syriac/syriac-fin2.svg "Final form-2 substitution")
 
 Final form-2 substitution
 :::
@@ -622,7 +622,7 @@ preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
 :::{figure-md}
-![Final form-3 substitution](/images/syriac/syriac-fin3.png "Final form-3 substitution")
+![Final form-3 substitution](/images/syriac/syriac-fin3.svg "Final form-3 substitution")
 
 Final form-3 substitution
 :::
@@ -634,7 +634,7 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/syriac/syriac-medi.png "Medial form substitution")
+![Medial form substitution](/images/syriac/syriac-medi.svg "Medial form substitution")
 
 Medial form substitution
 :::
@@ -647,7 +647,7 @@ word that are preceded by a base character that cannot be joined to
 with a special medial form.
 
 :::{figure-md}
-![Medial form-2 substitution](/images/syriac/syriac-med2.png "Medial form-2 substitution")
+![Medial form-2 substitution](/images/syriac/syriac-med2.svg "Medial form-2 substitution")
 
 Medial form-2 substitution
 :::
@@ -659,7 +659,7 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/syriac/syriac-init.png "Initial form substitution")
+![Initial form substitution](/images/syriac/syriac-init.svg "Initial form substitution")
 
 Initial form substitution
 :::
@@ -672,7 +672,7 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Required ligature substitution](/images/syriac/syriac-rlig.png "Required ligature substitution")
+![Required ligature substitution](/images/syriac/syriac-rlig.svg "Required ligature substitution")
 
 Required ligature substitution
 :::
@@ -694,7 +694,7 @@ The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
 :::{figure-md}
-![Contextual alternate substitution](/images/syriac/syriac-calt.png "Contextual alternate substitution")
+![Contextual alternate substitution](/images/syriac/syriac-calt.svg "Contextual alternate substitution")
 
 Contextual alternate substitution
 :::
@@ -721,7 +721,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/syriac/syriac-liga.png "Standard ligature substitution")
+![Standard ligature substitution](/images/syriac/syriac-liga.svg "Standard ligature substitution")
 
 Standard ligature substitution
 :::
@@ -772,7 +772,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/syriac/syriac-mark.png "Mark positioning")
+![Mark positioning](/images/syriac/syriac-mark.svg "Mark positioning")
 
 Mark positioning
 :::
