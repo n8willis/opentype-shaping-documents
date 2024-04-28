@@ -513,7 +513,7 @@ variants, based on examining the language setting of the text run.
 > application of the `locl` feature before applying the subsequent
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
-<!--- ![Localized form substitution](/images/nko/nko-locl.png) --->
+<!--- ![Localized form substitution](/images/nko/nko-locl.svg) --->
 
 
 #### Stage 5, step 2: isol ####
@@ -527,7 +527,7 @@ the isolated form of the letter.
 > font may use other forms as the default glyphs for any or all
 > codepoints.
 
-<!--- ![Isolated form substitution](/images/nko/nko-isol.png) --->
+<!--- ![Isolated form substitution](/images/nko/nko-isol.svg) --->
 
 
 #### Stage 5, step 3: fina ####
@@ -536,7 +536,7 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/nko/nko-fina.png "Final form substitution")
+![Final form substitution](/images/nko/nko-fina.svg "Final form substitution")
 
 Final form substitution
 :::
@@ -556,7 +556,7 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/nko/nko-medi.png "Medial form substitution")
+![Medial form substitution](/images/nko/nko-medi.svg "Medial form substitution")
 
 Medial form substitution
 :::
@@ -572,7 +572,7 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/nko/nko-init.png "Initial form substitution")
+![Initial form substitution](/images/nko/nko-init.svg "Initial form substitution")
 
 Initial form substitution
 :::
@@ -602,7 +602,7 @@ substitutions that are not mandatory for orthographic
 correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
-<!--- ![Contextual alternate substitution](/images/nko/nko-calt.png) --->
+<!--- ![Contextual alternate substitution](/images/nko/nko-calt.svg) --->
 
 
 
@@ -626,7 +626,7 @@ The `liga` feature substitutes standard, optional ligatures that are on
 by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
-<!--- ![Standard ligature substitution](/images/nko/nko-liga.png) --->
+<!--- ![Standard ligature substitution](/images/nko/nko-liga.svg) --->
 
 
 
@@ -677,7 +677,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/nko/nko-mark.png "Mark positioning")
+![Mark positioning](/images/nko/nko-mark.svg "Mark positioning")
 
 Mark positioning
 :::
