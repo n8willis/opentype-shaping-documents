@@ -178,9 +178,9 @@ svg_stack --direction=h devanagari-psts-before.svg right-arrow.svg devanagari-ps
 
 ## 5 `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-before.svg --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=25cc,095c,094d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-before.svg --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf --unicodes=25cc,095d,094d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-after.svg --features=-init,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=25cc,095c,094d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-after.svg --features=-init,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf --unicodes=25cc,095d,094d
 
 svg_stack --direction=h devanagari-haln-before.svg right-arrow.svg devanagari-haln-after.svg > devanagari-haln.svg
 
