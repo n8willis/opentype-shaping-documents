@@ -26,7 +26,7 @@ svg_stack --direction=h lao-am-decomposition-before.svg right-arrow.svg lao-am-d
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-before.svg --features=-kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=0ec1,0e9a
 
- hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-after.svg --features=+kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=0ec1,0e9a
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=lao-kern-after.svg --features=+kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifLao-Regular.ttf --unicodes=0ec1,0e9a
 
 svg_stack --direction=h lao-kern-before.svg right-arrow.svg lao-kern-after.svg > lao-kern.svg
 
