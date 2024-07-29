@@ -1163,7 +1163,7 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/devanagari/devanagari-nukt.png "Nukta composition")
+![Nukta composition](/images/devanagari/devanagari-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1192,14 +1192,14 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/devanagari/devanagari-akhn-kssa.png "KSsa ligation")
+![KSsa ligation](/images/devanagari/devanagari-akhn-kssa.svg "KSsa ligation")
 
 KSsa ligation
 :::
 
 
 :::{figure-md}
-![JNya ligation](/images/devanagari/devanagari-akhn-jnya.png "JNya ligation")
+![JNya ligation](/images/devanagari/devanagari-akhn-jnya.svg "JNya ligation")
 
 JNya ligation
 :::
@@ -1222,7 +1222,7 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph composition](/images/devanagari/devanagari-rphf.png "Reph composition")
+![Reph composition](/images/devanagari/devanagari-rphf.svg "Reph composition")
 
 Reph composition
 :::
@@ -1242,7 +1242,7 @@ The `rkrf` feature replaces <samp>"_Consonant_,Halant,Ra"</samp> sequences with 
 
 
 :::{figure-md}
-![Rakaar composition](/images/devanagari/devanagari-rkrf.png "Rakaar composition")
+![Rakaar composition](/images/devanagari/devanagari-rkrf.svg "Rakaar composition")
 
 Rakaar composition
 :::
@@ -1280,7 +1280,7 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 :::{figure-md}
-![Below-base form](/images/devanagari/devanagari-blwf.png "Below-base form")
+![Below-base form](/images/devanagari/devanagari-blwf.svg "Below-base form")
 
 Below-base form
 :::
@@ -1329,7 +1329,7 @@ the shaping engine must test:
     flagged for potential `half` substitutions.
 
 :::{figure-md}
-![Half-form formation](/images/devanagari/devanagari-half.png "Half-form formation")
+![Half-form formation](/images/devanagari/devanagari-half.svg "Half-form formation")
 
 Half-form formation
 :::
@@ -1342,7 +1342,7 @@ shaping engine does not need to implement any special handling to
 support it. 
 
 :::{figure-md}
-![Eyelash Ra formation](/images/devanagari/devanagari-eyelash-ra.png "Eyelash Ra formation")
+![Eyelash Ra formation](/images/devanagari/devanagari-eyelash-ra.svg "Eyelash Ra formation")
 
 Eyelash Ra formation
 :::
@@ -1363,7 +1363,7 @@ forms.
 the `blwf` feature.
 
 :::{figure-md}
-![Vattu ligation](/images/devanagari/devanagari-vatu.png "Vattu ligation")
+![Vattu ligation](/images/devanagari/devanagari-vatu.svg "Vattu ligation")
 
 Vattu ligation
 :::
@@ -1411,7 +1411,7 @@ substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
 :::{figure-md}
-![Conjunct ligation](/images/devanagari/devanagari-cjct.png "Conjunct ligation")
+![Conjunct ligation](/images/devanagari/devanagari-cjct.svg "Conjunct ligation")
 
 Conjunct ligation
 :::
@@ -1480,7 +1480,7 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.png "Pre-base matra positioning")
+![Pre-base matra positioning](/images/devanagari/devanagari-matra-position.svg "Pre-base matra positioning")
 
 Pre-base matra positioning
 :::
@@ -1572,7 +1572,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 
 
 :::{figure-md}
-![Reph positioning](/images/devanagari/devanagari-reph-position.png "Reph positioning")
+![Reph positioning](/images/devanagari/devanagari-reph-position.svg "Reph positioning")
 
 Reph positioning
 :::
@@ -1621,7 +1621,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base substitution](/images/devanagari/devanagari-pres.png "Pre-base substitution")
+![Pre-base substitution](/images/devanagari/devanagari-pres.svg "Pre-base substitution")
 
 Pre-base substitution
 :::
@@ -1632,7 +1632,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base substitution](/images/devanagari/devanagari-abvs.png "Above-base substitution")
+![Above-base substitution](/images/devanagari/devanagari-abvs.svg "Above-base substitution")
 
 Above-base substitution
 :::
@@ -1644,7 +1644,7 @@ are adjacent to the below-base-consonant form <samp>"Rakaar"</samp> with context
 ligatures.
 
 :::{figure-md}
-![Below-base substitution](/images/devanagari/devanagari-blws.png "Below-base substitution")
+![Below-base substitution](/images/devanagari/devanagari-blws.svg "Below-base substitution")
 
 Below-base substitution
 :::
@@ -1656,7 +1656,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base substitution](/images/devanagari/devanagari-psts.png "Post-base substitution")
+![Post-base substitution](/images/devanagari/devanagari-psts.svg "Post-base substitution")
 
 Post-base substitution
 :::
@@ -1668,7 +1668,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![Halant substitution](/images/devanagari/devanagari-haln.png "Halant substitution")
+![Halant substitution](/images/devanagari/devanagari-haln.svg "Halant substitution")
 
 Halant substitution
 :::
@@ -1706,7 +1706,7 @@ characters. In Devanagari, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/devanagari/devanagari-abvm.png "Above-base mark positioning")
+![Above-base mark positioning](/images/devanagari/devanagari-abvm.svg "Above-base mark positioning")
 
 Above-base mark positioning
 :::
@@ -1717,7 +1717,7 @@ characters. In Devanagari, this includes below-base dependent vowels
 (matras) and diacritical marks as well as the below-base consonant form <samp>"Rakaar"</samp>.
 
 :::{figure-md}
-![Below-base mark positioning](/images/devanagari/devanagari-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/devanagari/devanagari-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::

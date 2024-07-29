@@ -921,7 +921,7 @@ Bengali includes one post-base consonant.
     formed from a consonant.
 
 :::{figure-md}
-![Yaphala composition](/images/bengali/bengali-yaphala.png "Yaphala composition")
+![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala composition")
 
 Yaphala composition
 :::
@@ -938,13 +938,13 @@ Bengali includes two below-base consonant forms:
 	
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
 
 Baphala composition
 :::
@@ -978,7 +978,7 @@ completed before the shaping engine begins step three, below.
 
 :::{figure-md}
 ![Two-part matra
-decomposition](/images/bengali/bengali-matra-decompose.png "Two-part
+decomposition](/images/bengali/bengali-matra-decompose.svg "Two-part
 matra decomposition")
 
 Two-part matra decomposition
@@ -1072,13 +1072,13 @@ Bengali includes two below-base consonant forms:
 	
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
 
 Baphala composition
 :::
@@ -1268,7 +1268,7 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/bengali/bengali-nukt.png "Nukta composition")
+![Nukta composition](/images/bengali/bengali-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1313,13 +1313,13 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/bengali/bengali-akhn-kssa.png "KSsa ligation")
+![KSsa ligation](/images/bengali/bengali-akhn-kssa.svg "KSsa ligation")
 
 KSsa ligation
 :::
 
 :::{figure-md}
-![JNya ligation](/images/bengali/bengali-akhn-jnya.png "JNya ligation")
+![JNya ligation](/images/bengali/bengali-akhn-jnya.svg "JNya ligation")
 
 JNya ligation
 :::
@@ -1341,14 +1341,14 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph composition](/images/bengali/bengali-rphf.png "Reph composition
+![Reph composition](/images/bengali/bengali-rphf.svg "Reph composition
 with common Ra")
 
 Reph composition with common "Ra"
 :::
 
 :::{figure-md}
-![Reph composition](/images/bengali/bengali-rphf-as.png "Reph
+![Reph composition](/images/bengali/bengali-rphf-as.svg "Reph
 composition with Assamese Ra")
 
 Reph composition with Assamese "Ra"
@@ -1385,13 +1385,13 @@ characteristic.
 
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.png "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
 
 Raphala composition
 :::
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.png "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
 
 Baphala composition
 :::
@@ -1439,7 +1439,7 @@ the shaping engine must test:
     flagged for potential `half` substitutions.
 
 :::{figure-md}
-![Half-form formation](/images/bengali/bengali-half-ka.png "Half-form formation")
+![Half-form formation](/images/bengali/bengali-half-ka.svg "Half-form formation")
 
 Half-form formation
 :::
@@ -1450,7 +1450,7 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 :::{figure-md}
-![Yaphala composition](/images/bengali/bengali-yaphala.png "Yaphala formation")
+![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala formation")
 
 Yaphala composition
 :::
@@ -1473,7 +1473,7 @@ the `blwf` feature.
 
 
 :::{figure-md}
-![Vattu variant ligation](/images/bengali/bengali-vatu.png "Vattu
+![Vattu variant ligation](/images/bengali/bengali-vatu.svg "Vattu
 variant ligation")
 
 Vattu variant ligation
@@ -1522,7 +1522,7 @@ must be applied after the `half` feature.
 
 
 :::{figure-md}
-![Conjunct ligation](/images/bengali/bengali-cjct.png "Conjunct ligation")
+![Conjunct ligation](/images/bengali/bengali-cjct.svg "Conjunct ligation")
 
 Conjunct ligation
 :::
@@ -1591,7 +1591,7 @@ the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
 ![Pre-base matra
-reordering](/images/bengali/bengali-matra-position.png "Pre-base matra
+reordering](/images/bengali/bengali-matra-position.svg "Pre-base matra
 reordering")
 
 Pre-base matra reordering
@@ -1683,7 +1683,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
 :::{figure-md}
-![Reph final reordering](/images/bengali/bengali-reph-position.png)
+![Reph final reordering](/images/bengali/bengali-reph-position.svg)
 
 Reph final reordering
 :::
@@ -1753,7 +1753,7 @@ headline in-stroke from the left side of the glyph.
     | `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
 
 :::{figure-md}
-![Application of the init feature](/images/bengali/bengali-init.png "Application of the init feature")
+![Application of the init feature](/images/bengali/bengali-init.svg "Application of the init feature")
 
 Application of the `init` feature
 :::
@@ -1765,7 +1765,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Application of the pres feature](/images/bengali/bengali-pres.png "Application of the pres feature")
+![Application of the pres feature](/images/bengali/bengali-pres.svg "Application of the pres feature")
 
 Application of the `pres` feature
 :::
@@ -1776,7 +1776,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/bengali/bengali-abvs.png "Application of the abvs feature")
+![Application of the abvs feature](/images/bengali/bengali-abvs.svg "Application of the abvs feature")
 
 Application of the `abvs` feature
 :::
@@ -1788,7 +1788,7 @@ are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> or
 <samp>"Baphala"</samp> with contextual ligatures.
 
 :::{figure-md}
-![Application of the blws feature](/images/bengali/bengali-blws.png "Application of the blws feature")
+![Application of the blws feature](/images/bengali/bengali-blws.svg "Application of the blws feature")
 
 Application of the `blws` feature
 :::
@@ -1800,7 +1800,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures.
 
 :::{figure-md}
-![Application of the psts feature](/images/bengali/bengali-psts.png "Application of the psts feature")
+![Application of the psts feature](/images/bengali/bengali-psts.svg "Application of the psts feature")
 
 Application of the `psts` feature
 :::
@@ -1812,7 +1812,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic.
 
 :::{figure-md}
-![Application of the haln feature](/images/bengali/bengali-haln.png "Application of the haln feature")
+![Application of the haln feature](/images/bengali/bengali-haln.svg "Application of the haln feature")
 
 Application of the `haln` feature
 :::
@@ -1850,7 +1850,7 @@ characters. In Bengali, this includes <samp>"Reph"</samp> in addition to the
 diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Application of the abvm feature](/images/bengali/bengali-abvm.png "Application of the abvm feature")
+![Application of the abvm feature](/images/bengali/bengali-abvm.svg "Application of the abvm feature")
 
 Application of the `abvm` feature
 :::
@@ -1861,7 +1861,7 @@ characters. In Bengali, this includes below-base dependent vowels
 <samp>"Baphala"</samp>.
 
 :::{figure-md}
-![Application of the blwm feature](/images/bengali/bengali-blwm.png "Application of the blwm feature")
+![Application of the blwm feature](/images/bengali/bengali-blwm.svg "Application of the blwm feature")
 
 Application of the `blwm` feature
 :::

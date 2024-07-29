@@ -412,7 +412,7 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![Glyph composition](images/thai-lao/thai-ccmp.png "Glyph composition")
+![Glyph composition](images/thai-lao/thai-ccmp.svg "Glyph composition")
 
 Glyph composition
 :::
@@ -437,7 +437,7 @@ decomposed marks are handled differently during the mark-reordering
 stage.
 
 :::{figure-md}
-![Am decomposition](images/thai-lao/lao-am-decomposition.png "Am decomposition")
+![Am decomposition](images/thai-lao/lao-am-decomposition.svg "Am decomposition")
 
 Am decomposition
 :::
@@ -509,7 +509,7 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 :::{figure-md}
-![Application of the kern feature](/images/thai-lao/lao-kern.png "Application of the kern feature")
+![Application of the kern feature](/images/thai-lao/lao-kern.svg "Application of the kern feature")
 
 Application of the kern feature
 :::
@@ -517,7 +517,7 @@ Application of the kern feature
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Application of the mark feature](/images/thai-lao/thai-mark.png "Application of the mark feature")
+![Application of the mark feature](/images/thai-lao/thai-mark.svg "Application of the mark feature")
 
 Application of the mark feature
 :::
@@ -527,7 +527,7 @@ providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/thai-lao/thai-mkmk.png "Application of the mkmk feature")
+![Application of the mkmk feature](/images/thai-lao/thai-mkmk.svg "Application of the mkmk feature")
 
 Application of the mkmk feature
 :::
@@ -644,7 +644,7 @@ mark originated as part of an <samp>"Am"</samp> sign, because these decomposed
 marks are handled differently during the mark-reordering stage.
 
 :::{figure-md}
-![Glyph decomposition](images/thai-lao/thai-am-decomposition.png "Glyph decomposition")
+![Glyph decomposition](images/thai-lao/thai-am-decomposition.svg "Glyph decomposition")
 
 Glyph decomposition
 :::

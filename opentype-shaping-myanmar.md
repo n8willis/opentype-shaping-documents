@@ -105,7 +105,7 @@ when they are absent from the active font, the default form of the
 corresponding letter will be used instead.
 
 :::{figure-md}
-![Dotted form substitution with variation selector](images/myanmar/myanmar-dotted.png "Dotted form substitution with variation selector")
+![Dotted form substitution with variation selector](images/myanmar/myanmar-dotted.svg "Dotted form substitution with variation selector")
 
 Dotted form substitution with variation selector
 :::
@@ -478,21 +478,21 @@ special treatment.
 	  - <samp>"Mon Nga,Asat,Halant"</samp>
 
 :::{figure-md}
-![Ra Kinzi](images/myanmar/myanmar-kinzi-ra.png "Ra Kinzi")
+![Ra Kinzi](images/myanmar/myanmar-kinzi-ra.svg "Ra Kinzi")
 
 Ra Kinzi
 :::
 
 
 :::{figure-md}
-![Nga Kinzi](images/myanmar/myanmar-kinzi-nga.png "Nga Kinzi")
+![Nga Kinzi](images/myanmar/myanmar-kinzi-nga.svg "Nga Kinzi")
 
 Nga Kinzi
 :::
 
 
 :::{figure-md}
-![Mon Nga Kinzi](images/myanmar/myanmar-kinzi-monnga.png "Mon Nga Kinzi")
+![Mon Nga Kinzi](images/myanmar/myanmar-kinzi-monnga.svg "Mon Nga Kinzi")
 
 Mon Nga Kinzi
 :::
@@ -774,7 +774,7 @@ Fourth, all pre-base-reordering consonants must be tagged with
 Myanmar has one pre-base-reordering consonant: <samp>"Medial Ra"</samp>.
 
 :::{figure-md}
-![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.png "Pre-base-reordering Medial Ra")
+![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.svg "Pre-base-reordering Medial Ra")
 
 Pre-base-reordering Medial Ra
 :::
@@ -863,7 +863,7 @@ variants, based on examining the language setting of the text run.
 > <abbr>GSUB</abbr> substitutions in the following steps.
 
 :::{figure-md}
-![Local-forms substitution](images/myanmar/myanmar-locl.png "Local-forms substitution")
+![Local-forms substitution](images/myanmar/myanmar-locl.svg "Local-forms substitution")
 
 Local-forms substitution
 :::
@@ -899,7 +899,7 @@ consonant. <samp>"Mon Nga"</samp> can form a <samp>"Kinzi"</samp> in the Mon lan
 can form a <samp>"Kinzi"</samp> in Sanskrit written with the Myanmar script.
 
 :::{figure-md}
-![Kinzi composition](/images/myanmar/myanmar-kinzi-nga.png "Kinzi composition")
+![Kinzi composition](/images/myanmar/myanmar-kinzi-nga.svg "Kinzi composition")
 
 Kinzi composition
 :::
@@ -913,7 +913,7 @@ any special forms. In Myanmar, this can include variant forms for
 Sign E"</samp> (`U+1084`)
 
 :::{figure-md}
-![pref feature application](/images/myanmar/myanmar-pref.png "pref feature application")
+![pref feature application](/images/myanmar/myanmar-pref.svg "pref feature application")
 
 pref feature application
 :::
@@ -934,7 +934,7 @@ The below-base forms feature is applied only to glyphs occurring after
 the base consonant. 
 
 :::{figure-md}
-![blwf feature application](/images/myanmar/myanmar-blwf.png "blwf feature application")
+![blwf feature application](/images/myanmar/myanmar-blwf.svg "blwf feature application")
 
 blwf feature application
 :::
@@ -970,7 +970,7 @@ presentations forms. In Myanmar, this can include stylistic variants
 of left-side dependent vowels (matras) or of <samp>"Medial Ra"</samp>. 
 
 :::{figure-md}
-![Application of the pres feature](/images/myanmar/myanmar-pres.png "Application of the pres feature")
+![Application of the pres feature](/images/myanmar/myanmar-pres.svg "Application of the pres feature")
 
 Application of the pres feature
 :::
@@ -981,7 +981,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/myanmar/myanmar-abvs.png "Application of the abvs feature")
+![Application of the abvs feature](/images/myanmar/myanmar-abvs.svg "Application of the abvs feature")
 
 Application of the abvs feature
 :::
@@ -993,7 +993,7 @@ involving below-base dependent vowel marks (matras), medial
 consonants, or subjoined consonants.
 
 :::{figure-md}
-![Application of the blws feature](/images/myanmar/myanmar-blws.png "Application of the blws feature")
+![Application of the blws feature](/images/myanmar/myanmar-blws.svg "Application of the blws feature")
 
 Application of the blws feature
 :::
@@ -1005,7 +1005,7 @@ dependent vowels (matras) with stylistic variants.
 
 
 :::{figure-md}
-![Application of the psts feature](/images/myanmar/myanmar-psts.png "Application of the psts feature")
+![Application of the psts feature](/images/myanmar/myanmar-psts.svg "Application of the psts feature")
 
 Application of the psts feature
 :::
@@ -1016,7 +1016,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Application of the liga feature](/images/myanmar/myanmar-liga.png "Application of the liga feature")
+![Application of the liga feature](/images/myanmar/myanmar-liga.svg "Application of the liga feature")
 
 Application of the liga feature
 :::
@@ -1050,7 +1050,7 @@ classified as being of zero width, but is orthographically a glyph
 that encloses the adjacent letter.
 
 :::{figure-md}
-![Application of the dist feature](/images/myanmar/myanmar-dist.png "Application of the dist feature")
+![Application of the dist feature](/images/myanmar/myanmar-dist.svg "Application of the dist feature")
 
 Application of the dist feature
 :::
@@ -1062,7 +1062,7 @@ to tone markers, diacritical marks, above-base dependent vowels
 (matras), and Vedic signs.
 
 :::{figure-md}
-![Application of the abvm feature](/images/myanmar/myanmar-abvm.png "Application of the abvm feature")
+![Application of the abvm feature](/images/myanmar/myanmar-abvm.svg "Application of the abvm feature")
 
 Application of the abvm feature
 :::
@@ -1074,7 +1074,7 @@ below-base dependent vowels (matras), medial consonants, tone markers,
 diacritical marks, and Vedic signs.
 
 :::{figure-md}
-![Application of the blwm feature](/images/myanmar/myanmar-blwm.png "Application of the blwm feature")
+![Application of the blwm feature](/images/myanmar/myanmar-blwm.svg "Application of the blwm feature")
 
 Application of the blwm feature
 :::
@@ -1083,7 +1083,7 @@ Application of the blwm feature
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Application of the mark feature](/images/myanmar/myanmar-mark.png "Application of the mark feature")
+![Application of the mark feature](/images/myanmar/myanmar-mark.svg "Application of the mark feature")
 
 Application of the mark feature
 :::
@@ -1094,7 +1094,7 @@ providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/myanmar/myanmar-mkmk.png "Application of the mkmk feature")
+![Application of the mkmk feature](/images/myanmar/myanmar-mkmk.svg "Application of the mkmk feature")
 
 Application of the mkmk feature
 :::

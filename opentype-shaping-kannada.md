@@ -933,7 +933,7 @@ completed before the shaping engine begins step three, below.
 
 
 :::{figure-md}
-![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.png "Multi-part matra decomposition")
+![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.svg "Multi-part matra decomposition")
 
 Multi-part matra decomposition
 :::
@@ -1201,7 +1201,7 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/kannada/kannada-nukt.png "Nukta composition")
+![Nukta composition](/images/kannada/kannada-nukt.svg "Nukta composition")
 
 Nukta composition
 :::
@@ -1228,14 +1228,14 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/kannada/kannada-akhn-kssa.png "KSsa ligation")
+![KSsa ligation](/images/kannada/kannada-akhn-kssa.svg "KSsa ligation")
 
 KSsa ligation
 :::
 
 
 :::{figure-md}
-![JNya ligation](/images/kannada/kannada-akhn-jnya.png "JNya ligation")
+![JNya ligation](/images/kannada/kannada-akhn-jnya.svg "JNya ligation")
 
 JNya ligation
 :::
@@ -1258,7 +1258,7 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph composition](/images/kannada/kannada-rphf.png "Reph composition")
+![Reph composition](/images/kannada/kannada-rphf.svg "Reph composition")
 
 Reph composition
 :::
@@ -1289,7 +1289,7 @@ form.
 
 
 :::{figure-md}
-![Below-base form composition](/images/kannada/kannada-blwf.png "Below-base form composition")
+![Below-base form composition](/images/kannada/kannada-blwf.svg "Below-base form composition")
 
 Below-base form composition
 :::
@@ -1514,7 +1514,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr>GSUB</abbr>.
 
 :::{figure-md}
-![Reph positioning](/images/kannada/kannada-reph-position.png "Reph positioning")
+![Reph positioning](/images/kannada/kannada-reph-position.svg "Reph positioning")
 
 Reph positioning
 :::
@@ -1567,7 +1567,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base form composition](/images/kannada/kannada-pres.png "Pre-base form composition")
+![Pre-base form composition](/images/kannada/kannada-pres.svg "Pre-base form composition")
 
 Pre-base form composition
 :::
@@ -1578,7 +1578,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form composition](/images/kannada/kannada-abvs.png "Above-base form composition")
+![Above-base form composition](/images/kannada/kannada-abvs.svg "Above-base form composition")
 
 Above-base form composition
 :::
@@ -1590,7 +1590,7 @@ below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
 :::{figure-md}
-![Below-base form composition](/images/kannada/kannada-blws.png "Below-base form composition")
+![Below-base form composition](/images/kannada/kannada-blws.svg "Below-base form composition")
 
 Below-base form composition
 :::
@@ -1602,7 +1602,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form composition](/images/kannada/kannada-psts.png "Post-base form composition")
+![Post-base form composition](/images/kannada/kannada-psts.svg "Post-base form composition")
 
 Post-base form composition
 :::
@@ -1614,7 +1614,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic.
 
 :::{figure-md}
-![Halant form composition](/images/kannada/kannada-haln.png "Halant form composition")
+![Halant form composition](/images/kannada/kannada-haln.svg "Halant form composition")
 
 Halant form composition
 :::
@@ -1655,7 +1655,7 @@ characters. In Kannada, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/kannada/kannada-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/kannada/kannada-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::

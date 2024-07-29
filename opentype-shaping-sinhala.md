@@ -267,7 +267,7 @@ Sinhala, however, differs considerably in its use of <samp>"ZWJ"</samp>.
     subjoined form of <samp>"Consonant_2"</samp>.
  
 :::{figure-md}
-![Reph formation](/images/sinhala/sinhala-rphf.png "Reph formation")
+![Reph formation](/images/sinhala/sinhala-rphf.svg "Reph formation")
 
 Reph formation
 :::
@@ -861,7 +861,7 @@ completed before the shaping engine begins step three, below.
 > with fonts that were developed only with this behavior in mind.
 
 :::{figure-md}
-![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.png "Multi-part matra decomposition")
+![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.svg "Multi-part matra decomposition")
 
 Multi-part matra decomposition
 :::
@@ -920,13 +920,13 @@ the <samp>"Yansaya"</samp> form when the `vatu` feature is applied. A
 the <samp>"Rakaaraansaya"</samp> form when the `vatu` feature is applied.
 
 :::{figure-md}
-![Yansaya ligation](/images/sinhala/sinhala-vatu-va.png "Yansaya ligation")
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va.svg "Yansaya ligation")
 
 Yansaya ligation
 :::
 
 :::{figure-md}
-![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.png "Rakaaraansaya ligation")
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.svg "Rakaaraansaya ligation")
 
 Rakaaraansaya ligation
 :::
@@ -1078,13 +1078,13 @@ In Sinhala, the `akhn` feature provides two substitution types.
   
 
 :::{figure-md}
-![Ligature substitution](/images/sinhala/sinhala-akhn-ligature.png "Ligature substitution")
+![Ligature substitution](/images/sinhala/sinhala-akhn-ligature.svg "Ligature substitution")
 
 Ligature substitution
 :::
 
 :::{figure-md}
-![Touching consonant substitution](/images/sinhala/sinhala-akhn-touching.png "Touching consonant substitution")
+![Touching consonant substitution](/images/sinhala/sinhala-akhn-touching.svg "Touching consonant substitution")
 
 Touching consonant substitution
 :::
@@ -1097,7 +1097,7 @@ The `rphf` feature replaces initial <samp>"Ra,Halant,ZWJ"</samp> sequences with 
 	
 
 :::{figure-md}
-![Reph composition](/images/sinhala/sinhala-rphf.png "Reph composition")
+![Reph composition](/images/sinhala/sinhala-rphf.svg "Reph composition")
 
 Reph composition
 :::
@@ -1158,7 +1158,7 @@ decomposition.
 > developed only with this behavior in mind.
 
 :::{figure-md}
-![Post-base form substitution](/images/sinhala/sinhala-pstf.png "Post-base form substitution")
+![Post-base form substitution](/images/sinhala/sinhala-pstf.svg "Post-base form substitution")
 
 Post-base form substitution
 :::
@@ -1176,13 +1176,13 @@ ligatures using the subjoined forms of <samp>"Ra"</samp> or <samp>"Ya"</samp>.
   
 
 :::{figure-md}
-![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.png "Rakaaraansaya ligation")
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.svg "Rakaaraansaya ligation")
 
 Rakaaraansaya ligation
 :::
 
 :::{figure-md}
-![Yansaya ligation](/images/sinhala/sinhala-vatu-va.png "Yansaya ligation")
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va.svg "Yansaya ligation")
 
 Yansaya ligation
 :::
@@ -1251,7 +1251,7 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.png "Pre-base matra positioning")
+![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.svg "Pre-base matra positioning")
 
 Pre-base matra positioning
 :::
@@ -1311,7 +1311,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 
 
 :::{figure-md}
-![Reph positioning](/images/sinhala/sinhala-reph-position.png "Reph positioning")
+![Reph positioning](/images/sinhala/sinhala-reph-position.svg "Reph positioning")
 
 Reph positioning
 :::
@@ -1363,7 +1363,7 @@ presentations forms. This can include ligatures, "touching consonant" forms,
 and stylistic variants of left-side dependent vowels (matras). 
 
 :::{figure-md}
-![Pre-base substitutions](/images/sinhala/sinhala-pres.png "Pre-base substitutions")
+![Pre-base substitutions](/images/sinhala/sinhala-pres.svg "Pre-base substitutions")
 
 Pre-base substitutions
 :::
@@ -1374,7 +1374,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base substitutions](/images/sinhala/sinhala-abvs.png "Above-base substitutions")
+![Above-base substitutions](/images/sinhala/sinhala-abvs.svg "Above-base substitutions")
 
 Above-base substitutions
 :::
@@ -1386,7 +1386,7 @@ syllable bases
 and attached below-base marks with contextual ligatures.
 
 :::{figure-md}
-![Below-base substitutions](/images/sinhala/sinhala-blws.png "Below-base substitutions")
+![Below-base substitutions](/images/sinhala/sinhala-blws.svg "Below-base substitutions")
 
 Below-base substitutions
 :::
@@ -1397,7 +1397,7 @@ dependent vowels (matras) with stylistic variants or replacing
 base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base substitutions](/images/sinhala/sinhala-psts.png "Post-base substitutions")
+![Post-base substitutions](/images/sinhala/sinhala-psts.svg "Post-base substitutions")
 
 Post-base substitutions
 :::
@@ -1438,7 +1438,7 @@ characters. In Sinhala, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/sinhala/sinhala-abvm.png "Above-base mark positioning")
+![Above-base mark positioning](/images/sinhala/sinhala-abvm.svg "Above-base mark positioning")
 
 Above-base mark positioning
 :::
@@ -1448,7 +1448,7 @@ characters. In Sinhala, this includes below-base dependent vowels
 (matras) and diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/sinhala/sinhala-blwm.png "Below-base mark positioning")
+![Below-base mark positioning](/images/sinhala/sinhala-blwm.svg "Below-base mark positioning")
 
 Below-base mark positioning
 :::

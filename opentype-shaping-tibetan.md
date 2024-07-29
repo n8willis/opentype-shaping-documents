@@ -320,7 +320,7 @@ post-base consonant (also called a "suffix") and zero or more syllable
 modifiers or diacritical marks.
 
 :::{figure-md}
-![Tibetan syllable example](/images/tibetan/tibetan-syllable.png "Tibetan syllable example")
+![Tibetan syllable example](/images/tibetan/tibetan-syllable.svg "Tibetan syllable example")
 
 Tibetan syllable example
 :::
@@ -418,7 +418,7 @@ glyphs.
 
 
 :::{figure-md}
-![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.png "Composition-decomposition substitution")
+![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.svg "Composition-decomposition substitution")
 
 Composition-decomposition substitution
 :::
@@ -442,7 +442,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/tibetan/tibetan-abvs.png "Application of the abvs feature")
+![Application of the abvs feature](/images/tibetan/tibetan-abvs.svg "Application of the abvs feature")
 
 Application of the abvs feature
 :::
@@ -453,7 +453,7 @@ involving below-base dependent vowel marks (matras) or subjoined
 consonants.
 
 :::{figure-md}
-![Application of the blws feature](/images/tibetan/tibetan-blws.png "Application of the blws feature")
+![Application of the blws feature](/images/tibetan/tibetan-blws.svg "Application of the blws feature")
 
 Application of the blws feature
 :::
@@ -468,7 +468,7 @@ orthographic correctness. The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
 :::{figure-md}
-![Application of the calt feature](/images/tibetan/tibetan-calt.png "Application of the calt feature")
+![Application of the calt feature](/images/tibetan/tibetan-calt.svg "Application of the calt feature")
 
 Application of the calt feature
 :::
@@ -479,7 +479,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Application of the liga feature](/images/tibetan/tibetan-liga.png "Application of the liga feature")
+![Application of the liga feature](/images/tibetan/tibetan-liga.svg "Application of the liga feature")
 
 Application of the liga feature
 :::
@@ -505,7 +505,7 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 :::{figure-md}
-![Application of the kern feature](/images/tibetan/tibetan-kern.png "Application of the kern feature")
+![Application of the kern feature](/images/tibetan/tibetan-kern.svg "Application of the kern feature")
 
 Application of the kern feature
 :::
@@ -515,7 +515,7 @@ characters. In Tibetan, this includes tone markers, diacritical marks,
 and above-base dependent vowels (matras).
 
 :::{figure-md}
-![Application of the abvm feature](/images/tibetan/tibetan-abvm.png "Application of the abvm feature")
+![Application of the abvm feature](/images/tibetan/tibetan-abvm.svg "Application of the abvm feature")
 
 Application of the abvm feature
 :::
@@ -525,7 +525,7 @@ characters. In Tibetan, this includes subjoined consonants as well as
 below-base dependent vowels (matras), and diacritical marks.
 
 :::{figure-md}
-![Application of the blwm feature](/images/tibetan/tibetan-blwm.png "Application of the blwm feature")
+![Application of the blwm feature](/images/tibetan/tibetan-blwm.svg "Application of the blwm feature")
 
 Application of the blwm feature
 :::
@@ -536,7 +536,7 @@ same base glyph. In Tibetan, this also includes attaching marks to
 subjoined consonants or dependent vowels.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.png "Application of the mkmk feature")
+![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.svg "Application of the mkmk feature")
 
 Application of the mkmk feature
 :::

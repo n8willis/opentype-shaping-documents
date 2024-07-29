@@ -352,8 +352,8 @@ Abbreviation Mark"</samp> (`U+070F`) but it can be used with similar marks in
 other scripts.
 
 To apply the `stch` feature, the shaping engine should first decompose the
-`U+070F` glyph into components, which results in a beginning point,
-midpoint, and endpoint glyphs plus one (or more) extension glyphs: at
+`U+070F` glyph into components, which results in a beginning point glyph,
+midpoint glyph, and endpoint glyph plus one (or more) extension glyphs: at
 least one extension between the beginning and midpoint glyphs and at
 least one extension between the midpoint and endpoint glyphs. 
 

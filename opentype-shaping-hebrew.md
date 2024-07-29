@@ -257,7 +257,7 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![ccmp composition](/images/hebrew/hebrew-ccmp.png "ccmp composition")
+![ccmp composition](/images/hebrew/hebrew-ccmp.svg "ccmp composition")
 
 ccmp composition
 :::
@@ -308,7 +308,7 @@ glyphs in the block have a single composing sequence.
 > lookup in <abbr>GSUB</abbr>, in which case this stage will involve no additional work.
 
 :::{figure-md}
-![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.png "Alphabetic Presentation forms composition")
+![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition")
 
 Alphabetic Presentation forms composition
 :::
@@ -361,7 +361,7 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/hebrew/hebrew-liga.png "Standard ligature substitution")
+![Standard ligature substitution](/images/hebrew/hebrew-liga.svg "Standard ligature substitution")
 
 Standard ligature substitution
 :::
@@ -375,7 +375,7 @@ off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.png "Discretionary ligature substitution")
+![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.svg "Discretionary ligature substitution")
 
 Discretionary ligature substitution
 :::
@@ -404,7 +404,7 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/hebrew/hebrew-mark.png "Mark positioning")
+![Mark positioning](/images/hebrew/hebrew-mark.svg "Mark positioning")
 
 Mark positioning
 :::
