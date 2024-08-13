@@ -776,6 +776,10 @@ Pre-base-reordering Medial Ra
 Fourth, all left-side dependent-vowel (matra) signs must be tagged to be
 moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
+All of the left-side dependent-vowel (matra) signs matching this
+condition in Myanmar can be identified using the `_matrapre_`
+regular-expression class defined in stage 1.
+
 For simplicity, shaping engines may choose to tag matras
 in an earlier text-processing step, using the information in the
 _Mark-placement subclass_ column of the character tables. It is
@@ -789,6 +793,17 @@ Fifth, if the syllable contains no below-base dependent-vowel (matra)
 signs, then all of the remaining codepoints can be tagged with
 `POS_AFTER_MAIN`.
 
+> Note: Specifically, this condition means that the syllable must not
+> contain any below-base dependent-vowel (matra) signs as identified
+> using the `_matrabelow_` regular-expression class defined in
+> stage 1.
+>
+
+If the syllable contains no such below-base dependent-vowel (matra)
+signs, then after tagging the remaining codepoints with
+`POS_AFTER_MAIN`, the shaping engine can proceed immediately to stage
+2, step 7.
+
 
 #### Stage 2, step 6: Syllables with below-base-matras ####
 
@@ -796,21 +811,33 @@ Sixth, if the syllable contains any below-base dependent-vowel (matra)
 signs, then those below-base matra signs must be tagged with
 `POS_BELOWBASE_CONSONANT`.
 
-All of the codepoints that precede the below-base dependent-vowel
-signs, but which were not already tagged in steps 1 through 4, must
-now be tagged with `POS_AFTER_MAIN`.
+All of the below-base dependent-vowel (matra) signs matching this
+condition in Myanmar can be identified using the `_matrabelow_`
+regular-expression class defined in stage 1.
 
-Any `ANUSVARA` marks that appear after the below-base dependent vowel
-signs must be tagged wtih `POS_BEFORE_SUBJOINED`.
+In addition, all of the codepoints that precede the below-base
+dependent-vowel signs in the syllable, but which were not already
+tagged in steps 1 through 4, must now be tagged with
+`POS_AFTER_MAIN`.
 
-All remaining codepoints that appear after the below-base
-dependent-vowel signs can be tagged with `POS_AFTER_SUBJOINED`.
+In addition, any `ANUSVARA` marks that appear after the below-base
+dependent vowel signs in the syllable must be tagged wtih
+`POS_BEFORE_SUBJOINED`.
+
+Finally, all remaining codepoints that appear after the below-base
+dependent-vowel signs in the syllable can be tagged with
+`POS_AFTER_SUBJOINED`.
 
 
 #### Stage 2, step 7: Variation selectors ####
 
-Seventh, all Variation Selector codepoints must be tagged with the
-same positioning tag as the immediately preceding character.
+Seventh, all <samp>"Variation Selector"</samp> codepoints must be
+tagged with the same positioning tag as the immediately preceding
+character.
+
+All of the codepoints matching this condition in Myanmar can be
+identified using the `_vs_` regular-expression class defined in
+stage 1.
 
 
 With these steps completed, the syllable can be sorted into the final sort order.
