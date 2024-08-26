@@ -530,7 +530,8 @@ _a_		= "Anusvara" | "Sign Ai"
 _db_		= "Dot Below"
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
-_mh_		= "Medial Ha" | "Mon Medial La"
+_mh_		= "Medial Ha"
+_ml_        = "Mon Medial La"
 _mr_		= "Medial Ra"
 _mw_		= "Medial Wa" | "Shan Medial Wa"
 _my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
@@ -540,7 +541,8 @@ _pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
 	          2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
 	          Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
 	          Tone" 
-_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
+_v_         = `VISARGA`
+_sm_		= _v_ | "Shan Tone 2" | "Shan Tone 3" | "Shan
 	          Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
 	          "Shan Council Tone 3" | "Shan Council Emphatic Tone"
 	          | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
@@ -554,7 +556,6 @@ _gb_		= U+002D | U+00A0 | U+00D7 | U+2012 | U+2013 | U+2014 |
               U+2015 | U+2022 | U+25CC | U+25FB | U+25FC | U+25FD |
 			  U+25FE 
 _cs_		= `CONSONANT_WITH_STACKER`
-_v_		= `VISARGA`
 _vs_		= "Variation Selector"
 ```
 
@@ -594,11 +595,12 @@ expression elements:
 C	= _consonant_ | _ra_
 Z	= _zwj_ | _zwnj_
 K	= _ra_ _asat_ _halant_
-Med	= _my_? _mr_? _mw_? _mh_? _asat_?
+G   = _gb_ | _d_ | _punc_
+Med	= _my_? _asat_? _mr_? ( (mw mh? ml? | mh ml? | ml) asat?)?
 Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
 Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
 Pwo	= _pt_ _a_* _db_? _asat_?
-Tcomplex= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
+Tcomplex= _asat_* Med Vmain Vpost* Pwo* _sm_* Z?
 Tail	= _halant_ | Tcomplex
 ```
 
@@ -607,7 +609,7 @@ possible syllable types:
 
 A consonant-based syllable will match the expression:
 ```markdown
-(K | _cs_)? (C | _vowel_ | _d_ | _gb_) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
+(K | _cs_)? (C | _vowel_ | G) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
 ```
 
 The expressions above use state-machine syntax from the Ragel
