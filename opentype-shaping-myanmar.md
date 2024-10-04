@@ -257,6 +257,7 @@ are used in `<mym2>` text runs:
   - [Myanmar character table](character-tables/character-tables-myanmar.md#myanmar-character-table)
   - [Myanmar Extended-A character table](character-tables/character-tables-myanmar.md#myanmar-extended-a-character-table)
   - [Myanmar Extended-B character table](character-tables/character-tables-myanmar.md#myanmar-extended-b-character-table)
+  - [Myanmar Extended-C character table](character-tables/character-tables-myanmar.md#myanmar-extended-c-character-table)
   - [Vedic Extensions character table](character-tables/character-tables-myanmar.md#vedic-extensions-character-table)
   - [Miscellaneous character table](character-tables/character-tables-myanmar.md#miscellaneous-character-table)
 
