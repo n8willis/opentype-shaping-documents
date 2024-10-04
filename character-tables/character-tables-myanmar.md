@@ -290,6 +290,61 @@ specific, script-aware behavior.
 |`U+A9FE`   | Letter           | CONSONANT         | _null_                     | &#xA9FE; Tai Laing Bha       |
 |`U+A9FF`   | _unassigned_     |                   |                            |                              |
 
+### Myanmar Extended C character table ###
+
+| Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
+|:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
+|`U+116D0`  | Number           | NUMBER            | _null_                     | &#x116D0; Pao Digit Zero     |
+|`U+116D1`  | Number           | NUMBER            | _null_                     | &#x116D1; Pao Digit One      |
+|`U+116D2`  | Number           | NUMBER            | _null_                     | &#x116D2; Pao Digit Two      |
+|`U+116D3`  | Number           | NUMBER            | _null_                     | &#x116D3; Pao Digit Three    |
+|`U+116D4`  | Number           | NUMBER            | _null_                     | &#x116D4; Pao Digit Four     |
+|`U+116D5`  | Number           | NUMBER            | _null_                     | &#x116D5; Pao Digit Five     |
+|`U+116D6`  | Number           | NUMBER            | _null_                     | &#x116D6; Pao Digit Six      |
+|`U+116D7`  | Number           | NUMBER            | _null_                     | &#x116D7; Pao Digit Seven    |
+|`U+116D8`  | Number           | NUMBER            | _null_                     | &#x116D8; Pao Digit Eight    |
+|`U+116D9`  | Number           | NUMBER            | _null_                     | &#x116D9; Pao Digit Nine     |
+|`U+116DA`  | Number           | NUMBER            | _null_                     | &#x116DA; Pao Digit Zero     |
+|`U+116DB`  | Number           | NUMBER            | _null_                     | &#x116DB; Eastern Pwo Karen Digit One|
+|`U+116DC`  | Number           | NUMBER            | _null_                     | &#x116DC; Eastern Pwo Karen Digit Two|
+|`U+116DD`  | Number           | NUMBER            | _null_                     | &#x116DD; Eastern Pwo Karen Digit Three|
+|`U+116DE`  | Number           | NUMBER            | _null_                     | &#x116DE; Eastern Pwo Karen Digit Four|
+|`U+116DF`  | Number           | NUMBER            | _null_                     | &#x116DF; Eastern Pwo Karen Digit Five|
+| | | | |
+|`U+116E0`  | Number           | NUMBER            | _null_                     | &#x116D0; Eastern Pwo Karen Digit Six|
+|`U+116E1`  | Number           | NUMBER            | _null_                     | &#x116D1; Eastern Pwo Karen Digit Seven|
+|`U+116E2`  | Number           | NUMBER            | _null_                     | &#x116D2; Eastern Pwo Karen Digit Eight|
+|`U+116E3`  | Number           | NUMBER            | _null_                     | &#x116D3; Eastern Pwo Karen Digit Nine|
+|`U+116E4`  | _unassigned_     |                   |                            |                              |
+|`U+116E5`  | _unassigned_     |                   |                            |                              |
+|`U+116E6`  | _unassigned_     |                   |                            |                              |
+|`U+116E7`  | _unassigned_     |                   |                            |                              |
+|`U+116E8`  | _unassigned_     |                   |                            |                              |
+|`U+116E9`  | _unassigned_     |                   |                            |                              |
+|`U+116EA`  | _unassigned_     |                   |                            |                              |
+|`U+116EB`  | _unassigned_     |                   |                            |                              |
+|`U+116EC`  | _unassigned_     |                   |                            |                              |
+|`U+116ED`  | _unassigned_     |                   |                            |                              |
+|`U+116EE`  | _unassigned_     |                   |                            |                              |
+|`U+116EF`  | _unassigned_     |                   |                            |                              |
+| | | | |
+|`U+116F0`  | _unassigned_     |                   |                            |                              |
+|`U+116F1`  | _unassigned_     |                   |                            |                              |
+|`U+116F2`  | _unassigned_     |                   |                            |                              |
+|`U+116F3`  | _unassigned_     |                   |                            |                              |
+|`U+116F4`  | _unassigned_     |                   |                            |                              |
+|`U+116F5`  | _unassigned_     |                   |                            |                              |
+|`U+116F6`  | _unassigned_     |                   |                            |                              |
+|`U+116F7`  | _unassigned_     |                   |                            |                              |
+|`U+116F8`  | _unassigned_     |                   |                            |                              |
+|`U+116F9`  | _unassigned_     |                   |                            |                              |
+|`U+116FA`  | _unassigned_     |                   |                            |                              |
+|`U+116FB`  | _unassigned_     |                   |                            |                              |
+|`U+116FC`  | _unassigned_     |                   |                            |                              |
+|`U+116FD`  | _unassigned_     |                   |                            |                              |
+|`U+116FE`  | _unassigned_     |                   |                            |                              |
+|`U+116FF`  | _unassigned_     |                   |                            |                              |
+
 
 
 ## Vedic Extensions character table ##

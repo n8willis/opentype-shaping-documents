@@ -84,7 +84,7 @@ treated differently during the mark-reordering stage.
 |`U+061E`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061E; Triple Dot Punctuation Mark          |
 |`U+061F`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x061F; Question Mark                        |
 | | | | | |                                                                                                                       
-|`U+0620`   | Letter           | DUAL         | YEH                  | _0_        | &#x0620; Dotless Yeh With Separate Ring Below |
+|`U+0620`   | Letter           | DUAL         | YEH                  | _0_        | &#x0620; Kashmiri Yeh                         |
 |`U+0621`   | Letter           | NON_JOINING  | _null_               | _0_        | &#x0621; Hamza                                |
 |`U+0622`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0622; Alef With Madda Above                |
 |`U+0623`   | Letter           | RIGHT        | ALEF                 | _0_        | &#x0623; Alef With Hamza Above                |
@@ -535,7 +535,7 @@ treated differently during the mark-reordering stage.
 |`U+0894`   | _unassigned_     |              |                      |            |                                                       |
 |`U+0895`   | _unassigned_     |              |                      |            |                                                       |
 |`U+0896`   | _unassigned_     |              |                      |            |                                                       |
-|`U+0897`   | _unassigned_     |              |                      |            |                                                       |
+|`U+0897`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x0897; Pepet                                        |
 |`U+0898`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x0898; Small High Word Al-Juz                       |
 |`U+0899`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x0899; Small Low Word Ishmaam                       |
 |`U+089A`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x089A; Small Low Word Imaala                        |
@@ -554,9 +554,9 @@ treated differently during the mark-reordering stage.
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
 |`U+10EC0`  | _unassigned_     |              |                      |            |                                                       |
 |`U+10EC1`  | _unassigned_     |              |                      |            |                                                       |
-|`U+10EC2`  | _unassigned_     |              |                      |            |                                                       |
-|`U+10EC3`  | _unassigned_     |              |                      |            |                                                       |
-|`U+10EC4`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EC2`  | Letter           | RIGHT        | DAL                  | _0_        | &#x10EC2; Dal With Two Dots Vertically Below          |
+|`U+10EC3`  | Letter           | DUAL         | TAH                  | _0_        | &#x10EC2; Tah With Two Dots Vertically Below          |
+|`U+10EC4`  | Letter           | DUAL         | KAF                  | _0_        | &#x10EC2; Kaf With Two Dots Vertically Below          |
 |`U+10EC5`  | _unassigned_     |              |                      |            |                                                       |
 |`U+10EC6`  | _unassigned_     |              |                      |            |                                                       |
 |`U+10EC7`  | _unassigned_     |              |                      |            |                                                       |
@@ -615,7 +615,7 @@ treated differently during the mark-reordering stage.
 |`U+10EF9`  | _unassigned_     |              |                      |            |                                                       |
 |`U+10EFA`  | _unassigned_     |              |                      |            |                                                       |
 |`U+10EFB`  | _unassigned_     |              |                      |            |                                                       |
-|`U+10EFC`  | _unassigned_     |              |                      |            |                                                       |
+|`U+10EFC`  | Mark [Mn]        | TRANSPARENT  | _null_               | _0_        | &#x10EFC; Combining Alef Overlay                      |
 |`U+10EFD`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFD; Small Low Word Sakta                        |
 |`U+10EFE`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFE; Small Low Word Qasr                         |
 |`U+10EFF`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFF; Small Low Word Madda                        |

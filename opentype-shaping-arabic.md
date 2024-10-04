@@ -394,9 +394,9 @@ The algorithm for reordering a sequence of marks is:
        characters. The subsequence must be moved as a group.
 
 > Note: Unicode describes this mark-reordering operation, the Arabic
-> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
-> which describes it in terms that are distinct from standard,
-> Ccc-based mark reordering.
+> Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Unicode
+> Standard Annex 53, which describes it in terms that are distinct
+> from standard, Ccc-based mark reordering.
 >
 > Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
