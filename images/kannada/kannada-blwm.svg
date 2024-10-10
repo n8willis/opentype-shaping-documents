@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with svg_stack (http://github.com/astraw/svg_stack) -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="485.41015625" height="227.734375">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="505.41015625" height="227.734375">
   <defs><g>
 <symbol overflow="visible" id="id0:glyph0-0">
 <path style="stroke:none;" d="M 10.453125 0 L 10.453125 -78.546875 L 55.65625 -78.546875 L 55.65625 0 Z M 16.0625 -5.609375 L 50.046875 -5.609375 L 50.046875 -72.9375 L 16.0625 -72.9375 Z M 16.0625 -5.609375 "/>
@@ -41,13 +41,13 @@
 </g>
 </g>
 </g>
-  <g id="id1:id1" transform="matrix(1.25,0,0,1.25,176.40625,13.1640625)"><g id="id1:surface1">
+  <g id="id1:id1" transform="matrix(1.25,0,0,1.25,196.40625,13.1640625)"><g id="id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#id1:glyph0-1" x="0" y="120.84375"/>
 </g>
 </g>
 </g>
-  <g id="id2:id2" transform="matrix(1.25,0,0,1.25,309.00390625,0.0)"><g id="id2:surface1">
+  <g id="id2:id2" transform="matrix(1.25,0,0,1.25,329.00390625,0.0)"><g id="id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#id2:glyph0-1" x="16" y="102.09375"/>
   <use xlink:href="#id2:glyph0-2" x="56.921875" y="102.09375"/>

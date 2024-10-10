@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with svg_stack (http://github.com/astraw/svg_stack) -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="620.05859375" height="201.40625">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="620.05859375" height="213.96484375">
   <defs><g>
 <symbol overflow="visible" id="id0:glyph0-0">
 <path style="stroke:none;" d="M 10.34375 0 L 10.34375 -78.546875 L 55.546875 -78.546875 L 55.546875 0 Z M 15.953125 -5.609375 L 49.9375 -5.609375 L 49.9375 -72.9375 L 15.953125 -72.9375 Z M 15.953125 -5.609375 "/>
@@ -34,23 +34,23 @@
 </symbol>
 </g>
 </defs>
-  <g id="id0:id0" transform="matrix(1.25,0,0,1.25,0.0,12.470703125)"><g id="id0:surface1">
+  <g id="id0:id0" transform="matrix(1.25,0,0,1.25,0.0,18.75)"><g id="id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#id0:glyph0-1" x="16" y="97.046875"/>
   <use xlink:href="#id0:glyph0-2" x="170.984375" y="97.046875"/>
 </g>
 </g>
 </g>
-  <g id="id1:id1" transform="matrix(1.25,0,0,1.25,253.73046875,0.0)"><g id="id1:surface1">
+  <g id="id1:id1" transform="matrix(1.25,0,0,1.25,253.73046875,6.279296875)"><g id="id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#id1:glyph0-1" x="0" y="120.84375"/>
 </g>
 </g>
 </g>
-  <g id="id2:id2" transform="matrix(1.25,0,0,1.25,386.328125,12.470703125)"><g id="id2:surface1">
+  <g id="id2:id2" transform="matrix(1.25,0,0,1.25,386.328125,0.0)"><g id="id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#id2:glyph0-1" x="16" y="97.046875"/>
-  <use xlink:href="#id2:glyph0-2" x="124.34375" y="73.5"/>
+  <use xlink:href="#id2:glyph0-1" x="16" y="127.046875"/>
+  <use xlink:href="#id2:glyph0-2" x="124.34375" y="103.5"/>
 </g>
 </g>
 </g>
