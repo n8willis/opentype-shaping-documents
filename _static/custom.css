@@ -165,3 +165,6 @@ pre, tt, code {
     font-feature-settings: "tnum", "lnum";
 }
 
+/* Define table captions */
+
+/* Set figcaptions to behave like table captions */

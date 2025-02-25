@@ -23,10 +23,12 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'BUILD.md', '**-image-ge
 root_doc = 'README' # Will need to be renamed, eventually....
 
 numfig = True
+numfig_secnum_depth = 2
 
 myst_heading_anchors = 6
 
-myst_enable_extensions = ['smartquotes', 'colon_fence']
+# attrs_inline to specify HTML element attributes like img 'title' that are getting lost on build.
+myst_enable_extensions = ['smartquotes', 'colon_fence', 'attrs_inline']
 
 external_toc_path = "_toc.yml"
 
