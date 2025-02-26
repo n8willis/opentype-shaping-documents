@@ -45,7 +45,7 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Sans 3';
     src: url('./fonts/Source_Sans_3/SourceSans3-Italic-VariableFont_wght.ttf') format('truetype-variations');
-    size-adjust: 47%;
+    size-adjust: 94%; /* 47% of x-height  originally.... */
     font-style: italic;
     font-weight: 1 999;
 }
@@ -53,7 +53,7 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Sans 3';
     src: url('./fonts/Source_Sans_3/SourceSans3-VariableFont_wght.ttf') format('truetype-variations');
-    size-adjust: 47%;
+    size-adjust: 94%; /* 47% of x-height  originally.... */
     font-style: normal;
     font-weight: 1 999;
 }
@@ -61,7 +61,7 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Code Pro';
     src: url('./fonts/Source_Code_Pro/SourceCodePro-Italic-VariableFont_wght.ttf') format('truetype-variations');
-    size-adjust: 46%;
+    size-adjust: 92%; /* 46% of x-height  originally.... */
     font-style: italic;
     font-weight: 1 999;
 }
@@ -69,7 +69,7 @@ div.bodywrapper {
 @font-face {
     font-family: 'Source Code Pro';
     src: url('./fonts/Source_Code_Pro/SourceCodePro-VariableFont_wght.ttf') format('truetype-variations');
-    size-adjust: 46%;
+    size-adjust: 92%; /* 46% of x-height  originally.... */
     font-style: normal;
     font-weight: 1 999;
 }
@@ -166,5 +166,29 @@ pre, tt, code {
 }
 
 /* Define table captions */
+caption {
+    caption-side: bottom;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: #656565;
+}
 
-/* Set figcaptions to behave like table captions */
+/* Set figcaptions to look like table captions */
+figcaption {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: #656565;
+}
+
+/* Slightly lighten bgcolor on pre/tt/code in the captions, since the fg text color is lighter */
+
+caption pre,
+caption span.pre,
+caption span.tt,
+caption span.code,
+figcaption pre,
+figcaption span.pre,
+figcaption span.tt,
+figcaption span.code {
+    background-color: #eff4f7; /* testing; needs to be lighter because text is grey */
+}

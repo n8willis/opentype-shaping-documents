@@ -220,7 +220,6 @@ For example:
 |`U+0981`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0981; Candrabindu         |
 | | | | |
 |`U+0995`   | Letter           | CONSONANT         | _null_                     | &#x0995; Ka                  |
-
 :::
 
 Codepoints with no assigned meaning are
@@ -1263,7 +1262,7 @@ precomposed nukta-variant of the consonant glyph.
 
 The context defined for a `nukt` feature is:
 
-:::{table} nukt feature context
+:::{table} `nukt` feature context
 
 | Backtrack     | Matching sequence             | Lookahead     |
 |:--------------|:------------------------------|:--------------|
@@ -1309,7 +1308,7 @@ consonants in some languages, and fonts may have `cjct` substitution
 rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
-  - The context defined for an `akhn` feature is:
+The context defined for an `akhn` feature is:
 
 :::{table} `akhn` feature context
 
@@ -1339,11 +1338,15 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
     the `rphf` substitution.
 
 
-  - The context defined for a `rphf` feature is:
+The context defined for a `rphf` feature is:
     
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+:::{table} `rphf` feature context
+
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+
+:::
 
 
 :::{figure-md}
@@ -1470,12 +1473,15 @@ forms.
 (the below-base form of "Ra"); therefore, this feature must be applied after
 the `blwf` feature.
 
-  - The context defined for a `vatu` feature is:
+The context defined for a `vatu` feature is:
     
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | _none_           | `_consonant_`,"Raphala" | _none_        |
+:::{table} `vatu` feature context
 
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| _none_           | `_consonant_`,"Raphala" | _none_        |
+
+:::
 
 
 :::{figure-md}
@@ -1752,11 +1758,15 @@ The `init` feature replaces word-initial glyphs with special
 presentation forms. Generally, these forms involve removing the
 headline in-stroke from the left side of the glyph.
 
-  - The context defined for an `init` feature is:
+The context defined for an `init` feature is:
     
-    | Backtrack    | Matching sequence          | Lookahead           |
-    |:-------------|:---------------------------|:--------------------|
-    | `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
+:::{table} `init` feature context
+
+| Backtrack    | Matching sequence          | Lookahead           |
+|:-------------|:---------------------------|:--------------------|
+| `WORD_START` | `_matra_`(`LEFT_POSITION`) | `_consonant_`(full) |
+
+:::
 
 :::{figure-md}
 ![Application of the init feature](/images/bengali/bengali-init.svg "Application of the init feature")
