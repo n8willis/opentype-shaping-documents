@@ -5,7 +5,7 @@ div.body {
   /* min-width: 360px; */
   /* max-width: 800px; */
   min-width: 460px;
-  /* max-width: 900px; */
+  max-width: 800px;
 }
 
 /* alabaster.css | file:///home/nate/code/opentype-shaping-documents/_build/html/_static/alabaster.css */
@@ -22,10 +22,31 @@ div.body {
 
 div.bodywrapper {
   /* margin: 0 0 0 220px; */
-  margin: 0 0 0 240px;
+  margin: 0 0 0 300px;
 }
 
 
+/* Hanging section numbers, for slightly easier in-page navigation. */
+
+/* Indent the body text by a fixed amount on the left, 
+   then move section-numbers leftward by the same amount. */
+div.body>section {
+    margin-left: 4rem;
+}
+
+
+span.section-number {
+    display: inline-block;
+    width: 3.5rem;
+    text-align: right;
+    margin-left: -4.5rem;
+    margin-right: .5rem;
+}
+/*
+span.section-number::after {
+    content: " ";
+    white-space: pre;
+}*/
 
 /* Locally served fonts, to support more smartfont features */
 @font-face {

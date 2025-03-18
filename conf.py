@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'OpenType Shaping Documents'
+project = 'OpenType<br>Shaping<br>Documents'
 copyright = '2022, Sponsored by YesLogic'
 author = 'Sponsored by YesLogic'
 
@@ -46,8 +46,8 @@ html_sidebars = {
         ]
     }
 html_theme_options = {
-    'page_width': '1040px',
-    'sidebar_width': '260px',
+    'page_width': '1200px',
+    'sidebar_width': '300px',
     'github_user': 'n8willis',
     'github_repo': 'opentype-shaping-documents',
     'font_family': 'Source\ Serif\ 4',
