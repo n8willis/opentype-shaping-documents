@@ -28,7 +28,7 @@ The font files used must be publicly and freely available, open-source
 fonts. By default, the Noto fonts from Google are the starting point.
 
 A list of the fonts used to generate the latest version of the images
-is provided in the [example-fonts.txt](images/example-fonts.txt) file, with
+is provided in the [example-fonts.txt](example-fonts.txt) file, with
 URLs and SHA checksums for each file.
 
 The image file names follow a simple, but important, pattern:
@@ -45,30 +45,30 @@ please also follow the file-name pattern. Patches to the image-generation log fo
 each script are appreciated, in order to keep the log up-to-date.
 
   - Indic
-      - [Devanagari](images/devanagari/devanagari-svg-image-generation-log.md)
-      - [Bengali](images/bengali/bengalii-svg-image-generation-log.md)
-      - [Gujarati](images/gujarati/gujarati-svg-image-generation-log.md)
-      - [Gurmukhi](images/gurmukhi/gurmukhi-svg-image-generation-log.md)
-      - [Kannada](images/kannada/kannada-svg-image-generation-log.md)
-      - [Malayalam](images/malayalam/malayalam-svg-image-generation-log.md)
-      - [Oriya](images/oriya/oriya-svg-image-generation-log.md)
-      - [Tamil](images/tamil/tamil-svg-image-generation-log.md)
-      - [Telugu](images/telugu/telugu-svg-image-generation-log.md)
-      - [Sinhala](images/sinhala/sinhala-svg-image-generation-log.md)
+      - [Devanagari](devanagari/devanagari-svg-image-generation-log.md)
+      - [Bengali](bengali/bengali-svg-image-generation-log.md)
+      - [Gujarati](gujarati/gujarati-svg-image-generation-log.md)
+      - [Gurmukhi](gurmukhi/gurmukhi-svg-image-generation-log.md)
+      - [Kannada](kannada/kannada-svg-image-generation-log.md)
+      - [Malayalam](malayalam/malayalam-svg-image-generation-log.md)
+      - [Oriya](oriya/oriya-svg-image-generation-log.md)
+      - [Tamil](tamil/tamil-svg-image-generation-log.md)
+      - [Telugu](telugu/telugu-svg-image-generation-log.md)
+      - [Sinhala](sinhala/sinhala-svg-image-generation-log.md)
   - Brahmi-derived
-	  - [Khmer](images/khmer/khmer-svg-image-generation-log.md)
-	  - [Lao](images/thai-lao/thai-lao-svg-image-generation-log.md)
-	  - [Myanmar](images/myanmar/myanmar-svg-image-generation-log.md)
-	  - [Thai](images/thai-lao/thai-lao-svg-image-generation-log.md)
-	  - [Tibetan](images/tibetan/tibetan-svg-image-generation-log.md)
+	  - [Khmer](khmer/khmer-svg-image-generation-log.md)
+	  - [Lao](thai-lao/thai-lao-svg-image-generation-log.md)
+	  - [Myanmar](myanmar/myanmar-svg-image-generation-log.md)
+	  - [Thai](thai-lao/thai-lao-svg-image-generation-log.md)
+	  - [Tibetan](tibetan/tibetan-svg-image-generation-log.md)
   - Arabic
-      - [Arabic](images/arabic/arabic-svg-image-generation-log.md)
-      - [Syriac](images/syriac/syriac-svg-image-generation-log.md)
-      - [N'Ko](images/nko/nko-image-svg-generation-log.md)
-      - [Mongolian](images/mongolian/mongolian-svg-image-generation-log.md)
+      - [Arabic](arabic/arabic-svg-image-generation-log.md)
+      - [Syriac](syriac/syriac-svg-image-generation-log.md)
+      - [N'Ko](nko/nko-svg-image-generation-log.md)
+      - [Mongolian](mongolian/mongolian-svg-image-generation-log.md)
   - Hangul
-      - [Hangul](images/hangul/hangul-svg-image-generation-log.md)
+      - [Hangul](hangul/hangul-svg-image-generation-log.md)
   - Hebrew
-      - [Hebrew](images/hebrew/hebrew-svg-image-generation-log.md)
+      - [Hebrew](hebrew/hebrew-svg-image-generation-log.md)
   - Emoji
       - [Emoji](emoji/emoji-png-image-generation-log.md)
