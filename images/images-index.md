@@ -1,6 +1,6 @@
 # Images #
 
-This directory includes a separate subdirectory for each script,
+This section includes a separate subdirectory for each script,
 containing the images included in the relevant script-shaping document.
 
 Also included in each directory is a log file containing the exact
@@ -28,7 +28,7 @@ The font files used must be publicly and freely available, open-source
 fonts. By default, the Noto fonts from Google are the starting point.
 
 A list of the fonts used to generate the latest version of the images
-is provided in the [example-fonts.txt](example-fonts.txt) file, with
+is provided in the [example-fonts.txt](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/example-fonts.txt) file, with
 URLs and SHA checksums for each file.
 
 The image file names follow a simple, but important, pattern:
@@ -45,30 +45,30 @@ please also follow the file-name pattern. Patches to the image-generation log fo
 each script are appreciated, in order to keep the log up-to-date.
 
   - Indic
-      - [Devanagari](devanagari/devanagari-svg-image-generation-log.md)
-      - [Bengali](bengali/bengali-svg-image-generation-log.md)
-      - [Gujarati](gujarati/gujarati-svg-image-generation-log.md)
-      - [Gurmukhi](gurmukhi/gurmukhi-svg-image-generation-log.md)
-      - [Kannada](kannada/kannada-svg-image-generation-log.md)
-      - [Malayalam](malayalam/malayalam-svg-image-generation-log.md)
-      - [Oriya](oriya/oriya-svg-image-generation-log.md)
-      - [Tamil](tamil/tamil-svg-image-generation-log.md)
-      - [Telugu](telugu/telugu-svg-image-generation-log.md)
-      - [Sinhala](sinhala/sinhala-svg-image-generation-log.md)
+      - [Devanagari](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/devanagari/devanagari-svg-image-generation-log.md)
+      - [Bengali](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/bengali/bengali-svg-image-generation-log.md)
+      - [Gujarati](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/gujarati/gujarati-svg-image-generation-log.md)
+      - [Gurmukhi](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/gurmukhi/gurmukhi-svg-image-generation-log.md)
+      - [Kannada](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/kannada/kannada-svg-image-generation-log.md)
+      - [Malayalam](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/malayalam/malayalam-svg-image-generation-log.md)
+      - [Oriya](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/oriya/oriya-svg-image-generation-log.md)
+      - [Tamil](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/tamil/tamil-svg-image-generation-log.md)
+      - [Telugu](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/telugu/telugu-svg-image-generation-log.md)
+      - [Sinhala](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/sinhala/sinhala-svg-image-generation-log.md)
   - Brahmi-derived
-	  - [Khmer](khmer/khmer-svg-image-generation-log.md)
-	  - [Lao](thai-lao/thai-lao-svg-image-generation-log.md)
-	  - [Myanmar](myanmar/myanmar-svg-image-generation-log.md)
-	  - [Thai](thai-lao/thai-lao-svg-image-generation-log.md)
-	  - [Tibetan](tibetan/tibetan-svg-image-generation-log.md)
+	  - [Khmer](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/khmer/khmer-svg-image-generation-log.md)
+	  - [Lao](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/thai-lao/thai-lao-svg-image-generation-log.md)
+	  - [Myanmar](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/myanmar/myanmar-svg-image-generation-log.md)
+	  - [Thai](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/thai-lao/thai-lao-svg-image-generation-log.md)
+	  - [Tibetan](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/tibetan/tibetan-svg-image-generation-log.md)
   - Arabic
-      - [Arabic](arabic/arabic-svg-image-generation-log.md)
-      - [Syriac](syriac/syriac-svg-image-generation-log.md)
-      - [N'Ko](nko/nko-svg-image-generation-log.md)
-      - [Mongolian](mongolian/mongolian-svg-image-generation-log.md)
+      - [Arabic](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/arabic/arabic-svg-image-generation-log.md)
+      - [Syriac](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/syriac/syriac-svg-image-generation-log.md)
+      - [N'Ko](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/nko/nko-svg-image-generation-log.md)
+      - [Mongolian](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/mongolian/mongolian-svg-image-generation-log.md)
   - Hangul
-      - [Hangul](hangul/hangul-svg-image-generation-log.md)
+      - [Hangul](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/hangul/hangul-svg-image-generation-log.md)
   - Hebrew
-      - [Hebrew](hebrew/hebrew-svg-image-generation-log.md)
+      - [Hebrew](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/hebrew/hebrew-svg-image-generation-log.md)
   - Emoji
-      - [Emoji](emoji/emoji-png-image-generation-log.md)
+      - [Emoji](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/emoji/emoji-png-image-generation-log.md)

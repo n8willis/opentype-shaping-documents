@@ -59,6 +59,6 @@ html_theme_options = {
     'github_count': True,
     'extra_nav_links': {
         'GitHub issues': 'https://github.com/n8willis/opentype-shaping-documents/issues',
-        'Build process': 'https://github.com/n8willis/opentype-shaping-documents/blob/sphinx/BUILD.md', # Fix the directory path after PR merge; Add contributor-guide link
+        'Build process': 'https://github.com/n8willis/opentype-shaping-documents/blob/master/BUILD.md', # Fix the directory path after PR merge; Add contributor-guide link
         }
 }

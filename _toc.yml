@@ -121,6 +121,8 @@ subtrees:
         title: Thai
       - file: character-tables/character-tables-tibetan
         title: Tibetan
+  - file: images/README
+    title: Illustration images
   - file: notes/README
     title: Notes
     subtrees:
