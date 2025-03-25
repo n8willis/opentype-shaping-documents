@@ -11,7 +11,7 @@ hb-view --font-size=110 --output-file=right-arrow.svg --background=FFFFFF00 --ma
 
 ## 3.1 `locl`
 
-> Note: Noto Devanagari has a 'MAR' locl feature. 
+> Note: Noto Devanagari has 'NEP' and 'MAR' locl features. 
 
 
 
@@ -121,7 +121,7 @@ svg_stack --direction=h devanagari-cjct-before.svg right-arrow.svg devanagari-cj
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-matra-position-before.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=093f,091e,094d,200c,091e,094d,0939,094d,0930
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-matra-position-after.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=091e,094d,200c,091e,094d,0939,094d,0930,093f
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-matra-position-after.svg --features=-init,-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifDevanagari-Regular.ttf --unicodes=091e,094d,200c,091e,094d,0939,094d,0930,093f
 
 svg_stack --direction=h devanagari-matra-position-before.svg right-arrow.svg devanagari-matra-position-after.svg > devanagari-matra-position.svg
 
@@ -177,6 +177,8 @@ svg_stack --direction=h devanagari-psts-before.svg right-arrow.svg devanagari-ps
 
 
 ## 5 `haln`
+
+# look at 0926,093c,094d in serif???
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=devanagari-haln-before.svg --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf --unicodes=25cc,095d,094d
 

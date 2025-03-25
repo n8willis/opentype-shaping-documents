@@ -15,18 +15,18 @@ hb-view --font-size=110 --output-file=right-arrow.svg --background=FFFFFF00 --ma
 
 ## 2.7 Post-base consonants
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-pstf-before.svg --features=-init,-pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a2f
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-pstf-before.svg --features=-init,-pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a2f
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-pstf-after.svg --features=-init,+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a2f
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-pstf-after.svg --features=-init,+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a2f
 
 svg_stack --direction=h gurmukhi-pstf-before.svg right-arrow.svg gurmukhi-pstf-after.svg > gurmukhi-pstf.svg
 
 
 ## 3.2 `nukt`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-before.svg --features=-init,-nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a38,25cc,0a3c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-before.svg --features=-init,-nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a38,25cc,0a3c
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-after.svg --features=-init,+nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a38,0a3c
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-nukt-after.svg --features=-init,+nukt --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a38,0a3c
 
 svg_stack --direction=h gurmukhi-nukt-before.svg right-arrow.svg gurmukhi-nukt-after.svg > gurmukhi-nukt.svg
 
@@ -45,25 +45,25 @@ svg_stack --direction=h gurmukhi-nukt-before.svg right-arrow.svg gurmukhi-nukt-a
 
 ### Ra
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ra-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a30
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ra-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a30
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ra-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a30
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ra-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a30
 
 svg_stack --direction=h gurmukhi-blwf-ra-before.svg right-arrow.svg gurmukhi-blwf-ra-after.svg > gurmukhi-blwf-ra.svg
 
 ### Va
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-va-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-va-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a35
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-va-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-va-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a35
 
 svg_stack --direction=h gurmukhi-blwf-va-before.svg right-arrow.svg gurmukhi-blwf-va-after.svg > gurmukhi-blwf-va.svg
 
 ### Ha
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ha-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a39
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ha-before.svg --features=-init,-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a39
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ha-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a39
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwf-ha-after.svg --features=-init,+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=25cc,0a4d,0a39
 
 svg_stack --direction=h gurmukhi-blwf-ha-before.svg right-arrow.svg gurmukhi-blwf-ha-after.svg > gurmukhi-blwf-ha.svg
 
@@ -72,9 +72,9 @@ svg_stack --direction=h gurmukhi-blwf-ha-before.svg right-arrow.svg gurmukhi-blw
 
 > Note: Gurmukhi fonts seem to stick to explicit halant-forms.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-before.svg --features=-init,-half,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a2d,0a4d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-before.svg --features=-init,-half,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a1b,0a4d,0a2d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-after.svg --features=-init,+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a2d,0a4d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-half-after.svg --features=-init,+half,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a1b,0a4d,0a2d
 
 svg_stack --direction=h gurmukhi-half-before.svg right-arrow.svg gurmukhi-half-after.svg > gurmukhi-half.svg
 
@@ -96,9 +96,9 @@ svg_stack --direction=h gurmukhi-half-before.svg right-arrow.svg gurmukhi-half-a
 
 ## 4.2 Pre-base matras
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-matra-position-before.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a25,0a3f,0a4d,0a32,0a4d,0a35,0a4d,0a1a
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-matra-position-before.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a25,0a3f,0a4d,0a32,0a4d,0a35,0a4d,0a1a
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-matra-position-after.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a25,0a4d,0a32,0a4d,0a35,0a4d,0a1a,0a3f
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-matra-position-after.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a25,0a4d,0a32,0a4d,0a35,0a4d,0a1a,0a3f
 
 svg_stack --direction=h gurmukhi-matra-position-before.svg right-arrow.svg gurmukhi-matra-position-after.svg > gurmukhi-matra-position.svg
 
@@ -123,18 +123,18 @@ svg_stack --direction=h gurmukhi-matra-position-before.svg right-arrow.svg gurmu
 
 ## 5 `abvs`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvs-before.svg --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a13,0a71
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvs-before.svg --features=-init,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a13,0a71
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvs-after.svg --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a13,0a71
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvs-after.svg --features=-init,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a13,0a71
 
 svg_stack --direction=h gurmukhi-abvs-before.svg right-arrow.svg gurmukhi-abvs-after.svg > gurmukhi-abvs.svg
 
 
 ## 5 `blws`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blws-before.svg --features=-init,-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhiUI-Regular.ttf --unicodes=0a15,25cc,0a4d,0a30
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blws-before.svg --features=-init,-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a15,25cc,0a4d,0a30
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blws-after.svg --features=-init,+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhiUI-Regular.ttf --unicodes=0a15,0a4d,0a30
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blws-after.svg --features=-init,+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a15,0a4d,0a30
 
 svg_stack --direction=h gurmukhi-blws-before.svg right-arrow.svg gurmukhi-blws-after.svg > gurmukhi-blws.svg
 
@@ -146,18 +146,18 @@ svg_stack --direction=h gurmukhi-blws-before.svg right-arrow.svg gurmukhi-blws-a
 
 ## 5 `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-haln-before.svg --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a32,0a3c,0a4d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-haln-before.svg --features=-init,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a32,0a3c,0a4d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-haln-after.svg --features=-init,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a32,0a3c,0a4d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-haln-after.svg --features=-init,+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a32,0a3c,0a4d
 
 svg_stack --direction=h gurmukhi-haln-before.svg right-arrow.svg gurmukhi-haln-after.svg > gurmukhi-haln.svg
 
 
 ## 6 `abvm`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvm-before.svg --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a20,0a48
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvm-before.svg --features=-init,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a20,0a48
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvm-after.svg --features=-init,+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a20,0a48
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-abvm-after.svg --features=-init,+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a20,0a48
 
 svg_stack --direction=h gurmukhi-abvm-before.svg right-arrow.svg gurmukhi-abvm-after.svg > gurmukhi-abvm.svg
 
@@ -165,9 +165,9 @@ svg_stack --direction=h gurmukhi-abvm-before.svg right-arrow.svg gurmukhi-abvm-a
 
 ## 6 `blwm`
 
- hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwm-before.svg --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a06,0a42
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwm-before.svg --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a06,0a42
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwm-after.svg --features=-init,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansGurmukhi-Regular.ttf --unicodes=0a06,0a42
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-blwm-after.svg --features=-init,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGurmukhi-Regular.ttf --unicodes=0a06,0a42
 
 svg_stack --direction=h gurmukhi-blwm-before.svg right-arrow.svg gurmukhi-blwm-after.svg > gurmukhi-blwm.svg
 

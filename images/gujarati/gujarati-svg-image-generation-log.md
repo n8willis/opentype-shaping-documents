@@ -163,11 +163,12 @@ svg_stack --direction=h gujarati-psts-before.svg right-arrow.svg gujarati-psts-a
 
 ## 5 `haln`
 
-> Note: Noto Serif Gujarati implements this as a `blwm` lookup.
+> Note: Noto Serif Gujarati implements this as a `blwm` lookup in
+> addition to `haln`.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-after.svg --features=-init,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a95,0acd,0a95,0abc,0acd
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-after.svg --features=-init,+haln,+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0aa0,0acd
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=gujarati-haln-before.svg --features=-init,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0a95,0acd,0a95,0abc,0acd
+hb-view --font-size=110 --margin=2,24,2,16 --output-file=gujarati-haln-before.svg --features=-init,-haln,-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifGujarati-Regular.ttf --unicodes=0aa0,0acd
 
 svg_stack --direction=h gujarati-haln-before.svg right-arrow.svg gujarati-haln-after.svg > gujarati-haln.svg
 

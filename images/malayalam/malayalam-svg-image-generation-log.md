@@ -114,9 +114,9 @@ svg_stack --direction=h malayalam-blwf-before.svg right-arrow.svg malayalam-blwf
 > Note: Added a note to the shaping text about using `half` for Chillu
 > lookups.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.svg --features=+half --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,2005,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.svg --features=+half --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,2005,200d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.svg --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.svg --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
 
 svg_stack --direction=h malayalam-half-before.svg right-arrow.svg malayalam-half-after.svg > malayalam-half.svg
 
@@ -147,9 +147,9 @@ svg_stack --direction=h malayalam-matra-position-before.svg right-arrow.svg mala
 
 ## 4.3 Reph position
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-before.svg --features=+akhn,-abvm,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,200d,0d23,0d4d,200d,0d21,0d41
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-before.svg --features=+akhn,-abvm,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e,200d,0d23,0d4d,200d,0d21,0d41
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.svg --features=+akhn,+abvm,+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.svg --features=+akhn,+abvm,+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
 
 svg_stack --direction=h malayalam-repha-position-before.svg right-arrow.svg malayalam-repha-position-after.svg > malayalam-repha-position.svg
 
@@ -172,17 +172,17 @@ svg_stack --direction=h malayalam-pref-position-before.svg right-arrow.svg malay
 
 ## 5 `psts`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.svg --features=-psts,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.svg --features=-psts,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.svg --features=+psts,+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.svg --features=+psts,+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
 svg_stack --direction=h malayalam-psts-before.svg right-arrow.svg malayalam-psts-after.svg > malayalam-psts.svg
 
 ## 5 `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.svg --features=-haln --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,2005,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.svg --features=-haln --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d33,0d4d,2005,200d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.svg --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.svg --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
 
 svg_stack --direction=h malayalam-haln-before.svg right-arrow.svg malayalam-haln-after.svg > malayalam-haln.svg
 

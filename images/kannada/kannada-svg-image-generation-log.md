@@ -61,7 +61,7 @@ svg_stack --direction=h kannada-rphf-before.svg right-arrow.svg kannada-rphf-aft
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blwf-before.svg --features=-blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=25cc,0ccd,0ca1
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blwf-after.svg --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=25cc,0ccd,0ca1
+hb-view --font-size=110 --margin=2,24,2,16 --output-file=kannada-blwf-after.svg --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=25cc,0ccd,0ca1
 
 svg_stack --direction=h kannada-blwf-before.svg right-arrow.svg kannada-blwf-after.svg > kannada-blwf.svg
 
@@ -92,9 +92,9 @@ svg_stack --direction=h kannada-pres-before.svg right-arrow.svg kannada-pres-aft
 > linguistically speaking, actually above-base features. Thus, they are
 > included here, but might not be used in the shaping document.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-abvs-before.svg --features=-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0ca3,0ccc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-abvs-before.svg --features=-pres,-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0ca3,0ccc
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-abvs-after.svg --features=+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0ca3,0ccc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-abvs-after.svg --features=+pres,+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0ca3,0ccc
 
 svg_stack --direction=h kannada-abvs-before.svg right-arrow.svg kannada-abvs-after.svg > kannada-abvs.svg
 
@@ -108,9 +108,9 @@ svg_stack --direction=h kannada-abvs-before.svg right-arrow.svg kannada-abvs-aft
 > features. Thus, they are included here, but might not be used in the
 > shaping document.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blws-before.svg --features=-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0ccd,0cb7,0cc1
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blws-before.svg --features=-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0ccd,0ca4,0ccd,0caf
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blws-after.svg --features=+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0ccd,0cb7,0cc1
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blws-after.svg --features=+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0ccd,0ca4,0ccd,0caf
 
 svg_stack --direction=h kannada-blws-before.svg right-arrow.svg kannada-blws-after.svg > kannada-blws.svg
 
@@ -121,18 +121,21 @@ svg_stack --direction=h kannada-blws-before.svg right-arrow.svg kannada-blws-aft
 > linguistically speaking, actually post-base features. Thus, they are
 > included here, but might not be used in the shaping document.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-psts-before.svg --features=-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0cbe
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-psts-before.svg --features=-pres,-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=25cc,0ca4,0cbf
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-psts-after.svg --features=+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c95,0cbe
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-psts-after.svg --features=+pres,+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=25cc,0ca4,0cbf
 
 svg_stack --direction=h kannada-psts-before.svg right-arrow.svg kannada-psts-after.svg > kannada-psts.svg
 
 
 ## 5 `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-haln-before.svg --features=-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c98,0ccd
+> Note: Noto Serif Kannada does not include a `haln` feature. Similar
+> behavior is found in `psts`.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-haln-after.svg --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c98,0ccd
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-haln-before.svg --features=-haln,-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c98,0ccd
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-haln-after.svg --features=+haln,+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0c98,0ccd
 
 svg_stack --direction=h kannada-haln-before.svg right-arrow.svg kannada-haln-after.svg > kannada-haln.svg
 
@@ -144,7 +147,7 @@ svg_stack --direction=h kannada-haln-before.svg right-arrow.svg kannada-haln-aft
 
 ## 6 `blwm`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blwm-before.svg --features=-blwm,-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0cab,0cc1,0cbc
+hb-view --font-size=110 --margin=2,32,2,16 --output-file=kannada-blwm-before.svg --features=-blwm,-pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0cab,0cc1,0cbc
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=kannada-blwm-after.svg --features=+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifKannada-Regular.ttf --unicodes=0cab,0cc1,0cbc
 

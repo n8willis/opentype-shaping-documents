@@ -39,7 +39,11 @@ svg_stack --direction=h telugu-akhn-kssa-before.svg right-arrow.svg telugu-akhn-
 
 ## 3.4 `rphf`
 
-> None found. 
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-rphf-before.svg --features=-rphf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --preserve-default-ignorables --unicodes=0c30,0c4d,200d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-rphf-after.svg --features=+rphf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --unicodes=0c30,0c4d,200d
+
+svg_stack --direction=h telugu-rphf-before.svg right-arrow.svg telugu-rphf-after.svg > telugu-rphf.svg
 
 
 ## 3.7 `blwf`
@@ -136,9 +140,9 @@ svg_stack --direction=h telugu-haln-before.svg right-arrow.svg telugu-haln-after
 
 ## `blwm`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-blwm-before.svg --features=-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --unicodes=0c1d,0c62
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-blwm-before.svg --features=-blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --unicodes=0c1d,0c4d,0c26
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-blwm-after.svg --features=+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --unicodes=0c1d,0c62
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=telugu-blwm-after.svg --features=+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTelugu-Regular.ttf --unicodes=0c1d,0c4d,0c26
 
 svg_stack --direction=h telugu-blwm-before.svg right-arrow.svg telugu-blwm-after.svg > telugu-blwm.svg
 

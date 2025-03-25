@@ -105,7 +105,7 @@ montage malayalam-pstf-ra-before.png right-arrow.png malayalam-pstf-ra-after.png
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-before.png --features=-blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf --unicodes=0d4d,0d32
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.png --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana--Regular.ttf --unicodes=0d4d,0d32
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.png --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf --unicodes=0d4d,0d32
 
 montage malayalam-blwf-before.png right-arrow.png malayalam-blwf-after.png -geometry +0+0 -background transparent malayalam-blwf.png
 
@@ -114,9 +114,9 @@ montage malayalam-blwf-before.png right-arrow.png malayalam-blwf-after.png -geom
 > Note: Added a note to the shaping text about using `half` for Chillu
 > lookups.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.png --features=+half --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,2005,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.png --features=+half --background=FFFFFF00 --preserve-default-ignorables /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,2005,200d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.png --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.png --features=+half --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
 
 montage malayalam-half-before.png right-arrow.png malayalam-half-after.png -geometry +0+0 -background transparent malayalam-half.png
 
@@ -147,9 +147,9 @@ montage malayalam-matra-position-before.png right-arrow.png malayalam-matra-posi
 
 ## 4.3 Reph position
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-before.png --features=+akhn,-abvm,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,200d,0d23,0d4d,200d,0d21,0d41
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-before.png --features=+akhn,-abvm,-mark --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e,200d,0d23,0d4d,200d,0d21,0d41
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.png --features=+akhn,+abvm,+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.png --features=+akhn,+abvm,+mark --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
 
 montage malayalam-repha-position-before.png right-arrow.png malayalam-repha-position-after.png -geometry +0+0 -background transparent malayalam-repha-position.png
 
@@ -172,17 +172,17 @@ montage malayalam-pref-position-before.png right-arrow.png malayalam-pref-positi
 
 ## 5 `psts`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.png --features=-psts,-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.png --features=-psts,-akhn --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.png --features=+psts,+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.png --features=+psts,+akhn --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
 montage malayalam-psts-before.png right-arrow.png malayalam-psts-after.png -geometry +0+0 -background transparent malayalam-psts.png
 
 ## 5 `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.png --features=-haln --background=FFFFFF00 --preserve-default-ignorables /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,2005,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.png --features=-haln --background=FFFFFF00 --preserve-default-ignorables /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d33,0d4d,2005,200d
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.png --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.png --features=+haln --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/Noto_Serif_Malayalam/static/NotoSerifMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
 
 montage malayalam-haln-before.png right-arrow.png malayalam-haln-after.png -geometry +0+0 -background transparent malayalam-haln.png
 
