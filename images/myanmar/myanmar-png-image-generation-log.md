@@ -1,4 +1,4 @@
-# Commands used to generate the images in [opentype-shaping-mongolian.md](../../opentype-shaping-mongolian.md)
+# Commands used to generate the images in [opentype-shaping-myanmar.md](../../opentype-shaping-myanmar.md)
 
 ## Arrow general
 
