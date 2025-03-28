@@ -207,7 +207,7 @@ replaces the default glyphs with superscript variants.
 Marks and dependent vowels are further labeled with a mark-placement
 subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. The actual position of
-the glyphs is determined by the lookups found in the font's <abbr>GPOS</abbr>
+the glyphs is determined by the lookups found in the font's <abbr title="Glyph Positioning table">GPOS</abbr>
 table, however, the shaping rules for Indic scripts require that the
 shaping engine be able to identify marks by their general
 position. 
@@ -236,7 +236,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
+of OpenType <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 Multi-part dependent vowels (matras) may be designated with compound
@@ -671,7 +671,7 @@ right-side components that would result from these decompositions do not
 correspond to assigned Unicode codepoints.
 
 Instead, fonts often substitute the default glyph with a
-right-side-component glyph using <abbr>GSUB</abbr> substitutions. The decomposition
+right-side-component glyph using <abbr title="Glyph Substitution table">GSUB</abbr> substitutions. The decomposition
 step performed here allows the left-side component to be correctly
 reordered by the shaping engine.
 
@@ -826,9 +826,9 @@ With these steps completed, the syllable can be sorted into the final sort order
 ### Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -851,7 +851,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 <!--- :::{figure-md}
 ![Local forms substitution](images/khmer/khmer-locl.svg "Local forms substitution")
@@ -868,7 +868,7 @@ with a pre-composed glyph including the mark and the base, or to
 substitute a single glyph into an equivalent decomposed sequence of glyphs. 
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -960,10 +960,10 @@ pre-base-reordering <samp>"Ro"</samp>.
 
 ### Stage 4. Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
+In this stage, the remaining substitution features from the <abbr title="Glyph Substitution table">GSUB</abbr> table
 are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
-the <abbr>GSUB</abbr> table in the font. 
+the <abbr title="Glyph Substitution table">GSUB</abbr> table in the font. 
 
 	pres
 	blws
@@ -1052,10 +1052,10 @@ Standard ligature substitution
 
 ### Stage 5: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
+In this stage, mark positioning, kerning, and other <abbr title="Glyph Positioning table">GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the <abbr>GPOS</abbr> table in the font.
+order in which they appear in the <abbr title="Glyph Positioning table">GPOS</abbr> table in the font.
 
 	dist
 	kern

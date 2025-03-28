@@ -167,7 +167,7 @@ the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
+<!--- How shaping is affected by the <abbr title="Left-To-Right">LTR</abbr> and <abbr title="Right-To-Left">RTL</abbr> markers explanation --->
 
 
 The no-break space is primarily used to display those codepoints that

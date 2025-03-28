@@ -223,7 +223,7 @@ offer the following features useful for shaping engines:
    Unicode are supported, including the decomposition of multi-part
    dependent vowels (matras) in several Indic and Brahmic-derived
    scripts as well as arbitrary decompositions and compositions
-   implemented in `ccmp` and `locl` <abbr>GSUB</abbr> lookups
+   implemented in `ccmp` and `locl` <abbr title="Glyph Substitution table">GSUB</abbr> lookups
 
 
 ### Shaping model preferences ###
@@ -250,9 +250,9 @@ trade-offs into account.
 
 The preferred form may also be specific to a language, such as when a
 minority language employs different diacritic ordering than the
-ordering encoded in Unicode's `Ccc` data. In this case, a font
+ordering encoded in Unicode's <abbr>Ccc</abbr> data. In this case, a font
 targetting the minority language may be expected to handle
-language-specific mark-to-mark positioning in <abbr>GPOS</abbr>; as a result, the
+language-specific mark-to-mark positioning in <abbr title="Glyph Positioning table">GPOS</abbr>; as a result, the
 shaping engine should allow for the positioning lookups by designating
 a preference for decomposed forms.
 
@@ -309,7 +309,7 @@ mappings is applied:
     For example, a shaper that supports text using the Arabic
     Presentation Forms block should remap the Arabic Presentation
     Forms codepoints to the corresponding Arabic-block default
-    codepoints and <abbr>GSUB</abbr> positional features.
+    codepoints and <abbr title="Glyph Substitution table">GSUB</abbr> positional features.
 	
 	These substitutions are defined in a set of Unicode compatibility
     decomposition mappings.
@@ -318,7 +318,7 @@ mappings is applied:
     remapping "non-breaking hyphen" codepoints to "hyphen".
   
 Some of these additional decompositions and mappings may also be
-implemented in and active font's <abbr>GSUB</abbr> lookups, but that is not
+implemented in and active font's <abbr title="Glyph Substitution table">GSUB</abbr> lookups, but that is not
 guaranteed. Consequently, a normalization function must implement them
 in order to fulfill the goal of providing stable output.
 
@@ -332,7 +332,7 @@ order:
     into order of increasing `Ccc` value
 
 Several script-specific shapers require additional reordering to
-compensate for limitations in the Unicode `Ccc` mark-reordering
+compensate for limitations in the Unicode <abbr>Ccc</abbr> mark-reordering
 model. For example, several Arabic mark sequences are reordered in
 [stage 1](opentype-shaping-arabic.md#stage-1-transient-reordering-of-modifier-combining-marks) of the Arabic
 shaping model and [stage 1](opentype-shaping-syriac.md#stage-1-transient-reordering-of-modifier-combining-marks)
@@ -400,11 +400,11 @@ HARFBUZZ logic here: https://github.com/harfbuzz/harfbuzz/src/hb-ot-shape-normal
 
 
 
-#### Stage 4: Normalization-related <abbr>GSUB</abbr> features and other font-specific considerations ####
+#### Stage 4: Normalization-related <abbr title="Glyph Substitution table">GSUB</abbr> features and other font-specific considerations ####
 
 After the decomposition, mark-reordering, and selective
 recomposition stages, OpenType shaping normalization also takes
-certain <abbr>GSUB</abbr> lookups and complex-script shaping operations into
+certain <abbr title="Glyph Substitution table">GSUB</abbr> lookups and complex-script shaping operations into
 consideration.
 
 These additional operations may produce final output that differs
@@ -414,17 +414,17 @@ sequences in the same active font and script/language context.
 
 > Note: the features discussed below are applied after the completion
 > of the decomposition, mark-reordering, and recomposition
-> stages. Furthermore, they are applied before any other <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
+> stages. Furthermore, they are applied before any other <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr>
 > features.
 > 
 > As a result, shaping engine implementors may choose to
-> defer application of these features to the start of <abbr>GSUB</abbr> and <abbr>GPOS</abbr>
+> defer application of these features to the start of <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr>
 > processing for the sake of convenience.
 
 The `ccmp` and `locl` features can involve normalization, as described
 below. If they are present in the active font and match the text run,
 all `ccmp` and `locl` features should be applied, and should be
-applied in the order in which they are listed in the <abbr>GSUB</abbr> table.
+applied in the order in which they are listed in the <abbr title="Glyph Substitution table">GSUB</abbr> table.
 
 
 ##### Stage 4, step 1: ccmp features #####
@@ -433,7 +433,7 @@ The `ccmp` feature is applied to all text runs. `ccmp` lookups are not
 meant be to be disabled by end users in application code.
 
 `ccmp` lookups can specify arbitrary decomposition mappings and
-composition mappings, via one-to-many or many-to-one <abbr>GSUB</abbr>
+composition mappings, via one-to-many or many-to-one <abbr title="Glyph Substitution table">GSUB</abbr>
 substitutions.
 
 These lookups should be applied regardless of whether
@@ -477,7 +477,7 @@ language/script combination.
 However, `locl` lookups may also interact with normalization by
 performing decompositions or compositions. These substitutions are
 often used to preserve orthographic or linguistic features that are
-not fully captured by Unicode normalization forms or `Ccc` ordering.
+not fully captured by Unicode normalization forms or <abbr>Ccc</abbr> ordering.
 
 For example, in the Turkish alphabet, "dotted i" and "dotless i" are
 two distinct letters. For runs of text in Turkish, a font may
@@ -487,9 +487,9 @@ the dot diacritic is not lost as text is processed.
 
 Or, for example, in a particular script and language pairing, readers
 might expect or prefer certain sequences of diacritics to stack in a
-different order than the order their Unicode `Ccc` values dictate. A
+different order than the order their Unicode <abbr>Ccc</abbr> values dictate. A
 `locl` lookup could be used to implement the preferred reordering in a
-many-to-one <abbr>GSUB</abbr> substitution.
+many-to-one <abbr title="Glyph Substitution table">GSUB</abbr> substitution.
 
 
 
@@ -498,7 +498,7 @@ many-to-one <abbr>GSUB</abbr> substitution.
 Unicode defines _standardized_variation_sequences_ as sequences of two
 codepoints where the first codepoint is any base character or mark,
 and the second character is a Variation Selector. Mapping a
-standardized variation sequence to a glyph is not done via <abbr>GSUB</abbr>,
+standardized variation sequence to a glyph is not done via <abbr title="Glyph Substitution table">GSUB</abbr>,
 however, but in the `cmap` table of a font.
 
 Unicode normalization does not consider Variation Selector
@@ -516,8 +516,8 @@ language- or script-specific.
 
 Reordering and composition are defined as shaping operations in
 several script-specific shaping models. In some cases, a reordering
-operation or composition may be designated by a particular <abbr>GSUB</abbr> or
-<abbr>GPOS</abbr> feature tag.
+operation or composition may be designated by a particular <abbr title="Glyph Substitution table">GSUB</abbr> or
+<abbr title="Glyph Positioning table">GPOS</abbr> feature tag.
 
 Shaping-engine implementors should take care to note where completing
 normalization early in the shaping process may reduce the need for
@@ -547,9 +547,9 @@ example:
 
   - In the Arabic shaping model, stage 1, and in the Syriac shaping
     model, stage 1, certain marks are reordered after normalization
-    and after <abbr>GSUB</abbr> feature application.
+    and after <abbr title="Glyph Substitution table">GSUB</abbr> feature application.
 
-  - In Bengali, <samp>"Ya,Nukta"</samp> is composed into <samp>"Yya"</samp> before <abbr>GSUB</abbr> feature
+  - In Bengali, <samp>"Ya,Nukta"</samp> is composed into <samp>"Yya"</samp> before <abbr title="Glyph Substitution table">GSUB</abbr> feature
     application, to avoid potential ambiguities during the application
     of later features.
 
@@ -562,10 +562,10 @@ have Unicode compatibility `Decomposition_Mapping`s that a shaping
 engine can use to map codepoints from Arabic Presentation Forms to
 codepoints in the Arabic block. Each Arabic Presentation Form
 `Decomposition_Mapping` is tagged with a positional tag corresponding
-to a positional <abbr>GSUB</abbr> feature: `<final>`, `<initial>`,`<isolated>`, or
+to a positional <abbr title="Glyph Substitution table">GSUB</abbr> feature: `<final>`, `<initial>`,`<isolated>`, or
 `<medial>`.
 
-This tag information can be used to construct a set of synthetic <abbr>GSUB</abbr>
+This tag information can be used to construct a set of synthetic <abbr title="Glyph Substitution table">GSUB</abbr>
 lookups corresponding to `fina`, `init`, `isol`, and `medi`. However,
 shaping engines should take care not to offer guarantees about the
 expect output, unless explicit support for older files known to be

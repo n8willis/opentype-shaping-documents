@@ -171,7 +171,7 @@ Marks, subjoined consonants, and dependent vowels are further labeled
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's <abbr>GPOS</abbr> table.
+lookups found in the font's <abbr title="Glyph Positioning table">GPOS</abbr> table.
 
 There are two basic _mark-placement subclasses_ for dependent vowel signs
 (matras). Each corresponds to the visual position of the matra with
@@ -196,7 +196,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
+of OpenType <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -367,9 +367,9 @@ as when an isolated codepoint is shown in example text.
 ### Stage 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -387,7 +387,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 
 #### Stage 1, step 2: ccmp ####
@@ -412,7 +412,7 @@ use the corresponding sequence of single-part matras.
   - `U+0F81` can be replaced by <samp>"`U+0F71`,`U+0F80`"</samp>
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -426,10 +426,10 @@ Composition-decomposition substitution
 
 ### Stage 2: Applying all basic substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the basic substitution features from the <abbr>GSUB</abbr> table
+In this stage, the basic substitution features from the <abbr title="Glyph Substitution table">GSUB</abbr> table
 are applied. The order in which these features are applied is not
 canonical; they should be applied in the order in which they appear in
-the <abbr>GSUB</abbr> table in the font. 
+the <abbr title="Glyph Substitution table">GSUB</abbr> table in the font. 
 
 	abvs
 	blws
@@ -487,10 +487,10 @@ Application of the liga feature
 
 ### Stage 3: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
+In this stage, mark positioning, kerning, and other <abbr title="Glyph Positioning table">GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the <abbr>GPOS</abbr> table in the font.
+order in which they appear in the <abbr title="Glyph Positioning table">GPOS</abbr> table in the font.
 
         kern
 		abvm

@@ -41,19 +41,19 @@ Unicode provides the Zero Width Joiner (<abbr>ZWJ</abbr>) and Zero Width Non-Joi
 rendering system to have more or less of a connection between
 characters than they would otherwise have."
 
-The generic examples used in the standard show how <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>
+The generic examples used in the standard show how <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>
 characters can affect the cursive-joining behavior between two
 characters or the ligature-forming behavior between two
 characters. However, the standard does not explicitly say whether or
-not the presence of a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> should influence the shaping
-behavior of characters for characters not adjacent to the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>.
+not the presence of a <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> should influence the shaping
+behavior of characters for characters not adjacent to the <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>.
 
-For example, in the sequence <samp>"a,b,ZWNJ,c,d"</samp> the <abbr>ZWNJ</abbr> should prevent
+For example, in the sequence <samp>"a,b,ZWNJ,c,d"</samp> the <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> should prevent
 the application of a ligature between <samp>"b"</samp> and <samp>"c"</samp> (if such a ligature
 lookup exists in the active font).
 
 However, if the active font contains a contextual ligature lookup for
-<samp>"c,d"</samp> when preceded by <samp>"b"</samp>, it is not clear whether or not the <abbr>ZWNJ</abbr>
+<samp>"c,d"</samp> when preceded by <samp>"b"</samp>, it is not clear whether or not the <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>
 in the same <samp>"a,b,ZWNJ,c,d"</samp> sequence should inhibit the application of
 the ligature between <samp>"c"</samp> and <samp>"d"</samp>.
 
@@ -61,47 +61,47 @@ the ligature between <samp>"c"</samp> and <samp>"d"</samp>.
 #### <abbr>ZWJ</abbr> in redundant ligature lookups ####
 
 An "Implementation Notes" section in chapter 23.2 of the Unicode
-Standard says that font vendors should add <abbr>ZWJ</abbr> sequences to ligature
+Standard says that font vendors should add <abbr title="Zero-Width Joiner">ZWJ</abbr> sequences to ligature
 lookups. For example, if the sequence <samp>"f,i"</samp> triggers the <samp>"fi"</samp>
 ligature, then the font should also include a lookup that triggers the
 <samp>"fi"</samp> ligature for <samp>"f,ZWJ,i"</samp>. 
 
 However, the text of chapter 23.2 prior to the "Implementation Notes"
-says that <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> "are not to be used in all cases where
+says that <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> "are not to be used in all cases where
 ligatures or cursive connections are desired; instead, they are meant
 only for over-riding the normal behavior of the text." That logic
 makes the suggested <samp>"f,ZWJ,i"</samp> ligature lookup superfluous, because it
 duplicates the effects of the existing <samp>"f,i"</samp> ligature lookup.
 
-Using <abbr>ZWJ</abbr> within lookup patterns in the manner suggested by the
+Using <abbr title="Zero-Width Joiner">ZWJ</abbr> within lookup patterns in the manner suggested by the
 "Implementation Notes" is not common practice. 
 
 ### Emoji ###
 
 #### Skin-tone permutations ####
 
-It is unclear whether <abbr>ZWJ</abbr> multi-person group emoji sequences are
+It is unclear whether <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group emoji sequences are
 expected to include combinations where some emoji in the sequence are
 followed by a Fitzpatrick skin-tone modifier but other emoji in the
 sequence are not followed by a Fitzpatrick skin-tone modifier.
 
 For example, it is unclear whether the sequence
 <samp>"Man,ZWJ,Handshake,Man,SkinTone-2"</samp> constitues a valid
-<abbr>ZWJ</abbr> "Couple holding hands" sequence.
+<abbr title="Zero-Width Joiner">ZWJ</abbr> "Couple holding hands" sequence.
 
 
 #### Gender permutations ####
 
-It is unclear whether <abbr>ZWJ</abbr> multi-person group emoji sequences are
+It is unclear whether <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group emoji sequences are
 expected to include combinations where some emoji in the sequence are
 are an explicit gender but other emoji in the sequence are not
 explicit gender.
 
 For example, it is unclear whether the sequence
 <samp>"Man,ZWJ,Handshake,Person"</samp> constitues a valid
-<abbr>ZWJ</abbr> "Couple holding hands" sequence.
+<abbr title="Zero-Width Joiner">ZWJ</abbr> "Couple holding hands" sequence.
 
-It is also unclear whether the <abbr>ZWJ</abbr> multi-person family sequence must
+It is also unclear whether the <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person family sequence must
 have explicit gender-ordering for the adult humans depicted.
 
 For example, it is unclear whether the sequence
@@ -115,7 +115,7 @@ This section lists errata pertaining to the OpenType specification.
 
 ### Null offsets in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> ###
 
-The headers of the <abbr>GSUB</abbr> and <abbr>GPOS</abbr> tables include fields that contain
+The headers of the <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> tables include fields that contain
 the offsets at which other structures within the font binary are
 found. For example, the value of the `featureVariationsOffset` field
 indicates the byte value at which the featureVariations structure is
@@ -137,11 +137,11 @@ offset field if the original value encountered was invalid.
 
 ### Sorting of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> lookups ###
 
-The OpenType specification requires that lookups in the <abbr>GSUB</abbr> table
+The OpenType specification requires that lookups in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 must be sorted into numeric order before they are applied.
 
-Lookups in the <abbr>GPOS</abbr> table, however, are not expected to be sorted
-first, because <abbr>GPOS</abbr> lookups are applied in a specified order.
+Lookups in the <abbr title="Glyph Positioning table">GPOS</abbr> table, however, are not expected to be sorted
+first, because <abbr title="Glyph Positioning table">GPOS</abbr> lookups are applied in a specified order.
 
 ### Per-script applicability of feature tags ###
 
@@ -194,14 +194,14 @@ what degree that answer varies between the Indic2-model scripts.
 
 #### Using MultipleSub for glyph deletion ####
 
-The <abbr>GSUB</abbr> specification says that a `MultipleSubst` substitution cannot
+The <abbr title="Glyph Substitution table">GSUB</abbr> specification says that a `MultipleSubst` substitution cannot
 be used to delete a glyph: it always substitutes at least one
 replacement glyph. However, some implementations allow the
 replacement-glyph array to be zero-length. 
 
 #### Processing nested contextual lookups ####
 
-The <abbr>GSUB</abbr> specification allows contextual substitutions to invoke other
+The <abbr title="Glyph Substitution table">GSUB</abbr> specification allows contextual substitutions to invoke other
 contextual substitutions. It is unclear how implementations ought to
 handle certain cases of these nested lookups.
 

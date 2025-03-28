@@ -6,22 +6,22 @@ containing the images included in the relevant script-shaping document.
 Also included in each directory is a log file containing the exact
 commands used to generate the images.
 
-PNG glyph images are generated using the `hb-view` utility from
+<abbr title="Portable Network Graphics">PNG</abbr> glyph images are generated using the `hb-view` utility from
 Harfbuzz and the `montage` utility from ImageMagick. The commands were
 run on a Linux-based system but, apart from minor differences in the
 file-path to the font file specified, should be completely
 reproducible on other operating systems.
 
-SVG glyph images are generated using the `hb-view` utility from
+<abbr title="Scalable Vector Graphics">SVG</abbr> glyph images are generated using the `hb-view` utility from
 Harfbuzz and the [`svg_stack`](https://github.com/astraw/svg_stack/)
 Python utility. The commands were run on a Linux-based system but,
 apart from minor differences in the file-path to the font file
 specified, should be completely reproducible on other operating
 systems.
 
-Long-term, the PNG images will be replaced by SVG images &mdash;
+Long-term, the <abbr title="Portable Network Graphics">PNG</abbr> images will be replaced by <abbr title="Scalable Vector Graphics">SVG</abbr> images &mdash;
 although, at present, there are still some images that are generated
-in PNG form (because kinks remain to be worked out in the SVG-image
+in <abbr title="Portable Network Graphics">PNG</abbr> form (because kinks remain to be worked out in the <abbr title="Scalable Vector Graphics">SVG</abbr>-image
 alignment process and the corresponding CSS styling).
 
 The font files used must be publicly and freely available, open-source
@@ -29,7 +29,7 @@ fonts. By default, the Noto fonts from Google are the starting point.
 
 A list of the fonts used to generate the latest version of the images
 is provided in the [example-fonts.txt](https://github.com/n8willis/opentype-shaping-documents/blob/master/images/example-fonts.txt) file, with
-URLs and SHA checksums for each file.
+URLs and <abbr title="Secure Hash Algorithm">SHA</abbr> checksums for each file.
 
 The image file names follow a simple, but important, pattern:
 

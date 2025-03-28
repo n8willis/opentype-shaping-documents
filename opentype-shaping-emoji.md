@@ -44,7 +44,7 @@ common usage.
 
 Emoji shaping follows the default OpenType shaping model used for
 scripts that are considered _non-complex_ from the shaper's
-perspective. However, emoji fonts typically use <abbr>GSUB</abbr> tables to
+perspective. However, emoji fonts typically use <abbr title="Glyph Substitution table">GSUB</abbr> tables to
 implement a variety of OpenType smart features, including several
 classes of ligature, contextual alternates, or variant forms to
 support emoji sequences.
@@ -80,7 +80,7 @@ document.
 > application alone.
 >
 > Text-processing stacks typically support a set of shortcut codes
-> that includes Unicode's official `Short_Name` property from the <abbr>CLDR</abbr>
+> that includes Unicode's official `Short_Name` property from the <abbr title="Common Locale Data Repository">CLDR</abbr>
 > database, plus additional short codes, but the shortcut-code mapping
 > is not otherwise linked to Unicode data.
 
@@ -127,7 +127,7 @@ predefined regional-indicator flag set. The tag characters set is
 found within the Tags block of Unicode.
 
 **Presentation style** describes whether an emoji codepoint is
-shown in emoji style (for example, with a full-color bitmap or SVG
+shown in emoji style (for example, with a full-color bitmap or <abbr title="Scalable Vector Graphics">SVG</abbr>
 glyph) or text style (such as a monochrome, Bézier glyph). Every emoji
 codepoint defaults to either emoji-style or text-style
 presentation.
@@ -150,7 +150,7 @@ Text presentation-style selector
 
 
 :::{figure-md}
-![Emoji presentation-style selector](/images/emoji/emoji-presentation.png "Emoji presentation-style selector")
+![Emoji presentation-style selector](/images/emoji/emoji-presentation.png "Emoji presentation-style selector"){title="Testing"}
 
 Emoji presentation-style selector
 :::
@@ -192,7 +192,7 @@ mentioned above:
 
 Emoji sequences are not generally affected by Unicode or OpenType
 normalization. However, Unicode does specify an order to be used when
-representing <abbr>ZWJ</abbr>-using emoji sequences.
+representing <abbr title="Zero-Width Joiner">ZWJ</abbr>-using emoji sequences.
 
 The correct order should be:
 
@@ -206,7 +206,7 @@ The correct order should be:
 
 Although this ordering is not designated a Unicode normalization form,
 shaping engine implementers may find it a useful target if attempting
-to correct invalid mis-ordered emoji <abbr>ZWJ</abbr> sequences.
+to correct invalid mis-ordered emoji <abbr title="Zero-Width Joiner">ZWJ</abbr> sequences.
 
 Shaping engines should also note that the `Emoji` and
 `Extended_Pictographic` properties may require tracking in any Unicode
@@ -246,8 +246,8 @@ There are six varieties of emoji sequence defined by Unicode:
 5. Keycap sequences
 6. Zero-width joiner (<abbr>ZWJ</abbr>) sequences
 
-> Note: The <abbr>ZWJ</abbr> sequence variety incorporates several subsets, but all
-> of the <abbr>ZWJ</abbr> sequences are implemented using the same mechanism.
+> Note: The <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence variety incorporates several subsets, but all
+> of the <abbr title="Zero-Width Joiner">ZWJ</abbr> sequences are implemented using the same mechanism.
 
 The set of sequences includes various mechanisms defined at different
 times by either Unicode itself or by legacy encoding standards. In
@@ -422,7 +422,7 @@ codepoints that depict a single human being, and are expected not to
 implement modifier sequences for other emoji codepoints.
 
 > Note: Most emoji sequences that depict multiple human beings are
-> modified using the <abbr>ZWJ</abbr> mechanisms described later, and not via this
+> modified using the <abbr title="Zero-Width Joiner">ZWJ</abbr> mechanisms described later, and not via this
 > mechanism.
 > 
 > However, there are a small number of codepoints that depict groups
@@ -477,7 +477,7 @@ _regionalindicator_ _regionalindicator_
 
 In addition, the only two-codepoint sequences that are considered
 valid Regional Indicator flag sequences are those that correspond to
-the `unicode_region_subtag` field in the <abbr>CLDR</abbr> database.
+the `unicode_region_subtag` field in the <abbr title="Common Locale Data Repository">CLDR</abbr> database.
 
 The typical emoji implementation of such a sequence in an image of a
 flag for the region. However, emoji fonts may choose to represent the
@@ -588,9 +588,9 @@ A Zero-Width Joiner (<abbr>ZWJ</abbr>) sequence can be used to request specific
 variants of an emoji glyph or to request the combined form of a
 sequence of emoji glyphs.
 
-Because the <abbr>ZWJ</abbr> codepoint itself is invisible, users will expect <abbr>ZWJ</abbr>
+Because the <abbr title="Zero-Width Joiner">ZWJ</abbr> codepoint itself is invisible, users will expect <abbr title="Zero-Width Joiner">ZWJ</abbr>
 sequences to fall back gracefully as sequences of standalone emoji
-glyphs that convey the original meaning. For example, a <abbr>ZWJ</abbr>
+glyphs that convey the original meaning. For example, a <abbr title="Zero-Width Joiner">ZWJ</abbr>
 multi-person group sequence would be rendered as a single multi-person
 emoji glyph if one is available in the active font, but would fall
 back to a set of individual-person emoji glyphs.
@@ -600,7 +600,7 @@ back to a set of individual-person emoji glyphs.
 
 #### <abbr>ZWJ</abbr> hair sequences ####
 
-A <abbr>ZWJ</abbr> hair sequence is used to request a specific hairstyle version of
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> hair sequence is used to request a specific hairstyle version of
 an emoji codepoint that depicts a single human being.
 
 :::{figure-md}
@@ -610,7 +610,7 @@ ZWJ hairstyle sequence
 :::
 
 
-A <abbr>ZWJ</abbr> hair sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> hair sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ _hairstyle_
@@ -628,7 +628,7 @@ depictions of distinct properties not easily represented by the
 defaults of the fallback glyphs. By default, the hairstyle and color
 on fallback emoji is expected to be nondescript and dark.
 
-Prior to the adoption of the <abbr>ZWJ</abbr>-hair-sequence mechanism, a codepoint
+Prior to the adoption of the <abbr title="Zero-Width Joiner">ZWJ</abbr>-hair-sequence mechanism, a codepoint
 specifying "person with blond hair" (`U+1F471`) already existed;
 therefore "blond" was not included in the set of supported hairstyle
 versions.
@@ -636,10 +636,10 @@ versions.
 
 #### <abbr>ZWJ</abbr> gendered person sequences ####
 
-A <abbr>ZWJ</abbr> gendered person sequence is used to request a specific-gendered
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person sequence is used to request a specific-gendered
 version of an emoji codepoint that depicts a single human being.
 
-Each <abbr>ZWJ</abbr> gendered person sequence is composed of an emoji that depicts
+Each <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person sequence is composed of an emoji that depicts
 a human by default, followed by <samp>"ZWJ"</samp>, followed by a gender symbol,
 followed by <samp>"VS16"</samp>.
 
@@ -650,7 +650,7 @@ ZWJ gendered person sequence
 :::
 
 
-The fallback for a <abbr>ZWJ</abbr> gendered person sequence is a generic "person"
+The fallback for a <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person sequence is a generic "person"
 emoji followed by a gender symbol.
 
 :::{figure-md}
@@ -660,7 +660,7 @@ ZWJ gendered person sequence fallback
 :::
 
 
-A <abbr>ZWJ</abbr> gendered person sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) _zwj_ _gendersign_ _VS16_
@@ -668,7 +668,7 @@ A <abbr>ZWJ</abbr> gendered person sequence must match:
 
 A small number of emoji codepoints are defined to show a single human
 being with a fixed gender. These codepoints cannot have their apparent
-gender modified using the <abbr>ZWJ</abbr> gendered person mechanism.
+gender modified using the <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person mechanism.
 
 Currently, this list of codepoints includes those in the table below:
 
@@ -693,19 +693,19 @@ Currently, this list of codepoints includes those in the table below:
 However, the list may be updated in subsequent revisions of Unicode.
 
 In addition, emoji codepoints that depict groups of two or more human
-beings are handled by other mechanisms, such as the <abbr>ZWJ</abbr> multi-person
+beings are handled by other mechanisms, such as the <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person
 group mechanism, and are documented in the corresponding section.
 
-> Note: The <abbr>ZWJ</abbr> gendered person sequence is not to be confused with
-> the <abbr>ZWJ</abbr> role sequence.
+> Note: The <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person sequence is not to be confused with
+> the <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequence.
 >
 > In effect, both sequence types can be used to depict a human being
 > performing a task or activity, and can be used to request a specific
 > gender for the human being depicted.
 >
-> However, all of the codepoints covered by the <abbr>ZWJ</abbr> gendered person
+> However, all of the codepoints covered by the <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person
 > sequences are emoji that show a human being by default, whereas the
-> codepoints covered by the <abbr>ZWJ</abbr> role sequences begin with a generic
+> codepoints covered by the <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequences begin with a generic
 > human-being emoji and append a symbol or object emoji.
 
 
@@ -713,11 +713,11 @@ group mechanism, and are documented in the corresponding section.
 
 #### <abbr>ZWJ</abbr> multi-person group sequences ####
 
-A <abbr>ZWJ</abbr> multi-person group sequence is used to request a multi-person
-emoji glyph. The fallback for a <abbr>ZWJ</abbr> multi-person group sequence is a
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequence is used to request a multi-person
+emoji glyph. The fallback for a <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequence is a
 sequence of individual-person emoji glyphs.
 
-A <abbr>ZWJ</abbr> multi-person group sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequence must match:
 
 ```markdown
 (_emoji_ | _emojimodified_) (_zwj_ (_emoji_ | _emojimodified_) _presentation_? ){1,3}
@@ -740,16 +740,16 @@ sequences are:
 A potential source of confusion for these sequences is that some of
 them appear to duplicate the content of an existing emoji codepoint,
 but the existing emoji codepoint is typically not involved in forming
-the corresponding <abbr>ZWJ</abbr> multi-person group sequence.
+the corresponding <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequence.
 
 Specifically, there are standalone emoji codepoints for "Kiss"
 (`U+1F48F`), two people holding hands (in three permutations:
 `U+1F46B`, `U+1F46C`, and `U+1F46D`), "Family" (`U+1F46A`), and
 "Handshake" (`U+1F91D`). The details of each of these codepoints in
-relation to the corresponding conceptually-similar <abbr>ZWJ</abbr> multi-person
+relation to the corresponding conceptually-similar <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person
 group sequence are noted below.
 
-Each of the specific <abbr>ZWJ</abbr> multi-person group sequences has a precise
+Each of the specific <abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequences has a precise
 definition.
 
 The "Couple with heart" sequence is composed of
@@ -793,7 +793,7 @@ ZWJ multi-person kiss sequence with modifier
 :::
 
 
-> Note: the kiss <abbr>ZWJ</abbr> sequence does not involve the "Kiss" codepoint
+> Note: the kiss <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence does not involve the "Kiss" codepoint
 > (`U+1F48F`). 
 
 
@@ -817,25 +817,25 @@ ZWJ multi-person holding-hands sequence with modifier
 :::
 
 
-> Note: the couple-holding-hands <abbr>ZWJ</abbr> sequence does not involve any of
+> Note: the couple-holding-hands <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence does not involve any of
 > the "Man and woman holding hands" (`U+1F46B`), "Two men holding
 > hands" (`U+1F46C`), or "Two women holding hands" (`U+1F46D`)
 > codepoints. 
 
 
 The "Family" sequence is composed of two-to-four individual <samp>"Person"</samp>
-subsequences, each separated by a <abbr>ZWJ</abbr>. Furthermore, the <samp>"Person"</samp>
+subsequences, each separated by a <abbr title="Zero-Width Joiner">ZWJ</abbr>. Furthermore, the <samp>"Person"</samp>
 subsequences must be sorted so that all adult subsequences precede all
 child subsequences. A <samp>"Family"</samp> subsequence must match:
 ```markdown
 (_emoji_ | _emojimodified_) (_zwj_ (_emoji_ | _emojimodified_) ){1,3}
 ```
 
-> Note: The <abbr>ZWJ</abbr> "Family" sequence is defined to support modifiers on
+> Note: The <abbr title="Zero-Width Joiner">ZWJ</abbr> "Family" sequence is defined to support modifiers on
 > each individual human-codepoint component of the sequence, but these
 > modified "Family" sequences are not currently included in the
 > Recommended For General Interchange (<abbr>RGI</abbr>) emoji set, due to the
-> number of permutations that would be added to the <abbr>RGI</abbr> set as a result.
+> number of permutations that would be added to the <abbr title="Recommended for General Interchange">RGI</abbr> set as a result.
 
 :::{figure-md}
 ![ZWJ multi-person family man, boy sequence](/images/emoji/multi-person-family-man-boy-sequence.png "ZWJ multi-person family man, boy sequence")
@@ -862,11 +862,11 @@ ZWJ multi-person family sequence "woman, woman, girl, boy"
 :::
 
 
-> Note: the family <abbr>ZWJ</abbr> sequence does not involve the "Family"
+> Note: the family <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence does not involve the "Family"
 > codepoint (`U+1F46A`).
 
 The "Shaking hands" sequence is composed of two <samp>"Hand"</samp> subsequences
-separated by a <abbr>ZWJ</abbr>, and must match:
+separated by a <abbr title="Zero-Width Joiner">ZWJ</abbr>, and must match:
 ```markdown
 `U+1FAF1` _modifier_ _zwj_ `U+1FAF2` _modifier_
 ```
@@ -878,7 +878,7 @@ ZWJ multi-person shaking-hands sequence
 :::
 
 
-> Note: the <abbr>ZWJ</abbr> "Shaking hands" sequence does not involve the "Handshake"
+> Note: the <abbr title="Zero-Width Joiner">ZWJ</abbr> "Shaking hands" sequence does not involve the "Handshake"
 > codepoint (`U+1F91D`), although the "Handshake" codepoint itself can
 > be followed by a single _modifier_ codepoint that, for legacy
 > reasons, serves to alter the skin tone of both of the hands depicted
@@ -890,7 +890,7 @@ ZWJ multi-person shaking-hands sequence
 
 #### <abbr>ZWJ</abbr> role sequences ####
 
-A <abbr>ZWJ</abbr> role (or profession) sequence is used to request an emoji
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> role (or profession) sequence is used to request an emoji
 depicting a human being performing a task or job. Role sequences are
 composed of a codepoint representing a human, followed by <samp>"ZWJ"</samp>,
 followed by an emoji depicting an object or symbol that references the
@@ -939,35 +939,35 @@ ZWJ role sequence 'pilot' with modifier
 
 
 
-The fallback for a <abbr>ZWJ</abbr> role sequence is a generic "person" emoji
+The fallback for a <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequence is a generic "person" emoji
 followed by the emoji symbolizing the task or job.
 
-A <abbr>ZWJ</abbr> role sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequence must match:
 
 ```markdown
 _genderperson_ _modifier_? _zwj_ _emoji_ _presentation_?
 ```
 
-> Note: The <abbr>ZWJ</abbr> role sequence is not to be confused with the <abbr>ZWJ</abbr>
+> Note: The <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequence is not to be confused with the <abbr title="Zero-Width Joiner">ZWJ</abbr>
 > gendered person sequence.
 >
 > In effect, both sequence types can be used to depict a human being
 > performing a task or activity, and can be used to request a specific
 > gender for the human being depicted.
 >
-> However, all of the codepoints covered by the <abbr>ZWJ</abbr> gendered person
+> However, all of the codepoints covered by the <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person
 > sequences are emoji that show a human being by default, whereas the
-> codepoints covered by the <abbr>ZWJ</abbr> role sequences begin with a generic
+> codepoints covered by the <abbr title="Zero-Width Joiner">ZWJ</abbr> role sequences begin with a generic
 > human-being emoji and append a symbol or object emoji.
 
 
 
 #### <abbr>ZWJ</abbr> color sequences ####
 
-A <abbr>ZWJ</abbr> color sequence is used to request a version of an emoji
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> color sequence is used to request a version of an emoji
 codepoint depicting the base object in a specific color.
 
-A <abbr>ZWJ</abbr> color sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> color sequence must match:
 
 ```markdown
 _emoji_ _zwj_ _color_ _presentation_
@@ -994,14 +994,14 @@ ZWJ color sequence
 :::
 
 
-The fallback for a <abbr>ZWJ</abbr> color sequence is the default emoji followed by
+The fallback for a <abbr title="Zero-Width Joiner">ZWJ</abbr> color sequence is the default emoji followed by
 the default emoji for the color codepoint (that is, the color square).
 
 
 
 #### <abbr>ZWJ</abbr> directionality sequences ####
 
-A <abbr>ZWJ</abbr> directionality sequence is used to request a version of an emoji
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> directionality sequence is used to request a version of an emoji
 codepoint facing a specific cardinal direction.
 
 
@@ -1012,7 +1012,7 @@ ZWJ directionality sequence
 :::
 
 
-A <abbr>ZWJ</abbr> directionality sequence must match:
+A <abbr title="Zero-Width Joiner">ZWJ</abbr> directionality sequence must match:
 
 ```markdown
 _emoji_ _zwj_ _direction_ _presentation_
@@ -1020,8 +1020,8 @@ _emoji_ _zwj_ _direction_ _presentation_
 
 #### <abbr>ZWJ</abbr> additional sequences ####
 
-In addition to the above <abbr>ZWJ</abbr> sequence categories, there are 13
-standalone, but uncategorized, <abbr>ZWJ</abbr> sequences defined in Unicode.
+In addition to the above <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence categories, there are 13
+standalone, but uncategorized, <abbr title="Zero-Width Joiner">ZWJ</abbr> sequences defined in Unicode.
 
   - "Heart on fire"
   - "Mending heart"
@@ -1052,7 +1052,7 @@ _emoji_ _presentation_? _zwj_ _emoji_ _presentation_?
 ```
 
 Note that the "Black cat" sequence, although it appears on this list
-of additional <abbr>ZWJ</abbr> sequences, has subsequently been generalized to the
+of additional <abbr title="Zero-Width Joiner">ZWJ</abbr> sequences, has subsequently been generalized to the
 [ZWJ color sequence mechanism](#zwj-color-sequences).
 
 
@@ -1079,20 +1079,20 @@ guarantees as to their correctness.
 
 ## Feature interaction in sequences ##
 
-As is noted in the descriptions of <abbr>ZWJ</abbr> gendered-person sequences and
-<abbr>ZWJ</abbr> multi-person group sequences, there is potential for confusion
+As is noted in the descriptions of <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered-person sequences and
+<abbr title="Zero-Width Joiner">ZWJ</abbr> multi-person group sequences, there is potential for confusion
 wherever standalone emoji codepoints and emoji sequences overlap in
 meaning.
 
 This potential for confusion is compounded by the fact that the
-skin-tone modifier mechanism and the <abbr>ZWJ</abbr> gendered person mechanism
+skin-tone modifier mechanism and the <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered person mechanism
 interact differently with standalone emoji codepoints and with emoji
 sequences.
 
 In particular, for several of the standalone emoji codepoints, a
 single skin-tone modifier is permitted, which is defined to modify both
 of the human beings depicted in the emoji. For other standalone emoji
-codepoints, only a single gender designator <abbr>ZWJ</abbr> gendered-person
+codepoints, only a single gender designator <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered-person
 subsequence is allowed to be appended to the codepoint, and the gender
 designator is defined to modify both of the human beings depicted in
 the emoji.
@@ -1133,16 +1133,16 @@ that do not default to emoji presentation).
 The "Emoji keycap sequence" set includes all possible valid Keycap
 sequences.
 
-The "<abbr>RGI</abbr> emoji modifier sequence", "<abbr>RGI</abbr> emoji flag sequence", "<abbr>RGI</abbr>
-emoji tag sequence", and "<abbr>RGI</abbr> emoji <abbr>ZWJ</abbr> sequence" sets each include
+The "<abbr title="Recommended for General Interchange">RGI</abbr> emoji modifier sequence", "<abbr title="Recommended for General Interchange">RGI</abbr> emoji flag sequence", "<abbr title="Recommended for General Interchange">RGI</abbr>
+emoji tag sequence", and "<abbr title="Recommended for General Interchange">RGI</abbr> emoji <abbr title="Zero-Width Joiner">ZWJ</abbr> sequence" sets each include
 only a subset of the possible valid sequences for their respective
 variety of sequence. These sets are designated as "Recommended for
 General Interchange" (<abbr>RGI</abbr>) to denote that they are in common usage.
 
-Finally, the "<abbr>RGI</abbr> emoji set" includes all of the codepoints and
-sequences included in the preceding sets. Presence in the <abbr>RGI</abbr> emoji
-set can be tracked with the `RGI_Emoji` property in the <abbr>UCD</abbr>. Fonts are
-not required to implement the entire <abbr>RGI</abbr> emoji set, nor any of the
+Finally, the "<abbr title="Recommended for General Interchange">RGI</abbr> emoji set" includes all of the codepoints and
+sequences included in the preceding sets. Presence in the <abbr title="Recommended for General Interchange">RGI</abbr> emoji
+set can be tracked with the `RGI_Emoji` property in the <abbr title="Unicode Character Database">UCD</abbr>. Fonts are
+not required to implement the entire <abbr title="Recommended for General Interchange">RGI</abbr> emoji set, nor any of the
 other sets.
 
 
@@ -1160,15 +1160,15 @@ top-level stages:
 3. Applying the positioning features from <abbr>GPOS</abbr>
 
 Emoji sequences as described above will generally be implemented in
-the active font as a <abbr>GSUB</abbr> lookup feature. However, there are no
-definitively invalid <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features that must or must _not_ be
+the active font as a <abbr title="Glyph Substitution table">GSUB</abbr> lookup feature. However, there are no
+definitively invalid <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> features that must or must _not_ be
 employed for this purpose.
 
 Consequently, shaping engines should not assume (for example) that
-emoji sequences will be implemented in any specific feature of <abbr>GSUB</abbr>.
+emoji sequences will be implemented in any specific feature of <abbr title="Glyph Substitution table">GSUB</abbr>.
 
 A font may also employ contextual features, such as using `locl`, that
-affects the emoji glyph shown, or use <abbr>GPOS</abbr> positioning for some emoji
+affects the emoji glyph shown, or use <abbr title="Glyph Positioning table">GPOS</abbr> positioning for some emoji
 glyphs. 
 
 
@@ -1198,12 +1198,12 @@ require font substitution.
 ### 1. Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 	locl
@@ -1211,12 +1211,12 @@ in the font.
 	rlig
 	
 
-An emoji font can implement sequence support through any <abbr>GSUB</abbr> feature
+An emoji font can implement sequence support through any <abbr title="Glyph Substitution table">GSUB</abbr> feature
 lookup.
 
 Basic substitution features a common choice for emoji fonts and should
-be applied at this stage. In particular, <abbr>GSUB</abbr> features that are
-enabled by default and <abbr>GSUB</abbr> features that cannot be disabled by
+be applied at this stage. In particular, <abbr title="Glyph Substitution table">GSUB</abbr> features that are
+enabled by default and <abbr title="Glyph Substitution table">GSUB</abbr> features that cannot be disabled by
 application-level user interfaces are common choices in which the
 active font may implement emoji substitutions.
 
@@ -1228,7 +1228,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 In other, non-emoji text runs, the `ccmp` feature allows a font to
 substitute mark-and-base sequences with a pre-composed glyph including
@@ -1236,7 +1236,7 @@ the mark and the base, or to substitute a single glyph into an
 equivalent decomposed sequence of glyphs. 
 
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs.
 
@@ -1254,34 +1254,34 @@ shaping process. Emoji shaping should be unaffected by this decision.
 ### 2. Applying typographic substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies all remaining substitution
-features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 These substitutions include those features designed to provide
 typographic consistency and correctness.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
-An emoji font can implement sequence support through any <abbr>GSUB</abbr> feature
-lookup. This can include any other substitution feature in the <abbr>GSUB</abbr>
+An emoji font can implement sequence support through any <abbr title="Glyph Substitution table">GSUB</abbr> feature
+lookup. This can include any other substitution feature in the <abbr title="Glyph Substitution table">GSUB</abbr>
 feature table.
 
-Support for <abbr>RGI</abbr> emoji sequences or other emoji sequences defined as
+Support for <abbr title="Recommended for General Interchange">RGI</abbr> emoji sequences or other emoji sequences defined as
 valid in Unicode may be implemented in a feature that are enabled by
 default and cannot be disabled by application-level user interfaces,
 such as the `rlig` feature (for "required ligatures").
 
 However, emoji fonts may also include support for emoji sequences in
-<abbr>GSUB</abbr> features that can be disabled by application-level user
+<abbr title="Glyph Substitution table">GSUB</abbr> features that can be disabled by application-level user
 interfaces, such as the `liga` feature (for standard ligatures). Emoji
 sequences may also be implemented in features that are disabled by
 default, such as the `dlig` feature (for "discretionary ligatures").
 
 An emoji font might also implement support for emoji sequences through
-the use of multiple features. For example, <abbr>RGI</abbr> emoji sequences or
+the use of multiple features. For example, <abbr title="Recommended for General Interchange">RGI</abbr> emoji sequences or
 other emoji sequences defined as valid in Unicode may be implemented
 in `rlig`, with custom sequences implemented in `liga`.
 
@@ -1291,14 +1291,14 @@ in `rlig`, with custom sequences implemented in `liga`.
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be
-tagged for possible application of <abbr>GPOS</abbr> features.
+tagged for possible application of <abbr title="Glyph Positioning table">GPOS</abbr> features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 In general, all emoji glyphs in a given font are expected to be
-approximately equal in height and width, and the usage of <abbr>GPOS</abbr>
+approximately equal in height and width, and the usage of <abbr title="Glyph Positioning table">GPOS</abbr>
 positioning for emoji is uncommon.
 
 However, some emoji glyphs might be narrower or wider than average by
@@ -1308,7 +1308,7 @@ which the active font alters the default position of an emoji glyph to
 achieve a consistent alignment, spacing, or appearance.
 
 Therefore, shaping engines should make no assumptions about the
-presence or absence of <abbr>GPOS</abbr> features for emoji runs, and should apply
+presence or absence of <abbr title="Glyph Positioning table">GPOS</abbr> features for emoji runs, and should apply
 the features if present.
 
 <!---

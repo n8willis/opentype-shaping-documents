@@ -42,12 +42,12 @@ The scripts covered by this model include Javanese, Balinese,
 Buginese, Batak, Chakma, Lepcha, Modi, Phags-pa, Tagalog, Siddham,
 Sundanese, Tai Le, Tai Tham, Tai Viet, and many others.
 
-In many ways, the <abbr>USE</abbr> model is a generalization of the
+In many ways, the <abbr title="Universal Shaping Engine">USE</abbr> model is a generalization of the
 [Indic2](opentype-shaping-indic-general.md) OpenType 
 shaping model, with adjustments made to correct shortfalls encountered
 when using the Indic2 shaping model, as well as additional changes
 designed to broaden the number of scripts that can be supported. For
-example, the <abbr>USE</abbr> model includes a step applying contextual
+example, the <abbr title="Universal Shaping Engine">USE</abbr> model includes a step applying contextual
 joining-behavior features as is performed in the Arabic-like shaping
 model. 
 
@@ -58,22 +58,22 @@ model.
 >
 > This terminology either indicates that a shaping engine has
 > implemented support for one or more of the Indic2 scripts within the
-> <abbr>USE</abbr> model or it is merely a conversational convention to discuss
-> support for the Indic2-model scripts in <abbr>USE</abbr>.
+> <abbr title="Universal Shaping Engine">USE</abbr> model or it is merely a conversational convention to discuss
+> support for the Indic2-model scripts in <abbr title="Universal Shaping Engine">USE</abbr>.
 >
 > At the present time, there is no formal definition for an Indic3
 > model, and there are not registered OpenType script tags for
 > `<dev3>` or any other third generation of the scripts handled by the
 > Indic2 model.
 
-<abbr>USE</abbr> was introduced after the release of version 8.0 of the Unicode
-specification. The intent is for <abbr>USE</abbr> to support complex scripts added
+<abbr title="Universal Shaping Engine">USE</abbr> was introduced after the release of version 8.0 of the Unicode
+specification. The intent is for <abbr title="Universal Shaping Engine">USE</abbr> to support complex scripts added
 to future Unicode releases in addition to those already supported.
 
 
 ## Terminology ##
 
-The <abbr>USE</abbr> shaping model uses a standard set of terms for the features of
+The <abbr title="Universal Shaping Engine">USE</abbr> shaping model uses a standard set of terms for the features of
 supported scripts. These terms are similar to the standard terms used
 for Indic scripts, but with several key distinctions.
 
@@ -84,19 +84,19 @@ cluster, but any particular cluster might involve multiple syllables
 or a sequence that does not match the syllable-formation rules of the
 script.
 
-A **base** character in the <abbr>USE</abbr> model may be a consonant, an
+A **base** character in the <abbr title="Universal Shaping Engine">USE</abbr> model may be a consonant, an
 independent vowel, a number, or any of several additional character
 classes.
 
 A cluster's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-cluster frequently take on secondary forms. Different <abbr>GSUB</abbr>
+cluster frequently take on secondary forms. Different <abbr title="Glyph Substitution table">GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
 example.
 
-A **vowel** character in the <abbr>USE</abbr> model is a dependent vowel or any of
+A **vowel** character in the <abbr title="Universal Shaping Engine">USE</abbr> model is a dependent vowel or any of
 several additional marks with similar behavior. This class is similar
 to the "matra" class used in Indic shaping.
 
@@ -105,12 +105,12 @@ to the "matra" class used in Indic shaping.
 
 ## Glyph classification ##
 
-The <abbr>USE</abbr> shaping model classifies characters based on a specific set of
+The <abbr title="Universal Shaping Engine">USE</abbr> shaping model classifies characters based on a specific set of
 properties defined for each codepoint in the Unicode Character
 Database (<abbr>UCD</abbr>), augmented with a small set of pre-defined property
 overrides.
 
-The <abbr>UCD</abbr> properties used for <abbr>USE</abbr> character classification are:
+The <abbr title="Unicode Character Database">UCD</abbr> properties used for <abbr title="Universal Shaping Engine">USE</abbr> character classification are:
 
 	Unicode General Category (UGC)
 	Unicode Indic Syllabic Category (UISC)
@@ -122,11 +122,11 @@ all split vowels.
 
 ### <abbr>USE</abbr> overrides ###
 
-Although, in general, the <abbr>USE</abbr> shaping model relies on the <abbr>UGC</abbr>, <abbr>UISC</abbr>,
-and <abbr>UIPC</abbr> properties, the <abbr>USE</abbr> model makes a small set of standardized
+Although, in general, the <abbr title="Universal Shaping Engine">USE</abbr> shaping model relies on the <abbr title="Unicode General Category">UGC</abbr>, <abbr title="Unicode Indic Syllabic Category">UISC</abbr>,
+and <abbr title="Unicode Indic Positional Category">UIPC</abbr> properties, the <abbr title="Universal Shaping Engine">USE</abbr> model makes a small set of standardized
 overrides to the properties of certain specific characters.
 
-The following table lists the complete set of <abbr>USE</abbr> overrides. Shaping
+The following table lists the complete set of <abbr title="Universal Shaping Engine">USE</abbr> overrides. Shaping
 engines should implement the override properties in order to guarantee
 correct results.
 
@@ -161,16 +161,16 @@ correct results.
 
 ### <abbr>USE</abbr> classification table ###
 
-The following table lists the classes utilized in the <abbr>USE</abbr> shaping
+The following table lists the classes utilized in the <abbr title="Universal Shaping Engine">USE</abbr> shaping
 model, along with a definition for each class. The class definitions
-refer to the <abbr>UGC</abbr>, <abbr>UISC</abbr>, and <abbr>UIPC</abbr> categories in the Unicode standard,
+refer to the <abbr title="Unicode General Category">UGC</abbr>, <abbr title="Unicode Indic Syllabic Category">UISC</abbr>, and <abbr title="Unicode Indic Positional Category">UIPC</abbr> categories in the Unicode standard,
 or to specific Unicode codepoints.
 
 The symbols given in the "Symbol" column for each class may be used to
 express cluster-matching rules or other algorithms.
 
 Vowels and modifiers may be further subclassified as described in the
-[<abbr>USE</abbr> subclasses table](#use-subclasses-table) below.
+[<abbr title="Universal Shaping Engine">USE</abbr> subclasses table](#use-subclasses-table) below.
 
 
 | USE classification        | Symbol | Definition                                                                                                    |
@@ -206,7 +206,7 @@ Vowels and modifiers may be further subclassified as described in the
 
 Vowels and modifiers may be further subclassified based on their
 position relative to base characters. The subclasses incorporated in
-the <abbr>USE</abbr> shaping model are defined in the table below.
+the <abbr title="Universal Shaping Engine">USE</abbr> shaping model are defined in the table below.
 
 Split-vowel subclasses are not assigned a symbol because each split
 vowel must be decomposed into its components.
@@ -246,7 +246,7 @@ vowel must be decomposed into its components.
 
 ## The <abbr>USE</abbr> shaping model ##
 
-The <abbr>USE</abbr> shaping model consists of five top-level stages.
+The <abbr title="Universal Shaping Engine">USE</abbr> shaping model consists of five top-level stages.
 
 1. Decomposition of split vowels
 2. Identifying clusters
@@ -254,7 +254,7 @@ The <abbr>USE</abbr> shaping model consists of five top-level stages.
 4. Glyph reordering
 5. Applying final features
 
-All scripts supported by the <abbr>USE</abbr> model will be processed in this same
+All scripts supported by the <abbr title="Universal Shaping Engine">USE</abbr> model will be processed in this same
 pattern. However, not every script requires that actions be taken in
 every operation.
 
@@ -262,15 +262,15 @@ The first two stages take place for the entire text run being
 shaped. Subsequently, stages 3, 4, and 5 are each conducted in order on a
 per-cluster basis, until every cluster in the run has been processed.
 
-The substitution features from <abbr>GSUB</abbr> and the positioning features from
-<abbr>GPOS</abbr> are applied to the text run in predefined features groups. Which
+The substitution features from <abbr title="Glyph Substitution table">GSUB</abbr> and the positioning features from
+<abbr title="Glyph Positioning table">GPOS</abbr> are applied to the text run in predefined features groups. Which
 features are applied at each step in the process are described below.
 
 
 ### Stage 1: Split vowel decomposition ###
 
 Most split vowels have a canonical decomposition defined in the
-Unicode specification. The <abbr>USE</abbr> shaping model requires that all such
+Unicode specification. The <abbr title="Universal Shaping Engine">USE</abbr> shaping model requires that all such
 split vowels be decomposed into their components before any further
 processing is performed. 
 
@@ -281,16 +281,16 @@ earlier, such as during an initial Unicode-normalization stage.
 
 For any split vowels that do not have a canonical decomposition, the
 active font should provide a decomposition via the `ccmp` substitution
-feature in <abbr>GSUB</abbr>. 
+feature in <abbr title="Glyph Substitution table">GSUB</abbr>. 
 
 The cluster-identification rules detailed in stage two are based on
-the canonical decompositions, and do not take non-canonical <abbr>GSUB</abbr>
+the canonical decompositions, and do not take non-canonical <abbr title="Glyph Substitution table">GSUB</abbr>
 decomposition into account.
 
 
 ### Stage 2. Cluster identification ###
 
-A cluster in the <abbr>USE</abbr> model is defined according to a generalized,
+A cluster in the <abbr title="Universal Shaping Engine">USE</abbr> model is defined according to a generalized,
 visual pattern that is common to all supported scripts. Consequently,
 the cluster-identification expressions used do not enforce linguistic
 or orthographic correctness.
@@ -368,15 +368,15 @@ shaping stages occurs on a per-cluster basis.
 The basic cluster formation stage is used to apply fundamental
 substitutions necessary for script and language correctness.
 
-#### Stage 3, step 1: Applying the basic pre-processing features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 1: Applying the basic pre-processing features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 The basic pre-processing step applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this 
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this 
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features. 
+of <abbr title="Glyph Substitution table">GSUB</abbr> features. 
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 	locl
@@ -392,7 +392,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 The `ccmp` feature allows a font to substitute mark-and-base sequences
 with a pre-composed glyph including the mark and the base, or to
@@ -400,7 +400,7 @@ substitute a single glyph into an equivalent decomposed sequence of
 glyphs. 
 
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs.
 
@@ -420,17 +420,17 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
 
-#### Stage 3, step 2: Applying the basic reordering features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 2: Applying the basic reordering features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 The basic reordering step applies mandatory substitution features from
-<abbr>GSUB</abbr> that affect reordering elements.
+<abbr title="Glyph Substitution table">GSUB</abbr> that affect reordering elements.
 
 For these features, the glyph substitutions themselves are applied at this
 step. However, the actual reordering of the glyphs does not take place
 until stage 4, step 1.
 
 The order in which these substitutions must be performed is fixed for
-all <abbr>USE</abbr> scripts:
+all <abbr title="Universal Shaping Engine">USE</abbr> scripts:
 
 	rphf
 	pref
@@ -454,14 +454,14 @@ forms.
 > stage. 
 
 
-#### Stage 3, step 3: Applying the basic orthographic features from <abbr>GSUB</abbr> ####
+#### Stage 3, step 3: Applying the basic orthographic features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 The basic orthographic step applies substitution features using the
-rules in the font's <abbr>GSUB</abbr> table. In preparation for this stage, glyph
-sequences should be tagged for possible application of <abbr>GSUB</abbr> features. 
+rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this stage, glyph
+sequences should be tagged for possible application of <abbr title="Glyph Substitution table">GSUB</abbr> features. 
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 	rkrf
@@ -500,21 +500,21 @@ The glyph-reordering stage moves dependent vowels, diacritics, and
 other mark glyphs in relation to the base consonant. All reordering is
 performed in this stage, which is broken into two distinct steps:
 
-1. Applying the reordering features from <abbr>GSUB</abbr>
+1. Applying the reordering features from <abbr title="Glyph Substitution table">GSUB</abbr>
 2. Performing property-based reordering moves
 
 
-#### Stage 4, step 1: Applying the reordering features from <abbr>GSUB</abbr> ####
+#### Stage 4, step 1: Applying the reordering features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 In this step, the reordering moves corresponding to the
-glyph-reordering features in <abbr>GSUB</abbr> are performed.
+glyph-reordering features in <abbr title="Glyph Substitution table">GSUB</abbr> are performed.
 
 Any glyph substitutions that apply to characters involved in these
 reordering moves were performed in stage 3, step 2. Therefore, this
 step only requires moving glyphs to their final positions.
 
 The order in which these substitutions must be performed is fixed for
-all <abbr>USE</abbr> scripts:
+all <abbr title="Universal Shaping Engine">USE</abbr> scripts:
 
 	rphf
 	pref
@@ -557,11 +557,11 @@ position of the pre-base-reordering consonant is:
 
 #### Stage 4, step 2: Performing property-based reordering moves ####
 
-In this step, any characters that match one of the <abbr>USE</abbr> reordering
+In this step, any characters that match one of the <abbr title="Universal Shaping Engine">USE</abbr> reordering
 classifications should be reordered into their final position. 
 
 > Note: this classification-based reordering step ensures that
-> reordering characters not addressed by the active font's <abbr>GSUB</abbr>
+> reordering characters not addressed by the active font's <abbr title="Glyph Substitution table">GSUB</abbr>
 > features are ordered correctly.
 
 The character classes reordered in this step are:
@@ -591,20 +591,20 @@ Pre-base `VOWEL_MOD_PRE` vowel-modifier glyphs are reordered to
 
 The final stage involves applying topographic joining features for
 connected scripts, applying typographic-presentation features from
-<abbr>GSUB</abbr>, and applying positioning features from <abbr>GPOS</abbr>.
+<abbr title="Glyph Substitution table">GSUB</abbr>, and applying positioning features from <abbr title="Glyph Positioning table">GPOS</abbr>.
 
 
-#### Stage 5, step 1: Applying the final topographic features from <abbr>GSUB</abbr> ####
+#### Stage 5, step 1: Applying the final topographic features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 For connected scripts, this step applies the substitutions to select
 the correct topographic form for each glyph, based on its position in
 the syllable.
 
 Whether or not each codepoint joins on the left or the right side is
-determined by the `Unicode Joining Type` (<abbr>UJT</abbr>) property defined in <abbr>UCD</abbr>
+determined by the `Unicode Joining Type` (<abbr>UJT</abbr>) property defined in <abbr title="Unicode Character Database">UCD</abbr>
 for each codepoint.
 
-> Note: <abbr>USE</abbr> does not support positional typographic features for any
+> Note: <abbr title="Universal Shaping Engine">USE</abbr> does not support positional typographic features for any
 > non-connected scripts.
 	
 	isol
@@ -612,15 +612,15 @@ for each codepoint.
 	medi
 	fina
 
-#### Stage 5, step 2: Applying the final typographic-presentation features from <abbr>GSUB</abbr> ####
+#### Stage 5, step 2: Applying the final typographic-presentation features from <abbr title="Glyph Substitution table">GSUB</abbr> ####
 
 The final typographic-presentation step applies mandatory substitution
-features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 	abvs

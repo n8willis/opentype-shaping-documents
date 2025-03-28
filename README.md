@@ -17,7 +17,7 @@ _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other 
 
 At present, we are seeking comments and bugfixes on the Indic-script,
 Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, Myanmar,
-default, and <abbr>USE</abbr> documents. Interested readers and contributors can
+default, and <abbr title="Universal Shaping Engine">USE</abbr> documents. Interested readers and contributors can
 begin at the
 
   - [Indic General](opentype-shaping-indic-general.md) 

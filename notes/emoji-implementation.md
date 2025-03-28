@@ -66,12 +66,14 @@ Options available include:
      would probably know beforehand anyway). If there's more than one of
      `SVG `, `CBDT`, `sbix`, or `COLR` present in the same font file, that
      would likely mean unknown behavior; comments on such cases are welcome.
-   - Users can run the script `layout-features.py somefontfilename.ttf` script
-     from FontTools/Snippets/ and it will print out an indented list of the
-     <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features used. All that matters for the table above is
-     what the script reports on the `Feature: ` line. For a typical emoji
-     font there's probably only one feature -- but, if there are several,
-     listing them is useful.
+   - Users can run the `layout-features.py somefontfilename.ttf`
+     script (which can be found in the `/Snippets/` directory of the
+     `FontTools` package source) and it will print out an indented
+     list of the <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features
+     used. All that matters for the table above is what the script
+     reports on the `Feature: ` line. For a typical emoji font there's
+     probably only one feature -- but, if there are several, listing
+     them is useful.
 
 2. **allsorts / allsorts-tools**
    - Users can use the `dump` tool from the `allsorts-tools` package
@@ -102,11 +104,11 @@ can contribute them)
 For determining if there's a printable glyph for the selectors/modifiers:
 1. **GUI font editors**
    - Users can open up the font in an editor and look at the slots for the
-     Unicode codepoints for the presentation selectors (U+FE0E and U+FE0F)
-     and the modifiers (U+1F3FB through U+1F3FF), if they exist (they might not).
+     Unicode codepoints for the presentation selectors (`U+FE0E` and `U+FE0F`)
+     and the modifiers (`U+1F3FB` through `U+1F3FF`), if they exist (they might not).
 2. **HarfBuzz**
    - Users can run the `hb-view` utility to output glyph contents for specific
      Unicode codepoints, but one might have to try a couple of options, depending
      on the image format. Run `hb-view --preserve-default-ignorables somefontfilename.ttf --unicodes=fe0e`
-     to start (for U+FE0E). Users may also try adding the `--font-funcs=ot`
+     to start (for `U+FE0E`). Users may also try adding the `--font-funcs=ot`
      and/or `--shapers=ot` flags to that command if it gives trouble. 

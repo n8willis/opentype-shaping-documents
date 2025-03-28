@@ -43,7 +43,7 @@ orthography.
 
 For Arabic, a subset of marks in the 220 and 230 classes are also
 designated _Modifier Combining Marks_ (<abbr>MCM</abbr>). These are denoted with
-_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr>MCM</abbr> marks are
+_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr title="Modifier Combining Mark">MCM</abbr> marks are
 treated differently during the mark-reordering stage.
 
 
@@ -742,7 +742,7 @@ the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
+<!--- How shaping is affected by the <abbr title="Left-To-Right">LTR</abbr> and <abbr title="Right-To-Left">RTL</abbr> markers explanation --->
 
 
 The no-break space is primarily used to display those codepoints that

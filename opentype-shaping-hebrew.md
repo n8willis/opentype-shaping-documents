@@ -89,7 +89,7 @@ includes several digraphs that are used only when writing the Yiddish
 languages. 
 
 Because these word-final forms and digraphs are separately encoded,
-fonts do not implement <abbr>GSUB</abbr> substitutions to provide access to them.
+fonts do not implement <abbr title="Glyph Substitution table">GSUB</abbr> substitutions to provide access to them.
 
 
 ### Mark classification ###
@@ -134,7 +134,7 @@ combinations of base characters and marks and the "Alef Lamed"
 ligature, any of which may occur in `<hebr>` text runs. Glyphs for
 these presentation forms may be provided by fonts that do not
 implement the corresponding mark-to-base and ligature features in
-OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> tables.
+OpenType <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> tables.
 
 The Alphabetic Presentation Forms block also includes a set of eight
 "wide" variants of standard Hebrew characters (`U+FB21` through
@@ -208,7 +208,7 @@ the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes.
 
 
-<!--- How shaping is affected by the <abbr>LTR</abbr> and <abbr>RTL</abbr> markers explanation --->
+<!--- How shaping is affected by the <abbr title="Left-To-Right">LTR</abbr> and <abbr title="Right-To-Left">RTL</abbr> markers explanation --->
 
 
 The no-break space may be used to display those codepoints that
@@ -230,7 +230,7 @@ Processing a run of `<hebr>` text involves seven top-level stages:
 
 ### Stage 1: Compound character composition and decomposition ###
 
-In this stage, the `ccmp` feature from <abbr>GPOS</abbr> is applied and the
+In this stage, the `ccmp` feature from <abbr title="Glyph Positioning table">GPOS</abbr> is applied and the
 resulting sequence of codepoints should be checked for correct mark
 order. 
 
@@ -252,7 +252,7 @@ The `ccmp` feature allows a font to substitute
    decomposed glyphs
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -268,7 +268,7 @@ ccmp composition
 
 Sequences of adjacent marks must be reordered so that they appear in
 canonical order before the mark-to-base and mark-to-mark positioning
-features from <abbr>GPOS</abbr> can be correctly applied.
+features from <abbr title="Glyph Positioning table">GPOS</abbr> can be correctly applied.
 
 For `<hebr>` text runs, normalizing the sequence of marks using the
 Unicode _canonical combining class_ of each mark should be sufficient.
@@ -279,7 +279,7 @@ Unicode _canonical combining class_ of each mark should be sufficient.
 If the active font includes glyphs for precomposed mark-and-base
 codepoints from the Alphabetic Presentation Forms block, these
 precomposed glyphs should be preferred over sequences of individual
-base glyphs and marks positioned with <abbr>GPOS</abbr>.
+base glyphs and marks positioned with <abbr title="Glyph Positioning table">GPOS</abbr>.
 
 The codepoints in question are not included in the canonical Unicode
 compositions, so the shaping engine should substitute them at this
@@ -305,7 +305,7 @@ multiple possible composing sequences. All of the other precomposed
 glyphs in the block have a single composing sequence.
 
 > Note: the active font may implement these compositions in a `ccmp`
-> lookup in <abbr>GSUB</abbr>, in which case this stage will involve no additional work.
+> lookup in <abbr title="Glyph Substitution table">GSUB</abbr>, in which case this stage will involve no additional work.
 
 :::{figure-md}
 ![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition")
@@ -318,9 +318,9 @@ Alphabetic Presentation forms composition
 ### Stage 3: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Hebrew shaping model:
@@ -338,14 +338,14 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 
 
 ### Stage 4: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's <abbr>GSUB</abbr> table.
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Hebrew shaping model:

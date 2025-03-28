@@ -57,7 +57,7 @@ space.
 A significant number of  older Thai fonts that do not use the OpenType
 shaping model are still in usage; these fonts employ the Unicode
 "Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
-characters. Shaping engines may implement this <abbr>PUA</abbr>-base shaping model
+characters. Shaping engines may implement this <abbr title="Private Use Area">PUA</abbr>-base shaping model
 as a fallback mechanism when such fonts are encountered.
 
 
@@ -139,7 +139,7 @@ Marks, including diacritics, tone markers, and dependent vowels, are further lab
 with a mark-placement subclass, which indicates where the glyph will
 be placed with respect to the base character to which it is
 attached. The actual position of the glyphs is determined by the
-lookups found in the font's <abbr>GPOS</abbr> table.
+lookups found in the font's <abbr title="Glyph Positioning table">GPOS</abbr> table.
 
 There are three basic _mark-placement subclasses_ for marks
 in Thai and Lao. Each corresponds to the visual position of the mark with
@@ -171,7 +171,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `VISUAL_ORDER_LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
+of OpenType <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 For most mark and dependent-vowel codepoints, the _mark-placement
@@ -222,7 +222,7 @@ This ensures that <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> codepoints adj
 
 ### <abbr>PUA</abbr> fallback classifications ###
 
-Older Thai fonts that implement the <abbr>PUA</abbr>-substitution fallback method
+Older Thai fonts that implement the <abbr title="Private Use Area">PUA</abbr>-substitution fallback method
 rather than modern OpenType script shaping rules incorporate
 subclasses for consonants that indicate whether or not the consonant
 includes an ascender, a normal descender, or a removable descender.
@@ -261,7 +261,7 @@ and `<lao >` text runs:
 
 The tables list each codepoint along with its Unicode general
 category, its shaping class, its mark-placement subclass, and its
-<abbr>PUA</abbr>-fallback category. The codepoint's Unicode name and an example
+<abbr title="Private Use Area">PUA</abbr>-fallback category. The codepoint's Unicode name and an example
 glyph are also provided.
 
 For example:
@@ -292,11 +292,11 @@ category_ column are categorized as non-spacing; marks tagged with
 [Mc] are categorized as spacing-combining.
 
 The _PUA_ column indicates which, if any, fallback-shaping category
-the codepoint belongs to when found in older fonts using the <abbr>PUA</abbr>
-fallback shaping scheme. Note that the <abbr>PUA</abbr> method was employed only
-for Thai fonts, so Lao codepoints do not have a <abbr>PUA</abbr> fallback-shaping
+the codepoint belongs to when found in older fonts using the <abbr title="Private Use Area">PUA</abbr>
+fallback shaping scheme. Note that the <abbr title="Private Use Area">PUA</abbr> method was employed only
+for Thai fonts, so Lao codepoints do not have a <abbr title="Private Use Area">PUA</abbr> fallback-shaping
 category. Thai codepoints with a _null_ in the _PUA_ column were not
-used in the <abbr>PUA</abbr> fallback-shaping scheme and evoke no special behavior
+used in the <abbr title="Private Use Area">PUA</abbr> fallback-shaping scheme and evoke no special behavior
 from the shaping engine.
 
 Some codepoints in the tables use a _Shaping class_ that
@@ -368,9 +368,9 @@ as when an isolated codepoint is shown in example text.
 ### Stage 1: Applying the language substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution stage applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed:
 
@@ -388,7 +388,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 
 #### Stage 1, step 2: ccmp ####
@@ -407,7 +407,7 @@ lookup, the shaping engine will decompose the codepoint in the
 following stage.
   
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -492,10 +492,10 @@ move the
 
 ### Stage 4: Applying all positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
+In this stage, mark positioning, kerning, and other <abbr title="Glyph Positioning table">GPOS</abbr> features are
 applied. As with the preceding stage, the order in which these
 features are applied is not canonical; they should be applied in the
-order in which they appear in the <abbr>GPOS</abbr> table in the font.
+order in which they appear in the <abbr title="Glyph Positioning table">GPOS</abbr> table in the font.
 
 	kern
 	mark
@@ -540,10 +540,10 @@ shaping model are still in usage; these fonts employ the Unicode
 "Private Use Area" (<abbr>PUA</abbr>) to store contextual forms of
 characters.
 
-The <abbr>PUA</abbr> shaping model is described at
+The <abbr title="Private Use Area">PUA</abbr> shaping model is described at
 [linux.thai.net/~thep/th-otf/shaping.html](https://linux.thai.net/~thep/th-otf/shaping.html)
 . It relies on a set of pre-determined mappings from the codepoints in the
-Unicode Thai block to codepoints in the <abbr>PUA</abbr>.
+Unicode Thai block to codepoints in the <abbr title="Private Use Area">PUA</abbr>.
 
 For consonants, these alternate-glyph mappings depend on whether or
 not the consonant includes an ascender, a normal descender, or a
@@ -577,7 +577,7 @@ table](character-tables/character-tables-thai.md#thai-character-table).
 ## Contextual replacement rules ##
 
 Codepoints in the Thai Block can be mapped to one of several alternate
-<abbr>PUA</abbr> codepoints depending on context:
+<abbr title="Private Use Area">PUA</abbr> codepoints depending on context:
 
   - A tone marker that does not follow an above-base vowel sign may be
     mapped to an alternate that is positioned lower, closer to the top
@@ -614,11 +614,11 @@ possible consonant (vertical) and vowel/mark (horizontal) sequences:
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
 
-These replacements take the place of both <abbr>GSUB</abbr> substitutions and <abbr>GPOS</abbr>
+These replacements take the place of both <abbr title="Glyph Substitution table">GSUB</abbr> substitutions and <abbr title="Glyph Positioning table">GPOS</abbr>
 positioning in modern OpenType fonts.
 
 Shaping engines can replace the original codepoints with the
-appropriate alternates from the <abbr>PUA</abbr> block by testing for the above
+appropriate alternates from the <abbr title="Private Use Area">PUA</abbr> block by testing for the above
 conditions. 
 
 With each consonant, vowel, and mark character correctly classified,
@@ -740,7 +740,7 @@ follow a consonant:
 
 
 When the necessary replacement action for each codepoint has been
-determined, codepoints can be replaced with the <abbr>PUA</abbr> codepoints from
+determined, codepoints can be replaced with the <abbr title="Private Use Area">PUA</abbr> codepoints from
 the following table.
 
 Note that Windows fonts and MacOS fonts used different mappings.

@@ -148,7 +148,7 @@ In addition to the standard joining types, `<syrc>` text features two
 `JOINING_GROUP`s that trigger special behavior: `ALAPH` and
 `DALATH_RISH`.
 
-The `fin2`, `fin3`, and `med2` <abbr>GSUB</abbr> features implement Syriac-specific
+The `fin2`, `fin3`, and `med2` <abbr title="Glyph Substitution table">GSUB</abbr> features implement Syriac-specific
 shaping rules that affect glyphs in the `ALAPH` joining group, based
 on the preceding glyph.
 
@@ -256,9 +256,9 @@ fashion; shaping engines should cope with this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
+normally. <abbr title="Glyph Positioning table">GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
+dotted circles can also be involved in <abbr title="Glyph Substitution table">GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -290,11 +290,11 @@ mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
 
 By default, OpenType shaping reorders sequences of adjacent marks by
-sorting the sequence on the marks' Canonical_Combining_Class (Ccc)
-values. The presence of a <abbr>CGJ</abbr> character within a sequence of marks has
+sorting the sequence on the marks' Canonical_Combining_Class (<abbr>Ccc</abbr>)
+values. The presence of a <abbr title="Combining Grapheme Joiner">CGJ</abbr> character within a sequence of marks has
 the effect of splitting the sequence into two sequences of marks and,
 therefore, halting any mark-reordering that would have occurred
-between the marks on either side of the <abbr>CGJ</abbr>.
+between the marks on either side of the <abbr title="Combining Grapheme Joiner">CGJ</abbr>.
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
 cursive connecting form of a letter even when the context of the
@@ -309,7 +309,7 @@ The zero-width non-joiner (<abbr>ZWNJ</abbr>) is primarily used to prevent a
 cursive connection between two adjacent characters that would, under
 normal circumstances, form a join. 
 
-The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
+The <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -317,25 +317,25 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
+> document might need to request that a <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
+Because the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
+involved in the shaping operations that the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
+will typically ignore <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>.
 
-Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
+Similarly, the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
+lookahead sequences of a font's <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> lookups.
 
 
 The right-to-left mark (<abbr>RLM</abbr>) and left-to-right mark (<abbr>LRM</abbr>) are used by
 the Unicode bidirectionality algorithm (BiDi) to indicate the points
 in a text run at which the writing direction changes. Generally
-speaking <abbr>RLM</abbr> and <abbr>LRM</abbr> codepoints do not interact with shaping.
+speaking <abbr title="Right-to-Left Mark">RLM</abbr> and <abbr title="Left-to-Right Mark">LRM</abbr> codepoints do not interact with shaping.
 
 The no-break space is primarily used to display those codepoints that
 are defined as non-spacing (such as vowel points or diacritical marks) in an
@@ -368,7 +368,7 @@ Processing a run of `<syrc>` text involves seven top-level stages:
 
 Sequences of adjacent marks must be reordered so that they appear in
 the appropriate visual order before the mark-to-base and mark-to-mark
-positioning features from <abbr>GPOS</abbr> can be correctly applied.
+positioning features from <abbr title="Glyph Positioning table">GPOS</abbr> can be correctly applied.
 
 In particular, those marks that have strong affinity to the base
 character must be placed closest to the base.
@@ -376,7 +376,7 @@ character must be placed closest to the base.
 This mark-reordering operation is distinct from the standard,
 cross-script mark-reordering performed during Unicode
 normalization. The standard Unicode mark-reordering algorithm is based
-on comparing the _Canonical_Combining_Class_ (Ccc) properties of mark
+on comparing the _Canonical_Combining_Class_ (<abbr>Ccc</abbr>) properties of mark
 codepoints, whereas this script-specific reordering utilizes the
 _Modifier_Combining_Mark_ (<abbr>MCM</abbr>) subclasses specified in the
 character tables.
@@ -399,9 +399,9 @@ The algorithm for reordering a sequence of marks is:
 > Note: Unicode describes this mark-reordering operation, the Arabic
 > Mark Transient Reordering Algorithm (<abbr>AMTRA</abbr>), in Technical Report 53,
 > which describes it in terms that are distinct from standard,
-> Ccc-based mark reordering.
+> <abbr>Ccc</abbr>-based mark reordering.
 >
-> Specifically, <abbr>AMTRA</abbr> is designated as an operation performed during
+> Specifically, <abbr title="Arabic Mark Transient Reordering Algorithm">AMTRA</abbr> is designated as an operation performed during
 > text rendering only, which therefore does not impact other
 > Unicode-compliance issues such as allowable input sequences or text
 > encoding.
@@ -423,7 +423,7 @@ The `ccmp` feature allows a font to substitute
     mark-only glyph, to permit more precise positioning)
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -431,7 +431,7 @@ glyphs.
 ### Stage 3: Computing letter joining states ###
 
 In order to correctly apply the initial, medial, and final form
-substitutions from <abbr>GSUB</abbr> during stage 6, the shaping engine must
+substitutions from <abbr title="Glyph Substitution table">GSUB</abbr> during stage 6, the shaping engine must
 tag every letter for possible application of the appropriate feature.
 
 To determine which feature is appropriate, the shaping engine must
@@ -541,9 +541,9 @@ Finally, the decomposed mark must be reordered as follows:
 ### Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
 The language-substitution phase applies mandatory substitution
-features using the rules in the font's <abbr>GSUB</abbr> table. In preparation for
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for
 this stage, glyph sequences should be tagged for possible application 
-of <abbr>GSUB</abbr> features.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:
@@ -571,7 +571,7 @@ variants, based on examining the language setting of the text run.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 <!--- ![Localized form substitution](/images/syriac/syriac-locl.svg) --->
 
@@ -703,7 +703,7 @@ Contextual alternate substitution
 ### Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies optional substitution
-features using the rules in the font's <abbr>GSUB</abbr> table.
+features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table.
 
 The order in which these substitutions must be performed is fixed for
 all scripts implemented in the Arabic shaping model:

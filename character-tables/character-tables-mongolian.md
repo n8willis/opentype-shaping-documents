@@ -39,7 +39,7 @@ orthography.
 
 For Mongolian, a subset of marks in the 220 and 230 classes are also
 designated _Modifier Combining Marks_ (<abbr>MCM</abbr>). These are denoted with
-_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr>MCM</abbr> marks are
+_220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr title="Modifier Combining Mark">MCM</abbr> marks are
 treated differently during the mark-reordering stage.
 
 

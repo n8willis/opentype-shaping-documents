@@ -140,7 +140,7 @@ spacing-combining.
 
 Of the non-spacing marks, 20 are classified as `CANTILLATION` (or tone-marker)
 indicators, which modify the pitch of vowels. Most of these marks are
-generally positioned above or below the main character, using <abbr>GPOS</abbr>
+generally positioned above or below the main character, using <abbr title="Glyph Positioning table">GPOS</abbr>
 mark attachment, in a position that does not interact or interfere
 with the main character. In Unicode, the `CANTILLATION` classification
 is separate from the `TONE_MARKER` classification used in some scripts

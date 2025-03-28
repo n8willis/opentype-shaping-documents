@@ -118,7 +118,7 @@ syllable glyph — and when they cannot.
 Those jamo sequences that cannot be composed into a syllable codepoint
 (or that compose into a syllable codepoint that is missing in the
 active font) are then rendered by shaping and positioning each
-individual jamo using <abbr>GSUB</abbr> substitution rules. 
+individual jamo using <abbr title="Glyph Substitution table">GSUB</abbr> substitution rules. 
 
 
 
@@ -269,7 +269,7 @@ Processing a run of `<hang>` text involves six top-level stages:
 2. Determining if the syllable can be composed into a Hangul Syllables codepoint
 3. Composing the syllable (if composition is possible)
 4. Fully decomposing the syllable (if composition is not possible)
-5. Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features
+5. Shaping the fully decomposed syllable with <abbr title="Glyph Substitution table">GSUB</abbr> features
 6. Reordering tone marks
 
 
@@ -364,7 +364,7 @@ compose the jamo into the corresponding Hangul Syllables codepoint.
 
 If any of the jamo in the syllable have `COMPOSING_BEHAVIOR` of `NO`,
 then the shaping engine should proceed to stage five and shape the
-syllable using <abbr>GSUB</abbr> features.
+syllable using <abbr title="Glyph Substitution table">GSUB</abbr> features.
 
 
 ### Stage 3: Composing the syllable (if composition is possible) ###
@@ -491,7 +491,7 @@ Syllable decomposition
 
 With the syllable fully decomposed into a sequence of jamo, the next
 stage applies mandatory substitution features using rules in the
-font's <abbr>GSUB</abbr> table. 
+font's <abbr title="Glyph Substitution table">GSUB</abbr> table. 
 
 
 #### Stage 5, step 1: `ccmp` ####
@@ -500,7 +500,7 @@ The `ccmp` feature allows a font to substitute basic-jamo sequences
 with a pre-composed glyph including compound jamo. 
  
 If present, these composition and decomposition substitutions must be
-performed before applying any other <abbr>GSUB</abbr> lookups, because
+performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
@@ -576,7 +576,7 @@ be placed immediately to the left of the syllable.
 
 This reordering move is the same regardless of whether the syllable in
 question is a precomposed syllable codepoint from the Hangul Syllables
-block or a jamo-based syllable composed via the application of <abbr>GSUB</abbr>
+block or a jamo-based syllable composed via the application of <abbr title="Glyph Substitution table">GSUB</abbr>
 features. Therefore, the reordering must take place at the end of the
 shaping process.
 

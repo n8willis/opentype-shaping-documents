@@ -114,7 +114,7 @@ base consonant) or a dependent vowel (with the addition of a matra).
 
 A syllable's base consonant is generally rendered in its full form
 (although it may form ligatures), while other consonants in the
-syllable frequently take on secondary forms. Different <abbr>GSUB</abbr>
+syllable frequently take on secondary forms. Different <abbr title="Glyph Substitution table">GSUB</abbr>
 substitutions may apply to a script's **pre-base** and **post-base**
 consonants. Some of these substitutions create **above-base** or
 **below-base** forms. The **Reph** form of the consonant "Ra" is an
@@ -211,7 +211,7 @@ subclass, which indicates where the glyph will be placed with respect
 to the base character to which it is attached. 
 
 The actual attachment position of these glyphs is determined by the
-lookups found in the font's <abbr>GPOS</abbr> table. However, the reordering rules for
+lookups found in the font's <abbr title="Glyph Positioning table">GPOS</abbr> table. However, the reordering rules for
 Indic scripts require that the shaping engine be able to identify
 marks by their general position. 
 
@@ -241,7 +241,7 @@ These positions may also be referred to elsewhere in shaping documents as:
 respectively. The `LEFT`, `RIGHT`, `TOP`, and `BOTTOM` designations
 corresponds to Unicode's preferred terminology. The _Pre_, _Post_,
 _Above_, and _Below_ terminology is used in the official descriptions
-of OpenType <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features. Shaping engines may, internally,
+of OpenType <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features. Shaping engines may, internally,
 use whichever terminology is preferred.
 
 In addition, dependent-vowel codepoints that are composed of multiple
@@ -296,9 +296,9 @@ this situation gracefully.
 
 Dotted-circle placeholder characters (like any Unicode codepoint) can
 appear anywhere in text input sequences and should be rendered
-normally. <abbr>GPOS</abbr> positioning lookups should attach mark glyphs to dotted
+normally. <abbr title="Glyph Positioning table">GPOS</abbr> positioning lookups should attach mark glyphs to dotted
 circles as they would to other non-mark characters. As visible glyphs,
-dotted circles can also be involved in <abbr>GSUB</abbr> substitutions.
+dotted circles can also be involved in <abbr title="Glyph Substitution table">GSUB</abbr> substitutions.
 
 In addition to the default input-text handling process, shaping
 engines may also insert dotted-circle placeholders into the text
@@ -337,12 +337,12 @@ A secondary usage of the zero-width joiner is to prevent the formation of
     even where an initial <samp>"Ra,Halant"</samp> sequence without the zero-width
     joiner would otherwise produce a <samp>"Reph"</samp>.
 
-> Note: this particular usage of <abbr>ZWJ</abbr> may not apply to scripts that
+> Note: this particular usage of <abbr title="Zero-Width Joiner">ZWJ</abbr> may not apply to scripts that
 > feature an explicit <samp>"Reph"</samp> codepoint or an explicit sequence for
 > requesting <samp>"Reph"</samp>. See the script-specific shaping documents for
 > full details.
 
-The <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> characters are, by definition, non-printing control
+The <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> characters are, by definition, non-printing control
 characters and have the _Default_Ignorable_ property in the Unicode
 Character Database. In standard text-display scenarios, their function
 is to signal a request from the user to the shaping engine for some
@@ -350,19 +350,19 @@ particular non-default behavior. As such, they are not rendered
 visually.
 
 > Note: Naturally, there are special circumstances where a user or
-> document might need to request that a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr> be rendered
+> document might need to request that a <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> be rendered
 > visually, such as when illustrating the OpenType shaping process, or
 > displaying Unicode tables.
 
-Because the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are non-printing control characters, they can
+Because the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> are non-printing control characters, they can
 be ignored by any portion of a software text-handling stack not
-involved in the shaping operations that the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> are designed
+involved in the shaping operations that the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> are designed
 to interface with. For example, spell-checking or collation functions
-will typically ignore <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>.
+will typically ignore <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>.
 
-Similarly, the <abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr> should be ignored by the shaping engine
+Similarly, the <abbr title="Zero-Width Joiner">ZWJ</abbr> and <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> should be ignored by the shaping engine
 when matching sequences of codepoints against the backtrack and
-lookahead sequences of a font's <abbr>GSUB</abbr> or <abbr>GPOS</abbr> lookups.
+lookahead sequences of a font's <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> lookups.
 
 For example:
 
@@ -408,7 +408,7 @@ converted into a combining mark-like form.
 
 The resulting mark must be correctly positioned by attaching it to the
 correct base character using the active font's `mark` lookup from
-<abbr>GPOS</abbr>. Therefore, the mark form of the <samp>"Ra"</samp> must be moved so that it
+<abbr title="Glyph Positioning table">GPOS</abbr>. Therefore, the mark form of the <samp>"Ra"</samp> must be moved so that it
 is adjacent to the correct base character. Which character in a
 syllable is the correct base character differs from script to script,
 and may involve several context-sensitive tests.
@@ -880,13 +880,13 @@ reordered after the syllable-identification stage is complete.
 > Note: Generally speaking, OpenType fonts will implement support for
 > any below-base, post-base, and pre-base-reordering consonant forms
 > by including the necessary substitution rules in their `blwf`,
-> `pstf`, and `pref` lookups in <abbr>GSUB</abbr>.
+> `pstf`, and `pref` lookups in <abbr title="Glyph Substitution table">GSUB</abbr>.
 >
 > Consequently, whenever shaping engines need to determine whether or 
 > not a given consonant can take on such a special form, the most
 > appropriate test is to check if the consonant is included in the
-> relevant <abbr>GSUB</abbr> lookup. Other implementations are possible, such as
-> maintaining static tables of consonants, but checking for <abbr>GSUB</abbr>
+> relevant <abbr title="Glyph Substitution table">GSUB</abbr> lookup. Other implementations are possible, such as
+> maintaining static tables of consonants, but checking for <abbr title="Glyph Substitution table">GSUB</abbr>
 > support ensures that the expected behavior is implemented in the
 > active font, and is therefore the most reliable approach.
 
@@ -1057,7 +1057,7 @@ REPH? _nukta_? (HALANT_GROUP CN)* MEDIAL_GROUP HALANT_OR_MATRA_GROUP SYLLABLE_TA
 The primary problem involved in shaping broken syllables is the lack
 of a syllable base (either a base consonant or an independent
 vowel). Without a syllable base, the shaping engine cannot perform
-<abbr>GPOS</abbr> positioning and other contextual operations that are required
+<abbr title="Glyph Positioning table">GPOS</abbr> positioning and other contextual operations that are required
 later in the shaping process.
 
 To make up for this limitation, shaping engines should insert a
@@ -1069,10 +1069,10 @@ about the orthographic correctness or preferred appearance of the
 final result is out of scope for this document.
 
 Shaping engines can perform this dotted-circle insertion at any point
-after the broken syllable has been recognized and before <abbr>GSUB</abbr> features
+after the broken syllable has been recognized and before <abbr title="Glyph Substitution table">GSUB</abbr> features
 are applied. However, the best results will likely be attained by
 performing the insertion immediately, before proceeding to
-stage 2. This will enable the maximum number of <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features
+stage 2. This will enable the maximum number of <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features
 in the active font to be correctly applied to the text run by ensuring
 that all reordering, tagging, and sorting algorithms are executed as
 usual.
@@ -1218,10 +1218,10 @@ encountered during the base-consonant search must be tagged
 > choose to maintain a static table of special-form consonants to
 > compare against the text run. Another implementation might examine
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
-> lookup in the <abbr>GSUB</abbr> table that affects the consonants encountered in
+> lookup in the <abbr title="Glyph Substitution table">GSUB</abbr> table that affects the consonants encountered in
 > the syllable.
 >
-> However, checking for <abbr>GSUB</abbr> support ensures that the expected
+> However, checking for <abbr title="Glyph Substitution table">GSUB</abbr> support ensures that the expected
 > behavior is implemented in the active font, and is therefore the
 > most reliable approach.
 
@@ -1282,7 +1282,7 @@ character in the subsequence. No other marks in the subsequence
 should be reordered.
 
 This order is canonical in Unicode and is required so that
-<samp>"_consonant_,Nukta"</samp> substitution rules from <abbr>GSUB</abbr> will be correctly
+<samp>"_consonant_,Nukta"</samp> substitution rules from <abbr title="Glyph Substitution table">GSUB</abbr> will be correctly
 matched later in the shaping process.
 
 #### Stage 2, step 5: Pre-base consonants ####
@@ -1301,10 +1301,10 @@ that will become <samp>"Reph"</samp>s:
 > choose to maintain a static table of special-form consonants to
 > compare against the text run. Another implementation might examine
 > the active font to see if it includes a `blwf`, `pstf`, or `pref`
-> lookup in the <abbr>GSUB</abbr> table that affects the consonants encountered in
+> lookup in the <abbr title="Glyph Substitution table">GSUB</abbr> table that affects the consonants encountered in
 > the syllable.
 >
-> However, checking for <abbr>GSUB</abbr> support ensures that the expected
+> However, checking for <abbr title="Glyph Substitution table">GSUB</abbr> support ensures that the expected
 > behavior is implemented in the active font, and is therefore the
 > most reliable approach.
 
@@ -1389,7 +1389,7 @@ relative position with respect to each other.
 #### Stage 2, step 10: Flag sequences for possible feature applications ####
 
 With the initial reordering complete, those glyphs in the syllable that
-may have <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features applied in stages 3, 5, and 6 should be
+may have <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> features applied in stages 3, 5, and 6 should be
 flagged for each potential feature. 
 
 This flagging is preliminary; the set of potential features varies
@@ -1408,7 +1408,7 @@ the flags -- although shaping engines may do so if desired.
 
 The sequences to flag are summarized in the list below; a full
 description of each feature's function and interpretation is provided
-in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
+in <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> application stages that follow.
 
   - `nukt` should match <samp>"_Consonant_,Nukta"</samp> sequences
   - `akhn` should match <samp>"Ka,Halant,Ssa"</samp> and <samp>"Ja,Halant,Nya"</samp>
@@ -1433,9 +1433,9 @@ in <abbr>GSUB</abbr> and <abbr>GPOS</abbr> application stages that follow.
 ### Stage 3: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
-using the rules in the font's <abbr>GSUB</abbr> table. In preparation for this
+using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
 stage, glyph sequences should be flagged for possible application 
-of <abbr>GSUB</abbr> features in stage 2, step 10.
+of <abbr title="Glyph Substitution table">GSUB</abbr> features in stage 2, step 10.
 
 The order in which these substitutions must be performed is fixed for
 all Indic scripts:
@@ -1464,7 +1464,7 @@ pages for further script-specific information.
 > and could take place at an earlier point while handling the text
 > run. However, shaping engines are expected to complete the
 > application of the `locl` feature before applying the subsequent
-> <abbr>GSUB</abbr> substitutions in the following steps.
+> <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 
 ### Stage 4: Final reordering ###
@@ -1482,7 +1482,7 @@ occur on a per-syllable basis.
 <!--- Check that classifications have not been mangled. If the -->
 <!--character is a Halant AND a ligature was formed AND a multiple
 substitution was performed, restore the classification to VIRAMA
-because it was almost certainly lost in the preceding <abbr>GSUB</abbr> stage.
+because it was almost certainly lost in the preceding <abbr title="Glyph Substitution table">GSUB</abbr> stage.
 --->
 
 #### Stage 4, step 1: Base consonant ####
@@ -1501,7 +1501,7 @@ repeat the base-consonant search algorithm used in stage 2, step 1.
 
 The codepoint of the underlying base consonant or syllable base will
 not change between the search performed in stage 2, step 1, and the
-search repeated here. However, the application of <abbr>GSUB</abbr> shaping
+search repeated here. However, the application of <abbr title="Glyph Substitution table">GSUB</abbr> shaping
 features in stage 3 means that several ligation and many-to-one
 substitutions may have taken place. The final glyph produced by that
 process may, therefore, be a conjunct or ligature form — in most
@@ -1525,8 +1525,8 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 > Note: OpenType and Unicode both state that if the syllable includes
-> a <abbr>ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
-> position should be after the <abbr>ZWJ</abbr>.
+> a <abbr title="Zero-Width Joiner">ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
+> position should be after the <abbr title="Zero-Width Joiner">ZWJ</abbr>.
 >
 > However, there are several test sequences indicating that
 > Microsoft's Uniscribe shaping engine did not follow this rule (in,
@@ -1562,9 +1562,9 @@ The full algorithm for determining the final Reph position has seven steps.
 immediately to step (e). Otherwise, proceed to step (b).
 
 (b) Find the first explicit <samp>"Halant"</samp> between the syllable base
-consonant and the first post-Reph consonant. If there is a <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>
+consonant and the first post-Reph consonant. If there is a <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>
 following this <samp>"Halant"</samp>, move the <samp>"Reph"</samp> to a position immediately
-after the <abbr>ZWJ</abbr> or <abbr>ZWNJ</abbr>, then proceed to step (mH). Otherwise, move the
+after the <abbr title="Zero-Width Joiner">ZWJ</abbr> or <abbr title="Zero-Width Non Joiner">ZWNJ</abbr>, then proceed to step (mH). Otherwise, move the
 <samp>"Reph"</samp> to a position immediately after the <samp>"Halant"</samp>, then proceed to
 step (mH). If no such explicit <samp>"Halant"</samp> is found, proceed to step
 (c).
@@ -1625,7 +1625,7 @@ the base consonant or syllable base.
 
 Any left-side dependent vowels (matras) that are at the start of a
 word must be flagged for potential substitution by the `init` feature
-of <abbr>GSUB</abbr>.
+of <abbr title="Glyph Substitution table">GSUB</abbr>.
 
 > Note: The `init` feature for word-initial dependent vowels (matras)
 > is defined only for Bengali and should not be expected in fonts for
@@ -1635,13 +1635,13 @@ of <abbr>GSUB</abbr>.
 
 ### Stage 5: Applying all remaining substitution features from <abbr>GSUB</abbr> ###
 
-In this stage, the remaining substitution features from the <abbr>GSUB</abbr> table
+In this stage, the remaining substitution features from the <abbr title="Glyph Substitution table">GSUB</abbr> table
 are applied. In preparation for this stage, glyph sequences should be
-flagged for possible application of <abbr>GSUB</abbr> features in stage 2,
+flagged for possible application of <abbr title="Glyph Substitution table">GSUB</abbr> features in stage 2,
 step 10.
 
 The order in which these features are applied is not canonical; they
-should be applied in the order in which they appear in the <abbr>GSUB</abbr> table
+should be applied in the order in which they appear in the <abbr title="Glyph Substitution table">GSUB</abbr> table
 in the font.
 
 	init
@@ -1653,12 +1653,12 @@ in the font.
 
 ### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
 
-In this stage, mark positioning, kerning, and other <abbr>GPOS</abbr> features are
+In this stage, mark positioning, kerning, and other <abbr title="Glyph Positioning table">GPOS</abbr> features are
 applied.
 
 As with the preceding stage, the order in which these features are
 applied is not canonical; they should be applied in the order in which
-they appear in the <abbr>GPOS</abbr> table in the font.
+they appear in the <abbr title="Glyph Positioning table">GPOS</abbr> table in the font.
 
         dist
         abvm
@@ -1682,7 +1682,7 @@ features) was altered when migrating from the old to the new shaping model.
 Specifically, shaping engines were expected to reorder post-base
 <samp>"Halant,_Consonant_"</samp> sequences to <samp>"_Consonant_,Halant"</samp>.
 
-As a result, a font's <abbr>GSUB</abbr> substitutions would be written to match
+As a result, a font's <abbr title="Glyph Substitution table">GSUB</abbr> substitutions would be written to match
 <samp>"_Consonant_,Halant"</samp> sequences in all pre-base and post-base positions.
 
 
@@ -1697,7 +1697,7 @@ would be reordered to
 before features are applied.
 
 In Indic2 text, as described above in this document, there is no
-such reordering. The correct sequence to match for <abbr>GSUB</abbr> substitutions is
+such reordering. The correct sequence to match for <abbr title="Glyph Substitution table">GSUB</abbr> substitutions is
 <samp>"_Consonant_,Halant"</samp> for pre-base consonants, but <samp>"Halant,_Consonant_"</samp>
 for post-base consonants.
 
@@ -1718,13 +1718,13 @@ left-side matra was positioned immediately before the base consonant or syllable
 ### Advice for handling fonts with old Indic features only ###
 
 Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
-sequences in order to apply <abbr>GSUB</abbr> substitutions when it is known that
+sequences in order to apply <abbr title="Glyph Substitution table">GSUB</abbr> substitutions when it is known that
 the font in use supports only the old shaping model.
 
 ### Advice for handling text runs composed in the old Indic format ###
 
 Shaping engines may choose to match post-base <samp>"_Consonant_,Halant"</samp>
-sequences for <abbr>GSUB</abbr> substitutions or to reorder them to
+sequences for <abbr title="Glyph Substitution table">GSUB</abbr> substitutions or to reorder them to
 <samp>"Halant,_Consonant_"</samp> when processing text runs that are tagged with
 one of the old Indic script tags and it is known that the font in use supports
 only the Indic2 shaping model.
@@ -1735,4 +1735,4 @@ known that the font in use supports an applicable substitution lookup.
 
 Shaping engines may also choose to position left-side matras according
 to the old-model Indic ordering scheme; however, doing so might interfere
-with matching <abbr>GSUB</abbr> or <abbr>GPOS</abbr> features.
+with matching <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> features.

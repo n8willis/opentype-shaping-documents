@@ -319,7 +319,7 @@ the formation of "Reph". An initial "Ra,Halant,ZWJ" sequence should
 produce a "Reph".
 
 The zero-width non-joiner (<abbr>ZWNJ</abbr>) is not used in shaping runs of
-Sinhala text. The <abbr>ZWNJ</abbr> is referenced below in various regular
+Sinhala text. The <abbr title="Zero-Width Non Joiner">ZWNJ</abbr> is referenced below in various regular
 expressions and shaping rules, however, because it is used by other
 Indic scripts.
 
