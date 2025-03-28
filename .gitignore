@@ -1,3 +1,6 @@
+# Ignore general
+*~
+
 # Ignore Unicode PDFs & misc resources
 reference/
 _build/
