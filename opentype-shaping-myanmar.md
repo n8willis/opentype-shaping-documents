@@ -341,10 +341,10 @@ Processing a run of `<mym2>` text involves five top-level stages:
 
 
 As with other Brahmi-derived and Indic scripts, the initial reordering
-stage and the final reordering stage each involve applying a set of several
-script-specific rules. The basic substitution features must be applied
-to the run in a specific order. The remaining substitution features in
-stage four, however, do not have a mandatory order.
+stage involves applying a set of several script-specific rules. The
+basic substitution features must be applied to the run in a specific
+order. The remaining substitution features in stage four, however, do
+not have a mandatory order. 
 
 
 Myanmar exhibits many of the same shaping patterns found in Indic
@@ -531,7 +531,8 @@ _a_		= "Anusvara" | "Sign Ai"
 _db_		= "Dot Below"
 _zwj_		= `JOINER`
 _zwnj_		= `NON_JOINER`
-_mh_		= "Medial Ha" | "Mon Medial La"
+_mh_		= "Medial Ha"
+_ml_        = "Mon Medial La"
 _mr_		= "Medial Ra"
 _mw_		= "Medial Wa" | "Shan Medial Wa"
 _my_		= "Medial Ya" | "Mon Medial Na" | "Mon Medial Ma"
@@ -541,7 +542,8 @@ _pt_		= "Tone Sgaw Karen Hathi" | "Tone Sgaw Karen Ke Pho" |
 	          2" | "Western Pwo Karen Tone 3" | "Western Pwo Karen
 	          Tone 4" | "Western Pwo Karen Tone 5" | "Pao Karen
 	          Tone" 
-_sm_		= "Visarga" | "Shan Tone 2" | "Shan Tone 3" | "Shan
+_v_         = `VISARGA`
+_sm_		= _v_ | "Shan Tone 2" | "Shan Tone 3" | "Shan
 	          Tone 5" | "Shan Tone 6" | "Shan Council Tone 2" |
 	          "Shan Council Tone 3" | "Shan Council Emphatic Tone"
 	          | "Rumai Palaung Tone 5" | "Khamti Tone 1" | "Khamti
@@ -555,7 +557,6 @@ _gb_		= U+002D | U+00A0 | U+00D7 | U+2012 | U+2013 | U+2014 |
               U+2015 | U+2022 | U+25CC | U+25FB | U+25FC | U+25FD |
 			  U+25FE 
 _cs_		= `CONSONANT_WITH_STACKER`
-_v_		= `VISARGA`
 _vs_		= "Variation Selector"
 ```
 
@@ -595,11 +596,12 @@ expression elements:
 C	= _consonant_ | _ra_
 Z	= _zwj_ | _zwnj_
 K	= _ra_ _asat_ _halant_
-Med	= _my_? _mr_? _mw_? _mh_? _asat_?
+G   = _gb_ | _d_ | _punc_
+Med	= _my_? _asat_? _mr_? ( (mw mh? ml? | mh ml? | ml) asat?)?
 Vmain	= _matrapre_* _matraabove_* _matrabelow_* _a_* (_db_ _asat_?)?
 Vpost	= _matrapost_ _mh_? _asat_* _matraabove_* _a_* (_db_ _asat_?)?
 Pwo	= _pt_ _a_* _db_? _asat_?
-Tcomplex= _asat_* Med Vmain Vpost* Pwo* _v_* Z?
+Tcomplex= _asat_* Med Vmain Vpost* Pwo* _sm_* Z?
 Tail	= _halant_ | Tcomplex
 ```
 
@@ -608,7 +610,7 @@ possible syllable types:
 
 A consonant-based syllable will match the expression:
 ```markdown
-(K | _cs_)? (C | _vowel_ | _d_ | _gb_) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
+(K | _cs_)? (C | _vowel_ | G) _vs_? (_halant_ (C | _vowel_) _vs_?)* Tail
 ```
 
 The expressions above use state-machine syntax from the Ragel
@@ -739,51 +741,12 @@ The algorithm for determining the base consonant is
         next consonant. 
   - The consonant stopped at will be the base consonant.
 
-> Note: The algorithm considers only `CONSONANT` class consonants, 
+<!--- > Note: The algorithm considers only `CONSONANT` class consonants, --->
 
 
-#### Stage 2, step 2: Tag matras ####
+#### Stage 2, step 2: Kinzi ####
 
-Second, all left-side dependent-vowel (matra) signs must be tagged to be
-moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
-
-All right-side and above-base dependent-vowel (matra)
-signs are tagged `POS_AFTER_SUBJOINED`.
-
-All below-base dependent-vowel (matra) signs are tagged
-`POS_BELOWBASE_CONSONANT`. 
-
-For simplicity, shaping engines may choose to tag matras
-in an earlier text-processing step, using the information in the
-_Mark-placement subclass_ column of the character tables. It is
-critical at this step, however, that all matras correctly tagged
-before proceeding to the next step. 
-
-#### Stage 2, step 3: Anusvara ####
-
-Third, any `ANUSVARA` marks appearing immediately after a below-base
-vowel sign must be tagged with `POS_BEFORE_SUBJOINED`, so that the
-marks are reordered to a position immediately before the below-base
-vowel signs.
-
-
-#### Stage 2, step 4: Pre-base-reordering consonants ####
-
-Fourth, all pre-base-reordering consonants must be tagged with
-`POS_PREBASE_CONSONANT`. 
-
-Myanmar has one pre-base-reordering consonant: <samp>"Medial Ra"</samp>.
-
-:::{figure-md}
-![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.svg "Pre-base-reordering Medial Ra")
-
-Pre-base-reordering Medial Ra
-:::
-
-
-#### Stage 2, step 5: Kinzi ####
-
-Fifth, initial <samp>"Kinzi"</samp>-triggering sequences that will become <samp>"Kinzi"</samp>s
+Second, initial <samp>"Kinzi"</samp>-triggering sequences that will become <samp>"Kinzi"</samp>s
 must be tagged with `POS_AFTER_MAIN`.
 
 The sequences are:
@@ -797,38 +760,87 @@ consonant. <samp>"Mon Nga"</samp> can form a <samp>"Kinzi"</samp> in the Mon lan
 can form a <samp>"Kinzi"</samp> in Sanskrit written with the Myanmar script.
 
 
-#### Stage 2, step 6: Post-base consonants ####
+#### Stage 2, step 3: Pre-base-reordering consonants ####
 
-Sixth, any remaining non-base consonants that occur after the base
-consonant must be tagged with `POS_AFTER_MAIN`. Full consonants (of
-class `CONSONANT`) will be preceded by a <samp>"Halant"</samp> glyph. Medial
-consonants (of class `CONSONANT_MEDIAL`) will not be preceded by a
-<samp>"Halant"</samp> glyph. 
+Third, all pre-base-reordering consonants must be tagged with
+`POS_PREBASE_CONSONANT`. 
 
-> Note: <samp>"Medial Ra"</samp> should have been tagged with
-> `POS_PREBASE_CONSONANT` in stage 2, step four, and must not be
-> re-tagged in this step.
+Myanmar has one pre-base-reordering consonant: <samp>"Medial Ra"</samp>.
+
+:::{figure-md}
+![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.svg "Pre-base-reordering Medial Ra")
+
+Pre-base-reordering Medial Ra
+:::
 
 
+#### Stage 2, step 4: Pre-base matras ####
 
-#### Stage 2, step 7: Mark tagging ####
+Fourth, all left-side dependent-vowel (matra) signs must be tagged to be
+moved to the beginning of the syllable, with `POS_PREBASE_MATRA`.
 
-<!--- not sure this is done!!! --->
+All of the left-side dependent-vowel (matra) signs matching this
+condition in Myanmar can be identified using the `_matrapre_`
+regular-expression class defined in stage 1.
 
-Seventh, all marks must be tagged with the same positioning tag as the
-closest non-mark character the mark has affinity with, so that they move together
-during the sorting step.
+For simplicity, shaping engines may choose to tag matras
+in an earlier text-processing step, using the information in the
+_Mark-placement subclass_ column of the character tables. It is
+critical at this step, however, that all matras correctly tagged
+before proceeding to the next step. 
 
-For all marks preceding the base consonant, the mark must be tagged
-with the same positioning tag as the closest preceding non-mark
-consonant.
 
-For all marks occurring after the base consonant, the mark must be
-tagged with the same positioning tag as the closest subsequent consonant.
+#### Stage 2, step 5: Syllables without below-base matras ####
 
-> Note: In this step, joiner and non-joiner characters must also be
-> tagged according to the same rules given for marks, even though
-> these characters are not categorized as marks in Unicode.
+Fifth, if the syllable contains no below-base dependent-vowel (matra)
+signs, then all of the remaining codepoints can be tagged with
+`POS_AFTER_MAIN`.
+
+> Note: Specifically, this condition means that the syllable must not
+> contain any below-base dependent-vowel (matra) signs as identified
+> using the `_matrabelow_` regular-expression class defined in
+> stage 1.
+>
+
+If the syllable contains no such below-base dependent-vowel (matra)
+signs, then after tagging the remaining codepoints with
+`POS_AFTER_MAIN`, the shaping engine can proceed immediately to stage
+2, step 7.
+
+
+#### Stage 2, step 6: Syllables with below-base-matras ####
+
+Sixth, if the syllable contains any below-base dependent-vowel (matra)
+signs, then those below-base matra signs must be tagged with
+`POS_BELOWBASE_CONSONANT`.
+
+All of the below-base dependent-vowel (matra) signs matching this
+condition in Myanmar can be identified using the `_matrabelow_`
+regular-expression class defined in stage 1.
+
+In addition, all of the codepoints that precede the below-base
+dependent-vowel signs in the syllable, but which were not already
+tagged in steps 1 through 4, must now be tagged with
+`POS_AFTER_MAIN`.
+
+In addition, any `ANUSVARA` marks that appear after the below-base
+dependent vowel signs in the syllable must be tagged wtih
+`POS_BEFORE_SUBJOINED`.
+
+Finally, all remaining codepoints that appear after the below-base
+dependent-vowel signs in the syllable can be tagged with
+`POS_AFTER_SUBJOINED`.
+
+
+#### Stage 2, step 7: Variation selectors ####
+
+Seventh, all <samp>"Variation Selector"</samp> codepoints must be
+tagged with the same positioning tag as the immediately preceding
+character.
+
+All of the codepoints matching this condition in Myanmar can be
+identified using the `_vs_` regular-expression class defined in
+stage 1.
 
 
 With these steps completed, the syllable can be sorted into the final sort order.
