@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Hebrew text](../opentype-shaping-hebrew.md).
 
-**Table of Contents**
+**Contents**
 
 Separate character tables are provided for the Hebrew block, the
 Hebrew letters included in the Alphabetic Presentation Forms block,

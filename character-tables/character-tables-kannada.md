@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Kannada text](../opentype-shaping-kannada.md).
 
-**Table of Contents**
+**Contents**
 
   - [Kannada character table](#kannada-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

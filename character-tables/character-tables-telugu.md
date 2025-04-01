@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Telugu text](../opentype-shaping-telugu.md).
 
-**Table of Contents**
+**Contents**
 
   - [Telugu character table](#telugu-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

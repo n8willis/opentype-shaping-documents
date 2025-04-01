@@ -5,7 +5,7 @@ Hebrew script styles, and defines the common pieces that style-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -193,7 +193,7 @@ placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
 The combining grapheme joiner (<abbr>CGJ</abbr>), zero-width joiner (<abbr>ZWJ</abbr>), and
-zero-width non-joiner (<abbr>ZWNJ</abbr>) may be used to alter the
+zero-width non-joiner (<abbr>ZWNJx</abbr>) may be used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.

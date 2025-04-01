@@ -4,7 +4,7 @@ This document outlines the shaping information needed to display
 characters from the Unicode Vedic Extensions block, which may be used
 within text runs in many Indic scripts.
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

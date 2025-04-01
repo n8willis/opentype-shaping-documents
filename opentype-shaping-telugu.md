@@ -4,7 +4,7 @@ This document details the shaping procedure needed to display text
 runs in the Telugu script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

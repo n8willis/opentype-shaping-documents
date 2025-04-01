@@ -5,7 +5,7 @@ text runs in scripts supported by the Universal Shaping Engine (<abbr>USE</abbr>
 model. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

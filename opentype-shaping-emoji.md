@@ -4,7 +4,7 @@ This document details the default shaping procedure needed to shape
 emoji sequences.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

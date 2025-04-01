@@ -1,6 +1,6 @@
 # Notes #
 
-This directory includes auxiliary information that is either
+This section includes auxiliary information that is either
 tangential to the main shaping-behavior documentation or is
 excessively long enough that trying to include it inline would disrupt
 the flow of the text for readers.
@@ -17,5 +17,5 @@ Notes included cover:
     when listing regular expressions in the shaping-behavior
     documentation, but which itself is not mandatory.
  - [Emoji implementation](/notes/emoji-implementation.md): Information
-    on the image formats, codepoint visibility, and <abbr>GSUB</abbr>/<abbr>GPOS</abbr> features
+    on the image formats, codepoint visibility, and <abbr title="Glyph Substitution table">GSUB</abbr>/<abbr title="Glyph Positioning table">GPOS</abbr> features
     used in real-world Emoji fonts distributed by major vendors.

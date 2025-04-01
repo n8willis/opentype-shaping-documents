@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Gurmukhi text](../opentype-shaping-gurmukhi.md).
 
-**Table of Contents**
+**Contents**
 
   - [Gurmukhi character table](#gurmukhi-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

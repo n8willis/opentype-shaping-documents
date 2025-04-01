@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Thai text](../opentype-shaping-thai-lao.md#the-thailao-shaping-model).
 
-**Table of Contents**
+**Contents**
 
   - [Thai character table](#thai-character-table)
   - [Miscellaneous character table](#miscellaneous-character-table)

@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Devanagari text](../opentype-shaping-devanagari.md).
 
-**Table of Contents**
+**Contents**
 
   - [Devanagari character table](#devanagari-character-table)
   - [Devanagari Extended character table](#devanagari-extended-character-table)
@@ -433,7 +433,7 @@ a conjunct between the two consonants.
 Note, however, that the "_Consonant_,Halant" subsequence in the above
 example may still trigger a half-forms feature. To prevent the
 application of the half-forms feature in addition to preventing the
-conjunct, the zero-width non-joiner (<abbr>ZWNJx</abbr>) must be used instead. The
+conjunct, the zero-width non-joiner (<abbr>ZWNJ</abbr>) must be used instead. The
 sequence "_Consonant_,Halant,ZWNJ,_Consonant_" should produce the
 first consonant in its standard form, followed by an explicit
 "Halant".

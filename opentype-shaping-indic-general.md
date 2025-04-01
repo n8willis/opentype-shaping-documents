@@ -5,7 +5,7 @@ Indic scripts, and defines the common pieces that script-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

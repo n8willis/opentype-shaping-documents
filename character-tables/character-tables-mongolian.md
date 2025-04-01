@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Mongolian text](../opentype-shaping-mongolian.md).
 
-**Table of Contents**
+**Contents**
 
   - [Mongolian character table](#mongolian-character-table)
   - [Mongolian Supplement character table](#mongolian-supplement-character-table)

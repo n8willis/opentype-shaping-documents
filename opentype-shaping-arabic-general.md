@@ -4,7 +4,7 @@ This document details the general shaping procedure shared by Arabic, N'Ko,
 Syriac, and Mongolian. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
