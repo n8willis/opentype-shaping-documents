@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Bengali shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -923,10 +926,15 @@ Bengali includes one post-base consonant.
     formed from a consonant.
 
 :::{figure-md}
-![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala composition")
+![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-yaphala}
 
 Yaphala composition
 :::
+
+
+```{svg-color-toggle-button} bengali-yaphala
+```
+
 
 > Note: some fonts may also implement the <samp>"Yaphala"</samp> post-base form for
 > <samp>"Halant,Yya"</samp> (`U+09CD`,`U+09DF`).
@@ -940,13 +948,14 @@ Bengali includes two below-base consonant forms:
 	
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-raphala}
 
 Raphala composition
 :::
 
+
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-baphala}
 
 Baphala composition
 :::
@@ -979,7 +988,7 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/bengali/bengali-matra-decompose.svg "Two-part matra decomposition")
+![Two-part matra decomposition](/images/bengali/bengali-matra-decompose.svg "Two-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #bengali-matra-decompose}
 
 Two-part matra decomposition
 :::
@@ -1072,13 +1081,13 @@ Bengali includes two below-base consonant forms:
 	
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-raphala-1}
 
 Raphala composition
 :::
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-baphala-1}
 
 Baphala composition
 :::
@@ -1271,7 +1280,7 @@ The context defined for a `nukt` feature is:
 :::
 
 :::{figure-md}
-![Nukta composition](/images/bengali/bengali-nukt.svg "Nukta composition")
+![Nukta composition](/images/bengali/bengali-nukt.svg "Nukta composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-nukt}
 
 Nukta composition
 :::
@@ -1318,13 +1327,13 @@ The context defined for an `akhn` feature is:
 :::
 
 :::{figure-md}
-![KSsa ligation](/images/bengali/bengali-akhn-kssa.svg "KSsa ligation")
+![KSsa ligation](/images/bengali/bengali-akhn-kssa.svg "KSsa ligation"){.shaping-demo .inline-svg .greyscale-svg #bengali-akhn-kssa}
 
 KSsa ligation
 :::
 
 :::{figure-md}
-![JNya ligation](/images/bengali/bengali-akhn-jnya.svg "JNya ligation")
+![JNya ligation](/images/bengali/bengali-akhn-jnya.svg "JNya ligation"){.shaping-demo .inline-svg .greyscale-svg #bengali-akhn-jnya}
 
 JNya ligation
 :::
@@ -1350,15 +1359,13 @@ The context defined for a `rphf` feature is:
 
 
 :::{figure-md}
-![Reph composition](/images/bengali/bengali-rphf.svg "Reph composition
-with common Ra")
+![Reph composition](/images/bengali/bengali-rphf.svg "Reph composition with common Ra"){.shaping-demo .inline-svg .greyscale-svg #bengali-rphf}
 
 Reph composition with common "Ra"
 :::
 
 :::{figure-md}
-![Reph composition](/images/bengali/bengali-rphf-as.svg "Reph
-composition with Assamese Ra")
+![Reph composition](/images/bengali/bengali-rphf-as.svg "Reph composition with Assamese Ra"){.shaping-demo .inline-svg .greyscale-svg #bengali-rphf-as}
 
 Reph composition with Assamese "Ra"
 :::
@@ -1394,13 +1401,13 @@ characteristic.
 
 
 :::{figure-md}
-![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition")
+![Raphala composition](/images/bengali/bengali-raphala.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-raphala-2}
 
 Raphala composition
 :::
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition")
+![Baphala composition](/images/bengali/bengali-baphala.svg "Baphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-baphala-2}
 
 Baphala composition
 :::
@@ -1448,7 +1455,7 @@ the shaping engine must test:
     flagged for potential `half` substitutions.
 
 :::{figure-md}
-![Half-form formation](/images/bengali/bengali-half-ka.svg "Half-form formation")
+![Half-form formation](/images/bengali/bengali-half-ka.svg "Half-form formation"){.shaping-demo .inline-svg .greyscale-svg #bengali-half-ka}
 
 Half-form formation
 :::
@@ -1459,7 +1466,7 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 :::{figure-md}
-![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala formation")
+![Yaphala composition](/images/bengali/bengali-yaphala.svg "Yaphala formation"){.shaping-demo .inline-svg .greyscale-svg #bengali-yaphala-1}
 
 Yaphala composition
 :::
@@ -1485,8 +1492,7 @@ The context defined for a `vatu` feature is:
 
 
 :::{figure-md}
-![Vattu variant ligation](/images/bengali/bengali-vatu.svg "Vattu
-variant ligation")
+![Vattu variant ligation](/images/bengali/bengali-vatu.svg "Vattu variant ligation"){.shaping-demo .inline-svg .greyscale-svg #bengali-vatu}
 
 Vattu variant ligation
 :::
@@ -1534,7 +1540,7 @@ must be applied after the `half` feature.
 
 
 :::{figure-md}
-![Conjunct ligation](/images/bengali/bengali-cjct.svg "Conjunct ligation")
+![Conjunct ligation](/images/bengali/bengali-cjct.svg "Conjunct ligation"){.shaping-demo .inline-svg .greyscale-svg #bengali-cjct}
 
 Conjunct ligation
 :::
@@ -1602,9 +1608,7 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra
-reordering](/images/bengali/bengali-matra-position.svg "Pre-base matra
-reordering")
+![Pre-base matra reordering](/images/bengali/bengali-matra-position.svg "Pre-base matra reordering"){.shaping-demo .inline-svg .greyscale-svg #bengali-matra-position}
 
 Pre-base matra reordering
 :::
@@ -1695,7 +1699,7 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr title="Glyph Substitution table">GSUB</abbr>.
 
 :::{figure-md}
-![Reph final reordering](/images/bengali/bengali-reph-position.svg)
+![Reph final reordering](/images/bengali/bengali-reph-position.svg){.shaping-demo .inline-svg .greyscale-svg #bengali-reph-position}
 
 Reph final reordering
 :::
@@ -1769,7 +1773,7 @@ The context defined for an `init` feature is:
 :::
 
 :::{figure-md}
-![Application of the init feature](/images/bengali/bengali-init.svg "Application of the init feature")
+![Application of the init feature](/images/bengali/bengali-init.svg "Application of the init feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-init}
 
 Application of the `init` feature
 :::
@@ -1781,7 +1785,7 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Application of the pres feature](/images/bengali/bengali-pres.svg "Application of the pres feature")
+![Application of the pres feature](/images/bengali/bengali-pres.svg "Application of the pres feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-pres}
 
 Application of the `pres` feature
 :::
@@ -1792,7 +1796,7 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/bengali/bengali-abvs.svg "Application of the abvs feature")
+![Application of the abvs feature](/images/bengali/bengali-abvs.svg "Application of the abvs feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-abvs}
 
 Application of the `abvs` feature
 :::
@@ -1804,7 +1808,7 @@ are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> or
 <samp>"Baphala"</samp> with contextual ligatures.
 
 :::{figure-md}
-![Application of the blws feature](/images/bengali/bengali-blws.svg "Application of the blws feature")
+![Application of the blws feature](/images/bengali/bengali-blws.svg "Application of the blws feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-blws}
 
 Application of the `blws` feature
 :::
@@ -1816,7 +1820,7 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures.
 
 :::{figure-md}
-![Application of the psts feature](/images/bengali/bengali-psts.svg "Application of the psts feature")
+![Application of the psts feature](/images/bengali/bengali-psts.svg "Application of the psts feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-psts}
 
 Application of the `psts` feature
 :::
@@ -1828,7 +1832,7 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic.
 
 :::{figure-md}
-![Application of the haln feature](/images/bengali/bengali-haln.svg "Application of the haln feature")
+![Application of the haln feature](/images/bengali/bengali-haln.svg "Application of the haln feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-haln}
 
 Application of the `haln` feature
 :::
@@ -1866,7 +1870,7 @@ characters. In Bengali, this includes <samp>"Reph"</samp> in addition to the
 diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Application of the abvm feature](/images/bengali/bengali-abvm.svg "Application of the abvm feature")
+![Application of the abvm feature](/images/bengali/bengali-abvm.svg "Application of the abvm feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-abvm}
 
 Application of the `abvm` feature
 :::
@@ -1877,7 +1881,7 @@ characters. In Bengali, this includes below-base dependent vowels
 <samp>"Baphala"</samp>.
 
 :::{figure-md}
-![Application of the blwm feature](/images/bengali/bengali-blwm.svg "Application of the blwm feature")
+![Application of the blwm feature](/images/bengali/bengali-blwm.svg "Application of the blwm feature"){.shaping-demo .inline-svg .greyscale-svg #bengali-blwm}
 
 Application of the `blwm` feature
 :::
