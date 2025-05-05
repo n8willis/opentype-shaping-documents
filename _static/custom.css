@@ -213,3 +213,142 @@ figcaption span.tt,
 figcaption span.code {
     background-color: #eff4f7; /* testing; needs to be lighter because text is grey */
 }
+
+/* Toggleable SVG clusters */
+/*                    
+/* Greyscale               */
+/* dc: dotted-circle       */
+.shaping-demo.greyscale-svg .dc {
+    fill: #666666;
+    stroke-width: 0%;
+}
+/* arrow: right-arrow      */
+.shaping-demo.greyscale-svg .arrow {
+    fill: #999999;
+    stroke-width: 0%;
+}
+/* z: ZWJ and ZWNJ         */
+.shaping-demo.greyscale-svg .z {
+    fill: #ffffff;
+    stroke: #999999;
+    stroke-width: 1px;
+}
+/* c0: cluster 0           */
+.shaping-demo.greyscale-svg .c0 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 1           */
+.shaping-demo.greyscale-svg .c1 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 2           */
+.shaping-demo.greyscale-svg .c2 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 3           */
+.shaping-demo.greyscale-svg .c3 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 4           */
+.shaping-demo.greyscale-svg .c4 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 5           */
+.shaping-demo.greyscale-svg .c5 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 6           */
+.shaping-demo.greyscale-svg .c6 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 7           */
+.shaping-demo.greyscale-svg .c7 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 8           */
+.shaping-demo.greyscale-svg .c8 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+/* c0: cluster 9           */
+.shaping-demo.greyscale-svg .c9 {
+    fill: #000000;
+    stroke-width: 0%;
+}
+
+/* Colorized               */
+/* c0: cluster 0           */
+/* dc: dotted-circle       */
+.shaping-demo.color-svg .dc {
+    fill: #666666;
+    stroke-width: 0%;
+}
+/* arrow: right-arrow      */
+.shaping-demo.color-svg .arrow {
+    fill: #999999;
+    stroke-width: 0%;
+}
+/* z: ZWJ and ZWNJ         */
+.shaping-demo.color-svg .z {
+    fill: #ffffff;
+    stroke: #999999;
+    stroke-width: 1px;
+}
+.shaping-demo.color-svg .c0 {
+    fill: #3366cc;
+    stroke-width: 0%;
+}
+/* c0: cluster 1           */
+.shaping-demo.color-svg .c1 {
+    fill: #dc3912;
+    stroke-width: 0%;
+}
+/* c0: cluster 2           */
+.shaping-demo.color-svg .c2 {
+    fill: #ff9900;
+    stroke-width: 0%;
+}
+/* c0: cluster 3           */
+.shaping-demo.color-svg .c3 {
+    fill: #109618;
+    stroke-width: 0%;
+}
+/* c0: cluster 4           */
+.shaping-demo.color-svg .c4 {
+    fill: #990099;
+    stroke-width: 0%;
+}
+/* c0: cluster 5           */
+.shaping-demo.color-svg .c5 {
+    fill: #0099c6;
+    stroke-width: 0%;
+}
+/* c0: cluster 6           */
+.shaping-demo.color-svg .c6 {
+    fill: #dd4477;
+    stroke-width: 0%;
+}
+/* c0: cluster 7           */
+.shaping-demo.color-svg .c7 {
+    fill: #66aa00;
+    stroke-width: 0%;
+}
+/* c0: cluster 8           */
+.shaping-demo.color-svg .c8 {
+    fill: #b82e2e;
+    stroke-width: 0%;
+}
+/* c0: cluster 9           */
+.shaping-demo.color-svg .c9 {
+    fill: #316395;
+    stroke-width: 0%;
+}
+
