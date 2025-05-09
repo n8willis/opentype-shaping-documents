@@ -1661,7 +1661,7 @@ the base consonant or syllable base, and all half forms.
 Pre-base matra reordering
 :::
 
-```{svg-color-toggle-button} bengali-matra-possition
+```{svg-color-toggle-button} bengali-matra-position
 ```
 
 > Note: OpenType and Unicode both state that if the syllable includes
