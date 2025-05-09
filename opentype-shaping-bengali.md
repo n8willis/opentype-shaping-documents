@@ -1099,7 +1099,7 @@ Raphala composition
 ```
 
 :::{figure-md}
-![Baphala composition](/images/bengali/bengali-baphala-2.svg "Baphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-baphala-1}
+![Baphala composition](/images/bengali/bengali-baphala-1.svg "Baphala composition"){.shaping-demo .inline-svg .greyscale-svg #bengali-baphala-1}
 
 Baphala composition
 :::
