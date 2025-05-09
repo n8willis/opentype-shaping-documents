@@ -39,24 +39,24 @@
 <filter id="bengali-cjct:local-greyscale"> <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/> <feComponentTransfer> <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> </feComponentTransfer> </filter></defs>
   <g id="bengali-cjct:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-cjct:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-cjct:id0:glyph0-1" x="16" y="122.125"/>
-  <use xlink:href="#bengali-cjct:id0:glyph0-2" x="85.40625" y="122.125"/>
-  <use xlink:href="#bengali-cjct:id0:glyph0-3" x="126.546875" y="122.125"/>
-  <use xlink:href="#bengali-cjct:id0:glyph0-4" x="151.1875" y="122.125"/>
-  <use xlink:href="#bengali-cjct:id0:glyph0-2" x="219.828125" y="122.125"/>
+  <use xlink:href="#bengali-cjct:id0:glyph0-1" x="16" y="122.125" class="c0"/>
+  <use xlink:href="#bengali-cjct:id0:glyph0-2" x="85.40625" y="122.125" class="dc"/>
+  <use xlink:href="#bengali-cjct:id0:glyph0-3" x="126.546875" y="122.125" class="c1"/>
+  <use xlink:href="#bengali-cjct:id0:glyph0-4" x="151.1875" y="122.125" class="c2"/>
+  <use xlink:href="#bengali-cjct:id0:glyph0-2" x="219.828125" y="122.125" class="dc"/>
 </g>
 </g>
 </g>
   <g id="bengali-cjct:id1:id1" transform="matrix(1.25,0,0,1.25,377.01171875,11.38671875)"><g id="bengali-cjct:id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-cjct:id1:glyph0-1" x="0" y="120.84375"/>
+  <use xlink:href="#bengali-cjct:id1:glyph0-1" x="0" y="120.84375" class="arrow"/>
 </g>
 </g>
 </g>
   <g id="bengali-cjct:id2:id2" transform="matrix(1.25,0,0,1.25,509.609375,0.0)"><g id="bengali-cjct:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-cjct:id2:glyph0-1" x="16" y="122.125"/>
-  <use xlink:href="#bengali-cjct:id2:glyph0-2" x="94.984375" y="122.125"/>
+  <use xlink:href="#bengali-cjct:id2:glyph0-1" x="16" y="122.125" class="c0"/>
+  <use xlink:href="#bengali-cjct:id2:glyph0-2" x="94.984375" y="122.125" class="dc"/>
 </g>
 </g>
 </g>

@@ -30,20 +30,20 @@
 <filter id="bengali-psts:local-greyscale"> <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/> <feComponentTransfer> <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> </feComponentTransfer> </filter></defs>
   <g id="bengali-psts:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-psts:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-psts:id0:glyph0-1" x="16" y="122.125"/>
-  <use xlink:href="#bengali-psts:id0:glyph0-2" x="76.171875" y="122.125"/>
+  <use xlink:href="#bengali-psts:id0:glyph0-1" x="16" y="122.125" class="c0"/>
+  <use xlink:href="#bengali-psts:id0:glyph0-2" x="76.171875" y="122.125" class="c1"/>
 </g>
 </g>
 </g>
   <g id="bengali-psts:id1:id1" transform="matrix(1.25,0,0,1.25,141.89453125,11.38671875)"><g id="bengali-psts:id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-psts:id1:glyph0-1" x="0" y="120.84375"/>
+  <use xlink:href="#bengali-psts:id1:glyph0-1" x="0" y="120.84375" class="arrow"/>
 </g>
 </g>
 </g>
   <g id="bengali-psts:id2:id2" transform="matrix(1.25,0,0,1.25,274.4921875,0.0)"><g id="bengali-psts:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-psts:id2:glyph0-1" x="16" y="122.125"/>
+  <use xlink:href="#bengali-psts:id2:glyph0-1" x="16" y="122.125" class="c0"/>
 </g>
 </g>
 </g>

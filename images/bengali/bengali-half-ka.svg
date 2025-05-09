@@ -39,23 +39,23 @@
 <filter id="bengali-half-ka:local-greyscale"> <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/> <feComponentTransfer> <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> </feComponentTransfer> </filter></defs>
   <g id="bengali-half-ka:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-half-ka:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-half-ka:id0:glyph0-1" x="16" y="122.125"/>
-  <use xlink:href="#bengali-half-ka:id0:glyph0-2" x="93.328125" y="122.125"/>
-  <use xlink:href="#bengali-half-ka:id0:glyph0-3" x="134.46875" y="122.125"/>
-  <use xlink:href="#bengali-half-ka:id0:glyph0-4" x="159.109375" y="122.125"/>
+  <use xlink:href="#bengali-half-ka:id0:glyph0-1" x="16" y="122.125" class="c0"/>
+  <use xlink:href="#bengali-half-ka:id0:glyph0-2" x="93.328125" y="122.125" class="dc"/>
+  <use xlink:href="#bengali-half-ka:id0:glyph0-3" x="134.46875" y="122.125" class="c1"/>
+  <use xlink:href="#bengali-half-ka:id0:glyph0-4" x="159.109375" y="122.125" class="c2"/>
 </g>
 </g>
 </g>
   <g id="bengali-half-ka:id1:id1" transform="matrix(1.25,0,0,1.25,291.2109375,11.38671875)"><g id="bengali-half-ka:id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-half-ka:id1:glyph0-1" x="0" y="120.84375"/>
+  <use xlink:href="#bengali-half-ka:id1:glyph0-1" x="0" y="120.84375" class="arrow"/>
 </g>
 </g>
 </g>
   <g id="bengali-half-ka:id2:id2" transform="matrix(1.25,0,0,1.25,423.80859375,0.0)"><g id="bengali-half-ka:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-half-ka:id2:glyph0-1" x="16" y="122.125"/>
-  <use xlink:href="#bengali-half-ka:id2:glyph0-2" x="82.328125" y="122.125"/>
+  <use xlink:href="#bengali-half-ka:id2:glyph0-1" x="16" y="122.125" class="c0"/>
+  <use xlink:href="#bengali-half-ka:id2:glyph0-2" x="82.328125" y="122.125" class="c2"/>
 </g>
 </g>
 </g>
