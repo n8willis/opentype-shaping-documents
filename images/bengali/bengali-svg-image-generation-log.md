@@ -18,7 +18,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-matra-decompose
 
 svg_stack.py --direction=h bengali-matra-decompose-before.svg right-arrow.svg bengali-matra-decompose-after.svg > bengali-matra-decompose.svg
 
-cluster_styles = [c0,dc,c0,arrow,c0,dc,z,dc,c1]
+cluster_styles = [c0,dc,c0,arrow,c0,dc,dc,c1]
 
 
 ## 2.7 Post-base consonants
@@ -28,6 +28,12 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-yaphala-before.
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=bengali-yaphala-after.svg --features=-init,+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf --unicodes=25cc,09cd,09af
 
 svg_stack.py --direction=h bengali-yaphala-before.svg right-arrow.svg bengali-yaphala-after.svg > bengali-yaphala.svg
+
+cluster_styles = [dc,c0,c1,arrow,dc,c1]
+
+#### Duplicates for other subsections
+
+cp bengali-yaphala.svg bengail-yaphala-1.svg
 
 cluster_styles = [dc,c0,c1,arrow,dc,c1]
 
@@ -103,6 +109,15 @@ svg_stack.py --direction=h bengali-raphala-before.svg right-arrow.svg bengali-ra
 
 cluster_styles = [dc,c0,c1,arrow,dc,c0]
 
+#### Duplicates for other subsections
+
+cp bengali-raphala.svg bengail-raphala-1.svg
+
+cluster_styles = [dc,c0,c1,arrow,dc,c0]
+
+cp bengali-raphala.svg bengail-raphala-2.svg
+
+cluster_styles = [dc,c0,c1,arrow,dc,c0]
 
 ### Baphala
 
