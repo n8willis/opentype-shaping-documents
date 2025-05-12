@@ -39,9 +39,9 @@
 </defs>
   <g id="bengali-abvs:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-abvs:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-abvs:id0:glyph0-1" x="16" y="122.125" class="c0"/>
-  <use xlink:href="#bengali-abvs:id0:glyph0-2" x="58.34375" y="125.421875" class="c1"/>
-  <use xlink:href="#bengali-abvs:id0:glyph0-3" x="81.78125" y="122.125" class="dc"/>
+  <use xlink:href="#bengali-abvs:id0:glyph0-1" x="16" y="122.125" class="dc"/>
+  <use xlink:href="#bengali-abvs:id0:glyph0-2" x="58.34375" y="125.421875" class="c0"/>
+  <use xlink:href="#bengali-abvs:id0:glyph0-3" x="81.78125" y="122.125" class="c1"/>
   <use xlink:href="#bengali-abvs:id0:glyph0-4" x="96.84375" y="117.390625" class="c2"/>
 </g>
 </g>
@@ -54,8 +54,8 @@
 </g>
   <g id="bengali-abvs:id2:id2" transform="matrix(1.25,0,0,1.25,292.75390625,0.0)"><g id="bengali-abvs:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#bengali-abvs:id2:glyph0-1" x="16" y="122.125" class="c0"/>
-  <use xlink:href="#bengali-abvs:id2:glyph0-2" x="81.78125" y="122.125" class="c1"/>
+  <use xlink:href="#bengali-abvs:id2:glyph0-1" x="16" y="122.125" class="dc"/>
+  <use xlink:href="#bengali-abvs:id2:glyph0-2" x="81.78125" y="122.125" class="c3"/>
 </g>
 </g>
 </g>
