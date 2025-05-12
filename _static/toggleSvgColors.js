@@ -5,18 +5,12 @@ function toggleColor(elementId) {
     if (demoImage.classList.contains("shaping-demo")) {
 	if (demoImage.classList.contains("greyscale-svg")) {
 	    
-	    demoImage.style.filter = /* deprecated */
-		"url(/images/color-filters.svg#colorize)";
-	    
 	    demoImage.classList.add("color-svg");
 	    demoImage.classList.remove("greyscale-svg");
 	    
 	} else {
 	    if (demoImage.classList.contains("color-svg")) {
-		
-		demoImage.style.filter = /* deprecated */
-		    "url(/images/color-filters.svg#greyscale)";
-		
+
 		demoImage.classList.add("greyscale-svg");
 		demoImage.classList.remove("color-svg");
 	      

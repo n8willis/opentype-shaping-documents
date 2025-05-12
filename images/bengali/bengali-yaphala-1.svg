@@ -1,14 +1,6 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with svg_stack (http://github.com/astraw/svg_stack) --><svg xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="489.51171875" height="224.1796875" id="bengali-yaphala-1">
   <defs>
-  <filter id="bengali-yaphala-1:local-greyscale-test">
-    <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/>
-    <feComponentTransfer>
-      <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/>
-      <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/>
-      <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/>
-    </feComponentTransfer>
-  </filter>
 <g>
 <symbol overflow="visible" id="bengali-yaphala-1:id0:glyph0-0">
 <path style="stroke:none;" d="M 10.34375 0 L 10.34375 -78.546875 L 55.546875 -78.546875 L 55.546875 0 Z M 15.953125 -5.609375 L 49.9375 -5.609375 L 49.9375 -72.9375 L 15.953125 -72.9375 Z M 15.953125 -5.609375 "/>
@@ -42,7 +34,7 @@
 <path style="stroke:none;" d="M 9.125 4.625 L 6.375 0.875 C 9.601562 -1.175781 11.953125 -3.578125 13.421875 -6.328125 C 14.890625 -9.078125 15.625 -12.066406 15.625 -15.296875 C 15.625 -17.710938 15.179688 -20.09375 14.296875 -22.4375 C 13.421875 -24.78125 12.375 -27.144531 11.15625 -29.53125 C 9.945312 -31.914062 8.898438 -34.351562 8.015625 -36.84375 C 7.140625 -39.34375 6.703125 -41.910156 6.703125 -44.546875 C 6.703125 -48.503906 7.75 -51.988281 9.84375 -55 C 11.9375 -58.007812 14.300781 -60.578125 16.9375 -62.703125 L 0.546875 -62.703125 L -3.1875 -68.421875 L 30.796875 -68.421875 L 34.546875 -62.703125 L 23.875 -62.703125 C 21.894531 -61.160156 19.988281 -58.976562 18.15625 -56.15625 C 16.320312 -53.332031 15.40625 -50.050781 15.40625 -46.3125 C 15.40625 -43.738281 15.84375 -41.332031 16.71875 -39.09375 C 17.601562 -36.863281 18.628906 -34.648438 19.796875 -32.453125 C 20.972656 -30.253906 22 -27.941406 22.875 -25.515625 C 23.757812 -23.097656 24.203125 -20.457031 24.203125 -17.59375 C 24.203125 -12.90625 22.769531 -8.617188 19.90625 -4.734375 C 17.050781 -0.847656 13.457031 2.269531 9.125 4.625 Z M 9.125 4.625 "/>
 </symbol>
 </g>
-<filter id="bengali-yaphala-1:local-greyscale"> <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/> <feComponentTransfer> <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> </feComponentTransfer> </filter></defs>
+</defs>
   <g id="bengali-yaphala-1:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-yaphala-1:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#bengali-yaphala-1:id0:glyph0-1" x="16" y="122.125" class="dc"/>

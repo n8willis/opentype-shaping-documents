@@ -32,8 +32,7 @@
 <symbol overflow="visible" id="bengali-rphf:id2:glyph0-2">
 <path style="stroke:none;" d="M -10.5625 -76.453125 L -17.375 -83.15625 L 10.015625 -102.40625 L 13.3125 -100.765625 Z M -10.5625 -76.453125 "/>
 </symbol>
-</g>
-<filter id="bengali-rphf:local-greyscale"> <feColorMatrix type="saturate" values="0.0" color-interpolation-filters="sRGB"/> <feComponentTransfer> <feFuncR type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncG type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> <feFuncB type="gamma" exponent="4.0" amplitude="1.0" offset="0"/> </feComponentTransfer> </filter></defs>
+</g></defs>
   <g id="bengali-rphf:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="bengali-rphf:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#bengali-rphf:id0:glyph0-1" x="16" y="122.125" class="c0"/>
