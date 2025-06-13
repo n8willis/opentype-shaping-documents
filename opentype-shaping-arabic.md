@@ -578,11 +578,13 @@ variants, based on examining the language setting of the text run.
 > <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 :::{figure-md}
-![Localized form substitution](/images/arabic/arabic-locl.png "Localized form substitution")
+![Localized form substitution](/images/arabic/arabic-locl.svg "Localized form substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-locl}
 
 Localized form substitution
 :::
 
+```{svg-color-toggle-button} arabic-locl
+```
 
 
 #### Stage 5, step 2: isol ####
@@ -597,10 +599,13 @@ the isolated form of the letter.
 > codepoints.
 
 :::{figure-md}
-![Isolated form substitution](/images/arabic/arabic-isol.png "Isolated form substitution")
+![Isolated form substitution](/images/arabic/arabic-isol.svg "Isolated form substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-isol}
 
 Isolated form substitution
 :::
+
+```{svg-color-toggle-button} arabic-isol
+```
 
 
 
@@ -610,10 +615,13 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/arabic/arabic-fina.png "Final form substitution")
+![Final form substitution](/images/arabic/arabic-fina.svg "Final form substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-fina}
 
 Final form substitution
 :::
+
+```{svg-color-toggle-button} arabic-fina
+```
 
 
 
@@ -631,10 +639,13 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/arabic/arabic-medi.png "Medial form substitution")
+![Medial form substitution](/images/arabic/arabic-medi.svg "Medial form substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-medi}
 
 Medial form substitution
 :::
+
+```{svg-color-toggle-button} arabic-medi
+```
 
 
 
@@ -648,10 +659,13 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/arabic/arabic-init.png "Initial form substitution")
+![Initial form substitution](/images/arabic/arabic-init.svg "Initial form substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-init}
 
 Initial form substitution
 :::
+
+```{svg-color-toggle-button} arabic-init
+```
 
 
 
@@ -662,10 +676,13 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Required ligature substitution](/images/arabic/arabic-rlig.png "Required ligature substitution")
+![Required ligature substitution](/images/arabic/arabic-rlig.svg "Required ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-rlig}
 
 Required ligature substitution
 :::
+
+```{svg-color-toggle-button} arabic-rlig
+```
 
 
 
@@ -694,10 +711,13 @@ correctness. However, unlike `rclt`, the substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
 :::{figure-md}
-![Contextual alternate substitution](/images/arabic/arabic-calt.png "Contextual alternate substitution")
+![Contextual alternate substitution](/images/arabic/arabic-calt.svg "Contextual alternate substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-calt}
 
 Contextual alternate substitution
 :::
+
+```{svg-color-toggle-button} arabic-calt
+```
 
 
 
@@ -723,10 +743,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/arabic/arabic-liga.png "Standard ligature substitution")
+![Standard ligature substitution](/images/arabic/arabic-liga.svg "Standard ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-liga}
 
 Standard ligature substitution
 :::
+
+```{svg-color-toggle-button} arabic-liga
+```
 
 
 
@@ -781,10 +804,13 @@ that the entry point of the current glyph meets the exit point of the
 preceding glyph.
 
 :::{figure-md}
-![Cursive positioning](/images/arabic/arabic-curs.png "Cursive positioning")
+![Cursive positioning](/images/arabic/arabic-curs.svg "Cursive positioning"){.shaping-demo .inline-svg .greyscale-svg #arabic-curs}
 
 Cursive positioning
 :::
+
+```{svg-color-toggle-button} arabic-curs
+```
 
 
 
@@ -798,10 +824,13 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/arabic/arabic-mark.png "Mark positioning")
+![Mark positioning](/images/arabic/arabic-mark.svg "Mark positioning"){.shaping-demo .inline-svg .greyscale-svg #arabic-mark}
 
 Mark positioning
 :::
+
+```{svg-color-toggle-button} arabic-mark
+```
 
 
 #### Stage 7, step 4: mkmk ####
