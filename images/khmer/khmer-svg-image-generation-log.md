@@ -44,6 +44,14 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=khmer-pref-after.svg --
 svg_stack --direction=h khmer-pref-before.svg right-arrow.svg khmer-pref-after.svg > khmer-pref.svg
 
 
+#### Duplicates for other subsections
+
+cp khmer-pref.svg khmer-pref-1.svg
+
+cluster_styles = [
+
+
+
 ## 3.1 `locl`
 
 No examples found in Noto Khmer.
