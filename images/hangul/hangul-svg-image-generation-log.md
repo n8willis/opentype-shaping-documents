@@ -71,7 +71,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tone-before.svg 
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tone-after.svg --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=1111,116b,11a8,302f
 
-
+svg_stack.py --direction=h hangul-tone-before.svg right-arrow.svg hangul-tone-after.svg > hangul-tone.svg
 
 
 
