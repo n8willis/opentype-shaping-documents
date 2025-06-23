@@ -17,7 +17,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lv-syllable.svg 
 
 ## LVT example
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lvt-syllable.svg --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110e,1166,11a8
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lvt-syllable.svg --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110e,1166,11ae
 
 
 ## 3. Compose the syllable

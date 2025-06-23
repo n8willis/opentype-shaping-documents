@@ -17,7 +17,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lv-syllable.png 
 
 ## LVT example
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lvt-syllable.png --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110e,1166,11a
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-lvt-syllable.png --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110e,1166,11ae
 
 
 ## 3. Compose the syllable
@@ -51,14 +51,14 @@ montage hangul-ljmo-before.png right-arrow.png hangul-ljmo-after.png -geometry +
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-before.png --features=+ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-after.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-after.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
 
 montage hangul-vjmo-before.png right-arrow.png hangul-vjmo-after.png -geometry +0+0 -background transparent hangul-vjmo.png
 
 
 ## 5.4 `tjmo`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-before.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-before.png --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-after.png --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
 
