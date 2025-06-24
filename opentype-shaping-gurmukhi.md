@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Gurmukhi shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -929,10 +932,13 @@ Gurmukhi includes one post-base form:
   - <samp>"Halant,Ya"</samp> takes on a post-base form.
   
 :::{figure-md}
-![Post-base consonants](/images/gurmukhi/gurmukhi-pstf.svg "Post-base consonants")
+![Post-base consonants](/images/gurmukhi/gurmukhi-pstf.svg "Post-base consonants"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-pstf}
 
 Post-base consonants
 :::
+
+```{svg-color-toggle-button} gurmukhi-pstf
+```
 
 
 Gurmukhi includes three below-base consonant forms:
@@ -1230,10 +1236,13 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/gurmukhi/gurmukhi-nukt.svg "Nukta composition")
+![Nukta composition](/images/gurmukhi/gurmukhi-nukt.svg "Nukta composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-nukt}
 
 Nukta composition
 :::
+
+```{svg-color-toggle-button} gurmukhi-nukt
+```
 
 
 
@@ -1315,24 +1324,33 @@ characteristic.
 
 
 :::{figure-md}
-![Below-base Ra composition](/images/gurmukhi/gurmukhi-blwf-ra.svg "Below-base Ra composition")
+![Below-base Ra composition](/images/gurmukhi/gurmukhi-blwf-ra.svg "Below-base Ra composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-blwf-ra}
 
 Below-base Ra composition
 :::
 
+```{svg-color-toggle-button} gurmukhi-blwf-ra
+```
+
 
 :::{figure-md}
-![Below-base Va composition](/images/gurmukhi/gurmukhi-blwf-va.svg "Below-base Va composition")
+![Below-base Va composition](/images/gurmukhi/gurmukhi-blwf-va.svg "Below-base Va composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-blwf-va}
 
 Below-base Va composition
 :::
 
+```{svg-color-toggle-button} gurmukhi-blwf-va
+```
+
 
 :::{figure-md}
-![Below-base Ha composition](/images/gurmukhi/gurmukhi-blwf-ha.svg "Below-base Ha composition")
+![Below-base Ha composition](/images/gurmukhi/gurmukhi-blwf-ha.svg "Below-base Ha composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-blwf-ha}
 
 Below-base Ha composition
 :::
+
+```{svg-color-toggle-button} gurmukhi-blwf-ha
+```
 
 
 #### Stage 3, step 8: abvf ####
@@ -1382,10 +1400,13 @@ the shaping engine must test:
 > glyphs, as illustrated here.
 
 :::{figure-md}
-![Half-form composition](/images/gurmukhi/gurmukhi-half.svg "Half-form composition")
+![Half-form composition](/images/gurmukhi/gurmukhi-half.svg "Half-form composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-half}
 
 Half-form composition
 :::
+
+```{svg-color-toggle-button} gurmukhi-half
+```
 
 
 #### Stage 3, step 10: pstf ####
@@ -1397,10 +1418,13 @@ Gurmukhi includes one post-base form:
   - <samp>"Halant,Ya"</samp> takes on a post-base form.
 
 :::{figure-md}
-![Post-base Ya composition](/images/gurmukhi/gurmukhi-pstf.svg "Post-base Ya composition")
+![Post-base Ya composition](/images/gurmukhi/gurmukhi-pstf-1.svg "Post-base Ya composition"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-pstf-1}
 
 Post-base Ya composition
 :::
+
+```{svg-color-toggle-button} gurmukhi-pstf-1
+
 
 
 #### Stage 3, step 11: vatu ####
@@ -1524,10 +1548,13 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.svg "Pre-base matra positioning")
+![Pre-base matra positioning](/images/gurmukhi/gurmukhi-matra-position.svg "Pre-base matra positioning"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-matra-position}
 
 Pre-base matra positioning
 :::
+
+```{svg-color-toggle-button} gurmukhi-matra-position
+```
 
 
 > Note: OpenType and Unicode both state that if the syllable includes
@@ -1673,10 +1700,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base substitutions](/images/gurmukhi/gurmukhi-abvs.svg "Above-base substitutions")
+![Above-base substitutions](/images/gurmukhi/gurmukhi-abvs.svg "Above-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-abvs}
 
 Above-base substitutions
 :::
+
+```{svg-color-toggle-button} gurmukhi-abvs
+```
 
 
 
@@ -1686,10 +1716,13 @@ are followed by below-base-consonant forms (like those of <samp>"Ra"</samp>, <sa
 <samp>"Va"</samp>, or <samp>"Yakash"</samp>) with contextual ligatures.
 
 :::{figure-md}
-![Below-base substitutions](/images/gurmukhi/gurmukhi-blws.svg "Below-base substitutions")
+![Below-base substitutions](/images/gurmukhi/gurmukhi-blws.svg "Below-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-blws}
 
 Below-base substitutions
 :::
+
+```{svg-color-toggle-button} gurmukhi-blws
+```
 
 
 
@@ -1704,10 +1737,13 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![Halant form substitutions](/images/gurmukhi/gurmukhi-haln.svg "Halant form substitutions")
+![Halant form substitutions](/images/gurmukhi/gurmukhi-haln.svg "Halant form substitutions"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-haln}
 
 Halant form substitutions
 :::
+
+```{svg-color-toggle-button} gurmukhi-haln
+```
 
 
 > Note: The `calt` feature, which allows for generalized application
@@ -1742,10 +1778,13 @@ characters. In Gurmukhi, this includes <samp>"Reph"</samp> in addition to the
 diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/gurmukhi/gurmukhi-abvm.svg "Above-base mark positioning")
+![Above-base mark positioning](/images/gurmukhi/gurmukhi-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-abvm}
 
 Above-base mark positioning
 :::
+
+```{svg-color-toggle-button} gurmukhi-abvm
+```
 
 
 The `blwm` feature positions below-base marks for attachment to base
@@ -1754,10 +1793,13 @@ characters. In Gurmukhi, this includes below-base dependent vowels
 <samp>"Va"</samp>.
 
 :::{figure-md}
-![Below-base mark positioning](/images/gurmukhi/gurmukhi-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/gurmukhi/gurmukhi-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} gurmukhi-blwm
+```
 
 
 ## The `<guru>` shaping model ##

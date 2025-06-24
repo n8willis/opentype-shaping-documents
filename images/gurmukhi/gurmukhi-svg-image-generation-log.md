@@ -21,6 +21,12 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=gurmukhi-pstf-after.svg
 
 svg_stack --direction=h gurmukhi-pstf-before.svg right-arrow.svg gurmukhi-pstf-after.svg > gurmukhi-pstf.svg
 
+#### Duplicates for other subsections
+
+cp gurmukhi-pstf.svg gurmukhi-pstf-1.svg
+
+cluster_styles = [
+
 
 ## 3.2 `nukt`
 
