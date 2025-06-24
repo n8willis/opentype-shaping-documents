@@ -236,7 +236,7 @@ figcaption span.code {
 }
 /* z: ZWJ and ZWNJ         */
 .shaping-demo.greyscale-svg .z {
-    fill: #ffffff;
+    fill: #999999;
     stroke: #999999;
     stroke-width: 1px;
 }
@@ -304,7 +304,7 @@ figcaption span.code {
 }
 /* z: ZWJ and ZWNJ         */
 .shaping-demo.color-svg .z {
-    fill: #ffffff;
+    fill: #999999;
     stroke: #999999;
     stroke-width: 1px;
 }

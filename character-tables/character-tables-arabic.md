@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Arabic text](../opentype-shaping-arabic.md).
 
-**Contents****
+**Contents**
 
   - [Arabic character table](#arabic-character-table)
   - [Arabic Supplement character table](#arabic-supplement-character-table)

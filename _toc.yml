@@ -30,12 +30,12 @@ subtrees:
         title: Malayalam
       - file: opentype-shaping-oriya
         title: Oriya
+      - file: opentype-shaping-sinhala
+        title: Sinhala
       - file: opentype-shaping-tamil
         title: Tamil
       - file: opentype-shaping-telugu
         title: Telugu
-      - file: opentype-shaping-sinhala
-        title: Sinhala
       - file: opentype-shaping-vedic-extensions
         title: Vedic extensions
   - file: opentype-shaping-arabic-general

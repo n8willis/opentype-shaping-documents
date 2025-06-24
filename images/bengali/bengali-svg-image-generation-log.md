@@ -33,7 +33,7 @@ cluster_styles = [dc,c0,c1,arrow,dc,c1]
 
 #### Duplicates for other subsections
 
-cp bengali-yaphala.svg bengail-yaphala-1.svg
+cp bengali-yaphala.svg bengali-yaphala-1.svg
 
 cluster_styles = [dc,c0,c1,arrow,dc,c1]
 
@@ -111,11 +111,11 @@ cluster_styles = [dc,c0,c1,arrow,dc,c0]
 
 #### Duplicates for other subsections
 
-cp bengali-raphala.svg bengail-raphala-1.svg
+cp bengali-raphala.svg bengali-raphala-1.svg
 
 cluster_styles = [dc,c0,c1,arrow,dc,c0]
 
-cp bengali-raphala.svg bengail-raphala-2.svg
+cp bengali-raphala.svg bengali-raphala-2.svg
 
 cluster_styles = [dc,c0,c1,arrow,dc,c0]
 
