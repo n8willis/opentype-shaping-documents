@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Hebrew script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -257,10 +260,13 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![ccmp composition](/images/hebrew/hebrew-ccmp.svg "ccmp composition")
+![ccmp composition](/images/hebrew/hebrew-ccmp.svg "ccmp composition"){.shaping-demo .inline-svg .greyscale-svg #hebrew-ccmp}
 
 ccmp composition
 :::
+
+```{svg-color-toggle-button} hebrew-ccmp
+```
 
 
 
@@ -308,10 +314,13 @@ glyphs in the block have a single composing sequence.
 > lookup in <abbr title="Glyph Substitution table">GSUB</abbr>, in which case this stage will involve no additional work.
 
 :::{figure-md}
-![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition")
+![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition"){.shaping-demo .inline-svg .greyscale-svg #hebrew-apf}
 
 Alphabetic Presentation forms composition
 :::
+
+```{svg-color-toggle-button} hebrew-apf
+```
 
 
 
@@ -361,10 +370,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/hebrew/hebrew-liga.svg "Standard ligature substitution")
+![Standard ligature substitution](/images/hebrew/hebrew-liga.svg "Standard ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #hebrew-liga}
 
 Standard ligature substitution
 :::
+
+```{svg-color-toggle-button} hebrew-liga
+```
 
 
 
@@ -375,10 +387,13 @@ off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.svg "Discretionary ligature substitution")
+![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.svg "Discretionary ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #hebrew-dlig}
 
 Discretionary ligature substitution
 :::
+
+```{svg-color-toggle-button} hebrew-dlig
+```
 
 
 
@@ -404,7 +419,10 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/hebrew/hebrew-mark.svg "Mark positioning")
+![Mark positioning](/images/hebrew/hebrew-mark.svg "Mark positioning"){.shaping-demo .inline-svg .greyscale-svg #hebrew-mark}
 
 Mark positioning
 :::
+
+```{svg-color-toggle-button} hebrew-mark
+```
