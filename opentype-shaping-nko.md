@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # N'Ko script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -536,10 +539,13 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/nko/nko-fina.svg "Final form substitution")
+![Final form substitution](/images/nko/nko-fina.svg "Final form substitution"){.shaping-demo .inline-svg .greyscale-svg #nko-fina}
 
 Final form substitution
 :::
+
+```{svg-color-toggle-button} nko-fina
+```
 
 
 #### Stage 5, step 4: fin2 ####
@@ -556,10 +562,13 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/nko/nko-medi.svg "Medial form substitution")
+![Medial form substitution](/images/nko/nko-medi.svg "Medial form substitution"){.shaping-demo .inline-svg .greyscale-svg #nko-medi}
 
 Medial form substitution
 :::
+
+```{svg-color-toggle-button} nko-medi
+```
 
 
 #### Stage 5, step 7: med2 ####
@@ -572,10 +581,13 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/nko/nko-init.svg "Initial form substitution")
+![Initial form substitution](/images/nko/nko-init.svg "Initial form substitution"){.shaping-demo .inline-svg .greyscale-svg #nko-init}
 
 Initial form substitution
 :::
+
+```{svg-color-toggle-button} nko-init
+```
 
 
 #### Stage 5, step 9: rlig ####
@@ -677,10 +689,13 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/nko/nko-mark.svg "Mark positioning")
+![Mark positioning](/images/nko/nko-mark.svg "Mark positioning"){.shaping-demo .inline-svg .greyscale-svg #nko-mark}
 
 Mark positioning
 :::
+
+```{svg-color-toggle-button} nko-mark
+```
 
 
 #### 7.4 `mkmk` ####
