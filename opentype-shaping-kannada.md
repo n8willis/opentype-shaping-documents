@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Kannada shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -933,10 +936,13 @@ completed before the shaping engine begins step three, below.
 
 
 :::{figure-md}
-![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.svg "Multi-part matra decomposition")
+![Multi-part matra decomposition](/images/kannada/kannada-matra-decomposition.svg "Multi-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #kannada-matra-decomposition}
 
 Multi-part matra decomposition
 :::
+
+```{svg-color-toggle-button} kannada-matra-decomposition
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -1201,10 +1207,13 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![Nukta composition](/images/kannada/kannada-nukt.svg "Nukta composition")
+![Nukta composition](/images/kannada/kannada-nukt.svg "Nukta composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-nukt}
 
 Nukta composition
 :::
+
+```{svg-color-toggle-button} kannada-nukt
+```
 
 
 #### Stage 3, step 3: akhn ####
@@ -1228,17 +1237,23 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![KSsa ligation](/images/kannada/kannada-akhn-kssa.svg "KSsa ligation")
+![KSsa ligation](/images/kannada/kannada-akhn-kssa.svg "KSsa ligation"){.shaping-demo .inline-svg .greyscale-svg #kannada-akhn-kssa}
 
 KSsa ligation
 :::
 
+```{svg-color-toggle-button} kannada-akhn-kssa
+```
+
 
 :::{figure-md}
-![JNya ligation](/images/kannada/kannada-akhn-jnya.svg "JNya ligation")
+![JNya ligation](/images/kannada/kannada-akhn-jnya.svg "JNya ligation"){.shaping-demo .inline-svg .greyscale-svg #kannada-akhn-jnya}
 
 JNya ligation
 :::
+
+```{svg-color-toggle-button} kannada-akhn-jnya
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1258,10 +1273,13 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph composition](/images/kannada/kannada-rphf.svg "Reph composition")
+![Reph composition](/images/kannada/kannada-rphf.svg "Reph composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-rphf}
 
 Reph composition
 :::
+
+```{svg-color-toggle-button} kannada-rphf
+```
 
 
 #### Stage 3, step 5: rkrf ####
@@ -1289,10 +1307,13 @@ form.
 
 
 :::{figure-md}
-![Below-base form composition](/images/kannada/kannada-blwf.svg "Below-base form composition")
+![Below-base form composition](/images/kannada/kannada-blwf.svg "Below-base form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-blwf}
 
 Below-base form composition
 :::
+
+```{svg-color-toggle-button} kannada-blwf
+```
 
 
 #### Stage 3, step 8: abvf ####
@@ -1514,10 +1535,13 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr title="Glyph Substitution table">GSUB</abbr>.
 
 :::{figure-md}
-![Reph positioning](/images/kannada/kannada-reph-position.svg "Reph positioning")
+![Reph positioning](/images/kannada/kannada-reph-position.svg "Reph positioning"){.shaping-demo .inline-svg .greyscale-svg #kannada-reph-position}
 
 Reph positioning
 :::
+
+```{svg-color-toggle-button} kannada-reph-position
+```
 
 
 #### Stage 4, step 4: Pre-base-reordering consonants ####
@@ -1567,10 +1591,13 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base form composition](/images/kannada/kannada-pres.svg "Pre-base form composition")
+![Pre-base form composition](/images/kannada/kannada-pres.svg "Pre-base form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-pres}
 
 Pre-base form composition
 :::
+
+```{svg-color-toggle-button} kannada-pres
+```
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
@@ -1578,10 +1605,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form composition](/images/kannada/kannada-abvs.svg "Above-base form composition")
+![Above-base form composition](/images/kannada/kannada-abvs.svg "Above-base form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-abvs}
 
 Above-base form composition
 :::
+
+```{svg-color-toggle-button} kannada-abvs
+```
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
@@ -1590,10 +1620,13 @@ below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
 :::{figure-md}
-![Below-base form composition](/images/kannada/kannada-blws.svg "Below-base form composition")
+![Below-base form composition](/images/kannada/kannada-blws.svg "Below-base form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-blws}
 
 Below-base form composition
 :::
+
+```{svg-color-toggle-button} kannada-blws
+```
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1602,10 +1635,13 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form composition](/images/kannada/kannada-psts.svg "Post-base form composition")
+![Post-base form composition](/images/kannada/kannada-psts.svg "Post-base form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-psts}
 
 Post-base form composition
 :::
+
+```{svg-color-toggle-button} kannada-psts
+```
 
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
@@ -1614,10 +1650,13 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic.
 
 :::{figure-md}
-![Halant form composition](/images/kannada/kannada-haln.svg "Halant form composition")
+![Halant form composition](/images/kannada/kannada-haln.svg "Halant form composition"){.shaping-demo .inline-svg .greyscale-svg #kannada-haln}
 
 Halant form composition
 :::
+
+```{svg-color-toggle-button} kannada-haln
+```
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -1655,10 +1694,13 @@ characters. In Kannada, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/kannada/kannada-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/kannada/kannada-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #kannada-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} kannada-blwm
+```
 
 
 ## The `<knda>` shaping model ##
