@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Tamil shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -910,10 +913,13 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/tamil/tamil-matra-decompose.svg "Two-part matra decomposition")
+![Two-part matra decomposition](/images/tamil/tamil-matra-decompose.svg "Two-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #tamil-matra-decompose}
 
 Two-part matra decomposition
 :::
+
+```{svg-color-toggle-button} tamil-matra-decompose
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -1197,10 +1203,13 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.svg "akhn KSsa formation")
+![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.svg "akhn KSsa formation"){.shaping-demo .inline-svg .greyscale-svg #tamil-akhn-kssa}
 
 akhn KSsa formation
 :::
+
+```{svg-color-toggle-button} tamil-akhn-kssa
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1303,10 +1312,13 @@ shaping engine must test:
 > ligature of the <samp>"_Consonant_"</samp> and <samp>"Halant"</samp> glyphs.
 
 :::{figure-md}
-![half-form feature application](/images/tamil/tamil-half.svg "half-form feature application")
+![half-form feature application](/images/tamil/tamil-half.svg "half-form feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-half}
 
 half-form feature application
 :::
+
+```{svg-color-toggle-button} tamil-half
+```
 
 
 #### Stage 3, step 10: pstf ####
@@ -1436,10 +1448,13 @@ to the left of the base consonant or syllable base, and all conjuncts
 or ligatures that contain the base consonant or syllable base.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/tamil/tamil-matra-position.svg "Pre-base matra positioning")
+![Pre-base matra positioning](/images/tamil/tamil-matra-position.svg "Pre-base matra positioning"){.shaping-demo .inline-svg .greyscale-svg #tamil-matra-position}
 
 Pre-base matra positioning
 :::
+
+```{svg-color-toggle-button} tamil-matra-position
+```
 
 > Note: OpenType and Unicode both state that if the syllable includes
 > a <abbr title="Zero-Width Joiner">ZWJ</abbr> immediately after the last <samp>"Halant"</samp>, then the final matra
@@ -1546,20 +1561,26 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![pres feature application](/images/tamil/tamil-pres.svg "pres feature application")
+![pres feature application](/images/tamil/tamil-pres.svg "pres feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-pres}
 
 pres feature application
 :::
+
+```{svg-color-toggle-button} tamil-pres
+```
 
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![abvs feature application](/images/tamil/tamil-abvs.svg "abvs feature application")
+![abvs feature application](/images/tamil/tamil-abvs.svg "abvs feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-abvs}
 
 abvs feature application
 :::
+
+```{svg-color-toggle-button} tamil-abvs
+```
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually includes replacing base consonants or
@@ -1574,10 +1595,13 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![psts feature application](/images/tamil/tamil-psts.svg "psts feature application")
+![psts feature application](/images/tamil/tamil-psts.svg "psts feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-psts}
 
 psts feature application
 :::
+
+```{svg-color-toggle-button} tamil-psts
+```
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
 special presentation forms. This can include stylistic variants of the
@@ -1585,10 +1609,13 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![haln feature application](/images/tamil/tamil-haln.svg "haln feature application")
+![haln feature application](/images/tamil/tamil-haln.svg "haln feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-haln}
 
 haln feature application
 :::
+
+```{svg-color-toggle-button} tamil-haln
+```
 
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
@@ -1622,10 +1649,13 @@ characters. In Tamil, this includes above-base dependent vowels
 (matras), diacritical marks, and Vedic signs.
 
 :::{figure-md}
-![abvm feature application](/images/tamil/tamil-abvm.svg "abvm feature application")
+![abvm feature application](/images/tamil/tamil-abvm.svg "abvm feature application"){.shaping-demo .inline-svg .greyscale-svg #tamil-abvm}
 
 abvm feature application
 :::
+
+```{svg-color-toggle-button} tamil-abvm
+```
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Tamil, this includes below-base diacritical marks.
