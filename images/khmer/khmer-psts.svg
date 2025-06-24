@@ -39,23 +39,23 @@
 </defs>
   <g id="khmer-psts:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="khmer-psts:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#khmer-psts:id0:glyph0-1" x="16" y="119.59375" class=""/>
-  <use xlink:href="#khmer-psts:id0:glyph0-2" x="87.28125" y="121.359375" class=""/>
-  <use xlink:href="#khmer-psts:id0:glyph0-3" x="88.046875" y="119.59375" class=""/>
+  <use xlink:href="#khmer-psts:id0:glyph0-1" x="16" y="119.59375" class="c0"/>
+  <use xlink:href="#khmer-psts:id0:glyph0-2" x="87.28125" y="121.359375" class="c1"/>
+  <use xlink:href="#khmer-psts:id0:glyph0-3" x="88.046875" y="119.59375" class="c2"/>
 </g>
 </g>
 </g>
   <g id="khmer-psts:id1:id1" transform="matrix(1.25,0,0,1.25,169.375,24.189453125)"><g id="khmer-psts:id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#khmer-psts:id1:glyph0-1" x="0" y="120.84375" class=""/>
+  <use xlink:href="#khmer-psts:id1:glyph0-1" x="0" y="120.84375" class="arrow"/>
 </g>
 </g>
 </g>
   <g id="khmer-psts:id2:id2" transform="matrix(1.25,0,0,1.25,301.97265625,0.0)"><g id="khmer-psts:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#khmer-psts:id2:glyph0-1" x="16" y="119.59375" class=""/>
-  <use xlink:href="#khmer-psts:id2:glyph0-2" x="87.28125" y="121.359375" class=""/>
-  <use xlink:href="#khmer-psts:id2:glyph0-3" x="88.046875" y="119.59375" class=""/>
+  <use xlink:href="#khmer-psts:id2:glyph0-1" x="16" y="119.59375" class="c0"/>
+  <use xlink:href="#khmer-psts:id2:glyph0-2" x="87.28125" y="121.359375" class="c1"/>
+  <use xlink:href="#khmer-psts:id2:glyph0-3" x="88.046875" y="119.59375" class="c2"/>
 </g>
 </g>
 </g>

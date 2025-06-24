@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Khmer shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -99,10 +102,13 @@ visual representation of its own.
 > that follows the "Sign Coeng" control character.
 
 :::{figure-md}
-![Coeng form of Kha](images/khmer/khmer-coeng-kha.svg "Coeng form of Kha")
+![Coeng form of Kha](images/khmer/khmer-coeng-kha.svg "Coeng form of Kha"){.shaping-demo .inline-svg .greyscale-svg #khmer-coeng-kha}
 
 Coeng form of Kha
 :::
+
+```{svg-color-toggle-button} khmer-coeng-kha
+```
 
 
 Although coengs are typically attached to the base consonant of a
@@ -178,10 +184,13 @@ unlike <samp>"Reph"</samp>, <samp>"Robat"</samp> is encoded as a separate codepo
 not formed by a special sequence of control characters.
 
 :::{figure-md}
-![Robat](images/khmer/khmer-robat.svg "Robat")
+![Robat](images/khmer/khmer-robat.svg "Robat"){.shaping-demo .inline-svg .greyscale-svg #khmer-robat}
 
 Robat
 :::
+
+```{svg-color-toggle-button} khmer-robat
+```
 
 
 <samp>"Robat"</samp> is a consonant, but it is classified as a combining mark in
@@ -699,10 +708,13 @@ design employs non-standard stylistic choices, the results may not
 appear as expected.
 
 :::{figure-md}
-![Multi-part matra decomposition](images/khmer/khmer-matra-decomposition.svg "Multi-part matra decomposition")
+![Multi-part matra decomposition](images/khmer/khmer-matra-decomposition.svg "Multi-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #khmer-matra-decomposition}
 
 Multi-part matra decomposition
 :::
+
+```{svg-color-toggle-button} khmer-matra-decomposition
+```
 
 
 Because this decomposition is a character-level operation, the shaping
@@ -739,10 +751,13 @@ Fourth, all pre-base-reordering consonants must be tagged with
 Khmer has one pre-base-reordering consonant: <samp>"Ro"</samp>.
 
 :::{figure-md}
-![Pre-base-reordering Ro](images/khmer/khmer-pref.svg "Pre-base-reordering Ro")
+![Pre-base-reordering Ro](images/khmer/khmer-pref.svg "Pre-base-reordering Ro"){.shaping-demo .inline-svg .greyscale-svg #khmer-pref}
 
 Pre-base-reordering Ro
 :::
+
+```{svg-color-toggle-button} khmer-pref
+```
 
 
 
@@ -854,7 +869,7 @@ variants, based on examining the language setting of the text run.
 > <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 <!--- :::{figure-md}
-![Local forms substitution](images/khmer/khmer-locl.svg "Local forms substitution")
+![Local forms substitution](images/khmer/khmer-locl.svg "Local forms substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-locl}
 
 Local forms substitution
 ::: --->
@@ -884,10 +899,13 @@ any special forms. In Khmer, this typically includes the
 pre-base-reordering form of <samp>"Ro"</samp>.
 
 :::{figure-md}
-![Pre-base form substitution](/images/khmer/khmer-pref.svg "Pre-base form substitution")
+![Pre-base form substitution](/images/khmer/khmer-pref-1.svg "Pre-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-pref-1}
 
 Pre-base form substitution
 :::
+
+```{svg-color-toggle-button} khmer-pref-1
+```
 
 
 <!--- be sure to show initial form with Ro BEFORE the base consonant, --->
@@ -907,10 +925,13 @@ The below-base forms feature is applied to glyphs occurring after the
 base consonant.
 
 :::{figure-md}
-![Below-base form substitution](/images/khmer/khmer-blwf.svg "Below-base form substitution")
+![Below-base form substitution](/images/khmer/khmer-blwf.svg "Below-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-blwf}
 
 Below-base form substitution
 :::
+
+```{svg-color-toggle-button} khmer-blwf
+```
 
 
 
@@ -922,10 +943,13 @@ dependent vowels and marks.
 <!--- single-sub-lookup 25, 28 --->
 
 :::{figure-md}
-![Above-base form substitution](images/khmer/khmer-abvf.svg "Above-base form substitution")
+![Above-base form substitution](images/khmer/khmer-abvf.svg "Above-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-abvf}
 
 Above-base form substitution
 :::
+
+```{svg-color-toggle-button} khmer-abvf
+```
 
 
 
@@ -937,10 +961,13 @@ consonants that include an ascending "arm" on the right-hand side as
 well as variant forms for right-side matras and marks.
 
 :::{figure-md}
-![Post-base form substitution](/images/khmer/khmer-pstf.svg "Post-base form substitution")
+![Post-base form substitution](/images/khmer/khmer-pstf.svg "Post-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-pstf}
 
 Post-base form substitution
 :::
+
+```{svg-color-toggle-button} khmer-pstf
+```
 
 
 
@@ -979,10 +1006,13 @@ presentations forms. In Khmer, this can include stylistic variants
 of left-side dependent vowels (matras) or of pre-base-reordering <samp>"Ro"</samp>. 
 
 :::{figure-md}
-![Pre-base presentation form substitution](/images/khmer/khmer-pres.svg "Pre-base presentation form substitution")
+![Pre-base presentation form substitution](/images/khmer/khmer-pres.svg "Pre-base presentation form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-pres}
 
 Pre-base presentation form substitution
 :::
+
+```{svg-color-toggle-button} khmer-pres
+```
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
@@ -990,10 +1020,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base presentation form substitution](/images/khmer/khmer-abvs.svg "Above-base presentation form substitution")
+![Above-base presentation form substitution](/images/khmer/khmer-abvs.svg "Above-base presentation form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-abvs}
 
 Above-base presentation form substitution
 :::
+
+```{svg-color-toggle-button} khmer-abvs
+```
 
 
 
@@ -1002,10 +1035,13 @@ presentation forms. In Khmer, this can include contextual ligatures
 involving below-base dependent vowel marks (matras) or subjoined letters.
 
 :::{figure-md}
-![Below-base presentation form substitution](/images/khmer/khmer-blws.svg "Below-base presentation form substitution")
+![Below-base presentation form substitution](/images/khmer/khmer-blws.svg "Below-base presentation form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-blws}
 
 Below-base presentation form substitution
 :::
+
+```{svg-color-toggle-button} khmer-blws
+```
 
 
 
@@ -1016,10 +1052,13 @@ right-side ascenders.
 
 
 :::{figure-md}
-![Post-base presentation form substitution](/images/khmer/khmer-psts.svg "Post-base presentation form substitution")
+![Post-base presentation form substitution](/images/khmer/khmer-psts.svg "Post-base presentation form substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-psts}
 
 Post-base presentation form substitution
 :::
+
+```{svg-color-toggle-button} khmer-psts
+```
 
 
 The `clig` feature substitutes optional ligatures that are on by
@@ -1032,10 +1071,13 @@ default, but which are activated only in certain contexts.
 > for user preference.
 
 :::{figure-md}
-![Contextual ligature substitution](images/khmer/khmer-clig.svg "Contextual ligature substitution")
+![Contextual ligature substitution](images/khmer/khmer-clig.svg "Contextual ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-clig}
 
 Contextual ligature substitution
 :::
+
+```{svg-color-toggle-button} khmer-clig
+```
 
 
 
@@ -1044,10 +1086,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/khmer/khmer-liga.svg "Standard ligature substitution")
+![Standard ligature substitution](/images/khmer/khmer-liga.svg "Standard ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #khmer-liga}
 
 Standard ligature substitution
 :::
+
+```{svg-color-toggle-button} khmer-liga
+```
 
 
 ### Stage 5: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1079,10 +1124,13 @@ application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
 :::{figure-md}
-![Application of the dist feature](/images/khmer/khmer-dist.svg "Application of the dist feature")
+![Application of the dist feature](/images/khmer/khmer-dist.svg "Application of the dist feature"){.shaping-demo .inline-svg .greyscale-svg #khmer-dist}
 
 Application of the dist feature
 :::
+
+```{svg-color-toggle-button} khmer-dist
+```
 
 
 The `abvm` feature positions above-base glyphs for attachment to base
@@ -1091,10 +1139,13 @@ modifiers, in addition to diacritical marks and above-base dependent
 vowels (matras).
 
 :::{figure-md}
-![Above-base mark positioning](/images/khmer/khmer-abvm.svg "Above-base mark positioning")
+![Above-base mark positioning](/images/khmer/khmer-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #khmer-abvm}
 
 Above-base mark positioning
 :::
+
+```{svg-color-toggle-button} khmer-abvm
+```
 
 
 The `blwm` feature positions below-base glyphs for attachment to base
@@ -1102,10 +1153,13 @@ characters. In Khmer, this can include coeng forms of letters as well as
 below-base dependent vowels (matras).
 
 :::{figure-md}
-![Below-base mark positioning](/images/khmer/khmer-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/khmer/khmer-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #khmer-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} khmer-blwm
+```
 
 
 The `mkmk` feature positions marks with respect to preceding marks,
