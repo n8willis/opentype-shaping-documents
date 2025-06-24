@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Hangul script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -80,17 +83,23 @@ consonant, must include one vowel in the second position, and may or may
 not end with one trailing consonant. 
 
 :::{figure-md}
-![LV syllable](images/hangul/hangul-lv-syllable.svg "LVT syllable")
+![LV syllable](images/hangul/hangul-lv-syllable.svg "LVT syllable"){.shaping-demo .inline-svg .greyscale-svg #hangul-lv-syllable}
 
 LV syllable
 :::
 
+```{svg-color-toggle-button} hangul-lv-syllable
+```
+
 
 :::{figure-md}
-![LVT syllable](images/hangul/hangul-lvt-syllable.svg "LVT syllable")
+![LVT syllable](images/hangul/hangul-lvt-syllable.svg "LVT syllable"){.shaping-demo .inline-svg .greyscale-svg #hangul-lvt-syllable}
 
 LVT syllable
 :::
+
+```{svg-color-toggle-button} hangul-lvt-syllable
+```
 
 
 All possible syllables for Modern Korean are defined in the Hangul
@@ -423,10 +432,13 @@ no substitution and must proceed to stage five with the original `L`,
 `V`, and (if used) `T` jamo. 
 
 :::{figure-md}
-![Syllable composition](images/hangul/hangul-compose.svg "Syllable composition")
+![Syllable composition](images/hangul/hangul-compose.svg "Syllable composition"){.shaping-demo .inline-svg .greyscale-svg #hangul-compose}
 
 Syllable composition
 :::
+
+```{svg-color-toggle-button} hangul-compose
+```
 
 
 
@@ -481,10 +493,13 @@ With the syllable decomposed, the shaping engine can proceed to stage
 five with the `L`, `V`, and (if used) `T` jamo. 
 
 :::{figure-md}
-![Syllable decomposition](images/hangul/hangul-decompose.svg "Syllable decomposition")
+![Syllable decomposition](images/hangul/hangul-decompose.svg "Syllable decomposition"){.shaping-demo .inline-svg .greyscale-svg #hangul-decompose}
 
 Syllable decomposition
 :::
+
+```{svg-color-toggle-button} hangul-decompose
+```
 
 
 ### Stage 5: Shaping the fully decomposed syllable with <abbr>GSUB</abbr> features ###
@@ -521,10 +536,13 @@ then shorter forms of both the leading consonant (choseong) and vowel
 vertical space. 
 
 :::{figure-md}
-![L Jamo feature application](images/hangul/hangul-ljmo.svg "L Jamo feature application")
+![L Jamo feature application](images/hangul/hangul-ljmo.svg "L Jamo feature application"){.shaping-demo .inline-svg .greyscale-svg #hangul-ljmo}
 
 L Jamo feature application
 :::
+
+```{svg-color-toggle-button} hangul-ljmo
+```
 
 
 
@@ -542,10 +560,13 @@ forms of both the leading consonant (choseong) and vowel (jungseong)
 glyphs will be used in order to provide sufficient vertical space.
 
 :::{figure-md}
-![V Jamo feature application](images/hangul/hangul-vjmo.svg "V Jamo feature application")
+![V Jamo feature application](images/hangul/hangul-vjmo.svg "V Jamo feature application"){.shaping-demo .inline-svg .greyscale-svg #hangul-vjmo}
 
 V Jamo feature application
 :::
+
+```{svg-color-toggle-button} hangul-vjmo
+```
 
 
 
@@ -561,10 +582,13 @@ forms can take on. A given font may, however, include several
 context-dependent alternates for stylistic or typographic variation.
 
 :::{figure-md}
-![T Jamo feature application](images/hangul/hangul-tjmo.svg "T Jamo feature application")
+![T Jamo feature application](images/hangul/hangul-tjmo.svg "T Jamo feature application"){.shaping-demo .inline-svg .greyscale-svg #hangul-tjmo}
 
 T Jamo feature application
 :::
+
+```{svg-color-toggle-button} hangul-tjmo
+```
 
 
 
@@ -581,7 +605,10 @@ features. Therefore, the reordering must take place at the end of the
 shaping process.
 
 :::{figure-md}
-![Tone-mark reordering](images/hangul/hangul-tone.svg "Tone-mark reordering")
+![Tone-mark reordering](images/hangul/hangul-tone.svg "Tone-mark reordering"){.shaping-demo .inline-svg .greyscale-svg #hangul-tone}
 
 Tone-mark reordering
 :::
+
+```{svg-color-toggle-button} hangul-tone
+```

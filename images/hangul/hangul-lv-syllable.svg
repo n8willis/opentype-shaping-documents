@@ -1,18 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="133.203125pt" height="163.28125pt" viewBox="0 0 133.203125 163.28125" version="1.1">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="133.203125pt" height="163.28125pt" viewBox="0 0 133.203125 163.28125" version="1.1" id="hangul-lv-syllable">
 <defs>
 <g>
-<symbol overflow="visible" id="glyph0-0">
+<symbol overflow="visible" id="hangul-lv-syllable:glyph0-0">
 <path style="stroke:none;" d="M 11 13.203125 L 99 13.203125 L 99 -96.796875 L 11 -96.796875 Z M 55 -46.3125 L 20.015625 -91.296875 L 89.984375 -91.296875 Z M 58.515625 -41.796875 L 93.5 -86.796875 L 93.5 3.1875 Z M 20.015625 7.703125 L 55 -37.296875 L 89.984375 7.703125 Z M 16.5 -86.796875 L 51.484375 -41.796875 L 16.5 3.1875 Z M 16.5 -86.796875 "/>
 </symbol>
-<symbol overflow="visible" id="glyph0-1">
+<symbol overflow="visible" id="hangul-lv-syllable:glyph0-1">
 <path style="stroke:none;" d="M 81.1875 -90.96875 L 81.1875 8.578125 L 89.875 8.578125 L 89.875 -90.96875 Z M 61.265625 -88.65625 L 61.265625 -51.703125 L 46.09375 -51.703125 L 46.09375 -44.109375 L 61.265625 -44.109375 L 61.265625 3.40625 L 69.84375 3.40625 L 69.84375 -88.65625 Z M 25.84375 -87.34375 L 25.84375 -72.59375 L 7.375 -72.59375 L 7.375 -65.125 L 25.84375 -65.125 L 25.84375 -60.28125 C 25.84375 -44 18.15625 -26.625 4.625 -18.703125 L 10.015625 -11.765625 C 19.796875 -17.703125 26.84375 -28.703125 30.25 -41.359375 C 33.875 -29.484375 40.921875 -19.359375 50.59375 -13.96875 L 55.765625 -20.796875 C 42.453125 -28.15625 34.546875 -44.4375 34.546875 -60.28125 L 34.546875 -65.125 L 52.796875 -65.125 L 52.796875 -72.59375 L 34.546875 -72.59375 L 34.546875 -87.34375 Z M 25.84375 -87.34375 "/>
 </symbol>
 </g>
 </defs>
-<g id="surface1">
+<g id="hangul-lv-syllable:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#glyph0-1" x="16" y="129.59375"/>
+  <use xlink:href="#hangul-lv-syllable:glyph0-1" x="16" y="129.59375" class="c0"/>
 </g>
 </g>
 </svg>

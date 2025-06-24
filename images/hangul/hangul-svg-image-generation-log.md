@@ -33,7 +33,7 @@ svg_stack --direction=h hangul-compose-before.svg right-arrow.svg hangul-compose
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-decompose-before.svg --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=1106,1172,11af
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-decompose-after.svg --features=-ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=1106,200d,1172,200d,11af
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-decompose-after.svg --features=-ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=3141,200b,3160,200b,3139
 
 svg_stack --direction=h hangul-decompose-before.svg right-arrow.svg hangul-decompose-after.svg > hangul-decompose.svg
 
