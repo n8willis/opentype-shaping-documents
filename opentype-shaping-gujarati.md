@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Gujarati shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -914,10 +917,13 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/gujarati/gujarati-matra-decompose.svg "Two-part matra decomposition")
+![Two-part matra decomposition](/images/gujarati/gujarati-matra-decompose.svg "Two-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #gujarati-matra-decompose}
 
 Two-part matra decomposition
 :::
+
+```{svg-color-toggle-button} gujarati-matra-decompose
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -1161,10 +1167,13 @@ precomposed nukta-variant of the consonant glyph.
 
 
 :::{figure-md}
-![nukt feature application](/images/gujarati/gujarati-nukt.svg "nukt feature application")
+![nukt feature application](/images/gujarati/gujarati-nukt.svg "nukt feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-nukt}
 
 nukt feature application
 :::
+
+```{svg-color-toggle-button} gujarati-nukt
+```
 
 
 
@@ -1189,17 +1198,23 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![akhn KSsa formation](/images/gujarati/gujarati-akhn-kssa.svg "akhn KSsa formation")
+![akhn KSsa formation](/images/gujarati/gujarati-akhn-kssa.svg "akhn KSsa formation"){.shaping-demo .inline-svg .greyscale-svg #gujarati-akhn-kssa}
 
 akhn KSsa formation
 :::
 
+```{svg-color-toggle-button} gujarati-akhn-kssa
+```
+
 
 :::{figure-md}
-![akhn JNya formation](/images/gujarati/gujarati-akhn-jnya.svg "akhn JNya formation")
+![akhn JNya formation](/images/gujarati/gujarati-akhn-jnya.svg "akhn JNya formation"){.shaping-demo .inline-svg .greyscale-svg #gujarati-akhn-jnya}
 
 akhn JNya formation
 :::
+
+```{svg-color-toggle-button} gujarati-akhn-jnya
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1219,10 +1234,13 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 
 
 :::{figure-md}
-![Reph formation](/images/gujarati/gujarati-rphf.svg "Reph formation")
+![Reph formation](/images/gujarati/gujarati-rphf.svg "Reph formation"){.shaping-demo .inline-svg .greyscale-svg #gujarati-rphf}
 
 Reph formation
 :::
+
+```{svg-color-toggle-button} gujarati-rphf
+```
 
 	
 #### Stage 3, step 5: rkrf ####
@@ -1238,10 +1256,13 @@ The `rkrf` feature replaces <samp>"_Consonant_,Halant,Ra"</samp> sequences with 
 
 
 :::{figure-md}
-![Rakaar ligation](/images/gujarati/gujarati-rkrf.svg "Rakaar ligation")
+![Rakaar ligation](/images/gujarati/gujarati-rkrf.svg "Rakaar ligation"){.shaping-demo .inline-svg .greyscale-svg #gujarati-rkrf}
 
 Rakaar ligation
 :::
+
+```{svg-color-toggle-button} gujarati-rkrf
+```
 
 
 #### Stage 3, step 6: pref ####
@@ -1276,10 +1297,13 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
 :::{figure-md}
-![blwf feature application](/images/gujarati/gujarati-blwf.svg "blwf feature application")
+![blwf feature application](/images/gujarati/gujarati-blwf.svg "blwf feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-blwf}
 
 blwf feature application
 :::
+
+```{svg-color-toggle-button} gujarati-blwf
+```
 
 
 #### Stage 3, step 8: abvf ####
@@ -1325,10 +1349,13 @@ the shaping engine must test:
     flagged for potential `half` substitutions.
 
 :::{figure-md}
-![half-form feature application](/images/gujarati/gujarati-half.svg "half-form feature application")
+![half-form feature application](/images/gujarati/gujarati-half.svg "half-form feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-half}
 
 half-form feature application
 :::
+
+```{svg-color-toggle-button} gujarati-half
+```
 
 
 #### Stage 3, step 10: pstf ####
@@ -1352,10 +1379,13 @@ the `blwf` feature.
 > must support and process both features.
 
 :::{figure-md}
-![vatu feature application](/images/gujarati/gujarati-vatu.svg "vatu feature application")
+![vatu feature application](/images/gujarati/gujarati-vatu.svg "vatu feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-vatu}
 
 vatu feature application
 :::
+
+```{svg-color-toggle-button} gujarati-vatu
+```
 
 
 #### Stage 3, step 12: cjct ####
@@ -1400,10 +1430,13 @@ substitutions apply to half-form consonants; therefore, this feature
 must be applied after the `half` feature. 
 
 :::{figure-md}
-![cjct feature application](/images/gujarati/gujarati-cjct.svg "cjct feature application")
+![cjct feature application](/images/gujarati/gujarati-cjct.svg "cjct feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-cjct}
 
 cjct feature application
 :::
+
+```{svg-color-toggle-button} gujarati-cjct
+```
 
 
 #### Stage 3, step 13: cfar ####
@@ -1469,10 +1502,13 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.svg "Pre-base matra positioning")
+![Pre-base matra positioning](/images/gujarati/gujarati-matra-position.svg "Pre-base matra positioning"){.shaping-demo .inline-svg .greyscale-svg #gujarati-matra-position}
 
 Pre-base matra positioning
 :::
+
+```{svg-color-toggle-button} gujarati-matra-position
+```
 
 
 > Note: OpenType and Unicode both state that if the syllable includes
@@ -1562,10 +1598,13 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 
 
 :::{figure-md}
-![Reph positioning](/images/gujarati/gujarati-reph-position.svg "Reph positioning")
+![Reph positioning](/images/gujarati/gujarati-reph-position.svg "Reph positioning"){.shaping-demo .inline-svg .greyscale-svg #gujarati-reph-position}
 
 Reph positioning
 :::
+
+```{svg-color-toggle-button} gujarati-reph-position
+```
 
 
 #### Stage 4, step 4: Pre-base-reordering consonants ####
@@ -1614,10 +1653,13 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![pres feature application](/images/gujarati/gujarati-pres.svg "pres feature application")
+![pres feature application](/images/gujarati/gujarati-pres.svg "pres feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-pres}
 
 pres feature application
 :::
+
+```{svg-color-toggle-button} gujarati-pres
+```
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
@@ -1625,10 +1667,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![abvs feature application](/images/gujarati/gujarati-abvs.svg "abvs feature application")
+![abvs feature application](/images/gujarati/gujarati-abvs.svg "abvs feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-abvs}
 
 abvs feature application
 :::
+
+```{svg-color-toggle-button} gujarati-abvs
+```
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
@@ -1638,10 +1683,13 @@ are adjacent to the below-base-consonant form <samp>"Rakaar"</samp> with context
 ligatures.
 
 :::{figure-md}
-![blws feature application](/images/gujarati/gujarati-blws.svg "blws feature application")
+![blws feature application](/images/gujarati/gujarati-blws.svg "blws feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-blws}
 
 blws feature application
 :::
+
+```{svg-color-toggle-button} gujarati-blws
+```
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1650,10 +1698,13 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![psts feature application](/images/gujarati/gujarati-psts.svg "psts feature application")
+![psts feature application](/images/gujarati/gujarati-psts.svg "psts feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-psts}
 
 psts feature application
 :::
+
+```{svg-color-toggle-button} gujarati-psts
+```
 
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
@@ -1662,10 +1713,13 @@ consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
 :::{figure-md}
-![haln feature application](/images/gujarati/gujarati-haln.svg "haln feature application")
+![haln feature application](/images/gujarati/gujarati-haln.svg "haln feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-haln}
 
 haln feature application
 :::
+
+```{svg-color-toggle-button} gujarati-haln
+```
 
 
 > Note: The `calt` feature, which allows for generalized application
@@ -1700,10 +1754,13 @@ characters. In Gujarati, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/gujarati/gujarati-abvm.svg "Above-base mark positioning")
+![Above-base mark positioning](/images/gujarati/gujarati-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #gujarati-abvm}
 
 Above-base mark positioning
 :::
+
+```{svg-color-toggle-button} gujarati-abvm
+```
 
 
 The `blwm` feature positions below-base marks for attachment to base
@@ -1711,10 +1768,13 @@ characters. In Gujarati, this includes below-base dependent vowels
 (matras) and diacritical marks as well as the below-base consonant form <samp>"Rakaar"</samp>.
 
 :::{figure-md}
-![Below-base mark positioning](/images/gujarati/gujarati-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/gujarati/gujarati-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #gujarati-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} gujarati-blwm
+```
 
 
 
