@@ -16,11 +16,34 @@ svg_stack --direction=h sinhala-matra-decompose-before.svg right-arrow.svg sinha
 
 ## 2.7 Post-base consonants
 
+### Ra
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-before.svg --features=-vatu --preserve-default-ignorables --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dbb
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-after.svg --features=+vatu --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dbb
+
+svg_stack --direction=h sinhala-vatu-ra-before.svg right-arrow.svg sinhala-vatu-ra-after.svg > sinhala-vatu-ra.svg
+
+### Va
+
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-va-before.svg --features=-vatu --preserve-default-ignorables --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dba
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-va-after.svg --features=+vatu --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dba
 
-svg_stack --direction=h sinhala-vatu-va-before.svg right-arrow.svg sinhala-vatu-va-after.svg > sinhala-vatu-va.svg
+svg_stack --direction=h sinhala-vatu-va-before.svg right-arrow.svg
+sinhala-vatu-va-after.svg > sinhala-vatu-va.svg
+
+
+#### Duplicates for other subsections
+
+cp sinhala-vatu-ra.svg sinhala-vatu-ra-1.svg
+
+cluster_styles = [
+
+
+cp sinhala-vatu-va.svg sinhala-vatu-va-1.svg
+
+cluster_styles = [
 
 
 ## 3.3 `akhn`
@@ -51,6 +74,13 @@ hb-view --font-size=110 --margin=2,16,2,64 --output-file=sinhala-rphf-after.svg 
 svg_stack --direction=h sinhala-rphf-before.svg right-arrow.svg sinhala-rphf-after.svg > sinhala-rphf.svg
 
 
+#### Duplicates for other subsections
+
+cp sinhala-rphf.svg sinhala-rphf-1.svg
+
+cluster_styles = [
+
+
 ## 3.10 `pstf`
 
 > Not needed?
@@ -64,13 +94,8 @@ svg_stack --direction=h sinhala-pstf-before.svg right-arrow.svg sinhala-pstf-aft
 
 ## 3.11 `vatu`
 
-### Ra
+> Same as 2.7
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-before.svg --features=-vatu --preserve-default-ignorables --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dbb
-
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-after.svg --features=+vatu --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dbb
-
-svg_stack --direction=h sinhala-vatu-ra-before.svg right-arrow.svg sinhala-vatu-ra-after.svg > sinhala-vatu-ra.svg
 
 ### Va
 
