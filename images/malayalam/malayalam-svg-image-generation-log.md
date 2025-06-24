@@ -33,6 +33,18 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-va-after
 svg_stack --direction=h malayalam-pstf-va-before.svg right-arrow.svg malayalam-pstf-va-after.svg > malayalam-pstf-va.svg
 
 
+#### Duplicates for other subsections
+
+cp malayalam-pstf-ya.svg malayalam-pstf-ya-1.svg
+
+cluster_styles = [
+
+
+cp malayalam-pstf-va.svg malayalam-pstf-va-1.svg
+
+cluster_styles = [
+
+
 ## 3.2 `nukt`
 
 > Note: Noto Serif Malayalam uses `U+0323` "Combining dot below" in
@@ -108,6 +120,14 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-before.s
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.svg --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf --unicodes=0d4d,0d32
 
 svg_stack --direction=h malayalam-blwf-before.svg right-arrow.svg malayalam-blwf-after.svg > malayalam-blwf.svg
+
+
+#### Duplicates for other subsections
+
+cp malayalam-blwf.svg malayalam-blwf-1.svg
+
+cluster_styles = [
+
 
 ## 3.9 `half`
 
