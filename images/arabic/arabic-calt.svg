@@ -36,8 +36,8 @@
 </defs>
   <g id="arabic-calt:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="arabic-calt:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-calt:id0:glyph0-1" x="16" y="211.4375" class="c0"/>
-  <use xlink:href="#arabic-calt:id0:glyph0-2" x="64.1875" y="148.421875" class="c1"/>
+  <use xlink:href="#arabic-calt:id0:glyph0-1" x="16" y="211.4375" class="c1"/>
+  <use xlink:href="#arabic-calt:id0:glyph0-2" x="64.1875" y="148.421875" class="c0"/>
 </g>
 </g>
 </g>
@@ -49,9 +49,9 @@
 </g>
   <g id="arabic-calt:id2:id2" transform="matrix(1.25,0,0,1.25,300.76171875,0.0)"><g id="arabic-calt:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-calt:id2:glyph0-1" x="16" y="211.4375" class="c0"/>
+  <use xlink:href="#arabic-calt:id2:glyph0-1" x="16" y="211.4375" class="c1"/>
   <use xlink:href="#arabic-calt:id2:glyph0-2" x="64.1875" y="211.4375" class="z"/>
-  <use xlink:href="#arabic-calt:id2:glyph0-3" x="64.1875" y="148.421875" class="c1"/>
+  <use xlink:href="#arabic-calt:id2:glyph0-3" x="64.1875" y="148.421875" class="c0"/>
 </g>
 </g>
 </g>

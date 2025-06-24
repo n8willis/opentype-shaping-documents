@@ -45,10 +45,10 @@
 </defs>
   <g id="arabic-liga:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="arabic-liga:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-liga:id0:glyph0-1" x="16" y="143.015625" class="c0"/>
-  <use xlink:href="#arabic-liga:id0:glyph0-2" x="91.5625" y="143.015625" class="c1"/>
-  <use xlink:href="#arabic-liga:id0:glyph0-3" x="123.359375" y="143.015625" class="c2"/>
-  <use xlink:href="#arabic-liga:id0:glyph0-4" x="215.65625" y="143.015625" class="c3"/>
+  <use xlink:href="#arabic-liga:id0:glyph0-1" x="16" y="143.015625" class="c3"/>
+  <use xlink:href="#arabic-liga:id0:glyph0-2" x="91.5625" y="143.015625" class="c2"/>
+  <use xlink:href="#arabic-liga:id0:glyph0-3" x="123.359375" y="143.015625" class="c1"/>
+  <use xlink:href="#arabic-liga:id0:glyph0-4" x="215.65625" y="143.015625" class="c0"/>
 </g>
 </g>
 </g>
@@ -60,10 +60,10 @@
 </g>
   <g id="arabic-liga:id2:id2" transform="matrix(1.25,0,0,1.25,466.85546875,0.0)"><g id="arabic-liga:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-liga:id2:glyph0-1" x="16" y="143.015625" class="c0"/>
-  <use xlink:href="#arabic-liga:id2:glyph0-2" x="91.5625" y="143.015625" class="c4"/>
-  <use xlink:href="#arabic-liga:id2:glyph0-3" x="126.328125" y="143.015625" class="c4"/>
-  <use xlink:href="#arabic-liga:id2:glyph0-4" x="167.46875" y="143.015625" class="c3"/>
+  <use xlink:href="#arabic-liga:id2:glyph0-1" x="16" y="143.015625" class="c3"/>
+  <use xlink:href="#arabic-liga:id2:glyph0-2" x="91.5625" y="143.015625" class="c2"/>
+  <use xlink:href="#arabic-liga:id2:glyph0-3" x="126.328125" y="143.015625" class="c1"/>
+  <use xlink:href="#arabic-liga:id2:glyph0-4" x="167.46875" y="143.015625" class="c0"/>
 </g>
 </g>
 </g>

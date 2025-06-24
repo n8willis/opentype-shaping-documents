@@ -51,11 +51,11 @@
 </defs>
   <g id="arabic-curs:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="arabic-curs:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-curs:id0:glyph0-1" x="16" y="211.4375" class="c0"/>
-  <use xlink:href="#arabic-curs:id0:glyph0-2" x="64.1875" y="211.4375" class="c1"/>
+  <use xlink:href="#arabic-curs:id0:glyph0-1" x="16" y="211.4375" class="c4"/>
+  <use xlink:href="#arabic-curs:id0:glyph0-2" x="64.1875" y="211.4375" class="c3"/>
   <use xlink:href="#arabic-curs:id0:glyph0-3" x="147.140625" y="236.734375" class="c2"/>
-  <use xlink:href="#arabic-curs:id0:glyph0-4" x="137.453125" y="211.4375" class="c3"/>
-  <use xlink:href="#arabic-curs:id0:glyph0-5" x="137.453125" y="211.4375" class="c4"/>
+  <use xlink:href="#arabic-curs:id0:glyph0-4" x="137.453125" y="211.4375" class="c1"/>
+  <use xlink:href="#arabic-curs:id0:glyph0-5" x="137.453125" y="211.4375" class="c0"/>
 </g>
 </g>
 </g>
@@ -67,11 +67,11 @@
 </g>
   <g id="arabic-curs:id2:id2" transform="matrix(1.25,0,0,1.25,359.0625,0.0)"><g id="arabic-curs:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-curs:id2:glyph0-1" x="16" y="211.4375" class="c0"/>
-  <use xlink:href="#arabic-curs:id2:glyph0-2" x="64.1875" y="148.421875" class="c1"/>
+  <use xlink:href="#arabic-curs:id2:glyph0-1" x="16" y="211.4375" class="c4"/>
+  <use xlink:href="#arabic-curs:id2:glyph0-2" x="64.1875" y="148.421875" class="c3"/>
   <use xlink:href="#arabic-curs:id2:glyph0-3" x="147.03125" y="148.203125" class="c2"/>
-  <use xlink:href="#arabic-curs:id2:glyph0-4" x="137.34375" y="211.4375" class="c3"/>
-  <use xlink:href="#arabic-curs:id2:glyph0-5" x="137.34375" y="122.90625" class="c4"/>
+  <use xlink:href="#arabic-curs:id2:glyph0-4" x="137.34375" y="211.4375" class="c1"/>
+  <use xlink:href="#arabic-curs:id2:glyph0-5" x="137.34375" y="122.90625" class="c0"/>
 </g>
 </g>
 </g>

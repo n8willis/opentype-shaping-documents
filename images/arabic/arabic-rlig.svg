@@ -33,8 +33,8 @@
 </defs>
   <g id="arabic-rlig:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="arabic-rlig:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#arabic-rlig:id0:glyph0-1" x="16" y="119.59375" class="c0"/>
-  <use xlink:href="#arabic-rlig:id0:glyph0-2" x="43.828125" y="119.59375" class="c1"/>
+  <use xlink:href="#arabic-rlig:id0:glyph0-1" x="16" y="119.59375" class="c1"/>
+  <use xlink:href="#arabic-rlig:id0:glyph0-2" x="43.828125" y="119.59375" class="c0"/>
 </g>
 </g>
 </g>
