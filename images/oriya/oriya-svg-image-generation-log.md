@@ -35,6 +35,18 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-pstf-yya-after.sv
 svg_stack --direction=h oriya-pstf-yya-before.svg right-arrow.svg oriya-pstf-yya-after.svg > oriya-pstf-yya.svg
 
 
+#### Duplicates for other subsections
+
+cp oriya-pstf-ya.svg oriya-pstf-ya-1.svg
+
+cluster_styles = [
+
+
+cp oriya-pstf-yya.svg oriya-pstf-yya-1.svg
+
+cluster_styles = [
+
+
 ## 3.2 `nukt`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-nukt-before.svg --features=-nukt --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b16,25cc,0b3c
