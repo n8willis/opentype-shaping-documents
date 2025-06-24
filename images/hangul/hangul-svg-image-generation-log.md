@@ -40,27 +40,27 @@ svg_stack --direction=h hangul-decompose-before.svg right-arrow.svg hangul-decom
 
 ## 5.2 `ljmo`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-ljmo-before.svg --features=-ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-ljmo-before.svg --features=-ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,11bb
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-ljmo-after.svg --features=+ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-ljmo-after.svg --features=+ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,11bb
 
 svg_stack --direction=h hangul-ljmo-before.svg right-arrow.svg hangul-ljmo-after.svg > hangul-ljmo.svg
 
 
 ## 5.3 `vjmo`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-before.svg --features=+ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-before.svg --features=+ljmo,-vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,11bb
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-after.svg --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-vjmo-after.svg --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,1169,200b,11bb
 
 svg_stack --direction=h hangul-vjmo-before.svg right-arrow.svg hangul-vjmo-after.svg > hangul-vjmo.svg
 
 
 ## 5.4 `tjmo`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-before.svg --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-before.svg --features=+ljmo,+vjmo,-tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,1169,200b,11bb
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-after.svg --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,200b,1169,200b,d7d9
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=hangul-tjmo-after.svg --features=+ljmo,+vjmo,+tjmo --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifKR-Regular.otf --unicodes=110f,1169,11bb
 
 svg_stack --direction=h hangul-tjmo-before.svg right-arrow.svg hangul-tjmo-after.svg > hangul-tjmo.svg
 
