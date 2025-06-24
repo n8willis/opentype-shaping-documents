@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Thai and Lao shaping in OpenType #
 
 This document details the shaping procedure needed to display text
@@ -412,10 +415,13 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![Glyph composition](images/thai-lao/thai-ccmp.svg "Glyph composition")
+![Glyph composition](images/thai-lao/thai-ccmp.svg "Glyph composition"){.shaping-demo .inline-svg .greyscale-svg #thai-ccmp}
 
 Glyph composition
 :::
+
+```{svg-color-toggle-button} thai-ccmp
+```
 
 ### Stage 2: Decomposing all Am vowel signs ###
 
@@ -437,10 +443,13 @@ decomposed marks are handled differently during the mark-reordering
 stage.
 
 :::{figure-md}
-![Am decomposition](images/thai-lao/lao-am-decomposition.svg "Am decomposition")
+![Am decomposition](images/thai-lao/lao-am-decomposition.svg "Am decomposition"){.shaping-demo .inline-svg .greyscale-svg #lao-am-decomposition}
 
 Am decomposition
 :::
+
+```{svg-color-toggle-button} lao-am-decomposition
+```
   
 ### Stage 3: Reordering sequences of marks ###
 
@@ -509,28 +518,37 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 :::{figure-md}
-![Application of the kern feature](/images/thai-lao/lao-kern.svg "Application of the kern feature")
+![Application of the kern feature](/images/thai-lao/lao-kern.svg "Application of the kern feature"){.shaping-demo .inline-svg .greyscale-svg #lao-kern}
 
 Application of the kern feature
 :::
 
+```{svg-color-toggle-button} lao-kern
+```
+
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Application of the mark feature](/images/thai-lao/thai-mark.svg "Application of the mark feature")
+![Application of the mark feature](/images/thai-lao/thai-mark.svg "Application of the mark feature"){.shaping-demo .inline-svg .greyscale-svg #thai-mark}
 
 Application of the mark feature
 :::
+
+```{svg-color-toggle-button} thai-mark
+```
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/thai-lao/thai-mkmk.svg "Application of the mkmk feature")
+![Application of the mkmk feature](/images/thai-lao/thai-mkmk.svg "Application of the mkmk feature"){.shaping-demo .inline-svg .greyscale-svg #thai-mkmk}
 
 Application of the mkmk feature
 :::
+
+```{svg-color-toggle-button} thai-mkmk
+```
 
 
 ## The <abbr>PUA</abbr> fallback shaping model ##
@@ -644,10 +662,13 @@ mark originated as part of an <samp>"Am"</samp> sign, because these decomposed
 marks are handled differently during the mark-reordering stage.
 
 :::{figure-md}
-![Glyph decomposition](images/thai-lao/thai-am-decomposition.svg "Glyph decomposition")
+![Glyph decomposition](images/thai-lao/thai-am-decomposition.svg "Glyph decomposition"){.shaping-demo .inline-svg .greyscale-svg #thai-am-decomposition}
 
 Glyph decomposition
 :::
+
+```{svg-color-toggle-button} thai-am-decomposition
+```
 
 ### Stage 2: Reordering sequences of marks ###
 
