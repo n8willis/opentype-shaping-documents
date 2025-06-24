@@ -42,28 +42,28 @@
 </defs>
   <g id="mongolian-fvs-none:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,0.0)"><g id="mongolian-fvs-none:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-1" x="16" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-2" x="81.34375" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-3" x="99.828125" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-4" x="186.390625" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-2" x="186.390625" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id0:glyph0-1" x="204.875" y="162.265625" class=""/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-1" x="16" y="162.265625" class="dc"/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-2" x="81.34375" y="162.265625" class="c0"/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-3" x="99.828125" y="162.265625" class="c1"/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-4" x="186.390625" y="162.265625" class="z"/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-2" x="186.390625" y="162.265625" class="c2"/>
+  <use xlink:href="#mongolian-fvs-none:id0:glyph0-1" x="204.875" y="162.265625" class="dc"/>
 </g>
 </g>
 </g>
   <g id="mongolian-fvs-none:id1:id1" transform="matrix(1.25,0,0,1.25,357.7734375,22.109375)"><g id="mongolian-fvs-none:id1:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#mongolian-fvs-none:id1:glyph0-1" x="0" y="120.84375" class=""/>
+  <use xlink:href="#mongolian-fvs-none:id1:glyph0-1" x="0" y="120.84375" class="arrow"/>
 </g>
 </g>
 </g>
   <g id="mongolian-fvs-none:id2:id2" transform="matrix(1.25,0,0,1.25,490.37109375,0.0)"><g id="mongolian-fvs-none:id2:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use xlink:href="#mongolian-fvs-none:id2:glyph0-1" x="16" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id2:glyph0-2" x="81.34375" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id2:glyph0-3" x="99.828125" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id2:glyph0-2" x="139.53125" y="162.265625" class=""/>
-  <use xlink:href="#mongolian-fvs-none:id2:glyph0-1" x="158.015625" y="162.265625" class=""/>
+  <use xlink:href="#mongolian-fvs-none:id2:glyph0-1" x="16" y="162.265625" class="dc"/>
+  <use xlink:href="#mongolian-fvs-none:id2:glyph0-2" x="81.34375" y="162.265625" class="c0"/>
+  <use xlink:href="#mongolian-fvs-none:id2:glyph0-3" x="99.828125" y="162.265625" class="c1"/>
+  <use xlink:href="#mongolian-fvs-none:id2:glyph0-2" x="139.53125" y="162.265625" class="c2"/>
+  <use xlink:href="#mongolian-fvs-none:id2:glyph0-1" x="158.015625" y="162.265625" class="dc"/>
 </g>
 </g>
 </g>
