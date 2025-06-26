@@ -221,6 +221,20 @@ figcaption span.code {
     background-color: #eff4f7; /* testing; needs to be lighter because text is grey */
 }
 
+/* Set maximum size of SVG illustrations   */
+/*                                         */
+/* Width is currently limited to 100% of   */
+/* the parent element; height is currently */
+/* specified relative to the text size,    */
+/* for presumptive convenience. 18em is a  */
+/* trial-and-error value that seems to be  */
+/* reasonable, but is by no means science. */
+svg.shaping-demo {
+    max-width: 100%;
+    max-height: 18em;
+}
+
+
 /* Toggleable SVG clusters */
 /*                    
 /* Greyscale               */
