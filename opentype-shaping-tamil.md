@@ -213,12 +213,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0B82`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0B82; Anusvara            |
 | | | | |
 |`U+0B95`   | Letter           | CONSONANT         | _null_                     | &#x0B95; Ka                  |
-
+:::
 
 
 Codepoints with no assigned meaning are designated as _unassigned_ in
@@ -1177,10 +1179,13 @@ precomposed nukta-variant of the consonant glyph.
 > it is used in the active font.
 
   - The context defined for a `nukt` feature is:
+
+:::{table} `nukt` feature context
     
-    | Backtrack     | Matching sequence             | Lookahead     |
-    |:--------------|:------------------------------|:--------------|
-    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+| Backtrack     | Matching sequence             | Lookahead     |
+|:--------------|:------------------------------|:--------------|
+| _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+:::
 
 
 #### Stage 3, step 3: akhn ####
@@ -1196,10 +1201,13 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
   - The context defined for an `akhn` feature is:
+
+:::{table} `akhn` feature context
     
-    | Backtrack     | Matching sequence           | Lookahead     |
-    |:--------------|:----------------------------|:--------------|
-    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+| Backtrack     | Matching sequence           | Lookahead     |
+|:--------------|:----------------------------|:--------------|
+| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1217,11 +1225,13 @@ akhn KSsa formation
 > This feature is not used in Tamil.
 
   - The context defined for a `rphf` feature is:
-    
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
 
+:::{table} `rphf` feature context
+    
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+:::
 
 	
 #### Stage 3, step 5: rkrf ####

@@ -79,6 +79,8 @@ class_ takes precedence during OpenType shaping, as it captures more
 specific behavior.
 
 
+:::{table} Vedic Extensions character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1CD0`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x1CD0; Tone Karshana       |
@@ -131,6 +133,8 @@ specific behavior.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
+:::
+
 
 ## Shaping information ##
 

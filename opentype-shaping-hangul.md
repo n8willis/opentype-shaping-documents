@@ -237,11 +237,14 @@ Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
 |`U+1109`   | Letter           | L         | YES       | &#x1109; Sios                    |
 | | | | | |
 |`U+1182`   | Letter           | V         | NO        | &#x1182; O-O                     |
+:::
 
 
 Codepoints with no assigned meaning are

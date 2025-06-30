@@ -111,6 +111,8 @@ or above-base (230) combining classes. Niqqud are assigned to distinct
 combining classes designed to enforce orthographically correct
 ordering:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 | `U+0591`  | 220             | &#x0591; Etnahta                   |
@@ -119,6 +121,8 @@ ordering:
 | `U+05B2`  | 12              | &#x05B2; Hataf Patah               |
 | `U+05B9`  | 19              | &#x05B9; Holam                     |
 | `U+05BF`  | 23              | &#x05BF; Rafe                      |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -168,12 +172,14 @@ class. The codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Mark class | Glyph                        |
 |:----------|:-----------------|:-----------|:-----------------------------|
 |`U+05D0`   | Letter           | _0_        | &#x05D0; Alef                |
 | | | | | |
 |`U+05C1`   | Mark [Mn]        | 24         | &#x05C1; Point Shin Dot      |
-
+:::
 
 
 Codepoints with no assigned meaning are
@@ -299,11 +305,15 @@ table](character-tables/character-tables-hebrew.md#alphabetic-presentation-forms
 
 For example: 
 
+:::{table} Example character table for Alphabetic Presentation forms
+
 | Codepoint | Unicode category | Mark class | Composition     | Glyph                                   |
 |:----------|:-----------------|:-----------|:----------------|:----------------------------------------|
 | `U+FB1D`  | Letter           | _0_        |`U+05D9`,`U+05B4`| &#xFB1D; Yod With Hiriq                 |
 | | | | | |
 | `U+FB2B`  | Letter           | _0_        |`U+05E9`,`U+05C2`| &#xFB2B; Shin With Sin Dot              |
+:::
+
 
 Two of the precomposed glyphs, "Shin With Dagesh And Shin Dot"
 (`U+FB2C`) and "Shin With Dagesh And Sin Dot" (`U+FB2D`), have

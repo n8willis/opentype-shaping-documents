@@ -196,11 +196,15 @@ canonical order.
 Several of the Syriac marks belong to standard combining
 classes:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+0711`   | 36              | &#x0711; Superscript Alaph         |
 |           | 220             | Other below-base combining marks   |
 |           | 230             | Other above-base combining marks   |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -229,12 +233,14 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+0712`   | Letter           | DUAL         | BETH          | _null_     | &#x0712; Beth                |
 | | | | | |
 |`U+0737`   | Mark [Mn]        | TRANSPARENT  | _null_        | 220        | &#x0737; Rbasa Below         |
-
+:::
 
 
 Codepoints with no assigned meaning are

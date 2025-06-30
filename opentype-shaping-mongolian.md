@@ -225,9 +225,12 @@ canonical order.
 Only one Mongolian mark belongs to a standard combining
 class:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+18A9`   | 228             | &#x18A9; Ali Gali Dagalga          |
+:::
 
 
 All other codepoints in the Mongolian block belong to class _0_.
@@ -255,12 +258,14 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+1828`   | Letter           | DUAL         | _null_        | _0_        | &#x1828; Na                  |
 | | | | | |
 |`U+1885`   | Mark [Mn]        | TRANSPARENT  | _null_        | _0_        | &#x1885; Ali Gali Baluda     |
-
+:::
 
 
 Codepoints with no assigned meaning are

@@ -273,11 +273,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1000`   | Letter           | CONSONANT         | _null_                     | &#x1000; Ka                  |
 | | | | |
 |`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1036; Anusvara            |
+:::
 
 
 Codepoints with no assigned meaning are

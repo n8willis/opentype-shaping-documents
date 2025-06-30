@@ -200,11 +200,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0B01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0B01; Candrabindu         |
 | | | | |
 |`U+0B15`   | Letter           | CONSONANT         | _null_                     | &#x0B15; Ka                  |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -1277,10 +1280,13 @@ The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
   - The context defined for a `nukt` feature is:
+
+:::{table} `nukt` feature context
     
-    | Backtrack     | Matching sequence             | Lookahead     |
-    |:--------------|:------------------------------|:--------------|
-    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+| Backtrack     | Matching sequence             | Lookahead     |
+|:--------------|:------------------------------|:--------------|
+| _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1307,10 +1313,13 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
   - The context defined for an `akhn` feature is:
+
+:::{table} `akhn` feature context
     
-    | Backtrack     | Matching sequence           | Lookahead     |
-    |:--------------|:----------------------------|:--------------|
-    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+| Backtrack     | Matching sequence           | Lookahead     |
+|:--------------|:----------------------------|:--------------|
+| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1343,10 +1352,13 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 	
 
   - The context defined for a `rphf` feature is:
+
+:::{table} `rphf` feature context
     
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1396,11 +1408,13 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
   - The context defined for a `blwf` feature is:
-    
-    | Backtrack     | Matching sequence        | Lookahead     |
-    |:--------------|:-------------------------|:--------------|
-    | `_consonant_` | `_halant_`,`_consonant_` | _none_        |
 
+:::{table} `blwf` feature context
+    
+| Backtrack     | Matching sequence        | Lookahead     |
+|:--------------|:-------------------------|:--------------|
+| `_consonant_` | `_halant_`,`_consonant_` | _none_        |
+:::
 
 
 :::{figure-md}

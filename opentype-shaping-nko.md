@@ -131,10 +131,14 @@ canonical order.
 
 N'Ko marks all belong to standard combining classes:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |           | 220             | Other below-base combining marks   |
 |           | 230             | Other above-base combining marks   |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -162,12 +166,14 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+07D3`   | Letter           | DUAL         | _null_        | _0_        | &#x07D3; Ba                  |
 | | | | | |
 |`U+07EB`   | Mark [Mn]        | TRANSPARENT  | _null_        | 230        | &#x07EB; Combining Short High Tone|
-
+:::
 
 
 Codepoints with no assigned meaning are

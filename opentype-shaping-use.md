@@ -135,6 +135,9 @@ correct results.
 > featured in that row. 
 
 
+:::{table} Property overrides for <abbr>USE</abbr> shaping
+
+
 | Codepoint | Unicode UISC               | USE override UISC | Unicode UIPC | USE override UIPC | Glyph                                   |
 |:----------|:---------------------------|:------------------|:-------------|:------------------|:----------------------------------------|
 | `U+AA29`  | Vowel_Dependent            | Bindu             | _null_       | _null_            | &#xAA29; Cham Vowel Sign Aa             |
@@ -157,6 +160,7 @@ correct results.
 | `U+1112D` | _null_                     | _null_            | Top          | Bottom            | &#x1112d; Chakma Vowel Sign Ai          |
 | `U+11130` | _null_                     | _null_            | Top          | Bottom            | &#x11130; Chakma Vowel Sign Oi          |
 | | | | | | |
+:::
 
 
 ### <abbr>USE</abbr> classification table ###
@@ -172,6 +176,8 @@ express cluster-matching rules or other algorithms.
 Vowels and modifiers may be further subclassified as described in the
 [<abbr title="Universal Shaping Engine">USE</abbr> subclasses table](#use-subclasses-table) below.
 
+
+:::{table} Class definitions for <abbr>USE</abbr> shaping
 
 | USE classification        | Symbol | Definition                                                                                                    |
 |:--------------------------|:-------|:--------------------------------------------------------------------------------------------------------------|
@@ -200,6 +206,7 @@ Vowels and modifiers may be further subclassified as described in the
 | Zero width joiner         | `ZWJ`  | UISC = Joiner                                                                                                 |
 | Zero width nonjoiner      | `ZWNJ` | UISC = Non_Joiner                                                                                             |
 | | | |
+:::
 
 
 ### <abbr>USE</abbr> subclasses table ###
@@ -211,6 +218,8 @@ the <abbr title="Universal Shaping Engine">USE</abbr> shaping model are defined 
 Split-vowel subclasses are not assigned a symbol because each split
 vowel must be decomposed into its components.
 
+
+:::{table} Subclasses for <abbr>USE</abbr> shaping
 
 | USE classification     | Symbol  | Definition                                                              |
 |:-----------------------|:--------|:------------------------------------------------------------------------|
@@ -241,7 +250,7 @@ vowel must be decomposed into its components.
 | VOWEL_MOD_PRE          | `VMPre` | USE=VM & UIPC = Left                                                    |
 | VOWEL_MOD_POST         | `VMPst` | USE=VM & UIPC = Right                                                   |
 | | | |
-
+:::
 
 
 ## The <abbr>USE</abbr> shaping model ##

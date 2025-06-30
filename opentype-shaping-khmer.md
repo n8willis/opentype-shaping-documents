@@ -280,11 +280,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1780`   | Letter           | CONSONANT         | _null_                     | &#x1780; Ka                  |
 | | | | |
 |`U+17C6`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x17C6; Nikahit             |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -795,6 +798,9 @@ in Khmer words. Therefore, they are not tagged for the `POS_SMVD`
 position that is typically reserved for syllable modifiers and Vedic
 signs.
 
+:::{table} Mid-syllable marks that must be tagged for sorting with
+above-base consonants
+
 | Codepoint | Sorting Position        | Glyph                  |
 |:----------|:------------------------|:-----------------------|
 |`U+17CB`   |`POS_ABOVEBASE_CONSONANT`| &#x17CB; Bantoc        |
@@ -805,6 +811,7 @@ signs.
 |`U+17D1`   |`POS_ABOVEBASE_CONSONANT`| &#x17D1; Viriam        |
 |`U+17D3`   |`POS_ABOVEBASE_CONSONANT`| &#x17D3; Bathamasat    |
 |`U+17DD`   |`POS_ABOVEBASE_CONSONANT`| &#x17DD; Atthacan      |
+:::
 
 
 All remaining marks, including <samp>"Sign Coeng"</samp>, must be tagged with the

@@ -230,11 +230,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character tablee
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0D01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0D01; Candrabindu         |
 | | | | |
 |`U+0D15`   | Letter           | CONSONANT         | _null_                     | &#x0D15; Ka                  |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -1257,10 +1260,14 @@ precomposed nukta-variant of the consonant glyph.
 > similar characters from other blocks.
 
   - The context defined for a `nukt` feature is:
+
+:::{table} `nukt` feature context
     
-    | Backtrack     | Matching sequence             | Lookahead     |
-    |:--------------|:------------------------------|:--------------|
-    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+| Backtrack     | Matching sequence             | Lookahead     |
+|:--------------|:------------------------------|:--------------|
+| _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+:::
+
 
 :::{figure-md}
 ![Nukta composition](/images/malayalam/malayalam-nukt.svg "Nukta composition"){.shaping-demo .inline-svg .greyscale-svg #malayalam-nukt}
@@ -1283,10 +1290,13 @@ These sequences can occur anywhere in a syllable. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
   - The context defined for an `akhn` feature is:
+
+:::{table} `akhn` feature context
     
-    | Backtrack     | Matching sequence           | Lookahead     |
-    |:--------------|:----------------------------|:--------------|
-    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+| Backtrack     | Matching sequence           | Lookahead     |
+|:--------------|:----------------------------|:--------------|
+| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1347,10 +1357,13 @@ Dot Reph composition
 
 
   - The context defined for a `rphf` feature is:
+
+:::{table} `rphf` feature context
     
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+:::
 
 
 > Note: Modern Malayalam orthography prefers using the <samp>"Chillu R"</samp>
@@ -1407,10 +1420,13 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
   - The context defined for a `blwf` feature is:
+
+:::{table} `blwf` feature context
     
-    | Backtrack     | Matching sequence        | Lookahead     |
-    |:--------------|:-------------------------|:--------------|
-    | `_consonant_` | `_halant_`,"La"          | _none_        |
+| Backtrack     | Matching sequence        | Lookahead     |
+|:--------------|:-------------------------|:--------------|
+| `_consonant_` | `_halant_`,"La"          | _none_        |
+:::
 
 
 :::{figure-md}
@@ -1486,10 +1502,13 @@ special forms. Malayalam includes two consonants that can take on
 post-base form: <samp>"Ya"</samp> and <samp>"Va"</samp>.
 
   - The context defined for a `pstf` feature is:
+
+:::{table} `pstf` feature context
     
-    | Backtrack       | Matching sequence        | Lookahead     |
-    |:----------------|:-------------------------|:--------------|
-    | `SYLLABLE_BASE` | `_halant_`,`_consonant_` | _none_        |
+| Backtrack       | Matching sequence        | Lookahead     |
+|:----------------|:-------------------------|:--------------|
+| `SYLLABLE_BASE` | `_halant_`,`_consonant_` | _none_        |
+:::
 
 
 :::{figure-md}

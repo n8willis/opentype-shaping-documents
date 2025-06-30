@@ -672,6 +672,8 @@ gender modified using the <abbr title="Zero-Width Joiner">ZWJ</abbr> gendered pe
 
 Currently, this list of codepoints includes those in the table below:
 
+:::{table} Single-human emoji codepoints that do not support gendered-person modifiers
+
 | Emoji codepoint                | Gender |
 |:-------------------------------|:-------|
 | `U+1F467` Girl                 | Female |
@@ -689,6 +691,8 @@ Currently, this list of codepoints includes those in the table below:
 | `U+1F467` Pregnant woman       | Female |
 | `U+1F467` Breastfeeding        | Female |
 | `U+1F467` Woman with headscarf | Female |
+:::
+
 
 However, the list may be updated in subsequent revisions of Unicode.
 
@@ -1100,6 +1104,8 @@ the emoji.
 The permitted combinations are summarized in the following table:
 
 
+:::{table} Defined interactions between skin-tone–modifers and gender designators
+
 | Type       | Emoji                                   | Skin-tone-modifier | Gender depicted     |
 |:-----------|:----------------------------------------|:-------------------|:--------------------|
 | Standalone | "Handshake" `U+1F91D`                   | only one supported |    not supported    |
@@ -1116,7 +1122,7 @@ The permitted combinations are summarized in the following table:
 | Sequence   | "Couple holding hands" ZWJ sequence     |     supported      |      supported      |
 | Sequence   | "Family" ZWJ sequence                   |     supported      |      supported      |
 | Sequence   | "Shaking hands" ZWJ sequence            |     required       |    not supported    |
-
+:::
 
 
 

@@ -28,6 +28,8 @@ presentation selector codepoints (VS15, `U+FE0E`; VS16, `U+FE0F`)
 and modifier codepoints (`U+1F3FB`..`U+1F3FF`).
 
 
+:::{table} Emoji sequence implementation details
+
 | Font                   | publisher | image format | sequence formation feature | ZWJ sequence feature | visible presentation selector | visible modifier |
 |:-----------------------|:----------|:-------------|:---------------------------|:---------------------|:------------------------------|:-----------------|
 | Source Emoji           | Adobe     | cff          | ccmp                       | ccmp, salt           | YES                           | YES              |
@@ -46,6 +48,7 @@ and modifier codepoints (`U+1F3FB`..`U+1F3FF`).
 | Apple Color Emoji      | Apple    | sbix         | morx                       | morx                 | no                            | YES              |
 | Samsung Color Emoji    | Samsung  | CBDT         | ccmp                       | ccmp                 | no                            | YES              |
 | Segoe UI Emoji         | Microsoft| COLRv0       | ccmp                       | ccmp                 | YES                           | YES              |
+:::
 
 
 ### Contributing additional data ###
