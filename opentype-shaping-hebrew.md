@@ -424,6 +424,15 @@ the Hebrew shaping model:
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 
+:::{figure-md}
+![Kerning application](/images/hebrew/hebrew-kern.svg "Kerning application"){.shaping-demo .inline-svg .greyscale-svg #hebrew-kern}
+
+Kerning application
+:::
+
+```{svg-color-toggle-button} hebrew-kern
+```
+
 #### Stage 5, step 2: `mark` ####
 
 The `mark` feature positions marks with respect to base glyphs.
