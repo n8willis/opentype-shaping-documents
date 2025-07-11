@@ -1697,6 +1697,15 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![dist feature application](/images/kannada/kannada-dist.svg "dist feature application"){.shaping-demo .inline-svg .greyscale-svg #kannada-dist}
+
+Appliication of the `dist` feature
+:::
+
+```{svg-color-toggle-button} kannada-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Kannada, this includes above-base dependent vowels (matras),
 diacritical marks, and Vedic signs. 
