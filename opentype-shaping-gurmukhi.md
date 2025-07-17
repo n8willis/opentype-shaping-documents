@@ -1436,7 +1436,7 @@ Post-base Ya composition
 :::
 
 ```{svg-color-toggle-button} gurmukhi-pstf-1
-
+```
 
 
 #### Stage 3, step 11: vatu ####
@@ -1514,8 +1514,8 @@ performed during the initial reordering stage.
 Like the initial reordering stage, the steps involved in this stage
 occur on a per-syllable basis.
 
-<!--- Check that classifications have not been mangled. If the -->
-<!--character is a Halant AND a ligature was formed AND a multiple
+<!--- Check that classifications have not been mangled. If the --->
+<!--- character is a Halant AND a ligature was formed AND a multiple
 substitution was performed, restore the classification to VIRAMA
 because it was almost certainly lost in the preceding <abbr title="Glyph Substitution table">GSUB</abbr> stage.
 --->
@@ -1784,6 +1784,16 @@ The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
+
+:::{figure-md}
+![Application of the dist feature](/images/gurmukhi/gurmukhi-dist.svg "Application of the dist feature"){.shaping-demo .inline-svg .greyscale-svg #gurmukhi-dist}
+
+Application of the dist feature
+:::
+
+```{svg-color-toggle-button} gurmukhi-dist
+```
+
 
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Gurmukhi, this includes <samp>"Reph"</samp> in addition to the
