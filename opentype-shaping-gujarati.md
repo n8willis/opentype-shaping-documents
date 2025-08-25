@@ -1762,6 +1762,15 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance feature application](/images/gujarati/gujarati-dist.svg "Distance feature application"){.shaping-demo .inline-svg .greyscale-svg #gujarati-dist}
+
+Distance feature application
+:::
+
+```{svg-color-toggle-button} gujarati-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Gujarati, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
