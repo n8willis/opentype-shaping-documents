@@ -11,7 +11,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-matra-decompo
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-matra-decompose-after.svg --features= --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d46,25cc,0d57
 
-svg_stack --direction=h malayalam-matra-decompose-before.svg right-arrow.svg malayalam-matra-decompose-after.svg > malayalam-matra-decompose.svg
+svg_stack.py --direction=h malayalam-matra-decompose-before.svg right-arrow.svg malayalam-matra-decompose-after.svg > malayalam-matra-decompose.svg
 
 
 ## 2.7 post-base consonants
@@ -22,7 +22,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-ya-befor
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-ya-after.svg --features=+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4d,0d2f
 
-svg_stack --direction=h malayalam-pstf-ya-before.svg right-arrow.svg malayalam-pstf-ya-after.svg > malayalam-pstf-ya.svg
+svg_stack.py --direction=h malayalam-pstf-ya-before.svg right-arrow.svg malayalam-pstf-ya-after.svg > malayalam-pstf-ya.svg
 
 ### Va
 
@@ -30,7 +30,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-va-befor
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-va-after.svg --features=+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4d,0d35
 
-svg_stack --direction=h malayalam-pstf-va-before.svg right-arrow.svg malayalam-pstf-va-after.svg > malayalam-pstf-va.svg
+svg_stack.py --direction=h malayalam-pstf-va-before.svg right-arrow.svg malayalam-pstf-va-after.svg > malayalam-pstf-va.svg
 
 
 #### Duplicates for other subsections
@@ -55,7 +55,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-nukt-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-nukt-after.svg --features=+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d18,0323
 
-svg_stack --direction=h malayalam-nukt-before.svg right-arrow.svg malayalam-nukt-after.svg > malayalam-nukt.svg
+svg_stack.py --direction=h malayalam-nukt-before.svg right-arrow.svg malayalam-nukt-after.svg > malayalam-nukt.svg
 
 
 ## 3.3 `akhn`
@@ -66,7 +66,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-kssa-bef
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-kssa-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,0d37
 
-svg_stack --direction=h malayalam-akhn-kssa-before.svg right-arrow.svg malayalam-akhn-kssa-after.svg > malayalam-akhn-kssa.svg
+svg_stack.py --direction=h malayalam-akhn-kssa-before.svg right-arrow.svg malayalam-akhn-kssa-after.svg > malayalam-akhn-kssa.svg
 
 ### NnTta
 
@@ -74,7 +74,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-nntta-be
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-nntta-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d23,0d4d,0d1f
 
-svg_stack --direction=h malayalam-akhn-nntta-before.svg right-arrow.svg malayalam-akhn-nntta-after.svg > malayalam-akhn-nntta.svg
+svg_stack.py --direction=h malayalam-akhn-nntta-before.svg right-arrow.svg malayalam-akhn-nntta-after.svg > malayalam-akhn-nntta.svg
 
 > Note: The "Chillu R" is shown here because it may be implemented as
 > an akhand form and that makes Malayalam distinct from several other
@@ -84,7 +84,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-chillu-r
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-akhn-chillu-r-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d7c
 
-svg_stack --direction=h malayalam-akhn-chillu-r-before.svg right-arrow.svg malayalam-akhn-chillu-r-after.svg > malayalam-akhn-chillu-r.svg
+svg_stack.py --direction=h malayalam-akhn-chillu-r-before.svg right-arrow.svg malayalam-akhn-chillu-r-after.svg > malayalam-akhn-chillu-r.svg
 
 
 ## 3.4 `rphf`
@@ -97,7 +97,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-dot-reph-befo
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-dot-reph-after.svg --features=+rphf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e
 
-svg_stack --direction=h malayalam-dot-reph-before.svg right-arrow.svg malayalam-dot-reph-after.svg > malayalam-dot-reph.svg
+svg_stack.py --direction=h malayalam-dot-reph-before.svg right-arrow.svg malayalam-dot-reph-after.svg > malayalam-dot-reph.svg
 
 
 ## 3.6 `pref`
@@ -106,7 +106,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-ra-befor
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pstf-ra-after.svg --features=+pref --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4d,0d30
 
-svg_stack --direction=h malayalam-pstf-ra-before.svg right-arrow.svg malayalam-pstf-ra-after.svg > malayalam-pstf-ra.svg
+svg_stack.py --direction=h malayalam-pstf-ra-before.svg right-arrow.svg malayalam-pstf-ra-after.svg > malayalam-pstf-ra.svg
 
 
 ## 3.7 `blwf`
@@ -119,7 +119,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwf-after.svg --features=+blwf --background=FFFFFF00 /usr/share/fonts/truetype/malayalam/Rachana-Regular.ttf --unicodes=0d4d,0d32
 
-svg_stack --direction=h malayalam-blwf-before.svg right-arrow.svg malayalam-blwf-after.svg > malayalam-blwf.svg
+svg_stack.py --direction=h malayalam-blwf-before.svg right-arrow.svg malayalam-blwf-after.svg > malayalam-blwf.svg
 
 
 #### Duplicates for other subsections
@@ -138,7 +138,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-half-after.svg --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d15,0d4d,200d
 
-svg_stack --direction=h malayalam-half-before.svg right-arrow.svg malayalam-half-after.svg > malayalam-half.svg
+svg_stack.py --direction=h malayalam-half-before.svg right-arrow.svg malayalam-half-after.svg > malayalam-half.svg
 
 
 ## 3.10 `pstf`
@@ -153,7 +153,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-cjct-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-cjct-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d38,0d4d,0d31,0d4d,0d31
 
-svg_stack --direction=h malayalam-cjct-before.svg right-arrow.svg malayalam-cjct-after.svg > malayalam-cjct.svg
+svg_stack.py --direction=h malayalam-cjct-before.svg right-arrow.svg malayalam-cjct-after.svg > malayalam-cjct.svg
 
 
 ## 4.2 Pre-base matras
@@ -162,7 +162,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-matra-positio
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-matra-position-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d2c,0d4d,0d1e,0d4d,0d1c,0d4b
 
-svg_stack --direction=h malayalam-matra-position-before.svg right-arrow.svg malayalam-matra-position-after.svg > malayalam-matra-position.svg
+svg_stack.py --direction=h malayalam-matra-position-before.svg right-arrow.svg malayalam-matra-position-after.svg > malayalam-matra-position.svg
 
 
 ## 4.3 Reph position
@@ -171,7 +171,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-positio
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-repha-position-after.svg --features=+akhn,+abvm,+mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d4e,0d23,0d4d,200d,0d21,0d41
 
-svg_stack --direction=h malayalam-repha-position-before.svg right-arrow.svg malayalam-repha-position-after.svg > malayalam-repha-position.svg
+svg_stack.py --direction=h malayalam-repha-position-before.svg right-arrow.svg malayalam-repha-position-after.svg > malayalam-repha-position.svg
 
 
 ## 4.4 Pre-base reordering
@@ -180,7 +180,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pref-position
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-pref-position-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d39,0d4d,0d23,0d4d,0d21,0d4d,0d30,0d4c
 
-svg_stack --direction=h malayalam-pref-position-before.svg right-arrow.svg malayalam-pref-position-after.svg > malayalam-pref-position.svg
+svg_stack.py --direction=h malayalam-pref-position-before.svg right-arrow.svg malayalam-pref-position-after.svg > malayalam-pref-position.svg
 
 
 ## 5 `blws`
@@ -196,7 +196,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-psts-after.svg --features=+psts,+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d35,0d4d,0d35
 
-svg_stack --direction=h malayalam-psts-before.svg right-arrow.svg malayalam-psts-after.svg > malayalam-psts.svg
+svg_stack.py --direction=h malayalam-psts-before.svg right-arrow.svg malayalam-psts-after.svg > malayalam-psts.svg
 
 ## 5 `haln`
 
@@ -204,16 +204,16 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-haln-after.svg --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d33,0d4d,200d
 
-svg_stack --direction=h malayalam-haln-before.svg right-arrow.svg malayalam-haln-after.svg > malayalam-haln.svg
+svg_stack.py --direction=h malayalam-haln-before.svg right-arrow.svg malayalam-haln-after.svg > malayalam-haln.svg
 
 
 ## 6 `abvm`
 
-hb-view --font-size=110 --margin=2,32,2,16 --output-file=malayalam-abvm-before.svg --features=-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
+hb-view --font-size=110 --margin=32,16,2,16 --output-file=malayalam-abvm-before.svg --features=-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-abvm-after.svg --features=+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
+hb-view --font-size=110 --margin=32,16,2,16 --output-file=malayalam-abvm-after.svg --features=+abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d0a,0d01
 
-svg_stack --direction=h malayalam-abvm-before.svg right-arrow.svg malayalam-abvm-after.svg > malayalam-abvm.svg
+svg_stack.py --direction=h malayalam-abvm-before.svg right-arrow.svg malayalam-abvm-after.svg > malayalam-abvm.svg
 
 
 ## 6 `blwm`
@@ -222,7 +222,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwm-before.s
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=malayalam-blwm-after.svg --features=+blwm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifMalayalam-Regular.ttf --unicodes=0d34,0d62
 
-svg_stack --direction=h malayalam-blwm-before.svg right-arrow.svg malayalam-blwm-after.svg > malayalam-blwm.svg
+svg_stack.py --direction=h malayalam-blwm-before.svg right-arrow.svg malayalam-blwm-after.svg > malayalam-blwm.svg
 
 
 
