@@ -40,8 +40,8 @@
   <g id="telugu-matra-decompose:id0:id0" transform="matrix(1.25,0,0,1.25,0.0,5.25390625)"><g id="telugu-matra-decompose:id0:surface1">
 <g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
   <use xlink:href="#telugu-matra-decompose:id0:glyph0-1" x="16" y="97.59375" class="dc"/>
-  <use xlink:href="#telugu-matra-decompose:id0:glyph0-2" x="79.578125" y="97.59375" class="c1"/>
-  <use xlink:href="#telugu-matra-decompose:id0:glyph0-3" x="79.578125" y="97.59375" class="c2"/>
+  <use xlink:href="#telugu-matra-decompose:id0:glyph0-2" x="79.578125" y="97.59375" class="c0"/>
+  <use xlink:href="#telugu-matra-decompose:id0:glyph0-3" x="79.578125" y="97.59375" class="c0"/>
 </g>
 </g>
 </g>

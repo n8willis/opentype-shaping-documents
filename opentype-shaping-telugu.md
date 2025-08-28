@@ -1190,11 +1190,6 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
-> Note: The Telugu block does not include a "Nukta" mark. However,
-> there are reports of users using the "Nukta" from other Indic
-> blocks, so shaping engines may encounter a "Nukta" in text runs, and
-> should handle the situation gracefully.
-
   - The context defined for a `nukt` feature is:
 
 :::{table} `nukt` feature context
@@ -1203,6 +1198,16 @@ precomposed nukta-variant of the consonant glyph.
 |:--------------|:------------------------------|:--------------|
 | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
 :::
+
+
+:::{figure-md}
+![Nukta form ligation](/images/telugu/telugu-nukt.svg "Nukta form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-nukt}
+
+Nukta form ligation
+:::
+
+```{svg-color-toggle-button} telugu-nukt
+```
 
 
 #### Stage 3, step 3: akhn ####
@@ -1251,6 +1256,17 @@ The `rphf` feature replaces initial <samp>"Ra,Halant,ZWJ"</samp> sequences with 
 |:-----------------|:----------------------------|:--------------|
 | `SYLLABLE_START` | "Ra"(full),`_halant_`,"ZWJ" | _none_        |
 :::
+
+
+:::{figure-md}
+![Reph formation](/images/telugu/telugu-rphf.svg "Reph formation"){.shaping-demo .inline-svg .greyscale-svg #telugu-rphf}
+
+Reph formation
+:::
+
+```{svg-color-toggle-button} telugu-rphf
+```
+
 
 
 #### Stage 3, step 5: rkrf ####
@@ -1561,15 +1577,6 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
-:::{figure-md}
-![Pre-base form ligation](/images/telugu/telugu-pres.svg "Pre-base form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-pres}
-
-Pre-base form ligation
-:::
-
-```{svg-color-toggle-button} telugu-pres
-```
-
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
@@ -1616,11 +1623,6 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
-> Note: The `calt` feature, which allows for generalized application
-> of contextual alternate substitutions, is usually applied at this
-> point. However, `calt` is not mandatory for correct Telugu shaping
-> and may be disabled in the application by user preference.
-
 :::{figure-md}
 ![Halant form ligation](/images/telugu/telugu-haln.svg "Halant form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-haln}
 
@@ -1629,6 +1631,12 @@ Halant form ligation
 
 ```{svg-color-toggle-button} telugu-haln
 ```
+
+> Note: The `calt` feature, which allows for generalized application
+> of contextual alternate substitutions, is usually applied at this
+> point. However, `calt` is not mandatory for correct Telugu shaping
+> and may be disabled in the application by user preference.
+
 
 
 ### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1653,9 +1661,27 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance positioning](/images/telugu/telugu-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #telugu-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} telugu-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Telugu, this includes above-base dependent vowels (matras),
 diacritical marks, and Vedic signs. 
+
+:::{figure-md}
+![Above-base mark positioning](/images/telugu/telugu-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #telugu-abvm}
+
+Above-base mark positioning
+:::
+
+```{svg-color-toggle-button} telugu-abvm
+```
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Telugu, this includes below-base dependent vowels
