@@ -425,10 +425,22 @@ The `ccmp` feature allows a font to substitute
     separate fundamental-letter glyph followed by an ijam-only glyph,
     to permit more precise positioning)
  
+
+
 If present, these composition and decomposition substitutions must be
 performed before applying any other <abbr title="Glyph Substitution table">GSUB</abbr> or <abbr title="Glyph Positioning table">GPOS</abbr> lookups, because
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
+
+
+:::{figure-md}
+![Composition and decomposition](/images/arabic/arabic-ccmp.svg "Composition and decomposition"){.shaping-demo .inline-svg .greyscale-svg #arabic-ccmp}
+
+Composition and decomposition
+:::
+
+```{svg-color-toggle-button} arabic-ccmp
+```
 
 
 ### Stage 3: Computing letter joining states ###
@@ -758,13 +770,20 @@ Standard ligature substitution
 ```
 
 
-
-
 #### Stage 6, step 2: dlig ####
 
 The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
+
+:::{figure-md}
+![Discretionary ligature substitution](/images/arabic/arabic-dlig.svg "Discretionary ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #arabic-dlig}
+
+Discretionary ligature substitution
+:::
+
+```{svg-color-toggle-button} arabic-dlig
+```
 
 
 #### Stage 6, step 3: cswh ####
@@ -822,7 +841,17 @@ Cursive positioning
 
 #### Stage 7, step 2: kern ####
 
-The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
+The `kern` feature adjusts glyph spacing between pairs of adjacent glyphs.
+
+:::{figure-md}
+![Kerning adjustment](/images/arabic/arabic-kern.svg "Kerning adjustment"){.shaping-demo .inline-svg .greyscale-svg #arabic-kern}
+
+Kerning adjustment
+:::
+
+```{svg-color-toggle-button} arabic-kern
+```
+
 
 
 #### Stage 7, step 3: mark ####
@@ -844,5 +873,14 @@ Mark positioning
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
+
+:::{figure-md}
+![Mark-to-mark positioning](/images/arabic/arabic-mkmk.svg "Mark-to-mark positioning"){.shaping-demo .inline-svg .greyscale-svg #arabic-mkmk}
+
+Mark-to-mark positioning
+:::
+
+```{svg-color-toggle-button} arabic-mkmk
+```
 
 
