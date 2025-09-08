@@ -958,12 +958,12 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-raphala}
+![Raphala composition](/images/oriya/oriya-blwf-ra.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra}
 
 Raphala composition
 :::
 
-```{svg-color-toggle-button} oriya-blwf-raphala
+```{svg-color-toggle-button} oriya-blwf-ra
 ```
 
 
@@ -1093,12 +1093,12 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala-1.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-raphala-1}
+![Raphala composition](/images/oriya/oriya-blwf-ra-1.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra-1}
 
 Raphala composition
 :::
 
-```{svg-color-toggle-button} oriya-blwf-raphala-1
+```{svg-color-toggle-button} oriya-blwf-ra-1
 ```
 
 
@@ -1389,12 +1389,12 @@ form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-raphala}
+![Raphala composition](/images/oriya/oriya-blwf-ra-2.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra-2}
 
 Raphala composition
 :::
 
-```{svg-color-toggle-button} oriya-blwf-raphala
+```{svg-color-toggle-button} oriya-blwf-ra-2
 ```
 
 
@@ -1792,11 +1792,6 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
-> Note: The `calt` feature, which allows for generalized application
-> of contextual alternate substitutions, is usually applied at this
-> point. However, `calt` is not mandatory for correct Oriya shaping
-> and may be disabled in the application by user preference.
-
 :::{figure-md}
 ![Halant form substitution](/images/oriya/oriya-haln.svg "Halant form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-haln}
 
@@ -1805,6 +1800,12 @@ Halant form substitution
 
 ```{svg-color-toggle-button} oriya-haln
 ```
+
+> Note: The `calt` feature, which allows for generalized application
+> of contextual alternate substitutions, is usually applied at this
+> point. However, `calt` is not mandatory for correct Oriya shaping
+> and may be disabled in the application by user preference.
+
 
 
 ### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1828,6 +1829,16 @@ The `dist` feature adjusts the horizontal positioning of
 glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
+
+:::{figure-md}
+![Distance positioning](/images/oriya/oriya-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #oriya-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} oriya-dist
+```
+
 
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Oriya, this includes <samp>"Reph"</samp> in addition to the

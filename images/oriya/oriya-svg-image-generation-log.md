@@ -134,10 +134,14 @@ svg_stack.py --direction=h oriya-blwf-before.svg right-arrow.svg oriya-blwf-afte
 ## 3.12 `cjct`
 
 > Not a perfect example....
+> Noto Serif Oriya implements this in a combination of multiple
+> features, including akhn and blwf. It also applies haln, which must
+> be deactivated in this illustration because it is documented as
+> being applied later.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-cjct-before.svg --features=-pres --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-cjct-before.svg --features=-blwf,-akhn,-cjct --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b38,0bd4,0b2a,0b40
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-cjct-after.svg --features=+pres --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-cjct-after.svg --features=+cjct --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b38,0bd4,0b2a,0b40
 
 svg_stack.py --direction=h oriya-cjct-before.svg right-arrow.svg oriya-cjct-after.svg > oriya-cjct.svg
 
