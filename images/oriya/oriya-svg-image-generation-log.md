@@ -87,7 +87,7 @@ svg_stack.py --direction=h oriya-nukt-before.svg right-arrow.svg oriya-nukt-afte
 > Note: Noto Sans Oriya implements this in a `pres`+`blwf` combination
 > for unknown reasons.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-kssa-before.svg --features=-pres,-blwf,-akhn --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b15,0b4d,0b37
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-kssa-before.svg --features=-pres,-blwf,-akhn,-haln --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b15,0b4d,0b37
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-kssa-after.svg --features=+pres,+blwf --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b15,0b4d,0b37
 
@@ -98,7 +98,7 @@ svg_stack.py --direction=h oriya-akhn-kssa-before.svg right-arrow.svg oriya-akhn
 > Note: Noto Sans Oriya implements this in a `blwf`+`cjct` combination
 > for unknown reasons.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-jnya-before.svg --features=-pres,-cjct,-blwf --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b1c,0b4d,0b1e
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-jnya-before.svg --features=-pres,-cjct,-blwf,-haln --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b1c,0b4d,0b1e
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-akhn-jnya-after.svg --features=+pres,+blwf --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b1c,0b4d,0b1e
 
@@ -107,7 +107,7 @@ svg_stack.py --direction=h oriya-akhn-jnya-before.svg right-arrow.svg oriya-akhn
 
 ## 3.4 `rphf`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-rphf-before.svg --features=-rphf --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b30,0b4d,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-rphf-before.svg --features=-rphf,-haln --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b30,0b4d,25cc
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-rphf-after.svg --features=+rphf --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b30,0b4d,25cc
 
@@ -222,9 +222,9 @@ svg_stack.py --direction=h oriya-dist-before.svg right-arrow.svg oriya-dist-afte
 
 > Note: Noto Serif Oriya implements this as `blwm` for unknown reasons.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-abvm-before.svg --features=-blwm --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b19,0b4d,0b18,0b48
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-abvm-before.svg --features=-abvm,-blwm --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b19,0b48
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-abvm-after.svg --features=+abvm,+blwm --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b19,0b4d,0b18,0b48
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=oriya-abvm-after.svg --features=+abvm,+blwm --background=FFFFFF00 /home/nate/SyncThing/fonts-external/temporary-and-testing/NotoSerifOriya-Regular.ttf --unicodes=0b19,0b48
 
 svg_stack.py --direction=h oriya-abvm-before.svg right-arrow.svg oriya-abvm-after.svg > oriya-abvm.svg
 
