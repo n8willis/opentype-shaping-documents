@@ -11,7 +11,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-matra-decompose
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-matra-decompose-after.svg --features= --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dd9,25cc,0dca
 
-svg_stack --direction=h sinhala-matra-decompose-before.svg right-arrow.svg sinhala-matra-decompose-after.svg > sinhala-matra-decompose.svg
+svg_stack.py --direction=h sinhala-matra-decompose-before.svg right-arrow.svg sinhala-matra-decompose-after.svg > sinhala-matra-decompose.svg
 
 
 ## 2.7 Post-base consonants
@@ -22,7 +22,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-before.
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-ra-after.svg --features=+vatu --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dbb
 
-svg_stack --direction=h sinhala-vatu-ra-before.svg right-arrow.svg sinhala-vatu-ra-after.svg > sinhala-vatu-ra.svg
+svg_stack.py --direction=h sinhala-vatu-ra-before.svg right-arrow.svg sinhala-vatu-ra-after.svg > sinhala-vatu-ra.svg
 
 ### Va
 
@@ -30,7 +30,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-va-before.
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-vatu-va-after.svg --features=+vatu --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=25cc,0dca,200d,0dba
 
-svg_stack --direction=h sinhala-vatu-va-before.svg right-arrow.svg
+svg_stack.py --direction=h sinhala-vatu-va-before.svg right-arrow.svg
 sinhala-vatu-va-after.svg > sinhala-vatu-va.svg
 
 
@@ -54,7 +54,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-akhn-ligature-b
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-akhn-ligature-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0d9a,0dca,200d,0dc2
 
-svg_stack --direction=h sinhala-akhn-ligature-before.svg right-arrow.svg sinhala-akhn-ligature-after.svg > sinhala-akhn-ligature.svg
+svg_stack.py --direction=h sinhala-akhn-ligature-before.svg right-arrow.svg sinhala-akhn-ligature-after.svg > sinhala-akhn-ligature.svg
 
 ### Touching
 
@@ -62,7 +62,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-akhn-touching-b
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-akhn-touching-after.svg --features=+akhn,+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0d9c,200d,0dca,0d9d
 
-svg_stack --direction=h sinhala-akhn-touching-before.svg right-arrow.svg sinhala-akhn-touching-after.svg > sinhala-akhn-touching.svg
+svg_stack.py --direction=h sinhala-akhn-touching-before.svg right-arrow.svg sinhala-akhn-touching-after.svg > sinhala-akhn-touching.svg
 
 
 ## 3.4 `rphf`
@@ -71,7 +71,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-rphf-before.svg
 
 hb-view --font-size=110 --margin=2,16,2,64 --output-file=sinhala-rphf-after.svg --features=+rphf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dca,200d,25cc
 
-svg_stack --direction=h sinhala-rphf-before.svg right-arrow.svg sinhala-rphf-after.svg > sinhala-rphf.svg
+svg_stack.py --direction=h sinhala-rphf-before.svg right-arrow.svg sinhala-rphf-after.svg > sinhala-rphf.svg
 
 
 #### Duplicates for other subsections
@@ -89,7 +89,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-pstf-before.svg
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-pstf-after.svg --features=+pstf --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0ddf
 
-svg_stack --direction=h sinhala-pstf-before.svg right-arrow.svg sinhala-pstf-after.svg > sinhala-pstf.svg
+svg_stack.py --direction=h sinhala-pstf-before.svg right-arrow.svg sinhala-pstf-after.svg > sinhala-pstf.svg
 
 
 ## 3.11 `vatu`
@@ -108,7 +108,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-matra-position-
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-matra-position-after.svg --features= --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0da0,0dca,0db1,0dca,200d,0daf,0dca,200d,0dbb,0ddc
 
-svg_stack --direction=h sinhala-matra-position-before.svg right-arrow.svg sinhala-matra-position-after.svg > sinhala-matra-position.svg
+svg_stack.py --direction=h sinhala-matra-position-before.svg right-arrow.svg sinhala-matra-position-after.svg > sinhala-matra-position.svg
 
 
 ## 4.3 Reph position
@@ -117,7 +117,7 @@ hb-view --font-size=110 --margin=2,16,2,64 --output-file=sinhala-reph-position-b
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-reph-position-after.svg --features= --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dca,200d,0dad,0dca,200d,0dae,0dca,200d,0dba,0dd1
 
-svg_stack --direction=h sinhala-reph-position-before.svg right-arrow.svg sinhala-reph-position-after.svg > sinhala-reph-position.svg
+svg_stack.py --direction=h sinhala-reph-position-before.svg right-arrow.svg sinhala-reph-position-after.svg > sinhala-reph-position.svg
 
 
 ## 5 `pres`
@@ -126,7 +126,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-pres-before.svg
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-pres-after.svg --features=+pres --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0d9b,200d,0dca,0da2
 
-svg_stack --direction=h sinhala-pres-before.svg right-arrow.svg sinhala-pres-after.svg > sinhala-pres.svg
+svg_stack.py --direction=h sinhala-pres-before.svg right-arrow.svg sinhala-pres-after.svg > sinhala-pres.svg
 
 
 ## 5 `abvs`
@@ -135,7 +135,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvs-before.svg
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvs-after.svg --features=+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0db6,0dd3
 
-svg_stack --direction=h sinhala-abvs-before.svg right-arrow.svg sinhala-abvs-after.svg > sinhala-abvs.svg
+svg_stack.py --direction=h sinhala-abvs-before.svg right-arrow.svg sinhala-abvs-after.svg > sinhala-abvs.svg
 
 
 ## 5 `blws`
@@ -144,42 +144,53 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blws-before.svg
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blws-after.svg --features=+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0db7,0dd6
 
-svg_stack --direction=h sinhala-blws-before.svg right-arrow.svg sinhala-blws-after.svg > sinhala-blws.svg
+svg_stack.py --direction=h sinhala-blws-before.svg right-arrow.svg sinhala-blws-after.svg > sinhala-blws.svg
 
 
 ## 5 `psts`
 
-> Note: this lookup only works in Noto Sans. Needs more investigation.
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-psts-before.svg --features=-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dd1
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-psts-before.svg --features=-psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSinhala-Regular.ttf --unicodes=0daf,0dca,200d,0dba,0ddd
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-psts-after.svg --features=+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dd1
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-psts-after.svg --features=+psts --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSinhala-Regular.ttf --unicodes=0daf,0dca,200d,0dba,0ddd
+svg_stack.py --direction=h sinhala-psts-before.svg right-arrow.svg sinhala-psts-after.svg > sinhala-psts.svg
 
-svg_stack --direction=h sinhala-psts-before.svg right-arrow.svg sinhala-psts-after.svg > sinhala-psts.svg
+
+## 6 `dist`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-dist-before.svg --features=-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dc5,0ddf
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-dist-after.svg --features=+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dc5,0ddf
+
+svg_stack.py --direction=h sinhala-dist-before.svg right-arrow.svg sinhala-dist-after.svg > sinhala-dist.svg
 
 
 ## 6 `abvm`
 
-> Note: Noto Sans Sinhala implements this as an `abvs` substitution
-> for unknown reasons.
+> Note: Noto Serif Sinhala implements this as an `abvs`
+> substitution. This makes it a less-than ideal illustration, because
+> the "after" SVG is a ligated glyph; it must suffice until a suitable
+> alternative is found.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvm-before.svg --features=-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dca,200d,0dae
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvm-before.svg --features=-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dc6,0dd3
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvm-after.svg --features=+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dbb,0dca,200d,0dae
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-abvm-after.svg --features=+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0dc6,0dd3
 
-svg_stack --direction=h sinhala-abvm-before.svg right-arrow.svg sinhala-abvm-after.svg > sinhala-abvm.svg
+svg_stack.py --direction=h sinhala-abvm-before.svg right-arrow.svg sinhala-abvm-after.svg > sinhala-abvm.svg
 
 
 ## 6 `blwm`
 
-> Note: Noto Sans Sinhala double-implements this in both `blwm` and
-> `abvs`, even though it is clearly not above-base.
+> Note: Noto Serif Sinhala double-implements this as a `blws`
+> substitution. This makes it a less-than ideal illustration, because
+> the "after" SVG is a ligated glyph; it must suffice until a suitable
+> alternative is found.
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blwm-before.svg --features=-blwm,-abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0d9f,0dca,200d,0dbb
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blwm-before.svg --features=-blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0da7,0dca,200d,0da8,0dd4
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blwm-after.svg --features=+blwm,+abvs --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0d9f,0dca,200d,0dbb
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=sinhala-blwm-after.svg --features=+blws --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifSinhala-Regular.ttf --unicodes=0da7,0dca,200d,0da8,0dd4
 
-svg_stack --direction=h sinhala-blwm-before.svg right-arrow.svg sinhala-blwm-after.svg > sinhala-blwm.svg
+svg_stack.py --direction=h sinhala-blwm-before.svg right-arrow.svg sinhala-blwm-after.svg > sinhala-blwm.svg
 
 
 

@@ -1486,6 +1486,15 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance positioning](/images/sinhala/sinhala-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} sinhala-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Sinhala, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
