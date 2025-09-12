@@ -5,7 +5,7 @@ text runs in non-complex scripts. It may also be used as a fallback
 model for unrecognized scripts.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)

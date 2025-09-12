@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Thai and Lao shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Thai and Lao scripts.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -204,6 +207,8 @@ This ensures that <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> codepoints adj
 <samp>"Phinthu"</samp> mark.
 
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+0E38`   | 3               | &#x0E38; Sara U                    |
@@ -212,6 +217,7 @@ This ensures that <samp>"Sara U"</samp> or <samp>"Sara Uu"</samp> codepoints adj
 |`U+0EB9`   | 118             | &#x0EB9; Sign Uu                   |
 |`U+0EBC`   | _0_             | &#x0E47; Semivowel Sign Lo         |
 |`U+0ECB`   | 122             | &#x0E4A; Tone Mai Catawa           |
+:::
 
 > Note: Reassigning marks to modified classes in this manner should
 > not produce any unwanted side effects, because the reassigned class
@@ -266,6 +272,8 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass | PUA    | Glyph                         |
 |:----------|:-----------------|:------------------|:------------------------|:-------|:------------------------------|
 |`U+0E01`   | Letter           | CONSONANT         | _null_                  | NC     | &#x0E01; Ko Kai               |
@@ -275,6 +283,7 @@ For example:
 |`U+0E81`   | Letter           | CONSONANT         | _null_                  | _null_ | &#x0E81; Ko                   |
 | | | | | | |
 |`U+0EC8`   | Mark [Mn]        | TONE_MARKER       | TOP_POSITION            | _null_ | &#x0EC8; Tone Mai Ek          |
+:::
 
 
 
@@ -412,10 +421,13 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![Glyph composition](images/thai-lao/thai-ccmp.svg "Glyph composition")
+![Glyph composition](images/thai-lao/thai-ccmp.svg "Glyph composition"){.shaping-demo .inline-svg .greyscale-svg #thai-ccmp}
 
 Glyph composition
 :::
+
+```{svg-color-toggle-button} thai-ccmp
+```
 
 ### Stage 2: Decomposing all Am vowel signs ###
 
@@ -437,10 +449,13 @@ decomposed marks are handled differently during the mark-reordering
 stage.
 
 :::{figure-md}
-![Am decomposition](images/thai-lao/lao-am-decomposition.svg "Am decomposition")
+![Am decomposition](images/thai-lao/lao-am-decomposition.svg "Am decomposition"){.shaping-demo .inline-svg .greyscale-svg #lao-am-decomposition}
 
 Am decomposition
 :::
+
+```{svg-color-toggle-button} lao-am-decomposition
+```
   
 ### Stage 3: Reordering sequences of marks ###
 
@@ -509,28 +524,37 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 :::{figure-md}
-![Application of the kern feature](/images/thai-lao/lao-kern.svg "Application of the kern feature")
+![Application of the kern feature](/images/thai-lao/lao-kern.svg "Application of the kern feature"){.shaping-demo .inline-svg .greyscale-svg #lao-kern}
 
 Application of the kern feature
 :::
 
+```{svg-color-toggle-button} lao-kern
+```
+
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Application of the mark feature](/images/thai-lao/thai-mark.svg "Application of the mark feature")
+![Application of the mark feature](/images/thai-lao/thai-mark.svg "Application of the mark feature"){.shaping-demo .inline-svg .greyscale-svg #thai-mark}
 
 Application of the mark feature
 :::
+
+```{svg-color-toggle-button} thai-mark
+```
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/thai-lao/thai-mkmk.svg "Application of the mkmk feature")
+![Application of the mkmk feature](/images/thai-lao/thai-mkmk.svg "Application of the mkmk feature"){.shaping-demo .inline-svg .greyscale-svg #thai-mkmk}
 
 Application of the mkmk feature
 :::
+
+```{svg-color-toggle-button} thai-mkmk
+```
 
 
 ## The <abbr>PUA</abbr> fallback shaping model ##
@@ -607,12 +631,16 @@ replacement actions.
 The following table summarizes the actions taken for each of the
 possible consonant (vertical) and vowel/mark (horizontal) sequences:
 
+
+:::{table} Summary of contextual-replacement rules for <samp>"Consonant,Vowel"</samp> sequences in <abbr>PUA</abbr> fallback
+
 |        |  AV  |  BV  |  TV   |  AV,TV    |
 |:-------|:-----|:-----|:------|:-----------|
 | **NC** |      |      | `SD`  |            |
 | **AC** | `SL` |      | `SDL` | `SL`       |
 | **RC** |      | `RD` | `SD`  |            |
 | **DC** |      | `SD` | `SD`  |            | 
+:::
 
 These replacements take the place of both <abbr title="Glyph Substitution table">GSUB</abbr> substitutions and <abbr title="Glyph Positioning table">GPOS</abbr>
 positioning in modern OpenType fonts.
@@ -644,10 +672,13 @@ mark originated as part of an <samp>"Am"</samp> sign, because these decomposed
 marks are handled differently during the mark-reordering stage.
 
 :::{figure-md}
-![Glyph decomposition](images/thai-lao/thai-am-decomposition.svg "Glyph decomposition")
+![Glyph decomposition](images/thai-lao/thai-am-decomposition.svg "Glyph decomposition"){.shaping-demo .inline-svg .greyscale-svg #thai-am-decomposition}
 
 Glyph decomposition
 :::
+
+```{svg-color-toggle-button} thai-am-decomposition
+```
 
 ### Stage 2: Reordering sequences of marks ###
 
@@ -693,6 +724,8 @@ The above-base state machine tracks four possible states, designated
 
 The initial states of the possible codepoints are as follows:
 
+:::{table} Initial states for above-base <abbr>PUA</abbr> remapping
+
 | PUA class | initial state |
 |:----------|:--------------|
 | NC        | AS0           |
@@ -700,11 +733,15 @@ The initial states of the possible codepoints are as follows:
 | RC        | AS0           |
 | DC        | AS0           |
 | _Other_   | AS3           |
+:::
 
 
 The following state machine table lists the replacement action to take
 and the resulting next state for each possible mark type that may
 follow a consonant:
+
+
+:::{table} State-machine table for above-base <abbr>PUA</abbr> remapping
 
 | Input state | AV         | BV         | TV         |
 |:------------|:-----------|:-----------|:-----------|
@@ -712,12 +749,15 @@ follow a consonant:
 | AS1         | `SL`,AS2   | _null_,AS1 | `SDL`,AS2  |
 | AS2         | _null_,AS3 | _null_,AS2 | `SL`,AS3   |
 | AS3         | _null_,AS3 | _null_,AS3 | _null_,AS3 |
+:::
 
 
 The below-base state machine tracks three possible states, designated
 `BS0` through `BS2`. 
 
 The initial states of the possible codepoints are as follows:
+
+:::{table} Initial states for below-base <abbr>PUA</abbr> remapping
 
 | PUA class | initial state |
 |:----------|:--------------|
@@ -726,18 +766,21 @@ The initial states of the possible codepoints are as follows:
 | RC        | BS1           |
 | DC        | BS2           |
 | _Other_   | BS2           |
+:::
 
 
 The following state machine table lists the replacement action to take
 and the resulting next state for each possible mark type that may
 follow a consonant:
 
+:::{table} State-machine table for below-base <abbr>PUA</abbr> remapping
+
 | Input state | AV         | BV         | TV         |
 |:------------|:-----------|:-----------|:-----------|
 | BS0         | _null_,BS0 | _null_,BS2 | _null_,BS0 |
 | BS1         | _null_,BS1 | `RD`,BS2   | _null_,BS1 |
 | BS2         | _null_,BS2 | `SD`,BS2   | _null_,BS2 |
-
+:::
 
 When the necessary replacement action for each codepoint has been
 determined, codepoints can be replaced with the <abbr title="Private Use Area">PUA</abbr> codepoints from
@@ -745,7 +788,10 @@ the following table.
 
 Note that Windows fonts and MacOS fonts used different mappings.
 
+
 #### SD mappings ####
+
+:::{table} `SD` mappings by platform
 
 | Input    | Windows  | MacOS    |
 |:---------|:---------|:---------|
@@ -757,9 +803,12 @@ Note that Windows fonts and MacOS fonts used different mappings.
 | `U+0E38` | `U+F718` | `U+F89B` |
 | `U+0E39` | `U+F719` | `U+F89C` |
 | `U+0E3A` | `U+F71A` | `U+F89D` |
+:::
 
 
 #### SL mappings ####
+
+:::{table} `SL` mappings by platform
 
 | Input    | Windows  | MacOS    |
 |:---------|:---------|:---------|
@@ -775,9 +824,12 @@ Note that Windows fonts and MacOS fonts used different mappings.
 | `U+0E37` | `U+F704` | `U+F888` |
 | `U+0E47` | `U+F712` | `U+F889` |
 | `U+0E4D` | `U+F711` | `U+F899` |
+:::
 
 
 #### SDL mappings ####
+
+:::{table} `SDL` mappings by platform
 
 | Input    | Windows  | MacOS    |
 |:---------|:---------|:---------|
@@ -786,11 +838,15 @@ Note that Windows fonts and MacOS fonts used different mappings.
 | `U+0E4A` | `U+F707` | `U+F892` |
 | `U+0E4B` | `U+F708` | `U+F895` |
 | `U+0E4C` | `U+F709` | `U+F898` |
+:::
 
 
 #### RD mappings ####
+
+:::{table} `RD` mappings by platform
 
 | Input    | Windows  | MacOS    |
 |:---------|:---------|:---------|
 | `U+0E0D` | `U+F70F` | `U+F89A` |
 | `U+0E10` | `U+F700` | `U+F89E` |
+:::

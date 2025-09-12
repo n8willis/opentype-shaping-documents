@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Tibetan shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Tibetan script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -222,11 +225,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0F40`   | Letter           | CONSONANT         | _null_                     | &#x0F40; Ka                  |
 | | | | |
 |`U+0F7E`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0F7E; Sign Rjes Su Nga Ro |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -320,10 +326,13 @@ post-base consonant (also called a "suffix") and zero or more syllable
 modifiers or diacritical marks.
 
 :::{figure-md}
-![Tibetan syllable example](/images/tibetan/tibetan-syllable.svg "Tibetan syllable example")
+![Tibetan syllable example](/images/tibetan/tibetan-syllable.svg "Tibetan syllable example"){.shaping-demo .inline-svg .greyscale-svg #tibetan-syllable}
 
 Tibetan syllable example
 :::
+
+```{svg-color-toggle-button} tibetan-syllable
+```
 
 The prefix, suffix, and base consonants will all be from the
 `CONSONANT` shaping class. All subjoined consonants will be from the
@@ -418,10 +427,13 @@ glyphs.
 
 
 :::{figure-md}
-![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.svg "Composition-decomposition substitution")
+![Composition-decomposition substitution](images/tibetan/tibetan-ccmp.svg "Composition-decomposition substitution"){.shaping-demo .inline-svg .greyscale-svg #tibetan-ccmp}
 
 Composition-decomposition substitution
 :::
+
+```{svg-color-toggle-button} tibetan-ccmp
+```
 
 
 ### Stage 2: Applying all basic substitution features from <abbr>GSUB</abbr> ###
@@ -442,10 +454,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/tibetan/tibetan-abvs.svg "Application of the abvs feature")
+![Application of the abvs feature](/images/tibetan/tibetan-abvs.svg "Application of the abvs feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-abvs}
 
 Application of the abvs feature
 :::
+
+```{svg-color-toggle-button} tibetan-abvs
+```
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. In Tibetan, this can include contextual ligatures
@@ -453,10 +468,13 @@ involving below-base dependent vowel marks (matras) or subjoined
 consonants.
 
 :::{figure-md}
-![Application of the blws feature](/images/tibetan/tibetan-blws.svg "Application of the blws feature")
+![Application of the blws feature](/images/tibetan/tibetan-blws.svg "Application of the blws feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-blws}
 
 Application of the blws feature
 :::
+
+```{svg-color-toggle-button} tibetan-blws
+```
 
 The `calt`  feature substitutes glyphs with contextual alternate
 forms. In general, this involves replacing the default form of a
@@ -468,10 +486,13 @@ orthographic correctness. The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
 :::{figure-md}
-![Application of the calt feature](/images/tibetan/tibetan-calt.svg "Application of the calt feature")
+![Application of the calt feature](/images/tibetan/tibetan-calt.svg "Application of the calt feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-calt}
 
 Application of the calt feature
 :::
+
+```{svg-color-toggle-button} tibetan-calt
+```
 
 
 The `liga` feature substitutes standard, optional ligatures that are on
@@ -479,10 +500,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Application of the liga feature](/images/tibetan/tibetan-liga.svg "Application of the liga feature")
+![Application of the liga feature](/images/tibetan/tibetan-liga.svg "Application of the liga feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-liga}
 
 Application of the liga feature
 :::
+
+```{svg-color-toggle-button} tibetan-liga
+```
 
 
 ### Stage 3: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -505,30 +529,39 @@ The `kern` feature adjusts the horizontal positioning of
 glyphs.
 
 :::{figure-md}
-![Application of the kern feature](/images/tibetan/tibetan-kern.svg "Application of the kern feature")
+![Application of the kern feature](/images/tibetan/tibetan-kern.svg "Application of the kern feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-kern}
 
 Application of the kern feature
 :::
+
+```{svg-color-toggle-button} tibetan-kern
+```
 
 The `abvm` feature positions above-base glyphs for attachment to base
 characters. In Tibetan, this includes tone markers, diacritical marks,
 and above-base dependent vowels (matras).
 
 :::{figure-md}
-![Application of the abvm feature](/images/tibetan/tibetan-abvm.svg "Application of the abvm feature")
+![Application of the abvm feature](/images/tibetan/tibetan-abvm.svg "Application of the abvm feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-abvm}
 
 Application of the abvm feature
 :::
+
+```{svg-color-toggle-button} tibetan-abvm
+```
 
 The `blwm` feature positions below-base glyphs for attachment to base
 characters. In Tibetan, this includes subjoined consonants as well as
 below-base dependent vowels (matras), and diacritical marks.
 
 :::{figure-md}
-![Application of the blwm feature](/images/tibetan/tibetan-blwm.svg "Application of the blwm feature")
+![Application of the blwm feature](/images/tibetan/tibetan-blwm.svg "Application of the blwm feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-blwm}
 
 Application of the blwm feature
 :::
+
+```{svg-color-toggle-button} tibetan-blwm
+```
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
@@ -536,7 +569,10 @@ same base glyph. In Tibetan, this also includes attaching marks to
 subjoined consonants or dependent vowels.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.svg "Application of the mkmk feature")
+![Application of the mkmk feature](/images/tibetan/tibetan-mkmk.svg "Application of the mkmk feature"){.shaping-demo .inline-svg .greyscale-svg #tibetan-mkmk}
 
 Application of the mkmk feature
 :::
+
+```{svg-color-toggle-button} tibetan-mkmk
+```

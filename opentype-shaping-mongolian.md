@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Mongolian script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -5,7 +8,7 @@ Mongolian script styles, and defines the common pieces that style-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -100,28 +103,40 @@ For example, the letter "Manchu I" (`U+1873`) has three alternate
 forms defined for the medial position:
 
 :::{figure-md}
-![Non FVS form substitution](/images/mongolian/mongolian-fvs-none.svg "Non FVS form substitution")
+![Non FVS form substitution](/images/mongolian/mongolian-fvs-none.svg "Non FVS form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fvs-none}
 
 Non-FVS substitution
 :::
 
+```{svg-color-toggle-button} mongolian-fvs-none
+```
+
 :::{figure-md}
-![FVS1 form substitution](/images/mongolian/mongolian-fvs-fvs1.svg "FVS1 form substitution")
+![FVS1 form substitution](/images/mongolian/mongolian-fvs-fvs1.svg "FVS1 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fvs-fvs1}
 
 FVS1 form substitution
 :::
 
+```{svg-color-toggle-button} mongolian-fvs-fvs1
+```
+
 :::{figure-md}
-![FVS2 form substitution](/images/mongolian/mongolian-fvs-fvs2.svg "FVS2 form substitution")
+![FVS2 form substitution](/images/mongolian/mongolian-fvs-fvs2.svg "FVS2 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fvs-fvs2}
 
 FVS2 form substitution
 :::
 
+```{svg-color-toggle-button} mongolian-fvs-fvs2
+```
+
 :::{figure-md}
-![FVS3 form substitution](/images/mongolian/mongolian-fvs-fvs3.svg "FVS3 form substitution")
+![FVS3 form substitution](/images/mongolian/mongolian-fvs-fvs3.svg "FVS3 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fvs-fvs3}
 
 FVS3 form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-fvs-fvs3
+```
 
 
 
@@ -210,9 +225,12 @@ canonical order.
 Only one Mongolian mark belongs to a standard combining
 class:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+18A9`   | 228             | &#x18A9; Ali Gali Dagalga          |
+:::
 
 
 All other codepoints in the Mongolian block belong to class _0_.
@@ -240,12 +258,14 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+1828`   | Letter           | DUAL         | _null_        | _0_        | &#x1828; Na                  |
 | | | | | |
 |`U+1885`   | Mark [Mn]        | TRANSPARENT  | _null_        | _0_        | &#x1885; Ali Gali Baluda     |
-
+:::
 
 
 Codepoints with no assigned meaning are
@@ -586,10 +606,13 @@ the isolated form of the letter.
 > codepoints.
 
 :::{figure-md}
-![Isolated form substitution](/images/mongolian/mongolian-isol.svg "Isolated form substitution")
+![Isolated form substitution](/images/mongolian/mongolian-isol.svg "Isolated form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-isol}
 
 Isolated form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-isol
+```
 
 
 
@@ -598,10 +621,13 @@ with `isol` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.svg "Isolated FVS1 form substitution")
+![Isolated FVS1 form substitution](/images/mongolian/mongolian-isol-fvs1.svg "Isolated FVS1 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-isol-fvs1}
 
 Isolated FVS1 form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-isol-fvs1
+```
 
 
 
@@ -611,10 +637,13 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/mongolian/mongolian-fina.svg "Final form substitution")
+![Final form substitution](/images/mongolian/mongolian-fina.svg "Final form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fina}
 
 Final form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-fina
+```
 
 
 
@@ -623,10 +652,13 @@ with `fina` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.svg "Final FVS2 form substitution")
+![Final FVS2 form substitution](/images/mongolian/mongolian-fina-fvs2.svg "Final FVS2 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-fina-fvs2}
 
 Final FVS2 form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-fina-fvs2
+```
 
 
 
@@ -644,10 +676,13 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/mongolian/mongolian-medi.svg "Medial form substitution")
+![Medial form substitution](/images/mongolian/mongolian-medi.svg "Medial form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-medi}
 
 Medial form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-medi
+```
 
 
 
@@ -656,10 +691,13 @@ with `medi` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.svg "Medial FVS1 form substitution")
+![Medial FVS1 form substitution](/images/mongolian/mongolian-medi-fvs1.svg "Medial FVS1 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-medi-fvs1}
 
 Medial FVS1 form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-medi-fvs1
+```
 
 
 
@@ -673,10 +711,13 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/mongolian/mongolian-init.svg "Initial form substitution")
+![Initial form substitution](/images/mongolian/mongolian-init.svg "Initial form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-init}
 
 Initial form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-init
+```
 
 
 
@@ -685,10 +726,13 @@ with `init` to trigger alternate forms of certain letters as required
 by the orthography.
 
 :::{figure-md}
-![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.svg "Initial FVS1 form substitution")
+![Initial FVS1 form substitution](/images/mongolian/mongolian-init-fvs1.svg "Initial FVS1 form substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-init-fvs1}
 
 Initial FVS1 form substitution
 :::
+
+```{svg-color-toggle-button} mongolian-init-fvs1
+```
 
 
 
@@ -699,10 +743,13 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Required ligature substitution](/images/mongolian/mongolian-rlig.svg "Required ligature substitution")
+![Required ligature substitution](/images/mongolian/mongolian-rlig.svg "Required ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #mongolian-rlig}
 
 Required ligature substitution
 :::
+
+```{svg-color-toggle-button} mongolian-rlig
+```
 
 
 

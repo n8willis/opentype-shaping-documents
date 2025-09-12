@@ -4,7 +4,7 @@ This document details the general shaping procedure shared by Arabic, N'Ko,
 Syriac, and Mongolian. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -137,6 +137,8 @@ canonical order.
 The marks in most scripts belong to the standard combining
 classes. For example:
 
+:::{table} Example mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+064B`   | 27              | &#x064B; Fathatan / Open fathatan  |
@@ -150,6 +152,8 @@ classes. For example:
 |`U+0670`   | 35              | &#x0670; Superscript Alef          |
 |           | 220             | Other below-base combining marks   |
 |           | 230             | Other above-base combining marks   |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization. Sequences of marks are sorted by combining class,

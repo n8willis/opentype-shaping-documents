@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Telugu shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Telugu script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -205,11 +208,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0C01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0C01; Candrabindu         |
 | | | | |
 |`U+0C15`   | Letter           | CONSONANT         | _null_                     | &#x0C15; Ka                  |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -927,10 +933,13 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/telugu/telugu-matra-decompose.svg "Two-part matra decomposition")
+![Two-part matra decomposition](/images/telugu/telugu-matra-decompose.svg "Two-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #telugu-matra-decompose}
 
 Two-part matra decomposition
 :::
+
+```{svg-color-toggle-button} telugu-matra-decompose
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -1181,16 +1190,24 @@ variants, based on examining the language setting of the text run.
 The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
-> Note: The Telugu block does not include a "Nukta" mark. However,
-> there are reports of users using the "Nukta" from other Indic
-> blocks, so shaping engines may encounter a "Nukta" in text runs, and
-> should handle the situation gracefully.
-
   - The context defined for a `nukt` feature is:
+
+:::{table} `nukt` feature context
     
-    | Backtrack     | Matching sequence             | Lookahead     |
-    |:--------------|:------------------------------|:--------------|
-    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+| Backtrack     | Matching sequence             | Lookahead     |
+|:--------------|:------------------------------|:--------------|
+| _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+:::
+
+
+:::{figure-md}
+![Nukta form ligation](/images/telugu/telugu-nukt.svg "Nukta form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-nukt}
+
+Nukta form ligation
+:::
+
+```{svg-color-toggle-button} telugu-nukt
+```
 
 
 #### Stage 3, step 3: akhn ####
@@ -1206,17 +1223,23 @@ subsequences. Therefore, this feature must be applied before all other
 many-to-one substitutions. 
 
   - The context defined for an `akhn` feature is:
+
+:::{table} `akhn` feature context
     
-    | Backtrack     | Matching sequence           | Lookahead     |
-    |:--------------|:----------------------------|:--------------|
-    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+| Backtrack     | Matching sequence           | Lookahead     |
+|:--------------|:----------------------------|:--------------|
+| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+:::
 
 
 :::{figure-md}
-![KSsa ligation](/images/telugu/telugu-akhn-kssa.svg "KSsa ligation")
+![KSsa ligation](/images/telugu/telugu-akhn-kssa.svg "KSsa ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-akhn-kssa}
 
 KSsa ligation
 :::
+
+```{svg-color-toggle-button} telugu-akhn-kssa
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1226,10 +1249,23 @@ The `rphf` feature replaces initial <samp>"Ra,Halant,ZWJ"</samp> sequences with 
 	
 
   - The context defined for a `rphf` feature is:
+
+:::{table} `rphf` feature context
     
-    | Backtrack        | Matching sequence           | Lookahead     |
-    |:-----------------|:----------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`,"ZWJ" | _none_        |
+| Backtrack        | Matching sequence           | Lookahead     |
+|:-----------------|:----------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`,"ZWJ" | _none_        |
+:::
+
+
+:::{figure-md}
+![Reph formation](/images/telugu/telugu-rphf.svg "Reph formation"){.shaping-demo .inline-svg .greyscale-svg #telugu-rphf}
+
+Reph formation
+:::
+
+```{svg-color-toggle-button} telugu-rphf
+```
 
 
 
@@ -1254,10 +1290,13 @@ special forms. All consonants in Telugu can take on a below-base consonant
 form.
 
 :::{figure-md}
-![Below-base form composition](/images/telugu/telugu-blwf.svg "Below-base form composition")
+![Below-base form composition](/images/telugu/telugu-blwf.svg "Below-base form composition"){.shaping-demo .inline-svg .greyscale-svg #telugu-blwf}
 
 Below-base form composition
 :::
+
+```{svg-color-toggle-button} telugu-blwf
+```
 
 
 #### Stage 3, step 8: abvf ####
@@ -1303,10 +1342,13 @@ shaping engine must test:
 > desired typographic variation.
 
 :::{figure-md}
-![Half form composition](/images/telugu/telugu-half.svg "Half form composition")
+![Half form composition](/images/telugu/telugu-half.svg "Half form composition"){.shaping-demo .inline-svg .greyscale-svg #telugu-half}
 
 Half form composition
 :::
+
+```{svg-color-toggle-button} telugu-half
+```
 
 
 #### Stage 3, step 10: pstf ####
@@ -1535,21 +1577,18 @@ presentations forms. This can include consonant conjuncts, half-form
 consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
-:::{figure-md}
-![Pre-base form ligation](/images/telugu/telugu-pres.svg "Pre-base form ligation")
-
-Pre-base form ligation
-:::
-
 The `abvs` feature replaces above-base-consonant glyphs with special
 presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form ligation](/images/telugu/telugu-abvs.svg "Above-base form ligation")
+![Above-base form ligation](/images/telugu/telugu-abvs.svg "Above-base form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-abvs}
 
 Above-base form ligation
 :::
+
+```{svg-color-toggle-button} telugu-abvs
+```
 
 The `blws` feature replaces below-base-consonant glyphs with special
 presentation forms. This usually involves replacing multiple
@@ -1557,10 +1596,13 @@ below-base glyphs (substituted earlier with the `blwf`) feature with
 ligatures or conjunct forms.
 
 :::{figure-md}
-![Below-base form ligation](/images/telugu/telugu-blws.svg "Below-base form ligation")
+![Below-base form ligation](/images/telugu/telugu-blws.svg "Below-base form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-blws}
 
 Below-base form ligation
 :::
+
+```{svg-color-toggle-button} telugu-blws
+```
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
@@ -1568,26 +1610,33 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form ligation](/images/telugu/telugu-psts.svg "Post-base form ligation")
+![Post-base form ligation](/images/telugu/telugu-psts.svg "Post-base form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-psts}
 
 Post-base form ligation
 :::
+
+```{svg-color-toggle-button} telugu-psts
+```
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
 special presentation forms. This can include stylistic variants of the
 consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
+:::{figure-md}
+![Halant form ligation](/images/telugu/telugu-haln.svg "Halant form ligation"){.shaping-demo .inline-svg .greyscale-svg #telugu-haln}
+
+Halant form ligation
+:::
+
+```{svg-color-toggle-button} telugu-haln
+```
+
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Telugu shaping
 > and may be disabled in the application by user preference.
 
-:::{figure-md}
-![Halant form ligation](/images/telugu/telugu-haln.svg "Halant form ligation")
-
-Halant form ligation
-:::
 
 
 ### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1612,19 +1661,40 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance positioning](/images/telugu/telugu-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #telugu-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} telugu-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Telugu, this includes above-base dependent vowels (matras),
 diacritical marks, and Vedic signs. 
+
+:::{figure-md}
+![Above-base mark positioning](/images/telugu/telugu-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #telugu-abvm}
+
+Above-base mark positioning
+:::
+
+```{svg-color-toggle-button} telugu-abvm
+```
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Telugu, this includes below-base dependent vowels
 (matras) as well as below-base diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/telugu/telugu-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/telugu/telugu-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #telugu-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} telugu-blwm
+```
 
 
 ## The `<telu>` shaping model ##

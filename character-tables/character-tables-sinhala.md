@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Sinhala text](../opentype-shaping-sinhala.md).
 
-**Table of Contents**
+**Contents**
 
   - [Sinhala character table](#sinhala-character-table)
   - [Sinhala Archaic Numbers character table](#sinhala-archaic-numbers-character-table)

@@ -37,6 +37,8 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-fina-before.svg 
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=syriac-fina-after.svg --features=+fina --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansSyriacWestern-Regular.ttf --unicodes=25cc,0722
 
+svg_stack --direction=h syriac-fina-before.svg right-arrow.svg syriac-fina-after.svg > syriac-fina.svg
+
 
 ## 4.4 `fin2`
 

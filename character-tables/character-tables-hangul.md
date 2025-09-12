@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Hangul text](../opentype-shaping-hangul.md).
 
-**Table of Contents**
+**Contents**
 
   - [Hangul Jamo character table](#hangul-jamo-character-table)
   - [Hangul Jamo Extended-A character table](#hangul-jamo-extended-a-character-table)

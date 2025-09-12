@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Hebrew script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -5,7 +8,7 @@ Hebrew script styles, and defines the common pieces that style-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -108,6 +111,8 @@ or above-base (230) combining classes. Niqqud are assigned to distinct
 combining classes designed to enforce orthographically correct
 ordering:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 | `U+0591`  | 220             | &#x0591; Etnahta                   |
@@ -116,6 +121,8 @@ ordering:
 | `U+05B2`  | 12              | &#x05B2; Hataf Patah               |
 | `U+05B9`  | 19              | &#x05B9; Holam                     |
 | `U+05BF`  | 23              | &#x05BF; Rafe                      |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -165,12 +172,14 @@ class. The codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Mark class | Glyph                        |
 |:----------|:-----------------|:-----------|:-----------------------------|
 |`U+05D0`   | Letter           | _0_        | &#x05D0; Alef                |
 | | | | | |
 |`U+05C1`   | Mark [Mn]        | 24         | &#x05C1; Point Shin Dot      |
-
+:::
 
 
 Codepoints with no assigned meaning are
@@ -193,7 +202,7 @@ placeholder fashion; shaping engines should cope with this situation
 gracefully.
 
 The combining grapheme joiner (<abbr>CGJ</abbr>), zero-width joiner (<abbr>ZWJ</abbr>), and
-zero-width non-joiner (<abbr>ZWNJ</abbr>) may be used to alter the
+zero-width non-joiner (<abbr>ZWNJx</abbr>) may be used to alter the
 order in which adjacent marks are positioned during the
 mark-reordering stage, in order to adhere to the needs of a
 non-default language orthography.
@@ -257,10 +266,13 @@ those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
 :::{figure-md}
-![ccmp composition](/images/hebrew/hebrew-ccmp.svg "ccmp composition")
+![ccmp composition](/images/hebrew/hebrew-ccmp.svg "ccmp composition"){.shaping-demo .inline-svg .greyscale-svg #hebrew-ccmp}
 
 ccmp composition
 :::
+
+```{svg-color-toggle-button} hebrew-ccmp
+```
 
 
 
@@ -293,11 +305,15 @@ table](character-tables/character-tables-hebrew.md#alphabetic-presentation-forms
 
 For example: 
 
+:::{table} Example character table for Alphabetic Presentation forms
+
 | Codepoint | Unicode category | Mark class | Composition     | Glyph                                   |
 |:----------|:-----------------|:-----------|:----------------|:----------------------------------------|
 | `U+FB1D`  | Letter           | _0_        |`U+05D9`,`U+05B4`| &#xFB1D; Yod With Hiriq                 |
 | | | | | |
 | `U+FB2B`  | Letter           | _0_        |`U+05E9`,`U+05C2`| &#xFB2B; Shin With Sin Dot              |
+:::
+
 
 Two of the precomposed glyphs, "Shin With Dagesh And Shin Dot"
 (`U+FB2C`) and "Shin With Dagesh And Sin Dot" (`U+FB2D`), have
@@ -308,10 +324,13 @@ glyphs in the block have a single composing sequence.
 > lookup in <abbr title="Glyph Substitution table">GSUB</abbr>, in which case this stage will involve no additional work.
 
 :::{figure-md}
-![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition")
+![Alphabetic Presentation forms composition](/images/hebrew/hebrew-apf.svg "Alphabetic Presentation forms composition"){.shaping-demo .inline-svg .greyscale-svg #hebrew-apf}
 
 Alphabetic Presentation forms composition
 :::
+
+```{svg-color-toggle-button} hebrew-apf
+```
 
 
 
@@ -361,10 +380,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/hebrew/hebrew-liga.svg "Standard ligature substitution")
+![Standard ligature substitution](/images/hebrew/hebrew-liga.svg "Standard ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #hebrew-liga}
 
 Standard ligature substitution
 :::
+
+```{svg-color-toggle-button} hebrew-liga
+```
 
 
 
@@ -375,10 +397,13 @@ off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.svg "Discretionary ligature substitution")
+![Discretionary ligature substitution](/images/hebrew/hebrew-dlig.svg "Discretionary ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #hebrew-dlig}
 
 Discretionary ligature substitution
 :::
+
+```{svg-color-toggle-button} hebrew-dlig
+```
 
 
 
@@ -399,12 +424,24 @@ the Hebrew shaping model:
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
 
+:::{figure-md}
+![Kerning application](/images/hebrew/hebrew-kern.svg "Kerning application"){.shaping-demo .inline-svg .greyscale-svg #hebrew-kern}
+
+Kerning application
+:::
+
+```{svg-color-toggle-button} hebrew-kern
+```
+
 #### Stage 5, step 2: `mark` ####
 
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/hebrew/hebrew-mark.svg "Mark positioning")
+![Mark positioning](/images/hebrew/hebrew-mark.svg "Mark positioning"){.shaping-demo .inline-svg .greyscale-svg #hebrew-mark}
 
 Mark positioning
 :::
+
+```{svg-color-toggle-button} hebrew-mark
+```

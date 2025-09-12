@@ -5,7 +5,7 @@ Indic scripts, and defines the common pieces that script-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -558,6 +558,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding base-consonant rules are summarized in the following
 table:
 
+:::{table} Base-consonant rules by script
+
 | Script     | Base-consonant rule    |
 |:-----------|:-----------------------|
 | Devanagari | `BASE_POS_LAST`        |
@@ -570,6 +572,7 @@ table:
 | Tamil      | `BASE_POS_LAST`        |
 | Telugu     | `BASE_POS_LAST`        |
 | Sinhala    | `BASE_POS_LAST_SINHALA`|
+:::
 
 
 > Note: None of the specific scripts currently included in the "Indic"
@@ -620,6 +623,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding Reph-position rules are summarized in the following
 table:
 
+:::{table} Reph-position rules by script
+
 | Script     | Reph-position rule         |
 |:-----------|:---------------------------|
 | Devanagari | `REPH_POS_BEFORE_POST`     |
@@ -632,7 +637,7 @@ table:
 | Tamil      | `REPH_POS_AFTER_POST`      |
 | Telugu     | `REPH_POS_AFTER_POST`      |
 | Sinhala    | `REPH_POS_AFTER_POST`      |
-
+:::
 
 
 
@@ -660,6 +665,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding Reph-encoding rules are summarized in the following
 table:
 
+:::{table} Reph-encoding rules by script
+
 | Script     | Reph-encoding rule         |
 |:-----------|:---------------------------|
 | Devanagari | `REPH_MODE_IMPLICIT`       |
@@ -672,6 +679,7 @@ table:
 | Tamil      | `REPH_MODE_IMPLICIT`       |
 | Telugu     | `REPH_MODE_EXPLICIT`       |
 | Sinhala    | `REPH_MODE_EXPLICIT`       |
+:::
 
 
 > Note: None of the specific scripts currently included in the "Indic"
@@ -700,6 +708,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding below-base–forms rules are summarized in the following
 table:
 
+:::{table} Below-base–forms rules by script
+
 | Script     | Below-base–forms rule    |
 |:-----------|:-------------------------|
 | Devanagari | `BLWF_MODE_PRE_AND_POST` |
@@ -712,6 +722,7 @@ table:
 | Tamil      | `BLWF_MODE_PRE_AND_POST` |
 | Telugu     | `BLWF_MODE_POST_ONLY`    |
 | Sinhala    | `BLWF_MODE_PRE_AND_POST` |
+:::
 
 
 #### Left-side matras ####
@@ -737,6 +748,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding right-side–matra positions are summarized in the following
 table:
 
+:::{table} Right-side–matra positions by script
+
 | Script     | Right-side–matra position |
 |:-----------|:--------------------------|
 | Devanagari | `POS_AFTER_SUBJOINED`     |
@@ -749,6 +762,7 @@ table:
 | Tamil      | `POS_AFTER_POST`          |
 | Telugu     | _varies_                  |
 | Sinhala    | `POS_AFTER_SUBJOINED`     |
+:::
 
 
 
@@ -780,6 +794,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding above-base–matra positions are summarized in the following
 table:
 
+:::{table} Above-base–matra positions by script
+
 | Script     | Above-base–matra position |
 |:-----------|:--------------------------|
 | Devanagari | `POS_AFTER_SUBJOINED`     |
@@ -792,6 +808,7 @@ table:
 | Tamil      | `POS_AFTER_SUBJOINED`     |
 | Telugu     | `POS_BEFORE_SUBJOINED`    |
 | Sinhala    | `POS_AFTER_SUBJOINED`     |
+:::
 
 
 
@@ -813,6 +830,8 @@ The scripts currently described in the "Indic" script group  and their
 corresponding below-base–matra positions are summarized in the following
 table:
 
+:::{table} Below-base–matra positions by script
+
 | Script     | Below-base–matra position |
 |:-----------|:--------------------------|
 | Devanagari | `POS_AFTER_SUBJOINED`     |
@@ -825,6 +844,7 @@ table:
 | Tamil      | `POS_AFTER_POST`          |
 | Telugu     | `POS_BEFORE_SUBJOINED`    |
 | Sinhala    | `POS_AFTER_SUBJOINED`     |
+:::
 
 
 
@@ -1602,6 +1622,8 @@ Taking the Reph-position–rule conditionals in the above algorithm into
 account, the position-finding steps that may be executed in each
 script are summarized in the following table:
 
+:::{table} Summary of final–reph-positioning rules by script
+
 | Script     | Reph-position rule        | a | b | c | d | e | f | mH |
 |:-----------|:--------------------------|:--|:--|:--|:--|:--|:--|:---|
 | Devanagari |`REPH_POS_BEFORE_POST`     |   | • |   | • | • | • | •  |
@@ -1614,6 +1636,8 @@ script are summarized in the following table:
 | Tamil      |`REPH_POS_AFTER_POST`      |   |   |   |   | • | • | •  |
 | Telugu     |`REPH_POS_AFTER_POST`      |   |   |   |   | • | • | •  |
 | Sinhala    |`REPH_POS_AFTER_MAIN`      |   | • | • |   | • | • | •  |
+:::
+
 
 #### Stage 4, step 4: Pre-base reordering consonants ####
 

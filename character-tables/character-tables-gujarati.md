@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Gujarati text](../opentype-shaping-gujarati.md).
 
-**Table of Contents**
+**Contents**
 
   - [Gujarati character table](#gujarati-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

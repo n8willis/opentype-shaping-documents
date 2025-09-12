@@ -5,7 +5,7 @@ as ambiguities or omissions in the existing OpenType or Unicode
 specification documents.
 
 
-**Table of Contents**
+**Contents**
 
   - [Unicode](#unicode)
       - [<abbr>ZWJ</abbr> and <abbr>ZWNJ</abbr>](#zwj-and-zwnj)

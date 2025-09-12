@@ -4,6 +4,16 @@
 
 hb-view --font-size=110 --output-file=right-arrow.svg --background=FFFFFF00 --margin=0,0,0,0 /usr/share/fonts/truetype/gentiumplus/GentiumPlus-Regular.ttf --unicodes=2192
 
+## 2 `ccmp`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-ccmp-before.svg --features=-ccmp --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=067e
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-ccmp-after.svg --features=+ccmp --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=067e
+
+svg_stack.py --direction=h arabic-ccmp-before.svg right-arrow.svg arabic-ccmp-after.svg > arabic-ccmp.svg
+
+
+
 ## 4.1 `locl`
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-locl-before.svg --features=-locl --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=06f4
@@ -24,27 +34,27 @@ svg_stack.py --direction=h arabic-isol-before.svg right-arrow.svg arabic-isol-af
 
 ## 4.3 `fina`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-fina-before.svg --features=-fina --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=25cc,0628
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-fina-before.svg --features=-fina --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0626,200d,0628
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-fina-after.svg --features=+fina --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=25cc,0628
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-fina-after.svg --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0626,0628
 
 svg_stack.py --direction=h arabic-fina-before.svg right-arrow.svg arabic-fina-after.svg > arabic-fina.svg
 
 
 ## 4.6 `medi`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-medi-before.svg --features=-medi --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=25cc,062e,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-medi-before.svg --features=-medi --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0626,200d,062e,200d,0637
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-medi-after.svg --features=+medi --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=25cc,062e,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-medi-after.svg --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0626,062e,0637
 
 svg_stack.py --direction=h arabic-medi-before.svg right-arrow.svg arabic-medi-after.svg > arabic-medi.svg
 
 
 ## 4.8 `init`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-init-before.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=063a,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-init-before.svg --features=-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=063a,200d,0626
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-init-after.svg --features=+init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=063a,25cc
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-init-after.svg --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=063a,0626
 
 svg_stack.py --direction=h arabic-init-before.svg right-arrow.svg arabic-init-after.svg > arabic-init.svg
 
@@ -77,11 +87,20 @@ svg_stack.py --direction=h arabic-calt-before.svg right-arrow.svg arabic-calt-af
 
 ## 5.1 `liga`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-liga-before.svg --features=-liga,-fina,-medi,-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoKufiArabic-Regular.ttf --unicodes=0631,064a,0627,0644
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-liga-before.svg --features=-liga,-fina,-medi,-init --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0627,0644,0644,0651,0670,06c1
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-liga-after.svg --features=+liga --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoKufiArabic-Regular.ttf --unicodes=0631,064a,0627,0644
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-liga-after.svg --features=+liga --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0627,0644,0644,0651,0670,06c1
 
 svg_stack.py --direction=h arabic-liga-before.svg right-arrow.svg arabic-liga-after.svg > arabic-liga.svg
+
+
+## 5.2 `dlig`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-dlig-before.svg --features=-dlig --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0644,0644,0647
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-dlig-after.svg --features=+dlig --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNaskhArabic-Regular.ttf --unicodes=0644,0644,0647
+
+svg_stack.py --direction=h arabic-dlig-before.svg right-arrow.svg arabic-dlig-after.svg > arabic-dlig.svg
 
 
 ## 5.3 `cswh`
@@ -101,6 +120,26 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-curs-before.svg 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-curs-after.svg --features=+curs --language=urd --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0642,0633,0645
 
 svg_stack.py --direction=h arabic-curs-before.svg right-arrow.svg arabic-curs-after.svg > arabic-curs.svg
+
+
+## 7.2 `dist` (not yet added to document)
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-dist-before.svg --features=-dist --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0628,062f,066e,062d
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-dist-after.svg --features=+dist --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0628,062f,066e,062d
+
+svg_stack.py --direction=h arabic-dist-before.svg right-arrow.svg arabic-dist-after.svg > arabic-dist.svg
+
+
+## 7.2 `kern`
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-kern-before.svg --features=-kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0635,062f,0627
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=arabic-kern-after.svg --features=+kern --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoNastaliqUrdu-Regular.ttf --unicodes=0635,062f,0627
+
+svg_stack.py --direction=h arabic-kern-before.svg right-arrow.svg arabic-kern-after.svg > arabic-kern.svg
+
+
 
 
 ## 7.3 `mark`

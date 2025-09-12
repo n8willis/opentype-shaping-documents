@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Myanmar shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Myanmar script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -105,10 +108,13 @@ when they are absent from the active font, the default form of the
 corresponding letter will be used instead.
 
 :::{figure-md}
-![Dotted form substitution with variation selector](images/myanmar/myanmar-dotted.svg "Dotted form substitution with variation selector")
+![Dotted form substitution with variation selector](images/myanmar/myanmar-dotted.svg "Dotted form substitution with variation selector"){.shaping-demo .inline-svg .greyscale-svg #myanmar-dotted}
 
 Dotted form substitution with variation selector
 :::
+
+```{svg-color-toggle-button} myanmar-dotted
+```
 
 
 Where possible, using the standard terminology is preferred, as the
@@ -267,11 +273,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1000`   | Letter           | CONSONANT         | _null_                     | &#x1000; Ka                  |
 | | | | |
 |`U+1036`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x1036; Anusvara            |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -479,24 +488,33 @@ special treatment.
 	  - <samp>"Mon Nga,Asat,Halant"</samp>
 
 :::{figure-md}
-![Ra Kinzi](images/myanmar/myanmar-kinzi-ra.svg "Ra Kinzi")
+![Ra Kinzi](images/myanmar/myanmar-kinzi-ra.svg "Ra Kinzi"){.shaping-demo .inline-svg .greyscale-svg #myanmar-kinzi-ra}
 
 Ra Kinzi
 :::
 
+```{svg-color-toggle-button} myanmar-kinzi-ra
+```
+
 
 :::{figure-md}
-![Nga Kinzi](images/myanmar/myanmar-kinzi-nga.svg "Nga Kinzi")
+![Nga Kinzi](images/myanmar/myanmar-kinzi-nga.svg "Nga Kinzi"){.shaping-demo .inline-svg .greyscale-svg #myanmar-kinzi-nga}
 
 Nga Kinzi
 :::
 
+```{svg-color-toggle-button} myanmar-kinzi-nga
+```
+
 
 :::{figure-md}
-![Mon Nga Kinzi](images/myanmar/myanmar-kinzi-monnga.svg "Mon Nga Kinzi")
+![Mon Nga Kinzi](images/myanmar/myanmar-kinzi-monnga.svg "Mon Nga Kinzi"){.shaping-demo .inline-svg .greyscale-svg #myanmar-kinzi-monnga}
 
 Mon Nga Kinzi
 :::
+
+```{svg-color-toggle-button} myanmar-kinzi-monnga
+```
 
 
 In the Myanmar (or Burmese) language, <samp>"Nga"</samp> is the only <samp>"Kinzi"</samp>-forming
@@ -775,10 +793,13 @@ Fourth, all pre-base-reordering consonants must be tagged with
 Myanmar has one pre-base-reordering consonant: <samp>"Medial Ra"</samp>.
 
 :::{figure-md}
-![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.svg "Pre-base-reordering Medial Ra")
+![Pre-base-reordering Medial Ra](images/myanmar/myanmar-medial-ra.svg "Pre-base-reordering Medial Ra"){.shaping-demo .inline-svg .greyscale-svg #myanmar-medial-ra}
 
 Pre-base-reordering Medial Ra
 :::
+
+```{svg-color-toggle-button} myanmar-medial-ra
+```
 
 
 #### Stage 2, step 5: Kinzi ####
@@ -864,10 +885,13 @@ variants, based on examining the language setting of the text run.
 > <abbr title="Glyph Substitution table">GSUB</abbr> substitutions in the following steps.
 
 :::{figure-md}
-![Local-forms substitution](images/myanmar/myanmar-locl.svg "Local-forms substitution")
+![Local-forms substitution](images/myanmar/myanmar-locl.svg "Local-forms substitution"){.shaping-demo .inline-svg .greyscale-svg #myanmar-locl}
 
 Local-forms substitution
 :::
+
+```{svg-color-toggle-button} myanmar-locl
+```
 
 
 #### Stage 3, step 2: ccmp ####
@@ -900,10 +924,13 @@ consonant. <samp>"Mon Nga"</samp> can form a <samp>"Kinzi"</samp> in the Mon lan
 can form a <samp>"Kinzi"</samp> in Sanskrit written with the Myanmar script.
 
 :::{figure-md}
-![Kinzi composition](/images/myanmar/myanmar-kinzi-nga.svg "Kinzi composition")
+![Kinzi composition](/images/myanmar/myanmar-kinzi-nga-1.svg "Kinzi composition"){.shaping-demo .inline-svg .greyscale-svg #myanmar-kinzi-nga-1}
 
 Kinzi composition
 :::
+
+```{svg-color-toggle-button} myanmar-kinzi-nga-1
+```
 
 
 #### Stage 3, step 4: pref ####
@@ -914,10 +941,13 @@ any special forms. In Myanmar, this can include variant forms for
 Sign E"</samp> (`U+1084`)
 
 :::{figure-md}
-![pref feature application](/images/myanmar/myanmar-pref.svg "pref feature application")
+![pref feature application](/images/myanmar/myanmar-pref.svg "pref feature application"){.shaping-demo .inline-svg .greyscale-svg #myanmar-pref}
 
 pref feature application
 :::
+
+```{svg-color-toggle-button} myanmar-pref
+```
 
 
 #### Stage 3, step 5: blwf ####
@@ -935,10 +965,13 @@ The below-base forms feature is applied only to glyphs occurring after
 the base consonant. 
 
 :::{figure-md}
-![blwf feature application](/images/myanmar/myanmar-blwf.svg "blwf feature application")
+![blwf feature application](/images/myanmar/myanmar-blwf.svg "blwf feature application"){.shaping-demo .inline-svg .greyscale-svg #myanmar-blwf}
 
 blwf feature application
 :::
+
+```{svg-color-toggle-button} myanmar-blwf
+```
 
 
 #### Stage 3, step 6: pstf ####
@@ -971,10 +1004,13 @@ presentations forms. In Myanmar, this can include stylistic variants
 of left-side dependent vowels (matras) or of <samp>"Medial Ra"</samp>. 
 
 :::{figure-md}
-![Application of the pres feature](/images/myanmar/myanmar-pres.svg "Application of the pres feature")
+![Application of the pres feature](/images/myanmar/myanmar-pres.svg "Application of the pres feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-pres}
 
 Application of the pres feature
 :::
+
+```{svg-color-toggle-button} myanmar-pres
+```
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
@@ -982,10 +1018,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Application of the abvs feature](/images/myanmar/myanmar-abvs.svg "Application of the abvs feature")
+![Application of the abvs feature](/images/myanmar/myanmar-abvs.svg "Application of the abvs feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-abvs}
 
 Application of the abvs feature
 :::
+
+```{svg-color-toggle-button} myanmar-abvs
+```
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
@@ -994,10 +1033,13 @@ involving below-base dependent vowel marks (matras), medial
 consonants, or subjoined consonants.
 
 :::{figure-md}
-![Application of the blws feature](/images/myanmar/myanmar-blws.svg "Application of the blws feature")
+![Application of the blws feature](/images/myanmar/myanmar-blws.svg "Application of the blws feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-blws}
 
 Application of the blws feature
 :::
+
+```{svg-color-toggle-button} myanmar-blws
+```
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1006,10 +1048,13 @@ dependent vowels (matras) with stylistic variants.
 
 
 :::{figure-md}
-![Application of the psts feature](/images/myanmar/myanmar-psts.svg "Application of the psts feature")
+![Application of the psts feature](/images/myanmar/myanmar-psts.svg "Application of the psts feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-psts}
 
 Application of the psts feature
 :::
+
+```{svg-color-toggle-button} myanmar-psts
+```
 
 
 The `liga` feature substitutes standard, optional ligatures that are on
@@ -1017,10 +1062,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Application of the liga feature](/images/myanmar/myanmar-liga.svg "Application of the liga feature")
+![Application of the liga feature](/images/myanmar/myanmar-liga.svg "Application of the liga feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-liga}
 
 Application of the liga feature
 :::
+
+```{svg-color-toggle-button} myanmar-liga
+```
 
 
 ### Stage 5: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1051,10 +1099,13 @@ classified as being of zero width, but is orthographically a glyph
 that encloses the adjacent letter.
 
 :::{figure-md}
-![Application of the dist feature](/images/myanmar/myanmar-dist.svg "Application of the dist feature")
+![Application of the dist feature](/images/myanmar/myanmar-dist.svg "Application of the dist feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-dist}
 
 Application of the dist feature
 :::
+
+```{svg-color-toggle-button} myanmar-dist
+```
 
 
 The `abvm` feature positions above-base glyphs for attachment to base
@@ -1063,10 +1114,13 @@ to tone markers, diacritical marks, above-base dependent vowels
 (matras), and Vedic signs.
 
 :::{figure-md}
-![Application of the abvm feature](/images/myanmar/myanmar-abvm.svg "Application of the abvm feature")
+![Application of the abvm feature](/images/myanmar/myanmar-abvm.svg "Application of the abvm feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-abvm}
 
 Application of the abvm feature
 :::
+
+```{svg-color-toggle-button} myanmar-abvm
+```
 
 
 The `blwm` feature positions below-base glyphs for attachment to base
@@ -1075,19 +1129,25 @@ below-base dependent vowels (matras), medial consonants, tone markers,
 diacritical marks, and Vedic signs.
 
 :::{figure-md}
-![Application of the blwm feature](/images/myanmar/myanmar-blwm.svg "Application of the blwm feature")
+![Application of the blwm feature](/images/myanmar/myanmar-blwm.svg "Application of the blwm feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-blwm}
 
 Application of the blwm feature
 :::
+
+```{svg-color-toggle-button} myanmar-blwm
+```
 
 
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Application of the mark feature](/images/myanmar/myanmar-mark.svg "Application of the mark feature")
+![Application of the mark feature](/images/myanmar/myanmar-mark.svg "Application of the mark feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-mark}
 
 Application of the mark feature
 :::
+
+```{svg-color-toggle-button} myanmar-mark
+```
  
 
 The `mkmk` feature positions marks with respect to preceding marks,
@@ -1095,10 +1155,13 @@ providing proper positioning for sequences of marks that attach to the
 same base glyph.
 
 :::{figure-md}
-![Application of the mkmk feature](/images/myanmar/myanmar-mkmk.svg "Application of the mkmk feature")
+![Application of the mkmk feature](/images/myanmar/myanmar-mkmk.svg "Application of the mkmk feature"){.shaping-demo .inline-svg .greyscale-svg #myanmar-mkmk}
 
 Application of the mkmk feature
 :::
+
+```{svg-color-toggle-button} myanmar-mkmk
+```
 
 
 ## The `<mymr>` shaping model ##

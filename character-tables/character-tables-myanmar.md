@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Myanmar text](../opentype-shaping-myanmar.md).
 
-**Table of Contents**
+**Contents**
 
   - [Myanmar character table](#myanmar-character-table)
   - [Myanmar Extended character tables](#myanmar-extended-character-tables)

@@ -2,6 +2,8 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+import sys
+from pathlib import Path
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
@@ -13,7 +15,9 @@ author = 'Sponsored by YesLogic'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering']
+sys.path.append(str(Path('_ext').resolve()))
+
+extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles']
 
 source_suffix = {'.md': 'markdown'}
 
@@ -28,7 +32,12 @@ numfig_secnum_depth = 2
 myst_heading_anchors = 6
 
 # attrs_inline to specify HTML element attributes like img 'title' that are getting lost on build.
-myst_enable_extensions = ['smartquotes', 'colon_fence', 'attrs_inline']
+myst_enable_extensions = ['substitution', 'smartquotes', 'colon_fence', 'attrs_inline']
+
+myst_substitutions = {
+    'opentogglebutton': '<br><button onclick="toggleColor(',
+    'closetogglebutton': ')">Substitution Toggle cluster colors</button><br>',
+}
 
 external_toc_path = "_toc.yml"
 
@@ -37,6 +46,7 @@ external_toc_path = "_toc.yml"
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
+html_js_files = ['toggleSvgColors.js']
 html_sidebars = {
     '**': [
         'about.html',

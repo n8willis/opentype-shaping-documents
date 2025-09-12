@@ -14,7 +14,7 @@ hb-view --font-size=110 --margin=2,16,2,16 --output-file=mongolian-fvs-none-befo
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=mongolian-fvs-none-after.svg --features=+medi --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansMongolian-Regular.ttf --unicodes=25cc,180a,1873,180a,25cc
 
-ontage mongolian-fvs-none-before.svg right-arrow.svg mongolian-fvs-none-after.svg > mongolian-fvs-none.svg
+svg_stack --direction=h mongolian-fvs-none-before.svg right-arrow.svg mongolian-fvs-none-after.svg > mongolian-fvs-none.svg
 
 
 #### FVS1

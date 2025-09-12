@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Oriya text](../opentype-shaping-oriya.md).
 
-**Table of Contents**
+**Contents**
 
   - [Oriya character table](#oriya-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

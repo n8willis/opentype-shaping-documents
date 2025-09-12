@@ -30,12 +30,12 @@ subtrees:
         title: Malayalam
       - file: opentype-shaping-oriya
         title: Oriya
+      - file: opentype-shaping-sinhala
+        title: Sinhala
       - file: opentype-shaping-tamil
         title: Tamil
       - file: opentype-shaping-telugu
         title: Telugu
-      - file: opentype-shaping-sinhala
-        title: Sinhala
       - file: opentype-shaping-vedic-extensions
         title: Vedic extensions
   - file: opentype-shaping-arabic-general
@@ -58,12 +58,12 @@ subtrees:
     title: Hebrew
   - file: opentype-shaping-khmer
     title: Khmer
+  - file: opentype-shaping-myanmar
+    title: Myanmar
   - file: opentype-shaping-thai-lao
     title: Thai and Lao
   - file: opentype-shaping-tibetan
     title: Tibetan
-  - file: opentype-shaping-myanmar
-    title: Myanmar
   - file: opentype-shaping-use
     title: Universal Shaping Engine
   - file: opentype-shaping-default

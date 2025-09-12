@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Bengali text](../opentype-shaping-bengali.md).
 
-**Table of Contents**
+**Contents**
 
   - [Bengali character table](#bengali-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

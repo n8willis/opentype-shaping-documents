@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Sinhala shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Sinhala script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -189,12 +192,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0D82`   | Mark [Mn]        | BINDU             | RIGHT_POSITION             | &#x0D82; Anusvara            |
 | | | | |
 |`U+0D9A`   | Letter           | CONSONANT         | _null_                     | &#x0D9A; Ka                  |
-
+:::
 
 
 Codepoints with no assigned meaning are designated as _unassigned_ in
@@ -267,10 +272,13 @@ Sinhala, however, differs considerably in its use of <samp>"ZWJ"</samp>.
     subjoined form of <samp>"Consonant_2"</samp>.
  
 :::{figure-md}
-![Reph formation](/images/sinhala/sinhala-rphf.svg "Reph formation")
+![Reph formation](/images/sinhala/sinhala-rphf.svg "Reph formation"){.shaping-demo .inline-svg .greyscale-svg #sinhala-rphf}
 
 Reph formation
 :::
+
+```{svg-color-toggle-button} sinhala-rphf
+```
 
 
 The zero-width non-joiner (<abbr>ZWNJ</abbr>) is not used in shaping runs of
@@ -861,10 +869,13 @@ completed before the shaping engine begins step three, below.
 > with fonts that were developed only with this behavior in mind.
 
 :::{figure-md}
-![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.svg "Multi-part matra decomposition")
+![Multi-part matra decomposition](/images/sinhala/sinhala-matra-decompose.svg "Multi-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #sinhala-matra-decompose}
 
 Multi-part matra decomposition
 :::
+
+```{svg-color-toggle-button} sinhala-matra-decompose
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -920,16 +931,22 @@ the <samp>"Yansaya"</samp> form when the `vatu` feature is applied. A
 the <samp>"Rakaaraansaya"</samp> form when the `vatu` feature is applied.
 
 :::{figure-md}
-![Yansaya ligation](/images/sinhala/sinhala-vatu-va.svg "Yansaya ligation")
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va.svg "Yansaya ligation"){.shaping-demo .inline-svg .greyscale-svg #sinhala-vatu-va}
 
 Yansaya ligation
 :::
 
+```{svg-color-toggle-button} sinhala-vatu-va
+```
+
 :::{figure-md}
-![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.svg "Rakaaraansaya ligation")
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.svg "Rakaaraansaya ligation"){.shaping-demo .inline-svg .greyscale-svg #sinhala-vatu-ra}
 
 Rakaaraansaya ligation
 :::
+
+```{svg-color-toggle-button} sinhala-vatu-ra
+```
 
 
 #### Stage 2, step 8: Mark tagging ####
@@ -1078,16 +1095,22 @@ In Sinhala, the `akhn` feature provides two substitution types.
   
 
 :::{figure-md}
-![Ligature substitution](/images/sinhala/sinhala-akhn-ligature.svg "Ligature substitution")
+![Ligature substitution](/images/sinhala/sinhala-akhn-ligature.svg "Ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #sinhala-akhn-ligature}
 
 Ligature substitution
 :::
 
+```{svg-color-toggle-button} sinhala-akhn-ligature
+```
+
 :::{figure-md}
-![Touching consonant substitution](/images/sinhala/sinhala-akhn-touching.svg "Touching consonant substitution")
+![Touching consonant substitution](/images/sinhala/sinhala-akhn-touching.svg "Touching consonant substitution"){.shaping-demo .inline-svg .greyscale-svg #sinhala-akhn-touching}
 
 Touching consonant substitution
 :::
+
+```{svg-color-toggle-button} sinhala-akhn-touching
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1097,10 +1120,13 @@ The `rphf` feature replaces initial <samp>"Ra,Halant,ZWJ"</samp> sequences with 
 	
 
 :::{figure-md}
-![Reph composition](/images/sinhala/sinhala-rphf.svg "Reph composition")
+![Reph composition](/images/sinhala/sinhala-rphf-1.svg "Reph composition"){.shaping-demo .inline-svg .greyscale-svg #sinhala-rphf-1}
 
 Reph composition
 :::
+
+```{svg-color-toggle-button} sinhala-rphf-1
+```
 	
 #### Stage 3, step 5: rkrf ####
 
@@ -1158,10 +1184,13 @@ decomposition.
 > developed only with this behavior in mind.
 
 :::{figure-md}
-![Post-base form substitution](/images/sinhala/sinhala-pstf.svg "Post-base form substitution")
+![Post-base form substitution](/images/sinhala/sinhala-pstf.svg "Post-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #sinhala-pstf}
 
 Post-base form substitution
 :::
+
+```{svg-color-toggle-button} sinhala-pstf
+```
 
 
 #### Stage 3, step 11: vatu ####
@@ -1176,16 +1205,22 @@ ligatures using the subjoined forms of <samp>"Ra"</samp> or <samp>"Ya"</samp>.
   
 
 :::{figure-md}
-![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra.svg "Rakaaraansaya ligation")
+![Rakaaraansaya ligation](/images/sinhala/sinhala-vatu-ra-1.svg "Rakaaraansaya ligation"){.shaping-demo .inline-svg .greyscale-svg #sinhala-vatu-ra-1}
 
 Rakaaraansaya ligation
 :::
 
+```{svg-color-toggle-button} sinhala-vatu-ra-1
+```
+
 :::{figure-md}
-![Yansaya ligation](/images/sinhala/sinhala-vatu-va.svg "Yansaya ligation")
+![Yansaya ligation](/images/sinhala/sinhala-vatu-va-1.svg "Yansaya ligation"){.shaping-demo .inline-svg .greyscale-svg #sinhala-vatu-va-1}
 
 Yansaya ligation
 :::
+
+```{svg-color-toggle-button} sinhala-vatu-va-1
+```
 
 
 #### Stage 3, step 12: cjct ####
@@ -1251,10 +1286,13 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.svg "Pre-base matra positioning")
+![Pre-base matra positioning](/images/sinhala/sinhala-matra-position.svg "Pre-base matra positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-matra-position}
 
 Pre-base matra positioning
 :::
+
+```{svg-color-toggle-button} sinhala-matra-position
+```
 
 
 > Note: OpenType and Unicode both state that if the syllable includes
@@ -1311,10 +1349,13 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 
 
 :::{figure-md}
-![Reph positioning](/images/sinhala/sinhala-reph-position.svg "Reph positioning")
+![Reph positioning](/images/sinhala/sinhala-reph-position.svg "Reph positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-reph-position}
 
 Reph positioning
 :::
+
+```{svg-color-toggle-button} sinhala-reph-position
+```
 
 
 #### Stage 4, step 4: Pre-base-reordering consonants ####
@@ -1363,10 +1404,13 @@ presentations forms. This can include ligatures, "touching consonant" forms,
 and stylistic variants of left-side dependent vowels (matras). 
 
 :::{figure-md}
-![Pre-base substitutions](/images/sinhala/sinhala-pres.svg "Pre-base substitutions")
+![Pre-base substitutions](/images/sinhala/sinhala-pres.svg "Pre-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #sinhala-pres}
 
 Pre-base substitutions
 :::
+
+```{svg-color-toggle-button} sinhala-pres
+```
 
 
 The `abvs` feature replaces above-base-consonant glyphs with special
@@ -1374,10 +1418,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base substitutions](/images/sinhala/sinhala-abvs.svg "Above-base substitutions")
+![Above-base substitutions](/images/sinhala/sinhala-abvs.svg "Above-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #sinhala-abvs}
 
 Above-base substitutions
 :::
+
+```{svg-color-toggle-button} sinhala-abvs
+```
 
 
 The `blws` feature replaces below-base-consonant glyphs with special
@@ -1386,10 +1433,13 @@ syllable bases
 and attached below-base marks with contextual ligatures.
 
 :::{figure-md}
-![Below-base substitutions](/images/sinhala/sinhala-blws.svg "Below-base substitutions")
+![Below-base substitutions](/images/sinhala/sinhala-blws.svg "Below-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #sinhala-blws}
 
 Below-base substitutions
 :::
+
+```{svg-color-toggle-button} sinhala-blws
+```
 
 The `psts` feature replaces post-base-consonant glyphs with special
 presentation forms. This usually includes replacing right-side
@@ -1397,10 +1447,13 @@ dependent vowels (matras) with stylistic variants or replacing
 base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base substitutions](/images/sinhala/sinhala-psts.svg "Post-base substitutions")
+![Post-base substitutions](/images/sinhala/sinhala-psts.svg "Post-base substitutions"){.shaping-demo .inline-svg .greyscale-svg #sinhala-psts}
 
 Post-base substitutions
 :::
+
+```{svg-color-toggle-button} sinhala-psts
+```
 
 
 The `haln` feature is not used in Sinhala.
@@ -1433,22 +1486,37 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance positioning](/images/sinhala/sinhala-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} sinhala-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Sinhala, this includes <samp>"Reph"</samp> in addition to
 above-base dependent vowels (matras), diacritical marks, and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark positioning](/images/sinhala/sinhala-abvm.svg "Above-base mark positioning")
+![Above-base mark positioning](/images/sinhala/sinhala-abvm.svg "Above-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-abvm}
 
 Above-base mark positioning
 :::
+
+```{svg-color-toggle-button} sinhala-abvm
+```
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Sinhala, this includes below-base dependent vowels
 (matras) and diacritical marks.
 
 :::{figure-md}
-![Below-base mark positioning](/images/sinhala/sinhala-blwm.svg "Below-base mark positioning")
+![Below-base mark positioning](/images/sinhala/sinhala-blwm.svg "Below-base mark positioning"){.shaping-demo .inline-svg .greyscale-svg #sinhala-blwm}
 
 Below-base mark positioning
 :::
+
+```{svg-color-toggle-button} sinhala-blwm
+```

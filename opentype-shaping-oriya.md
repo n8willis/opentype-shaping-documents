@@ -1,10 +1,13 @@
+```{include} /_global.md
+```
+
 # Oriya shaping in OpenType #
 
 This document details the shaping procedure needed to display text
 runs in the Oriya script.
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -197,11 +200,14 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0B01`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0B01; Candrabindu         |
 | | | | |
 |`U+0B15`   | Letter           | CONSONANT         | _null_                     | &#x0B15; Ka                  |
+:::
 
 
 Codepoints with no assigned meaning are
@@ -926,18 +932,24 @@ The algorithm for determining the base consonant is
 Oriya includes two consonants that can take on post-base forms, `Ya` and `Yya`.
 
 :::{figure-md}
-![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.svg "Post-base consonant Ya")
+![Post-base consonant Ya](/images/oriya/oriya-pstf-ya.svg "Post-base consonant Ya"){.shaping-demo .inline-svg .greyscale-svg #oriya-pstf-ya}
 
 Post-base consonant Ya
 :::
 
+```{svg-color-toggle-button} oriya-pstf-ya
+```
+
 
 
 :::{figure-md}
-![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.svg "Post-base consonant Yya")
+![Post-base consonant Yya](/images/oriya/oriya-pstf-yya.svg "Post-base consonant Yya"){.shaping-demo .inline-svg .greyscale-svg #oriya-pstf-yya}
 
 Post-base consonant Yya
 :::
+
+```{svg-color-toggle-button} oriya-pstf-yya
+```
 
 
 Oriya includes one consonant that can take on a special below-base form:
@@ -946,10 +958,13 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-ra.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra}
 
 Raphala composition
 :::
+
+```{svg-color-toggle-button} oriya-blwf-ra
+```
 
 
 <!---In addition, all consonants in Oriya can take on subjoined forms.--->
@@ -1001,10 +1016,13 @@ Unicode-normalization stage. However, all such decompositions must be
 completed before the shaping engine begins step three, below.
 
 :::{figure-md}
-![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.svg "Two-part matra decomposition")
+![Two-part matra decomposition](/images/oriya/oriya-matra-decompose.svg "Two-part matra decomposition"){.shaping-demo .inline-svg .greyscale-svg #oriya-matra-decompose}
 
 Two-part matra decomposition
 :::
+
+```{svg-color-toggle-button} oriya-matra-decompose
+```
 
 
 #### Stage 2, step 3: Tag matras ####
@@ -1075,10 +1093,13 @@ Oriya includes one consonant that can take on a special below-base form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-ra-1.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra-1}
 
 Raphala composition
 :::
+
+```{svg-color-toggle-button} oriya-blwf-ra-1
+```
 
 
 > Note: Because Oriya employs the `BLWF_MODE_PRE_AND_POST` shaping
@@ -1259,17 +1280,23 @@ The `nukt` feature replaces <samp>"_Consonant_,Nukta"</samp> sequences with a
 precomposed nukta-variant of the consonant glyph. 
 
   - The context defined for a `nukt` feature is:
+
+:::{table} `nukt` feature context
     
-    | Backtrack     | Matching sequence             | Lookahead     |
-    |:--------------|:------------------------------|:--------------|
-    | _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+| Backtrack     | Matching sequence             | Lookahead     |
+|:--------------|:------------------------------|:--------------|
+| _none_        | `_consonant_`(full),`_nukta_` | _none_        |
+:::
 
 
 :::{figure-md}
-![Nukta composition](/images/oriya/oriya-nukt.svg "Nukta composition")
+![Nukta composition](/images/oriya/oriya-nukt.svg "Nukta composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-nukt}
 
 Nukta composition
 :::
+
+```{svg-color-toggle-button} oriya-nukt
+```
 
 
 #### Stage 3, step 3: akhn ####
@@ -1286,24 +1313,33 @@ rules designed to match them in subsequences. Therefore, this
 feature must be applied before all other many-to-one substitutions.
 
   - The context defined for an `akhn` feature is:
+
+:::{table} `akhn` feature context
     
-    | Backtrack     | Matching sequence           | Lookahead     |
-    |:--------------|:----------------------------|:--------------|
-    | _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+| Backtrack     | Matching sequence           | Lookahead     |
+|:--------------|:----------------------------|:--------------|
+| _none_        | `AKHAND_CONSONANT_SEQUENCE` | _none_        |
+:::
 
 
 :::{figure-md}
-![KSsa ligation](/images/oriya/oriya-akhn-kssa.svg "KSsa ligation")
+![KSsa ligation](/images/oriya/oriya-akhn-kssa.svg "KSsa ligation"){.shaping-demo .inline-svg .greyscale-svg #oriya-akhn-kssa}
 
 KSsa ligation
 :::
 
+```{svg-color-toggle-button} oriya-akhn-kssa
+```
+
 
 :::{figure-md}
-![JNya ligation](/images/oriya/oriya-akhn-jnya.svg "JNya ligation")
+![JNya ligation](/images/oriya/oriya-akhn-jnya.svg "JNya ligation"){.shaping-demo .inline-svg .greyscale-svg #oriya-akhn-jnya}
 
 JNya ligation
 :::
+
+```{svg-color-toggle-button} oriya-akhn-jnya
+```
 
 
 #### Stage 3, step 4: rphf ####
@@ -1316,17 +1352,23 @@ The `rphf` feature replaces initial <samp>"Ra,Halant"</samp> sequences with the
 	
 
   - The context defined for a `rphf` feature is:
+
+:::{table} `rphf` feature context
     
-    | Backtrack        | Matching sequence       | Lookahead     |
-    |:-----------------|:------------------------|:--------------|
-    | `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+| Backtrack        | Matching sequence       | Lookahead     |
+|:-----------------|:------------------------|:--------------|
+| `SYLLABLE_START` | "Ra"(full),`_halant_`   | _none_        |
+:::
 
 
 :::{figure-md}
-![Reph composition](/images/oriya/oriya-rphf.svg "Reph composition")
+![Reph composition](/images/oriya/oriya-rphf.svg "Reph composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-rphf}
 
 Reph composition
 :::
+
+```{svg-color-toggle-button} oriya-rphf
+```
 
 
 #### Stage 3, step 5: rkrf ####
@@ -1347,10 +1389,13 @@ form:
     form. 
 
 :::{figure-md}
-![Raphala composition](/images/oriya/oriya-blwf-raphala.svg "Raphala composition")
+![Raphala composition](/images/oriya/oriya-blwf-ra-2.svg "Raphala composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf-ra-2}
 
 Raphala composition
 :::
+
+```{svg-color-toggle-button} oriya-blwf-ra-2
+```
 
 
 <!---In addition, all consonants in Oriya can take on subjoined forms.--->
@@ -1363,18 +1408,23 @@ Indic scripts that use a different `BLWF_MODE_` shaping
 characteristic. 
 
   - The context defined for a `blwf` feature is:
-    
-    | Backtrack     | Matching sequence        | Lookahead     |
-    |:--------------|:-------------------------|:--------------|
-    | `_consonant_` | `_halant_`,`_consonant_` | _none_        |
 
+:::{table} `blwf` feature context
+    
+| Backtrack     | Matching sequence        | Lookahead     |
+|:--------------|:-------------------------|:--------------|
+| `_consonant_` | `_halant_`,`_consonant_` | _none_        |
+:::
 
 
 :::{figure-md}
-![Below-base consonant composition](/images/oriya/oriya-blwf.svg "Below-base consonant composition")
+![Below-base consonant composition](/images/oriya/oriya-blwf.svg "Below-base consonant composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwf}
 
 Below-base consonant composition
 :::
+
+```{svg-color-toggle-button} oriya-blwf
+```
 
 
 #### Stage 3, step 8: abvf ####
@@ -1422,17 +1472,23 @@ The `pstf` feature replaces post-base-consonant glyphs with any special forms.
 
 
 :::{figure-md}
-![Post-base form Ya composition](/images/oriya/oriya-pstf-ya.svg "Post-base form Ya composition")
+![Post-base form Ya composition](/images/oriya/oriya-pstf-ya-1.svg "Post-base form Ya composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-pstf-ya-1}
 
 Post-base form Ya composition
 :::
 
+```{svg-color-toggle-button} oriya-pstf-ya-1
+```
+
 
 :::{figure-md}
-![Post-base form Yya composition](/images/oriya/oriya-pstf-yya.svg "Post-base form Yya composition")
+![Post-base form Yya composition](/images/oriya/oriya-pstf-yya-1.svg "Post-base form Yya composition"){.shaping-demo .inline-svg .greyscale-svg #oriya-pstf-yya-1}
 
 Post-base form Yya composition
 :::
+
+```{svg-color-toggle-button} oriya-pstf-yya-1
+```
 
 
 #### Stage 3, step 11: vatu ####
@@ -1483,10 +1539,13 @@ must be applied after the `half` feature.
 
 
 :::{figure-md}
-![Conjunct ligation](/images/oriya/oriya-cjct.svg "Conjunct ligation")
+![Conjunct ligation](/images/oriya/oriya-cjct.svg "Conjunct ligation"){.shaping-demo .inline-svg .greyscale-svg #oriya-cjct}
 
 Conjunct ligation
 :::
+
+```{svg-color-toggle-button} oriya-cjct
+```
 
 
 #### Stage 3, step 13: cfar ####
@@ -1552,10 +1611,13 @@ consonant or syllable base, all conjuncts or ligatures that contain
 the base consonant or syllable base, and all half forms.
 
 :::{figure-md}
-![Pre-base matra position](/images/oriya/oriya-matra-position.svg "Pre-base matra position")
+![Pre-base matra position](/images/oriya/oriya-matra-position.svg "Pre-base matra position"){.shaping-demo .inline-svg .greyscale-svg #oriya-matra-position}
 
 Pre-base matra position
 :::
+
+```{svg-color-toggle-button} oriya-matra-position
+```
 
 
 > Note: OpenType and Unicode both state that if the syllable includes
@@ -1612,10 +1674,13 @@ left of <samp>"Halant"</samp>, to allow for potential matching with `abvs` or
 `psts` substitutions from <abbr title="Glyph Substitution table">GSUB</abbr>.
 
 :::{figure-md}
-![Reph position](/images/oriya/oriya-reph-position.svg "Reph position")
+![Reph position](/images/oriya/oriya-reph-position.svg "Reph position"){.shaping-demo .inline-svg .greyscale-svg #oriya-reph-position}
 
 Reph position
 :::
+
+```{svg-color-toggle-button} oriya-reph-position
+```
 
 
 
@@ -1666,10 +1731,13 @@ consonants, and stylistic variants of left-side dependent vowels
 (matras). 
 
 :::{figure-md}
-![Pre-base form substitution](/images/oriya/oriya-pres.svg "Pre-base form substitution")
+![Pre-base form substitution](/images/oriya/oriya-pres.svg "Pre-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-pres}
 
 Pre-base form substitution
 :::
+
+```{svg-color-toggle-button} oriya-pres
+```
 
 
 
@@ -1678,10 +1746,13 @@ presentation forms. This usually includes contextual variants of
 above-base marks or contextually appropriate mark-and-base ligatures.
 
 :::{figure-md}
-![Above-base form substitution](/images/oriya/oriya-abvs.svg "Above-base form substitution")
+![Above-base form substitution](/images/oriya/oriya-abvs.svg "Above-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-abvs}
 
 Above-base form substitution
 :::
+
+```{svg-color-toggle-button} oriya-abvs
+```
 
 
 
@@ -1692,10 +1763,13 @@ are adjacent to below-base-consonant forms like <samp>"Raphala"</samp> with
 contextual ligatures.
 
 :::{figure-md}
-![Below-base form substitution](/images/oriya/oriya-blws.svg "Below-base form substitution")
+![Below-base form substitution](/images/oriya/oriya-blws.svg "Below-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-blws}
 
 Below-base form substitution
 :::
+
+```{svg-color-toggle-button} oriya-blws
+```
 
 
 The `psts` feature replaces post-base-consonant glyphs with special
@@ -1704,10 +1778,13 @@ dependent vowels (matras) with stylistic variants or replacing
 post-base-consonant/matra pairs with contextual ligatures. 
 
 :::{figure-md}
-![Post-base form substitution](/images/oriya/oriya-psts.svg "Post-base form substitution")
+![Post-base form substitution](/images/oriya/oriya-psts.svg "Post-base form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-psts}
 
 Post-base form substitution
 :::
+
+```{svg-color-toggle-button} oriya-psts
+```
 
 
 The `haln` feature replaces syllable-final <samp>"_Consonant_,Halant"</samp> pairs with
@@ -1715,16 +1792,20 @@ special presentation forms. This can include stylistic variants of the
 consonant where placing the <samp>"Halant"</samp> mark on its own is
 typographically problematic. 
 
+:::{figure-md}
+![Halant form substitution](/images/oriya/oriya-haln.svg "Halant form substitution"){.shaping-demo .inline-svg .greyscale-svg #oriya-haln}
+
+Halant form substitution
+:::
+
+```{svg-color-toggle-button} oriya-haln
+```
+
 > Note: The `calt` feature, which allows for generalized application
 > of contextual alternate substitutions, is usually applied at this
 > point. However, `calt` is not mandatory for correct Oriya shaping
 > and may be disabled in the application by user preference.
 
-:::{figure-md}
-![Halant form substitution](/images/oriya/oriya-haln.svg "Halant form substitution")
-
-Halant form substitution
-:::
 
 
 ### Stage 6: Applying remaining positioning features from <abbr>GPOS</abbr> ###
@@ -1749,15 +1830,28 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance positioning](/images/oriya/oriya-dist.svg "Distance positioning"){.shaping-demo .inline-svg .greyscale-svg #oriya-dist}
+
+Distance positioning
+:::
+
+```{svg-color-toggle-button} oriya-dist
+```
+
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Oriya, this includes <samp>"Reph"</samp> in addition to the
 above-base dependent vowels (matras), diacritical marks and Vedic signs. 
 
 :::{figure-md}
-![Above-base mark position](/images/oriya/oriya-abvm.svg "Above-base mark position")
+![Above-base mark position](/images/oriya/oriya-abvm.svg "Above-base mark position"){.shaping-demo .inline-svg .greyscale-svg #oriya-abvm}
 
 Above-base mark position
 :::
+
+```{svg-color-toggle-button} oriya-abvm
+```
 
 
 The `blwm` feature positions below-base marks for attachment to base
@@ -1765,10 +1859,13 @@ characters. In Oriya, this includes below-base dependent vowels
 (matras) as well as the below-base consonant form <samp>"Raphala"</samp>.
 
 :::{figure-md}
-![Below-base mark position](/images/oriya/oriya-blwm.svg "Below-base mark position")
+![Below-base mark position](/images/oriya/oriya-blwm.svg "Below-base mark position"){.shaping-demo .inline-svg .greyscale-svg #oriya-blwm}
 
 Below-base mark position
 :::
+
+```{svg-color-toggle-button} oriya-blwm
+```
 
 
 ## The `<orya>` shaping model ##

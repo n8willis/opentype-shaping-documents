@@ -3,7 +3,7 @@
 This document lists the per-character shaping information needed to
 [shape Malayalam text](../opentype-shaping-malayalam.md).
 
-**Table of Contents**
+**Contents**
 
   - [Malayalam character table](#malayalam-character-table)
   - [Vedic Extensions character table](#vedic-extensions-character-table)

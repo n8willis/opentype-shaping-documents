@@ -13,7 +13,7 @@ characterize Emoji font behavior.
 
 Similarly, Emoji font vendors have employed a variety of
 different OpenType features to implement support for standard
-sequences, modifier-based sequences, <abbr>ZWJ</abbr>-based sequences and
+sequences, modifier-based sequences, <abbr title="Zero-Width Joiner">ZWJ</abbr>-based sequences and
 permutations.
 
 See the [Emoji shaping document](../opentype-shaping-emoji.md)
@@ -21,12 +21,14 @@ for more details on the sequences and definitions involved.
 
 ## Format, features, and control-codepoint visiblity table ##
 
-This table lists the image format, the <abbr>GSUB</abbr> feature(s) used for
-basic Emoji sequence support and <abbr>ZWJ</abbr>-based sequence support, and
+This table lists the image format, the <abbr title="Glyph Substitution table">GSUB</abbr> feature(s) used for
+basic Emoji sequence support and <abbr title="Zero-Width Joiner">ZWJ</abbr>-based sequence support, and
 whether or not the font includes a visible glyph for the
 presentation selector codepoints (VS15, `U+FE0E`; VS16, `U+FE0F`)
 and modifier codepoints (`U+1F3FB`..`U+1F3FF`).
 
+
+:::{table} Emoji sequence implementation details
 
 | Font                   | publisher | image format | sequence formation feature | ZWJ sequence feature | visible presentation selector | visible modifier |
 |:-----------------------|:----------|:-------------|:---------------------------|:---------------------|:------------------------------|:-----------------|
@@ -46,6 +48,7 @@ and modifier codepoints (`U+1F3FB`..`U+1F3FF`).
 | Apple Color Emoji      | Apple    | sbix         | morx                       | morx                 | no                            | YES              |
 | Samsung Color Emoji    | Samsung  | CBDT         | ccmp                       | ccmp                 | no                            | YES              |
 | Segoe UI Emoji         | Microsoft| COLRv0       | ccmp                       | ccmp                 | YES                           | YES              |
+:::
 
 
 ### Contributing additional data ###
@@ -69,7 +72,7 @@ Options available include:
    - Users can run the `layout-features.py somefontfilename.ttf`
      script (which can be found in the `/Snippets/` directory of the
      `FontTools` package source) and it will print out an indented
-     list of the <abbr>GSUB</abbr> and <abbr>GPOS</abbr> features
+     list of the <abbr title="Glyph Substitution table">GSUB</abbr> and <abbr title="Glyph Positioning table">GPOS</abbr> features
      used. All that matters for the table above is what the script
      reports on the `Feature: ` line. For a typical emoji font there's
      probably only one feature -- but, if there are several, listing
@@ -81,14 +84,14 @@ Options available include:
      other metadata; the tables are the first output. Same interpretation
      as above.
    - At the moment it sounds like there isn't a single-command option in
-     allsorts to list <abbr>GSUB</abbr>/<abbr>GPOS</abbr> features. Corrections are welcome.
+     allsorts to list <abbr title="Glyph Substitution table">GSUB</abbr>/<abbr title="Glyph Positioning table">GPOS</abbr> features. Corrections are welcome.
 
 3. **GUI font editors**
    - Users can also open up the font file in a font editor and look at what
      it presents. 
    - FontForge:
      - In FontForge, go to Element -> Font Info in the menu to open the
-       font-info dialog box. It will show the <abbr>GSUB</abbr>/<abbr>GPOS</abbr> lookups in the
+       font-info dialog box. It will show the <abbr title="Glyph Substitution table">GSUB</abbr>/<abbr title="Glyph Positioning table">GPOS</abbr> lookups in the
        "Lookups" tab (left-hand side).
      - FontForge does _not_ just show a convenient list of all the tables.
        However, when users open the font file, the "Warnings" dialog box will

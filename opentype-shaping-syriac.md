@@ -1,3 +1,6 @@
+```{include} /_global.md
+```
+
 # Syriac script shaping in OpenType #
 
 This document details the general shaping procedure shared by all
@@ -5,7 +8,7 @@ Syriac script styles, and defines the common pieces that style-specific
 implementations share. 
 
 
-**Table of Contents**
+**Contents**
 
   - [General information](#general-information)
   - [Terminology](#terminology)
@@ -168,10 +171,13 @@ historical documents where it is impossible to distinguish whether the
 letter in the source text is "Dalath" or "Rish".
 
 :::{figure-md}
-![Dalath, Rish, Dotless Dalath-Rish](/images/syriac/syriac-dalath-rish.svg "Dalath, Rish, Dotless Dalath-Rish")
+![Dalath, Rish, Dotless Dalath-Rish](/images/syriac/syriac-dalath-rish.svg "Dalath, Rish, Dotless Dalath-Rish"){.shaping-demo .inline-svg .greyscale-svg #syriac-dalath-rish}
 
 Dalath, Rish, Dotless Dalath-Rish
 :::
+
+```{svg-color-toggle-button} syriac-dalath-rish
+```
 
 
 Shaping engines may choose to define pseudo-`JOINING_TYPE`s
@@ -190,11 +196,15 @@ canonical order.
 Several of the Syriac marks belong to standard combining
 classes:
 
+:::{table} Mark-classification table
+
 | Codepoint | Combining class | Glyph                              |
 |:----------|:----------------|:-----------------------------------|
 |`U+0711`   | 36              | &#x0711; Superscript Alaph         |
 |           | 220             | Other below-base combining marks   |
 |           | 230             | Other above-base combining marks   |
+:::
+
 
 The numeric values of these combining classes are used during Unicode
 normalization.
@@ -223,12 +233,14 @@ glyph are also provided.
 
 For example:
 
+:::{table} Example character table
+
 | Codepoint | Unicode category | Joining type | Joining group | Mark class | Glyph                        |
 |:----------|:-----------------|:-------------|:--------------|:-----------|:-----------------------------|
 |`U+0712`   | Letter           | DUAL         | BETH          | _null_     | &#x0712; Beth                |
 | | | | | |
 |`U+0737`   | Mark [Mn]        | TRANSPARENT  | _null_        | 220        | &#x0737; Rbasa Below         |
-
+:::
 
 
 Codepoints with no assigned meaning are
@@ -596,10 +608,13 @@ The `fina` feature substitutes the default glyph for a codepoint with
 the terminal (or final) form of the letter.
 
 :::{figure-md}
-![Final form substitution](/images/syriac/syriac-fina.svg "Final form substitution")
+![Final form substitution](/images/syriac/syriac-fina.svg "Final form substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-fina}
 
 Final form substitution
 :::
+
+```{svg-color-toggle-button} syriac-fina
+```
 
 
 #### Stage 5, step 4: fin2 ####
@@ -609,10 +624,13 @@ preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
 :::{figure-md}
-![Final form-2 substitution](/images/syriac/syriac-fin2.svg "Final form-2 substitution")
+![Final form-2 substitution](/images/syriac/syriac-fin2.svg "Final form-2 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-fin2}
 
 Final form-2 substitution
 :::
+
+```{svg-color-toggle-button} syriac-fin2
+```
 
 
 #### Stage 5, step 5: fin3 ####
@@ -622,10 +640,13 @@ preceded by Dalath, Rish, or dotless Dalath-Rish with a special
 terminal form.
 
 :::{figure-md}
-![Final form-3 substitution](/images/syriac/syriac-fin3.svg "Final form-3 substitution")
+![Final form-3 substitution](/images/syriac/syriac-fin3.svg "Final form-3 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-fin3}
 
 Final form-3 substitution
 :::
+
+```{svg-color-toggle-button} syriac-fin3
+```
 
 
 #### Stage 5, step 6: medi ####
@@ -634,10 +655,13 @@ The `medi` feature substitutes the default glyph for a codepoint with
 the medial form of the letter.
 
 :::{figure-md}
-![Medial form substitution](/images/syriac/syriac-medi.svg "Medial form substitution")
+![Medial form substitution](/images/syriac/syriac-medi.svg "Medial form substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-medi}
 
 Medial form substitution
 :::
+
+```{svg-color-toggle-button} syriac-medi
+```
 
 
 #### Stage 5, step 7: med2 ####
@@ -647,10 +671,13 @@ word that are preceded by a base character that cannot be joined to
 with a special medial form.
 
 :::{figure-md}
-![Medial form-2 substitution](/images/syriac/syriac-med2.svg "Medial form-2 substitution")
+![Medial form-2 substitution](/images/syriac/syriac-med2.svg "Medial form-2 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-med2}
 
 Medial form-2 substitution
 :::
+
+```{svg-color-toggle-button} syriac-med2
+```
 
 
 #### Stage 5, step 8: init ####
@@ -659,10 +686,13 @@ The `init` feature substitutes the default glyph for a codepoint with
 the initial form of the letter.
 
 :::{figure-md}
-![Initial form substitution](/images/syriac/syriac-init.svg "Initial form substitution")
+![Initial form substitution](/images/syriac/syriac-init.svg "Initial form substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-init}
 
 Initial form substitution
 :::
+
+```{svg-color-toggle-button} syriac-init
+```
 
 
 #### Stage 5, step 9: rlig ####
@@ -672,10 +702,13 @@ ligatures. Substitutions made by `rlig` cannot be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Required ligature substitution](/images/syriac/syriac-rlig.svg "Required ligature substitution")
+![Required ligature substitution](/images/syriac/syriac-rlig.svg "Required ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-rlig}
 
 Required ligature substitution
 :::
+
+```{svg-color-toggle-button} syriac-rlig
+```
 
 
 #### Stage 5, step 10: rclt ####
@@ -694,10 +727,13 @@ The substitutions made by `calt`
 can be disabled by application-level user interfaces.
 
 :::{figure-md}
-![Contextual alternate substitution](/images/syriac/syriac-calt.svg "Contextual alternate substitution")
+![Contextual alternate substitution](/images/syriac/syriac-calt.svg "Contextual alternate substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-calt}
 
 Contextual alternate substitution
 :::
+
+```{svg-color-toggle-button} syriac-calt
+```
 
 
 ### Stage 6: Applying the typographic-form substitution features from <abbr>GSUB</abbr> ###
@@ -721,10 +757,13 @@ by default. Substitutions made by `liga` may be disabled by
 application-level user interfaces.
 
 :::{figure-md}
-![Standard ligature substitution](/images/syriac/syriac-liga.svg "Standard ligature substitution")
+![Standard ligature substitution](/images/syriac/syriac-liga.svg "Standard ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-liga}
 
 Standard ligature substitution
 :::
+
+```{svg-color-toggle-button} syriac-liga
+```
 
 
 #### Stage 6, step 2: dlig ####
@@ -772,10 +811,13 @@ The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 The `mark` feature positions marks with respect to base glyphs.
 
 :::{figure-md}
-![Mark positioning](/images/syriac/syriac-mark.svg "Mark positioning")
+![Mark positioning](/images/syriac/syriac-mark.svg "Mark positioning"){.shaping-demo .inline-svg .greyscale-svg #syriac-mark}
 
 Mark positioning
 :::
+
+```{svg-color-toggle-button} syriac-mark
+```
 
 
 
