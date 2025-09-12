@@ -17,7 +17,13 @@ svg_stack --direction=h tamil-matra-decompose-before.svg right-arrow.svg tamil-m
 
 ## 3.2 `nukt`
 
-> None found.
+> None found. Testing with Grantha Nukta.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-nukt-before.svg --features=-akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTamil-Regular.ttf --unicodes=0bf5,25cc,1133c
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-nukt-after.svg --features=+akhn --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSerifTamil-Regular.ttf --unicodes=0bf5,1133c
+
+svg_stack --direction=h tamil-nukt-before.svg right-arrow.svg tamil-nukt-after.svg > tamil-nukt.svg
 
 
 ## 3.3 `akhn`
@@ -31,7 +37,9 @@ svg_stack --direction=h tamil-akhn-kssa-before.svg right-arrow.svg tamil-akhn-ks
 
 ## 3.9 `half`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-half-before.svg --features=-half,-haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b99,25cc,0bcd
+> Simulated output using a `mark` lookup; no example found.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-half-before.svg --features=-half,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b99,25cc,0bcd
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-half-after.svg --features=+half --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b99,0bcd
 
@@ -84,7 +92,9 @@ svg_stack --direction=h tamil-psts-before.svg right-arrow.svg tamil-psts-after.s
 
 ## `haln`
 
-hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-haln-before.svg --features=-haln,-half,-abvm --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b9e,0bcd
+> Simulated output using a `mark` lookup; no example found.
+
+hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-haln-before.svg --features=-haln,-mark --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b9e,25cc,0bcd
 
 hb-view --font-size=110 --margin=2,16,2,16 --output-file=tamil-haln-after.svg --features=+haln --background=FFFFFF00 /usr/share/fonts/truetype/noto/NotoSansTamil-Regular.ttf --unicodes=0b9e,0bcd
 

@@ -1188,6 +1188,16 @@ precomposed nukta-variant of the consonant glyph.
 :::
 
 
+:::{figure-md}
+![Nukta formation](/images/tamil/tamil-nukt.svg "Nukta formation"){.shaping-demo .inline-svg .greyscale-svg #tamil-nukt}
+
+Nukta formation
+:::
+
+```{svg-color-toggle-button} tamil-nukt
+```
+
+
 #### Stage 3, step 3: akhn ####
 
 The `akhn` feature replaces one specific sequence with a required ligature. 
@@ -1211,9 +1221,9 @@ feature must be applied before all other many-to-one substitutions.
 
 
 :::{figure-md}
-![akhn KSsa formation](/images/tamil/tamil-akhn-kssa.svg "akhn KSsa formation"){.shaping-demo .inline-svg .greyscale-svg #tamil-akhn-kssa}
+![Akhand KSsa formation](/images/tamil/tamil-akhn-kssa.svg "Akhand KSsa formation"){.shaping-demo .inline-svg .greyscale-svg #tamil-akhn-kssa}
 
-akhn KSsa formation
+Akhand KSsa formation
 :::
 
 ```{svg-color-toggle-button} tamil-akhn-kssa
