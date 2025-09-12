@@ -817,6 +817,7 @@ The order in which these features are applied is fixed for
 all scripts implemented in the Arabic shaping model:
 
     curs
+	dist
 	kern
 	mark
 	mkmk
@@ -838,8 +839,24 @@ Cursive positioning
 ```
 
 
+#### Stage 7, step 2: dist ####
 
-#### Stage 7, step 2: kern ####
+The `dist` feature adjusts glyph spacing between glyphs. Unlike `kern`,
+adjustments made with `dist` do not require the application or the user
+to enable any software kerning features, if such features are
+optional. 
+
+:::{figure-md}
+![Distance adjustment](/images/arabic/arabic-dist.svg "Distance adjustment"){.shaping-demo .inline-svg .greyscale-svg #arabic-dist}
+
+Distance adjustment
+:::
+
+```{svg-color-toggle-button} arabic-dist
+```
+
+
+#### Stage 7, step 3: kern ####
 
 The `kern` feature adjusts glyph spacing between pairs of adjacent glyphs.
 
@@ -854,7 +871,7 @@ Kerning adjustment
 
 
 
-#### Stage 7, step 3: mark ####
+#### Stage 7, step 4: mark ####
 
 The `mark` feature positions marks with respect to base glyphs.
 
@@ -868,7 +885,7 @@ Mark positioning
 ```
 
 
-#### Stage 7, step 4: mkmk ####
+#### Stage 7, step 5: mkmk ####
 
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
