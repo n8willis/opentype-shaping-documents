@@ -1392,6 +1392,16 @@ must be applied after the `half` feature.
 > desired typographic variation.
 
 
+:::{figure-md}
+![Conjunct formation](/images/tamil/tamil-cjct.svg "Conjunct formation"){.shaping-demo .inline-svg .greyscale-svg #tamil-cjct}
+
+Conjunct formation
+:::
+
+```{svg-color-toggle-button} tamil-cjct
+```
+
+
 #### Stage 3, step 13: cfar ####
 
 > This feature is not used in Tamil.
@@ -1654,6 +1664,15 @@ glyphs. Unlike `kern`, adjustments made with `dist` do not require the
 application or the user to enable any software _kerning_ features, if
 such features are optional. 
 
+:::{figure-md}
+![Distance application](/images/tamil/tamil-dist.svg "Distance application"){.shaping-demo .inline-svg .greyscale-svg #tamil-dist}
+
+Distance application
+:::
+
+```{svg-color-toggle-button} tamil-dist
+```
+
 The `abvm` feature positions above-base marks for attachment to base
 characters. In Tamil, this includes above-base dependent vowels
 (matras), diacritical marks, and Vedic signs.
@@ -1666,6 +1685,7 @@ abvm feature application
 
 ```{svg-color-toggle-button} tamil-abvm
 ```
+
 
 The `blwm` feature positions below-base marks for attachment to base
 characters. In Tamil, this includes below-base diacritical marks.
