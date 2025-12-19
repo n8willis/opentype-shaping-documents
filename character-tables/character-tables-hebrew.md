@@ -1,3 +1,4 @@
+
 # Hebrew character tables #
 
 This document lists the per-character shaping information needed to

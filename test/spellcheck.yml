@@ -1,0 +1,42 @@
+matrix:
+- name: Main
+  aspell:
+    lang: en
+  dictionary:
+    encoding: utf-8
+    wordlists:
+    - 'test/wordlist.txt'
+  pipeline:
+  - pyspelling.filters.markdown:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - title
+      - alt
+      ignores:
+      - code
+      - pre
+  sources:
+  - '!character-tables/**/*.md|!images/**/*.md|**/*.md'
+  default_encoding: utf-8
+- name: Chartables
+  aspell:
+    lang: en
+  dictionary:
+    encoding: utf-8
+    wordlists:
+    - 'test/wordlist.txt'
+  pipeline:
+  - pyspelling.filters.markdown:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - title
+      - alt
+      ignores:
+      - code
+      - pre
+      - table
+  sources:
+  - 'character-tables/*.md'
+  default_encoding: utf-8

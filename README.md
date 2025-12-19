@@ -91,7 +91,7 @@ These documents cite the following informative references:
 3. The [HarfBuzz](https://github.com/harfbuzz/harfbuzz) project, which
    includes a free-software/open-source implementation of OpenType
    Layout shaping with full source code and documentation. 
-4. The [Allsorts](https://github.com/yeslogic/allsorts) project, which
+4. The [AllSorts](https://github.com/yeslogic/allsorts) project, which
    includes a free-software/open-source implementation of OpenType
    Layout shaping with full source code and documentation.
 5. The [Unicode
@@ -104,7 +104,7 @@ These documents cite the following informative references:
 6. The YesLogic [text corpus](https://github.com/yeslogic/corpus),
    which includes real-world text data for several Indic scripts,
    scraped from Wikipedia, Reddit, and multiple online news
-   sources. This data is used to test shaping in Allsorts and Prince.
+   sources. This data is used to test shaping in AllSorts and Prince.
 7. Known but unofficial information about other shaping-engine
    projects. Primarily this includes tests and reproducible issues
    found via [HarfBuzz](https://github.com/harfbuzz/harfbuzz), because

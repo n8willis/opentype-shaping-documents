@@ -155,7 +155,7 @@ cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
 For example, to show the initial form of a letter in isolation (such
-as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
+as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
 would be used. To show the medial form of a letter in isolation, the
 sequence "ZWJ,_Letter_,ZWJ" would be used.
 

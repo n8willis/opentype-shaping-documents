@@ -48,6 +48,8 @@ treated differently during the mark-reordering stage.
 
 
 
+:::{table} Arabic block table
+
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
 |`U+0600`   | Other            | NON_JOINING  | _null_               | _0_        | &#x0600; Number Sign                          |
@@ -321,11 +323,14 @@ treated differently during the mark-reordering stage.
 |`U+06FD`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x06FD; Sign Sindhi Ampersand                |
 |`U+06FE`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x06FE; Sign Sindhi Postposition Men         |
 |`U+06FF`   | Letter           | DUAL         | KNOTTED_HEH          | _0_        | &#x06FF; Knotted Heh With Inverted V Above    |          
+:::
 
 
 
 ## Arabic Supplement character table ##
 
+
+:::{table} Arabic Supplement block table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                           |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------------------------|
@@ -379,10 +384,13 @@ treated differently during the mark-reordering stage.
 |`U+077D`   | Letter           | DUAL         | SEEN                 | _0_        | &#x077D; Seen With Digit Four Above                             |
 |`U+077E`   | Letter           | DUAL         | SEEN                 | _0_        | &#x077E; Seen With Inverted V Above                             |
 |`U+077F`   | Letter           | DUAL         | KAF                  | _0_        | &#x077F; Kaf With 2 Dots Above                                  |                        
+:::
 
 
 ## Arabic Extended-A character table ##
 
+
+:::{table} Arabic Extended-A block table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
@@ -487,10 +495,13 @@ treated differently during the mark-reordering stage.
 |`U+08FD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FD; Right Arrowhead Above With Dot               |
 |`U+08FE`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FE; Damma With Dot                               |
 |`U+08FF`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x08FF; Mark Sideways Noon Ghunna                    |          
+:::
 
 
 ## Arabic Extended-B character table ##
 
+
+:::{table} Arabic Extended-B block table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
@@ -545,10 +556,13 @@ treated differently during the mark-reordering stage.
 |`U+089E`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089E; Doubled Madda                                |
 |`U+089F`   | Mark [Mn]        | TRANSPARENT  | _null_               | 230        | &#x089F; Half Madda Over Madda                        |
 | | | | | |
+:::
 
 
 ## Arabic Extended-C character table ##
 
+
+:::{table} Arabic Extended-C block table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                                 |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-------------------------------------------------------|
@@ -620,9 +634,12 @@ treated differently during the mark-reordering stage.
 |`U+10EFE`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFE; Small Low Word Qasr                         |
 |`U+10EFF`  | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x10EFF; Small Low Word Madda                        |
 | | | | | |
+:::
 
 
 ## Rumi Numeral Symbols character table ##
+
+:::{table} Rumi Numeral Symbols block table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
@@ -659,6 +676,7 @@ treated differently during the mark-reordering stage.
 |`U+10E7D`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7D; Fraction One Third   |
 |`U+10E7E`  | Number           | NON_JOINING  | _null_               | _0_        | &#x10E7E; Fraction Two Thirds  |
 |`U+10E7F`  | _unassigned_     |              |                      |            |                                |
+:::
 
 
 <!--- 
@@ -702,6 +720,8 @@ other characters, such as hyphens or dashes, in a similar placeholder
 fashion; shaping engines should cope with this situation gracefully.
 
 
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
 |`U+00A0`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x00A0; No-break space        |
@@ -716,7 +736,7 @@ fashion; shaping engines should cope with this situation gracefully.
 |`U+2013`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
-
+:::
 
 
 The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the
@@ -730,7 +750,7 @@ cursive connecting form of a letter even when the context of the
 adjoining letters would not trigger the connecting form. 
 
 For example, to show the initial form of a letter in isolation (such
-as for dislaying it in a table of forms), the sequence "_Letter_,ZWJ"
+as for displaying it in a table of forms), the sequence "_Letter_,ZWJ"
 would be used. To show the medial form of a letter in isolation, the
 sequence "ZWJ,_Letter_,ZWJ" would be used.
 

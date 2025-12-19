@@ -42,7 +42,7 @@ result in the sequence <samp>"Reph,Dotted_Circle"</samp>).
 
 ## Indic syllable cluster merging ##
 
-Other shaping engines, such as Harfbuzz, track the indivisible
+Other shaping engines, such as HarfBuzz, track the indivisible
 components of a syllable in "clusters". Each individual letter usually
 corresponds to a cluster; when two letters ligate or form a conjunct,
 their clusters are merged. When a codepoint is decomposed, its

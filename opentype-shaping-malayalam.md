@@ -230,7 +230,7 @@ codepoint's Unicode name and an example glyph are also provided.
 
 For example:
 
-:::{table} Example character tablee
+:::{table} Example character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
