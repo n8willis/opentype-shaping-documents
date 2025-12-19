@@ -1,3 +1,9 @@
+# SPDX-FileCopyrightText: Copyright 2025 Nathan Willis
+#
+# SPDX-License-Identifier: BSD-2-Clause
+"""Dictionary of the acronyms or abbreviations and corresponding full-text expansions used in the documents.
+"""
+
 # Dictionary mapping the set of acronyms and abbreviations
 # that get wrapped in <abbr> tags in the generated output
 # to the corresponding full-expansion text for each.

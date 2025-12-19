@@ -1,3 +1,12 @@
+# SPDX-FileCopyrightText: Copyright 2025 Nathan Willis
+#
+# SPDX-License-Identifier: BSD-2-Clause
+
+"""Sphinx extension to attach a color-toggle button to specified SVG elements in documents.
+
+   This extension only affects the `html` builder.
+"""
+
 from __future__ import annotations
 
 from docutils import nodes
