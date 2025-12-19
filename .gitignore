@@ -4,3 +4,6 @@
 # Ignore Unicode PDFs & misc resources
 reference/
 _build/
+
+# Ignore auto-generated binary spelling dictionary
+dictionary.dic
