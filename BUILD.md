@@ -26,7 +26,7 @@ guide](https://www.sphinx-doc.org/en/master/usage/quickstart.html)
 covers what is necessary for a variety of OSes and
 environments. Perhaps the easiest approach is to install Sphinx in a
 Python [virtual
-enviornment](https://www.sphinx-doc.org/en/master/usage/installation.html#using-virtual-environments). 
+environment](https://www.sphinx-doc.org/en/master/usage/installation.html#using-virtual-environments). 
 
 After installing Sphinx itself, you will also need to install the
 [MyST-Parser](https://myst-parser.readthedocs.io/en/latest/) package,

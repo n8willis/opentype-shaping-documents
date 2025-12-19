@@ -72,7 +72,7 @@ an older script tag, the shaping engine should deal with it gracefully.
 The `<sinh>` tag, unlike the other Indic script tags,
 was not deprecated in 2005 and is still used for Sinhala text.
 
-> Note: There are several other scripts derived from the Bhrami script
+> Note: There are several other scripts derived from the Brahmi script
 > that are often treated separately and not bundled into the "Indic"
 > category by shaping engines. This is because these other scripts
 > evolved to have significantly distinct rules for syllable

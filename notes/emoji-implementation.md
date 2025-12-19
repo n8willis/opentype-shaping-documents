@@ -78,13 +78,13 @@ Options available include:
      probably only one feature -- but, if there are several, listing
      them is useful.
 
-2. **allsorts / allsorts-tools**
+2. **AllSorts / allsorts-tools**
    - Users can use the `dump` tool from the `allsorts-tools` package
      to run `allsorts dump somefilename.ttf` and get a list of tables plus
      other metadata; the tables are the first output. Same interpretation
      as above.
    - At the moment it sounds like there isn't a single-command option in
-     allsorts to list <abbr title="Glyph Substitution table">GSUB</abbr>/<abbr title="Glyph Positioning table">GPOS</abbr> features. Corrections are welcome.
+     `allsorts` to list <abbr title="Glyph Substitution table">GSUB</abbr>/<abbr title="Glyph Positioning table">GPOS</abbr> features. Corrections are welcome.
 
 3. **GUI font editors**
    - Users can also open up the font file in a font editor and look at what

@@ -1700,7 +1700,7 @@ such features are optional.
 :::{figure-md}
 ![dist feature application](/images/kannada/kannada-dist.svg "dist feature application"){.shaping-demo .inline-svg .greyscale-svg #kannada-dist}
 
-Appliication of the `dist` feature
+Application of the `dist` feature
 :::
 
 ```{svg-color-toggle-button} kannada-dist
