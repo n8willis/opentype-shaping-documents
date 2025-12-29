@@ -1,6 +1,7 @@
 root: README
 options:
-  maxdepth: 2
+  numbered: 1
+  maxdepth: 0
 subtrees:
 - maxdepth: 1
   entries:
@@ -8,13 +9,12 @@ subtrees:
     title: Overview
 - caption: Script shaping
   numbered: 3
-  maxdepth: 2
+  maxdepth: 0
   entries:
   - file: opentype-shaping-indic-general
     title: Indic General
     subtrees:
-    - numbered: 3
-      maxdepth: 2
+    - maxdepth: 2
       entries:
       - file: opentype-shaping-devanagari
         title: Devanagari
@@ -41,8 +41,7 @@ subtrees:
   - file: opentype-shaping-arabic-general
     title: Arabic General
     subtrees:
-    - numbered: 3
-      maxdepth: 2
+    - maxdepth: 2
       entries:
       - file: opentype-shaping-arabic
         title: Arabic
