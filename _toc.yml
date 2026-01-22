@@ -1,20 +1,19 @@
 root: README
 options:
-  maxdepth: 2
+  maxdepth: 0
 subtrees:
-- maxdepth: 1
+- maxdepth: 0
   entries:
   - file: index
     title: Overview
 - caption: Script shaping
-  numbered: 3
+  numbered: 2
   maxdepth: 2
   entries:
   - file: opentype-shaping-indic-general
-    title: Indic General
+    title: Indic model
     subtrees:
-    - numbered: 3
-      maxdepth: 2
+    - maxdepth: 2
       entries:
       - file: opentype-shaping-devanagari
         title: Devanagari
@@ -39,10 +38,9 @@ subtrees:
       - file: opentype-shaping-vedic-extensions
         title: Vedic extensions
   - file: opentype-shaping-arabic-general
-    title: Arabic General
+    title: Arabic model
     subtrees:
-    - numbered: 3
-      maxdepth: 2
+    - maxdepth: 2
       entries:
       - file: opentype-shaping-arabic
         title: Arabic
@@ -74,10 +72,21 @@ subtrees:
   entries:
   - file: opentype-shaping-normalization
     title: Normalization
+  - file: notes/README
+    title: Notes
+    subtrees:
+    - maxdepth: 1
+      entries:
+      - file: notes/uniscribe-bug-compatibility
+        title: Uniscribe compatibility
+      - file: notes/ragel-machine-notation
+        title: Ragel state-machine operators
+      - file: notes/emoji-implementation
+        title: Emoji implementation
   - file: character-tables/character-tables-index
     title: Character tables
     subtrees:
-    - maxdepth: 2
+    - maxdepth: 1
       entries:
       - file: character-tables/character-tables-arabic
         title: Arabic
@@ -122,17 +131,6 @@ subtrees:
       - file: character-tables/character-tables-tibetan
         title: Tibetan
   - file: images/README
-    title: Illustration images
-  - file: notes/README
-    title: Notes
-    subtrees:
-    - maxdepth: 2
-      entries:
-      - file: notes/uniscribe-bug-compatibility
-        title: Uniscribe compatibility
-      - file: notes/ragel-machine-notation
-        title: Ragel state-machine operators
-      - file: notes/emoji-implementation
-        title: Emoji implementation
+    title: Illustrations
   - file: errata
     title: Errata
