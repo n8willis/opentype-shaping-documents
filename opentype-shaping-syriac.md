@@ -648,7 +648,7 @@ Final form substitution
 
 The `fin2` feature replaces word-final Alaph glyph that are not
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
-terminal form.
+terminal-form Alaph glyph.
 
 :::{figure-md}
 ![Final form-2 substitution](/images/syriac/syriac-fin2.svg "Final form-2 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-fin2}
@@ -664,7 +664,7 @@ Final form-2 substitution
 
 The `fin3` feature replaces word-final Alaph glyph that are 
 preceded by Dalath, Rish, or dotless Dalath-Rish with a special
-terminal form.
+terminal-form Alaph glyph.
 
 :::{figure-md}
 ![Final form-3 substitution](/images/syriac/syriac-fin3.svg "Final form-3 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-fin3}
@@ -694,8 +694,8 @@ Medial form substitution
 #### Stage 5, step 7: med2 ####
 
 The `med2` feature replaces Alaph glyphs in the middle of a
-word that are preceded by a base character that cannot be joined to
-with a special medial form.
+word that are preceded by a base character which can form a right-side
+join with a special medial-form Alaph glyph.
 
 :::{figure-md}
 ![Medial form-2 substitution](/images/syriac/syriac-med2.svg "Medial form-2 substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-med2}
