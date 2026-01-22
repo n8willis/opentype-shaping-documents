@@ -53,6 +53,15 @@ before and after the codepoint. Most, but not all, letter sequences
 join; shaping engines must track which positions trigger joining
 behavior for each letter. 
 
+:::{figure-md}
+![Isolated, initial, medial, and final contextual forms of a letter](/images/syriac/syriac-joining.svg "Isolated, initial, medial, and final contextual forms of a letter"){.shaping-demo .inline-svg .greyscale-svg #syriac-joining}
+
+Isolated, initial, medial, and final contextual forms of a letter
+:::
+
+```{svg-color-toggle-button} syriac-joining
+```
+
 Syriac is written (and, therefore, rendered) from right to
 left. Shaping engines must track the directionality of the text run
 when scripts of different direction are mixed.
@@ -439,6 +448,15 @@ performed before applying any other <abbr title="Glyph Substitution table">GSUB<
 those lookups may be written to match only the `ccmp`-substituted
 glyphs. 
 
+:::{figure-md}
+![`ccmp` feature application](/images/syriac/syriac-ccmp.svg "`ccmp` feature application"){.shaping-demo .inline-svg .greyscale-svg #syriac-ccmp}
+
+`ccmp` feature application
+:::
+
+```{svg-color-toggle-button} syriac-ccmp
+```
+
 
 ### Stage 3: Computing letter joining states ###
 
@@ -548,7 +566,16 @@ Finally, the decomposed mark must be reordered as follows:
     the word to which the mark is attached.
   - The final glyph in the mark sequence is repositioned to the end of
     the word.
-	
+
+:::{figure-md}
+![Application of Syriac Abbreviation Mark stretching feature](/images/syriac/syriac-stch.svg "Application of Syriac Abbreviation Mark stretching feature"){.shaping-demo .inline-svg .greyscale-svg #syriac-stch}
+
+Application of Syriac Abbreviation Mark stretching feature
+:::
+
+```{svg-color-toggle-button} syriac-stch
+```
+
 
 ### Stage 5: Applying the language-form substitution features from <abbr>GSUB</abbr> ###
 
@@ -772,6 +799,15 @@ The `dlig` feature substitutes additional optional ligatures that are
 off by default. Substitutions made by `dlig` may be disabled by
 application-level user interfaces.
 
+:::{figure-md}
+![Discretionary ligature substitution](/images/syriac/syriac-dlig.svg "Discretionary ligature substitution"){.shaping-demo .inline-svg .greyscale-svg #syriac-dlig}
+
+Discretionary ligature substitution
+:::
+
+```{svg-color-toggle-button} syriac-dlig
+```
+
 
 #### Stage 6, step 3: cswh ####
 
@@ -805,6 +841,15 @@ This feature is not used in `<syrc>` text.
 
 The `kern` adjusts glyph spacing between pairs of adjacent glyphs.
 
+:::{figure-md}
+![Kerning positioning](/images/syriac/syriac-kern.svg "Kerning positioning"){.shaping-demo .inline-svg .greyscale-svg #syriac-kern}
+
+Kerning positioning
+:::
+
+```{svg-color-toggle-button} syriac-kern
+```
+
 
 #### Stage 7, step 3: mark ####
 
@@ -826,5 +871,14 @@ Mark positioning
 The `mkmk` feature positions marks with respect to preceding marks,
 providing proper positioning for sequences of marks that attach to the
 same base glyph.
+
+:::{figure-md}
+![Mark-to-mark positioning](/images/syriac/syriac-mkmk.svg "Mark-to-mark positioning"){.shaping-demo .inline-svg .greyscale-svg #syriac-mkmk}
+
+Mark-to-mark positioning
+:::
+
+```{svg-color-toggle-button} syriac-mkmk
+```
 
 
