@@ -56,7 +56,7 @@ html_sidebars = {
         ]
     }
 html_theme_options = {
-    'page_width': '1200px',
+    'page_width': 'auto', # 1200 causes problems? Try auto
     'sidebar_width': '300px',
     'github_user': 'n8willis',
     'github_repo': 'opentype-shaping-documents',
