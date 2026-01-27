@@ -13,7 +13,7 @@ importlib-metadata==5.0.0
 Jinja2==3.1.2
 lxml==6.0.2
 Markdown==3.10
-markdown-it-py==2.1.0
+markdown-it-py>=2.1.0
 MarkupSafe==2.1.1
 mdit-py-plugins==0.3.1
 mdurl==0.1.2
