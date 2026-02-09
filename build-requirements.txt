@@ -1,6 +1,6 @@
 alabaster==1.0.0
 importlib-metadata>=5.0.0
-myst-parser>=0.18.1
+myst-parser==0.18.1
 pip>=22.1.2
 pyparsing>=3.0.9
 pyspelling>=2.12.1
