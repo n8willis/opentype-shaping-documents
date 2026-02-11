@@ -37,6 +37,7 @@ myst_enable_extensions = ['substitution', 'smartquotes', 'colon_fence', 'attrs_i
 myst_substitutions = {
     'opentogglebutton': '<br><button onclick="toggleColor(',
     'closetogglebutton': ')">Substitution Toggle cluster colors</button><br>',
+    'khmer_midsyllable_mark_table_workaround': 'Mid-syllable marks that must be tagged for sorting with above-base consonants',
 }
 
 external_toc_path = "_toc.yml"

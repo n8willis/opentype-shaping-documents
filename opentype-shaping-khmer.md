@@ -285,7 +285,7 @@ For example:
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1780`   | Letter           | CONSONANT         | _null_                     | &#x1780; Ka                  |
-| | | | |
+| | | | | |
 |`U+17C6`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x17C6; Nikahit             |
 :::
 
@@ -798,8 +798,7 @@ in Khmer words. Therefore, they are not tagged for the `POS_SMVD`
 position that is typically reserved for syllable modifiers and Vedic
 signs.
 
-:::{table} Mid-syllable marks that must be tagged for sorting with
-above-base consonants
+:::{table} {{khmer_midsyllable_mark_table_workaround}}
 
 | Codepoint | Sorting Position        | Glyph                  |
 |:----------|:------------------------|:-----------------------|
