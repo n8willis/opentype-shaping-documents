@@ -8,7 +8,8 @@ SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
 PYSPELLING    = pyspelling
-PYSPELLINGCONF = test/spellcheck.yml
+PYSPELLINGMARKDOWNCONF = test/spellcheck.yml
+PYSPELLINGHTMLCONF = test/spellcheck_html.yml
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -25,7 +26,11 @@ linktest:
 
 # Use PySpelling
 spellcheck:
-	@$(PYSPELLING) -c "$(PYSPELLINGCONF)"
+	@$(PYSPELLING) -c "$(PYSPELLINGMARKDOWNCONF)"
+
+# Use PySpelling
+htmlspellcheck:
+	@$(PYSPELLING) -c "$(PYSPELLINGHTMLCONF)"
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

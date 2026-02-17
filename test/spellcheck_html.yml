@@ -1,0 +1,23 @@
+matrix:
+- name: HTML
+  aspell:
+    lang: en
+  dictionary:
+    encoding: utf-8
+    wordlists:
+    - 'test/wordlist.txt'
+  pipeline:
+  - pyspelling.filters.html:
+      comments: false
+      attributes:
+      - title
+      - alt
+      ignores:
+      - code
+      - pre
+      - samp
+      - abbr
+      - :matches(.skip_spellcheck)
+  sources:
+  - '_build/html/*.html'
+  default_encoding: utf-8
