@@ -27,6 +27,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 ## Hebrew character table ##
 
 
+:::{table} Hebrew character table
 
 | Codepoint | Unicode category | Mark class | Glyph                                |
 |:----------|:-----------------|:-----------|:-------------------------------------|
@@ -148,6 +149,7 @@ designated as _unassigned_ in the _Unicode category_ column.
 | `U+05FD`  | _unassigned_     |            |                                      |
 | `U+05FE`  | _unassigned_     |            |                                      |
 | `U+05FF`  | _unassigned_     |            |                                      |
+:::
 
 
 ## Alphabetic Presentation Forms character table ##
@@ -162,6 +164,9 @@ composition algorithm.
 
 Entries with a _null_ in this column do not need to be composed by the
 shaping engine. 
+
+
+:::{table} Alphabetic Presentation Forms character table
 
 | Codepoint | Unicode category | Mark class | Composition     | Glyph                                   |
 |:----------|:-----------------|:-----------|:----------------|:----------------------------------------|
@@ -219,6 +224,7 @@ shaping engine.
 | `U+FB4D`  | Letter           | _0_        |`U+05DB`,`U+05BF`| &#xFB4D; Kaf With Rafe                  |
 | `U+FB4E`  | Letter           | _0_        |`U+05E4`,`U+05BF`| &#xFB4E; Pe With Rafe                   |
 | `U+FB4F`  | Letter           | _0_        | _null_          | &#xFB4F; Ligature Alef Lamed            |
+:::
 
 
 ## Miscellaneous character table ##
@@ -233,6 +239,8 @@ as hyphens or dashes, in a similar placeholder fashion; shaping
 engines should cope with this situation gracefully.
 
 
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Mark class | Glyph                              |
 |:----------|:-----------------|:-----------|:-----------------------------------|
 |`U+00A0`   | Separator        | _0_        | &#x00A0; No-break space            |
@@ -242,5 +250,5 @@ engines should cope with this situation gracefully.
 |`U+200E`   | Other            | _0_        | &#x200E; Left-to-Right marker      |
 |`U+200F`   | Other            | _0_        | &#x200F; Right-to-Left marker      |
 |`U+25CC`   | Symbol           | _0_        | &#x25CC; Dotted circle             |
-
+:::
 

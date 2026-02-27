@@ -43,6 +43,7 @@ _220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr title="Modifier Co
 treated differently during the mark-reordering stage.
 
 
+:::{table} Syriac character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
@@ -130,7 +131,7 @@ treated differently during the mark-reordering stage.
 |`U+074D`   | Letter           | RIGHT        | ZHAIN                | _0_        | &#x074D; Sogdian Zhain                        |
 |`U+074E`   | Letter           | DUAL         | KHAPH                | _0_        | &#x074E; Sogdian Khaph                        |
 |`U+074F`   | Letter           | DUAL         | FE                   | _0_        | &#x074F; Sogdian Fe                           |
-
+:::
 
 
 
@@ -138,6 +139,8 @@ treated differently during the mark-reordering stage.
 
 The Syriac Supplement block includes letters needed to write Suriyani
 Malayalam, also known as Garshuni or Syriac Malayalam.
+
+:::{table} Syriac Supplement character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
@@ -157,7 +160,7 @@ Malayalam, also known as Garshuni or Syriac Malayalam.
 |`U+086D`   | _unassigned_     |              |                      |            |                                               |
 |`U+086E`   | _unassigned_     |              |                      |            |                                               |
 |`U+086F`   | _unassigned_     |              |                      |            |                                               |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -178,6 +181,7 @@ In addition, Syriac text runs may include the "Tatweel" or kashida
 codepoint (`U+0640`) from the Arabic block, because the Syriac block
 does not encode a separate kashida character.
 
+:::{table} Miscellaneous character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
@@ -195,6 +199,7 @@ does not encode a separate kashida character.
 |`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
 | | | | | | |
+:::
 
 
 The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the

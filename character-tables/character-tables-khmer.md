@@ -38,6 +38,8 @@ class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
 
+:::{table} Khmer character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1780`   | Letter           | CONSONANT         | _null_                     | &#x1780; Ka                  |
@@ -175,12 +177,16 @@ specific, script-aware behavior.
 |`U+17FD`   | _unassigned_     |                   |                            |                              |
 |`U+17FE`   | _unassigned_     |                   |                            |                              |
 |`U+17FF`   | _unassigned_     |                   |                            |                              |
- 
+:::
+
 
 ## Khmer Symbols character table ##
 
 The Khmer Symbols block contains miscellaneous symbols used for
 lunar-date calendars. None evoke any special behavior from the shaping engine.
+
+
+:::{table} Khmer Symbols character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -217,6 +223,7 @@ lunar-date calendars. None evoke any special behavior from the shaping engine.
 |`U+19FD`   | Symbol           | _null_            | _null_                     | &#x19FD; Dap-Bei Roc         |
 |`U+19FE`   | Symbol           | _null_            | _null_                     | &#x19FE; Dap-Buon Roc        |
 |`U+19FF`   | Symbol           | _null_            | _null_                     | &#x19FF; Dap-Pram Roc        |
+:::
 
 
 ## Miscellaneous character table ##
@@ -232,6 +239,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -243,6 +253,7 @@ this situation gracefully.
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation of a

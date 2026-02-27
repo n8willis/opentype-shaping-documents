@@ -36,6 +36,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+
+:::{table} Tibetan character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                                            |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------------------------|
 | `U+0F00`  | Letter           | _null_            | _null_                     | &#x0F00; Syllable Om                             |
@@ -276,7 +279,7 @@ specific, script-aware behavior.
 | `U+0FDE`  | _unassigned_     |                   |                            |                                                  |
 | `U+0FDF`  | _unassigned_     |                   |                            |                                                  |
 | | | | | |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -292,6 +295,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -299,6 +305,7 @@ this situation gracefully.
 |`U+200D`   | Other            | JOINER            | _null_                     | &#x200D; Zero-width joiner     |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
 |`U+2638`   | Symbol           | SYMBOL            | _null_                     | &#x2638; Wheel of Dharma       |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation of a conjunct

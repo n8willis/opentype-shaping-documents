@@ -38,6 +38,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+
+:::{table} Sinhala character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0D80`   | _unassigned_     |                   |                            |                              |
@@ -175,13 +178,16 @@ specific, script-aware behavior.
 |`U+0DFD`   | _unassigned_     |                   |                            |                              |
 |`U+0DFE`   | _unassigned_     |                   |                            |                              |
 |`U+0DFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Sinhala Archaic Numbers character table ##
 
 Sinhala text runs may also include glyphs from the Sinhala Archaic
 Numbers block. These characters should be classified as follows.
+
+
+:::{table} Sinhala Archaic Numbers character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -218,6 +224,7 @@ Numbers block. These characters should be classified as follows.
 |`U+111FD`  | _unassigned_     |                   |                            |                              |
 |`U+111FE`  | _unassigned_     |                   |                            |                              |
 |`U+111FF`  | _unassigned_     |                   |                            |                              |
+:::
 
 
 ## Vedic Extensions character table ##
@@ -228,6 +235,9 @@ classified as follows.
 
 > Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
+
+
+:::{table} Vedic Extensions character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -281,7 +291,7 @@ classified as follows.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -297,6 +307,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -308,6 +321,7 @@ this situation gracefully.
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is used to request the subjoined form

@@ -39,6 +39,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+
+:::{table} Tamil character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0B80`   | _unassigned_     |                   |                            |                              |
@@ -176,7 +179,7 @@ specific, script-aware behavior.
 |`U+0BFD`   | _unassigned_     |                   |                            |                              |
 |`U+0BFE`   | _unassigned_     |                   |                            |                              |
 |`U+0BFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Tamil Supplement character table ##
@@ -184,6 +187,9 @@ specific, script-aware behavior.
 Tamil text runs may also include historical symbols and fractions from
 the Tamil Supplement block. These characters should be classified as
 follows.
+
+
+:::{table} Tamil Supplement character table
 
 | Codepoint | Unicode category | Shaping class | Mark-placement subclass | Glyph                         |
 |:----------|:-----------------|:--------------|:------------------------|:------------------------------|
@@ -254,7 +260,7 @@ follows.
 | `U+11FFD` | _unassigned_     |               |                         |                               |
 | `U+11FFE` | _unassigned_     |               |                         |                               |
 | `U+11FFF` | Punctuation      | _null_        | _null_                  | &#x11FFF; End Of Text         |
-
+:::
 
 
 ## Grantha marks character table ##
@@ -263,12 +269,16 @@ Tamil text runs may also include diacritical and syllable-modifier
 marks from the Grantha block. These characters should be classified as
 follows.
 
+
+:::{table} Grantha marks character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+11301`  | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x11301; Grantha Candrabindu|
 |`U+11303`  | Mark [Mc]        | VISARGA           | RIGHT_POSITION             | &#x11303; Grantha Visarga    |
 |`U+1133B`  | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x1133b; Combining Bindu Below |
 |`U+1133C`  | Mark [Mn]        | NUKTA             | BOTTOM_POSITION            | &#x1133c; Grantha Nukta      |
+:::
 
 
 ## Vedic Extensions character table ##
@@ -279,6 +289,9 @@ classified as follows.
 
 > Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
+
+
+:::{table} Vedic Extensions character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -332,7 +345,7 @@ classified as follows.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -342,13 +355,16 @@ danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
 the Devanagari block. Tamil text can also incorporate the udatta
 (`U+0951`) and anudatta (`U+0952`) signs from the Devanagari block.
 
+
+:::{table} Additional punctuation character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
 |`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
 |`U+0964`   | Punctuation      | _null_            | _null_                     | &#x0964; Danda               |
 |`U+0965`   | Punctuation      | _null_            | _null_                     | &#x0965; Double Danda        |
-
+:::
 
 
 Other important characters that may be encountered when shaping runs
@@ -361,6 +377,9 @@ dependent vowel (matra) or a combining mark in isolation. Real-world
 text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
+
+
+:::{table} Miscellaneous character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
@@ -379,6 +398,7 @@ this situation gracefully.
 |`U+2083`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2083; Subscript Three     |
 |`U+2084`   | Number           | SYLLABLE_MODIFIER | TOP                        | &#x2084; Subscript Four      |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation

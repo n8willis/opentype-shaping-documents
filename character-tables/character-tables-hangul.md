@@ -33,6 +33,8 @@ Syllables block. Jamo in the modern Korean alphabet are designated
 designated `NO`.
 
 
+:::{table} Hangul Jamo character table
+
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
 |`U+1100`   | Letter           | L         | YES       | &#x1100; Kiyeok                  |
@@ -306,6 +308,7 @@ designated `NO`.
 |`U+11FD`   | Letter           | T         | NO        | &#x11FD; Kiyeok-Khieukh          |
 |`U+11FE`   | Letter           | T         | NO        | &#x11FE; Kiyeok-Hieuh            |
 |`U+11FF`   | Letter           | T         | NO        | &#x11FF; Ssangnieun              |
+:::
 
 
 ## Hangul Jamo Extended-A character table ##
@@ -318,6 +321,8 @@ The _Jamo type_ column indicates the syllable-component type of the
 jamo. All assigned codepoints in the Hangul Jamo Extended-A block are
 classified as type "L" for leading consonants (choseong).
 
+
+:::{table} Hangul Jamo Extended-A character table
 
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
@@ -354,7 +359,7 @@ classified as type "L" for leading consonants (choseong).
 |`U+A97D`   | _unassigned_     |           |           |                                  |
 |`U+A97E`   | _unassigned_     |           |           |                                  |
 |`U+A97F`   | _unassigned_     |           |           |                                  |
-
+:::
 
 
 ## Hangul Jamo Extended-B character table ##
@@ -366,6 +371,8 @@ meaning are designated as _unassigned_ in the _Unicode category_ column.
 The _Jamo type_ column indicates the syllable-component type of the
 jamo. "V" for vowels (jungseong) and "T" for trailing consonants (jongseong).
 
+
+:::{table} Hangul Jamo Extended-B character table
 
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
@@ -453,7 +460,7 @@ jamo. "V" for vowels (jungseong) and "T" for trailing consonants (jongseong).
 |`U+D7FD`   | _unassigned_     |           |           |                                  |
 |`U+D7FE`   | _unassigned_     |           |           |                                  |
 |`U+D7FF`   | _unassigned_     |           |           |                                  |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -466,10 +473,13 @@ and double-dot tone mark (double-dot bangjeom), `U+302E` and
 `U+302F`. These non-spacing marks are common in Old Korean.
 
 
+:::{table} Additional punctuation character table
+
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
 |`U+302E`   | Mark [Mn]        | _null_    | _null_    | &#x302E; Single Dot Tone Mark    |
 |`U+302F`   | Mark [Mn]        | _null_    | _null_    | &#x302F; Double Dot Tone Mark    |
+:::
 
 
 Other important characters that may be encountered when shaping runs
@@ -488,6 +498,8 @@ the jamo, while the word joiner prevents the jamo from being separated
 by a line break.
 
 
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Jamo type | Composing | Glyph                            |
 |:----------|:-----------------|:----------|:----------|:---------------------------------|
 |`U+200B`   | Separator        | _null_    | _null_    | &#x200B; Zero-width space        |
@@ -495,6 +507,7 @@ by a line break.
 |`U+200D`   | Other            | _null_    | _null_    | &#x200D; Zero-width joiner       |
 |`U+2060`   | Other            | _null_    | _null_    | &#x2060; Word joiner             |
 |`U+25CC`   | Symbol           | _null_    | _null_    | &#x25CC; Dotted circle           |
+:::
 
 
 ## Hangul Syllables character table ##
@@ -513,8 +526,12 @@ by trailing consonant (jongseong).
 This enables the algorithmic composition and decomposition of combining
 jamo sequences and syllable codepoints.
 
+
+:::{table} Hangul Syllables character table
+
 | Codepoint | Unicode category | Syllable type | Glyph                            |
 |:----------|:-----------------|:--------------|:---------------------------------|
 |`U+AC00`   | Letter [Lo]      | LV            | &#xac00; G-A                     |
 | | | | |
 |`U+D5CC`   | Letter [Lo]      | LVT           | &#xd5cc; H-A-N                   |
+:::

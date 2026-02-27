@@ -38,6 +38,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+
+:::{table} Devanagari character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+0900`   | Mark [Mn]        | BINDU             | TOP_POSITION               | &#x0900; Inverted Candrabindu|
@@ -175,7 +178,7 @@ specific, script-aware behavior.
 |`U+097D`   | Letter           | CONSONANT         | _null_                     | &#x097D; Glottal Stop        |
 |`U+097E`   | Letter           | CONSONANT         | _null_                     | &#x097E; Ddda                |
 |`U+097F`   | Letter           | CONSONANT         | _null_                     | &#x097F; Bba                 |
-
+:::
 
 
 ## Devanagari Extended character table ##
@@ -184,6 +187,9 @@ specific, script-aware behavior.
 > the Devanagari Extended block are _not_ considered consonants for
 > shaping purposes (including syllable identification, the
 > determination of the base consonant, or positioning "Reph").
+
+
+:::{table} Devanagari Extended character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -221,10 +227,13 @@ specific, script-aware behavior.
 |`U+A8FE`   | Letter           | VOWEL_INDEPENDENT | _null_                     | &#xA8FE; Ay                  |
 |`U+A8FF`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#xA8FF; Sign Ay             |
 | | | | |
-
+:::
 
 
 ## Devanagari Extended-A character table ##
+
+
+:::{table} Devanagari Extended-A character table
 
 | Codepoint | Unicode category | Shaping class | Mark-placement subclass | Glyph                                   |
 |:----------|:-----------------|:--------------|:------------------------|:----------------------------------------|
@@ -330,8 +339,7 @@ specific, script-aware behavior.
 | `U+11B5E` | _unassigned_     |               |                         |                                         |
 | `U+11B5F` | _unassigned_     |               |                         |                                         |
 |           |                  |               |                         |                                         |
-
-
+:::
 
 
 
@@ -343,6 +351,9 @@ classified as follows.
 
 > Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
+
+
+:::{table} Vedic Extensions character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -396,7 +407,7 @@ classified as follows.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -412,6 +423,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -423,6 +437,7 @@ this situation gracefully.
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation

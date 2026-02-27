@@ -39,7 +39,7 @@ that sequences of adjacent marks can be reordered as required by the
 orthography. 
 
 
-
+:::{table} N'Ko character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
@@ -110,12 +110,13 @@ orthography.
 |`U+07FD`   | Mark [Mn]        | TRANSPARENT  | _null_               | 220        | &#x07FD; Dantalayan                           |
 |`U+07FE`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x07FE; Dorome Sign                          |
 |`U+07FF`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x07FF; Taman Sign                           |
+:::
 
 
 ## Miscellaneous character table ##
 
 Other important characters that may be encountered when shaping runs
-of Arabic text include the dotted-circle placeholder (`U+25CC`), the
+of N'Ko text include the dotted-circle placeholder (`U+25CC`), the
 combining grapheme joiner (`U+034F`), the zero-width joiner (`U+200D`)
 and zero-width non-joiner (`U+200C`), the left-to-right text marker
 (`U+200E`) and right-to-left text marker (`U+200F`), and the no-break
@@ -126,6 +127,7 @@ combining mark in isolation. Real-world text syllables may also use
 other characters, such as hyphens or dashes, in a similar placeholder
 fashion; shaping engines should cope with this situation gracefully.
 
+:::{table} Miscellaneous character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
@@ -141,7 +143,7 @@ fashion; shaping engines should cope with this situation gracefully.
 |`U+2013`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | NON_JOINING  | _null_               | _0_        | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
-
+:::
 
 
 The combining grapheme joiner (<abbr>CGJ</abbr>) is primarily used to alter the

@@ -37,6 +37,7 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+:::{table} Gujarati character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -175,7 +176,8 @@ specific, script-aware behavior.
 |`U+0AFD`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFD; Three-Dot Nukta Above|
 |`U+0AFE`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFE; Circle Nukta Above  |
 |`U+0AFF`   | Mark [Mn]        | NUKTA             | TOP_POSITION               | &#x0AFF; Two-Circle Nukta Above|
- 
+:::
+
 
 ## Vedic Extensions character table ##
 
@@ -185,6 +187,9 @@ classified as follows.
 
 > Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
+
+
+:::{table} Vedic Extensions character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -238,7 +243,7 @@ classified as follows.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -248,13 +253,16 @@ danda (`U+0964`) and double danda (`U+0965`) punctuation marks from
 the Devanagari block. Gujarati text can also incorporate the udatta
 (`U+0951`) and anudatta (`U+0952`) signs from the Devanagari block.
 
+
+:::{table} Additional punctuation character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+0951`   | Mark [Mn]        | CANTILLATION      | TOP_POSITION               | &#x0951; Udatta              |
 |`U+0952`   | Mark [Mn]        | CANTILLATION      | BOTTOM_POSITION            | &#x0952; Anudatta            |
 |`U+0964`   | Punctuation      | _null_            | _null_                     | &#x0964; Danda               |
 |`U+0965`   | Punctuation      | _null_            | _null_                     | &#x0965; Double Danda        |
-
+:::
 
 
 Other important characters that may be encountered when shaping runs
@@ -268,6 +276,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -279,7 +290,7 @@ this situation gracefully.
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
-
+:::
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation
 of a conjunct from a "_Consonant_,Halant,_Consonant_" sequence. The

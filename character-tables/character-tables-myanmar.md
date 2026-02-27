@@ -38,6 +38,9 @@ differs from the codepoint's Unicode _General Category_. The _Shaping
 class_ takes precedence during OpenType shaping, as it captures more
 specific, script-aware behavior.
 
+
+:::{table} Myanmar character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
 |`U+1000`   | Letter           | CONSONANT         | _null_                     | &#x1000; Ka                  |
@@ -209,12 +212,15 @@ specific, script-aware behavior.
 |`U+109D`   | Mark [Mn]        | VOWEL_DEPENDENT   | TOP_POSITION               | &#x109D; Sign Aiton Ai       |
 |`U+109E`   | Symbol           | SYMBOL            | _null_                     | &#x109E; Shan One            |
 |`U+109F`   | Symbol           | SYMBOL            | _null_                     | &#x109F; Shan Exclamation    |
-
+:::
 
 
 ## Myanmar Extended character tables ##
 
 ### Myanmar Extended A character table ###
+
+
+:::{table} Myanmar Extended-A character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -251,8 +257,13 @@ specific, script-aware behavior.
 |`U+AA7D`   | Mark [Mc]        | TONE_MARKER       | RIGHT_POSITION             | &#xAA7D; Sign Tai Laing Tone 5|
 |`U+AA7E`   | Letter           | CONSONANT         | _null_                     | &#xAA7E; Shwe Palaung Cha    |
 |`U+AA7F`   | Letter           | CONSONANT         | _null_                     | &#xAA7F; Shwe Palaung Sha    |
+:::
+
 
 ### Myanmar Extended B character table ###
+
+
+:::{table} Myanmar Extended-B character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -289,8 +300,13 @@ specific, script-aware behavior.
 |`U+A9FD`   | Letter           | CONSONANT         | _null_                     | &#xA9FD; Tai Laing Ba        |
 |`U+A9FE`   | Letter           | CONSONANT         | _null_                     | &#xA9FE; Tai Laing Bha       |
 |`U+A9FF`   | _unassigned_     |                   |                            |                              |
+:::
+
 
 ### Myanmar Extended C character table ###
+
+
+:::{table} Myanmar Extended-C character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -344,7 +360,7 @@ specific, script-aware behavior.
 |`U+116FD`  | _unassigned_     |                   |                            |                              |
 |`U+116FE`  | _unassigned_     |                   |                            |                              |
 |`U+116FF`  | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Vedic Extensions character table ##
@@ -355,6 +371,9 @@ classified as follows.
 
 > Note: See the [Vedic Extensions](../opentype-shaping-vedic-extensions.md) 
 > document for additional information.
+
+
+:::{table} Vedic Extensions character table
 
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                        |
 |:----------|:-----------------|:------------------|:---------------------------|:-----------------------------|
@@ -408,7 +427,7 @@ classified as follows.
 |`U+1CFD`   | _unassigned_     |                   |                            |                              |
 |`U+1CFE`   | _unassigned_     |                   |                            |                              |
 |`U+1CFF`   | _unassigned_     |                   |                            |                              |
-
+:::
 
 
 ## Miscellaneous character table ##
@@ -424,6 +443,9 @@ text syllables may also use other characters, such as hyphens or dashes,
 in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
+
+:::{table} Miscellaneous character table
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
@@ -435,6 +457,7 @@ this situation gracefully.
 |`U+2013`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2013; En dash               |
 |`U+2014`   | Punctuation      | PLACEHOLDER       | _null_                     | &#x2014; Em dash               |
 |`U+25CC`   | Symbol           | DOTTED_CIRCLE     | _null_                     | &#x25CC; Dotted circle         |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to prevent the formation of a conjunct

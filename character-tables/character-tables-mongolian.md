@@ -43,6 +43,7 @@ _220_MCM_ and _230_MCM_ in the _Mark class_ column. The <abbr title="Modifier Co
 treated differently during the mark-reordering stage.
 
 
+:::{table} Mongolian character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
@@ -232,7 +233,7 @@ treated differently during the mark-reordering stage.
 |`U+18AD`   | _unassigned_     |              |                      |            |                                               |
 |`U+18AE`   | _unassigned_     |              |                      |            |                                               |
 |`U+18AF`   | _unassigned_     |              |                      |            |                                               |
-
+:::
 
 
 
@@ -240,6 +241,8 @@ treated differently during the mark-reordering stage.
 
 The Mongolian Supplement block includes variants of the _birga_ mark
 used to denote the beginning of a text.
+
+:::{table} Mongolian Supplement character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                                         |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|-----------------------------------------------|
@@ -276,6 +279,7 @@ used to denote the beginning of a text.
 |`U+1167D`  | _unassigned_     |              |                      |            |                                               |
 |`U+1167E`  | _unassigned_     |              |                      |            |                                               |
 |`U+1167F`  | _unassigned_     |              |                      |            |                                               |
+:::
 
 
 ## Miscellaneous character table ##
@@ -292,7 +296,7 @@ combining mark in isolation. Real-world text syllables may also use
 other characters, such as hyphens or dashes, in a similar placeholder
 fashion; shaping engines should cope with this situation gracefully.
 
-
+:::{table} Miscellaneous character table
 
 | Codepoint | Unicode category | Joining type | Joining group        | Mark class | Glyph                          |
 |:----------|:-----------------|:-------------|:---------------------|:-----------|--------------------------------|
@@ -307,6 +311,7 @@ fashion; shaping engines should cope with this situation gracefully.
 |`U+202F`   | Separator        | NON_JOINING  | _null_               | _0_        | &#x202F; Narrow No-Break Space |
 |`U+25CC`   | Symbol           | NON_JOINING  | _null_               | _0_        | &#x25CC; Dotted circle         |
 | | | | | | |
+:::
 
 
 The zero-width joiner (<abbr>ZWJ</abbr>) is primarily used to force the usage of the
