@@ -8,6 +8,8 @@ matrix:
     - 'test/wordlist.txt'
   pipeline:
   - pyspelling.filters.markdown:
+      markdown_extensions:
+      - markdown.extensions.tables
   - pyspelling.filters.html:
       comments: false
       attributes:
@@ -16,6 +18,9 @@ matrix:
       ignores:
       - code
       - pre
+      - samp
+      - abbr
+      - :matches(.skip_spellcheck)
   sources:
   - '!character-tables/**/*.md|!images/**/*.md|**/*.md'
   default_encoding: utf-8
@@ -28,6 +33,8 @@ matrix:
     - 'test/wordlist.txt'
   pipeline:
   - pyspelling.filters.markdown:
+      markdown_extensions:
+      - markdown.extensions.tables
   - pyspelling.filters.html:
       comments: false
       attributes:
@@ -36,7 +43,10 @@ matrix:
       ignores:
       - code
       - pre
+      - samp
+      - abbr
       - table
+      - :matches(.skip_spellcheck)
   sources:
   - 'character-tables/*.md'
   default_encoding: utf-8
