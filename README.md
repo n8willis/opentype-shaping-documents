@@ -1,6 +1,3 @@
-```{include} /_global.md
-```
-
 # OpenType shaping documents #
 
 Sponsored by [YesLogic](https://yeslogic.com/) 

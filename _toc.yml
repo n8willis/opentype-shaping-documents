@@ -1,4 +1,4 @@
-root: README
+root: index
 options:
   maxdepth: 0
 subtrees:

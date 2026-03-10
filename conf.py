@@ -17,14 +17,14 @@ author = 'Sponsored by YesLogic'
 
 sys.path.append(str(Path('_ext').resolve()))
 
-extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles']
+extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles', 'cloud_sptheme.ext.table_styling']
 
 source_suffix = {'.md': 'markdown'}
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
+exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', 'README.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
 
-root_doc = 'README' # Will need to be renamed, eventually....
+root_doc = 'index' # Renamed to split GitHub README from production index
 
 numfig = True
 numfig_secnum_depth = 2
