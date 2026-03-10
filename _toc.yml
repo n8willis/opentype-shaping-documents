@@ -4,7 +4,7 @@ options:
 subtrees:
 - maxdepth: 0
   entries:
-  - file: index
+  - file: overview
     title: Overview
 - caption: Script shaping
   numbered: 2

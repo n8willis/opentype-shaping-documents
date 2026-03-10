@@ -17,7 +17,7 @@ author = 'Sponsored by YesLogic'
 
 sys.path.append(str(Path('_ext').resolve()))
 
-extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles', 'cloud_sptheme.ext.table_styling']
+extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles']
 
 source_suffix = {'.md': 'markdown'}
 
