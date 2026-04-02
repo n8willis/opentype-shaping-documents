@@ -1,20 +1,18 @@
 root: index
 options:
   maxdepth: 0
-subtrees:
-- maxdepth: 0
-  entries:
+  numbered: False
+  hidden: True
+  titlesonly: True
+entries:
   - file: overview
     title: Overview
-- caption: Script shaping
-  numbered: 2
-  maxdepth: 2
-  entries:
-  - file: opentype-shaping-indic-general
-    title: Indic model
     subtrees:
-    - maxdepth: 2
+    - maxdepth: 0
+      numbered: 3
       entries:
+      - file: opentype-shaping-indic-general
+        title: Indic general
       - file: opentype-shaping-devanagari
         title: Devanagari
       - file: opentype-shaping-bengali
@@ -37,11 +35,8 @@ subtrees:
         title: Telugu
       - file: opentype-shaping-vedic-extensions
         title: Vedic extensions
-  - file: opentype-shaping-arabic-general
-    title: Arabic model
-    subtrees:
-    - maxdepth: 2
-      entries:
+      - file: opentype-shaping-arabic-general
+        title: Arabic general
       - file: opentype-shaping-arabic
         title: Arabic
       - file: opentype-shaping-nko
@@ -50,32 +45,31 @@ subtrees:
         title: Syriac
       - file: opentype-shaping-mongolian
         title: Mongolian
-  - file: opentype-shaping-hangul
-    title: Hangul
-  - file: opentype-shaping-hebrew
-    title: Hebrew
-  - file: opentype-shaping-khmer
-    title: Khmer
-  - file: opentype-shaping-myanmar
-    title: Myanmar
-  - file: opentype-shaping-thai-lao
-    title: Thai and Lao
-  - file: opentype-shaping-tibetan
-    title: Tibetan
-  - file: opentype-shaping-use
-    title: Universal Shaping Engine
-  - file: opentype-shaping-default
-    title: Default scripts
-  - file: opentype-shaping-emoji
-    title: Emoji
-- maxdepth: 2
-  entries:
-  - file: opentype-shaping-normalization
-    title: Normalization
+      - file: opentype-shaping-hangul
+        title: Hangul
+      - file: opentype-shaping-hebrew
+        title: Hebrew
+      - file: opentype-shaping-khmer
+        title: Khmer
+      - file: opentype-shaping-myanmar
+        title: Myanmar
+      - file: opentype-shaping-thai-lao
+        title: Thai and Lao
+      - file: opentype-shaping-tibetan
+        title: Tibetan
+      - file: opentype-shaping-use
+        title: Universal Shaping Engine
+      - file: opentype-shaping-default
+        title: Default scripts
+      - file: opentype-shaping-emoji
+        title: Emoji
+      - file: opentype-shaping-normalization
+        title: Normalization
   - file: notes/README
     title: Notes
     subtrees:
-    - maxdepth: 1
+    - maxdepth: 0
+      numbered: False
       entries:
       - file: notes/uniscribe-bug-compatibility
         title: Uniscribe compatibility
@@ -83,11 +77,8 @@ subtrees:
         title: Ragel state-machine operators
       - file: notes/emoji-implementation
         title: Emoji implementation
-  - file: character-tables/character-tables-index
-    title: Character tables
-    subtrees:
-    - maxdepth: 1
-      entries:
+      - file: character-tables/character-tables-index
+        title: Character tables
       - file: character-tables/character-tables-arabic
         title: Arabic
       - file: character-tables/character-tables-bengali
@@ -130,7 +121,6 @@ subtrees:
         title: Thai
       - file: character-tables/character-tables-tibetan
         title: Tibetan
-  - file: images/README
-    title: Illustrations
-  - file: errata
-    title: Errata
+      - file: errata
+        title: Errata
+  

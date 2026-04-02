@@ -17,12 +17,12 @@ author = 'Sponsored by YesLogic'
 
 sys.path.append(str(Path('_ext').resolve()))
 
-extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_multitoc_numbering', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles']
+extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_inline_svg', 'shapingdocs_svg_color_toggles']
 
 source_suffix = {'.md': 'markdown'}
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', 'README.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
+exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', 'README.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md', 'images/README.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
 
 root_doc = 'index' # Renamed to split GitHub README from production index
 
@@ -42,6 +42,11 @@ myst_substitutions = {
 
 external_toc_path = "_toc.yml"
 
+# Starting with sphinx_external_toc 1.1.0, "multitoc numbering" is activated
+# by this configuration key and the standalone sphinx_multitoc_numbering
+# extension is not required
+use_multitoc_numbering = True 
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -51,7 +56,8 @@ html_js_files = ['toggleSvgColors.js']
 html_sidebars = {
     '**': [
         'about.html',
-        'navigation.html',
+        'static_nav.html',
+#        'navigation.html', # Replacing default navigation with static version above
         'searchbox.html',
         'sourcelink.html',
         ]

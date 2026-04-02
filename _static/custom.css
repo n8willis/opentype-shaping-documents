@@ -390,3 +390,24 @@ button.svg-color-toggle-button {
 blockquote {
     margin-top: 17px;
 }
+
+/* Static navigation sidebar */
+/* Turn off bullet point on heading items */
+li.static-nav-heading {
+    list-style: "";
+}
+
+/* L1 */
+li.toctree-l1.static-nav {
+    font-size: 120%;
+}
+/* L2 headings */
+li.toctree-l2.static-nav {
+    font-size: 100%;
+    font-style: italic;
+}
+/* L2 page links */
+li.toctree-l2.static-nav a {
+    font-size: 100%;
+    font-style: normal;
+}
