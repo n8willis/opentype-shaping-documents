@@ -18,45 +18,116 @@ _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other 
 > As long as this warning text remains visible, the above 
 > holds true. 
 
-At present, we are seeking comments and bugfixes on the Indic-script,
-Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, Myanmar,
-default, and <abbr title="Universal Shaping Engine">USE</abbr> documents. Interested readers and contributors can
-begin at the
+These documents are meant to provide a functional specification for
+text shaping. The expectation is that an implementor of this
+specification will be using fonts in the OpenType font format applied
+to input text that complies with Unicode.
 
-  - [Indic General](opentype-shaping-indic-general.md) 
-    - (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
-      Oriya, Tamil, Telugu, Sinhala) 
-  - [Arabic General](opentype-shaping-arabic-general.md)
-    - (Arabic, N'Ko, Syriac, Mongolian)
+Because application software and end-user documents may utilize
+non-OpenType fonts and non-Unicode text (in particular, when older
+fonts or documents are encountered), these documents also provide
+functional information that a shaping engine may use to implement a
+reasonable best-effort attempt at producing useful output in the most
+common of such scenarios.
+
+
+### Shapers
+
+The shaping behavior described here can be roughly divided into five
+categories.
+
+All non-complex scripts follow the same
+[default](opentype-shaping-default.md) shaping model.
+
+
+The _Indic Model_ is shared by ten individual scripts. These scripts
+follow the same overall approach to shaping, described in the [Indic
+general](opentype-shaping-indic-general.md) document, but each script
+incorporates script-specific details, which are more fully described
+in its own document:
+
+  - [Devanagari](opentype-shaping-devanagari.md)
+  - [Bengali](opentype-shaping-bengali.md)
+  - [Gujarati](opentype-shaping-gujarati.md)
+  - [Gurmukhi](opentype-shaping-gurmukhi.md)
+  - [Kannada](opentype-shaping-kannada.md)
+  - [Malayalam](opentype-shaping-malayalam.md)
+  - [Oriya](opentype-shaping-oriya.md)
+  - [Tamil](opentype-shaping-tamil.md)
+  - [Telugu](opentype-shaping-telugu.md)
+  - [Sinhala](opentype-shaping-sinhala.md)
+
+
+The _Arabic Model_ is shared by four individual scripts. These scripts
+follow the same overall approach to shaping, described in the [Arabic
+general](opentype-shaping-arabic-general.md) document, but each script
+incorporates script-specific details, which are more fully described
+in its own document:
+
+  - [Arabic](opentype-shaping-.md)
+  - [N'Ko](opentype-shaping-.md)
+  - [Syriac](opentype-shaping-.md)
+  - [Mongolian](opentype-shaping-.md)
+
+
+Five of the remaining scripts each use a distinct, script-specific
+model, with two others (Thai and Lao) sharing enough details to be
+handled by a common shaper:
+
   - [Hangul](opentype-shaping-hangul.md)
   - [Hebrew](opentype-shaping-hebrew.md)
   - [Khmer](opentype-shaping-khmer.md)
   - [Thai and Lao](opentype-shaping-thai-lao.md)
   - [Tibetan](opentype-shaping-tibetan.md)
   - [Myanmar](opentype-shaping-myanmar.md)
-  - [Universal Shaping Engine (<abbr>USE</abbr>)](opentype-shaping-use.md)
-    - All complex scripts that are not handled by a dedicated
-      script-specific shaping model
-  - [Default](opentype-shaping-default.md)
-    - All non-complex scripts
-  - [Emoji](opentype-shaping-emoji.md)
-    - Emoji sequences do not constitute a separate shaping model,
-      but handling emoji sequences can incorporate many of the same
-      Opentype mechanisms and should not be overlooked
   
-shaping documents and are encouraged to submit their feedback
-on the text or images of any of the linked scripts. The documents are
-organized by script; where there are multiple shaping models for a
-particular script (including deprecated models), the various models are
-all addressed in the same script-specific document.
 
-The documents also include a description of
+Finally, the Universal Shaping Engine (<abbr title="Universal Shaping
+Engine">USE</abbr>) model is designed to shape all
+complex scripts that are not handled by a dedicated
+script-specific shaping model in the lists above:
+
+  - [Universal Shaping Engine (<abbr>USE</abbr>)](opentype-shaping-use.md)
+
+
+In addition, these documents describe the handling of emoji
+sequences. Although emoji sequences do not constitute a separate
+shaping model, handling emoji sequences can incorporate many of the
+same shaping mechanisms and shaping engine implementations may be
+expected to handle them:
+
+  - [Emoji](opentype-shaping-emoji.md)
+  
+
+Shaping is just one part of the overall text-handling process. These
+documents assume that other components in the software stack will be
+responsible for details such as handling higher-level markup, layout,
+font matching and loading, rasterization, and so on. Most importantly,
+these documents assume that the input text has already been segmented
+into text runs that consist of a single language, script, font, and
+all other markup considerations (such as size or color, for example).
+
+Within those assumptions, the shaping of a particular text run should
+be consistent, regardless of whether the higher-level processes
+involve a document, user-interface element, network stream, or any
+other context for displaying text.
+
+
+### Normalization
+
+However, these documents also include a description of text
 [normalization](opentype-shaping-normalization.md) in the OpenType
 shaping context, which differs from Unicode normalization in several
-respects.
+respects. Shaping engine implementations may differ as to whether the
+shaping engine itself is responsible for handling normalization or
+whether normalization is handled by another component
+in the stack. 
 
-Various [notes](notes/README.md) about the document set and the details
-of its scope, limitations, and quirks are also provided.
+
+### Additional information
+
+Various practical [notes](notes/README.md) about this document set and
+the details of its scope, limitations, and quirks are also provided.
 
 Some [errata](errata.md) about the "upstream" specifications and
 reference documents are noted separately. 
@@ -66,10 +137,26 @@ the shaping behavior used for layout of OpenType text. In particular,
 it will focus on complex scripts.
 
 In addition to the primary, per-script documents, implementers and
-other interesteed readers are encouraged to check the
+other interested readers are encouraged to check the
 [character tables](character-tables/README.md) for correctness and to
 examine the [image-generation logs](/images/README.md) to identify
 issues seen in the inline images.
+
+
+### Feedback
+
+Interested readers, font developers, and shaping-engine implementors
+are encouraged to provide feedback, ask questions, and propose
+improvements to any part of these documents. Shaping is the concern of
+software developers and readers across the world, and all are welcome
+to participate in recording and clarifying what is required to produce
+the best and most accurate text output possible, both now and in the
+future.
+
+See the upstream git repository at
+[github.com/n8willis/opentype-shaping-documents](https://github.com/n8willis/opentype-shaping-documents)
+to raise issues, ask questions, or add comments.
+
 
 ### References
 
