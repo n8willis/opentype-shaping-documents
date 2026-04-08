@@ -9,7 +9,8 @@ pyspelling>=2.12.1
 pytz>=2022.4
 setuptools>=62.6.0
 Sphinx==8.1.3
-sphinx_external_toc>=1.0.1
+sphinx_external_toc>=1.1.0
 sphinx-inline-svg>=0.2.0
 sphinx-multitoc-numbering==0.1.3
 svg-stack>=0.1.0
+cloud-sptheme>=1.10.0
