@@ -278,7 +278,7 @@ in a similar placeholder fashion; shaping engines should cope with
 this situation gracefully.
 
 :::{table} Miscellaneous character table
-:column-classes: skip_spellcheck, , , , skip_spellcheck
+
 | Codepoint | Unicode category | Shaping class     | Mark-placement subclass    | Glyph                          |
 |:----------|:-----------------|:------------------|:---------------------------|:-------------------------------|
 |`U+00A0`   | Separator        | PLACEHOLDER       | _null_                     | &#x00A0; No-break space        |
