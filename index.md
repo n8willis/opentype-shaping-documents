@@ -7,19 +7,21 @@ Sponsored by [YesLogic](https://yeslogic.com/)
 
 _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other font engineers and text-encoding experts for their generosity of time and insightful contributions.</aside>_
 
-## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350; ##
->
-> This repository is an active WORK IN PROGRESS.
->
-> NONE of the documents you currently see here are complete
-> nor are they suitable for reference. PLEASE do not use
-> them as a guide or as a general information source.
->
-> As long as this warning text remains visible, the above 
-> holds true. 
+:::{admonition} &#127366; &#127344; &#127361; &#127357; &#127352; &#127357; &#127350;
+:class: caution
+These documents are an active WORK IN PROGRESS.
+
+NONE of the documents you currently see here are complete
+nor are they suitable for reference. PLEASE do not use
+them as a guide or as a general information source.
+
+As long as this warning text remains visible, the above 
+holds true. 
+:::
+
 
 These documents are meant to provide a functional specification for
-text shaping. The expectation is that an implementor of this
+text shaping. The expectation is that an implementer of this
 specification will be using fonts in the OpenType font format applied
 to input text that complies with Unicode.
 
@@ -31,7 +33,7 @@ reasonable best-effort attempt at producing useful output in the most
 common of such scenarios.
 
 
-### Shapers
+## Shapers
 
 The shaping behavior described here can be roughly divided into five
 categories.
@@ -64,10 +66,10 @@ general](opentype-shaping-arabic-general.md) document, but each script
 incorporates script-specific details, which are more fully described
 in its own document:
 
-  - [Arabic](opentype-shaping-.md)
-  - [N'Ko](opentype-shaping-.md)
-  - [Syriac](opentype-shaping-.md)
-  - [Mongolian](opentype-shaping-.md)
+  - [Arabic](opentype-shaping-arabic.md)
+  - [N'Ko](opentype-shaping-nko.md)
+  - [Syriac](opentype-shaping-syriac.md)
+  - [Mongolian](opentype-shaping-mongolian.md)
 
 
 Five of the remaining scripts each use a distinct, script-specific
@@ -113,7 +115,7 @@ involve a document, user-interface element, network stream, or any
 other context for displaying text.
 
 
-### Normalization
+## Normalization
 
 However, these documents also include a description of text
 [normalization](opentype-shaping-normalization.md) in the OpenType
@@ -124,9 +126,9 @@ whether normalization is handled by another component
 in the stack. 
 
 
-### Additional information
+## Additional information
 
-Various practical [notes](notes/README.md) about this document set and
+Various practical [notes](notes/index.md) about this document set and
 the details of its scope, limitations, and quirks are also provided.
 
 Some [errata](errata.md) about the "upstream" specifications and
@@ -138,14 +140,14 @@ it will focus on complex scripts.
 
 In addition to the primary, per-script documents, implementers and
 other interested readers are encouraged to check the
-[character tables](character-tables/README.md) for correctness and to
-examine the [image-generation logs](/images/README.md) to identify
+[character tables](character-tables/index.md) for correctness and to
+examine the [image-generation logs](https://github.com/n8willis/opentype-shaping-documents/images/README.md) to identify
 issues seen in the inline images.
 
 
-### Feedback
+## Feedback
 
-Interested readers, font developers, and shaping-engine implementors
+Interested readers, font developers, and shaping-engine implementers
 are encouraged to provide feedback, ask questions, and propose
 improvements to any part of these documents. Shaping is the concern of
 software developers and readers across the world, and all are welcome
@@ -158,7 +160,7 @@ See the upstream git repository at
 to raise issues, ask questions, or add comments.
 
 
-### References
+## References
 
 These documents cite the following informative references:
 
@@ -202,3 +204,7 @@ These documents cite the following informative references:
    > Apple CoreText are also included, but CoreText compatibility is
    > not an explicit goal for HarfBuzz.
    
+
+---
+Version {{ env.config.version }}, release {{ env.config.release }};
+built {sub-ref}`today`.

@@ -1,6 +1,6 @@
 # Notes #
 
-The files in this directory include auxiliary information that is either
+This section includes auxiliary information that is either
 tangential to the main shaping-behavior documentation or is
 excessively long enough that trying to include it inline would disrupt
 the flow of the text for readers.

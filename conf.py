@@ -12,6 +12,9 @@ project = 'OpenType<br>Shaping<br>Documents'
 copyright = '2022, Sponsored by YesLogic'
 author = 'Sponsored by YesLogic'
 
+version = "0.9"
+release = "0.9alpha1"
+
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
@@ -22,7 +25,7 @@ extensions = ['myst_parser', 'sphinx_external_toc', 'sphinx_inline_svg', 'shapin
 source_suffix = {'.md': 'markdown'}
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', 'README.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md', 'images/README.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
+exclude_patterns = ['_build', '_ext', 'test', 'Thumbs.db', '.DS_Store', 'BUILD.md', 'README.md', '**-image-generation-log.md', 'character-tables/README.md', 'images/images-index.md', 'images/README.md', 'notes/README.md'] # Eventually need to remove the links to image-generation-logs from the root README.md
 
 root_doc = 'index' # Renamed to split GitHub README from production index
 

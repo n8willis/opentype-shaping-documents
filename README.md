@@ -15,22 +15,25 @@ _<aside>Thanks also to the developers of HarfBuzz and AllSorts, plus many other 
 > As long as this warning text remains visible, the above 
 > holds true. 
 
-At present, we are seeking comments and bugfixes on the Indic-script,
-Arabic-like, Hangul, Hebrew, Thai/Lao, Tibetan, Khmer, Myanmar,
-default, and <abbr title="Universal Shaping Engine">USE</abbr> documents. Interested readers and contributors can
-begin at the
+These documents are meant to provide a functional specification for
+text shaping. The expectation is that an implementer of this
+specification will be using fonts in the OpenType font format applied
+to input text that complies with Unicode.
 
-  - [Indic General](opentype-shaping-indic-general.md) 
-    - (Devanagari, Bengali, Gujarati, Gurmukhi, Kannada, Malayalam,
-      Oriya, Tamil, Telugu, Sinhala) 
-  - [Arabic General](opentype-shaping-arabic-general.md)
-    - (Arabic, N'Ko, Syriac, Mongolian)
+At present, we are seeking comments and bugfixes. Interested readers
+and contributors can begin at the
+
+  - Indic Model ([general information](opentype-shaping-indic-general.md))
+    - Scripts covered: [Devanagari](opentype-shaping-devanagari.md), [Bengali](opentype-shaping-bengali.md), [Gujarati](opentype-shaping-gujarati.md), [Gurmukhi](opentype-shaping-gurmukhi.md), [Kannada](opentype-shaping-kannada.md), [Malayalam](opentype-shaping-malayalam.md),
+      [Oriya](opentype-shaping-oriya.md), [Tamil](opentype-shaping-tamil.md), [Telugu](opentype-shaping-telugu.md), [Sinhala](opentype-shaping-sinhala.md)
+  - Arabic Model ([general information](opentype-shaping-arabic-general.md)
+    - Scripts covered: [Arabic](opentype-shaping-arabic.md), [N'Ko](opentype-shaping-nko.md), [Syriac](opentype-shaping-syriac.md), [Mongolian](opentype-shaping-mongolian.md)
   - [Hangul](opentype-shaping-hangul.md)
   - [Hebrew](opentype-shaping-hebrew.md)
   - [Khmer](opentype-shaping-khmer.md)
+  - [Myanmar](opentype-shaping-myanmar.md)
   - [Thai and Lao](opentype-shaping-thai-lao.md)
   - [Tibetan](opentype-shaping-tibetan.md)
-  - [Myanmar](opentype-shaping-myanmar.md)
   - [Universal Shaping Engine (<abbr>USE</abbr>)](opentype-shaping-use.md)
     - All complex scripts that are not handled by a dedicated
       script-specific shaping model
