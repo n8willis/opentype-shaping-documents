@@ -65,7 +65,7 @@ entries:
         title: Emoji
       - file: opentype-shaping-normalization
         title: Normalization
-  - file: notes/README
+  - file: notes/index
     title: Notes
     subtrees:
     - maxdepth: 0
@@ -77,7 +77,7 @@ entries:
         title: Ragel state-machine operators
       - file: notes/emoji-implementation
         title: Emoji implementation
-      - file: character-tables/character-tables-index
+      - file: character-tables/index
         title: Character tables
       - file: character-tables/character-tables-arabic
         title: Arabic
