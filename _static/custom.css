@@ -21,8 +21,14 @@ div.body {
 } */
 
 div.bodywrapper {
-  /* margin: 0 0 0 220px; */
-  margin: 0 0 0 300px;
+    /* margin: 0 0 0 220px; */
+    /* I believe the below was causing problems in the mobile layout, */
+    /* because it actually needs a second rule that is scoped to the  */
+    /* mobile dimensions by using @media rules. That exists in the    */
+    /* upstream Alabaster, but wasn't duplicated here in the custom   */
+    /* file. Hopefully this rule is just a leftover from the old,     */
+    /* pre-1.0.0 Alabaster and is no longer needed. NPW 4/30/2026     */
+  /*margin: 0 0 0 300px; */
 }
 
 
@@ -409,5 +415,28 @@ li.toctree-l2.static-nav {
 /* L2 page links */
 li.toctree-l2.static-nav a {
     font-size: 100%;
+    font-style: normal;
+}
+
+/* Collapsible side list subsections */
+details.static-nav {
+}
+
+summary.toctree-l1.static-nav {
+    font-size: 120%;
+}
+
+summary.toctree-l1.static-nav a {
+    font-size: 120%;
+    font-style: normal;
+}
+
+summary.toctree-l2.static-nav {
+    font-size: 120%;
+    font-style: italic;
+}
+
+summary.toctree-l2.static-nav a {
+    font-size: 120%;
     font-style: normal;
 }

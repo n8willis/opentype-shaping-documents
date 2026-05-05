@@ -67,6 +67,7 @@ html_sidebars = {
     }
 html_theme_options = {
     'page_width': '1200px',
+    'body_max_width': 'auto',
     'sidebar_width': '300px',
     'github_user': 'n8willis',
     'github_repo': 'opentype-shaping-documents',

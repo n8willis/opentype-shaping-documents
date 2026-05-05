@@ -1,188 +1,255 @@
+{% if html_baseurl %}
+{% set local_url_prefix = html_baseurl %}
+{% else %}
+{% if "notes/" in pagename or "character-tables/" in pagename %}
+{% set local_url_prefix = "../" %}
+{% else %}
+{% set local_url_prefix = "" %}
+{% endif %}
+{% endif %}
+
+{% set indicdocs = ["opentype-shaping-indic-general",
+"opentype-shaping-devanagari", "opentype-shaping-bengali",
+"opentype-shaping-gujarati", "opentype-shaping-gurmukhi",
+"opentype-shaping-kannada", "opentype-shaping-malayalam",
+"opentype-shaping-oriya", "opentype-shaping-sinhala",
+"opentype-shaping-tamil", "opentype-shaping-telugu", "opentype-shaping-vedic-extensions"] %}
+
+{% set arabicdocs = ["opentype-shaping-arabic-general",
+"opentype-shaping-arabic", "opentype-shaping-nko",
+"opentype-shaping-syriac", "opentype-shaping-mongolian"] %}
+
+{% set otherscriptdocs = ["opentype-shaping-hangul", "opentype-shaping-hebrew",
+"opentype-shaping-khmer", "opentype-shaping-myanmar",
+"opentype-shaping-thai-lao", "opentype-shaping-tibetan",
+"opentype-shaping-use", "opentype-shaping-default",
+"opentype-shaping-emoji"] %}
+
+{% set scriptdocs = indicdocs + arabicdocs + otherscriptdocs %}
+
 <h3>Contents</h3>
 <ul class="current">
   <li class="toctree-l1 static-nav">
-    <a class="reference internal" href="/index.html">Overview</a>
+    <a class="reference internal" href="{{ local_url_prefix }}index.html">Overview</a>
   </li>
   <li class="toctree-l1 static-nav static-nav-heading">
-    Script shaping
+        {% if pagename in scriptdocs %}
+	<details class="static-nav" name="sidebar-nav-scriptshaping-submenu" open>
+	{% else %}
+	<details class="static-nav" name="sidebar-nav-scriptshaping-submenu">
+	{% endif %}
+	<summary class="toctree-l1 static-nav">Script shaping</summary>
+	
     <ul class="current">
       <li class="toctree-l2 static-nav static-nav-heading">
-	Indic Model
+	
+        {% if pagename in indicdocs %}
+	<details class="static-nav" name="sidebar-nav-indic-model-submenu" open>
+	{% else %}
+	<details class="static-nav" name="sidebar-nav-indic-model-submenu">
+	{% endif %}
+	  <summary class="toctree-l2 static-nav">Indic Model</summary>
+	
 	<ul class="current">
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-indic-general.html">Indic general</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-indic-general.html">Indic general</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-devanagari.html">Devanagari</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-devanagari.html">Devanagari</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-bengali.html">Bengali</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-bengali.html">Bengali</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-gujarati.html">Gujarati</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gujarati.html">Gujarati</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-gurmukhi.html">Gurmukhi</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gurmukhi.html">Gurmukhi</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-kannada.html">Kannada</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-kannada.html">Kannada</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-malayalam.html">Malayalam</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-malayalam.html">Malayalam</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-oriya.html">Oriya</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-oriya.html">Oriya</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-sinhala.html">Sinhala</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-sinhala.html">Sinhala</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-tamil.html">Tamil</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-tamil.html">Tamil</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-telugu.html">Telugu</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-telugu.html">Telugu</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-vedic-extensions.html">Vedic Extensions</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-vedic-extensions.html">Vedic Extensions</a>
 	  </li>
 	</ul>
+	</details>
       </li>
       <li class="toctree-l2 static-nav static-nav-heading">
-	Arabic Model
+        {% if pagename in arabicdocs %}
+	<details class="static-nav" name="sidebar-nav-arabic-model-submenu" open>
+	{% else %}
+	<details class="static-nav" name="sidebar-nav-arabic-model-submenu">
+	{% endif %}
+	  <summary class="toctree-l2 static-nav">Arabic Model</summary>
 	<ul class="current">
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-arabic-general.html">Arabic general</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-arabic-general.html">Arabic general</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-arabic.html">Arabic</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-arabic.html">Arabic</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-nko.html">N'Ko</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-nko.html">N'Ko</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-syriac.html">Syriac</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-syriac.html">Syriac</a>
 	  </li>
 	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="/opentype-shaping-mongolian.html">Mongolian</a>
+	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-mongolian.html">Mongolian</a>
 	  </li>
 	</ul>
+	</details>
+	
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-hangul.html">Hangul</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-hangul.html">Hangul</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-hebrew.html">Hebrew</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-hebrew.html">Hebrew</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-khmer.html">Khmer</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-khmer.html">Khmer</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-myanmar.html">Myanmar</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-myanmar.html">Myanmar</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-thai-lao.html">Thai and Lao</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-thai-lao.html">Thai and Lao</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-tibetan.html">Tibetan</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-tibetan.html">Tibetan</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-use.html">Universal Shaping Engine</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-use.html">Universal Shaping Engine</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-default.html">Default scripts</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-default.html">Default scripts</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/opentype-shaping-emoji.html">Emoji</a>
+	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-emoji.html">Emoji</a>
       </li>
     </ul>
+    </details>
   </li>
   <li class="toctree-l1 static-nav">
-    <a class="reference internal" href="/opentype-shaping-normalization.html">Normalization</a>
+    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-normalization.html">Normalization</a>
   </li>
   <li class="toctree-l1 static-nav">
-    <a class="reference internal" href="/notes/README.html">Notes</a>
-    <ul>
+
+        {% if "notes/" in pagename %}
+	<details class="static-nav" name="sidebar-nav-notes-submenu" open>
+	  {% else %}
+	  <details class="static-nav" name="sidebar-nav-notes-submenu">
+	    {% endif %}
+	    <summary class="toctree-l1 static-nav"><a class="reference internal" href="{{ local_url_prefix }}notes/index.html">Notes</a></summary>
+	    
+	    <ul>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/notes/uniscribe-bug-compatibility.html">Uniscribe compatibility</a>
+	<a class="reference internal" href="{{ local_url_prefix }}notes/uniscribe-bug-compatibility.html">Uniscribe compatibility</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/notes/ragel-machine-notation.html">Ragel state-machine operators</a>
+	<a class="reference internal" href="{{ local_url_prefix }}notes/ragel-machine-notation.html">Ragel state-machine operators</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/notes/emoji-implementation.html">Emoji implementation</a>
+	<a class="reference internal" href="{{ local_url_prefix }}notes/emoji-implementation.html">Emoji implementation</a>
       </li>
     </ul>
+	</details>
+	
   </li>
   <li class="toctree-l1 static-nav">
-    <a class="reference internal" href="/character-tables/character-tables-index.html">Character Tables</a>
+
+    {% if "character-tables" in pagename %}
+    <details class="static-nav" name="sidebar-nav-chartables-submenu" open>
+      {% else %}
+      <details class="static-nav" name="sidebar-nav-chartables-submenu">
+	{% endif %}
+	<summary class="toctree-l1 static-nav"><a class="reference internal" href="{{ local_url_prefix }}character-tables/index.html">Character Tables</a></summary>
     <ul>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-arabic.html">Arabic</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-arabic.html">Arabic</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-bengali.html">Bengali</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-bengali.html">Bengali</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-devanagari.html">Devanagari</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-devanagari.html">Devanagari</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-gujarati.html">Gujarati</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-gujarati.html">Gujarati</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-gurmukhi.html">Gurmukhi</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-gurmukhi.html">Gurmukhi</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-hangul.html">Hangul</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-hangul.html">Hangul</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-hebrew.html">Hebrew</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-hebrew.html">Hebrew</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-kannada.html">Kannada</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-kannada.html">Kannada</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-khmer.html">Khmer</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-khmer.html">Khmer</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-lao.html">Lao</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-lao.html">Lao</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-malayalam.html">Malayalam</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-malayalam.html">Malayalam</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-mongolian.html">Mongolian</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-mongolian.html">Mongolian</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-myanmar.html">Myanmar</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-myanmar.html">Myanmar</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-nko.html">N'Ko</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-nko.html">N'Ko</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-oriya.html">Oriya</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-oriya.html">Oriya</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-sinhala.html">Sinhala</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-sinhala.html">Sinhala</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-syriac.html">Syriac</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-syriac.html">Syriac</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-tamil.html">Tamil</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-tamil.html">Tamil</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-telugu.html">Telugu</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-telugu.html">Telugu</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-thai.html">Thai</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-thai.html">Thai</a>
       </li>
       <li class="toctree-l2 static-nav">
-	<a class="reference internal" href="/character-tables/character-tables-tibetan.html">Tibetan</a>
+	<a class="reference internal" href="{{ local_url_prefix }}character-tables/character-tables-tibetan.html">Tibetan</a>
       </li>
-    </ul>    
+    </ul>
+    </details>
   </li>
   <li class="toctree-l1 static-nav">
-    <a class="reference internal" href="/errata.html">Errata</a>
+    <a class="reference internal" href="{{ local_url_prefix }}errata.html">Errata</a>
   </li>
 </ul>
 
