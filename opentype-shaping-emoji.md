@@ -1201,7 +1201,7 @@ require font substitution.
 > and handle them gracefully.
 
 
-### 1. Applying the basic substitution features from <abbr>GSUB</abbr> ###
+### Stage 1: Applying the basic substitution features from <abbr>GSUB</abbr> ###
 
 The basic-substitution stage applies mandatory substitution features
 using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for this
@@ -1257,7 +1257,7 @@ shaping process. Emoji shaping should be unaffected by this decision.
 
 
 
-### 2. Applying typographic substitution features from <abbr>GSUB</abbr> ###
+### Stage 2: Applying typographic substitution features from <abbr>GSUB</abbr> ###
 
 The typographic-substitution phase applies all remaining substitution
 features using the rules in the font's <abbr title="Glyph Substitution table">GSUB</abbr> table. In preparation for
@@ -1293,7 +1293,7 @@ in `rlig`, with custom sequences implemented in `liga`.
 
 
 
-### 3. Applying the positioning features from <abbr>GPOS</abbr> ###
+### Stage 3: Applying the positioning features from <abbr>GPOS</abbr> ###
 
 The positioning stage adjusts the positions of mark and base
 glyphs. In preparation for this stage, glyph sequences should be
