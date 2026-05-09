@@ -32,65 +32,59 @@
   <li class="toctree-l1 static-nav">
     <a class="reference internal" href="{{ local_url_prefix }}index.html">Overview</a>
   </li>
-  <li class="toctree-l1 static-nav static-nav-heading">
-        {% if pagename in scriptdocs %}
-	<details class="static-nav" name="sidebar-nav-scriptshaping-submenu" open>
-	{% else %}
-	<details class="static-nav" name="sidebar-nav-scriptshaping-submenu">
-	{% endif %}
-	<summary class="toctree-l1 static-nav">Script shaping</summary>
+  <li class="toctree-l1 static-nav static-nav-heading">Script shaping
 	
-    <ul class="current">
-      <li class="toctree-l2 static-nav static-nav-heading">
-	
+    <ul class="current"> <!--- top level of script-shaping submenu --->
+      <li class="toctree-l2 static-nav static-nav-heading"> <!--- script-shaping > subitems--->
         {% if pagename in indicdocs %}
 	<details class="static-nav" name="sidebar-nav-indic-model-submenu" open>
 	{% else %}
 	<details class="static-nav" name="sidebar-nav-indic-model-submenu">
 	{% endif %}
 	  <summary class="toctree-l2 static-nav">Indic Model</summary>
-	
-	<ul class="current">
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-indic-general.html">Indic general</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-devanagari.html">Devanagari</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-bengali.html">Bengali</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gujarati.html">Gujarati</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gurmukhi.html">Gurmukhi</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-kannada.html">Kannada</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-malayalam.html">Malayalam</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-oriya.html">Oriya</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-sinhala.html">Sinhala</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-tamil.html">Tamil</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-telugu.html">Telugu</a>
-	  </li>
-	  <li class="toctree-l3 static-nav">
-	    <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-vedic-extensions.html">Vedic Extensions</a>
-	  </li>
-	</ul>
+
+	  <ul class="current">
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-indic-general.html">Indic general</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-devanagari.html">Devanagari</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-bengali.html">Bengali</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gujarati.html">Gujarati</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-gurmukhi.html">Gurmukhi</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-kannada.html">Kannada</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-malayalam.html">Malayalam</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-oriya.html">Oriya</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-sinhala.html">Sinhala</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-tamil.html">Tamil</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-telugu.html">Telugu</a>
+	    </li>
+	    <li class="toctree-l3 static-nav">
+	      <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-vedic-extensions.html">Vedic Extensions</a>
+	    </li>
+	  </ul>
 	</details>
-      </li>
-      <li class="toctree-l2 static-nav static-nav-heading">
+      </li> <!--- end of Indic Model item--->
+
+      <li class="toctree-l2 static-nav static-nav-heading"> <!--- start of Arabic Model item --->
         {% if pagename in arabicdocs %}
 	<details class="static-nav" name="sidebar-nav-arabic-model-submenu" open>
 	{% else %}
@@ -115,8 +109,8 @@
 	  </li>
 	</ul>
 	</details>
-	
       </li>
+      
       <li class="toctree-l2 static-nav">
 	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-hangul.html">Hangul</a>
       </li>
@@ -145,12 +139,12 @@
 	<a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-emoji.html">Emoji</a>
       </li>
     </ul>
-    </details>
   </li>
+  
   <li class="toctree-l1 static-nav">
     <a class="reference internal" href="{{ local_url_prefix }}opentype-shaping-normalization.html">Normalization</a>
   </li>
-  <li class="toctree-l1 static-nav">
+  <li class="toctree-l1 static-nav static-nav-heading-link">
 
         {% if "notes/" in pagename %}
 	<details class="static-nav" name="sidebar-nav-notes-submenu" open>
@@ -173,7 +167,7 @@
 	</details>
 	
   </li>
-  <li class="toctree-l1 static-nav">
+  <li class="toctree-l1 static-nav static-nav-heading-link">
 
     {% if "character-tables" in pagename %}
     <details class="static-nav" name="sidebar-nav-chartables-submenu" open>
@@ -256,10 +250,10 @@
 <hr>
 
 <ul class="extra-links">
-  <li class="toctree-l1 static-nav">
+  <li class="toctree-l1 static-nav static-nav-external">
     <a class="reference external" href="https://github.com/n8willis/opentype-shaping-documents/issues">GitHub issues</a>
   </li>
-  <li class="toctree-l1 static-nav">
+  <li class="toctree-l1 static-nav static-nav-external">
     <a class="reference external" href="https://github.com/n8willis/opentype-shaping-documents/blob/master/BUILD.md">Build process</a>
   </li>
 </ul>

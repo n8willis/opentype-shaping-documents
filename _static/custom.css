@@ -398,45 +398,90 @@ blockquote {
 }
 
 /* Static navigation sidebar */
-/* Turn off bullet point on heading items */
-li.static-nav-heading {
-    list-style: "";
+
+/* TESTING to override Alabaster font-size increase */
+li.static-nav a {
+    font-size: 120%;
 }
 
 /* L1 */
 li.toctree-l1.static-nav {
-    font-size: 120%;
-}
-/* L2 headings */
-li.toctree-l2.static-nav {
+    list-style-type: square;
+    list-style-position: inside;
+    font-style: normal;
     font-size: 100%;
+    margin-top: 3px;
+}
+
+/* remove automatic whitespace after bullet */
+li.toctree-l1.static-nav:before {
+    content: "";
+}
+
+/* L1 links */
+/* Block Alabaster Theme's auto-increasing of the font size */
+li.toctree-l1.static-nav a {
+    font-size: 100%;
+}
+
+/* Turn off bullet point on heading items that are links */
+li.toctree-l1.static-nav-heading {
+    list-style-type: circle;
+    list-style-position: inside;
+}
+li.toctree-l1.static-nav-heading-link {
+    list-style-type: none;
+}
+
+/* Differentiate external links */
+li.toctree-l1.static-nav-external {
+    list-style-type: "\1f310\fe0e";
+    list-style-position: inside;
+}
+
+
+/* L2 items */
+li.toctree-l2.static-nav {
+    list-style-type: disc;
+    list-style-position: inside;
     font-style: italic;
 }
+
+li.toctree-l2.static-nav.static-nav-heading {
+    list-style-type: none;
+    list-style-position: inside;
+    font-style: italic;
+}
+
 /* L2 page links */
 li.toctree-l2.static-nav a {
-    font-size: 100%;
+    font-style: normal;
+}
+/* L3 items */
+li.toctree-l3.static-nav {
+    font-style: normal;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+/* L3 page links */
+li.toctree-l3.static-nav a {
     font-style: normal;
 }
 
 /* Collapsible side list subsections */
-details.static-nav {
-}
 
-summary.toctree-l1.static-nav {
-    font-size: 120%;
+summary.toctree-l1.static-nav { /* MAYBE we need to repeat `li` styles here? */
 }
 
 summary.toctree-l1.static-nav a {
-    font-size: 120%;
     font-style: normal;
 }
 
 summary.toctree-l2.static-nav {
-    font-size: 120%;
     font-style: italic;
 }
 
 summary.toctree-l2.static-nav a {
-    font-size: 120%;
     font-style: normal;
 }
