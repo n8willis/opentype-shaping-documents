@@ -19,8 +19,8 @@ help:
 
 .PHONY: help Makefile
 
-# Run tests on links and spelling
-test: linktest spellcheck
+# Run tests on links, spelling, and navigation sidebar
+test: linktest spellcheck sidebarnavcheck
 
 # Use Sphinx's built-in link checker
 linktest:

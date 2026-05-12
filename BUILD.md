@@ -91,7 +91,10 @@ Makefile targets:
    
 2. Run `make spellcheck` to run spellchecking on the documents.
 
-You can also run `make test` to run both tests in sequence.
+3. Run `make sidebarnavcheck` to check that the TOC file and the
+   static sidebar navigation template do not differ in their links.
+
+You can also run `make test` to run all three tests in sequence.
 
 The spell-checking is configured in `test/spellcheck.yaml`. It uses
 the [PySpelling](https://facelessuser.github.io/pyspelling/) package
@@ -106,6 +109,11 @@ names in the tables). The plan is to iron those out, then run both the
 spell-checking and link-checking tests automatically on all pull
 requests. When that is implemented, it will be documented here.
 
+The sidebar-navigation check extracts the `- file:` entries from
+`_toc.yml`, extracts all of the internal hyperlinks from
+`_templates/static_nav.html`, and compares the two lists. Any
+discrepencies between the two are reported in the output and result in
+return code 1.
 
 
 ## Editing and bugfixing ##
