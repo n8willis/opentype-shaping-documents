@@ -10,6 +10,8 @@ BUILDDIR      = _build
 PYSPELLING    = pyspelling
 PYSPELLINGMARKDOWNCONF = test/spellcheck.yml
 PYSPELLINGHTMLCONF = test/spellcheck_html.yml
+SIDEBARNAVCHECK = test/crosscheck_nav_sidebar.py
+
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -31,6 +33,10 @@ spellcheck:
 # Use PySpelling
 htmlspellcheck:
 	@$(PYSPELLING) -c "$(PYSPELLINGHTMLCONF)"
+
+# Test sidebar navigation template
+sidebarnavcheck:
+	@$(SIDEBARNAVCHECK)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
