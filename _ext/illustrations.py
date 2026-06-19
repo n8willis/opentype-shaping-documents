@@ -143,7 +143,7 @@ def extract_color_classes(filename):
     return colorclasses
 
 
-def _build_colorclasslist(filename):
+def _bootstrap_colorclasslist(filename):
     """Inserts YAML configuration for SVG images, capturing the CSS
        color classes applied to each <use> element, in order.
 
@@ -164,7 +164,7 @@ def _build_colorclasslist(filename):
     return None
 
     
-def _build_duplicates(filename):
+def _bootstrap_duplicates(filename):
     """Inserts YAML configuration for SVG images that are duplicates
        of another illustration.
 
@@ -234,7 +234,7 @@ def _build_duplicates(filename):
     return None
     
     
-def _build_yaml(filename):
+def _bootstrap_yaml(filename):
     """Builds a YAML configuration file from an SVG generation log entry.
 
        This is a bootstrapping function used solely to migrate the old,
@@ -317,10 +317,14 @@ def _build_yaml(filename):
                     # Actually, this also fails for the single-component
                     # images, too. E.g., khmer-robat.svg, tibetan-syllable.svg
                     # [ ] - :. add test for how many "-" there are?
-                    filename_parts = params["output-file"].rpartition("-")
+                    #filename_parts = params["output-file"].rpartition("-")
+                    filename_parts = params["output-file"].split("-")
+                    #print(filename_parts) # Debug
                     if len(filename_parts) < 3:
-                        params["target"] = params["output-file"]
-                        params["name"] = params["output-file"][:-4]
+                        params["target"] = params["output-file"][:-4]
+                        #params["name"] = params["output-file"][:-4]
+                                         # probably a different component-name is needed
+                        params["name"] = "SOLE_COMPONENT" # special case in builder
                     else:
                         params["target"] = params["output-file"].rpartition("-")[0]
                         params["name"] = params["output-file"].rpartition("-")[2][:-4]
@@ -424,5 +428,5 @@ def _build_yaml(filename):
 
 if __name__ == '__main__':
     #extract_color_classes(sys.argv[1])
-    _build_yaml(sys.argv[1])
-    _build_duplicates(sys.argv[1])
+    _bootstrap_yaml(sys.argv[1])
+    _bootstrap_duplicates(sys.argv[1])
