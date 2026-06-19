@@ -18,10 +18,14 @@ import svg_stack
 def _pt_to_px(points):
     """Convert lengths in points to the equivalent in pixels."""
     return points * (72 / 96)
-    
+
+
+def _px_to_pt(pixels):
+    """Convert lengths in pixels to the equivalent in points."""
+    return pixels * (96 / 72)
+
 
 class Illustration():
-
 
     def __init__(self, configfile):
         if configfile:
@@ -52,6 +56,7 @@ class Illustration():
 
                 return None
 
+            
     def _build_component(component):
         """Generate an SVG from the defined component formula."""
 
@@ -138,6 +143,27 @@ def extract_color_classes(filename):
     return colorclasses
 
 
+def _build_colorclasslist(filename):
+    """Inserts YAML configuration for SVG images, capturing the CSS
+       color classes applied to each <use> element, in order.
+
+       This is a bootstrapping function used solely to migrate the old,
+       'SCRIPT-svg-generation-log.md' files to YAML configuration.
+
+       Some of the log files already contain the necessary information.
+       In those cases, it is written as-is into the .yaml configuration
+       files on a per-image basis. For the other log files, the function
+       bootstraps that information by extracting it from the current
+       .svg files.
+
+       Consequently, this function remains private, because in the long
+       term, the build tool cannot rely on the "current as of now" files
+       containing the necessary color classes.
+    """
+
+    return None
+
+    
 def _build_duplicates(filename):
     """Inserts YAML configuration for SVG images that are duplicates
        of another illustration.
@@ -260,7 +286,10 @@ def _build_yaml(filename):
                 #params = {}
                 for param in line[8:].split():
                     if "=" not in param:
-                        params["font"] = param
+                        if param[:2] == "--": # extra flags !
+                            params["options"] += param # actually, there could be more than one of these....
+                        else:
+                            params["font"] = param
                     else:
                         p = param.split("=")
                         params[p[0][2:]] = p[1]
@@ -283,8 +312,18 @@ def _build_yaml(filename):
                     # But we actually only need that once. So we
                     # shouldn't re-generate it for every illustration
                     # anyway....
-                    params["target"] = params["output-file"].rpartition("-")[0]
-                    params["name"] = params["output-file"].rpartition("-")[2][:-4]
+                    # [x] :. special-case 'right-arrow.svg'
+                    #
+                    # Actually, this also fails for the single-component
+                    # images, too. E.g., khmer-robat.svg, tibetan-syllable.svg
+                    # [ ] - :. add test for how many "-" there are?
+                    filename_parts = params["output-file"].rpartition("-")
+                    if len(filename_parts) < 3:
+                        params["target"] = params["output-file"]
+                        params["name"] = params["output-file"][:-4]
+                    else:
+                        params["target"] = params["output-file"].rpartition("-")[0]
+                        params["name"] = params["output-file"].rpartition("-")[2][:-4]
 
                     # `unicodes` is required; other parameters have defaults...
                     # - Pass through unicodes as-is...
@@ -385,5 +424,5 @@ def _build_yaml(filename):
 
 if __name__ == '__main__':
     #extract_color_classes(sys.argv[1])
-    #_build_yaml(sys.argv[1])
+    _build_yaml(sys.argv[1])
     _build_duplicates(sys.argv[1])
