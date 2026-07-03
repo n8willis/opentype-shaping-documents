@@ -15,17 +15,28 @@ import svg_stack
 #
 # :. (72 / 96)pt = 1px
 # pix_margin = pt_margin * (96/72)
-def _pt_to_px(points):
+def hb_pt_to_px(points):
     """Convert lengths in points to the equivalent in pixels."""
     return points * (72 / 96)
 
 
-def _px_to_pt(pixels):
+def hb_px_to_pt(pixels):
     """Convert lengths in pixels to the equivalent in points."""
     return pixels * (96 / 72)
 
 
 class Illustration():
+
+    # Look into @property approach:
+    # https://realpython.com/python-property/
+    #
+    #
+    #
+    #
+    #
+    #
+    # optional properties:
+    # https://stackoverflow.com/questions/54229973/how-to-implement-an-optional-property
 
     def __init__(self, configfile):
         if configfile:
@@ -142,6 +153,84 @@ def extract_color_classes(filename):
 
     return colorclasses
 
+
+def sample_page(dirname):
+    """Returns a before-and-after sample page comparing all SVG illustration
+       pairs in the given directory. Any standalone SVG files are also
+       rendered, in their own section."""
+    import os
+    import pathlib
+
+    dir_short = os.path.basename(os.path.normpath(dirname)) # Keepin' the HTML tidy
+    htmlpage = (
+        f'<html>\n'
+        f'<head>\n<title>SVG samples from {dir_short}</title>\n</head>\n'
+        f'<body>\n'
+        f'<h1>SVGs found in {dirname}</h1>\n<br>\n'
+        f'<h2>Before-and-after pairs:</h2>\n'
+        f'<table>\n<thead>\n<tr><th>Before</th><th>After</th></tr>\n</thead>\n'
+        f'<tbody>\n'
+        )
+
+    svgs = list(pathlib.Path(dirname).glob('*.svg'))
+
+    #svgs = list(pathlib.Path(dirname, pathlib.Path(dirname).glob('*.svg') ))
+    #svgs2 = [pathlib.Path(dirname, s) for s in svgs]
+    #print(svgs2)
+    befores = sorted([s for s in svgs if "-before" in str(s)])
+    afters = sorted([s for s in svgs if "-after" in str(s)])
+    stubs = [str(s).rpartition("-before.svg")[0] for s in befores]
+    #print(svgs)
+
+    
+    svg_pairs = [ [b, a] for b,a in zip(befores, afters) if str(b).rpartition("-before.svg")[0] == str(a).rpartition("-after.svg")[0]]
+
+    if len(svg_pairs) > 0:
+        for pair in svg_pairs:
+            htmlpage += (
+                f'<tr><td>{str(os.path.basename(pair[0]))}<br><img src="{pair[0]}"></td><td>{str(os.path.basename(pair[1]))}<br><img src="{pair[1]}"></td></tr>\n'
+            )
+            svgs.remove(pair[0])
+            svgs.remove(pair[1])
+        
+    htmlpage += (
+        f'</tbody>\n'
+        f'</table>\n'
+        )
+
+    if len(svgs) > 0:
+        htmlpage += (
+            f'<br>\n'
+            f'<h2>Unpaired SVGs:</h2>\n'
+            f'<table>\n<thead>\n<tr><th>Image</th></tr>\n</thead>\n'
+            f'<tbody>\n'
+        )
+
+        for svg in svgs:
+            htmlpage += (
+                f'<tr><td>{str(os.path.basename(svg))}<br><img src="{svg}"></td></tr>\n'
+            )
+
+        htmlpage += (
+            f'</tbody>\n'
+            f'</table>\n'
+        )
+        
+    htmlpage += (
+        f'</tbody>\n'
+        f'</body>\n'
+        f'</html>'
+        )
+    
+    return htmlpage
+    #print([str(s) for s in svgs])
+    #print(befores)
+    #print(afters)
+    #print(stubs)
+    #print(svg_pairs)
+    #print(htmlpage)
+    #print(svgs)
+    #return None
 
 def _bootstrap_colorclasslist(filename):
     """Inserts YAML configuration for SVG images, capturing the CSS
@@ -428,5 +517,7 @@ def _bootstrap_yaml(filename):
 
 if __name__ == '__main__':
     #extract_color_classes(sys.argv[1])
-    _bootstrap_yaml(sys.argv[1])
-    _bootstrap_duplicates(sys.argv[1])
+    #_bootstrap_yaml(sys.argv[1])
+    #_bootstrap_duplicates(sys.argv[1])
+    print(sample_page(sys.argv[1]))
+    
