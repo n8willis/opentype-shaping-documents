@@ -1,0 +1,13 @@
+name: bengali-blwm
+GENERATOR: hb-view
+SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- after:
+    unicodes: 09ad,09c2
+    margin: 2,16,2,16
+    features: -init,+blwm
+- before:
+    unicodes: 09ad,09c2
+    margin: 2,16,2,16
+    features: -init,-blwm

@@ -1,0 +1,13 @@
+name: bengali-abvm
+GENERATOR: hb-view
+SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 0994,0981
+    margin: 2,16,2,16
+    features: -init,-abvm
+- after:
+    unicodes: 0994,0981
+    margin: 2,16,2,16
+    features: -init,+abvm

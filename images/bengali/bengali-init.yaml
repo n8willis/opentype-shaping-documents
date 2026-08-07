@@ -1,0 +1,15 @@
+name: bengali-init
+GENERATOR: hb-view
+SCRIPTFONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09ae,09c7,09a8
+    margin: 2,16,2,16
+    features: -init
+- arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09ae,09c7,09a8
+    margin: 2,16,2,16
+    features: +init

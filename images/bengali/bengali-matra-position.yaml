@@ -1,0 +1,13 @@
+name: bengali-matra-position
+GENERATOR: hb-view
+SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09c8,09b8,09cd,09ae,099a
+    margin: 2,16,2,16
+    features: -init
+- after:
+    unicodes: 09b8,09cd,09ae,099a,09c8
+    margin: 2,16,2,16
+    features: -init

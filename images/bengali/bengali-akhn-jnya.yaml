@@ -1,0 +1,13 @@
+name: bengali-akhn-jnya
+GENERATOR: hb-view
+SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 099c,25cc,09cd,099e
+    margin: 2,16,2,16
+    features: -init,-akhn
+- after:
+    unicodes: 099c,09cd,099e
+    margin: 2,16,2,16
+    features: -init,+akhn

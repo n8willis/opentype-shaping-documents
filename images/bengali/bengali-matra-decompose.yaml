@@ -1,0 +1,13 @@
+name: bengali-matra-decompose
+GENERATOR: hb-view
+SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09cc
+    margin: 2,16,2,16
+    features: -init
+- after:
+    unicodes: 09c7,200c,25cc,09d7
+    margin: 2,16,2,16
+    features: -init
