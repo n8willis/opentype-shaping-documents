@@ -1,13 +1,13 @@
 name: bengali-haln
 GENERATOR: hb-view
-SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+SCRIPTFONT: 
 basecolor: #000000
 components:
 - before:
-    unicodes: 099b,09bc,09cd
+    unicodes: 09dc,09cd
     margin: 2,16,2,16
     features: -init,-haln
 - after:
-    unicodes: 099b,09bc,09cd
+    unicodes: 09dc,09cd
     margin: 2,16,2,16
     features: -init,+haln

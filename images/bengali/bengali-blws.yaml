@@ -4,10 +4,10 @@ SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
 basecolor: #000000
 components:
 - before:
-    unicodes: 099d,09cd,09ac
-    margin: 2,16,2,16
-    features: -init,-blws,-cjct
+    unicodes: 09dd,09c2
+    margin: 2,16,24,16
+    features: -init,-blws
 - after:
-    unicodes: 099d,09cd,09ac
-    margin: 2,16,2,16
-    features: -init,+pres
+    unicodes: 09dd,09c2
+    margin: 2,16,24,16
+    features: -init,+blws

@@ -1,0 +1,16 @@
+name: bengali-half
+GENERATOR: hb-view
+SCRIPTFONT: TiroBangla-Regular.ttf # requires version 1.65 or later, # not currently on GF.
+basecolor: #000000
+components:
+- before:
+    unicodes: 0995,09cd,09b7,09cd,09a3
+    options: --preserve-default-ignorables
+    margin: 2,16,2,16
+    features: -init
+- arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 0995,09cd,09b7,09cd,09a3
+    margin: 2,16,2,16
+    features: -init,+ss03

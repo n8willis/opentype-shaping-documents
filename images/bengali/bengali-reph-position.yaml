@@ -5,9 +5,9 @@ basecolor: #000000
 components:
 - before:
     unicodes: 09f0,09cd,25cc,09a1,09cd,09a1,09cd,0996,09c1
-    margin: 2,16,2,16
+    margin: 24,16,2,16
     features: -init,+rphf
 - after:
     unicodes: 09f0,09cd,09a1,09cd,09a1,09cd,0996,09c1
-    margin: 2,16,2,16
+    margin: 24,16,2,16
     features: -init,+rphf
