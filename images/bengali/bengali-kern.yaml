@@ -1,0 +1,16 @@
+name: bengali-kern
+GENERATOR: hb-view
+SCRIPTFONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09ab,09cd,09b0,09e1,0965,201d
+    options: --preserve-default-ignorables
+    margin: 2,16,2,16
+    features: -init,-kern
+- arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09ab,09cd,09b0,09e1,0965,201d
+    margin: 2,16,2,16
+    features: -init,+kern
