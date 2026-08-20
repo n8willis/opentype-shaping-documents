@@ -1,4 +1,4 @@
-name: bengali-half
+name: bengali-ccmp
 GENERATOR: hb-view
 SCRIPTFONT: TiroBangla-Regular.ttf
 basecolor: #000000
