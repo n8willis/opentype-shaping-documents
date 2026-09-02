@@ -8,7 +8,7 @@ components:
     options: --preserve-default-ignorables
     margin: 2,16,2,16
     features: -init,-half
-- arrow:
+- right-arrow:
     file: right-arrow.svg
 - after:
     unicodes: 09a4,09cd,200d

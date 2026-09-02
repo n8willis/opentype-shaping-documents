@@ -1,6 +1,6 @@
 name: bengali-psts
 GENERATOR: hb-view
-SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+SCRIPTFONT: TiroBangla-Regular.ttf
 basecolor: #000000
 components:
 - before:
