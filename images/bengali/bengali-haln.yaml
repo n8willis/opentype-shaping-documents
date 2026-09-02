@@ -1,6 +1,6 @@
 name: bengali-haln
 GENERATOR: hb-view
-SCRIPTFONT: 
+SCRIPTFONT: BalooDa2-Regular.ttf
 basecolor: #000000
 components:
 - before:
