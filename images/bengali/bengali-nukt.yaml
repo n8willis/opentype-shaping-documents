@@ -7,7 +7,7 @@ components:
     unicodes: 09af,25cc,09bc
     margin: 2,16,2,16
     features: -init,-nukt
-- arrow:
+- right-arrow:
     file: right-arrow.svg
 - after:
     unicodes: 09af,09bc

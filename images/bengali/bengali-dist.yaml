@@ -8,7 +8,7 @@ components:
     options: --preserve-default-ignorables
     margin: 2,16,2,16
     features: -init,-dist
-- arrow:
+- right-arrow:
     file: right-arrow.svg
 - after:
     # This example is sub-optimal
