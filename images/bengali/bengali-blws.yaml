@@ -11,3 +11,4 @@ components:
     unicodes: 09dd,09c2
     margin: 2,16,24,16
     features: -init,+blws
+cssclasses: c0, c1, arrow, c0, c1
