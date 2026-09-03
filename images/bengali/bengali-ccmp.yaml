@@ -8,7 +8,7 @@ components:
     options: --preserve-default-ignorables
     margin: 2,16,2,16
     features: -init
-- arrow:
+- right-arrow:
     file: right-arrow.svg
 - after:
     # the 09dd glyph is already two components; the decomposition is
@@ -16,4 +16,4 @@ components:
     unicodes: 09dd 
     margin: 2,16,2,16
     features: -init
-cssclasses: c0, dc, c1, c2, dc, arrow, c3, dc
+cssclasses: c0, arrow, c1, c2
