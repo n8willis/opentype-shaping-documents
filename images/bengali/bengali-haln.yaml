@@ -1,0 +1,16 @@
+name: bengali-haln
+GENERATOR: hb-view
+FONT: BalooDa2-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09dc,09cd
+    margin: 2,16,2,16
+    features: -init,-haln
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09dc,09cd
+    margin: 2,16,2,16
+    features: -init,+haln
+cssclasses: c0, c1, arrow, c2

@@ -1,0 +1,16 @@
+name: bengali-nukt
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09af,25cc,09bc
+    margin: 2,16,2,16
+    features: -init,-nukt
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09af,09bc
+    margin: 2,16,2,16
+    features: -init,+nukt
+cssclasses: c0, dc, c1, arrow, c2

@@ -1,0 +1,15 @@
+name: bengali-half-ka
+GENERATOR: hb-view
+FONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 0995,25cc,09cd,0998
+    margin: 2,16,2,16
+    features: -init,-half
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 0995,09cd,0998
+    margin: 2,16,2,16
+    features: -init,+half

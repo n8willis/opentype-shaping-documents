@@ -1,0 +1,16 @@
+name: bengali-psts
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09b0,09cd,09a0,09c0
+    margin: 24,16,2,16
+    features: -init,-psts
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09b0,09cd,09a0,09c0
+    margin: 24,16,2,16
+    features: -init,+psts
+cssclasses: c0, c1, arrow, c0, c1

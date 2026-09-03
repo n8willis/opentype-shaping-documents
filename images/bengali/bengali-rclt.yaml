@@ -1,0 +1,16 @@
+name: bengali-rclt
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09b8,09be
+    margin: 2,16,2,16
+    features: -init,-rclt
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09b8,09be
+    margin: 2,16,2,16
+    features: -init,+rclt
+cssclasses: c0, dc, c1, arrow, dc, c0

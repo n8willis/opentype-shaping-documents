@@ -1,0 +1,17 @@
+name: bengali-dist
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 0985,09fc,2009,2009,098f
+    options: --preserve-default-ignorables
+    margin: 2,16,2,16
+    features: -init,-dist
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    # This example is sub-optimal
+    unicodes: 0985,09fc,098f
+    margin: 2,16,2,16
+    features: -init,+dist

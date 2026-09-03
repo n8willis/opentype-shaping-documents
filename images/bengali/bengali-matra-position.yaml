@@ -1,0 +1,16 @@
+name: bengali-matra-position
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09c8,09b8,09cd,09ae,099a
+    margin: 16,16,2,16
+    features: -init
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09b8,09cd,09ae,099a,09c8
+    margin: 16,16,2,16
+    features: -init
+cssclasses: c0, dc, c1, c2, arrow, c1, c0, c2

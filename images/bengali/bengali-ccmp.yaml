@@ -1,0 +1,19 @@
+name: bengali-ccmp
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09dd
+    options: --preserve-default-ignorables
+    margin: 2,16,2,16
+    features: -init
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    # the 09dd glyph is already two components; the decomposition is
+    # illustratable purely through CSS classes as a result.
+    unicodes: 09dd 
+    margin: 2,16,2,16
+    features: -init
+cssclasses: c0, arrow, c1, c2

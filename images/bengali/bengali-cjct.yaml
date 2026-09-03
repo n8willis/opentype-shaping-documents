@@ -1,0 +1,15 @@
+name: bengali-cjct
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09aa,25cc,09cd,09a4,25cc
+    margin: 2,16,2,16
+    features: -init,-cjct
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09aa,09cd,09a4,25cc
+    margin: 2,16,2,16
+    features: -init,+cjct

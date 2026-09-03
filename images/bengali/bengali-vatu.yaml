@@ -1,0 +1,16 @@
+name: bengali-vatu
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 0995,25cc,09cd,09b0
+    margin: 2,16,2,16
+    features: -init,-vatu
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 0995,09cd,09b0
+    margin: 2,16,2,16
+    features: -init,+vatu
+cssclasses: c0, dc, c1, arrow, c2

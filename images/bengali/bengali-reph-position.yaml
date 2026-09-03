@@ -1,0 +1,16 @@
+name: bengali-reph-position
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09f0,09cd,25cc,09a1,09cd,09a1,09cd,0996,09c1
+    margin: 24,16,2,16
+    features: -init,+rphf
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09f0,09cd,09a1,09cd,09a1,09cd,0996,09c1
+    margin: 24,16,2,16
+    features: -init,+rphf
+cssclasses: dc, c0, c1, c2, c3, c4, arrow, c1, c2, c3, c4, c0

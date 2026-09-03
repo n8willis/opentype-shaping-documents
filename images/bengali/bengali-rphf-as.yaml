@@ -1,0 +1,16 @@
+name: bengali-rphf-as
+GENERATOR: hb-view
+FONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09f0,25cc,09cd
+    margin: 2,16,2,16
+    features: -init,-rphf
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09f0,09cd,25cc
+    margin: 2,16,2,16
+    features: -init,+rphf
+cssclasses: c0, dc, c1, arrow, dc, c0

@@ -1,0 +1,16 @@
+name: bengali-pres
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 099f,09bf
+    margin: 2,16,2,16
+    features: -init,-pres
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 099f,09bf
+    margin: 2,16,2,16
+    features: -init,+pres
+cssclasses: c0, c1, arrow, c0, c1

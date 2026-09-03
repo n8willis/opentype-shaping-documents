@@ -1,0 +1,16 @@
+name: bengali-akhn-jnya
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 099c,25cc,09cd,099e
+    margin: 2,16,2,16
+    features: -init,-akhn
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 099c,09cd,099e
+    margin: 2,16,2,16
+    features: -init,+akhn
+cssclasses: c0, dc, c1, c2, arrow, c3

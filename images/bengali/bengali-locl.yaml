@@ -1,0 +1,16 @@
+name: bengali-locl
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 09aa,09a6,09cd,09af,0964
+    options: --preserve-default-ignorables
+    margin: 2,16,2,16
+    features: +init
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 09aa,09a6,09cd,09af,0964
+    margin: 2,16,2,16
+    features: +init,+ss01

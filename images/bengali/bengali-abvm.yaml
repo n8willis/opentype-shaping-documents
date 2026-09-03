@@ -1,0 +1,16 @@
+name: bengali-abvm
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 0994,0981
+    margin: 24,16,2,16
+    features: -init,-abvm
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 0994,0981
+    margin: 24,16,2,16
+    features: -init,+abvm
+cssclasses: c0, c1, arrow, c0, c1

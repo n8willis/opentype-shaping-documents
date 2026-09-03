@@ -1,0 +1,8 @@
+name: right-arrow
+GENERATOR: hb-view
+SCRIPTFONT: GentiumPlus-Regular.ttf
+basecolor: #000000
+components:
+- SOLE_COMPONENT:
+    unicodes: 2192
+    margin: 0,0,0,0

@@ -1,0 +1,16 @@
+name: bengali-yaphala
+GENERATOR: hb-view
+FONT: TiroBangla-Regular.ttf
+basecolor: #000000
+components:
+- before:
+    unicodes: 25cc,09cd,09af
+    margin: 2,16,2,16
+    features: -init,-pstf
+- right-arrow:
+    file: right-arrow.svg
+- after:
+    unicodes: 25cc,09cd,09af
+    margin: 2,16,2,16
+    features: -init,+pstf
+cssclasses: dc, c0, c1, arrow, dc, c1
