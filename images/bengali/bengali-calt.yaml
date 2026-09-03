@@ -1,4 +1,4 @@
-name: bengali-half
+name: bengali-calt
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
 basecolor: #000000
@@ -8,9 +8,10 @@ components:
     options: --preserve-default-ignorables
     margin: 16,16,2,16
     features: -init,-calt
-- arrow:
+- right-arrow:
     file: right-arrow.svg
 - after:
     unicodes: 09b0,1cf7
     margin: 16,16,2,16
     features: -init,+calt
+cssclasses: c0, c1, arrow, c0, c1
