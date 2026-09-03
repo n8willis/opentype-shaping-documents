@@ -1,6 +1,6 @@
 name: bengali-dist
 GENERATOR: hb-view
-SCRIPTFONT: TiroBangla-Regular.ttf
+FONT: TiroBangla-Regular.ttf
 basecolor: #000000
 components:
 - before:

@@ -1,6 +1,6 @@
 name: bengali-rphf-as
 GENERATOR: hb-view
-SCRIPTFONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
+FONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
 basecolor: #000000
 components:
 - before:
