@@ -59,9 +59,9 @@
   <g id="bengali-reph-position:id2:id2" transform="matrix(1.0,0,0,1.0,403.0,12.5625)"><g fill="rgb(0%, 0%, 0%)" fill-opacity="1">
 <use xlink:href="#bengali-reph-position:id2:glyph-0-0" x="16" y="107.046875" class="c1"/>
 <use xlink:href="#bengali-reph-position:id2:glyph-0-1" x="119.0625" y="104.84375" class="c2"/>
-<use xlink:href="#bengali-reph-position:id2:glyph-0-2" x="106.09375" y="107.046875" class="c3"/>
-<use xlink:href="#bengali-reph-position:id2:glyph-0-3" x="133.15625" y="107.046875" class="c4"/>
-<use xlink:href="#bengali-reph-position:id2:glyph-0-4" x="201.46875" y="107.046875" class="c0"/>
+<use xlink:href="#bengali-reph-position:id2:glyph-0-2" x="106.09375" y="107.046875" class="c0"/>
+<use xlink:href="#bengali-reph-position:id2:glyph-0-3" x="133.15625" y="107.046875" class="c3"/>
+<use xlink:href="#bengali-reph-position:id2:glyph-0-4" x="201.46875" y="107.046875" class="c4"/>
 </g>
 </g>
 </svg>
