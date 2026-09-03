@@ -13,4 +13,7 @@ components:
     unicodes: 25cc,09cd,09ac
     margin: 2,16,2,16
     features: -init,+blwf
-cssclasses: dc, c0, c1, arrow, dc, c1
+duplicates:
+- bengali-baphala-1
+- bengali-baphala-2
+cssclasses: [dc, c0, c1, arrow, dc, c1]
