@@ -1,7 +1,7 @@
 name: bengali-reph-position
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 09f0,09cd,25cc,09a1,09cd,09a1,09cd,0996,09c1

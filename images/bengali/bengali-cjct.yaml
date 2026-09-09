@@ -1,7 +1,7 @@
 name: bengali-cjct
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 09aa,25cc,09cd,09a4,25cc

@@ -1,7 +1,7 @@
 name: bengali-half
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 09a4,25cc,09cd,200d

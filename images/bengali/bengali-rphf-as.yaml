@@ -1,7 +1,7 @@
 name: bengali-rphf-as
 GENERATOR: hb-view
-FONT: /usr/share/fonts/truetype/noto/NotoSerifBengali-Regular.ttf
-basecolor: #000000
+FONT: TiroBangla-Regular.ttf
+basecolor: 000000
 components:
 - before:
     unicodes: 09f0,25cc,09cd

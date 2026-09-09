@@ -1,7 +1,7 @@
 name: bengali-abvs
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 09b0,09cd,25cc,09c0

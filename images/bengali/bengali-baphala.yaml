@@ -1,7 +1,7 @@
 name: bengali-baphala
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 25cc,09cd,09ac

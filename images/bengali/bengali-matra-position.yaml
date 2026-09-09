@@ -1,7 +1,7 @@
 name: bengali-matra-position
 GENERATOR: hb-view
 FONT: TiroBangla-Regular.ttf
-basecolor: #000000
+basecolor: 000000
 components:
 - before:
     unicodes: 09c8,09b8,09cd,09ae,099a
