@@ -35,8 +35,8 @@ def hb_px_to_pt(pixels):
 
 # Order of arguments
 # name,
-#  config["GENERATOR"],
-#  config["FONT"],
+#  config["generator"],
+#  config["font"],
 #  config["unicodes"],
 #  config["margin"],
 #  config["features"],
@@ -232,8 +232,8 @@ class Illustration():
                     # actually, maybe we need to instantiate it, then store .tree()?
                     # we will need to handle 'file:' components separately here
                     self.components = [svgComponent(self.name,
-                                                    config["GENERATOR"],
-                                                    config["FONT"],
+                                                    config["generator"],
+                                                    config["font"],
                                                     config["unicodes"],
                                                     config["margin"],
                                                     config["features"],
@@ -252,8 +252,8 @@ class Illustration():
                                 self.components.append(svgFileComponent(component_name, component_structure["file"])) # TODO: hot to refer to this
                             else:
                                 self.components.append(svgComponent(component_name,
-                                                                    component_structure["GENERATOR"],
-                                                                    component_structure["FONT"],
+                                                                    component_structure["generator"],
+                                                                    component_structure["font"],
                                                                     component_structure["unicodes"],
                                                                     component_structure["margin"],
                                                                     component_structure["features"],
@@ -616,7 +616,6 @@ class Illustration():
 
         
 
-
 def extract_color_classes(filename):
     """Extracts an ordered list of the color classes in an SVG file."""
     from lxml import etree as ET
@@ -641,134 +640,6 @@ def extract_color_classes(filename):
                         print(f'Warning: found <use> element with no classes: {elem}', file=sys.stderr)
 #
     return cssclasses
-
-
-# Moved this into the Illustration class....
-#
-#     For the moment, I could not think of any occasion for which
-#     we would need to insert/prefix ID attributes apart from the
-#     final file-writing step, and it felt like there was a risk
-#     of it getting misused or called at the wrong time.
-#
-#     Also, it was headed down the wrong path by trying to work only
-#     with ET.root; we'd almost certainly have to return the entire
-#     tree, no matter what.
-#
-#def _insert_ids(svgstring, id_token):
-#    #id_token = Path(svgstring).stem
-#    
-#    # Ugly, but works for the moment
-#    namespace = "{http://www.w3.org/2000/svg}"
-#
-#    #tree = ET.fromstring(bytes(svgstring.text, encoding='utf-8'))
-#    #root = tree.getroot()
-#    #root = ET.fromstring(bytes(svgstring, encoding='utf-8'))
-#    root = ET.fromstring(svgstring)
-#
-#    # This nsmap stuff can probably be removed; we could then remove lxml
-#    # from the build requirements....
-#    d = root.nsmap
-#
-#    # Check whether or not this is an SVG tree we know how to work with
-#    if (root.tag != namespace + "svg"):
-#        # need to make these actual exceptions
-#        print("Parsing trouble; it's unclear if this is a compatible SVG", file=sys.stderr)
-#        print(f'Root element: {root.tag}')
-#        return None
-#    else:
-#        if ("id" in root.attrib):
-#            # Need to make these actual exceptions
-#            print("Error: this root element already has an id!", file=sys.stderr)
-#            print(f'Root id is: {root.attrib["id"]}', file=sys.stderr)
-#            return None
-#        else:
-#            # insert id_token as the id for the svg
-#            print("Good: no pre-existing #id", file=sys.stderr)
-#            root.attrib["id"] = id_token
-#
-#            # iterate through the entire tree
-#            elems = list(root.iter())
-#            for elem in elems:
-#                    
-#                # ... prepending id_token to all id declarations
-#                if (elem != root and "id" in elem.attrib):
-#                    print(f'Adding id to {elem.tag}: {elem.attrib["id"]}', file=sys.stderr)
-#                    old_id = elem.attrib["id"]
-#                    if old_id[0:1] != "id":
-#                        elem.set("id", id_token + ":" + old_id)
-#                        print(elem.tag, elem.attrib["id"], file=sys.stderr)
-#                    else:
-#                        print(f'Warning: {elem.tag} has unexpected id {elem.attrib["id"]}', file=sys.stderr)
-#                        
-#                # ... prepending id_token to all id hrefs
-#                if ( "{" + d["xlink"] + "}" + "href" in elem.attrib):
-#                    print("Found xlink", file=sys.stderr)
-#                    old_target = elem.attrib["{" + d["xlink"] + "}" + "href"]
-#                    # TODO: test whether the following syntax (which
-#                    # is used to access the xlink href) also gets
-#                    # written out correctly to the file.
-#
-#                    if old_target[1:2] != "id":
-#                        elem.set("{" + d["xlink"] + "}" + "href", "#" + id_token + ":" + old_target[1:])
-#                        print(elem.attrib, file=sys.stderr)
-#                    else:
-#                        print(f'Error: {elem.tag} has unexpected target {old_target}', file=sys.stderr)
-#
-#        return ET.tostring(root)
-
-
-# Moved this into the Illustraton class.
-#
-#     As with the element-ID insertion, I can't think of a case
-#     where it would be necessary to modify the viewbox in a
-#     non-standard way, so it feels safer to retrict it to an
-#     instance context.... I may regret that.
-#
-#def _insert_viewbox(svgstring):
-#    #id_token = Path(svgfile).stem
-#    
-#    # Ugly, but works for the moment
-#    namespace = "{http://www.w3.org/2000/svg}"
-#
-#    #tree = ET.fromstring(bytes(svgstring, encoding='utf-8'))
-#    # apparently, .fromstring() returns the root itself, rather than
-#    # the tree, just to be different....
-#    #tree = ET.parse(bytes(svgstring, encoding='utf-8'))
-#    #tree = ET.parse(svgstring)
-#    #print(tree.tostring())
-#    # ... AND it also has no .tostring() method, because why create
-#    # interfaces that people would use???
-#
-#    #root = tree.getroot()
-#    root = ET.fromstring(bytes(svgstring, encoding='utf-8'))
-#    #root = ET.fromstring(svgstring)
-#    #print(ET.tostring(root))
-#    
-#    # This nsmap stuff can probably be removed; we could then remove lxml
-#    # from the build requirements....
-#    #d = root.nsmap
-#
-#    if ("width" in root.attrib) and ("height" in root.attrib):
-#        # copy the width and height into a new viewBox
-#        # assign "100%" as the new width and remove the height attribute
-#        if ("viewBox" in root.attrib):
-#            print("Warning: this SVG already has a viewBox?", file=sys.stderr)
-#            print(f'viewBox is: {root.attrib["viewBox"]}', file=sys.stderr)
-#            return ET.tostring(root)
-#        else:
-#            w = root.attrib["width"]
-#            h = root.attrib["height"]
-#            root.attrib["viewBox"] = "0 0 " + w + " " + h
-#            root.attrib["width"] = "100%"
-#            root.attrib.pop("height")
-#
-#            return ET.tostring(root)
-#        
-#    else:
-#        print("Warning: this SVG is missing width or height attributes", file=sys.stderr)
-#        print(f'Width: {root.attrib["width"]}, Height: {root.attrib["height"]}', file=sys.stderr)
-#        return None
-
 
 
 
@@ -1189,8 +1060,8 @@ def _bootstrap_yaml(filename):
                 print(f'Writing {outfile}', file=sys.stderr)
                 yaml_out = (
                     f'name: {target}\n'
-                    f'GENERATOR: hb-view\n'
-                    f'FONT: {script_font}\n' # stray \n sneaks in here?
+                    f'generator: hb-view\n'
+                    f'font: {script_font}\n' # stray \n sneaks in here?
                     f'basecolor: 000000\n'
                     f'components:\n'
                 )
