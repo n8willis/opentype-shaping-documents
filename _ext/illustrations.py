@@ -58,7 +58,7 @@ class svgComponent():
     """
     def __init__(self,
                  name,
-                 font,
+                 fontfile,
                  unicodes,
                  margin,
                  features=None,
@@ -66,11 +66,21 @@ class svgComponent():
                  generator="hb-view",
                  basecolor="000000",
                  ):
+#
+        from pathlib import Path
+#
         self.name = name # or just suffix?
         self.tree = None # May not be needed; initializing to None just so that the attribute is always there upstream
         self.root = None # Also may not be needed; root is gettable from tree
 #
-        self.font = font
+        # turn `fontfile` into an absolute path
+        p = Path(fontfile)
+        print(f'p: {p} ... cwd: {Path.cwd()} ... absolute: {p.resolve()}')
+        if p.exists():
+            p = p.resolve()
+            self.font = p
+        else:
+            raise OSError(f'[Component `{self.name}`]: the font file {fontfile} could not be located. Does {p} exist?')
         self.unicodes = unicodes
         self.margin = margin
         self.features = features
@@ -115,6 +125,7 @@ class svgComponent():
             # call the command, capturing the results from stdout
             print(f'[Component `{self.name}`], generate command: {command}', file=sys.stderr)
             result = subprocess.run(command, capture_output=True, encoding="utf8")
+            print(f'[Component `{self.name}`] generated', file=sys.stderr)
             #result = subprocess.run(command, stdout=subprocess.PIPE)
             if result.returncode:
                 print(f'[Component `{self.name}`]: image generator error: return code {result.returncode}')
@@ -149,20 +160,35 @@ class svgFileComponent():
     def __init__(self,
                  name,
                  filepath):
-        self.name = name
-        self.file = filepath
 #
+        from lxml import etree as ET # shouldn't be necessary; loads from package....
+        from pathlib import Path
+#        
+        self.name = name
+        #self.file = filepath
+#
+        # turn `filepath` into an absolute path
+        print(f'[Component `{self.name}`]: Checking for the presence of external file: {filepath}', file=sys.stderr)
+        p = Path(filepath)
+        if p.exists():
+            p = p.resolve()
+            self.file = p
+            print(f'[Component `{self.name}`]: ixternal file: {self.file} exists', file=sys.stderr)
+        else:
+            raise OSError(f'[Component `{self.name}`]: the font file {filepath} could not be located. Does {p} exist?')
         return None
 #
 #    
     def generate(self):
+        from lxml import etree as ET # shouldn't be necessary; loads from package....
         namespace = "{http://www.w3.org/2000/svg}"
-#        
-        with open(filepath, 'r+t', encoding='utf-8') as svgfile:
+#
+        print(f'[Component `{self.name}`], loading external file: {self.file}', file=sys.stderr)
+        with open(self.file, 'r+t', encoding='utf-8') as svgfile:
             self.tree = ET.parse(svgfile)
             self.root = self.tree.getroot()
 #
-        return self.tree
+        return ET.tostring(self.tree, encoding="unicode")
 
     
 class Illustration():
@@ -190,6 +216,8 @@ class Illustration():
     # implement that.
 #   
     def __init__(self, configfile=None):
+        from pathlib import Path
+#
         if configfile:
             with open(configfile, 'r') as infile:
                 config = yaml.safe_load(infile)
@@ -215,9 +243,14 @@ class Illustration():
                     self.generator = "hb-view"
 #
                 if "font" in config:
-                    self.font = config.get("font")
+                    # handle FONTDIR ... at least somewhat
+                    self.font = config.get("font").replace("FONTDIR", FONTDIR)
+                    #if p.exists(): # ...skipping the validation/existence check for now; that must happen in svgComponent anyway
+                    #    p = p.resolve()
+                    #    self.font = p
                 elif "FONT" in config:
-                    self.font = config.get("FONT") # *** deprecated key name !!!!
+                    # handle FONTDIR ... at least somewhat
+                    self.font = config.get("FONT").replace("FONTDIR", FONTDIR) # *** deprecated key name !!!!
                 else:
                     self.font = None
 #
@@ -242,6 +275,10 @@ class Illustration():
                 self.build_intermediates = False
 #                    
                 # Check if we need to build duplicate copies
+                if "duplicates" in config:
+                    self.duplicates = config["duplicates"]
+                else:
+                    self.duplicates = []
                 #if config["duplicates"]:
                     #self.source = config["duplicates"].value # ? or just config["duplicates"]??
                     ## make_duplicate from value of "duplicates", name it "name"
@@ -257,7 +294,9 @@ class Illustration():
 #                    
                     # make a single svgComponent
                     # actually, maybe we need to instantiate it, then store .tree()?
+                    #
                     # we will need to handle 'file:' components separately here
+                    #
                     self.components = [svgComponent(self.name,
                                                     self.font,
                                                     config.get("unicodes", None),
@@ -343,50 +382,60 @@ class Illustration():
                 #build the component
                 svgs.append(component.generate())
 #                    
-                if svgs:
-                    if self.layout == "solo":
-                        # no layout work is required
-                        print(f'[{self.name}]: Completing solo layout for the single-component illustration.', file=sys.stderr)
-                        self.data = svgs[0]
-                    elif self.layout == "horizontal":
+        if svgs:
+            if self.layout == "solo":
+                # no layout work is required
+                print(f'[{self.name}]: Completing solo layout for the single-component illustration.', file=sys.stderr)
+                self.data = svgs[0]
+            elif self.layout == "horizontal":
 #
-                        import io                           
-                        import svg_stack as ss
+                import io                           
+                import svg_stack as ss
 #
-                        # Use io.StringIO as a substitute file-like object, because
-                        # svg_stack.Document.save() will only write to file-like
-                        # things.
-                        with io.StringIO("") as outbuffer:
-                            doc = ss.Document()
-                            layout1 = ss.HBoxLayout()
+                # Use io.StringIO as a substitute file-like object, because
+                # svg_stack.Document.save() will only write to file-like
+                # things.
+                with io.StringIO("") as outbuffer:
+                    doc = ss.Document()
+                    layout1 = ss.HBoxLayout()
 #
-                            for svg in svgs:
-                                layout1.addSVG(svg, alignment=ss.AlignCenter)
+                    print(f'[{self.name}]: Starting horizontal layout for the illustration.', file=sys.stderr)
+                    for svg in svgs:
+                        # TRY using io.StringIO as a substitute/shim for adding, too,
+                        # because svg_stack's addSVG may / seems to work only with files....
+                        #with io.StringIO(svg) as svg_proxy:
+                        # or try bytesIO ... svg_stack is trying to load this via lxml and lxml complains
+                        #with io.BytesIO(bytes(svg, 'utf-8')) as svg_proxy:
+                        print(f'adding SVG to layout', file=sys.stderr)
+                        print(svg)
+                        layout1.addSVG(io.BytesIO(bytes(svg, 'utf-8')), alignment=ss.AlignCenter)
+                        print(f'added SVG to layout', file=sys.stderr)
+#
+                    print(f'adding layout to document', file=sys.stderr)
+                    doc.setLayout(layout1)
+#
+                    print(f'[{self.name}]: Completing horizontal layout for the illustration.', file=sys.stderr)
+                    doc.save(outbuffer)
+                    self.data = outbuffer.getvalue()
+                    # ????? ?????
+                    # Seems like we need to save this to an instance attribute,
+                    # but ss.doc only saves to a "fileobj"
+                    #
+                    # early research says contextlib can perhaps capture this?
+                    #     .... nope.
+                    #
+                    # other suggestions found include io.StringIO
+                    #
+                    # ...anyway, maybe self.contents ...
+                    #       then we can assign cssclasses and do the viewbox
+                    #       then, on .write(), we would do the ID attributes, because
+                    #       that might involve generating duplicates
 #                                
-                            doc.setLayout(layout1)
-#
-                            print(f'[{self.name}]: Completing horizontal layout for the illustration.', file=sys.stderr)
-                            doc.save(outbuffer)
-                            self.data = outbuffer.getvalue()
-                            # ????? ?????
-                            # Seems like we need to save this to an instance attribute,
-                            # but ss.doc only saves to a "fileobj"
-                            #
-                            # early research says contextlib can perhaps capture this?
-                            #     .... nope.
-                            #
-                            # other suggestions found include io.StringIO
-                            #
-                            # ...anyway, maybe self.contents ...
-                            #       then we can assign cssclasses and do the viewbox
-                            #       then, on .write(), we would do the ID attributes, because
-                            #       that might involve generating duplicates
-#                                
-                    else:
-                        raise NotImplementedError(f'[{self.name}]: Unknown composite layout requested. Only `solo` and `horizontal` are supported.')
+            else:
+                raise NotImplementedError(f'[{self.name}]: Unknown composite layout requested. Only `solo` and `horizontal` are supported.')
 #                            
-                else:
-                    raise ValueError(f'[{self.name}]: After the component-generation step, no SVG elements were found.')
+        else:
+            raise ValueError(f'[{self.name}]: After the component-generation step, no SVG elements were found.')
 #
 #                
         # apply viewbox to self.data
@@ -396,7 +445,8 @@ class Illustration():
         else:
             # Ugly, but works for the moment. All SVGs from hb-view and svg_stack use this namespace string....
             namespace = "{http://www.w3.org/2000/svg}"
-            tree = ET.parse(self.data)
+            #tree = ET.parse(self.data)
+            tree = ET.ElementTree(ET.fromstring(self.data))
             root = tree.getroot()
 #
             # This nsmap stuff can probably be removed; we could then remove lxml
@@ -447,7 +497,7 @@ class Illustration():
     # to skip this step for PDF (or other noninteractive)
     # output formats.
 #    def apply_css_classes(self, classlist=self.cssclasses):
-    def apply_css_classes(self, classlist):
+    def apply_css_classes(self, classlist=None):
         """Assign the provided CSS classes to the <use> elements in the illustration.
 #
         This method updates the SVG data in self.data, by assigning a CSS class from
@@ -481,7 +531,8 @@ class Illustration():
             else:
                 # Ugly, but works for the moment. All SVGs from hb-view and svg_stack use this namespace string....
                 namespace = "{http://www.w3.org/2000/svg}"
-                tree = ET.parse(self.data)
+                #tree = ET.parse(self.data)
+                tree = ET.ElementTree(ET.fromstring(self.data))
                 root = tree.getroot()
 #
                 # This nsmap stuff can probably be removed; we could then remove lxml
@@ -546,7 +597,8 @@ class Illustration():
 #        
         # Ugly, but works for the moment. All SVGs from hb-view and svg_stack use this namespace string....
         namespace = "{http://www.w3.org/2000/svg}"
-        tree = ET.parse(svg_data)
+        #tree = ET.parse(svg_data)
+        tree = ET.ElementTree(ET.fromstring(svg_data))
         root = tree.getroot()
 #
         # This nsmap stuff can probably be removed; we could then remove lxml
@@ -628,9 +680,9 @@ class Illustration():
         # to file.
         # Here, as elsewhere, we probably don't need to update self.data. Doing so might
         # save a few cycles if we were writing again and again, but that's not the use case.
-        with open(filename_stub + ".svg", w+t, encoding="utf-8") as outfile:
+        with open(filename_stub + ".svg", 'w+t', encoding="utf-8") as outfile:
             print(f'[{self.name}]: Writing SVG content out to file {filename_stub}.svg', file=sys.stderr)
-            outfile.write( prepend_elementIDs(self.data, filename_stub) )
+            outfile.write( self.prepend_elementIDs(self.data, filename_stub) )
 #
         # Handle all requested image duplicates.
         if self.duplicates:
@@ -640,9 +692,9 @@ class Illustration():
                 # apply element IDs to self.data, using 'duplicate' instead of filename_stub
                 # ... so, make an ET.tree for each duplicate, apply the ID, write it to
                 # its own file, but don't overwrite that ET.tree back into self.data
-                with open(duplicate + ".svg", w+t, encoding="utf-8") as outfile:
+                with open(duplicate + ".svg", 'w+t', encoding="utf-8") as outfile:
                     print(f'[{self.name}]: Writing SVG content out to duplicate illustration {duplicate}.svg', file=sys.stderr)
-                    outfile.write( prepend_elementIDs(self.data, duplicate) )
+                    outfile.write( self.prepend_elementIDs(self.data, duplicate) )
 #                    
         return None
 #    
@@ -657,6 +709,7 @@ class Illustration():
         # to generate duplicates when necessary
         self.name = new_name
         return None
+
         
 
 def extract_color_classes(filename):
