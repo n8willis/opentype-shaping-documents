@@ -2,8 +2,7 @@
 import sys
 
 import re
-#from lxml import etree as ET
-from pathlib import Path
+#from pathlib import Path
 
 def _sidebar_path_list(sidebar_template):
     """Returns a list containing all internal hyperlink file paths."""
@@ -18,6 +17,8 @@ def _sidebar_path_list(sidebar_template):
     
 def _sidebar_path_list_lxml(sidebar_template):
     """Deprecated. Returns a list containing all internal hyperlink file paths."""
+    from lxml import etree as ET
+    
     path_list = []
     #namespace = 
     with open(sidebar_template, 'r+t', encoding='utf-8') as f:
