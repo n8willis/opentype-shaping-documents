@@ -390,6 +390,11 @@ def _bootstrap_yaml(filename):
                             f'    font: {params["font"]}\n'
                             )
 
+                    if params["font-size"]:
+                        yaml_component += (
+                            f'    fontsize: {params["font-size"]}\n'
+                            )
+
                     if params["margin"]:
                         yaml_component += (
                             f'    margin: {params["margin"]}\n'

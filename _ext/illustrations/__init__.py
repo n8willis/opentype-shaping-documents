@@ -19,7 +19,7 @@ import vharfbuzz as vh
 CSS_CLASSLIST = ["c0", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "dc", "arrow"]
 """A list of the known CSS classes applied for SVG illustration interactivity."""
 
-FONTDIR = "images/example-fonts"
+FONTDIR = "images/example-fonts/"
 """The directory where the binary font files indicated in various illustration YAML configuration
    files are to be found.
 
@@ -66,6 +66,7 @@ class svgComponent():
                  name,
                  fontfile,
                  unicodes,
+                 fontsize,
                  margin,
                  features=None,
                  options=None,
@@ -93,7 +94,9 @@ class svgComponent():
                 self.font = p
         else:
             raise OSError(f'[Component `{self.name}`]: the font file {fontfile} could not be located. Does {p} exist?')
+        
         self.unicodes = unicodes
+        self.fontsize = fontsize
         self.margin = margin
         self.features = features
         self.options = options 
@@ -126,6 +129,7 @@ class svgComponent():
             # build the command
             command = [f'{self.generator}',
                        "--output-format=svg",            # generates SVG output, and sends it to stdout
+                       f'--font-size={self.fontsize}',
                        f'--margin={self.margin}',
                        f'--features={self.features}',
                        f'--foreground={self.basecolor}',
@@ -235,9 +239,14 @@ class Illustration():
     # We need: YAML `font` key -> file path
     #          ??? -> output directory for writing (same as YAML directory?)
     #          intermediate files???
-    def __init__(self, configfile=None):
+    def __init__(self, dirbase, configfile=None):
         from pathlib import Path
 
+        if not dirbase:
+            raise ValueError(f'Illustration instantiation is missing the required `dirbase` argument.')
+        else:
+            self.dirbase = Path(dirbase)
+        
         if configfile:
             with open(configfile, 'r') as infile:
                 config = yaml.safe_load(infile)
@@ -249,6 +258,7 @@ class Illustration():
 
                 if "name" in config:
                     self.name = config.get("name")
+                    print(f'[{self.name}]: Configuration file found...', file=sys.stderr)
                 else:
                     raise ValueError("Illustration configuration file must include a name for the illustration.")
                 
@@ -263,12 +273,31 @@ class Illustration():
 
                 if "font" in config:
                     # handle FONTDIR ... at least somewhat
-                    self.font = config.get("font").replace("FONTDIR", FONTDIR)
+                    #self.font = config.get("font").replace("FONTDIR", FONTDIR)
+                    
+                    print(f'[{self.name}]: Found font key = {config.get("font")}...', file=sys.stderr)
+                    fontp = self.dirbase / config.get("font")
+                    
+                    print(f'[{self.name}]: Font path = {fontp}...', file=sys.stderr)
+                    fontp = fontp.resolve()
                 elif "FONT" in config:
                     # handle FONTDIR ... at least somewhat
-                    self.font = config.get("FONT").replace("FONTDIR", FONTDIR) # *** deprecated key name !!!!
+                    #self.font = config.get("FONT").replace("FONTDIR", FONTDIR) # *** deprecated key name !!!!
+                    fontp = self.dirbase / config.get("FONT")
+                    fontp = fontp.resolve()
                 else:
                     self.font = None
+
+                # The config-file tests allow creating an Illustration with an empty .font attribute.
+                # We are here treating the case where a .font was listed in the config file but can't
+                # be found differently. Empty .font attribute is OK; bad .font attribute is an exception.
+                #
+                # I don't know if that's the right way, long-term; it just permits some testing.
+                if fontp:
+                    if fontp.exists():
+                        self.font = str(fontp)
+                    else:
+                        raise OSError(f'[{self.name}] Instantiation issue: cannot resolve the file path for the `font` parameter in {configfile}')
 
                 # Optional fill color, defaults to black
                 self.basecolor = config.get("basecolor", "000000")
@@ -294,6 +323,7 @@ class Illustration():
                     self.components = [svgComponent(self.name,
                                                     self.font,
                                                     config.get("unicodes", None),
+                                                    config.get("fontsize", None),
                                                     config.get("margin", None),
                                                     config.get("features", None),
                                                     config.get("options", None),
@@ -311,11 +341,19 @@ class Illustration():
                             component_name = key
                             component_structure = component[key]
                             if "file" in component_structure:
-                                self.components.append(svgFileComponent(component_name, component_structure["file"]))
+
+                                print(f'[{self.name}]: Found external-file key = {component_structure.get("file")}...', file=sys.stderr)
+                                filep = self.dirbase / component_structure.get("file")
+                    
+                                print(f'[{self.name}]: File path = {filep}...', file=sys.stderr)
+                                filep = filep.resolve()
+
+                                self.components.append(svgFileComponent(component_name, filep))
                             else:
                                 self.components.append(svgComponent(component_name,
                                                                     self.font,
                                                                     component_structure.get("unicodes", None),
+                                                                    component_structure.get("fontsize", None),
                                                                     component_structure.get("margin", None),
                                                                     component_structure.get("features", None),
                                                                     component_structure.get("options", None),
@@ -327,6 +365,7 @@ class Illustration():
                 return None
             
         else:
+            print(f'[{self.name}]: No configuration file found; initializing emtpy Illustration object', file=sys.stderr)
             self.name = None
             self.generator = "hb-view"
             self.font = None
@@ -561,7 +600,7 @@ class Illustration():
         objects that are included on the HTML page as external <img src="foo"> elements.
         Or, at least, not reliably, and not with most browsers.
         """
-        print(f'[{self.name}]: Inserting prefixes to the ID attributes of all elements in the illustration.', file=sys.stderr)
+        print(f'[{self.name}]: Inserting "{id_prefix}" prefixes to the ID attributes of all elements in the illustration.', file=sys.stderr)
  
         if not svg_data:
             raise ValueError(f'[{self.name}]: The illustration does not contain SVGs in its .data attribute;'
@@ -605,28 +644,34 @@ class Illustration():
             elems = list(root.iter())
             for elem in elems:
                 # ... prepending id_prefix to all id declarations
-                if (elem != root and "id" in elem.attrib):
-                    print(f'[{self.name}]: {elem.tag} id = {elem.attrib["id"]}', file=sys.stderr)
-                    old_id = elem.attrib["id"]
-                    if old_id[0:1] != "id":
-                        elem.set("id", id_prefix + ":" + old_id)
-                        print(f'[{self.name}]: Element {elem.tag}, assigning id: {elem.attrib["id"]}', file=sys.stderr)
-                    else:
-                        print(f'[{self.name}]: Error: {elem.tag} has unexpected id: {elem.attrib["id"]}', file=sys.stderr)
-                        raise ValueError(f'Element id found = {elem.attrib["id"]}')
+                if elem != root:
+                    if "id" in elem.attrib:
+                        print(f'[{self.name}]: {elem.tag} old id = {elem.attrib["id"]}', file=sys.stderr)
+                        old_id = elem.attrib["id"]
+                        if old_id[0:1] != "id":
+                            elem.set("id", id_prefix + ":" + old_id)
+                            print(f'[{self.name}]: Element {elem.tag}, new id: {elem.attrib["id"]}', file=sys.stderr)
+                        else:
+                            print(f'[{self.name}]: Error: {elem.tag} has unexpected id: {elem.attrib["id"]}', file=sys.stderr)
+                            raise ValueError(f'Element id found = {elem.attrib["id"]}')
                      
-                # ... prepending id_prefix to all id hrefs
-                if ( "{" + d["xlink"] + "}" + "href" in elem.attrib):
-                    print(f'[{self.name}]: Xlink element {elem.tag}, assigning id: {elem.attrib["id"]}', file=sys.stderr)
-                    old_target = elem.attrib["{" + d["xlink"] + "}" + "href"]
-                    # TODO: test whether the following syntax (which is used to access the xlink href)
-                    #       also gets written out correctly to the file.
+                    # ... prepending id_prefix to all id hrefs
+                    if ( "{" + d["xlink"] + "}" + "href" in elem.attrib):
+                        print(f'[{self.name}]: Xlink element {elem.tag}, assigning id to target', file=sys.stderr)
+                        old_target = elem.attrib["{" + d["xlink"] + "}" + "href"]
+                        # sample::
+                        #       before prepend:
+                        #                      <use xlink:href="#glyph0-1" 
+                        #        after prepend:
+                        #                      <use xlink:href="#bengali-ccmp:id2:glyph-0-1"
+                        # TODO: test whether the following syntax (which is used to access the xlink href)
+                        #       also gets written out correctly to the file.
  
-                    if old_target[1:2] != "id":
-                        elem.set("{" + d["xlink"] + "}" + "href", "#" + id_prefix + ":" + old_target[1:])
-                        print(f'[{self.name}]: {elem.attrib}', file=sys.stderr)
-                    else:
-                        print(f'[{self.name}]: Unexpected, element {elem.tag} has unexpected target: {old_target}', file=sys.stderr)
+                        if old_target[1:2] != "id":
+                            elem.set("{" + d["xlink"] + "}" + "href", "#" + id_prefix + ":" + old_target[1:])
+                            print(f'[{self.name}]: {elem.attrib}', file=sys.stderr)
+                        else:
+                            print(f'[{self.name}]: Unexpected, element {elem.tag} has unexpected target: {old_target}', file=sys.stderr)
  
         # Return the altered SVG as a string, since it's intended to be written to file
         return ET.tostring(tree, encoding="unicode")
